@@ -20,7 +20,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
  *
  * @uses bbp_get_ajax_url() To get the URL to use for AJAX requests
  */
-function bbp_ajax_url() {
+function bb_ajax_url() {
 	echo bbp_get_ajax_url();
 }
 	/**
@@ -31,7 +31,7 @@ function bbp_ajax_url() {
 	 * @global WP $wp
 	 * @return string
 	 */
-	function bbp_get_ajax_url() {
+	function bb_get_ajax_url() {
 		global $wp;
 
 		$base_url = home_url( trailingslashit( $wp->request ), ( is_ssl() ? 'https' : 'http' ) );
@@ -47,7 +47,7 @@ function bbp_ajax_url() {
  *
  * @return bool Looking for bbp-ajax
  */
-function bbp_is_ajax() {
+function bb_is_ajax() {
 	return (bool) ( isset( $_GET['bbp-ajax'] ) && ! empty( $_REQUEST['action'] ) );
 }
 
@@ -59,7 +59,7 @@ function bbp_is_ajax() {
  *
  * @return If not a bbPress ajax request
  */
-function bbp_do_ajax() {
+function bb_do_ajax() {
 
 	// Bail if not an ajax request
 	if ( ! bbp_is_ajax() )
@@ -90,7 +90,7 @@ function bbp_do_ajax() {
  * @param string $content
  * @param array $extras
  */
-function bbp_ajax_response( $success = false, $content = '', $status = -1, $extras = array() ) {
+function bb_ajax_response( $success = false, $content = '', $status = -1, $extras = array() ) {
 
 	// Set status to 200 if setting response as successful
 	if ( ( true === $success ) && ( -1 === $status ) )

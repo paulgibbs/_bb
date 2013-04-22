@@ -18,7 +18,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
  * @since bbPress (r2857)
  * @uses bbp_get_forum_post_type() To get the forum post type
  */
-function bbp_forum_post_type() {
+function bb_forum_post_type() {
 	echo bbp_get_forum_post_type();
 }
 	/**
@@ -30,7 +30,7 @@ function bbp_forum_post_type() {
 	 *                        post type id
 	 * @return string The unique forum post type id
 	 */
-	function bbp_get_forum_post_type() {
+	function bb_get_forum_post_type() {
 		return apply_filters( 'bbp_get_forum_post_type', bbpress()->forum_post_type );
 	}
 
@@ -55,7 +55,7 @@ function bbp_forum_post_type() {
  *                        and bbPres::forum_query
  * @return object Multidimensional array of forum information
  */
-function bbp_has_forums( $args = '' ) {
+function bb_has_forums( $args = '' ) {
 
 	// Parse arguments with default forum query for most circumstances
 	$bbp_f = bbp_parse_args( $args, array(
@@ -83,7 +83,7 @@ function bbp_has_forums( $args = '' ) {
  *                                          available
  * @return object Forum information
  */
-function bbp_forums() {
+function bb_forums() {
 
 	// Put into variable to check against next
 	$have_posts = bbpress()->forum_query->have_posts();
@@ -103,7 +103,7 @@ function bbp_forums() {
  * @uses bbPress:forum_query::the_post() To get the current forum
  * @return object Forum information
  */
-function bbp_the_forum() {
+function bb_the_forum() {
 	return bbpress()->forum_query->the_post();
 }
 
@@ -117,7 +117,7 @@ function bbp_the_forum() {
  * @param $forum_id Optional. Used to check emptiness
  * @uses bbp_get_forum_id() To get the forum id
  */
-function bbp_forum_id( $forum_id = 0 ) {
+function bb_forum_id( $forum_id = 0 ) {
 	echo bbp_get_forum_id( $forum_id );
 }
 	/**
@@ -138,7 +138,7 @@ function bbp_forum_id( $forum_id = 0 ) {
 	 *                        supplied forum id
 	 * @return int The forum id
 	 */
-	function bbp_get_forum_id( $forum_id = 0 ) {
+	function bb_get_forum_id( $forum_id = 0 ) {
 		global $wp_query;
 
 		$bbp = bbpress();
@@ -188,7 +188,7 @@ function bbp_forum_id( $forum_id = 0 ) {
  *                        sanitation filter
  * @return mixed Null if error or forum (in specified form) if success
  */
-function bbp_get_forum( $forum, $output = OBJECT, $filter = 'raw' ) {
+function bb_get_forum( $forum, $output = OBJECT, $filter = 'raw' ) {
 
 	// Use forum ID
 	if ( empty( $forum ) || is_numeric( $forum ) )
@@ -228,7 +228,7 @@ function bbp_get_forum( $forum, $output = OBJECT, $filter = 'raw' ) {
  * @param int $forum_id Optional. Forum id
  * @uses bbp_get_forum_permalink() To get the permalink
  */
-function bbp_forum_permalink( $forum_id = 0 ) {
+function bb_forum_permalink( $forum_id = 0 ) {
 	echo bbp_get_forum_permalink( $forum_id );
 }
 	/**
@@ -245,7 +245,7 @@ function bbp_forum_permalink( $forum_id = 0 ) {
 	 *                        link
 	 * @return string Permanent link to forum
 	 */
-	function bbp_get_forum_permalink( $forum_id = 0, $redirect_to = '' ) {
+	function bb_get_forum_permalink( $forum_id = 0, $redirect_to = '' ) {
 		$forum_id = bbp_get_forum_id( $forum_id );
 
 		// Use the redirect address
@@ -268,7 +268,7 @@ function bbp_forum_permalink( $forum_id = 0 ) {
  * @param int $forum_id Optional. Forum id
  * @uses bbp_get_forum_title() To get the forum title
  */
-function bbp_forum_title( $forum_id = 0 ) {
+function bb_forum_title( $forum_id = 0 ) {
 	echo bbp_get_forum_title( $forum_id );
 }
 	/**
@@ -282,7 +282,7 @@ function bbp_forum_title( $forum_id = 0 ) {
 	 * @uses apply_filters() Calls 'bbp_get_forum_title' with the title
 	 * @return string Title of forum
 	 */
-	function bbp_get_forum_title( $forum_id = 0 ) {
+	function bb_get_forum_title( $forum_id = 0 ) {
 		$forum_id = bbp_get_forum_id( $forum_id );
 		$title    = get_the_title( $forum_id );
 
@@ -296,7 +296,7 @@ function bbp_forum_title( $forum_id = 0 ) {
  *
  * @param string $title Default text to use as title
  */
-function bbp_forum_archive_title( $title = '' ) {
+function bb_forum_archive_title( $title = '' ) {
 	echo bbp_get_forum_archive_title( $title );
 }
 	/**
@@ -315,7 +315,7 @@ function bbp_forum_archive_title( $title = '' ) {
 	 *
 	 * @return string The forum archive title
 	 */
-	function bbp_get_forum_archive_title( $title = '' ) {
+	function bb_get_forum_archive_title( $title = '' ) {
 
 		// If no title was passed
 		if ( empty( $title ) ) {
@@ -343,7 +343,7 @@ function bbp_forum_archive_title( $title = '' ) {
  * @param int $forum_id Optional. Topic id
  * @uses bbp_get_forum_content() To get the forum content
  */
-function bbp_forum_content( $forum_id = 0 ) {
+function bb_forum_content( $forum_id = 0 ) {
 	echo bbp_get_forum_content( $forum_id );
 }
 	/**
@@ -360,7 +360,7 @@ function bbp_forum_content( $forum_id = 0 ) {
 	 *                        and forum id
 	 * @return string Content of the forum
 	 */
-	function bbp_get_forum_content( $forum_id = 0 ) {
+	function bb_get_forum_content( $forum_id = 0 ) {
 		$forum_id = bbp_get_forum_id( $forum_id );
 
 		// Check if password is required
@@ -379,7 +379,7 @@ function bbp_forum_content( $forum_id = 0 ) {
  * @uses do_action()
  * @todo Links and filter
  */
-function bbp_forum_row_actions() {
+function bb_forum_row_actions() {
 	do_action( 'bbp_forum_row_actions' );
 }
 
@@ -391,7 +391,7 @@ function bbp_forum_row_actions() {
  * @uses bbp_get_forum_last_active_id() To get the forum's last active id
  * @param int $forum_id Optional. Forum id
  */
-function bbp_forum_last_active_id( $forum_id = 0 ) {
+function bb_forum_last_active_id( $forum_id = 0 ) {
 	echo bbp_get_forum_last_active_id( $forum_id );
 }
 	/**
@@ -406,7 +406,7 @@ function bbp_forum_last_active_id( $forum_id = 0 ) {
 	 *                        the last active id and forum id
 	 * @return int Forum's last active id
 	 */
-	function bbp_get_forum_last_active_id( $forum_id = 0 ) {
+	function bb_get_forum_last_active_id( $forum_id = 0 ) {
 		$forum_id  = bbp_get_forum_id( $forum_id );
 		$active_id = get_post_meta( $forum_id, '_bbp_last_active_id', true );
 
@@ -421,7 +421,7 @@ function bbp_forum_last_active_id( $forum_id = 0 ) {
  * @uses bbp_get_forum_last_active_time() To get the forum freshness
  * @param int $forum_id Optional. Forum id
  */
-function bbp_forum_last_active_time( $forum_id = 0 ) {
+function bb_forum_last_active_time( $forum_id = 0 ) {
 	echo bbp_get_forum_last_active_time( $forum_id );
 }
 	/**
@@ -443,7 +443,7 @@ function bbp_forum_last_active_time( $forum_id = 0 ) {
 	 *                        active time and forum id
 	 * @return string Forum last update date/time (freshness)
 	 */
-	function bbp_get_forum_last_active_time( $forum_id = 0 ) {
+	function bb_get_forum_last_active_time( $forum_id = 0 ) {
 
 		// Verify forum and get last active meta
 		$forum_id    = bbp_get_forum_id( $forum_id );
@@ -476,7 +476,7 @@ function bbp_forum_last_active_time( $forum_id = 0 ) {
  * @param int $forum_id Optional. Forum id
  * @uses bbp_get_forum_freshness_link() To get the forum freshness link
  */
-function bbp_forum_freshness_link( $forum_id = 0) {
+function bb_forum_freshness_link( $forum_id = 0) {
 	echo bbp_get_forum_freshness_link( $forum_id );
 }
 	/**
@@ -503,7 +503,7 @@ function bbp_forum_freshness_link( $forum_id = 0) {
 	 * @uses apply_filters() Calls 'bbp_get_forum_freshness_link' with the
 	 *                        link and forum id
 	 */
-	function bbp_get_forum_freshness_link( $forum_id = 0 ) {
+	function bb_get_forum_freshness_link( $forum_id = 0 ) {
 		$forum_id  = bbp_get_forum_id( $forum_id );
 		$active_id = bbp_get_forum_last_active_id( $forum_id );
 		$link_url  = $title = '';
@@ -540,7 +540,7 @@ function bbp_forum_freshness_link( $forum_id = 0) {
  * @param int $forum_id Forum ID
  * @uses bbp_get_forum_parent_id() To get the forum's parent ID
  */
-function bbp_forum_parent_id( $forum_id = 0 ) {
+function bb_forum_parent_id( $forum_id = 0 ) {
 	echo bbp_get_forum_parent_id( $forum_id );
 }
 	/**
@@ -554,7 +554,7 @@ function bbp_forum_parent_id( $forum_id = 0 ) {
 	 * @uses apply_filters() Calls 'bbp_get_forum_parent' with the parent & forum id
 	 * @return int Forum parent
 	 */
-	function bbp_get_forum_parent_id( $forum_id = 0 ) {
+	function bb_get_forum_parent_id( $forum_id = 0 ) {
 		$forum_id  = bbp_get_forum_id( $forum_id );
 		$parent_id = get_post_field( 'post_parent', $forum_id );
 
@@ -573,7 +573,7 @@ function bbp_forum_parent_id( $forum_id = 0 ) {
  *                        and forum id
  * @return array Forum ancestors
  */
-function bbp_get_forum_ancestors( $forum_id = 0 ) {
+function bb_get_forum_ancestors( $forum_id = 0 ) {
 	$forum_id  = bbp_get_forum_id( $forum_id );
 	$ancestors = array();
 	$forum     = bbp_get_forum( $forum_id );
@@ -602,7 +602,7 @@ function bbp_get_forum_ancestors( $forum_id = 0 ) {
  *                        and the args
  * @return mixed false if none, array of subs if yes
  */
-function bbp_forum_get_subforums( $args = '' ) {
+function bb_forum_get_subforums( $args = '' ) {
 
 	// Use passed integer as post_parent
 	if ( is_numeric( $args ) )
@@ -670,7 +670,7 @@ function bbp_forum_get_subforums( $args = '' ) {
  * @uses bbp_get_forum_topic_count() To get forum topic count
  * @uses bbp_get_forum_reply_count() To get forum reply count
  */
-function bbp_list_forums( $args = '' ) {
+function bb_list_forums( $args = '' ) {
 
 	// Define used variables
 	$output = $sub_forums = $topic_count = $reply_count = $counts = '';
@@ -741,7 +741,7 @@ function bbp_list_forums( $args = '' ) {
  * @uses bbp_get_forum_last_topic_id() To get the forum's last topic id
  * @param int $forum_id Optional. Forum id
  */
-function bbp_forum_last_topic_id( $forum_id = 0 ) {
+function bb_forum_last_topic_id( $forum_id = 0 ) {
 	echo bbp_get_forum_last_topic_id( $forum_id );
 }
 	/**
@@ -756,7 +756,7 @@ function bbp_forum_last_topic_id( $forum_id = 0 ) {
 	 *                        forum and topic id
 	 * @return int Forum's last topic id
 	 */
-	function bbp_get_forum_last_topic_id( $forum_id = 0 ) {
+	function bb_get_forum_last_topic_id( $forum_id = 0 ) {
 		$forum_id = bbp_get_forum_id( $forum_id );
 		$topic_id = get_post_meta( $forum_id, '_bbp_last_topic_id', true );
 
@@ -771,7 +771,7 @@ function bbp_forum_last_topic_id( $forum_id = 0 ) {
  * @param int $forum_id Optional. Forum id
  * @uses bbp_get_forum_last_topic_title() To get the forum's last topic's title
  */
-function bbp_forum_last_topic_title( $forum_id = 0 ) {
+function bb_forum_last_topic_title( $forum_id = 0 ) {
 	echo bbp_get_forum_last_topic_title( $forum_id );
 }
 	/**
@@ -787,7 +787,7 @@ function bbp_forum_last_topic_title( $forum_id = 0 ) {
 	 *                        topic title and forum id
 	 * @return string Forum's last topic's title
 	 */
-	function bbp_get_forum_last_topic_title( $forum_id = 0 ) {
+	function bb_get_forum_last_topic_title( $forum_id = 0 ) {
 		$forum_id = bbp_get_forum_id( $forum_id );
 		$topic_id = bbp_get_forum_last_topic_id( $forum_id );
 		$title    = !empty( $topic_id ) ? bbp_get_topic_title( $topic_id ) : '';
@@ -804,7 +804,7 @@ function bbp_forum_last_topic_title( $forum_id = 0 ) {
  * @uses bbp_get_forum_last_topic_permalink() To get the forum's last topic's
  *                                             permanent link
  */
-function bbp_forum_last_topic_permalink( $forum_id = 0 ) {
+function bb_forum_last_topic_permalink( $forum_id = 0 ) {
 	echo bbp_get_forum_last_topic_permalink( $forum_id );
 }
 	/**
@@ -820,7 +820,7 @@ function bbp_forum_last_topic_permalink( $forum_id = 0 ) {
 	 *                        the topic link and forum id
 	 * @return string Permanent link to topic
 	 */
-	function bbp_get_forum_last_topic_permalink( $forum_id = 0 ) {
+	function bb_get_forum_last_topic_permalink( $forum_id = 0 ) {
 		$forum_id = bbp_get_forum_id( $forum_id );
 		return apply_filters( 'bbp_get_forum_last_topic_permalink', bbp_get_topic_permalink( bbp_get_forum_last_topic_id( $forum_id ) ), $forum_id );
 	}
@@ -838,7 +838,7 @@ function bbp_forum_last_topic_permalink( $forum_id = 0 ) {
  *                        id and forum id
  * @return int Forum's last topic's author id
  */
-function bbp_get_forum_last_topic_author_id( $forum_id = 0 ) {
+function bb_get_forum_last_topic_author_id( $forum_id = 0 ) {
 	$forum_id  = bbp_get_forum_id( $forum_id );
 	$author_id = bbp_get_topic_author_id( bbp_get_forum_last_topic_id( $forum_id ) );
 	return (int) apply_filters( 'bbp_get_forum_last_topic_author_id', (int) $author_id, $forum_id );
@@ -853,7 +853,7 @@ function bbp_get_forum_last_topic_author_id( $forum_id = 0 ) {
  * @uses bbp_get_forum_last_topic_author_link() To get the forum's last topic's
  *                                               author link
  */
-function bbp_forum_last_topic_author_link( $forum_id = 0 ) {
+function bb_forum_last_topic_author_link( $forum_id = 0 ) {
 	echo bbp_get_forum_last_topic_author_link( $forum_id );
 }
 	/**
@@ -870,7 +870,7 @@ function bbp_forum_last_topic_author_link( $forum_id = 0 ) {
 	 *                        with the author link and forum id
 	 * @return string Forum's last topic's author link
 	 */
-	function bbp_get_forum_last_topic_author_link( $forum_id = 0 ) {
+	function bb_get_forum_last_topic_author_link( $forum_id = 0 ) {
 		$forum_id    = bbp_get_forum_id( $forum_id );
 		$author_id   = bbp_get_forum_last_topic_author_id( $forum_id );
 		$author_link = bbp_get_user_profile_link( $author_id );
@@ -887,7 +887,7 @@ function bbp_forum_last_topic_author_link( $forum_id = 0 ) {
  * @uses bbp_get_forum_last_reply_id() To get the forum's last reply id
  * @param int $forum_id Optional. Forum id
  */
-function bbp_forum_last_reply_id( $forum_id = 0 ) {
+function bb_forum_last_reply_id( $forum_id = 0 ) {
 	echo bbp_get_forum_last_reply_id( $forum_id );
 }
 	/**
@@ -903,7 +903,7 @@ function bbp_forum_last_reply_id( $forum_id = 0 ) {
 	 *                        the last reply id and forum id
 	 * @return int Forum's last reply id
 	 */
-	function bbp_get_forum_last_reply_id( $forum_id = 0 ) {
+	function bb_get_forum_last_reply_id( $forum_id = 0 ) {
 		$forum_id = bbp_get_forum_id( $forum_id );
 		$reply_id = get_post_meta( $forum_id, '_bbp_last_reply_id', true );
 
@@ -919,7 +919,7 @@ function bbp_forum_last_reply_id( $forum_id = 0 ) {
  * @param int $forum_id Optional. Forum id
  * @uses bbp_get_forum_last_reply_title() To get the forum's last reply's title
  */
-function bbp_forum_last_reply_title( $forum_id = 0 ) {
+function bb_forum_last_reply_title( $forum_id = 0 ) {
 	echo bbp_get_forum_last_reply_title( $forum_id );
 }
 	/**
@@ -933,7 +933,7 @@ function bbp_forum_last_reply_title( $forum_id = 0 ) {
 	 *                        reply title and forum id
 	 * @return string
 	 */
-	function bbp_get_forum_last_reply_title( $forum_id = 0 ) {
+	function bb_get_forum_last_reply_title( $forum_id = 0 ) {
 		$forum_id = bbp_get_forum_id( $forum_id );
 		return apply_filters( 'bbp_get_forum_last_reply_title', bbp_get_reply_title( bbp_get_forum_last_reply_id( $forum_id ) ), $forum_id );
 	}
@@ -946,7 +946,7 @@ function bbp_forum_last_reply_title( $forum_id = 0 ) {
  * @param int $forum_id Optional. Forum id
  * @uses bbp_get_forum_last_reply_permalink() To get the forum last reply link
  */
-function bbp_forum_last_reply_permalink( $forum_id = 0 ) {
+function bb_forum_last_reply_permalink( $forum_id = 0 ) {
 	echo bbp_get_forum_last_reply_permalink( $forum_id );
 }
 	/**
@@ -962,7 +962,7 @@ function bbp_forum_last_reply_permalink( $forum_id = 0 ) {
 	 *                        the reply link and forum id
 	 * @return string Permanent link to the forum's last reply
 	 */
-	function bbp_get_forum_last_reply_permalink( $forum_id = 0 ) {
+	function bb_get_forum_last_reply_permalink( $forum_id = 0 ) {
 		$forum_id = bbp_get_forum_id( $forum_id );
 		return apply_filters( 'bbp_get_forum_last_reply_permalink', bbp_get_reply_permalink( bbp_get_forum_last_reply_id( $forum_id ) ), $forum_id );
 	}
@@ -975,7 +975,7 @@ function bbp_forum_last_reply_permalink( $forum_id = 0 ) {
  * @param int $forum_id Optional. Forum id
  * @uses bbp_get_forum_last_reply_url() To get the forum last reply url
  */
-function bbp_forum_last_reply_url( $forum_id = 0 ) {
+function bb_forum_last_reply_url( $forum_id = 0 ) {
 	echo bbp_get_forum_last_reply_url( $forum_id );
 }
 	/**
@@ -993,7 +993,7 @@ function bbp_forum_last_reply_url( $forum_id = 0 ) {
 	 *                        reply url and forum id
 	 * @return string Paginated URL to latest reply
 	 */
-	function bbp_get_forum_last_reply_url( $forum_id = 0 ) {
+	function bb_get_forum_last_reply_url( $forum_id = 0 ) {
 		$forum_id = bbp_get_forum_id( $forum_id );
 
 		// If forum has replies, get the last reply and use its url
@@ -1024,7 +1024,7 @@ function bbp_forum_last_reply_url( $forum_id = 0 ) {
  * @uses bbp_get_forum_last_reply_author_id() To get the forum's last reply
  *                                             author id
  */
-function bbp_forum_last_reply_author_id( $forum_id = 0 ) {
+function bb_forum_last_reply_author_id( $forum_id = 0 ) {
 	echo bbp_get_forum_last_reply_author_id( $forum_id );
 }
 	/**
@@ -1041,7 +1041,7 @@ function bbp_forum_last_reply_author_id( $forum_id = 0 ) {
 	 *                        the author id and forum id
 	 * @return int Forum's last reply author id
 	 */
-	function bbp_get_forum_last_reply_author_id( $forum_id = 0 ) {
+	function bb_get_forum_last_reply_author_id( $forum_id = 0 ) {
 		$forum_id  = bbp_get_forum_id( $forum_id );
 		$author_id = bbp_get_reply_author_id( bbp_get_forum_last_reply_id( $forum_id ) );
 		return apply_filters( 'bbp_get_forum_last_reply_author_id', $author_id, $forum_id );
@@ -1056,7 +1056,7 @@ function bbp_forum_last_reply_author_id( $forum_id = 0 ) {
  * @uses bbp_get_forum_last_reply_author_link() To get the forum's last reply's
  *                                               author link
  */
-function bbp_forum_last_reply_author_link( $forum_id = 0 ) {
+function bb_forum_last_reply_author_link( $forum_id = 0 ) {
 	echo bbp_get_forum_last_reply_author_link( $forum_id );
 }
 	/**
@@ -1074,7 +1074,7 @@ function bbp_forum_last_reply_author_link( $forum_id = 0 ) {
 	 *                        with the author link and forum id
 	 * @return string Link to author of last reply of forum
 	 */
-	function bbp_get_forum_last_reply_author_link( $forum_id = 0 ) {
+	function bb_get_forum_last_reply_author_link( $forum_id = 0 ) {
 		$forum_id    = bbp_get_forum_id( $forum_id );
 		$author_id   = bbp_get_forum_last_reply_author_id( $forum_id );
 		$author_link = bbp_get_user_profile_link( $author_id );
@@ -1091,7 +1091,7 @@ function bbp_forum_last_reply_author_link( $forum_id = 0 ) {
  * @param int $forum_id Optional. Topic id
  * @uses bbp_get_forum_topics_link() To get the forum topics link
  */
-function bbp_forum_topics_link( $forum_id = 0 ) {
+function bb_forum_topics_link( $forum_id = 0 ) {
 	echo bbp_get_forum_topics_link( $forum_id );
 }
 
@@ -1114,7 +1114,7 @@ function bbp_forum_topics_link( $forum_id = 0 ) {
 	 * @uses apply_filters() Calls 'bbp_get_forum_topics_link' with the
 	 *                        topics link and forum id
 	 */
-	function bbp_get_forum_topics_link( $forum_id = 0 ) {
+	function bb_get_forum_topics_link( $forum_id = 0 ) {
 		$forum    = bbp_get_forum( $forum_id );
 		$forum_id = $forum->ID;
 		$topics   = sprintf( _n( '%s topic', '%s topics', bbp_get_forum_topic_count( $forum_id, true, false ), 'bbpress' ), bbp_get_forum_topic_count( $forum_id ) );
@@ -1157,7 +1157,7 @@ function bbp_forum_topics_link( $forum_id = 0 ) {
  * @param boolean $integer Optional. Whether or not to format the result
  * @uses bbp_get_forum_subforum_count() To get the forum's subforum count
  */
-function bbp_forum_subforum_count( $forum_id = 0, $integer = false ) {
+function bb_forum_subforum_count( $forum_id = 0, $integer = false ) {
 	echo bbp_get_forum_subforum_count( $forum_id, $integer );
 }
 	/**
@@ -1173,7 +1173,7 @@ function bbp_forum_subforum_count( $forum_id = 0, $integer = false ) {
 	 *                        subforum count and forum id
 	 * @return int Forum's subforum count
 	 */
-	function bbp_get_forum_subforum_count( $forum_id = 0, $integer = false ) {
+	function bb_get_forum_subforum_count( $forum_id = 0, $integer = false ) {
 		$forum_id    = bbp_get_forum_id( $forum_id );
 		$forum_count = (int) get_post_meta( $forum_id, '_bbp_forum_subforum_count', true );
 		$filter      = ( true === $integer ) ? 'bbp_get_forum_subforum_count_int' : 'bbp_get_forum_subforum_count';
@@ -1191,7 +1191,7 @@ function bbp_forum_subforum_count( $forum_id = 0, $integer = false ) {
  * @param boolean $integer Optional. Whether or not to format the result
  * @uses bbp_get_forum_topic_count() To get the forum topic count
  */
-function bbp_forum_topic_count( $forum_id = 0, $total_count = true, $integer = false ) {
+function bb_forum_topic_count( $forum_id = 0, $total_count = true, $integer = false ) {
 	echo bbp_get_forum_topic_count( $forum_id, $total_count, $integer );
 }
 	/**
@@ -1209,7 +1209,7 @@ function bbp_forum_topic_count( $forum_id = 0, $total_count = true, $integer = f
 	 *                        topic count and forum id
 	 * @return int Forum topic count
 	 */
-	function bbp_get_forum_topic_count( $forum_id = 0, $total_count = true, $integer = false ) {
+	function bb_get_forum_topic_count( $forum_id = 0, $total_count = true, $integer = false ) {
 		$forum_id = bbp_get_forum_id( $forum_id );
 		$meta_key = empty( $total_count ) ? '_bbp_topic_count' : '_bbp_total_topic_count';
 		$topics   = (int) get_post_meta( $forum_id, $meta_key, true );
@@ -1228,7 +1228,7 @@ function bbp_forum_topic_count( $forum_id = 0, $total_count = true, $integer = f
  * @param boolean $integer Optional. Whether or not to format the result
  * @uses bbp_get_forum_reply_count() To get the forum reply count
  */
-function bbp_forum_reply_count( $forum_id = 0, $total_count = true, $integer = false ) {
+function bb_forum_reply_count( $forum_id = 0, $total_count = true, $integer = false ) {
 	echo bbp_get_forum_reply_count( $forum_id, $total_count, $integer );
 }
 	/**
@@ -1246,7 +1246,7 @@ function bbp_forum_reply_count( $forum_id = 0, $total_count = true, $integer = f
 	 *                        reply count and forum id
 	 * @return int Forum reply count
 	 */
-	function bbp_get_forum_reply_count( $forum_id = 0, $total_count = true, $integer = false ) {
+	function bb_get_forum_reply_count( $forum_id = 0, $total_count = true, $integer = false ) {
 		$forum_id = bbp_get_forum_id( $forum_id );
 		$meta_key = empty( $total_count ) ? '_bbp_reply_count' : '_bbp_total_reply_count';
 		$replies  = (int) get_post_meta( $forum_id, $meta_key, true );
@@ -1265,7 +1265,7 @@ function bbp_forum_reply_count( $forum_id = 0, $total_count = true, $integer = f
  * @param boolean $integer Optional. Whether or not to format the result
  * @uses bbp_get_forum_post_count() To get the forum post count
  */
-function bbp_forum_post_count( $forum_id = 0, $total_count = true, $integer = false ) {
+function bb_forum_post_count( $forum_id = 0, $total_count = true, $integer = false ) {
 	echo bbp_get_forum_post_count( $forum_id, $total_count, $integer );
 }
 	/**
@@ -1283,7 +1283,7 @@ function bbp_forum_post_count( $forum_id = 0, $total_count = true, $integer = fa
 	 *                        post count and forum id
 	 * @return int Forum post count
 	 */
-	function bbp_get_forum_post_count( $forum_id = 0, $total_count = true, $integer = false ) {
+	function bb_get_forum_post_count( $forum_id = 0, $total_count = true, $integer = false ) {
 		$forum_id = bbp_get_forum_id( $forum_id );
 		$topics   = bbp_get_forum_topic_count( $forum_id, $total_count, true );
 		$meta_key = empty( $total_count ) ? '_bbp_reply_count' : '_bbp_total_reply_count';
@@ -1304,7 +1304,7 @@ function bbp_forum_post_count( $forum_id = 0, $total_count = true, $integer = fa
  * @param boolean $integer Optional. Whether or not to format the result
  * @uses bbp_get_forum_topic_count_hidden() To get the forum hidden topic count
  */
-function bbp_forum_topic_count_hidden( $forum_id = 0, $integer = false ) {
+function bb_forum_topic_count_hidden( $forum_id = 0, $integer = false ) {
 	echo bbp_get_forum_topic_count_hidden( $forum_id, $integer );
 }
 	/**
@@ -1321,7 +1321,7 @@ function bbp_forum_topic_count_hidden( $forum_id = 0, $integer = false ) {
 	 *                        the hidden topic count and forum id
 	 * @return int Topic hidden topic count
 	 */
-	function bbp_get_forum_topic_count_hidden( $forum_id = 0, $integer = false ) {
+	function bb_get_forum_topic_count_hidden( $forum_id = 0, $integer = false ) {
 		$forum_id = bbp_get_forum_id( $forum_id );
 		$topics   = (int) get_post_meta( $forum_id, '_bbp_topic_count_hidden', true );
 		$filter   = ( true === $integer ) ? 'bbp_get_forum_topic_count_hidden_int' : 'bbp_get_forum_topic_count_hidden';
@@ -1337,7 +1337,7 @@ function bbp_forum_topic_count_hidden( $forum_id = 0, $integer = false ) {
  * @param int $forum_id Optional. Forum id
  * @uses bbp_get_forum_status() To get the forum status
  */
-function bbp_forum_status( $forum_id = 0 ) {
+function bb_forum_status( $forum_id = 0 ) {
 	echo bbp_get_forum_status( $forum_id );
 }
 	/**
@@ -1352,7 +1352,7 @@ function bbp_forum_status( $forum_id = 0 ) {
 	 *                        and forum id
 	 * @return string Status of forum
 	 */
-	function bbp_get_forum_status( $forum_id = 0 ) {
+	function bb_get_forum_status( $forum_id = 0 ) {
 		$forum_id = bbp_get_forum_id( $forum_id );
 		$status   = get_post_meta( $forum_id, '_bbp_status', true );
 		if ( empty( $status ) )
@@ -1369,7 +1369,7 @@ function bbp_forum_status( $forum_id = 0 ) {
  * @param int $forum_id Optional. Forum id
  * @uses bbp_get_forum_visibility() To get the forum visibility
  */
-function bbp_forum_visibility( $forum_id = 0 ) {
+function bb_forum_visibility( $forum_id = 0 ) {
 	echo bbp_get_forum_visibility( $forum_id );
 }
 	/**
@@ -1384,7 +1384,7 @@ function bbp_forum_visibility( $forum_id = 0 ) {
 	 *                        and forum id
 	 * @return string Status of forum
 	 */
-	function bbp_get_forum_visibility( $forum_id = 0 ) {
+	function bb_get_forum_visibility( $forum_id = 0 ) {
 		$forum_id = bbp_get_forum_id( $forum_id );
 
 		return apply_filters( 'bbp_get_forum_visibility', get_post_status( $forum_id ), $forum_id );
@@ -1398,7 +1398,7 @@ function bbp_forum_visibility( $forum_id = 0 ) {
  * @param int $forum_id Optional. Forum id
  * @uses bbp_get_forum_type() To get the forum type
  */
-function bbp_forum_type( $forum_id = 0 ) {
+function bb_forum_type( $forum_id = 0 ) {
 	echo bbp_get_forum_type( $forum_id );
 }
 	/**
@@ -1410,7 +1410,7 @@ function bbp_forum_type( $forum_id = 0 ) {
 	 * @uses get_post_meta() To get the forum category meta
 	 * @return bool Whether the forum is a category or not
 	 */
-	function bbp_get_forum_type( $forum_id = 0 ) {
+	function bb_get_forum_type( $forum_id = 0 ) {
 		$forum_id = bbp_get_forum_id( $forum_id );
 		$retval   = get_post_meta( $forum_id, '_bbp_forum_type', true );
 		if ( empty( $retval ) )
@@ -1428,7 +1428,7 @@ function bbp_forum_type( $forum_id = 0 ) {
  * @uses bbp_get_forum_type() To get the forum type
  * @return bool Whether the forum is a category or not
  */
-function bbp_is_forum_category( $forum_id = 0 ) {
+function bb_is_forum_category( $forum_id = 0 ) {
 	$forum_id = bbp_get_forum_id( $forum_id );
 	$type     = bbp_get_forum_type( $forum_id );
 	$retval   = ( !empty( $type ) && 'category' == $type );
@@ -1446,7 +1446,7 @@ function bbp_is_forum_category( $forum_id = 0 ) {
  * @uses bbp_is_forum_closed() To check if the forum is closed or not
  * @return bool Whether the forum is open or not
  */
-function bbp_is_forum_open( $forum_id = 0 ) {
+function bb_is_forum_open( $forum_id = 0 ) {
 	return !bbp_is_forum_closed( $forum_id );
 }
 
@@ -1464,7 +1464,7 @@ function bbp_is_forum_open( $forum_id = 0 ) {
 	 * @uses bbp_is_forum_closed() To check if the forum is closed
 	 * @return bool True if closed, false if not
 	 */
-	function bbp_is_forum_closed( $forum_id = 0, $check_ancestors = true ) {
+	function bb_is_forum_closed( $forum_id = 0, $check_ancestors = true ) {
 
 		$forum_id = bbp_get_forum_id( $forum_id );
 		$retval    = ( bbp_get_closed_status_id() == bbp_get_forum_status( $forum_id ) );
@@ -1496,7 +1496,7 @@ function bbp_is_forum_open( $forum_id = 0 ) {
  * @uses bbp_is_forum_closed() To check if the forum is closed
  * @return bool True if closed, false if not
  */
-function bbp_is_forum_public( $forum_id = 0, $check_ancestors = true ) {
+function bb_is_forum_public( $forum_id = 0, $check_ancestors = true ) {
 
 	$forum_id   = bbp_get_forum_id( $forum_id );
 	$visibility = bbp_get_forum_visibility( $forum_id );
@@ -1532,7 +1532,7 @@ function bbp_is_forum_public( $forum_id = 0, $check_ancestors = true ) {
  * @uses bbp_is_forum_closed() To check if the forum is closed
  * @return bool True if closed, false if not
  */
-function bbp_is_forum_private( $forum_id = 0, $check_ancestors = true ) {
+function bb_is_forum_private( $forum_id = 0, $check_ancestors = true ) {
 
 	$forum_id   = bbp_get_forum_id( $forum_id );
 	$visibility = bbp_get_forum_visibility( $forum_id );
@@ -1568,7 +1568,7 @@ function bbp_is_forum_private( $forum_id = 0, $check_ancestors = true ) {
  * @uses bbp_is_forum_closed() To check if the forum is closed
  * @return bool True if closed, false if not
  */
-function bbp_is_forum_hidden( $forum_id = 0, $check_ancestors = true ) {
+function bb_is_forum_hidden( $forum_id = 0, $check_ancestors = true ) {
 
 	$forum_id   = bbp_get_forum_id( $forum_id );
 	$visibility = bbp_get_forum_visibility( $forum_id );
@@ -1598,7 +1598,7 @@ function bbp_is_forum_hidden( $forum_id = 0, $check_ancestors = true ) {
  * @param int $forum_id Optional. Forum id
  * @uses bbp_get_forum_author() To get the forum author
  */
-function bbp_forum_author_display_name( $forum_id = 0 ) {
+function bb_forum_author_display_name( $forum_id = 0 ) {
 	echo bbp_get_forum_author_display_name( $forum_id );
 }
 	/**
@@ -1614,7 +1614,7 @@ function bbp_forum_author_display_name( $forum_id = 0 ) {
 	 *                        and forum id
 	 * @return string Author of forum
 	 */
-	function bbp_get_forum_author_display_name( $forum_id = 0 ) {
+	function bb_get_forum_author_display_name( $forum_id = 0 ) {
 		$forum_id = bbp_get_forum_id( $forum_id );
 		$author   = get_the_author_meta( 'display_name', bbp_get_forum_author_id( $forum_id ) );
 
@@ -1629,7 +1629,7 @@ function bbp_forum_author_display_name( $forum_id = 0 ) {
  * @param int $forum_id Optional. Forum id
  * @uses bbp_get_forum_author_id() To get the forum author id
  */
-function bbp_forum_author_id( $forum_id = 0 ) {
+function bb_forum_author_id( $forum_id = 0 ) {
 	echo bbp_get_forum_author_id( $forum_id );
 }
 	/**
@@ -1644,7 +1644,7 @@ function bbp_forum_author_id( $forum_id = 0 ) {
 	 *                        id and forum id
 	 * @return string Author of forum
 	 */
-	function bbp_get_forum_author_id( $forum_id = 0 ) {
+	function bb_get_forum_author_id( $forum_id = 0 ) {
 		$forum_id  = bbp_get_forum_id( $forum_id );
 		$author_id = get_post_field( 'post_author', $forum_id );
 
@@ -1664,7 +1664,7 @@ function bbp_forum_author_id( $forum_id = 0 ) {
  *
  * @return string
  */
-function bbp_suppress_private_forum_meta( $retval, $forum_id ) {
+function bb_suppress_private_forum_meta( $retval, $forum_id ) {
 	if ( bbp_is_forum_private( $forum_id, false ) && !current_user_can( 'read_private_forums' ) )
 		$retval = '-';
 
@@ -1689,7 +1689,7 @@ function bbp_suppress_private_forum_meta( $retval, $forum_id ) {
  *
  * @return string
  */
-function bbp_suppress_private_author_link( $author_link, $args ) {
+function bb_suppress_private_author_link( $author_link, $args ) {
 
 	// Assume the author link is the return value
 	$retval = $author_link;
@@ -1737,7 +1737,7 @@ function bbp_suppress_private_author_link( $author_link, $args ) {
  * @param array Extra classes you can pass when calling this function
  * @uses bbp_get_forum_class() To get the row class of the forum
  */
-function bbp_forum_class( $forum_id = 0, $classes = array() ) {
+function bb_forum_class( $forum_id = 0, $classes = array() ) {
 	echo bbp_get_forum_class( $forum_id, $classes );
 }
 	/**
@@ -1756,7 +1756,7 @@ function bbp_forum_class( $forum_id = 0, $classes = array() ) {
 	 * @uses apply_filters() Calls 'bbp_get_forum_class' with the classes
 	 * @return string Row class of the forum
 	 */
-	function bbp_get_forum_class( $forum_id = 0, $classes = array() ) {
+	function bb_get_forum_class( $forum_id = 0, $classes = array() ) {
 		$bbp       = bbpress();
 		$forum_id  = bbp_get_forum_id( $forum_id );
 		$count     = isset( $bbp->forum_query->current_post ) ? $bbp->forum_query->current_post : 1;
@@ -1793,7 +1793,7 @@ function bbp_forum_class( $forum_id = 0, $classes = array() ) {
  * @param array $args Arguments passed to alter output
  * @uses bbp_get_single_forum_description() Return the eventual output
  */
-function bbp_single_forum_description( $args = '' ) {
+function bb_single_forum_description( $args = '' ) {
 	echo bbp_get_single_forum_description( $args );
 }
 	/**
@@ -1818,7 +1818,7 @@ function bbp_single_forum_description( $args = '' ) {
 	 *                        the description and args
 	 * @return string Filtered forum description
 	 */
-	function bbp_get_single_forum_description( $args = '' ) {
+	function bb_get_single_forum_description( $args = '' ) {
 
 		// Parse arguments against default values
 		$r = bbp_parse_args( $args, array(
@@ -1927,7 +1927,7 @@ function bbp_single_forum_description( $args = '' ) {
  *
  * @uses bbp_get_form_forum_title() To get the value of forum title field
  */
-function bbp_form_forum_title() {
+function bb_form_forum_title() {
 	echo bbp_get_form_forum_title();
 }
 	/**
@@ -1939,7 +1939,7 @@ function bbp_form_forum_title() {
 	 * @uses apply_filters() Calls 'bbp_get_form_forum_title' with the title
 	 * @return string Value of forum title field
 	 */
-	function bbp_get_form_forum_title() {
+	function bb_get_form_forum_title() {
 
 		// Get _POST data
 		if ( bbp_is_post_request() && isset( $_POST['bbp_forum_title'] ) ) {
@@ -1964,7 +1964,7 @@ function bbp_form_forum_title() {
  *
  * @uses bbp_get_form_forum_content() To get value of forum content field
  */
-function bbp_form_forum_content() {
+function bb_form_forum_content() {
 	echo bbp_get_form_forum_content();
 }
 	/**
@@ -1976,7 +1976,7 @@ function bbp_form_forum_content() {
 	 * @uses apply_filters() Calls 'bbp_get_form_forum_content' with the content
 	 * @return string Value of forum content field
 	 */
-	function bbp_get_form_forum_content() {
+	function bb_get_form_forum_content() {
 
 		// Get _POST data
 		if ( bbp_is_post_request() && isset( $_POST['bbp_forum_content'] ) ) {
@@ -2001,7 +2001,7 @@ function bbp_form_forum_content() {
  *
  * @uses bbp_get_form_forum_parent() To get the topic's forum id
  */
-function bbp_form_forum_parent() {
+function bb_form_forum_parent() {
 	echo bbp_get_form_forum_parent();
 }
 	/**
@@ -2014,7 +2014,7 @@ function bbp_form_forum_parent() {
 	 * @uses apply_filters() Calls 'bbp_get_form_forum_parent' with the forum
 	 * @return string Value of topic content field
 	 */
-	function bbp_get_form_forum_parent() {
+	function bb_get_form_forum_parent() {
 
 		// Get _POST data
 		if ( bbp_is_post_request() && isset( $_POST['bbp_forum_id'] ) ) {
@@ -2039,7 +2039,7 @@ function bbp_form_forum_parent() {
  *
  * @uses bbp_get_form_forum_type() To get the topic's forum id
  */
-function bbp_form_forum_type() {
+function bb_form_forum_type() {
 	echo bbp_get_form_forum_type();
 }
 	/**
@@ -2052,7 +2052,7 @@ function bbp_form_forum_type() {
 	 * @uses apply_filters() Calls 'bbp_get_form_forum_type' with the forum
 	 * @return string Value of topic content field
 	 */
-	function bbp_get_form_forum_type() {
+	function bb_get_form_forum_type() {
 
 		// Get _POST data
 		if ( bbp_is_post_request() && isset( $_POST['bbp_forum_type'] ) ) {
@@ -2077,7 +2077,7 @@ function bbp_form_forum_type() {
  *
  * @uses bbp_get_form_forum_visibility() To get the topic's forum id
  */
-function bbp_form_forum_visibility() {
+function bb_form_forum_visibility() {
 	echo bbp_get_form_forum_visibility();
 }
 	/**
@@ -2090,7 +2090,7 @@ function bbp_form_forum_visibility() {
 	 * @uses apply_filters() Calls 'bbp_get_form_forum_visibility' with the forum
 	 * @return string Value of topic content field
 	 */
-	function bbp_get_form_forum_visibility() {
+	function bb_get_form_forum_visibility() {
 
 		// Get _POST data
 		if ( bbp_is_post_request() && isset( $_POST['bbp_forum_visibility'] ) ) {
@@ -2118,7 +2118,7 @@ function bbp_form_forum_visibility() {
  * @param int $forum_id The forum id to use
  * @uses bbp_get_form_forum_type() To get the topic's forum id
  */
-function bbp_form_forum_type_dropdown( $forum_id = 0 ) {
+function bb_form_forum_type_dropdown( $forum_id = 0 ) {
 	echo bbp_get_form_forum_type_dropdown( $forum_id );
 }
 	/**
@@ -2132,7 +2132,7 @@ function bbp_form_forum_type_dropdown( $forum_id = 0 ) {
 	 * @uses apply_filters()
 	 * @return string HTML select list for selecting forum type
 	 */
-	function bbp_get_form_forum_type_dropdown( $forum_id = 0 ) {
+	function bb_get_form_forum_type_dropdown( $forum_id = 0 ) {
 		$forum_id   = bbp_get_forum_id( $forum_id );
 		$forum_attr = apply_filters( 'bbp_forum_types', array(
 			'forum'    => __( 'Forum',    'bbpress' ),
@@ -2156,7 +2156,7 @@ function bbp_form_forum_type_dropdown( $forum_id = 0 ) {
  * @param int $forum_id The forum id to use
  * @uses bbp_get_form_forum_status() To get the topic's forum id
  */
-function bbp_form_forum_status_dropdown( $forum_id = 0 ) {
+function bb_form_forum_status_dropdown( $forum_id = 0 ) {
 	echo bbp_get_form_forum_status_dropdown( $forum_id );
 }
 	/**
@@ -2170,7 +2170,7 @@ function bbp_form_forum_status_dropdown( $forum_id = 0 ) {
 	 * @uses apply_filters()
 	 * @return string HTML select list for selecting forum status
 	 */
-	function bbp_get_form_forum_status_dropdown( $forum_id = 0 ) {
+	function bb_get_form_forum_status_dropdown( $forum_id = 0 ) {
 		$forum_id   = bbp_get_forum_id( $forum_id );
 		$forum_attr = apply_filters( 'bbp_forum_statuses', array(
 			'open'   => _x( 'Open',   'Forum Status', 'bbpress' ),
@@ -2194,7 +2194,7 @@ function bbp_form_forum_status_dropdown( $forum_id = 0 ) {
  * @param int $forum_id The forum id to use
  * @uses bbp_get_form_forum_visibility() To get the topic's forum id
  */
-function bbp_form_forum_visibility_dropdown( $forum_id = 0 ) {
+function bb_form_forum_visibility_dropdown( $forum_id = 0 ) {
 	echo bbp_get_form_forum_visibility_dropdown( $forum_id );
 }
 	/**
@@ -2208,7 +2208,7 @@ function bbp_form_forum_visibility_dropdown( $forum_id = 0 ) {
 	 * @uses apply_filters()
 	 * @return string HTML select list for selecting forum visibility
 	 */
-	function bbp_get_form_forum_visibility_dropdown( $forum_id = 0 ) {
+	function bb_get_form_forum_visibility_dropdown( $forum_id = 0 ) {
 		$forum_id   = bbp_get_forum_id( $forum_id );
 		$forum_attr = apply_filters( 'bbp_forum_visibilities', array(
 			bbp_get_public_status_id()  => __( 'Public',  'bbpress' ),
@@ -2236,7 +2236,7 @@ function bbp_form_forum_visibility_dropdown( $forum_id = 0 ) {
  *
  * @uses bbp_get_forum_topics_feed_link()
  */
-function bbp_forum_topics_feed_link( $forum_id = 0 ) {
+function bb_forum_topics_feed_link( $forum_id = 0 ) {
 	echo bbp_get_forum_topics_feed_link( $forum_id );
 }
 	/**
@@ -2257,7 +2257,7 @@ function bbp_forum_topics_feed_link( $forum_id = 0 ) {
 	 *
 	 * @return string
 	 */
-	function bbp_get_forum_topics_feed_link( $forum_id = 0 ) {
+	function bb_get_forum_topics_feed_link( $forum_id = 0 ) {
 
 		// Validate forum id
 		$forum_id = bbp_get_forum_id( $forum_id );
@@ -2298,7 +2298,7 @@ function bbp_forum_topics_feed_link( $forum_id = 0 ) {
  *
  * @uses bbp_get_forum_replies_feed_link()
  */
-function bbp_forum_replies_feed_link( $forum_id = 0 ) {
+function bb_forum_replies_feed_link( $forum_id = 0 ) {
 	echo bbp_get_forum_replies_feed_link( $forum_id );
 }
 	/**
@@ -2319,7 +2319,7 @@ function bbp_forum_replies_feed_link( $forum_id = 0 ) {
 	 *
 	 * @return string
 	 */
-	function bbp_get_forum_replies_feed_link( $forum_id = 0 ) {
+	function bb_get_forum_replies_feed_link( $forum_id = 0 ) {
 
 		// Validate forum id
 		$forum_id = bbp_get_forum_id( $forum_id );

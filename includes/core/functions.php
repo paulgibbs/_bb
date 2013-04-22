@@ -18,7 +18,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
  * @since bbPress (r3468)
  * @uses bbp_get_version() To get the bbPress version
  */
-function bbp_version() {
+function bb_version() {
 	echo bbp_get_version();
 }
 	/**
@@ -27,7 +27,7 @@ function bbp_version() {
 	 * @since bbPress (r3468)
 	 * @retrun string The bbPress version
 	 */
-	function bbp_get_version() {
+	function bb_get_version() {
 		return bbpress()->version;
 	}
 
@@ -37,7 +37,7 @@ function bbp_version() {
  * @since bbPress (r3468)
  * @uses bbp_get_version() To get the bbPress version
  */
-function bbp_db_version() {
+function bb_db_version() {
 	echo bbp_get_db_version();
 }
 	/**
@@ -46,7 +46,7 @@ function bbp_db_version() {
 	 * @since bbPress (r3468)
 	 * @retrun string The bbPress version
 	 */
-	function bbp_get_db_version() {
+	function bb_get_db_version() {
 		return bbpress()->db_version;
 	}
 
@@ -56,7 +56,7 @@ function bbp_db_version() {
  * @since bbPress (r3468)
  * @uses bbp_get_version() To get the current bbPress version
  */
-function bbp_db_version_raw() {
+function bb_db_version_raw() {
 	echo bbp_get_db_version_raw();
 }
 	/**
@@ -65,7 +65,7 @@ function bbp_db_version_raw() {
 	 * @since bbPress (r3468)
 	 * @retrun string The current bbPress version
 	 */
-	function bbp_get_db_version_raw() {
+	function bb_get_db_version_raw() {
 		return get_option( '_bbp_db_version', '' );
 	}
 
@@ -79,7 +79,7 @@ function bbp_db_version_raw() {
  * @param int $post_id The post to update
  * @param int $forum_id The forum
  */
-function bbp_update_forum_id( $post_id, $forum_id ) {
+function bb_update_forum_id( $post_id, $forum_id ) {
 
 	// Allow the forum ID to be updated 'just in time' before save
 	$forum_id = apply_filters( 'bbp_update_forum_id', $forum_id, $post_id );
@@ -96,7 +96,7 @@ function bbp_update_forum_id( $post_id, $forum_id ) {
  * @param int $post_id The post to update
  * @param int $forum_id The forum
  */
-function bbp_update_topic_id( $post_id, $topic_id ) {
+function bb_update_topic_id( $post_id, $topic_id ) {
 
 	// Allow the topic ID to be updated 'just in time' before save
 	$topic_id = apply_filters( 'bbp_update_topic_id', $topic_id, $post_id );
@@ -113,7 +113,7 @@ function bbp_update_topic_id( $post_id, $topic_id ) {
  * @param int $post_id The post to update
  * @param int $forum_id The forum
  */
-function bbp_update_reply_id( $post_id, $reply_id ) {
+function bb_update_reply_id( $post_id, $reply_id ) {
 
 	// Allow the reply ID to be updated 'just in time' before save
 	$reply_id = apply_filters( 'bbp_update_reply_id', $reply_id, $post_id );
@@ -133,7 +133,7 @@ function bbp_update_reply_id( $post_id, $reply_id ) {
  *
  * @return array Views
  */
-function bbp_get_views() {
+function bb_get_views() {
 	return bbpress()->views;
 }
 
@@ -153,7 +153,7 @@ function bbp_get_views() {
  * @uses esc_html() To sanitize the view title
  * @return array The just registered (but processed) view
  */
-function bbp_register_view( $view, $title, $query_args = '', $feed = true, $capability = '' ) {
+function bb_register_view( $view, $title, $query_args = '', $feed = true, $capability = '' ) {
 
 	// Bail if user does not have capability
 	if ( ! empty( $capability ) && ! current_user_can( $capability ) )
@@ -190,7 +190,7 @@ function bbp_register_view( $view, $title, $query_args = '', $feed = true, $capa
  * @uses sanitize_title() To sanitize the view name
  * @return bool False if the view doesn't exist, true on success
  */
-function bbp_deregister_view( $view ) {
+function bb_deregister_view( $view ) {
 	$bbp  = bbpress();
 	$view = sanitize_title( $view );
 
@@ -215,7 +215,7 @@ function bbp_deregister_view( $view ) {
  * @uses bbp_has_topics() To make the topics query
  * @return bool False if the view doesn't exist, otherwise if topics are there
  */
-function bbp_view_query( $view = '', $new_args = '' ) {
+function bb_view_query( $view = '', $new_args = '' ) {
 
 	$view = bbp_get_view_id( $view );
 	if ( empty( $view ) )
@@ -240,7 +240,7 @@ function bbp_view_query( $view = '', $new_args = '' ) {
  * @uses bbp_get_view_id() To get the view id
  * @return array Query arguments
  */
-function bbp_get_view_query_args( $view ) {
+function bb_get_view_query_args( $view ) {
 	$view   = bbp_get_view_id( $view );
 	$retval = !empty( $view ) ? bbpress()->views[$view]['query'] : false;
 
@@ -261,7 +261,7 @@ function bbp_get_view_query_args( $view ) {
  * @param string $message Translated error message
  * @param string $data Any additional data passed with the error message
  */
-function bbp_add_error( $code = '', $message = '', $data = '' ) {
+function bb_add_error( $code = '', $message = '', $data = '' ) {
 	bbpress()->errors->add( $code, $message, $data );
 }
 
@@ -275,7 +275,7 @@ function bbp_add_error( $code = '', $message = '', $data = '' ) {
  * @uses is_wp_error()
  * @usese WP_Error::get_error_codes()
  */
-function bbp_has_errors() {
+function bb_has_errors() {
 	$has_errors = bbpress()->errors->get_error_codes() ? true : false;
 
 	return apply_filters( 'bbp_has_errors', $has_errors, bbpress()->errors );
@@ -291,7 +291,7 @@ function bbp_has_errors() {
  * @param string $content The content
  * @return bool|array $usernames Existing usernames. False if no matches.
  */
-function bbp_find_mentions( $content = '' ) {
+function bb_find_mentions( $content = '' ) {
 	$pattern   = '/[@]+([A-Za-z0-9-_\.@]+)\b/';
 	preg_match_all( $pattern, $content, $usernames );
 	$usernames = array_unique( array_filter( $usernames[1] ) );
@@ -311,7 +311,7 @@ function bbp_find_mentions( $content = '' ) {
  * @uses bbp_find_mentions() To get usernames in content areas
  * @return string $content Content filtered for mentions
  */
-function bbp_mention_filter( $content = '' ) {
+function bb_mention_filter( $content = '' ) {
 
 	// Get Usernames and bail if none exist
 	$usernames = bbp_find_mentions( $content );
@@ -343,7 +343,7 @@ function bbp_mention_filter( $content = '' ) {
  *
  * @return string
  */
-function bbp_get_public_status_id() {
+function bb_get_public_status_id() {
 	return bbpress()->public_status_id;
 }
 
@@ -354,7 +354,7 @@ function bbp_get_public_status_id() {
  *
  * @return string
  */
-function bbp_get_pending_status_id() {
+function bb_get_pending_status_id() {
 	return bbpress()->pending_status_id;
 }
 
@@ -365,7 +365,7 @@ function bbp_get_pending_status_id() {
  *
  * @return string
  */
-function bbp_get_private_status_id() {
+function bb_get_private_status_id() {
 	return bbpress()->private_status_id;
 }
 
@@ -376,7 +376,7 @@ function bbp_get_private_status_id() {
  *
  * @return string
  */
-function bbp_get_hidden_status_id() {
+function bb_get_hidden_status_id() {
 	return bbpress()->hidden_status_id;
 }
 
@@ -387,7 +387,7 @@ function bbp_get_hidden_status_id() {
  *
  * @return string
  */
-function bbp_get_closed_status_id() {
+function bb_get_closed_status_id() {
 	return bbpress()->closed_status_id;
 }
 
@@ -398,7 +398,7 @@ function bbp_get_closed_status_id() {
  *
  * @return string
  */
-function bbp_get_spam_status_id() {
+function bb_get_spam_status_id() {
 	return bbpress()->spam_status_id;
 }
 
@@ -409,7 +409,7 @@ function bbp_get_spam_status_id() {
  *
  * @return string
  */
-function bbp_get_trash_status_id() {
+function bb_get_trash_status_id() {
 	return bbpress()->trash_status_id;
 }
 
@@ -420,7 +420,7 @@ function bbp_get_trash_status_id() {
  *
  * @return string
  */
-function bbp_get_orphan_status_id() {
+function bb_get_orphan_status_id() {
 	return bbpress()->orphan_status_id;
 }
 
@@ -432,7 +432,7 @@ function bbp_get_orphan_status_id() {
  * @since bbPress (r3762)
  * @return string
  */
-function bbp_get_user_rewrite_id() {
+function bb_get_user_rewrite_id() {
 	return bbpress()->user_id;
 }
 
@@ -442,7 +442,7 @@ function bbp_get_user_rewrite_id() {
  * @since bbPress (r3762)
  * @return string
  */
-function bbp_get_edit_rewrite_id() {
+function bb_get_edit_rewrite_id() {
 	return bbpress()->edit_id;
 }
 
@@ -453,7 +453,7 @@ function bbp_get_edit_rewrite_id() {
  *
  * @return string
  */
-function bbp_get_search_rewrite_id() {
+function bb_get_search_rewrite_id() {
 	return bbpress()->search_id;
 }
 
@@ -463,7 +463,7 @@ function bbp_get_search_rewrite_id() {
  * @since bbPress (r4321)
  * @return string
  */
-function bbp_get_user_topics_rewrite_id() {
+function bb_get_user_topics_rewrite_id() {
 	return bbpress()->tops_id;
 }
 
@@ -473,7 +473,7 @@ function bbp_get_user_topics_rewrite_id() {
  * @since bbPress (r4321)
  * @return string
  */
-function bbp_get_user_replies_rewrite_id() {
+function bb_get_user_replies_rewrite_id() {
 	return bbpress()->reps_id;
 }
 
@@ -483,7 +483,7 @@ function bbp_get_user_replies_rewrite_id() {
  * @since bbPress (r4181)
  * @return string
  */
-function bbp_get_user_favorites_rewrite_id() {
+function bb_get_user_favorites_rewrite_id() {
 	return bbpress()->favs_id;
 }
 
@@ -493,7 +493,7 @@ function bbp_get_user_favorites_rewrite_id() {
  * @since bbPress (r4181)
  * @return string
  */
-function bbp_get_user_subscriptions_rewrite_id() {
+function bb_get_user_subscriptions_rewrite_id() {
 	return bbpress()->subs_id;
 }
 
@@ -503,7 +503,7 @@ function bbp_get_user_subscriptions_rewrite_id() {
  * @since bbPress (r3762)
  * @return string
  */
-function bbp_get_view_rewrite_id() {
+function bb_get_view_rewrite_id() {
 	return bbpress()->view_id;
 }
 
@@ -513,7 +513,7 @@ function bbp_get_view_rewrite_id() {
  *
  * @since bbPress (r4198)
  */
-function bbp_delete_rewrite_rules() {
+function bb_delete_rewrite_rules() {
 	delete_option( 'rewrite_rules' );
 }
 
@@ -525,7 +525,7 @@ function bbp_delete_rewrite_rules() {
  * @since bbPress (r4790)
  * @return bool
  */
-function bbp_is_post_request() {
+function bb_is_post_request() {
 	return (bool) ( 'POST' == strtoupper( $_SERVER['REQUEST_METHOD'] ) );
 }
 
@@ -535,7 +535,7 @@ function bbp_is_post_request() {
  * @since bbPress (r4790)
  * @return bool
  */
-function bbp_is_get_request() {
+function bb_is_get_request() {
 	return (bool) ( 'GET' == strtoupper( $_SERVER['REQUEST_METHOD'] ) );
 }
 

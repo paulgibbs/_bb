@@ -908,6 +908,6 @@ endif; // class_exists check
  *
  * @uses BBP_Replies_Admin
  */
-function bbp_admin_replies() {
+function bb_admin_replies() {
 	bbpress()->admin->replies = new BBP_Replies_Admin();
 }

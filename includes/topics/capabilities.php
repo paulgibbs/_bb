@@ -17,7 +17,7 @@
  * @uses apply_filters() Calls 'bbp_get_topic_caps' with the capabilities
  * @return array Topic capabilities
  */
-function bbp_get_topic_caps() {
+function bb_get_topic_caps() {
 	return apply_filters( 'bbp_get_topic_caps', array (
 		'edit_posts'          => 'edit_topics',
 		'edit_others_posts'   => 'edit_others_topics',
@@ -37,7 +37,7 @@ function bbp_get_topic_caps() {
  * @uses apply_filters() Calls 'bbp_get_topic_tag_caps' with the capabilities
  * @return array Topic tag capabilities
  */
-function bbp_get_topic_tag_caps() {
+function bb_get_topic_tag_caps() {
 	return apply_filters( 'bbp_get_topic_tag_caps', array (
 		'manage_terms' => 'manage_topic_tags',
 		'edit_terms'   => 'edit_topic_tags',
@@ -60,7 +60,7 @@ function bbp_get_topic_tag_caps() {
  * @uses apply_filters() Filter capability map results
  * @return array Actual capabilities for meta capability
  */
-function bbp_map_topic_meta_caps( $caps = array(), $cap = '', $user_id = 0, $args = array() ) {
+function bb_map_topic_meta_caps( $caps = array(), $cap = '', $user_id = 0, $args = array() ) {
 
 	// What capability is being checked?
 	switch ( $cap ) {
@@ -216,7 +216,7 @@ function bbp_map_topic_meta_caps( $caps = array(), $cap = '', $user_id = 0, $arg
  * @uses apply_filters() Filter capability map results
  * @return array Actual capabilities for meta capability
  */
-function bbp_map_topic_tag_meta_caps( $caps, $cap, $user_id, $args ) {
+function bb_map_topic_tag_meta_caps( $caps, $cap, $user_id, $args ) {
 
 	// What capability is being checked?
 	switch ( $cap ) {

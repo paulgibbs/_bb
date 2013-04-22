@@ -1277,7 +1277,7 @@ abstract class BBP_Converter_Base {
  *
  * @param string $platform Name of valid platform class.
  */
-function bbp_new_converter( $platform ) {
+function bb_new_converter( $platform ) {
 	$found = false;
 
 	if ( $curdir = opendir( bbpress()->admin->admin_dir . 'converters/' ) ) {

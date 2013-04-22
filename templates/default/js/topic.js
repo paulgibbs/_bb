@@ -1,6 +1,6 @@
 jQuery( document ).ready( function ( $ ) {
 
-	function bbp_ajax_call( action, topic_id, nonce, update_selector ) {
+	function bb_ajax_call( action, topic_id, nonce, update_selector ) {
 		var $data = {
 			action : action,
 			id     : topic_id,

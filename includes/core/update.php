@@ -19,7 +19,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
  * @uses bbp_get_db_version() To get bbPress's database version
  * @return bool True if update, False if not
  */
-function bbp_is_install() {
+function bb_is_install() {
 	return ! bbp_get_db_version_raw();
 }
 
@@ -32,7 +32,7 @@ function bbp_is_install() {
  * @uses bbp_get_db_version() To get bbPress's database version
  * @return bool True if update, False if not
  */
-function bbp_is_update() {
+function bb_is_update() {
 	$raw    = (int) bbp_get_db_version_raw();
 	$cur    = (int) bbp_get_db_version();
 	$retval = (bool) ( $raw < $cur );
@@ -49,7 +49,7 @@ function bbp_is_update() {
  *
  * @return bool True if activating bbPress, false if not
  */
-function bbp_is_activation( $basename = '' ) {
+function bb_is_activation( $basename = '' ) {
 	$bbp    = bbpress();
 	$action = false;
 
@@ -91,7 +91,7 @@ function bbp_is_activation( $basename = '' ) {
  * @since bbPress (r3421)
  * @return bool True if deactivating bbPress, false if not
  */
-function bbp_is_deactivation( $basename = '' ) {
+function bb_is_deactivation( $basename = '' ) {
 	$bbp    = bbpress();
 	$action = false;
 	
@@ -134,7 +134,7 @@ function bbp_is_deactivation( $basename = '' ) {
  * @uses update_option()
  * @uses bbp_get_db_version() To get bbPress's database version
  */
-function bbp_version_bump() {
+function bb_version_bump() {
 	update_option( '_bbp_db_version', bbp_get_db_version() );
 }
 
@@ -147,7 +147,7 @@ function bbp_version_bump() {
  * @uses bbp_version_bump()
  * @uses flush_rewrite_rules()
  */
-function bbp_setup_updater() {
+function bb_setup_updater() {
 
 	// Bail if no update needed
 	if ( ! bbp_is_update() )
@@ -163,7 +163,7 @@ function bbp_setup_updater() {
  * @since bbPress (r3767)
  * @param array $args Array of arguments to override default values
  */
-function bbp_create_initial_content( $args = array() ) {
+function bb_create_initial_content( $args = array() ) {
 
 	// Parse arguments against default values
 	$r = bbp_parse_args( $args, array(
@@ -224,7 +224,7 @@ function bbp_create_initial_content( $args = array() ) {
  *
  * @since bbPress (r4104)
  */
-function bbp_version_updater() {
+function bb_version_updater() {
 
 	// Get the raw database version
 	$raw_db_version = (int) bbp_get_db_version_raw();
@@ -292,7 +292,7 @@ function bbp_version_updater() {
  *
  * @return If network admin or bulk activation
  */
-function bbp_add_activation_redirect() {
+function bb_add_activation_redirect() {
 
 	// Bail if activating from network, or bulk
 	if ( is_network_admin() || isset( $_GET['activate-multi'] ) )

@@ -980,6 +980,6 @@ endif; // class_exists check
  *
  * @uses BBP_Forums_Admin
  */
-function bbp_admin_topics() {
+function bb_admin_topics() {
 	bbpress()->admin->topics = new BBP_Topics_Admin();
 }

@@ -17,7 +17,7 @@
  * @uses apply_filters() Calls 'bbp_get_forum_caps' with the capabilities
  * @return array Forum capabilities
  */
-function bbp_get_forum_caps() {
+function bb_get_forum_caps() {
 	return apply_filters( 'bbp_get_forum_caps', array (
 		'edit_posts'          => 'edit_forums',
 		'edit_others_posts'   => 'edit_others_forums',
@@ -43,7 +43,7 @@ function bbp_get_forum_caps() {
  * @uses apply_filters() Filter capability map results
  * @return array Actual capabilities for meta capability
  */
-function bbp_map_forum_meta_caps( $caps = array(), $cap = '', $user_id = 0, $args = array() ) {
+function bb_map_forum_meta_caps( $caps = array(), $cap = '', $user_id = 0, $args = array() ) {
 
 	// What capability is being checked?
 	switch ( $cap ) {

@@ -25,7 +25,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
  * @uses load_template()
  * @uses get_template_part()
  */
-function bbp_get_template_part( $slug, $name = null ) {
+function bb_get_template_part( $slug, $name = null ) {
 
 	// Execute code for this part
 	do_action( 'get_template_part_' . $slug, $slug, $name );
@@ -58,7 +58,7 @@ function bbp_get_template_part( $slug, $name = null ) {
  *                            Has no effect if $load is false.
  * @return string The template filename if one is located.
  */
-function bbp_locate_template( $template_names, $load = false, $require_once = true ) {
+function bb_locate_template( $template_names, $load = false, $require_once = true ) {
 
 	// No file found yet
 	$located            = false;
@@ -121,7 +121,7 @@ function bbp_locate_template( $template_names, $load = false, $require_once = tr
  * @param string $location Callback function that returns the 
  * @param int $priority
  */
-function bbp_register_template_stack( $location_callback = '', $priority = 10 ) {
+function bb_register_template_stack( $location_callback = '', $priority = 10 ) {
 
 	// Bail if no location, or function does not exist
 	if ( empty( $location_callback ) || ! function_exists( $location_callback ) )
@@ -140,7 +140,7 @@ function bbp_register_template_stack( $location_callback = '', $priority = 10 ) 
  * @param int $priority
  * @see bbp_register_template_stack()
  */
-function bbp_deregister_template_stack( $location_callback = '', $priority = 10 ) {
+function bb_deregister_template_stack( $location_callback = '', $priority = 10 ) {
 
 	// Bail if no location, or function does not exist
 	if ( empty( $location_callback ) || ! function_exists( $location_callback ) )
@@ -164,7 +164,7 @@ function bbp_deregister_template_stack( $location_callback = '', $priority = 10 
  *
  * @return array The filtered value after all hooked functions are applied to it.
  */
-function bbp_get_template_stack() {
+function bb_get_template_stack() {
 	global $wp_filter, $merged_filters, $wp_current_filter;
 
 	// Setup some default variables
@@ -219,7 +219,7 @@ function bbp_get_template_stack() {
  * @uses bbp_set_theme_compat_template()
  * @return string Full path to file.
  */
-function bbp_get_query_template( $type, $templates = array() ) {
+function bb_get_query_template( $type, $templates = array() ) {
 	$type = preg_replace( '|[^a-z0-9-]+|', '', $type );
 
 	if ( empty( $templates ) )
@@ -242,7 +242,7 @@ function bbp_get_query_template( $type, $templates = array() ) {
  * @param array $templates Templates we are looking for
  * @return array Possible subfolders to look in
  */
-function bbp_get_template_locations( $templates = array() ) {
+function bb_get_template_locations( $templates = array() ) {
 	$locations = array(
 		'bbpress',
 		'forums',
@@ -259,7 +259,7 @@ function bbp_get_template_locations( $templates = array() ) {
  * @param array $templates
  * @return array() 
  */
-function bbp_add_template_stack_locations( $stacks = array() ) {
+function bb_add_template_stack_locations( $stacks = array() ) {
 	$retval = array();
 
 	// Get alternate locations
@@ -308,7 +308,7 @@ function bbp_add_template_stack_locations( $stacks = array() ) {
  * @uses bbp_get_reply_post_type() To get the reply post type
  * @uses remove_action() To remove the auto save post revision action
  */
-function bbp_parse_query( $posts_query ) {
+function bb_parse_query( $posts_query ) {
 
 	// Bail if $posts_query is not the main loop
 	if ( ! $posts_query->is_main_query() )

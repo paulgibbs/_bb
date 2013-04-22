@@ -20,7 +20,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
  *
  * @return If bbPress is not active
  */
-function bbp_setup_akismet() {
+function bb_setup_akismet() {
 
 	// Bail if no akismet
 	if ( !defined( 'AKISMET_VERSION' ) ) return;
@@ -42,7 +42,7 @@ function bbp_setup_akismet() {
  * @since bbPress (r3395)
  * @return If BuddyPress is not active
  */
-function bbp_setup_buddypress() {
+function bb_setup_buddypress() {
 
 	if ( ! function_exists( 'buddypress' ) ) {
 

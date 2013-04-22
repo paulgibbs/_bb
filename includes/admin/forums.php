@@ -589,6 +589,6 @@ endif; // class_exists check
  *
  * @uses BBP_Forums_Admin
  */
-function bbp_admin_forums() {
+function bb_admin_forums() {
 	bbpress()->admin->forums = new BBP_Forums_Admin();
 }

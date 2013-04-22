@@ -26,7 +26,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
  *                        number and display decimals bool
  * @return string Formatted string
  */
-function bbp_number_format( $number = 0, $decimals = false, $dec_point = '.', $thousands_sep = ',' ) {
+function bb_number_format( $number = 0, $decimals = false, $dec_point = '.', $thousands_sep = ',' ) {
 
 	// If empty, set $number to (int) 0
 	if ( ! is_numeric( $number ) )
@@ -46,7 +46,7 @@ function bbp_number_format( $number = 0, $decimals = false, $dec_point = '.', $t
  *                        number and display decimals bool
  * @return string Formatted string
  */
-function bbp_number_format_i18n( $number = 0, $decimals = false ) {
+function bb_number_format_i18n( $number = 0, $decimals = false ) {
 
 	// If empty, set $number to (int) 0
 	if ( ! is_numeric( $number ) )
@@ -71,7 +71,7 @@ function bbp_number_format_i18n( $number = 0, $decimals = false ) {
  *                        and translate bool
  * @return string Returns timestamp
  */
-function bbp_convert_date( $time, $d = 'U', $translate = false ) {
+function bb_convert_date( $time, $d = 'U', $translate = false ) {
 	$time = mysql2date( $d, $time, $translate );
 
 	return apply_filters( 'bbp_convert_date', $time, $d, $translate );
@@ -87,7 +87,7 @@ function bbp_convert_date( $time, $d = 'U', $translate = false ) {
  *                            difference ends. False for current time.
  * @uses bbp_get_time_since() To get the formatted time
  */
-function bbp_time_since( $older_date, $newer_date = false ) {
+function bb_time_since( $older_date, $newer_date = false ) {
 	echo bbp_get_time_since( $older_date, $newer_date );
 }
 	/**
@@ -104,7 +104,7 @@ function bbp_time_since( $older_date, $newer_date = false ) {
 	 *                        difference and time
 	 * @return string Formatted time
 	 */
-	function bbp_get_time_since( $older_date, $newer_date = false ) {
+	function bb_get_time_since( $older_date, $newer_date = false ) {
 
 		// Setup the strings
 		$unknown_text   = apply_filters( 'bbp_core_time_since_unknown_text',   __( 'sometime',  'bbpress' ) );
@@ -206,7 +206,7 @@ function bbp_time_since( $older_date, $newer_date = false ) {
  * @param int $topic_id Optional. Topic id
  * @return string Status of topic
  */
-function bbp_format_revision_reason( $reason = '' ) {
+function bb_format_revision_reason( $reason = '' ) {
 	$reason = (string) $reason;
 
 	// Format reason for proper display
@@ -235,7 +235,7 @@ function bbp_format_revision_reason( $reason = '' ) {
  *
  * @return string The URL to redirect to, if set
  */
-function bbp_get_redirect_to() {
+function bb_get_redirect_to() {
 	$retval = !empty( $_REQUEST['redirect_to'] ) ? $_REQUEST['redirect_to'] : '';
 
 	return apply_filters( 'bbp_get_redirect_to', $retval );
@@ -253,7 +253,7 @@ function bbp_get_redirect_to() {
  * @uses apply_filters() Calls 'bbp_add_view_all' with the link and original link
  * @return string The link with 'view=all' appended if necessary
  */
-function bbp_add_view_all( $original_link = '', $force = false ) {
+function bb_add_view_all( $original_link = '', $force = false ) {
 
 	// Are we appending the view=all vars?
 	if ( bbp_get_view_all() || !empty( $force ) ) {
@@ -276,7 +276,7 @@ function bbp_add_view_all( $original_link = '', $force = false ) {
  * @uses apply_filters() Calls 'bbp_add_view_all' with the link and original link
  * @return string The link with 'view=all' appended if necessary
  */
-function bbp_remove_view_all( $original_link = '' ) {
+function bb_remove_view_all( $original_link = '' ) {
 	return apply_filters( 'bbp_add_view_all', remove_query_arg( 'view', $original_link ), $original_link );
 }
 
@@ -289,7 +289,7 @@ function bbp_remove_view_all( $original_link = '' ) {
  * @uses apply_filters() Calls 'bbp_get_view_all' with the link and original link
  * @return bool Whether current user can and is viewing all
  */
-function bbp_get_view_all( $cap = 'moderate' ) {
+function bb_get_view_all( $cap = 'moderate' ) {
 	$retval = ( ( !empty( $_GET['view'] ) && ( 'all' == $_GET['view'] ) && current_user_can( $cap ) ) );
 	return apply_filters( 'bbp_get_view_all', (bool) $retval );
 }
@@ -302,7 +302,7 @@ function bbp_get_view_all( $cap = 'moderate' ) {
  * @uses get_query_var() To get the 'paged' value
  * @return int Current page number
  */
-function bbp_get_paged() {
+function bb_get_paged() {
 	global $wp_query;
 
 	// Check the query var
@@ -339,7 +339,7 @@ function bbp_get_paged() {
  * @uses bbp_is_reply_anonymous() To check if the reply is by an anonymous user
  * @return array Data
  */
-function bbp_fix_post_author( $data = array(), $postarr = array() ) {
+function bb_fix_post_author( $data = array(), $postarr = array() ) {
 
 	// Post is not being updated or the post_author is already 0, return
 	if ( empty( $postarr['ID'] ) || empty( $data['post_author'] ) )
@@ -375,7 +375,7 @@ function bbp_fix_post_author( $data = array(), $postarr = array() ) {
  *
  * @return bool
  */
-function bbp_past_edit_lock( $post_date_gmt ) {
+function bb_past_edit_lock( $post_date_gmt ) {
 
 	// Assume editing is allowed
 	$retval = false;
@@ -441,7 +441,7 @@ function bbp_past_edit_lock( $post_date_gmt ) {
  * @uses apply_filters() Calls 'bbp_get_statistics' with the statistics and args
  * @return object Walked forum tree
  */
-function bbp_get_statistics( $args = '' ) {
+function bb_get_statistics( $args = '' ) {
 
 	// Parse arguments against default values
 	$r = bbp_parse_args( $args, array(
@@ -607,7 +607,7 @@ function bbp_get_statistics( $args = '' ) {
  *                        anonymous user website
  * @return bool|array False on errors, values in an array on success
  */
-function bbp_filter_anonymous_post_data( $args = '' ) {
+function bb_filter_anonymous_post_data( $args = '' ) {
 
 	// Parse arguments against default values
 	$r = bbp_parse_args( $args, array (
@@ -653,7 +653,7 @@ function bbp_filter_anonymous_post_data( $args = '' ) {
  *                    it is found that it is a duplicate
  * @return bool True if it is not a duplicate, false if it is
  */
-function bbp_check_for_duplicate( $post_data = array() ) {
+function bb_check_for_duplicate( $post_data = array() ) {
 
 	// No duplicate checks for those who can throttle
 	if ( current_user_can( 'throttle' ) )
@@ -727,7 +727,7 @@ function bbp_check_for_duplicate( $post_data = array() ) {
  * @uses current_user_can() To check if the current user can throttle
  * @return bool True if there is no flooding, false if there is
  */
-function bbp_check_for_flood( $anonymous_data = false, $author_id = 0 ) {
+function bb_check_for_flood( $anonymous_data = false, $author_id = 0 ) {
 
 	// Option disabled. No flood checks.
 	$throttle_time = get_option( '_bbp_throttle_time' );
@@ -771,7 +771,7 @@ function bbp_check_for_flood( $anonymous_data = false, $author_id = 0 ) {
  * @uses bbp_current_author_ua() To get current user agent
  * @return bool True if test is passed, false if fail
  */
-function bbp_check_for_moderation( $anonymous_data = false, $author_id = 0, $title = '', $content = '' ) {
+function bb_check_for_moderation( $anonymous_data = false, $author_id = 0, $title = '', $content = '' ) {
 
 	// Allow for moderation check to be skipped
 	if ( apply_filters( 'bbp_bypass_check_for_moderation', false, $anonymous_data, $author_id, $title, $content ) )
@@ -890,7 +890,7 @@ function bbp_check_for_moderation( $anonymous_data = false, $author_id = 0, $tit
  * @uses bbp_current_author_ua() To get current user agent
  * @return bool True if test is passed, false if fail
  */
-function bbp_check_for_blacklist( $anonymous_data = false, $author_id = 0, $title = '', $content = '' ) {
+function bb_check_for_blacklist( $anonymous_data = false, $author_id = 0, $title = '', $content = '' ) {
 
 	// Allow for blacklist check to be skipped
 	if ( apply_filters( 'bbp_bypass_check_for_blacklist', false, $anonymous_data, $author_id, $title, $content ) )
@@ -1008,7 +1008,7 @@ function bbp_check_for_blacklist( $anonymous_data = false, $author_id = 0, $titl
  *                    and topic id
  * @return bool True on success, false on failure
  */
-function bbp_notify_subscribers( $reply_id = 0, $topic_id = 0, $forum_id = 0, $anonymous_data = false, $reply_author = 0 ) {
+function bb_notify_subscribers( $reply_id = 0, $topic_id = 0, $forum_id = 0, $anonymous_data = false, $reply_author = 0 ) {
 
 	// Bail if subscriptions are turned off
 	if ( !bbp_is_subscriptions_active() )
@@ -1117,7 +1117,7 @@ Login and visit the topic to unsubscribe from these emails.', 'bbpress' ),
  * @uses apply_filters() Calls 'bbp_logout_url' with the url and redirect to
  * @return string The url
  */
-function bbp_logout_url( $url = '', $redirect_to = '' ) {
+function bb_logout_url( $url = '', $redirect_to = '' ) {
 
 	// Make sure we are directing somewhere
 	if ( empty( $redirect_to ) && !strstr( $url, 'redirect_to' ) ) {
@@ -1155,7 +1155,7 @@ function bbp_logout_url( $url = '', $redirect_to = '' ) {
  * @param string $filter_key String to key the filters from
  * @return array Merged user defined values with defaults.
  */
-function bbp_parse_args( $args, $defaults = '', $filter_key = '' ) {
+function bb_parse_args( $args, $defaults = '', $filter_key = '' ) {
 
 	// Setup a temporary array from $args
 	if ( is_object( $args ) )
@@ -1192,7 +1192,7 @@ function bbp_parse_args( $args, $defaults = '', $filter_key = '' ) {
  * @param WP_Query $object
  * @return string
  */
-function bbp_query_post_parent__in( $where, $object = '' ) {
+function bb_query_post_parent__in( $where, $object = '' ) {
 	global $wpdb, $wp;
 
 	// Noop if WP core supports this already
@@ -1236,7 +1236,7 @@ function bbp_query_post_parent__in( $where, $object = '' ) {
  *                        id, parent id and post type
  * @return int The last active post_id
  */
-function bbp_get_public_child_last_id( $parent_id = 0, $post_type = 'post' ) {
+function bb_get_public_child_last_id( $parent_id = 0, $post_type = 'post' ) {
 	global $wpdb;
 
 	// Bail if nothing passed
@@ -1279,7 +1279,7 @@ function bbp_get_public_child_last_id( $parent_id = 0, $post_type = 'post' ) {
  *                        count, parent id and post type
  * @return int The number of children
  */
-function bbp_get_public_child_count( $parent_id = 0, $post_type = 'post' ) {
+function bb_get_public_child_count( $parent_id = 0, $post_type = 'post' ) {
 	global $wpdb;
 
 	// Bail if nothing passed
@@ -1322,7 +1322,7 @@ function bbp_get_public_child_count( $parent_id = 0, $post_type = 'post' ) {
  *                        parent id and post type
  * @return array The array of children
  */
-function bbp_get_public_child_ids( $parent_id = 0, $post_type = 'post' ) {
+function bb_get_public_child_ids( $parent_id = 0, $post_type = 'post' ) {
 	global $wpdb;
 
 	// Bail if nothing passed
@@ -1364,7 +1364,7 @@ function bbp_get_public_child_ids( $parent_id = 0, $post_type = 'post' ) {
  *                        parent id and post type
  * @return array The array of children
  */
-function bbp_get_all_child_ids( $parent_id = 0, $post_type = 'post' ) {
+function bb_get_all_child_ids( $parent_id = 0, $post_type = 'post' ) {
 	global $wpdb;
 
 	// Bail if nothing passed
@@ -1426,7 +1426,7 @@ function bbp_get_all_child_ids( $parent_id = 0, $post_type = 'post' ) {
  * @param string $context How to sanitize - raw|edit|db|display|attribute|js
  * @return string Field value
  */
-function bbp_get_global_post_field( $field = 'ID', $context = 'edit' ) {
+function bb_get_global_post_field( $field = 'ID', $context = 'edit' ) {
 	global $post;
 
 	$retval = isset( $post->$field ) ? $post->$field : '';
@@ -1448,7 +1448,7 @@ function bbp_get_global_post_field( $field = 'ID', $context = 'edit' ) {
  * @param string $action Action nonce
  * @param string $query_arg where to look for nonce in $_REQUEST
  */
-function bbp_verify_nonce_request( $action = '', $query_arg = '_wpnonce' ) {
+function bb_verify_nonce_request( $action = '', $query_arg = '_wpnonce' ) {
 
 	// Parse home_url() into pieces to remove query-strings, strange characters,
 	// and other funny things that plugins might to do to it.
@@ -1487,7 +1487,7 @@ function bbp_verify_nonce_request( $action = '', $query_arg = '_wpnonce' ) {
  * @param array $query_vars
  * @return array
  */
-function bbp_request_feed_trap( $query_vars = array() ) {
+function bb_request_feed_trap( $query_vars = array() ) {
 
 	// Looking at a feed
 	if ( isset( $query_vars['feed'] ) ) {
@@ -1687,7 +1687,7 @@ function bbp_request_feed_trap( $query_vars = array() ) {
  * @param string $path
  * @return mixed False if no page, Page object if true
  */
-function bbp_get_page_by_path( $path = '' ) {
+function bb_get_page_by_path( $path = '' ) {
 
 	// Default to false
 	$retval = false;
@@ -1714,7 +1714,7 @@ function bbp_get_page_by_path( $path = '' ) {
  * @global WP_Query $wp_query
  * @uses WP_Query::set_404()
  */
-function bbp_set_404() {
+function bb_set_404() {
 	global $wp_query;
 
 	if ( ! isset( $wp_query ) ) {

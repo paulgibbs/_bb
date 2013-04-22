@@ -26,7 +26,7 @@
  * @uses register_uninstall_hook() To register our own uninstall hook
  * @uses do_action() Calls 'bbp_activation' hook
  */
-function bbp_activation() {
+function bb_activation() {
 	do_action( 'bbp_activation' );
 }
 
@@ -36,7 +36,7 @@ function bbp_activation() {
  * @since bbPress (r2509)
  * @uses do_action() Calls 'bbp_deactivation' hook
  */
-function bbp_deactivation() {
+function bb_deactivation() {
 	do_action( 'bbp_deactivation' );
 }
 
@@ -46,7 +46,7 @@ function bbp_deactivation() {
  * @since bbPress (r2509)
  * @uses do_action() Calls 'bbp_uninstall' hook
  */
-function bbp_uninstall() {
+function bb_uninstall() {
 	do_action( 'bbp_uninstall' );
 }
 
@@ -58,7 +58,7 @@ function bbp_uninstall() {
  * @since bbPress (r2599)
  * @uses do_action() Calls 'bbp_loaded'
  */
-function bbp_loaded() {
+function bb_loaded() {
 	do_action( 'bbp_loaded' );
 }
 
@@ -68,7 +68,7 @@ function bbp_loaded() {
  * @since bbPress (r2599)
  * @uses do_action() Calls 'bbp_constants'
  */
-function bbp_constants() {
+function bb_constants() {
 	do_action( 'bbp_constants' );
 }
 
@@ -78,7 +78,7 @@ function bbp_constants() {
  * @since bbPress (r2599)
  * @uses do_action() Calls 'bbp_boot_strap_globals'
  */
-function bbp_boot_strap_globals() {
+function bb_boot_strap_globals() {
 	do_action( 'bbp_boot_strap_globals' );
 }
 
@@ -88,7 +88,7 @@ function bbp_boot_strap_globals() {
  * @since bbPress (r2599)
  * @uses do_action() Calls 'bbp_includes'
  */
-function bbp_includes() {
+function bb_includes() {
 	do_action( 'bbp_includes' );
 }
 
@@ -98,7 +98,7 @@ function bbp_includes() {
  * @since bbPress (r2599)
  * @uses do_action() Calls 'bbp_setup_globals'
  */
-function bbp_setup_globals() {
+function bb_setup_globals() {
 	do_action( 'bbp_setup_globals' );
 }
 
@@ -108,7 +108,7 @@ function bbp_setup_globals() {
  * @since bbPress (r4180)
  * @uses do_action() Calls 'bbp_register'
  */
-function bbp_register() {
+function bb_register() {
 	do_action( 'bbp_register' );
 }
 
@@ -118,7 +118,7 @@ function bbp_register() {
  * @since bbPress (r2599)
  * @uses do_action() Calls 'bbp_init'
  */
-function bbp_init() {
+function bb_init() {
 	do_action( 'bbp_init' );
 }
 
@@ -128,7 +128,7 @@ function bbp_init() {
  * @since bbPress (r3389)
  * @uses do_action() Calls 'bbp_widgets_init'
  */
-function bbp_widgets_init() {
+function bb_widgets_init() {
 	do_action( 'bbp_widgets_init' );
 }
 
@@ -139,7 +139,7 @@ function bbp_widgets_init() {
  * @uses did_action() To make sure the user isn't loaded out of order
  * @uses do_action() Calls 'bbp_setup_current_user'
  */
-function bbp_setup_current_user() {
+function bb_setup_current_user() {
 
 	// If the current user is being setup before the "init" action has fired,
 	// strange (and difficult to debug) role/capability issues will occur.
@@ -158,7 +158,7 @@ function bbp_setup_current_user() {
  * @since bbPress (r2599)
  * @uses do_action() Calls 'bbp_load_textdomain'
  */
-function bbp_load_textdomain() {
+function bb_load_textdomain() {
 	do_action( 'bbp_load_textdomain' );
 }
 
@@ -168,7 +168,7 @@ function bbp_load_textdomain() {
  * @since bbPress (r2464)
  * @uses do_action() Calls 'bbp_register_post_type'
  */
-function bbp_register_post_types() {
+function bb_register_post_types() {
 	do_action( 'bbp_register_post_types' );
 }
 
@@ -178,7 +178,7 @@ function bbp_register_post_types() {
  * @since bbPress (r2727)
  * @uses do_action() Calls 'bbp_register_post_statuses'
  */
-function bbp_register_post_statuses() {
+function bb_register_post_statuses() {
 	do_action( 'bbp_register_post_statuses' );
 }
 
@@ -188,7 +188,7 @@ function bbp_register_post_statuses() {
  * @since bbPress (r2464)
  * @uses do_action() Calls 'bbp_register_taxonomies'
  */
-function bbp_register_taxonomies() {
+function bb_register_taxonomies() {
 	do_action( 'bbp_register_taxonomies' );
 }
 
@@ -198,7 +198,7 @@ function bbp_register_taxonomies() {
  * @since bbPress (r2789)
  * @uses do_action() Calls 'bbp_register_views'
  */
-function bbp_register_views() {
+function bb_register_views() {
 	do_action( 'bbp_register_views' );
 }
 
@@ -208,7 +208,7 @@ function bbp_register_views() {
  * @since bbPress (r4211)
  * @uses do_action() Calls 'bbp_register_shortcodes'
  */
-function bbp_register_shortcodes() {
+function bb_register_shortcodes() {
 	do_action( 'bbp_register_shortcodes' );
 }
 
@@ -218,7 +218,7 @@ function bbp_register_shortcodes() {
  * @since bbPress (r3373)
  * @uses do_action() Calls 'bbp_enqueue_scripts'
  */
-function bbp_enqueue_scripts() {
+function bb_enqueue_scripts() {
 	do_action( 'bbp_enqueue_scripts' );
 }
 
@@ -228,7 +228,7 @@ function bbp_enqueue_scripts() {
  * @since bbPress (r2753)
  * @uses do_action() Calls 'bbp_add_rewrite_tags'
  */
-function bbp_add_rewrite_tags() {
+function bb_add_rewrite_tags() {
 	do_action( 'bbp_add_rewrite_tags' );
 }
 
@@ -238,7 +238,7 @@ function bbp_add_rewrite_tags() {
  * @since bbPress (r2753)
  * @uses do_action() Calls 'bbp_login_form_login'
  */
-function bbp_login_form_login() {
+function bb_login_form_login() {
 	do_action( 'bbp_login_form_login' );
 }
 
@@ -253,7 +253,7 @@ function bbp_login_form_login() {
  * @param array $old_user_data The old, unmodified user data
  * @uses do_action() Calls 'bbp_profile_update'
  */
-function bbp_profile_update( $user_id = 0, $old_user_data = array() ) {
+function bb_profile_update( $user_id = 0, $old_user_data = array() ) {
 	do_action( 'bbp_profile_update', $user_id, $old_user_data );
 }
 
@@ -264,7 +264,7 @@ function bbp_profile_update( $user_id = 0, $old_user_data = array() ) {
  * @param int $user_id ID of user being edited
  * @uses do_action() Calls 'bbp_user_register'
  */
-function bbp_user_register( $user_id = 0 ) {
+function bb_user_register( $user_id = 0 ) {
 	do_action( 'bbp_user_register', $user_id );
 }
 
@@ -276,7 +276,7 @@ function bbp_user_register( $user_id = 0 ) {
  * @since bbPress (r2618)
  * @uses do_action() Calls 'bbp_ready'
  */
-function bbp_ready() {
+function bb_ready() {
 	do_action( 'bbp_ready' );
 }
 
@@ -289,7 +289,7 @@ function bbp_ready() {
  * @since bbPress (r3605)
  * @uses do_action()
  */
-function bbp_template_redirect() {
+function bb_template_redirect() {
 	do_action( 'bbp_template_redirect' );
 }
 
@@ -301,7 +301,7 @@ function bbp_template_redirect() {
  * @since bbPress (r3829)
  * @uses do_action()
  */
-function bbp_register_theme_packages() {
+function bb_register_theme_packages() {
 	do_action( 'bbp_register_theme_packages' );
 }
 
@@ -311,7 +311,7 @@ function bbp_register_theme_packages() {
  * @since bbPress (r3732)
  * @uses do_action()
  */
-function bbp_setup_theme() {
+function bb_setup_theme() {
 	do_action( 'bbp_setup_theme' );
 }
 
@@ -321,7 +321,7 @@ function bbp_setup_theme() {
  * @since bbPress (r3732)
  * @uses do_action()
  */
-function bbp_after_setup_theme() {
+function bb_after_setup_theme() {
 	do_action( 'bbp_after_setup_theme' );
 }
 
@@ -331,7 +331,7 @@ function bbp_after_setup_theme() {
  * @since bbPress (r4550)
  * @uses do_action()
  */
-function bbp_post_request() {
+function bb_post_request() {
 
 	// Bail if not a POST action
 	if ( ! bbp_is_post_request() )
@@ -350,7 +350,7 @@ function bbp_post_request() {
  * @since bbPress (r4550)
  * @uses do_action()
  */
-function bbp_get_request() {
+function bb_get_request() {
 
 	// Bail if not a POST action
 	if ( ! bbp_is_get_request() )
@@ -373,7 +373,7 @@ function bbp_get_request() {
  * @param string $locale
  * @param string $domain
  */
-function bbp_plugin_locale( $locale = '', $domain = '' ) {
+function bb_plugin_locale( $locale = '', $domain = '' ) {
 	return apply_filters( 'bbp_plugin_locale', $locale, $domain );
 }
 
@@ -384,7 +384,7 @@ function bbp_plugin_locale( $locale = '', $domain = '' ) {
  * @param array $query_vars
  * @return array
  */
-function bbp_request( $query_vars = array() ) {
+function bb_request( $query_vars = array() ) {
 	return apply_filters( 'bbp_request', $query_vars );
 }
 
@@ -397,7 +397,7 @@ function bbp_request( $query_vars = array() ) {
  * @param string $template
  * @return string Template file to use
  */
-function bbp_template_include( $template = '' ) {
+function bb_template_include( $template = '' ) {
 	return apply_filters( 'bbp_template_include', $template );
 }
 
@@ -408,7 +408,7 @@ function bbp_template_include( $template = '' ) {
  * @param WP_Rewrite $wp_rewrite
  * @uses do_action() Calls 'bbp_generate_rewrite_rules' with {@link WP_Rewrite}
  */
-function bbp_generate_rewrite_rules( $wp_rewrite ) {
+function bb_generate_rewrite_rules( $wp_rewrite ) {
 	do_action_ref_array( 'bbp_generate_rewrite_rules', array( &$wp_rewrite ) );
 }
 
@@ -418,7 +418,7 @@ function bbp_generate_rewrite_rules( $wp_rewrite ) {
  * @since bbPress (r2944)
  * @uses apply_filters() Calls 'bbp_allowed_themes' with the allowed themes list
  */
-function bbp_allowed_themes( $themes ) {
+function bb_allowed_themes( $themes ) {
 	return apply_filters( 'bbp_allowed_themes', $themes );
 }
 
@@ -432,6 +432,6 @@ function bbp_allowed_themes( $themes ) {
  * @param int $user_id User id
  * @param mixed $args Arguments
  */
-function bbp_map_meta_caps( $caps = array(), $cap = '', $user_id = 0, $args = array() ) {
+function bb_map_meta_caps( $caps = array(), $cap = '', $user_id = 0, $args = array() ) {
 	return apply_filters( 'bbp_map_meta_caps', $caps, $cap, $user_id, $args );
 }

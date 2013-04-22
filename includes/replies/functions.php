@@ -26,7 +26,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
  * @param array $reply_data Forum post data
  * @param arrap $reply_meta Forum meta data
  */
-function bbp_insert_reply( $reply_data = array(), $reply_meta = array() ) {
+function bb_insert_reply( $reply_data = array(), $reply_meta = array() ) {
 
 	// Forum
 	$default_reply = array(
@@ -103,7 +103,7 @@ function bbp_insert_reply( $reply_data = array(), $reply_meta = array() ) {
  * @uses bbPress::errors::get_error_message() To get the {@link WP_Error} error
  *                                              message
  */
-function bbp_new_reply_handler( $action = '' ) {
+function bb_new_reply_handler( $action = '' ) {
 
 	// Bail if action is not bbp-new-reply
 	if ( 'bbp-new-reply' !== $action )
@@ -397,7 +397,7 @@ function bbp_new_reply_handler( $action = '' ) {
  * @uses bbPress::errors::get_error_message() To get the {@link WP_Error} error
  *                                             message
  */
-function bbp_edit_reply_handler( $action = '' ) {
+function bb_edit_reply_handler( $action = '' ) {
 
 	// Bail if action is not bbp-edit-reply
 	if ( 'bbp-edit-reply' !== $action )
@@ -678,7 +678,7 @@ function bbp_edit_reply_handler( $action = '' ) {
  * @uses bbp_update_reply_topic_id() To update the reply topic id
  * @uses bbp_update_reply_walker() To update the reply's ancestors' counts
  */
-function bbp_update_reply( $reply_id = 0, $topic_id = 0, $forum_id = 0, $anonymous_data = false, $author_id = 0, $is_edit = false ) {
+function bb_update_reply( $reply_id = 0, $topic_id = 0, $forum_id = 0, $anonymous_data = false, $author_id = 0, $is_edit = false ) {
 
 	// Validate the ID's passed from 'bbp_new_reply' action
 	$reply_id = bbp_get_reply_id( $reply_id );
@@ -796,7 +796,7 @@ function bbp_update_reply( $reply_id = 0, $topic_id = 0, $forum_id = 0, $anonymo
  * @uses bbp_update_forum_last_active_time() To update the forum last active time
  * @uses bbp_update_forum_reply_count() To update the forum reply count
  */
-function bbp_update_reply_walker( $reply_id, $last_active_time = '', $forum_id = 0, $topic_id = 0, $refresh = true ) {
+function bb_update_reply_walker( $reply_id, $last_active_time = '', $forum_id = 0, $topic_id = 0, $refresh = true ) {
 
 	// Verify the reply ID
 	$reply_id = bbp_get_reply_id( $reply_id );
@@ -902,7 +902,7 @@ function bbp_update_reply_walker( $reply_id, $last_active_time = '', $forum_id =
  *                        and reply id
  * @return bool Reply's forum id
  */
-function bbp_update_reply_forum_id( $reply_id = 0, $forum_id = 0 ) {
+function bb_update_reply_forum_id( $reply_id = 0, $forum_id = 0 ) {
 
 	// Validation
 	$reply_id = bbp_get_reply_id( $reply_id );
@@ -951,7 +951,7 @@ function bbp_update_reply_forum_id( $reply_id = 0, $forum_id = 0 ) {
  *                        and reply id
  * @return bool Reply's topic id
  */
-function bbp_update_reply_topic_id( $reply_id = 0, $topic_id = 0 ) {
+function bb_update_reply_topic_id( $reply_id = 0, $topic_id = 0 ) {
 
 	// Validation
 	$reply_id = bbp_get_reply_id( $reply_id );
@@ -1000,7 +1000,7 @@ function bbp_update_reply_topic_id( $reply_id = 0, $topic_id = 0 ) {
  * @uses update_post_meta() To update the reply revision log meta
  * @return mixed False on failure, true on success
  */
-function bbp_update_reply_revision_log( $args = '' ) {
+function bb_update_reply_revision_log( $args = '' ) {
 
 	// Parse arguments against default values
 	$r = bbp_parse_args( $args, array(
@@ -1059,7 +1059,7 @@ function bbp_update_reply_revision_log( $args = '' ) {
  * @uses bbp_get_topic_permalink() To get the topic permalink
  * @uses wp_safe_redirect() To redirect to the topic link
  */
-function bbp_move_reply_handler( $action = '' ) {
+function bb_move_reply_handler( $action = '' ) {
 
 	// Bail if action is not 'bbp-move-reply'
 	if ( 'bbp-move-reply' !== $action )
@@ -1295,7 +1295,7 @@ function bbp_move_reply_handler( $action = '' ) {
  * @uses do_action() Calls 'bbp_move_reply_count' with the move reply id,
  *                    source topic id & destination topic id
  */
-function bbp_move_reply_count( $move_reply_id, $source_topic_id, $destination_topic_id ) {
+function bb_move_reply_count( $move_reply_id, $source_topic_id, $destination_topic_id ) {
 
 	// Forum topic counts
 	bbp_update_forum_topic_count( bbp_get_topic_forum_id( $destination_topic_id ) );
@@ -1345,7 +1345,7 @@ function bbp_move_reply_count( $move_reply_id, $source_topic_id, $destination_to
  * @uses wp_safe_redirect() To redirect to the reply
  * @uses bbPress::errors:add() To log the error messages
  */
-function bbp_toggle_reply_handler( $action = '' ) {
+function bb_toggle_reply_handler( $action = '' ) {
 
 	// Bail if required GET actions aren't passed
 	if ( empty( $_GET['reply_id'] ) )
@@ -1475,7 +1475,7 @@ function bbp_toggle_reply_handler( $action = '' ) {
  * @uses do_action() Calls 'bbp_spammed_reply' with the reply ID
  * @return mixed False or {@link WP_Error} on failure, reply id on success
  */
-function bbp_spam_reply( $reply_id = 0 ) {
+function bb_spam_reply( $reply_id = 0 ) {
 
 	// Get reply
 	$reply = get_post( $reply_id, ARRAY_A );
@@ -1522,7 +1522,7 @@ function bbp_spam_reply( $reply_id = 0 ) {
  * @uses do_action() Calls 'bbp_unspammed_reply' with the reply ID
  * @return mixed False or {@link WP_Error} on failure, reply id on success
  */
-function bbp_unspam_reply( $reply_id = 0 ) {
+function bb_unspam_reply( $reply_id = 0 ) {
 
 	// Get reply
 	$reply = get_post( $reply_id, ARRAY_A );
@@ -1569,7 +1569,7 @@ function bbp_unspam_reply( $reply_id = 0 ) {
  * @uses bbp_is_reply() To check if the passed id is a reply
  * @uses do_action() Calls 'bbp_delete_reply' with the reply id
  */
-function bbp_delete_reply( $reply_id = 0 ) {
+function bb_delete_reply( $reply_id = 0 ) {
 	$reply_id = bbp_get_reply_id( $reply_id );
 
 	if ( empty( $reply_id ) || !bbp_is_reply( $reply_id ) )
@@ -1585,7 +1585,7 @@ function bbp_delete_reply( $reply_id = 0 ) {
  * @uses bbp_is_reply() To check if the passed id is a reply
  * @uses do_action() Calls 'bbp_trash_reply' with the reply id
  */
-function bbp_trash_reply( $reply_id = 0 ) {
+function bb_trash_reply( $reply_id = 0 ) {
 	$reply_id = bbp_get_reply_id( $reply_id );
 
 	if ( empty( $reply_id ) || !bbp_is_reply( $reply_id ) )
@@ -1601,7 +1601,7 @@ function bbp_trash_reply( $reply_id = 0 ) {
  * @uses bbp_is_reply() To check if the passed id is a reply
  * @uses do_action() Calls 'bbp_unstrash_reply' with the reply id
  */
-function bbp_untrash_reply( $reply_id = 0 ) {
+function bb_untrash_reply( $reply_id = 0 ) {
 	$reply_id = bbp_get_reply_id( $reply_id );
 
 	if ( empty( $reply_id ) || !bbp_is_reply( $reply_id ) )
@@ -1619,7 +1619,7 @@ function bbp_untrash_reply( $reply_id = 0 ) {
  * @uses bbp_is_reply() To check if the passed id is a reply
  * @uses do_action() Calls 'bbp_deleted_reply' with the reply id
  */
-function bbp_deleted_reply( $reply_id = 0 ) {
+function bb_deleted_reply( $reply_id = 0 ) {
 	$reply_id = bbp_get_reply_id( $reply_id );
 
 	if ( empty( $reply_id ) || !bbp_is_reply( $reply_id ) )
@@ -1635,7 +1635,7 @@ function bbp_deleted_reply( $reply_id = 0 ) {
  * @uses bbp_is_reply() To check if the passed id is a reply
  * @uses do_action() Calls 'bbp_trashed_reply' with the reply id
  */
-function bbp_trashed_reply( $reply_id = 0 ) {
+function bb_trashed_reply( $reply_id = 0 ) {
 	$reply_id = bbp_get_reply_id( $reply_id );
 
 	if ( empty( $reply_id ) || !bbp_is_reply( $reply_id ) )
@@ -1651,7 +1651,7 @@ function bbp_trashed_reply( $reply_id = 0 ) {
  * @uses bbp_is_reply() To check if the passed id is a reply
  * @uses do_action() Calls 'bbp_untrashed_reply' with the reply id
  */
-function bbp_untrashed_reply( $reply_id = 0 ) {
+function bb_untrashed_reply( $reply_id = 0 ) {
 	$reply_id = bbp_get_reply_id( $reply_id );
 
 	if ( empty( $reply_id ) || !bbp_is_reply( $reply_id ) )
@@ -1672,7 +1672,7 @@ function bbp_untrashed_reply( $reply_id = 0 ) {
  * @uses apply_filters() To allow the return value to be manipulated
  * @return int
  */
-function bbp_get_replies_per_page( $default = 15 ) {
+function bb_get_replies_per_page( $default = 15 ) {
 
 	// Get database option and cast as integer
 	$retval = get_option( '_bbp_replies_per_page', $default );
@@ -1695,7 +1695,7 @@ function bbp_get_replies_per_page( $default = 15 ) {
  * @uses apply_filters() To allow the return value to be manipulated
  * @return int
  */
-function bbp_get_replies_per_rss_page( $default = 25 ) {
+function bb_get_replies_per_rss_page( $default = 25 ) {
 
 	// Get database option and cast as integer
 	$retval = get_option( '_bbp_replies_per_rss_page', $default );
@@ -1716,7 +1716,7 @@ function bbp_get_replies_per_rss_page( $default = 25 ) {
  * @since bbPress (r3752)
  * @global WP_Embed $wp_embed
  */
-function bbp_reply_content_autoembed() {
+function bb_reply_content_autoembed() {
 	global $wp_embed;
 
 	if ( bbp_use_autoembed() && is_a( $wp_embed, 'WP_Embed' ) ) {
@@ -1826,7 +1826,7 @@ function _bbp_has_replies_where( $where = '', $query = false ) {
  *
  * @param array $replies_query
  */
-function bbp_display_replies_feed_rss2( $replies_query = array() ) {
+function bb_display_replies_feed_rss2( $replies_query = array() ) {
 
 	// User cannot access forum this topic is in
 	if ( bbp_is_single_topic() && !bbp_user_can_view_forum( array( 'forum_id' => bbp_get_topic_forum_id() ) ) )
@@ -1942,7 +1942,7 @@ function bbp_display_replies_feed_rss2( $replies_query = array() ) {
  * @uses wp_safe_redirect()
  * @uses bbp_get_topic_permalink()
  */
-function bbp_check_reply_edit() {
+function bb_check_reply_edit() {
 
 	// Bail if not editing a topic
 	if ( !bbp_is_reply_edit() )
@@ -1972,7 +1972,7 @@ function bbp_check_reply_edit() {
  * @param type $reply_position
  * @return mixed
  */
-function bbp_update_reply_position( $reply_id = 0, $reply_position = 0 ) {
+function bb_update_reply_position( $reply_id = 0, $reply_position = 0 ) {
 
 	// Bail if reply_id is empty
 	$reply_id = bbp_get_reply_id( $reply_id );
@@ -2000,7 +2000,7 @@ function bbp_update_reply_position( $reply_id = 0, $reply_position = 0 ) {
  * @param int $reply_id
  * @param int $topic_id
  */
-function bbp_get_reply_position_raw( $reply_id = 0, $topic_id = 0 ) {
+function bb_get_reply_position_raw( $reply_id = 0, $topic_id = 0 ) {
 
 	// Get required data
 	$reply_id       = bbp_get_reply_id( $reply_id );

@@ -21,7 +21,7 @@
  * @uses apply_filters() Filter mapped results
  * @return array Actual capabilities for meta capability
  */
-function bbp_map_primary_meta_caps( $caps = array(), $cap = '', $user_id = 0, $args = array() ) {
+function bb_map_primary_meta_caps( $caps = array(), $cap = '', $user_id = 0, $args = array() ) {
 
 	// What capability is being checked?
 	switch ( $cap ) {
@@ -55,7 +55,7 @@ function bbp_map_primary_meta_caps( $caps = array(), $cap = '', $user_id = 0, $a
  * @uses apply_filters() Calls 'bbp_set_user_role' with the role and user id
  * @return string
  */
-function bbp_set_user_role( $user_id = 0, $new_role = '' ) {
+function bb_set_user_role( $user_id = 0, $new_role = '' ) {
 
 	// Validate user id
 	$user_id = bbp_get_user_id( $user_id, false, false );
@@ -108,7 +108,7 @@ function bbp_set_user_role( $user_id = 0, $new_role = '' ) {
  * @uses apply_filters() Calls 'bbp_get_user_role' with the role and user id
  * @return string
  */
-function bbp_get_user_role( $user_id = 0 ) {
+function bb_get_user_role( $user_id = 0 ) {
 
 	// Validate user id
 	$user_id = bbp_get_user_id( $user_id );
@@ -139,7 +139,7 @@ function bbp_get_user_role( $user_id = 0 ) {
  * @uses apply_filters() Calls 'bbp_get_user_blog_role' with the role and user id
  * @return string
  */
-function bbp_get_user_blog_role( $user_id = 0 ) {
+function bb_get_user_blog_role( $user_id = 0 ) {
 
 	// Add bbPress roles (returns $wp_roles global)
 	$wp_roles  = bbp_add_forums_roles();
@@ -177,7 +177,7 @@ function bbp_get_user_blog_role( $user_id = 0 ) {
  * @uses bbp_reset_user_caps() to reset caps
  * @usse bbp_save_user_caps() to save caps
  */
-function bbp_profile_update_role( $user_id = 0 ) {
+function bb_profile_update_role( $user_id = 0 ) {
 
 	// Bail if no user ID was passed
 	if ( empty( $user_id ) )
@@ -225,7 +225,7 @@ function bbp_profile_update_role( $user_id = 0 ) {
  *
  * @return If not multisite, not global, or user is deleted/spammed
  */
-function bbp_set_current_user_default_role() {
+function bb_set_current_user_default_role() {
 
 	/** Sanity ****************************************************************/
 
@@ -303,7 +303,7 @@ function bbp_set_current_user_default_role() {
  *
  * @return array Filtered array of WordPress roles to bbPress roles
  */
-function bbp_get_user_role_map() {
+function bb_get_user_role_map() {
 
 	// Get the default role once here
 	$default_role = bbp_get_default_role();
@@ -328,7 +328,7 @@ function bbp_get_user_role_map() {
  * @param int $user_id int The ID for the user.
  * @return bool True if spammer, False if not.
  */
-function bbp_is_user_spammer( $user_id = 0 ) {
+function bb_is_user_spammer( $user_id = 0 ) {
 
 	// Default to current user
 	if ( empty( $user_id ) && is_user_logged_in() )
@@ -380,7 +380,7 @@ function bbp_is_user_spammer( $user_id = 0 ) {
  *
  * @return If no user ID passed
  */
-function bbp_make_spam_user( $user_id = 0 ) {
+function bb_make_spam_user( $user_id = 0 ) {
 
 	// Use displayed user if it's not yourself
 	if ( empty( $user_id ) && bbp_is_single_user() && !bbp_is_user_home() )
@@ -468,7 +468,7 @@ function bbp_make_spam_user( $user_id = 0 ) {
  *
  * @return If no user ID passed
  */
-function bbp_make_ham_user( $user_id = 0 ) {
+function bb_make_ham_user( $user_id = 0 ) {
 
 	// Use displayed user if it's not yourself
 	if ( empty( $user_id ) && bbp_is_single_user() && !bbp_is_user_home() )
@@ -541,7 +541,7 @@ function bbp_make_ham_user( $user_id = 0 ) {
  * @param int $user_id int The ID for the user.
  * @return bool True if deleted, False if not.
  */
-function bbp_is_user_deleted( $user_id = 0 ) {
+function bb_is_user_deleted( $user_id = 0 ) {
 
 	// Default to current user
 	if ( empty( $user_id ) && is_user_logged_in() )
@@ -582,7 +582,7 @@ function bbp_is_user_deleted( $user_id = 0 ) {
  * @param int $user_id The user ID to check
  * @return bool True if public, false if not
  */
-function bbp_is_user_active( $user_id = 0 ) {
+function bb_is_user_active( $user_id = 0 ) {
 
 	// Default to current user
 	if ( empty( $user_id ) && is_user_logged_in() )
@@ -616,7 +616,7 @@ function bbp_is_user_active( $user_id = 0 ) {
  * @param int $user_id The user ID to check. Defaults to current user ID
  * @return bool True if inactive, false if active
  */
-function bbp_is_user_inactive( $user_id = 0 ) {
+function bb_is_user_inactive( $user_id = 0 ) {
 
 	// Default to current user
 	if ( empty( $user_id ) && is_user_logged_in() )
@@ -638,7 +638,7 @@ function bbp_is_user_inactive( $user_id = 0 ) {
  * @param int $user_id 
  * @return bool True if keymaster, false if not
  */
-function bbp_is_user_keymaster( $user_id = 0 ) {
+function bb_is_user_keymaster( $user_id = 0 ) {
 
 	// Default to current user ID if none is passed
 	$_user_id = (int) ! empty( $user_id ) ? $user_id : bbp_get_current_user_id();
@@ -663,7 +663,7 @@ function bbp_is_user_keymaster( $user_id = 0 ) {
  *
  * @return boolean Whether or not the user has a profile on this blog_id
  */
-function bbp_user_has_profile( $user_id = 0 ) {
+function bb_user_has_profile( $user_id = 0 ) {
 
 	// Assume every user has a profile
 	$retval  = true;

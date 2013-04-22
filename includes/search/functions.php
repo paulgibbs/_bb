@@ -23,7 +23,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
  * @uses bbp_has_search_results() To make the search query
  * @return bool False if no results, otherwise if search results are there
  */
-function bbp_search_query( $new_args = '' ) {
+function bb_search_query( $new_args = '' ) {
 
 	// Existing arguments 
 	$query_args = bbp_get_search_query_args();
@@ -45,7 +45,7 @@ function bbp_search_query( $new_args = '' ) {
  * @uses bbp_get_search_terms() To get the search terms
  * @return array Query arguments
  */
-function bbp_get_search_query_args() {
+function bb_get_search_query_args() {
 
 	// Get search terms
 	$search_terms = bbp_get_search_terms();

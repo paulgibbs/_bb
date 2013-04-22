@@ -24,7 +24,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
  *
  * @return int User ID
  */
-function bbp_filter_user_id( $user_id = 0, $displayed_user_fallback = true, $current_user_fallback = false ) {
+function bb_filter_user_id( $user_id = 0, $displayed_user_fallback = true, $current_user_fallback = false ) {
 
 	// Define local variable
 	$bbp_user_id = 0;
@@ -57,7 +57,7 @@ add_filter( 'bbp_get_user_id', 'bbp_filter_user_id', 10, 3 );
  * @param bool $is Optional. Default false
  * @return bool True if viewing single user, false if not
  */
-function bbp_filter_is_single_user( $is = false ) {
+function bb_filter_is_single_user( $is = false ) {
 	if ( !empty( $is ) )
 		return $is;
 
@@ -73,7 +73,7 @@ add_filter( 'bbp_is_single_user', 'bbp_filter_is_single_user', 10, 1 );
  * @param bool $is Optional. Default false
  * @return bool True if viewing single user, false if not
  */
-function bbp_filter_is_user_home( $is = false ) {
+function bb_filter_is_user_home( $is = false ) {
 	if ( !empty( $is ) )
 		return $is;
 
@@ -91,7 +91,7 @@ add_filter( 'bbp_is_user_home', 'bbp_filter_is_user_home', 10, 1 );
  * @uses add_action() To add the content hook
  * @uses bp_core_load_template() To load the plugins template
  */
-function bbp_member_forums_screen_topics() {
+function bb_member_forums_screen_topics() {
 	add_action( 'bp_template_content', 'bbp_member_forums_topics_content' );
 	bp_core_load_template( apply_filters( 'bbp_member_forums_screen_topics', 'members/single/plugins' ) );
 }
@@ -104,7 +104,7 @@ function bbp_member_forums_screen_topics() {
  * @uses add_action() To add the content hook
  * @uses bp_core_load_template() To load the plugins template
  */
-function bbp_member_forums_screen_replies() {
+function bb_member_forums_screen_replies() {
 	add_action( 'bp_template_content', 'bbp_member_forums_replies_content' );
 	bp_core_load_template( apply_filters( 'bbp_member_forums_screen_replies', 'members/single/plugins' ) );
 }
@@ -117,7 +117,7 @@ function bbp_member_forums_screen_replies() {
  * @uses add_action() To add the content hook
  * @uses bp_core_load_template() To load the plugins template
  */
-function bbp_member_forums_screen_favorites() {
+function bb_member_forums_screen_favorites() {
 	add_action( 'bp_template_content', 'bbp_member_forums_favorites_content' );
 	bp_core_load_template( apply_filters( 'bbp_member_forums_screen_favorites', 'members/single/plugins' ) );
 }
@@ -130,7 +130,7 @@ function bbp_member_forums_screen_favorites() {
  * @uses add_action() To add the content hook
  * @uses bp_core_load_template() To load the plugins template
  */
-function bbp_member_forums_screen_subscriptions() {
+function bb_member_forums_screen_subscriptions() {
 	add_action( 'bp_template_content', 'bbp_member_forums_subscriptions_content' );
 	bp_core_load_template( apply_filters( 'bbp_member_forums_screen_subscriptions', 'members/single/plugins' ) );
 }
@@ -144,7 +144,7 @@ function bbp_member_forums_screen_subscriptions() {
  *
  * @uses bbp_get_template_part()s
  */
-function bbp_member_forums_topics_content() {
+function bb_member_forums_topics_content() {
 ?>
 
 	<div id="bbpress-forums">
@@ -163,7 +163,7 @@ function bbp_member_forums_topics_content() {
  *
  * @uses bbp_get_template_part()
  */
-function bbp_member_forums_replies_content() {
+function bb_member_forums_replies_content() {
 ?>
 
 	<div id="bbpress-forums">
@@ -182,7 +182,7 @@ function bbp_member_forums_replies_content() {
  *
  * @uses bbp_get_template_part()
  */
-function bbp_member_forums_favorites_content() {
+function bb_member_forums_favorites_content() {
 ?>
 
 	<div id="bbpress-forums">
@@ -201,7 +201,7 @@ function bbp_member_forums_favorites_content() {
  *
  * @uses bbp_get_template_part()
  */
-function bbp_member_forums_subscriptions_content() {
+function bb_member_forums_subscriptions_content() {
 ?>
 
 	<div id="bbpress-forums">
@@ -228,7 +228,7 @@ function bbp_member_forums_subscriptions_content() {
  * @param type $group_id
  * @since bbPress (r3653)
  */
-function bbp_get_group_forum_ids( $group_id = 0 ) {
+function bb_get_group_forum_ids( $group_id = 0 ) {
 
 	// Assume no forums
 	$forum_ids = array();
@@ -257,7 +257,7 @@ function bbp_get_group_forum_ids( $group_id = 0 ) {
  * @param type $forum_id
  * @since bbPress (r3653)
  */
-function bbp_get_forum_group_ids( $forum_id = 0 ) {
+function bb_get_forum_group_ids( $forum_id = 0 ) {
 
 	// Assume no forums
 	$group_ids = array();
@@ -286,7 +286,7 @@ function bbp_get_forum_group_ids( $forum_id = 0 ) {
  * @param type $group_id
  * @since bbPress (r3653)
  */
-function bbp_update_group_forum_ids( $group_id = 0, $forum_ids = array() ) {
+function bb_update_group_forum_ids( $group_id = 0, $forum_ids = array() ) {
 
 	// Use current group if none is set
 	if ( empty( $group_id ) )
@@ -305,7 +305,7 @@ function bbp_update_group_forum_ids( $group_id = 0, $forum_ids = array() ) {
  * @param type $forum_id
  * @since bbPress (r3653)
  */
-function bbp_update_forum_group_ids( $forum_id = 0, $group_ids = array() ) {
+function bb_update_forum_group_ids( $forum_id = 0, $group_ids = array() ) {
 	$forum_id = bbp_get_forum_id( $forum_id );
 
 	// Trim out any empties
@@ -321,7 +321,7 @@ function bbp_update_forum_group_ids( $forum_id = 0, $group_ids = array() ) {
  * @param type $group_id
  * @since bbPress (r3653)
  */
-function bbp_add_group_id_to_forum( $forum_id = 0, $group_id = 0 ) {
+function bb_add_group_id_to_forum( $forum_id = 0, $group_id = 0 ) {
 
 	// Validate forum_id
 	$forum_id = bbp_get_forum_id( $forum_id );
@@ -346,7 +346,7 @@ function bbp_add_group_id_to_forum( $forum_id = 0, $group_id = 0 ) {
  * @param type $group_id
  * @since bbPress (r3653)
  */
-function bbp_add_forum_id_to_group( $group_id = 0, $forum_id = 0 ) {
+function bb_add_forum_id_to_group( $group_id = 0, $forum_id = 0 ) {
 
 	// Validate forum_id
 	$forum_id = bbp_get_forum_id( $forum_id );
@@ -371,7 +371,7 @@ function bbp_add_forum_id_to_group( $group_id = 0, $forum_id = 0 ) {
  * @param type $group_id
  * @since bbPress (r3653)
  */
-function bbp_remove_group_id_from_forum( $forum_id = 0, $group_id = 0 ) {
+function bb_remove_group_id_from_forum( $forum_id = 0, $group_id = 0 ) {
 
 	// Validate forum_id
 	$forum_id = bbp_get_forum_id( $forum_id );
@@ -396,7 +396,7 @@ function bbp_remove_group_id_from_forum( $forum_id = 0, $group_id = 0 ) {
  * @param type $group_id
  * @since bbPress (r3653)
  */
-function bbp_remove_forum_id_from_group( $group_id = 0, $forum_id = 0 ) {
+function bb_remove_forum_id_from_group( $group_id = 0, $forum_id = 0 ) {
 
 	// Validate forum_id
 	$forum_id = bbp_get_forum_id( $forum_id );
@@ -421,7 +421,7 @@ function bbp_remove_forum_id_from_group( $group_id = 0, $forum_id = 0 ) {
  * @param type $group_id
  * @since bbPress (r3653)
  */
-function bbp_remove_group_id_from_all_forums( $group_id = 0 ) {
+function bb_remove_group_id_from_all_forums( $group_id = 0 ) {
 
 	// Use current group if none is set
 	if ( empty( $group_id ) )
@@ -442,7 +442,7 @@ function bbp_remove_group_id_from_all_forums( $group_id = 0 ) {
  * @param type $forum_id
  * @since bbPress (r3653)
  */
-function bbp_remove_forum_id_from_all_groups( $forum_id = 0 ) {
+function bb_remove_forum_id_from_all_groups( $forum_id = 0 ) {
 
 	// Validate
 	$forum_id  = bbp_get_forum_id( $forum_id );
@@ -465,7 +465,7 @@ function bbp_remove_forum_id_from_all_groups( $forum_id = 0 ) {
  * @uses apply_filters() Calls 'bbp_forum_is_group_forum' with the forum id 
  * @return bool True if it is a group forum, false if not
  */
-function bbp_is_forum_group_forum( $forum_id = 0 ) {
+function bb_is_forum_group_forum( $forum_id = 0 ) {
 
 	// Validate
 	$forum_id  = bbp_get_forum_id( $forum_id );
@@ -494,7 +494,7 @@ function bbp_is_forum_group_forum( $forum_id = 0 ) {
  * @uses groups_is_user_admin()
  * @return bool If current user is an admin of the current group
  */
-function bbp_group_is_admin() {
+function bb_group_is_admin() {
 
 	// Bail if user is not logged in or not looking at a group
 	if ( ! is_user_logged_in() || ! bp_is_group() )
@@ -523,7 +523,7 @@ function bbp_group_is_admin() {
  * @uses groups_is_user_admin()
  * @return bool If current user is a moderator of the current group
  */
-function bbp_group_is_mod() {
+function bb_group_is_mod() {
 
 	// Bail if user is not logged in or not looking at a group
 	if ( ! is_user_logged_in() || ! bp_is_group() )
@@ -552,7 +552,7 @@ function bbp_group_is_mod() {
  * @uses groups_is_user_admin()
  * @return bool If current user is a member of the current group
  */
-function bbp_group_is_member() {
+function bb_group_is_member() {
 
 	// Bail if user is not logged in or not looking at a group
 	if ( ! is_user_logged_in() || ! bp_is_group() )
@@ -581,7 +581,7 @@ function bbp_group_is_member() {
  * @uses groups_is_user_admin()
  * @return bool If current user is banned from the current group
  */
-function bbp_group_is_banned() {
+function bb_group_is_banned() {
 
 	// Bail if user is not logged in or not looking at a group
 	if ( ! is_user_logged_in() || ! bp_is_group() )
@@ -610,7 +610,7 @@ function bbp_group_is_banned() {
  * @uses groups_is_user_admin()
  * @return bool If current user the creator of the current group
  */
-function bbp_group_is_creator() {
+function bb_group_is_creator() {
 
 	// Bail if user is not logged in or not looking at a group
 	if ( ! is_user_logged_in() || ! bp_is_group() )

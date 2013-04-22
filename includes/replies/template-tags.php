@@ -19,7 +19,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
  *
  * @uses bbp_get_reply_post_type() To get the reply post type
  */
-function bbp_reply_post_type() {
+function bb_reply_post_type() {
 	echo bbp_get_reply_post_type();
 }
 	/**
@@ -31,7 +31,7 @@ function bbp_reply_post_type() {
 	 *                        post type id
 	 * @return string The unique reply post type id
 	 */
-	function bbp_get_reply_post_type() {
+	function bb_get_reply_post_type() {
 		return apply_filters( 'bbp_get_reply_post_type', bbpress()->reply_post_type );
 	}
 
@@ -62,7 +62,7 @@ function bbp_reply_post_type() {
  *                        and bbPres::reply_query
  * @return object Multidimensional array of reply information
  */
-function bbp_has_replies( $args = '' ) {
+function bb_has_replies( $args = '' ) {
 	global $wp_rewrite;
 
 	/** Defaults **************************************************************/
@@ -195,7 +195,7 @@ function bbp_has_replies( $args = '' ) {
  *                                                    replies available
  * @return object Replies information
  */
-function bbp_replies() {
+function bb_replies() {
 
 	// Put into variable to check against next
 	$have_posts = bbpress()->reply_query->have_posts();
@@ -215,7 +215,7 @@ function bbp_replies() {
  * @uses WP_Query bbPress::reply_query::the_post() To get the current reply
  * @return object Reply information
  */
-function bbp_the_reply() {
+function bb_the_reply() {
 	return bbpress()->reply_query->the_post();
 }
 
@@ -227,7 +227,7 @@ function bbp_the_reply() {
  * @param $reply_id Optional. Used to check emptiness
  * @uses bbp_get_reply_id() To get the reply id
  */
-function bbp_reply_id( $reply_id = 0 ) {
+function bb_reply_id( $reply_id = 0 ) {
 	echo bbp_get_reply_id( $reply_id );
 }
 	/**
@@ -247,7 +247,7 @@ function bbp_reply_id( $reply_id = 0 ) {
 	 *                        supplied reply id
 	 * @return int The reply id
 	 */
-	function bbp_get_reply_id( $reply_id = 0 ) {
+	function bb_get_reply_id( $reply_id = 0 ) {
 		global $wp_query;
 
 		$bbp = bbpress();
@@ -294,7 +294,7 @@ function bbp_reply_id( $reply_id = 0 ) {
  *                        sanitation filter
  * @return mixed Null if error or reply (in specified form) if success
  */
-function bbp_get_reply( $reply, $output = OBJECT, $filter = 'raw' ) {
+function bb_get_reply( $reply, $output = OBJECT, $filter = 'raw' ) {
 	if ( empty( $reply ) || is_numeric( $reply ) )
 		$reply = bbp_get_reply_id( $reply );
 
@@ -329,7 +329,7 @@ function bbp_get_reply( $reply, $output = OBJECT, $filter = 'raw' ) {
  * @param int $reply_id Optional. Reply id
  * @uses bbp_get_reply_permalink() To get the reply permalink
  */
-function bbp_reply_permalink( $reply_id = 0 ) {
+function bb_reply_permalink( $reply_id = 0 ) {
 	echo bbp_get_reply_permalink( $reply_id );
 }
 	/**
@@ -344,7 +344,7 @@ function bbp_reply_permalink( $reply_id = 0 ) {
 	 *                        and reply id
 	 * @return string Permanent link to reply
 	 */
-	function bbp_get_reply_permalink( $reply_id = 0 ) {
+	function bb_get_reply_permalink( $reply_id = 0 ) {
 		$reply_id = bbp_get_reply_id( $reply_id );
 
 		return apply_filters( 'bbp_get_reply_permalink', get_permalink( $reply_id ), $reply_id );
@@ -357,7 +357,7 @@ function bbp_reply_permalink( $reply_id = 0 ) {
  * @param int $reply_id Optional. Reply id
  * @uses bbp_get_reply_url() To get the reply url
  */
-function bbp_reply_url( $reply_id = 0 ) {
+function bb_reply_url( $reply_id = 0 ) {
 	echo bbp_get_reply_url( $reply_id );
 }
 	/**
@@ -380,7 +380,7 @@ function bbp_reply_url( $reply_id = 0 ) {
 	 *                        reply id and bool count hidden
 	 * @return string Link to reply relative to paginated topic
 	 */
-	function bbp_get_reply_url( $reply_id = 0, $redirect_to = '' ) {
+	function bb_get_reply_url( $reply_id = 0, $redirect_to = '' ) {
 
 		// Set needed variables
 		$reply_id   = bbp_get_reply_id      ( $reply_id );
@@ -423,7 +423,7 @@ function bbp_reply_url( $reply_id = 0 ) {
  * @param int $reply_id Optional. Reply id
  * @uses bbp_get_reply_title() To get the reply title
  */
-function bbp_reply_title( $reply_id = 0 ) {
+function bb_reply_title( $reply_id = 0 ) {
 	echo bbp_get_reply_title( $reply_id );
 }
 
@@ -439,7 +439,7 @@ function bbp_reply_title( $reply_id = 0 ) {
 	 *                        reply id
 	 * @return string Title of reply
 	 */
-	function bbp_get_reply_title( $reply_id = 0 ) {
+	function bb_get_reply_title( $reply_id = 0 ) {
 		$reply_id = bbp_get_reply_id( $reply_id );
 
 		return apply_filters( 'bbp_get_reply_title', get_the_title( $reply_id ), $reply_id );
@@ -453,7 +453,7 @@ function bbp_reply_title( $reply_id = 0 ) {
  * @param int $reply_id Optional. reply id
  * @uses bbp_get_reply_content() To get the reply content
  */
-function bbp_reply_content( $reply_id = 0 ) {
+function bb_reply_content( $reply_id = 0 ) {
 	echo bbp_get_reply_content( $reply_id );
 }
 	/**
@@ -470,7 +470,7 @@ function bbp_reply_content( $reply_id = 0 ) {
 	 *                        and reply id
 	 * @return string Content of the reply
 	 */
-	function bbp_get_reply_content( $reply_id = 0 ) {
+	function bb_get_reply_content( $reply_id = 0 ) {
 		$reply_id = bbp_get_reply_id( $reply_id );
 
 		// Check if password is required
@@ -491,7 +491,7 @@ function bbp_reply_content( $reply_id = 0 ) {
  * @param int $length Optional. Length of the excerpt. Defaults to 100 letters
  * @uses bbp_get_reply_excerpt() To get the reply excerpt
  */
-function bbp_reply_excerpt( $reply_id = 0, $length = 100 ) {
+function bb_reply_excerpt( $reply_id = 0, $length = 100 ) {
 	echo bbp_get_reply_excerpt( $reply_id, $length );
 }
 	/**
@@ -509,7 +509,7 @@ function bbp_reply_excerpt( $reply_id = 0, $length = 100 ) {
 	 *                        reply id and length
 	 * @return string Reply Excerpt
 	 */
-	function bbp_get_reply_excerpt( $reply_id = 0, $length = 100 ) {
+	function bb_get_reply_excerpt( $reply_id = 0, $length = 100 ) {
 		$reply_id = bbp_get_reply_id( $reply_id );
 		$length   = (int) $length;
 		$excerpt  = get_post_field( 'post_excerpt', $reply_id );
@@ -545,7 +545,7 @@ function bbp_reply_excerpt( $reply_id = 0, $length = 100 ) {
  * @param bool $gmt Optional. Use GMT
  * @uses bbp_get_reply_post_date() to get the output
  */
-function bbp_reply_post_date( $reply_id = 0, $humanize = false, $gmt = false ) {
+function bb_reply_post_date( $reply_id = 0, $humanize = false, $gmt = false ) {
 	echo bbp_get_reply_post_date( $reply_id, $humanize, $gmt );
 }
 	/**
@@ -561,7 +561,7 @@ function bbp_reply_post_date( $reply_id = 0, $humanize = false, $gmt = false ) {
 	 * @uses bbp_get_time_since() to maybe humanize the reply post time
 	 * @return string
 	 */
-	function bbp_get_reply_post_date( $reply_id = 0, $humanize = false, $gmt = false ) {
+	function bb_get_reply_post_date( $reply_id = 0, $humanize = false, $gmt = false ) {
 		$reply_id = bbp_get_reply_id( $reply_id );
 
 		// 4 days, 4 hours ago
@@ -593,7 +593,7 @@ function bbp_reply_post_date( $reply_id = 0, $humanize = false, $gmt = false ) {
  *                        content, original content and reply id
  * @return string Content with the revisions appended
  */
-function bbp_reply_content_append_revisions( $content = '', $reply_id = 0 ) {
+function bb_reply_content_append_revisions( $content = '', $reply_id = 0 ) {
 
 	// Bail if in admin or feed
 	if ( is_admin() || is_feed() )
@@ -613,7 +613,7 @@ function bbp_reply_content_append_revisions( $content = '', $reply_id = 0 ) {
  * @param int $reply_id Optional. Reply id
  * @uses bbp_get_reply_revision_log() To get the reply revision log
  */
-function bbp_reply_revision_log( $reply_id = 0 ) {
+function bb_reply_revision_log( $reply_id = 0 ) {
 	echo bbp_get_reply_revision_log( $reply_id );
 }
 	/**
@@ -633,7 +633,7 @@ function bbp_reply_revision_log( $reply_id = 0 ) {
 	 *                        log and reply id
 	 * @return string Revision log of the reply
 	 */
-	function bbp_get_reply_revision_log( $reply_id = 0 ) {
+	function bb_get_reply_revision_log( $reply_id = 0 ) {
 
 		// Create necessary variables
 		$reply_id = bbp_get_reply_id( $reply_id );
@@ -697,7 +697,7 @@ function bbp_reply_revision_log( $reply_id = 0 ) {
 		 *                        with the log and reply id
 		 * @return string Raw revision log of the reply
 		 */
-		function bbp_get_reply_raw_revision_log( $reply_id = 0 ) {
+		function bb_get_reply_raw_revision_log( $reply_id = 0 ) {
 			$reply_id     = bbp_get_reply_id( $reply_id );
 			$revision_log = get_post_meta( $reply_id, '_bbp_revision_log', true );
 			$revision_log = empty( $revision_log ) ? array() : $revision_log;
@@ -717,7 +717,7 @@ function bbp_reply_revision_log( $reply_id = 0 ) {
  *                        with the revisions and reply id
  * @return string reply revisions
  */
-function bbp_get_reply_revisions( $reply_id = 0 ) {
+function bb_get_reply_revisions( $reply_id = 0 ) {
 	$reply_id  = bbp_get_reply_id( $reply_id );
 	$revisions = wp_get_post_revisions( $reply_id, array( 'order' => 'ASC' ) );
 
@@ -736,7 +736,7 @@ function bbp_get_reply_revisions( $reply_id = 0 ) {
  *                        with the revision count and reply id
  * @return string reply revision count
  */
-function bbp_get_reply_revision_count( $reply_id = 0, $integer = false ) {
+function bb_get_reply_revision_count( $reply_id = 0, $integer = false ) {
 	$count  = (int) count( bbp_get_reply_revisions( $reply_id ) );
 	$filter = ( true === $integer ) ? 'bbp_get_reply_revision_count_int' : 'bbp_get_reply_revision_count';
 
@@ -751,7 +751,7 @@ function bbp_get_reply_revision_count( $reply_id = 0, $integer = false ) {
  * @param int $reply_id Optional. Reply id
  * @uses bbp_get_reply_status() To get the reply status
  */
-function bbp_reply_status( $reply_id = 0 ) {
+function bb_reply_status( $reply_id = 0 ) {
 	echo bbp_get_reply_status( $reply_id );
 }
 	/**
@@ -765,7 +765,7 @@ function bbp_reply_status( $reply_id = 0 ) {
 	 * @uses apply_filters() Calls 'bbp_get_reply_status' with the reply id
 	 * @return string Status of reply
 	 */
-	function bbp_get_reply_status( $reply_id = 0 ) {
+	function bb_get_reply_status( $reply_id = 0 ) {
 		$reply_id = bbp_get_reply_id( $reply_id );
 		return apply_filters( 'bbp_get_reply_status', get_post_status( $reply_id ), $reply_id );
 	}
@@ -780,7 +780,7 @@ function bbp_reply_status( $reply_id = 0 ) {
  * @uses bbp_get_reply_status() To get the reply status
  * @return bool True if published, false if not.
  */
-function bbp_is_reply_published( $reply_id = 0 ) {
+function bb_is_reply_published( $reply_id = 0 ) {
 	$reply_status = bbp_get_reply_status( bbp_get_reply_id( $reply_id ) ) == bbp_get_public_status_id();
 	return (bool) apply_filters( 'bbp_is_reply_published', (bool) $reply_status, $reply_id );
 }
@@ -795,7 +795,7 @@ function bbp_is_reply_published( $reply_id = 0 ) {
  * @uses bbp_get_reply_status() To get the reply status
  * @return bool True if spam, false if not.
  */
-function bbp_is_reply_spam( $reply_id = 0 ) {
+function bb_is_reply_spam( $reply_id = 0 ) {
 	$reply_status = bbp_get_reply_status( bbp_get_reply_id( $reply_id ) ) == bbp_get_spam_status_id();
 	return (bool) apply_filters( 'bbp_is_reply_spam', (bool) $reply_status, $reply_id );
 }
@@ -810,7 +810,7 @@ function bbp_is_reply_spam( $reply_id = 0 ) {
  * @uses bbp_get_reply_status() To get the reply status
  * @return bool True if spam, false if not.
  */
-function bbp_is_reply_trash( $reply_id = 0 ) {
+function bb_is_reply_trash( $reply_id = 0 ) {
 	$reply_status = bbp_get_reply_status( bbp_get_reply_id( $reply_id ) ) == bbp_get_trash_status_id();
 	return (bool) apply_filters( 'bbp_is_reply_trash', (bool) $reply_status, $reply_id );
 }
@@ -826,7 +826,7 @@ function bbp_is_reply_trash( $reply_id = 0 ) {
  * @uses get_post_meta() To get the anonymous name and email metas
  * @return bool True if the post is by an anonymous user, false if not.
  */
-function bbp_is_reply_anonymous( $reply_id = 0 ) {
+function bb_is_reply_anonymous( $reply_id = 0 ) {
 	$reply_id = bbp_get_reply_id( $reply_id );
 	$retval   = false;
 
@@ -850,7 +850,7 @@ function bbp_is_reply_anonymous( $reply_id = 0 ) {
  * @param int $reply_id Optional. Reply id
  * @uses bbp_get_reply_author() To get the reply author
  */
-function bbp_reply_author( $reply_id = 0 ) {
+function bb_reply_author( $reply_id = 0 ) {
 	echo bbp_get_reply_author( $reply_id );
 }
 	/**
@@ -868,7 +868,7 @@ function bbp_reply_author( $reply_id = 0 ) {
 	 *                        author and reply id
 	 * @return string Author of reply
 	 */
-	function bbp_get_reply_author( $reply_id = 0 ) {
+	function bb_get_reply_author( $reply_id = 0 ) {
 		$reply_id = bbp_get_reply_id( $reply_id );
 
 		if ( !bbp_is_reply_anonymous( $reply_id ) ) {
@@ -888,7 +888,7 @@ function bbp_reply_author( $reply_id = 0 ) {
  * @param int $reply_id Optional. Reply id
  * @uses bbp_get_reply_author_id() To get the reply author id
  */
-function bbp_reply_author_id( $reply_id = 0 ) {
+function bb_reply_author_id( $reply_id = 0 ) {
 	echo bbp_get_reply_author_id( $reply_id );
 }
 	/**
@@ -903,7 +903,7 @@ function bbp_reply_author_id( $reply_id = 0 ) {
 	 *                        id and reply id
 	 * @return string Author id of reply
 	 */
-	function bbp_get_reply_author_id( $reply_id = 0 ) {
+	function bb_get_reply_author_id( $reply_id = 0 ) {
 		$reply_id  = bbp_get_reply_id( $reply_id );
 		$author_id = get_post_field( 'post_author', $reply_id );
 
@@ -918,7 +918,7 @@ function bbp_reply_author_id( $reply_id = 0 ) {
  * @param int $reply_id Optional. Reply id
  * @uses bbp_get_reply_author_display_name()
  */
-function bbp_reply_author_display_name( $reply_id = 0 ) {
+function bb_reply_author_display_name( $reply_id = 0 ) {
 	echo bbp_get_reply_author_display_name( $reply_id );
 }
 	/**
@@ -937,7 +937,7 @@ function bbp_reply_author_display_name( $reply_id = 0 ) {
 	 *                        the author display name and reply id
 	 * @return string Reply's author's display name
 	 */
-	function bbp_get_reply_author_display_name( $reply_id = 0 ) {
+	function bb_get_reply_author_display_name( $reply_id = 0 ) {
 		$reply_id = bbp_get_reply_id( $reply_id );
 
 		// User is not a guest
@@ -979,7 +979,7 @@ function bbp_reply_author_display_name( $reply_id = 0 ) {
  * @param int $size Optional. Size of the avatar. Defaults to 40
  * @uses bbp_get_reply_author_avatar() To get the reply author id
  */
-function bbp_reply_author_avatar( $reply_id = 0, $size = 40 ) {
+function bb_reply_author_avatar( $reply_id = 0, $size = 40 ) {
 	echo bbp_get_reply_author_avatar( $reply_id, $size );
 }
 	/**
@@ -999,7 +999,7 @@ function bbp_reply_author_avatar( $reply_id = 0, $size = 40 ) {
 	 *                        author avatar, reply id and size
 	 * @return string Avatar of author of the reply
 	 */
-	function bbp_get_reply_author_avatar( $reply_id = 0, $size = 40 ) {
+	function bb_get_reply_author_avatar( $reply_id = 0, $size = 40 ) {
 		$reply_id = bbp_get_reply_id( $reply_id );
 		if ( !empty( $reply_id ) ) {
 			// Check for anonymous user
@@ -1023,7 +1023,7 @@ function bbp_reply_author_avatar( $reply_id = 0, $size = 40 ) {
  * @param mixed $args Optional. If it is an integer, it is used as reply id.
  * @uses bbp_get_reply_author_link() To get the reply author link
  */
-function bbp_reply_author_link( $args = '' ) {
+function bb_reply_author_link( $args = '' ) {
 	echo bbp_get_reply_author_link( $args );
 }
 	/**
@@ -1046,7 +1046,7 @@ function bbp_reply_author_link( $args = '' ) {
 	 *                        author link and args
 	 * @return string Author link of reply
 	 */
-	function bbp_get_reply_author_link( $args = '' ) {
+	function bb_get_reply_author_link( $args = '' ) {
 
 		// Parse arguments against default values
 		$r = bbp_parse_args( $args, array(
@@ -1134,7 +1134,7 @@ function bbp_reply_author_link( $args = '' ) {
  * @param int $reply_id Optional. Reply id
  * @uses bbp_get_reply_author_url() To get the reply author url
  */
-function bbp_reply_author_url( $reply_id = 0 ) {
+function bb_reply_author_url( $reply_id = 0 ) {
 	echo bbp_get_reply_author_url( $reply_id );
 }
 	/**
@@ -1153,7 +1153,7 @@ function bbp_reply_author_url( $reply_id = 0 ) {
 	 *                        url & reply id
 	 * @return string Author URL of the reply
 	 */
-	function bbp_get_reply_author_url( $reply_id = 0 ) {
+	function bb_get_reply_author_url( $reply_id = 0 ) {
 		$reply_id = bbp_get_reply_id( $reply_id );
 
 		// Check for anonymous user
@@ -1177,7 +1177,7 @@ function bbp_reply_author_url( $reply_id = 0 ) {
  * @param int $reply_id Optional. Reply id
  * @uses bbp_get_reply_author_email() To get the reply author email
  */
-function bbp_reply_author_email( $reply_id = 0 ) {
+function bb_reply_author_email( $reply_id = 0 ) {
 	echo bbp_get_reply_author_email( $reply_id );
 }
 	/**
@@ -1196,7 +1196,7 @@ function bbp_reply_author_email( $reply_id = 0 ) {
 	 *                        email & reply id
 	 * @return string Reply author email address
 	 */
-	function bbp_get_reply_author_email( $reply_id = 0 ) {
+	function bb_get_reply_author_email( $reply_id = 0 ) {
 		$reply_id = bbp_get_reply_id( $reply_id );
 
 		// Not anonymous
@@ -1230,7 +1230,7 @@ function bbp_reply_author_email( $reply_id = 0 ) {
  * @param array $args Optional.
  * @uses bbp_get_reply_author_role() To get the reply author role
  */
-function bbp_reply_author_role( $args = array() ) {
+function bb_reply_author_role( $args = array() ) {
 	echo bbp_get_reply_author_role( $args );
 }
 	/**
@@ -1246,7 +1246,7 @@ function bbp_reply_author_role( $args = array() ) {
 	 *                        role & args
 	 * @return string Reply author role
 	 */
-	function bbp_get_reply_author_role( $args = array() ) {
+	function bb_get_reply_author_role( $args = array() ) {
 
 		// Parse arguments against default values
 		$r = bbp_parse_args( $args, array(
@@ -1271,7 +1271,7 @@ function bbp_reply_author_role( $args = array() ) {
  * @param int $reply_id Optional. Reply id
  * @uses bbp_get_reply_topic_title() To get the reply topic title
  */
-function bbp_reply_topic_title( $reply_id = 0 ) {
+function bb_reply_topic_title( $reply_id = 0 ) {
 	echo bbp_get_reply_topic_title( $reply_id );
 }
 	/**
@@ -1287,7 +1287,7 @@ function bbp_reply_topic_title( $reply_id = 0 ) {
 	 *                        topic title and reply id
 	 * @return string Reply's topic's title
 	 */
-	function bbp_get_reply_topic_title( $reply_id = 0 ) {
+	function bb_get_reply_topic_title( $reply_id = 0 ) {
 		$reply_id = bbp_get_reply_id( $reply_id );
 		$topic_id = bbp_get_reply_topic_id( $reply_id );
 
@@ -1302,7 +1302,7 @@ function bbp_reply_topic_title( $reply_id = 0 ) {
  * @param int $reply_id Optional. Reply id
  * @uses bbp_get_reply_topic_id() To get the reply topic id
  */
-function bbp_reply_topic_id( $reply_id = 0 ) {
+function bb_reply_topic_id( $reply_id = 0 ) {
 	echo bbp_get_reply_topic_id( $reply_id );
 }
 	/**
@@ -1318,7 +1318,7 @@ function bbp_reply_topic_id( $reply_id = 0 ) {
 	 *                        id and reply id
 	 * @return int Reply's topic id
 	 */
-	function bbp_get_reply_topic_id( $reply_id = 0 ) {
+	function bb_get_reply_topic_id( $reply_id = 0 ) {
 
 		// Assume there is no topic id
 		$topic_id = 0;
@@ -1343,7 +1343,7 @@ function bbp_reply_topic_id( $reply_id = 0 ) {
  * @param int $reply_id Optional. Reply id
  * @uses bbp_get_reply_forum_id() To get the reply forum id
  */
-function bbp_reply_forum_id( $reply_id = 0 ) {
+function bb_reply_forum_id( $reply_id = 0 ) {
 	echo bbp_get_reply_forum_id( $reply_id );
 }
 	/**
@@ -1358,7 +1358,7 @@ function bbp_reply_forum_id( $reply_id = 0 ) {
 	 *                        id and reply id
 	 * @return int Reply's forum id
 	 */
-	function bbp_get_reply_forum_id( $reply_id = 0 ) {
+	function bb_get_reply_forum_id( $reply_id = 0 ) {
 
 		// Assume there is no forum
 		$forum_id = 0;
@@ -1384,7 +1384,7 @@ function bbp_reply_forum_id( $reply_id = 0 ) {
  * @param int $topic_id Optional. Topic id
  * @uses bbp_get_reply_position() To get the reply position
  */
-function bbp_reply_position( $reply_id = 0, $topic_id = 0 ) {
+function bb_reply_position( $reply_id = 0, $topic_id = 0 ) {
 	echo bbp_get_reply_position( $reply_id, $topic_id );
 }
 	/**
@@ -1405,7 +1405,7 @@ function bbp_reply_position( $reply_id = 0, $topic_id = 0 ) {
 	 *                        position, reply id and topic id
 	 * @return int Reply position
 	 */
-	function bbp_get_reply_position( $reply_id = 0, $topic_id = 0 ) {
+	function bb_get_reply_position( $reply_id = 0, $topic_id = 0 ) {
 
 		// Get required data
 		$reply_id       = bbp_get_reply_id( $reply_id );
@@ -1448,7 +1448,7 @@ function bbp_reply_position( $reply_id = 0, $topic_id = 0 ) {
  * @param mixed $args See {@link bbp_get_reply_admin_links()}
  * @uses bbp_get_reply_admin_links() To get the reply admin links
  */
-function bbp_reply_admin_links( $args = '' ) {
+function bb_reply_admin_links( $args = '' ) {
 	echo bbp_get_reply_admin_links( $args );
 }
 	/**
@@ -1478,7 +1478,7 @@ function bbp_reply_admin_links( $args = '' ) {
 	 *                        reply admin links and args
 	 * @return string Reply admin links
 	 */
-	function bbp_get_reply_admin_links( $args = '' ) {
+	function bb_get_reply_admin_links( $args = '' ) {
 
 		// Parse arguments against default values
 		$r = bbp_parse_args( $args, array(
@@ -1551,7 +1551,7 @@ function bbp_reply_admin_links( $args = '' ) {
  * @param mixed $args See {@link bbp_get_reply_edit_link()}
  * @uses bbp_get_reply_edit_link() To get the reply edit link
  */
-function bbp_reply_edit_link( $args = '' ) {
+function bb_reply_edit_link( $args = '' ) {
 	echo bbp_get_reply_edit_link( $args );
 }
 
@@ -1574,7 +1574,7 @@ function bbp_reply_edit_link( $args = '' ) {
 	 *                        edit link and args
 	 * @return string Reply edit link
 	 */
-	function bbp_get_reply_edit_link( $args = '' ) {
+	function bb_get_reply_edit_link( $args = '' ) {
 
 		// Parse arguments against default values
 		$r = bbp_parse_args( $args, array(
@@ -1615,7 +1615,7 @@ function bbp_reply_edit_link( $args = '' ) {
  * @param int $reply_id Optional. Reply id
  * @uses bbp_get_reply_edit_url() To get the reply edit url
  */
-function bbp_reply_edit_url( $reply_id = 0 ) {
+function bb_reply_edit_url( $reply_id = 0 ) {
 	echo bbp_get_reply_edit_url( $reply_id );
 }
 	/**
@@ -1632,7 +1632,7 @@ function bbp_reply_edit_url( $reply_id = 0 ) {
 	 *                        url and reply id
 	 * @return string Reply edit url
 	 */
-	function bbp_get_reply_edit_url( $reply_id = 0 ) {
+	function bb_get_reply_edit_url( $reply_id = 0 ) {
 		global $wp_rewrite;
 
 		$bbp   = bbpress();
@@ -1666,7 +1666,7 @@ function bbp_reply_edit_url( $reply_id = 0 ) {
  * @param mixed $args See {@link bbp_get_reply_trash_link()}
  * @uses bbp_get_reply_trash_link() To get the reply trash link
  */
-function bbp_reply_trash_link( $args = '' ) {
+function bb_reply_trash_link( $args = '' ) {
 	echo bbp_get_reply_trash_link( $args );
 }
 
@@ -1697,7 +1697,7 @@ function bbp_reply_trash_link( $args = '' ) {
 	 *                        trash link and args
 	 * @return string Reply trash link
 	 */
-	function bbp_get_reply_trash_link( $args = '' ) {
+	function bb_get_reply_trash_link( $args = '' ) {
 
 		// Parse arguments against default values
 		$r = bbp_parse_args( $args, array(
@@ -1741,7 +1741,7 @@ function bbp_reply_trash_link( $args = '' ) {
  * @param mixed $args See {@link bbp_get_reply_spam_link()}
  * @uses bbp_get_reply_spam_link() To get the reply spam link
  */
-function bbp_reply_spam_link( $args = '' ) {
+function bb_reply_spam_link( $args = '' ) {
 	echo bbp_get_reply_spam_link( $args );
 }
 
@@ -1769,7 +1769,7 @@ function bbp_reply_spam_link( $args = '' ) {
 	 *                        spam link and args
 	 * @return string Reply spam link
 	 */
-	function bbp_get_reply_spam_link( $args = '' ) {
+	function bb_get_reply_spam_link( $args = '' ) {
 
 		// Parse arguments against default values
 		$r = bbp_parse_args( $args, array(
@@ -1803,7 +1803,7 @@ function bbp_reply_spam_link( $args = '' ) {
  * @param mixed $args See {@link bbp_get_reply_move_link()}
  * @uses bbp_get_reply_move_link() To get the reply move link
  */
-function bbp_reply_move_link( $args = '' ) {
+function bb_reply_move_link( $args = '' ) {
 	echo bbp_get_reply_move_link( $args );
 }
 
@@ -1833,7 +1833,7 @@ function bbp_reply_move_link( $args = '' ) {
 	 *                        move link and args
 	 * @return string Reply move link
 	 */
-	function bbp_get_reply_move_link( $args = '' ) {
+	function bb_get_reply_move_link( $args = '' ) {
 
 		// Parse arguments against default values
 		$r = bbp_parse_args( $args, array(
@@ -1870,7 +1870,7 @@ function bbp_reply_move_link( $args = '' ) {
  * @param mixed $args See {@link bbp_get_topic_split_link()}
  * @uses bbp_get_topic_split_link() To get the topic split link
  */
-function bbp_topic_split_link( $args = '' ) {
+function bb_topic_split_link( $args = '' ) {
 	echo bbp_get_topic_split_link( $args );
 }
 
@@ -1900,7 +1900,7 @@ function bbp_topic_split_link( $args = '' ) {
 	 *                        split link and args
 	 * @return string Topic split link
 	 */
-	function bbp_get_topic_split_link( $args = '' ) {
+	function bb_get_topic_split_link( $args = '' ) {
 
 		// Parse arguments against default values
 		$r = bbp_parse_args( $args, array(
@@ -1940,7 +1940,7 @@ function bbp_topic_split_link( $args = '' ) {
  * @param array Extra classes you can pass when calling this function
  * @uses bbp_get_reply_class() To get the reply class
  */
-function bbp_reply_class( $reply_id = 0, $classes = array() ) {
+function bb_reply_class( $reply_id = 0, $classes = array() ) {
 	echo bbp_get_reply_class( $reply_id, $classes );
 }
 	/**
@@ -1957,7 +1957,7 @@ function bbp_reply_class( $reply_id = 0, $classes = array() ) {
 	 * @uses apply_filters() Calls 'bbp_get_reply_class' with the classes
 	 * @return string Row class of the reply
 	 */
-	function bbp_get_reply_class( $reply_id = 0, $classes = array() ) {
+	function bb_get_reply_class( $reply_id = 0, $classes = array() ) {
 		$bbp       = bbpress();
 		$reply_id  = bbp_get_reply_id( $reply_id );
 		$count     = isset( $bbp->reply_query->current_post ) ? $bbp->reply_query->current_post : 1;
@@ -1983,7 +1983,7 @@ function bbp_reply_class( $reply_id = 0, $classes = array() ) {
  *
  * @uses bbp_get_topic_pagination_count() To get the topic pagination count
  */
-function bbp_topic_pagination_count() {
+function bb_topic_pagination_count() {
 	echo bbp_get_topic_pagination_count();
 }
 	/**
@@ -1997,7 +1997,7 @@ function bbp_topic_pagination_count() {
 	 *                        pagination count
 	 * @return string Topic pagination count
 	 */
-	function bbp_get_topic_pagination_count() {
+	function bb_get_topic_pagination_count() {
 		$bbp = bbpress();
 
 		// Define local variable(s)
@@ -2046,7 +2046,7 @@ function bbp_topic_pagination_count() {
  *
  * @uses bbp_get_topic_pagination_links() To get the topic pagination links
  */
-function bbp_topic_pagination_links() {
+function bb_topic_pagination_links() {
 	echo bbp_get_topic_pagination_links();
 }
 	/**
@@ -2058,7 +2058,7 @@ function bbp_topic_pagination_links() {
 	 *                        pagination links
 	 * @return string Topic pagination links
 	 */
-	function bbp_get_topic_pagination_links() {
+	function bb_get_topic_pagination_links() {
 		$bbp = bbpress();
 
 		if ( !isset( $bbp->reply_query->pagination_links ) || empty( $bbp->reply_query->pagination_links ) )
@@ -2076,7 +2076,7 @@ function bbp_topic_pagination_links() {
  *
  * @uses bbp_get_form_reply_content() To get value of reply content field
  */
-function bbp_form_reply_content() {
+function bb_form_reply_content() {
 	echo bbp_get_form_reply_content();
 }
 	/**
@@ -2088,7 +2088,7 @@ function bbp_form_reply_content() {
 	 * @uses apply_filters() Calls 'bbp_get_form_reply_content' with the content
 	 * @return string Value of reply content field
 	 */
-	function bbp_get_form_reply_content() {
+	function bb_get_form_reply_content() {
 
 		// Get _POST data
 		if ( bbp_is_post_request() && isset( $_POST['bbp_reply_content'] ) ) {
@@ -2113,7 +2113,7 @@ function bbp_form_reply_content() {
  *
  * @uses bbp_get_form_reply_log_edit() To get the reply log edit value
  */
-function bbp_form_reply_log_edit() {
+function bb_form_reply_log_edit() {
 	echo bbp_get_form_reply_log_edit();
 }
 	/**
@@ -2125,7 +2125,7 @@ function bbp_form_reply_log_edit() {
 	 *                        log edit value
 	 * @return string Reply log edit checked value
 	 */
-	function bbp_get_form_reply_log_edit() {
+	function bb_get_form_reply_log_edit() {
 
 		// Get _POST data
 		if ( bbp_is_post_request() && isset( $_POST['bbp_log_reply_edit'] ) ) {
@@ -2146,7 +2146,7 @@ function bbp_form_reply_log_edit() {
  *
  * @uses bbp_get_form_reply_edit_reason() To get the reply edit reason value
  */
-function bbp_form_reply_edit_reason() {
+function bb_form_reply_edit_reason() {
 	echo bbp_get_form_reply_edit_reason();
 }
 	/**
@@ -2158,7 +2158,7 @@ function bbp_form_reply_edit_reason() {
 	 *                        reply edit reason value
 	 * @return string Reply edit reason value
 	 */
-	function bbp_get_form_reply_edit_reason() {
+	function bb_get_form_reply_edit_reason() {
 
 		// Get _POST data
 		if ( bbp_is_post_request() && isset( $_POST['bbp_reply_edit_reason'] ) ) {

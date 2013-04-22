@@ -22,7 +22,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
  * @param bool $current_user_fallback Fallback on current user?
  * @uses bbp_get_user_id() To get the user id
  */
-function bbp_user_id( $user_id = 0, $displayed_user_fallback = true, $current_user_fallback = false ) {
+function bb_user_id( $user_id = 0, $displayed_user_fallback = true, $current_user_fallback = false ) {
 	echo bbp_get_user_id( $user_id, $displayed_user_fallback, $current_user_fallback );
 }
 	/**
@@ -37,7 +37,7 @@ function bbp_user_id( $user_id = 0, $displayed_user_fallback = true, $current_us
 	 * @uses apply_filters() Calls 'bbp_get_user_id' with the user id
 	 * @return int Validated user id
 	 */
-	function bbp_get_user_id( $user_id = 0, $displayed_user_fallback = true, $current_user_fallback = false ) {
+	function bb_get_user_id( $user_id = 0, $displayed_user_fallback = true, $current_user_fallback = false ) {
 		$bbp = bbpress();
 
 		// Easy empty checking
@@ -67,7 +67,7 @@ function bbp_user_id( $user_id = 0, $displayed_user_fallback = true, $current_us
  *
  * @uses bbp_get_current_user_id() To get the current user id
  */
-function bbp_current_user_id() {
+function bb_current_user_id() {
 	echo bbp_get_current_user_id();
 }
 	/**
@@ -79,7 +79,7 @@ function bbp_current_user_id() {
 	 * @uses apply_filters() Calls 'bbp_get_current_user_id' with the id
 	 * @return int Current user id
 	 */
-	function bbp_get_current_user_id() {
+	function bb_get_current_user_id() {
 		return apply_filters( 'bbp_get_current_user_id', bbp_get_user_id( 0, false, true ) );
 	}
 
@@ -90,7 +90,7 @@ function bbp_current_user_id() {
  *
  * @uses bbp_get_displayed_user_id() To get the displayed user id
  */
-function bbp_displayed_user_id() {
+function bb_displayed_user_id() {
 	echo bbp_get_displayed_user_id();
 }
 	/**
@@ -102,7 +102,7 @@ function bbp_displayed_user_id() {
 	 * @uses apply_filters() Calls 'bbp_get_displayed_user_id' with the id
 	 * @return int Displayed user id
 	 */
-	function bbp_get_displayed_user_id() {
+	function bb_get_displayed_user_id() {
 		return apply_filters( 'bbp_get_displayed_user_id', bbp_get_user_id( 0, true, false ) );
 	}
 
@@ -114,7 +114,7 @@ function bbp_displayed_user_id() {
  * @param string $field Field to get
  * @uses bbp_get_displayed_user_field() To get the field
  */
-function bbp_displayed_user_field( $field = '' ) {
+function bb_displayed_user_field( $field = '' ) {
 	echo bbp_get_displayed_user_field( $field );
 }
 	/**
@@ -128,7 +128,7 @@ function bbp_displayed_user_field( $field = '' ) {
 	 * @uses apply_filters() Calls 'bbp_get_displayed_user_field' with the value
 	 * @return string|bool Value of the field if it exists, else false
 	 */
-	function bbp_get_displayed_user_field( $field = '' ) {
+	function bb_get_displayed_user_field( $field = '' ) {
 		$bbp   = bbpress();
 		$value = false;
 
@@ -147,7 +147,7 @@ function bbp_displayed_user_field( $field = '' ) {
  *
  * @uses bbp_get_current_user_name() To get the current user name
  */
-function bbp_current_user_name() {
+function bb_current_user_name() {
 	echo bbp_get_current_user_name();
 }
 	/**
@@ -159,7 +159,7 @@ function bbp_current_user_name() {
 	 *                        current user name
 	 * @return string
 	 */
-	function bbp_get_current_user_name() {
+	function bb_get_current_user_name() {
 		global $user_identity;
 
 		$current_user_name = is_user_logged_in() ? $user_identity : __( 'Anonymous', 'bbpress' );
@@ -175,7 +175,7 @@ function bbp_current_user_name() {
  * @param int $size Size of the avatar. Defaults to 40
  * @uses bbp_get_current_user_avatar() To get the current user avatar
  */
-function bbp_current_user_avatar( $size = 40 ) {
+function bb_current_user_avatar( $size = 40 ) {
 	echo bbp_get_current_user_avatar( $size );
 }
 
@@ -193,7 +193,7 @@ function bbp_current_user_avatar( $size = 40 ) {
 	 *                        avatar and size
 	 * @return string Current user avatar
 	 */
-	function bbp_get_current_user_avatar( $size = 40 ) {
+	function bb_get_current_user_avatar( $size = 40 ) {
 
 		$user = bbp_get_current_user_id();
 		if ( empty( $user ) )
@@ -212,7 +212,7 @@ function bbp_current_user_avatar( $size = 40 ) {
  * @param int $user_id Optional. User id
  * @uses bbp_get_user_profile_link() To get user profile link
  */
-function bbp_user_profile_link( $user_id = 0 ) {
+function bb_user_profile_link( $user_id = 0 ) {
 	echo bbp_get_user_profile_link( $user_id );
 }
 	/**
@@ -228,7 +228,7 @@ function bbp_user_profile_link( $user_id = 0 ) {
 	 *                        profile link and user id
 	 * @return string User profile link
 	 */
-	function bbp_get_user_profile_link( $user_id = 0 ) {
+	function bb_get_user_profile_link( $user_id = 0 ) {
 
 		// Validate user id
 		$user_id = bbp_get_user_id( $user_id );
@@ -250,7 +250,7 @@ function bbp_user_profile_link( $user_id = 0 ) {
  * @param int $user_id User ID whose nicename to get
  * @param array $args before|after|user_id|force
  */
-function bbp_user_nicename( $user_id = 0, $args = array() ) {
+function bb_user_nicename( $user_id = 0, $args = array() ) {
 	echo bbp_get_user_nicename( $user_id, $args );
 }
 	/**
@@ -262,7 +262,7 @@ function bbp_user_nicename( $user_id = 0, $args = array() ) {
 	 * @param array $args before|after|user_id|force
 	 * @return string User nicename, maybe wrapped in before/after strings
 	 */
-	function bbp_get_user_nicename( $user_id = 0, $args = array() ) {
+	function bb_get_user_nicename( $user_id = 0, $args = array() ) {
 
 		// Bail if no user ID passed
 		$user_id = bbp_get_user_id( $user_id );
@@ -303,7 +303,7 @@ function bbp_user_nicename( $user_id = 0, $args = array() ) {
  * @param string $user_nicename Optional. User nicename
  * @uses bbp_get_user_profile_url() To get user profile url
  */
-function bbp_user_profile_url( $user_id = 0, $user_nicename = '' ) {
+function bb_user_profile_url( $user_id = 0, $user_nicename = '' ) {
 	echo bbp_get_user_profile_url( $user_id, $user_nicename );
 }
 	/**
@@ -322,7 +322,7 @@ function bbp_user_profile_url( $user_id = 0, $user_nicename = '' ) {
 	 *                        profile url, user id and user nicename
 	 * @return string User profile url
 	 */
-	function bbp_get_user_profile_url( $user_id = 0, $user_nicename = '' ) {
+	function bb_get_user_profile_url( $user_id = 0, $user_nicename = '' ) {
 		global $wp_rewrite;
 
 		// Use displayed user ID if there is one, and one isn't requested
@@ -363,7 +363,7 @@ function bbp_user_profile_url( $user_id = 0, $user_nicename = '' ) {
  * @param int $user_id Optional. User id
  * @uses bbp_get_user_profile_edit_link() To get user profile edit link
  */
-function bbp_user_profile_edit_link( $user_id = 0 ) {
+function bb_user_profile_edit_link( $user_id = 0 ) {
 	echo bbp_get_user_profile_edit_link( $user_id );
 }
 	/**
@@ -379,7 +379,7 @@ function bbp_user_profile_edit_link( $user_id = 0 ) {
 	 *                        link and user id
 	 * @return string User profile edit link
 	 */
-	function bbp_get_user_profile_edit_link( $user_id = 0 ) {
+	function bb_get_user_profile_edit_link( $user_id = 0 ) {
 
 		// Validate user id
 		$user_id = bbp_get_user_id( $user_id );
@@ -401,7 +401,7 @@ function bbp_user_profile_edit_link( $user_id = 0 ) {
  * @param string $user_nicename Optional. User nicename
  * @uses bbp_get_user_profile_edit_url() To get user profile edit url
  */
-function bbp_user_profile_edit_url( $user_id = 0, $user_nicename = '' ) {
+function bb_user_profile_edit_url( $user_id = 0, $user_nicename = '' ) {
 	echo bbp_get_user_profile_edit_url( $user_id, $user_nicename );
 }
 	/**
@@ -420,7 +420,7 @@ function bbp_user_profile_edit_url( $user_id = 0, $user_nicename = '' ) {
 	 *                        edit profile url, user id and user nicename
 	 * @return string
 	 */
-	function bbp_get_user_profile_edit_url( $user_id = 0, $user_nicename = '' ) {
+	function bb_get_user_profile_edit_url( $user_id = 0, $user_nicename = '' ) {
 		global $wp_rewrite;
 
 		$bbp     = bbpress();
@@ -460,7 +460,7 @@ function bbp_user_profile_edit_url( $user_id = 0, $user_nicename = '' ) {
  * @param int $user_id
  * @uses bbp_get_user_display_role To get the user display role
  */
-function bbp_user_display_role( $user_id = 0 ) {
+function bb_user_display_role( $user_id = 0 ) {
 	echo bbp_get_user_display_role( $user_id );
 }
 	/**
@@ -477,7 +477,7 @@ function bbp_user_display_role( $user_id = 0 ) {
 	 *                        display role, user id, and user role
 	 * @return string
 	 */
-	function bbp_get_user_display_role( $user_id = 0 ) {
+	function bb_get_user_display_role( $user_id = 0 ) {
 
 		// Validate user id
 		$user_id = bbp_get_user_id( $user_id );
@@ -512,7 +512,7 @@ function bbp_user_display_role( $user_id = 0 ) {
  * @param mixed $args Optional. See {@link bbp_get_admin_link()}
  * @uses bbp_get_admin_link() To get the admin link
  */
-function bbp_admin_link( $args = '' ) {
+function bb_admin_link( $args = '' ) {
 	echo bbp_get_admin_link( $args );
 }
 	/**
@@ -529,7 +529,7 @@ function bbp_admin_link( $args = '' ) {
 	 * @uses apply_filters() Calls 'bbp_get_admin_link' with the link & args
 	 * @return The link
 	 */
-	function bbp_get_admin_link( $args = '' ) {
+	function bb_get_admin_link( $args = '' ) {
 		if ( !current_user_can( 'moderate' ) )
 			return;
 
@@ -558,7 +558,7 @@ function bbp_admin_link( $args = '' ) {
  * @param mixed $args Optional. If it is an integer, it is used as post id.
  * @uses bbp_get_author_ip() To get the post author link
  */
-function bbp_author_ip( $args = '' ) {
+function bb_author_ip( $args = '' ) {
 	echo bbp_get_author_ip( $args );
 }
 	/**
@@ -570,7 +570,7 @@ function bbp_author_ip( $args = '' ) {
 	 * @uses get_post_meta() To check if it's a topic page
 	 * @return string Author link of reply
 	 */
-	function bbp_get_author_ip( $args = '' ) {
+	function bb_get_author_ip( $args = '' ) {
 
 		// Used as post id
 		$post_id = is_numeric( $args ) ? (int) $args : 0;
@@ -605,7 +605,7 @@ function bbp_author_ip( $args = '' ) {
  * @param int $user_id Optional. User id
  * @uses bbp_get_favorites_permalink() To get the favorites permalink
  */
-function bbp_favorites_permalink( $user_id = 0 ) {
+function bb_favorites_permalink( $user_id = 0 ) {
 	echo bbp_get_favorites_permalink( $user_id );
 }
 	/**
@@ -619,7 +619,7 @@ function bbp_favorites_permalink( $user_id = 0 ) {
 	 *                        user profile url and user id
 	 * @return string Permanent link to user profile page
 	 */
-	function bbp_get_favorites_permalink( $user_id = 0 ) {
+	function bb_get_favorites_permalink( $user_id = 0 ) {
 		global $wp_rewrite;
 
 		// Use displayed user ID if there is one, and one isn't requested
@@ -666,7 +666,7 @@ function bbp_favorites_permalink( $user_id = 0 ) {
  * @param bool $wrap Optional. If you want to wrap the link in <span id="favorite-toggle">.
  * @uses bbp_get_user_favorites_link() To get the user favorites link
  */
-function bbp_user_favorites_link( $args = array(), $user_id = 0, $wrap = true ) {
+function bb_user_favorites_link( $args = array(), $user_id = 0, $wrap = true ) {
 	echo bbp_get_user_favorites_link( $args, $user_id, $wrap );
 }
 	/**
@@ -698,7 +698,7 @@ function bbp_user_favorites_link( $args = array(), $user_id = 0, $wrap = true ) 
 	 *                        html, add args, remove args, user & topic id
 	 * @return string User favorites link
 	 */
-	function bbp_get_user_favorites_link( $args = '', $user_id = 0, $wrap = true ) {
+	function bb_get_user_favorites_link( $args = '', $user_id = 0, $wrap = true ) {
 		if ( !bbp_is_favorites_active() )
 			return false;
 
@@ -767,7 +767,7 @@ function bbp_user_favorites_link( $args = array(), $user_id = 0, $wrap = true ) 
  * @param int $user_id Optional. User id
  * @uses bbp_get_subscriptions_permalink() To get the subscriptions link
  */
-function bbp_subscriptions_permalink( $user_id = 0 ) {
+function bb_subscriptions_permalink( $user_id = 0 ) {
 	echo bbp_get_subscriptions_permalink( $user_id );
 }
 	/**
@@ -781,7 +781,7 @@ function bbp_subscriptions_permalink( $user_id = 0 ) {
 	 *                        the user profile url and user id
 	 * @return string Permanent link to user subscriptions page
 	 */
-	function bbp_get_subscriptions_permalink( $user_id = 0 ) {
+	function bb_get_subscriptions_permalink( $user_id = 0 ) {
 		global $wp_rewrite;
 
 		// Use displayed user ID if there is one, and one isn't requested
@@ -828,7 +828,7 @@ function bbp_subscriptions_permalink( $user_id = 0 ) {
  * @param bool $wrap Optional. If you want to wrap the link in <span id="subscription-toggle">.
  * @uses bbp_get_user_subscribe_link() To get the subscribe link
  */
-function bbp_user_subscribe_link( $args = '', $user_id = 0, $wrap = true ) {
+function bb_user_subscribe_link( $args = '', $user_id = 0, $wrap = true ) {
 	echo bbp_get_user_subscribe_link( $args, $user_id, $wrap );
 }
 	/**
@@ -856,7 +856,7 @@ function bbp_user_subscribe_link( $args = '', $user_id = 0, $wrap = true ) {
 	 *                        link, args, user id & topic id
 	 * @return string Permanent link to topic
 	 */
-	function bbp_get_user_subscribe_link( $args = '', $user_id = 0, $wrap = true ) {
+	function bb_get_user_subscribe_link( $args = '', $user_id = 0, $wrap = true ) {
 		if ( !bbp_is_subscriptions_active() )
 			return;
 
@@ -926,7 +926,7 @@ function bbp_user_subscribe_link( $args = '', $user_id = 0, $wrap = true ) {
  * @uses bbp_is_single_user() To check if it's the profile page
  * @uses bbp_is_single_user_edit() To check if it's the profile edit page
  */
-function bbp_notice_edit_user_success() {
+function bb_notice_edit_user_success() {
 	if ( isset( $_GET['updated'] ) && ( bbp_is_single_user() || bbp_is_single_user_edit() ) ) : ?>
 
 	<div class="bbp-template-notice updated">
@@ -951,7 +951,7 @@ function bbp_notice_edit_user_success() {
  * @uses bbp_is_user_home() To check if it's the user home
  * @uses bbp_is_user_home_edit() To check if it's the user home edit
  */
-function bbp_notice_edit_user_is_super_admin() {
+function bb_notice_edit_user_is_super_admin() {
 	if ( is_multisite() && ( bbp_is_single_user() || bbp_is_single_user_edit() ) && current_user_can( 'manage_network_options' ) && is_super_admin( bbp_get_displayed_user_id() ) ) : ?>
 
 	<div class="bbp-template-notice important">
@@ -966,7 +966,7 @@ function bbp_notice_edit_user_is_super_admin() {
  *
  * @since bbPress (r2688)
  */
-function bbp_edit_user_display_name() {
+function bb_edit_user_display_name() {
 	$bbp            = bbpress();
 	$public_display = array();
 	$public_display['display_username'] = $bbp->displayed_user->user_login;
@@ -1009,7 +1009,7 @@ function bbp_edit_user_display_name() {
  *
  * @since bbPress (r2688)
  */
-function bbp_edit_user_blog_role() {
+function bb_edit_user_blog_role() {
 
 	// Return if no user is being edited
 	if ( ! bbp_is_single_user_edit() )
@@ -1038,7 +1038,7 @@ function bbp_edit_user_blog_role() {
  *
  * @since bbPress (r4284)
  */
-function bbp_edit_user_forums_role() {
+function bb_edit_user_forums_role() {
 
 	// Return if no user is being edited
 	if ( ! bbp_is_single_user_edit() )
@@ -1077,7 +1077,7 @@ function bbp_edit_user_forums_role() {
  * @uses apply_filters() Calls 'bbp_edit_user_contact_methods' with the methods
  * @return string User contact methods
  */
-function bbp_edit_user_contact_methods() {
+function bb_edit_user_contact_methods() {
 
 	// Get the core WordPress contact methods
 	$contact_methods = _wp_get_user_contactmethods( bbpress()->displayed_user );
@@ -1095,7 +1095,7 @@ function bbp_edit_user_contact_methods() {
  * @param int $user_id Optional. User id
  * @uses bbp_get_favorites_permalink() To get the favorites permalink
  */
-function bbp_user_topics_created_url( $user_id = 0 ) {
+function bb_user_topics_created_url( $user_id = 0 ) {
 	echo bbp_get_user_topics_created_url( $user_id );
 }
 	/**
@@ -1109,7 +1109,7 @@ function bbp_user_topics_created_url( $user_id = 0 ) {
 	 *                        user profile url and user id
 	 * @return string Permanent link to user profile page
 	 */
-	function bbp_get_user_topics_created_url( $user_id = 0 ) {
+	function bb_get_user_topics_created_url( $user_id = 0 ) {
 		global $wp_rewrite;
 
 		// Use displayed user ID if there is one, and one isn't requested
@@ -1155,7 +1155,7 @@ function bbp_user_topics_created_url( $user_id = 0 ) {
  * @param int $user_id Optional. User id
  * @uses bbp_get_favorites_permalink() To get the favorites permalink
  */
-function bbp_user_replies_created_url( $user_id = 0 ) {
+function bb_user_replies_created_url( $user_id = 0 ) {
 	echo bbp_get_user_replies_created_url( $user_id );
 }
 	/**
@@ -1169,7 +1169,7 @@ function bbp_user_replies_created_url( $user_id = 0 ) {
 	 *                        user profile url and user id
 	 * @return string Permanent link to user profile page
 	 */
-	function bbp_get_user_replies_created_url( $user_id = 0 ) {
+	function bb_get_user_replies_created_url( $user_id = 0 ) {
 		global $wp_rewrite;
 
 		// Use displayed user ID if there is one, and one isn't requested
@@ -1214,7 +1214,7 @@ function bbp_user_replies_created_url( $user_id = 0 ) {
  *
  * @uses WP_Error bbPress::errors::add() To add an error or message
  */
-function bbp_login_notices() {
+function bb_login_notices() {
 
 	// loggedout was passed
 	if ( !empty( $_GET['loggedout'] ) && ( true == $_GET['loggedout'] ) ) {
@@ -1261,7 +1261,7 @@ function bbp_login_notices() {
  * @uses bbp_get_user_profile_url() To get the profile url of the user
  * @uses bbp_get_current_user_id() To get the current user id
  */
-function bbp_logged_in_redirect( $url = '' ) {
+function bb_logged_in_redirect( $url = '' ) {
 
 	// Bail if user is not logged in
 	if ( !is_user_logged_in() )
@@ -1284,7 +1284,7 @@ function bbp_logged_in_redirect( $url = '' ) {
  * @uses bbp_redirect_to_field() To output the hidden request url field
  * @uses wp_nonce_field() To generate hidden nonce fields
  */
-function bbp_user_login_fields() {
+function bb_user_login_fields() {
 ?>
 
 		<input type="hidden" name="user-cookie" value="1" />
@@ -1312,7 +1312,7 @@ function bbp_user_login_fields() {
  * @uses bbp_redirect_to_field() To output the redirect to field
  * @uses wp_nonce_field() To generate hidden nonce fields
  */
-function bbp_user_register_fields() {
+function bb_user_register_fields() {
 ?>
 
 		<input type="hidden" name="action"      value="register" />
@@ -1339,7 +1339,7 @@ function bbp_user_register_fields() {
  * @uses wp_referer_field() Set referer
  * @uses wp_nonce_field() To generate hidden nonce fields
  */
-function bbp_user_lost_pass_fields() {
+function bb_user_lost_pass_fields() {
 ?>
 
 		<input type="hidden" name="user-cookie" value="1" />
@@ -1364,7 +1364,7 @@ function bbp_user_lost_pass_fields() {
  * @param mixed $args Optional. If it is an integer, it is used as post id.
  * @uses bbp_get_author_link() To get the post author link
  */
-function bbp_author_link( $args = '' ) {
+function bb_author_link( $args = '' ) {
 	echo bbp_get_author_link( $args );
 }
 	/**
@@ -1387,7 +1387,7 @@ function bbp_author_link( $args = '' ) {
 	 *                        author link and args
 	 * @return string Author link of reply
 	 */
-	function bbp_get_author_link( $args = '' ) {
+	function bb_get_author_link( $args = '' ) {
 
 		$post_id = is_numeric( $args ) ? (int) $args : 0;
 
@@ -1476,7 +1476,7 @@ function bbp_author_link( $args = '' ) {
  *
  * @return bool
  */
-function bbp_user_can_view_forum( $args = '' ) {
+function bb_user_can_view_forum( $args = '' ) {
 
 	// Parse arguments against default values
 	$r = bbp_parse_args( $args, array(
@@ -1524,7 +1524,7 @@ function bbp_user_can_view_forum( $args = '' ) {
  *
  * @return bool
  */
-function bbp_current_user_can_publish_topics() {
+function bb_current_user_can_publish_topics() {
 
 	// Users need to earn access
 	$retval = false;
@@ -1558,7 +1558,7 @@ function bbp_current_user_can_publish_topics() {
  *
  * @return bool
  */
-function bbp_current_user_can_publish_forums() {
+function bb_current_user_can_publish_forums() {
 
 	// Users need to earn access
 	$retval = false;
@@ -1590,7 +1590,7 @@ function bbp_current_user_can_publish_forums() {
  *
  * @return bool
  */
-function bbp_current_user_can_publish_replies() {
+function bb_current_user_can_publish_replies() {
 
 	// Users need to earn access
 	$retval = false;
@@ -1631,7 +1631,7 @@ function bbp_current_user_can_publish_replies() {
  * @param type $args
  * @return type
  */
-function bbp_get_forums_for_current_user( $args = array() ) {
+function bb_get_forums_for_current_user( $args = array() ) {
 
 	// Setup arrays
 	$private = $hidden = $post__not_in = array();
@@ -1681,7 +1681,7 @@ function bbp_get_forums_for_current_user( $args = array() ) {
  *
  * @return bool
  */
-function bbp_current_user_can_access_create_forum_form() {
+function bb_current_user_can_access_create_forum_form() {
 
 	// Users need to earn access
 	$retval = false;
@@ -1717,7 +1717,7 @@ function bbp_current_user_can_access_create_forum_form() {
  *
  * @return bool
  */
-function bbp_current_user_can_access_create_topic_form() {
+function bb_current_user_can_access_create_topic_form() {
 
 	// Users need to earn access
 	$retval = false;
@@ -1753,7 +1753,7 @@ function bbp_current_user_can_access_create_topic_form() {
  *
  * @return bool
  */
-function bbp_current_user_can_access_create_reply_form() {
+function bb_current_user_can_access_create_reply_form() {
 
 	// Users need to earn access
 	$retval = false;

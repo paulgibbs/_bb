@@ -131,7 +131,7 @@ new BBP_Skip_Children();
  * @uses do_action() Calls 'bbp_clean_post_cache' on $id
  * @param object|int $_post The post object or ID to remove from the cache
  */
-function bbp_clean_post_cache( $_post = '' ) {
+function bb_clean_post_cache( $_post = '' ) {
 
 	// Bail if no post
 	$_post = get_post( $_post );

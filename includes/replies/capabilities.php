@@ -17,7 +17,7 @@
  * @uses apply_filters() Calls 'bbp_get_reply_caps' with the capabilities
  * @return array Reply capabilities
  */
-function bbp_get_reply_caps() {
+function bb_get_reply_caps() {
 	return apply_filters( 'bbp_get_reply_caps', array (
 		'edit_posts'          => 'edit_replies',
 		'edit_others_posts'   => 'edit_others_replies',
@@ -42,7 +42,7 @@ function bbp_get_reply_caps() {
  * @uses apply_filters() Filter mapped results
  * @return array Actual capabilities for meta capability
  */
-function bbp_map_reply_meta_caps( $caps = array(), $cap = '', $user_id = 0, $args = array() ) {
+function bb_map_reply_meta_caps( $caps = array(), $cap = '', $user_id = 0, $args = array() ) {
 
 	// What capability is being checked?
 	switch ( $cap ) {

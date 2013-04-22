@@ -32,7 +32,7 @@
  *                    below the discussion table
  * @uses do_action() Calls 'bbp_dashboard_widget_right_now_end' below the widget
  */
-function bbp_dashboard_widget_right_now() {
+function bb_dashboard_widget_right_now() {
 
 	// Get the statistics
 	$r = bbp_get_statistics(); ?>
@@ -246,7 +246,7 @@ function bbp_dashboard_widget_right_now() {
  * @uses bbp_dropdown() To show a dropdown of the forums for forum parent
  * @uses do_action() Calls 'bbp_forum_metabox'
  */
-function bbp_forum_metabox() {
+function bb_forum_metabox() {
 
 	// Post ID
 	$post_id     = get_the_ID();
@@ -341,7 +341,7 @@ function bbp_forum_metabox() {
  * @uses bbp_get_topic_forum_id() To get the topic forum id
  * @uses do_action() Calls 'bbp_topic_metabox'
  */
-function bbp_topic_metabox() {
+function bb_topic_metabox() {
 
 	// Post ID
 	$post_id = get_the_ID(); ?>
@@ -392,7 +392,7 @@ function bbp_topic_metabox() {
  * @uses bbp_get_topic_post_type() To get the topic post type
  * @uses do_action() Calls 'bbp_reply_metabox'
  */
-function bbp_reply_metabox() {
+function bb_reply_metabox() {
 
 	// Post ID
 	$post_id = get_the_ID();
@@ -452,7 +452,7 @@ function bbp_reply_metabox() {
  * @uses get_the_ID() To get the global post ID
  * @uses get_post_meta() To get the author user information
  */
-function bbp_author_metabox() {
+function bb_author_metabox() {
 
 	// Post ID
 	$post_id = get_the_ID();

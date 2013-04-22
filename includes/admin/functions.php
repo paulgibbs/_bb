@@ -17,7 +17,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
  *
  * @since bbPress (r2957)
  */
-function bbp_admin_separator() {
+function bb_admin_separator() {
 
 	// Caps necessary where a separator is necessary
 	$caps = array(
@@ -52,7 +52,7 @@ function bbp_admin_separator() {
  * @param bool $menu_order Menu order
  * @return mixed True if separator, false if not
  */
-function bbp_admin_custom_menu_order( $menu_order = false ) {
+function bb_admin_custom_menu_order( $menu_order = false ) {
 	if ( false === bbpress()->admin->show_separator )
 		return $menu_order;
 
@@ -68,7 +68,7 @@ function bbp_admin_custom_menu_order( $menu_order = false ) {
  * @uses bbp_get_forum_post_type() To get the forum post type
  * @return array Modified menu order
  */
-function bbp_admin_menu_order( $menu_order ) {
+function bb_admin_menu_order( $menu_order ) {
 
 	// Bail if user cannot see any top level bbPress menus
 	if ( empty( $menu_order ) || ( false === bbpress()->admin->show_separator ) )
@@ -127,7 +127,7 @@ function bbp_admin_menu_order( $menu_order ) {
  *
  * @return string The custom post type permalink
  */
-function bbp_filter_sample_permalink( $post_link, $_post, $leavename = false, $sample = false ) {
+function bb_filter_sample_permalink( $post_link, $_post, $leavename = false, $sample = false ) {
 
 	// Bail if not on an admin page and not getting a sample permalink
 	if ( !empty( $sample ) && is_admin() && bbp_is_custom_post_type() )
@@ -143,7 +143,7 @@ function bbp_filter_sample_permalink( $post_link, $_post, $leavename = false, $s
  * @since bbPress (r3765)
  * @param type $site_id
  */
-function bbp_do_uninstall( $site_id = 0 ) {
+function bb_do_uninstall( $site_id = 0 ) {
 	if ( empty( $site_id ) )
 		$site_id = get_current_blog_id();
 
@@ -170,7 +170,7 @@ function bbp_do_uninstall( $site_id = 0 ) {
  *
  * @return If no transient, or in network admin, or is bulk activation
  */
-function bbp_do_activation_redirect() {
+function bb_do_activation_redirect() {
 
 	// Bail if no activation redirect
     if ( ! get_transient( '_bbp_activation_redirect' ) )
@@ -198,7 +198,7 @@ function bbp_do_activation_redirect() {
  * @global string $plugin_page
  * @global array $submenu_file
  */
-function bbp_tools_modify_menu_highlight() {
+function bb_tools_modify_menu_highlight() {
 	global $plugin_page, $submenu_file;
 
 	// This tweaks the Tools subnav menu to only show one bbPress menu item
@@ -212,7 +212,7 @@ function bbp_tools_modify_menu_highlight() {
  * @since bbPress (r3872)
  * @param string $active_tab Name of the tab that is active
  */
-function bbp_tools_admin_tabs( $active_tab = '' ) {
+function bb_tools_admin_tabs( $active_tab = '' ) {
 	echo bbp_get_tools_admin_tabs( $active_tab );
 }
 
@@ -222,7 +222,7 @@ function bbp_tools_admin_tabs( $active_tab = '' ) {
 	 * @since bbPress (r3872)
 	 * @param string $active_tab Name of the tab that is active
 	 */
-	function bbp_get_tools_admin_tabs( $active_tab = '' ) {
+	function bb_get_tools_admin_tabs( $active_tab = '' ) {
 
 		// Declare local variables
 		$tabs_html    = '';

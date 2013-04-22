@@ -1701,7 +1701,7 @@ endif; // class_exists check
  *
  * @uses BBP_Admin
  */
-function bbp_admin() {
+function bb_admin() {
 	bbpress()->admin = new BBP_Admin();
 
 	bbpress()->admin->converter = new BBP_Converter();

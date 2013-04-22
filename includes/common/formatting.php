@@ -21,7 +21,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
  *
  * @return array Associative array of allowed tags and attributes
  */
-function bbp_kses_allowed_tags() {
+function bb_kses_allowed_tags() {
 	return apply_filters( 'bbp_kses_allowed_tags', array(
 
 		// Links
@@ -73,7 +73,7 @@ function bbp_kses_allowed_tags() {
  * @param string $data Content to filter, expected to be escaped with slashes
  * @return string Filtered content
  */
-function bbp_filter_kses( $data = '' ) {
+function bb_filter_kses( $data = '' ) {
 	return addslashes( wp_kses( stripslashes( $data ), bbp_kses_allowed_tags() ) );
 }
 
@@ -85,7 +85,7 @@ function bbp_filter_kses( $data = '' ) {
  * @param string $data Content to filter, expected to not be escaped
  * @return string Filtered content
  */
-function bbp_kses_data( $data = '' ) {
+function bb_kses_data( $data = '' ) {
 	return wp_kses( $data , bbp_kses_allowed_tags() );
 }
 
@@ -99,7 +99,7 @@ function bbp_kses_data( $data = '' ) {
  * @param string $content Topic and reply content
  * @return string Partially encodedd content
  */
-function bbp_code_trick( $content = '' ) {
+function bb_code_trick( $content = '' ) {
 	$content = str_replace( array( "\r\n", "\r" ), "\n", $content );
 	$content = preg_replace_callback( "|(`)(.*?)`|",      'bbp_encode_callback', $content );
 	$content = preg_replace_callback( "!(^|\n)`(.*?)`!s", 'bbp_encode_callback', $content );
@@ -116,7 +116,7 @@ function bbp_code_trick( $content = '' ) {
  * @param string $content Topic and reply content
  * @return string Partially encodedd content
  */
-function bbp_code_trick_reverse( $content = '' ) {
+function bb_code_trick_reverse( $content = '' ) {
 
 	// Setup variables
 	$openers = array( '<p>', '<br />' );
@@ -140,7 +140,7 @@ function bbp_code_trick_reverse( $content = '' ) {
  * @param string $content Topic and reply content
  * @return string Partially encodedd content
  */
-function bbp_encode_bad( $content = '' ) {
+function bb_encode_bad( $content = '' ) {
 
 	// Setup variables
 	$content = _wp_specialchars( $content, ENT_NOQUOTES );
@@ -187,7 +187,7 @@ function bbp_encode_bad( $content = '' ) {
  * @param array $matches
  * @return string
  */
-function bbp_encode_callback( $matches = array() ) {
+function bb_encode_callback( $matches = array() ) {
 	$content = trim( $matches[2] );
 	$content = htmlspecialchars( $content, ENT_QUOTES );
 	$content = str_replace( array( "\r\n", "\r" ), "\n", $content );
@@ -211,7 +211,7 @@ function bbp_encode_callback( $matches = array() ) {
  * @param array $matches
  * @return string
  */
-function bbp_decode_callback( $matches = array() ) {
+function bb_decode_callback( $matches = array() ) {
 
 	// Setup variables
 	$trans_table = array_flip( get_html_translation_table( HTML_ENTITIES ) );
@@ -240,7 +240,7 @@ function bbp_decode_callback( $matches = array() ) {
  * @param string $key Not used
  * @param string $preg
  */
-function bbp_encode_empty_callback( &$content = '', $key = '', $preg = '' ) {
+function bb_encode_empty_callback( &$content = '', $key = '', $preg = '' ) {
 	if ( strpos( $content, '`' ) !== 0 ) {
 		$content = preg_replace( "|&lt;({$preg})\s*?/*?&gt;|i", '<$1 />', $content );
 	}
@@ -256,7 +256,7 @@ function bbp_encode_empty_callback( &$content = '', $key = '', $preg = '' ) {
  * @param type $key
  * @param type $preg
  */
-function bbp_encode_normal_callback( &$content = '', $key = '', $preg = '') {
+function bb_encode_normal_callback( &$content = '', $key = '', $preg = '') {
 	if ( strpos( $content, '`' ) !== 0 ) {
 		$content = preg_replace( "|&lt;(/?{$preg})&gt;|i", '<$1>', $content );
 	}

@@ -24,7 +24,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
  * @uses screen_icon() To display the screen icon
  * @uses wp_nonce_field() To add a hidden nonce field
  */
-function bbp_admin_repair() {
+function bb_admin_repair() {
 ?>
 
 	<div class="wrap">
@@ -77,7 +77,7 @@ function bbp_admin_repair() {
  * @uses wp_cache_flush() To flush the cache
  * @uses do_action() Calls 'admin_notices' to display the notices
  */
-function bbp_admin_repair_handler() {
+function bb_admin_repair_handler() {
 
 	if ( ! bbp_is_post_request() )
 		return;
@@ -113,7 +113,7 @@ function bbp_admin_repair_handler() {
  * @uses add_action() Adds the admin notice action with the message HTML
  * @return string The message HTML
  */
-function bbp_admin_tools_feedback( $message, $class = false ) {
+function bb_admin_tools_feedback( $message, $class = false ) {
 	if ( is_string( $message ) ) {
 		$message = '<p>' . $message . '</p>';
 		$class = $class ? $class : 'updated';
@@ -156,7 +156,7 @@ function bbp_admin_tools_feedback( $message, $class = false ) {
  * @uses apply_filters() Calls 'bbp_repair_list' with the list array
  * @return array Repair list of options
  */
-function bbp_admin_repair_list() {
+function bb_admin_repair_list() {
 	$repair_list = array(
 		0  => array( 'bbp-sync-topic-meta',        __( 'Recalculate the parent topic for each post',        'bbpress' ), 'bbp_admin_repair_topic_meta'               ),
 		5  => array( 'bbp-sync-forum-meta',        __( 'Recalculate the parent forum for each post',        'bbpress' ), 'bbp_admin_repair_forum_meta'               ),
@@ -190,7 +190,7 @@ function bbp_admin_repair_list() {
  * @uses is_wp_error() To check if the executed query returned {@link WP_Error}
  * @return array An array of the status code and the message
  */
-function bbp_admin_repair_topic_reply_count() {
+function bb_admin_repair_topic_reply_count() {
 	global $wpdb;
 
 	$statement = __( 'Counting the number of replies in each topic&hellip; %s', 'bbpress' );
@@ -233,7 +233,7 @@ function bbp_admin_repair_topic_reply_count() {
  * @uses is_wp_error() To check if the executed query returned {@link WP_Error}
  * @return array An array of the status code and the message
  */
-function bbp_admin_repair_topic_voice_count() {
+function bb_admin_repair_topic_voice_count() {
 	global $wpdb;
 
 	$statement = __( 'Counting the number of voices in each topic&hellip; %s', 'bbpress' );
@@ -275,7 +275,7 @@ function bbp_admin_repair_topic_voice_count() {
  * @uses is_wp_error() To check if the executed query returned {@link WP_Error}
  * @return array An array of the status code and the message
  */
-function bbp_admin_repair_topic_hidden_reply_count() {
+function bb_admin_repair_topic_hidden_reply_count() {
 	global $wpdb;
 
 	$statement = __( 'Counting the number of spammed and trashed replies in each topic&hellip; %s', 'bbpress' );
@@ -300,7 +300,7 @@ function bbp_admin_repair_topic_hidden_reply_count() {
  * @global WPDB $wpdb
  * @return If a wp_error() occurs and no converted forums are found
  */
-function bbp_admin_repair_group_forum_relationship() {
+function bb_admin_repair_group_forum_relationship() {
 	global $wpdb;
 
 	$statement = __( 'Repairing BuddyPress group-forum relationships&hellip; %s', 'bbpress' );
@@ -437,7 +437,7 @@ function bbp_admin_repair_group_forum_relationship() {
  * @uses bbp_update_forum_topic_count() To update the forum topic count
  * @return array An array of the status code and the message
  */
-function bbp_admin_repair_forum_topic_count() {
+function bb_admin_repair_forum_topic_count() {
 	global $wpdb;
 
 	$statement = __( 'Counting the number of topics in each forum&hellip; %s', 'bbpress' );
@@ -471,7 +471,7 @@ function bbp_admin_repair_forum_topic_count() {
  * @uses bbp_update_forum_reply_count() To update the forum reply count
  * @return array An array of the status code and the message
  */
-function bbp_admin_repair_forum_reply_count() {
+function bb_admin_repair_forum_reply_count() {
 	global $wpdb;
 
 	$statement = __( 'Counting the number of replies in each forum&hellip; %s', 'bbpress' );
@@ -503,7 +503,7 @@ function bbp_admin_repair_forum_reply_count() {
  * @uses is_wp_error() To check if the executed query returned {@link WP_Error}
  * @return array An array of the status code and the message
  */
-function bbp_admin_repair_user_topic_count() {
+function bb_admin_repair_user_topic_count() {
 	global $wpdb;
 
 	$statement   = __( 'Counting the number of topics each user has created&hellip; %s', 'bbpress' );
@@ -548,7 +548,7 @@ function bbp_admin_repair_user_topic_count() {
  * @uses is_wp_error() To check if the executed query returned {@link WP_Error}
  * @return array An array of the status code and the message
  */
-function bbp_admin_repair_user_reply_count() {
+function bb_admin_repair_user_reply_count() {
 	global $wpdb;
 
 	$statement   = __( 'Counting the number of topics to which each user has replied&hellip; %s', 'bbpress' );
@@ -593,7 +593,7 @@ function bbp_admin_repair_user_reply_count() {
  * @uses is_wp_error() To check if the executed query returned {@link WP_Error}
  * @return array An array of the status code and the message
  */
-function bbp_admin_repair_user_favorites() {
+function bb_admin_repair_user_favorites() {
 	global $wpdb;
 
 	$statement = __( 'Removing trashed topics from user favorites&hellip; %s', 'bbpress' );
@@ -655,7 +655,7 @@ function bbp_admin_repair_user_favorites() {
  * @uses is_wp_error() To check if the executed query returned {@link WP_Error}
  * @return array An array of the status code and the message
  */
-function bbp_admin_repair_user_subscriptions() {
+function bb_admin_repair_user_subscriptions() {
 	global $wpdb;
 
 	$statement = __( 'Removing trashed topics from user subscriptions&hellip; %s', 'bbpress' );
@@ -718,7 +718,7 @@ function bbp_admin_repair_user_subscriptions() {
  * @uses get_users() To get the users of each role (limited to ID field)
  * @uses bbp_set_user_role() To set each user's forums role
  */
-function bbp_admin_repair_user_roles() {
+function bb_admin_repair_user_roles() {
 
 	$statement    = __( 'Remapping forum role for each user on this site&hellip; %s', 'bbpress' );
 	$changed      = 0;
@@ -771,7 +771,7 @@ function bbp_admin_repair_user_roles() {
  * @uses is_wp_error() To check if the executed query returned {@link WP_Error}
  * @return array An array of the status code and the message
  */
-function bbp_admin_repair_freshness() {
+function bb_admin_repair_freshness() {
 	global $wpdb;
 
 	$statement = __( 'Recomputing latest post in every topic and forum&hellip; %s', 'bbpress' );
@@ -877,7 +877,7 @@ function bbp_admin_repair_freshness() {
  * @uses is_wp_error() To check if the executed query returned {@link WP_Error}
  * @return array An array of the status code and the message
  */
-function bbp_admin_repair_sticky() {
+function bb_admin_repair_sticky() {
 	global $wpdb;
 
 	$statement = __( 'Repairing the sticky topic to the parent forum relationships&hellip; %s', 'bbpress' );
@@ -936,7 +936,7 @@ function bbp_admin_repair_sticky() {
  * @uses update_option() To update the private and hidden post ID pointers
  * @return array An array of the status code and the message
  */
-function bbp_admin_repair_forum_visibility() {
+function bb_admin_repair_forum_visibility() {
 
 	$statement = __( 'Recalculating forum visibility &hellip; %s', 'bbpress' );
 	$result    = __( 'Failed!', 'bbpress' );
@@ -984,7 +984,7 @@ function bbp_admin_repair_forum_visibility() {
  * @uses is_wp_error() To check if the executed query returned {@link WP_Error}
  * @return array An array of the status code and the message
  */
-function bbp_admin_repair_forum_meta() {
+function bb_admin_repair_forum_meta() {
 	global $wpdb;
 
 	$statement = __( 'Recalculating the forum for each post &hellip; %s', 'bbpress' );
@@ -1038,7 +1038,7 @@ function bbp_admin_repair_forum_meta() {
  * @uses is_wp_error() To check if the executed query returned {@link WP_Error}
  * @return array An array of the status code and the message
  */
-function bbp_admin_repair_topic_meta() {
+function bb_admin_repair_topic_meta() {
 	global $wpdb;
 
 	$statement = __( 'Recalculating the topic for each post &hellip; %s', 'bbpress' );
@@ -1086,7 +1086,7 @@ function bbp_admin_repair_topic_meta() {
  * @uses screen_icon() To display the screen icon
  * @uses wp_nonce_field() To add a hidden nonce field
  */
-function bbp_admin_reset() {
+function bb_admin_reset() {
 ?>
 
 	<div class="wrap">
@@ -1143,7 +1143,7 @@ function bbp_admin_reset() {
  * @uses check_admin_referer() To verify the nonce and the referer
  * @uses wp_cache_flush() To flush the cache
  */
-function bbp_admin_reset_handler() {
+function bb_admin_reset_handler() {
 
 	// Bail if not resetting
 	if ( ! bbp_is_post_request() || empty( $_POST['bbpress-are-you-sure'] ) )

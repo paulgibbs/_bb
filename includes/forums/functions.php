@@ -26,7 +26,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
  * @param array $forum_data Forum post data
  * @param arrap $forum_meta Forum meta data
  */
-function bbp_insert_forum( $forum_data = array(), $forum_meta = array() ) {
+function bb_insert_forum( $forum_data = array(), $forum_meta = array() ) {
 
 	// Forum
 	$default_forum = array(
@@ -107,7 +107,7 @@ function bbp_insert_forum( $forum_data = array(), $forum_meta = array() ) {
  * @uses bbPress::errors::get_error_messages() To get the {@link WP_Error} error
  *                                              messages
  */
-function bbp_new_forum_handler( $action = '' ) {
+function bb_new_forum_handler( $action = '' ) {
 
 	// Bail if action is not bbp-new-forum
 	if ( 'bbp-new-forum' !== $action )
@@ -365,7 +365,7 @@ function bbp_new_forum_handler( $action = '' ) {
  * @uses bbPress::errors::get_error_messages() To get the {@link WP_Error} error
  *                                              messages
  */
-function bbp_edit_forum_handler( $action = '' ) {
+function bb_edit_forum_handler( $action = '' ) {
 
 	// Bail if action is not bbp-edit-forum
 	if ( 'bbp-edit-forum' !== $action )
@@ -599,7 +599,7 @@ function bbp_edit_forum_handler( $action = '' ) {
  * @uses bbp_publicize_forum() To make a forum public
  * @return If forum ID is empty
  */
-function bbp_save_forum_extras( $forum_id = 0 ) {
+function bb_save_forum_extras( $forum_id = 0 ) {
 
 	// Validate the forum ID
 	$forum_id = bbp_get_forum_id( $forum_id );
@@ -670,7 +670,7 @@ function bbp_save_forum_extras( $forum_id = 0 ) {
  * @uses do_action() Calls 'bbp_opened_forum' with the forum id
  * @return mixed False or {@link WP_Error} on failure, forum id on success
  */
-function bbp_close_forum( $forum_id = 0 ) {
+function bb_close_forum( $forum_id = 0 ) {
 
 	$forum_id = bbp_get_forum_id( $forum_id );
 
@@ -695,7 +695,7 @@ function bbp_close_forum( $forum_id = 0 ) {
  * @uses do_action() Calls 'bbp_opened_forum' with the forum id
  * @return mixed False or {@link WP_Error} on failure, forum id on success
  */
-function bbp_open_forum( $forum_id = 0 ) {
+function bb_open_forum( $forum_id = 0 ) {
 
 	$forum_id = bbp_get_forum_id( $forum_id );
 
@@ -717,7 +717,7 @@ function bbp_open_forum( $forum_id = 0 ) {
  * @uses update_post_meta() To update the forum category meta
  * @return bool False on failure, true on success
  */
-function bbp_categorize_forum( $forum_id = 0 ) {
+function bb_categorize_forum( $forum_id = 0 ) {
 
 	$forum_id = bbp_get_forum_id( $forum_id );
 
@@ -739,7 +739,7 @@ function bbp_categorize_forum( $forum_id = 0 ) {
  * @uses delete_post_meta() To delete the forum category meta
  * @return bool False on failure, true on success
  */
-function bbp_normalize_forum( $forum_id = 0 ) {
+function bb_normalize_forum( $forum_id = 0 ) {
 
 	$forum_id = bbp_get_forum_id( $forum_id );
 
@@ -761,7 +761,7 @@ function bbp_normalize_forum( $forum_id = 0 ) {
  * @uses update_post_meta() To update the forum private meta
  * @return bool False on failure, true on success
  */
-function bbp_publicize_forum( $forum_id = 0, $current_visibility = '' ) {
+function bb_publicize_forum( $forum_id = 0, $current_visibility = '' ) {
 
 	$forum_id = bbp_get_forum_id( $forum_id );
 
@@ -820,7 +820,7 @@ function bbp_publicize_forum( $forum_id = 0, $current_visibility = '' ) {
  * @uses update_post_meta() To update the forum private meta
  * @return bool False on failure, true on success
  */
-function bbp_privatize_forum( $forum_id = 0, $current_visibility = '' ) {
+function bb_privatize_forum( $forum_id = 0, $current_visibility = '' ) {
 
 	$forum_id = bbp_get_forum_id( $forum_id );
 
@@ -869,7 +869,7 @@ function bbp_privatize_forum( $forum_id = 0, $current_visibility = '' ) {
  * @uses update_post_meta() To update the forum private meta
  * @return bool False on failure, true on success
  */
-function bbp_hide_forum( $forum_id = 0, $current_visibility = '' ) {
+function bb_hide_forum( $forum_id = 0, $current_visibility = '' ) {
 
 	$forum_id = bbp_get_forum_id( $forum_id );
 
@@ -925,7 +925,7 @@ function bbp_hide_forum( $forum_id = 0, $current_visibility = '' ) {
  *                        count, forum id, and difference
  * @return int Forum topic count
  */
-function bbp_bump_forum_topic_count( $forum_id = 0, $difference = 1, $update_ancestors = true ) {
+function bb_bump_forum_topic_count( $forum_id = 0, $difference = 1, $update_ancestors = true ) {
 
 	// Get some counts
 	$forum_id          = bbp_get_forum_id( $forum_id );
@@ -974,7 +974,7 @@ function bbp_bump_forum_topic_count( $forum_id = 0, $difference = 1, $update_anc
  *                        topic count, forum id, and difference
  * @return int Forum hidden topic count
  */
-function bbp_bump_forum_topic_count_hidden( $forum_id = 0, $difference = 1 ) {
+function bb_bump_forum_topic_count_hidden( $forum_id = 0, $difference = 1 ) {
 
 	// Get some counts
 	$forum_id    = bbp_get_forum_id( $forum_id );
@@ -1001,7 +1001,7 @@ function bbp_bump_forum_topic_count_hidden( $forum_id = 0, $difference = 1 ) {
  *                        count, forum id, and difference
  * @return int Forum topic count
  */
-function bbp_bump_forum_reply_count( $forum_id = 0, $difference = 1, $update_ancestors = true ) {
+function bb_bump_forum_reply_count( $forum_id = 0, $difference = 1, $update_ancestors = true ) {
 
 	// Get some counts
 	$forum_id          = bbp_get_forum_id( $forum_id );
@@ -1056,7 +1056,7 @@ function bbp_bump_forum_reply_count( $forum_id = 0, $difference = 1, $update_anc
  *                        reply id and forum id
  * @return bool True on success, false on failure
  */
-function bbp_update_forum_last_topic_id( $forum_id = 0, $topic_id = 0 ) {
+function bb_update_forum_last_topic_id( $forum_id = 0, $topic_id = 0 ) {
 	$forum_id = bbp_get_forum_id( $forum_id );
 
 	// Define local variable(s)
@@ -1123,7 +1123,7 @@ function bbp_update_forum_last_topic_id( $forum_id = 0, $topic_id = 0 ) {
  *                        reply id and forum id
  * @return bool True on success, false on failure
  */
-function bbp_update_forum_last_reply_id( $forum_id = 0, $reply_id = 0 ) {
+function bb_update_forum_last_reply_id( $forum_id = 0, $reply_id = 0 ) {
 	$forum_id = bbp_get_forum_id( $forum_id );
 
 	// Define local variable(s)
@@ -1186,7 +1186,7 @@ function bbp_update_forum_last_reply_id( $forum_id = 0, $reply_id = 0 ) {
  *                        active post id and forum id
  * @return bool True on success, false on failure
  */
-function bbp_update_forum_last_active_id( $forum_id = 0, $active_id = 0 ) {
+function bb_update_forum_last_active_id( $forum_id = 0, $active_id = 0 ) {
 
 	$forum_id = bbp_get_forum_id( $forum_id );
 
@@ -1246,7 +1246,7 @@ function bbp_update_forum_last_active_id( $forum_id = 0, $active_id = 0 ) {
  *                        and forum id
  * @return bool True on success, false on failure
  */
-function bbp_update_forum_last_active_time( $forum_id = 0, $new_time = '' ) {
+function bb_update_forum_last_active_time( $forum_id = 0, $new_time = '' ) {
 	$forum_id = bbp_get_forum_id( $forum_id );
 
 	// Check time and use current if empty
@@ -1269,7 +1269,7 @@ function bbp_update_forum_last_active_time( $forum_id = 0, $new_time = '' ) {
  * @uses bbp_get_forum_id() To get the forum id
  * @return bool True on success, false on failure
  */
-function bbp_update_forum_subforum_count( $forum_id = 0, $subforums = 0 ) {
+function bb_update_forum_subforum_count( $forum_id = 0, $subforums = 0 ) {
 	$forum_id = bbp_get_forum_id( $forum_id );
 
 	if ( empty( $subforums ) )
@@ -1299,7 +1299,7 @@ function bbp_update_forum_subforum_count( $forum_id = 0, $subforums = 0 ) {
  *                        count and forum id
  * @return int Forum topic count
  */
-function bbp_update_forum_topic_count( $forum_id = 0 ) {
+function bb_update_forum_topic_count( $forum_id = 0 ) {
 	$forum_id = bbp_get_forum_id( $forum_id );
 	$children_topic_count = 0;
 
@@ -1342,7 +1342,7 @@ function bbp_update_forum_topic_count( $forum_id = 0 ) {
  *                        hidden topic count and forum id
  * @return int Topic hidden topic count
  */
-function bbp_update_forum_topic_count_hidden( $forum_id = 0, $topic_count = 0 ) {
+function bb_update_forum_topic_count_hidden( $forum_id = 0, $topic_count = 0 ) {
 	global $wpdb;
 
 	// If topic_id was passed as $forum_id, then get its forum
@@ -1390,7 +1390,7 @@ function bbp_update_forum_topic_count_hidden( $forum_id = 0, $topic_count = 0 ) 
  *                        count and forum id
  * @return int Forum reply count
  */
-function bbp_update_forum_reply_count( $forum_id = 0 ) {
+function bb_update_forum_reply_count( $forum_id = 0 ) {
 	global $wpdb;
 
 	$forum_id = bbp_get_forum_id( $forum_id );
@@ -1447,7 +1447,7 @@ function bbp_update_forum_reply_count( $forum_id = 0 ) {
  * @uses bbp_update_forum_reply_count() To update the forum reply count
  * @uses bbp_update_forum_topic_count_hidden() To update the hidden topic count
  */
-function bbp_update_forum( $args = '' ) {
+function bb_update_forum( $args = '' ) {
 
 	// Parse arguments against default values
 	$r = bbp_parse_args( $args, array(
@@ -1504,7 +1504,7 @@ function bbp_update_forum( $args = '' ) {
  * @uses apply_filters() Calls 'bbp_forum_query_topic_ids' with the topic ids
  *                        and forum id
  */
-function bbp_get_hidden_forum_ids() {
+function bb_get_hidden_forum_ids() {
    	$forum_ids = get_option( '_bbp_hidden_forums', array() );
 
 	return apply_filters( 'bbp_get_hidden_forum_ids', (array) $forum_ids );
@@ -1521,7 +1521,7 @@ function bbp_get_hidden_forum_ids() {
  * @uses apply_filters() Calls 'bbp_forum_query_topic_ids' with the topic ids
  *                        and forum id
  */
-function bbp_get_private_forum_ids() {
+function bb_get_private_forum_ids() {
    	$forum_ids = get_option( '_bbp_private_forums', array() );
 
 	return apply_filters( 'bbp_get_private_forum_ids', (array) $forum_ids );
@@ -1540,7 +1540,7 @@ function bbp_get_private_forum_ids() {
  * @uses bbp_get_private_forum_ids()
  * @uses apply_filters()
  */
-function bbp_exclude_forum_ids( $type = 'string' ) {
+function bb_exclude_forum_ids( $type = 'string' ) {
 
 	// Setup arrays
 	$private = $hidden = $meta_query = $forum_ids = array();
@@ -1625,7 +1625,7 @@ function bbp_exclude_forum_ids( $type = 'string' ) {
  * @uses bbp_get_reply_post_type()
  * @return WP_Query
  */
-function bbp_pre_get_posts_normalize_forum_visibility( $posts_query = null ) {
+function bb_pre_get_posts_normalize_forum_visibility( $posts_query = null ) {
 
 	// Bail if all forums are explicitly allowed
 	if ( true === apply_filters( 'bbp_include_all_forums', false, $posts_query ) ) {
@@ -1734,7 +1734,7 @@ function bbp_pre_get_posts_normalize_forum_visibility( $posts_query = null ) {
  * @uses apply_filters() Calls 'bbp_forum_query_topic_ids' with the topic ids
  *                        and forum id
  */
-function bbp_forum_query_topic_ids( $forum_id ) {
+function bb_forum_query_topic_ids( $forum_id ) {
    	$topic_ids = bbp_get_public_child_ids( $forum_id, bbp_get_topic_post_type() );
 
 	return apply_filters( 'bbp_forum_query_topic_ids', $topic_ids, $forum_id );
@@ -1753,7 +1753,7 @@ function bbp_forum_query_topic_ids( $forum_id ) {
  * @uses apply_filters() Calls 'bbp_forum_query_subforum_ids' with the subforum
  *                        ids and forum id
  */
-function bbp_forum_query_subforum_ids( $forum_id ) {
+function bb_forum_query_subforum_ids( $forum_id ) {
 	$subforum_ids = bbp_get_all_child_ids( $forum_id, bbp_get_forum_post_type() );
 	//usort( $subforum_ids, '_bbp_forum_query_usort_subforum_ids' );
 
@@ -1790,7 +1790,7 @@ function _bbp_forum_query_usort_subforum_ids( $a = 0, $b = 0 ) {
  * @uses apply_filters() Calls 'bbp_forum_query_last_reply_id' with the reply id
  *                        and forum id
  */
-function bbp_forum_query_last_reply_id( $forum_id, $topic_ids = 0 ) {
+function bb_forum_query_last_reply_id( $forum_id, $topic_ids = 0 ) {
 	global $wpdb;
 
 	$cache_id = 'bbp_get_forum_' . $forum_id . '_reply_id';
@@ -1832,7 +1832,7 @@ function bbp_forum_query_last_reply_id( $forum_id, $topic_ids = 0 ) {
  * @uses bbp_is_forum_hidden() To check if the forum is hidden or not
  * @uses bbp_set_404() To set a 404 status
  */
-function bbp_forum_enforce_hidden() {
+function bb_forum_enforce_hidden() {
 
 	// Bail if not viewing a single item or if user has caps
 	if ( !is_singular() || bbp_is_user_keymaster() || current_user_can( 'read_hidden_forums' ) )
@@ -1885,7 +1885,7 @@ function bbp_forum_enforce_hidden() {
  * @uses bbp_is_forum_private() To check if the forum is private or not
  * @uses bbp_set_404() To set a 404 status
  */
-function bbp_forum_enforce_private() {
+function bb_forum_enforce_private() {
 
 	// Bail if not viewing a single item or if user has caps
 	if ( !is_singular() || bbp_is_user_keymaster() || current_user_can( 'read_private_forums' ) )
@@ -1934,7 +1934,7 @@ function bbp_forum_enforce_private() {
  * @uses wp_safe_redirect()
  * @uses bbp_get_forum_permalink()
  */
-function bbp_check_forum_edit() {
+function bb_check_forum_edit() {
 
 	// Bail if not editing a topic
 	if ( !bbp_is_forum_edit() )
@@ -1961,7 +1961,7 @@ function bbp_check_forum_edit() {
  * @uses update_post_meta() To update the forum meta of trashed topics
  * @return If forum is not valid
  */
-function bbp_delete_forum_topics( $forum_id = 0 ) {
+function bb_delete_forum_topics( $forum_id = 0 ) {
 
 	// Validate forum ID
 	$forum_id = bbp_get_forum_id( $forum_id );
@@ -2011,7 +2011,7 @@ function bbp_delete_forum_topics( $forum_id = 0 ) {
  * @uses update_post_meta() To update the forum meta of trashed topics
  * @return If forum is not valid
  */
-function bbp_trash_forum_topics( $forum_id = 0 ) {
+function bb_trash_forum_topics( $forum_id = 0 ) {
 
 	// Validate forum ID
 	$forum_id = bbp_get_forum_id( $forum_id );
@@ -2074,7 +2074,7 @@ function bbp_trash_forum_topics( $forum_id = 0 ) {
  * @uses wp_untrash_post() To trash the post
  * @return If forum is not valid
  */
-function bbp_untrash_forum_topics( $forum_id = 0 ) {
+function bb_untrash_forum_topics( $forum_id = 0 ) {
 
 	// Validate forum ID
 	$forum_id = bbp_get_forum_id( $forum_id );
@@ -2113,7 +2113,7 @@ function bbp_untrash_forum_topics( $forum_id = 0 ) {
  * @uses bbp_is_forum() To check if the passed id is a forum
  * @uses do_action() Calls 'bbp_delete_forum' with the forum id
  */
-function bbp_delete_forum( $forum_id = 0 ) {
+function bb_delete_forum( $forum_id = 0 ) {
 	$forum_id = bbp_get_forum_id( $forum_id );
 
 	if ( empty( $forum_id ) || !bbp_is_forum( $forum_id ) )
@@ -2134,7 +2134,7 @@ function bbp_delete_forum( $forum_id = 0 ) {
  * @uses bbp_is_forum() To check if the passed id is a forum
  * @uses do_action() Calls 'bbp_trash_forum' with the forum id
  */
-function bbp_trash_forum( $forum_id = 0 ) {
+function bb_trash_forum( $forum_id = 0 ) {
 	$forum_id = bbp_get_forum_id( $forum_id );
 
 	if ( empty( $forum_id ) || !bbp_is_forum( $forum_id ) )
@@ -2151,7 +2151,7 @@ function bbp_trash_forum( $forum_id = 0 ) {
  * @uses bbp_is_forum() To check if the passed id is a forum
  * @uses do_action() Calls 'bbp_untrash_forum' with the forum id
  */
-function bbp_untrash_forum( $forum_id = 0 ) {
+function bb_untrash_forum( $forum_id = 0 ) {
 	$forum_id = bbp_get_forum_id( $forum_id );
 
 	if ( empty( $forum_id ) || !bbp_is_forum( $forum_id ) )
@@ -2170,7 +2170,7 @@ function bbp_untrash_forum( $forum_id = 0 ) {
  * @uses bbp_is_forum() To check if the passed id is a forum
  * @uses do_action() Calls 'bbp_deleted_forum' with the forum id
  */
-function bbp_deleted_forum( $forum_id = 0 ) {
+function bb_deleted_forum( $forum_id = 0 ) {
 	$forum_id = bbp_get_forum_id( $forum_id );
 
 	if ( empty( $forum_id ) || !bbp_is_forum( $forum_id ) )
@@ -2187,7 +2187,7 @@ function bbp_deleted_forum( $forum_id = 0 ) {
  * @uses bbp_is_forum() To check if the passed id is a forum
  * @uses do_action() Calls 'bbp_trashed_forum' with the forum id
  */
-function bbp_trashed_forum( $forum_id = 0 ) {
+function bb_trashed_forum( $forum_id = 0 ) {
 	$forum_id = bbp_get_forum_id( $forum_id );
 
 	if ( empty( $forum_id ) || !bbp_is_forum( $forum_id ) )
@@ -2204,7 +2204,7 @@ function bbp_trashed_forum( $forum_id = 0 ) {
  * @uses bbp_is_forum() To check if the passed id is a forum
  * @uses do_action() Calls 'bbp_untrashed_forum' with the forum id
  */
-function bbp_untrashed_forum( $forum_id = 0 ) {
+function bb_untrashed_forum( $forum_id = 0 ) {
 	$forum_id = bbp_get_forum_id( $forum_id );
 
 	if ( empty( $forum_id ) || !bbp_is_forum( $forum_id ) )

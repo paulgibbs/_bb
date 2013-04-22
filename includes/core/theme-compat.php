@@ -92,7 +92,7 @@ class BBP_Theme_Compat {
  * @since bbPress (r3311)
  * @param BBP_Theme_Compat $theme
  */
-function bbp_setup_theme_compat( $theme = '' ) {
+function bb_setup_theme_compat( $theme = '' ) {
 	$bbp = bbpress();
 
 	// Make sure theme package is available, set to default if not
@@ -114,7 +114,7 @@ function bbp_setup_theme_compat( $theme = '' ) {
  * @uses apply_filters()
  * @return string
  */
-function bbp_get_theme_compat_id() {
+function bb_get_theme_compat_id() {
 	return apply_filters( 'bbp_get_theme_compat_id', bbpress()->theme_compat->theme->id );
 }
 
@@ -128,7 +128,7 @@ function bbp_get_theme_compat_id() {
  * @uses apply_filters()
  * @return string
  */
-function bbp_get_theme_compat_name() {
+function bb_get_theme_compat_name() {
 	return apply_filters( 'bbp_get_theme_compat_name', bbpress()->theme_compat->theme->name );
 }
 
@@ -142,7 +142,7 @@ function bbp_get_theme_compat_name() {
  * @uses apply_filters()
  * @return string
  */
-function bbp_get_theme_compat_version() {
+function bb_get_theme_compat_version() {
 	return apply_filters( 'bbp_get_theme_compat_version', bbpress()->theme_compat->theme->version );
 }
 
@@ -156,7 +156,7 @@ function bbp_get_theme_compat_version() {
  * @uses apply_filters()
  * @return string
  */
-function bbp_get_theme_compat_dir() {
+function bb_get_theme_compat_dir() {
 	return apply_filters( 'bbp_get_theme_compat_dir', bbpress()->theme_compat->theme->dir );
 }
 
@@ -170,7 +170,7 @@ function bbp_get_theme_compat_dir() {
  * @uses apply_filters()
  * @return string
  */
-function bbp_get_theme_compat_url() {
+function bb_get_theme_compat_url() {
 	return apply_filters( 'bbp_get_theme_compat_url', bbpress()->theme_compat->theme->url );
 }
 
@@ -180,7 +180,7 @@ function bbp_get_theme_compat_url() {
  * @since bbPress (r3265)
  * @return bool
  */
-function bbp_is_theme_compat_active() {
+function bb_is_theme_compat_active() {
 	$bbp = bbpress();
 
 	if ( empty( $bbp->theme_compat->active ) )
@@ -196,7 +196,7 @@ function bbp_is_theme_compat_active() {
  * @param bool $set
  * @return bool
  */
-function bbp_set_theme_compat_active( $set = true ) {
+function bb_set_theme_compat_active( $set = true ) {
 	bbpress()->theme_compat->active = $set;
 
 	return (bool) bbpress()->theme_compat->active;
@@ -210,7 +210,7 @@ function bbp_set_theme_compat_active( $set = true ) {
  *
  * @since bbPress (r3311)
  */
-function bbp_set_theme_compat_templates( $templates = array() ) {
+function bb_set_theme_compat_templates( $templates = array() ) {
 	bbpress()->theme_compat->templates = $templates;
 
 	return bbpress()->theme_compat->templates;
@@ -224,7 +224,7 @@ function bbp_set_theme_compat_templates( $templates = array() ) {
  *
  * @since bbPress (r3311)
  */
-function bbp_set_theme_compat_template( $template = '' ) {
+function bb_set_theme_compat_template( $template = '' ) {
 	bbpress()->theme_compat->template = $template;
 
 	return bbpress()->theme_compat->template;
@@ -238,7 +238,7 @@ function bbp_set_theme_compat_template( $template = '' ) {
  *
  * @since bbPress (r3926)
  */
-function bbp_set_theme_compat_original_template( $template = '' ) {
+function bb_set_theme_compat_original_template( $template = '' ) {
 	bbpress()->theme_compat->original_template = $template;
 
 	return bbpress()->theme_compat->original_template;
@@ -252,7 +252,7 @@ function bbp_set_theme_compat_original_template( $template = '' ) {
  *
  * @since bbPress (r3926)
  */
-function bbp_is_theme_compat_original_template( $template = '' ) {
+function bb_is_theme_compat_original_template( $template = '' ) {
 	$bbp = bbpress();
 
 	if ( empty( $bbp->theme_compat->original_template ) )
@@ -267,7 +267,7 @@ function bbp_is_theme_compat_original_template( $template = '' ) {
  * @since bbPress (r3829)
  * @param array $theme
  */
-function bbp_register_theme_package( $theme = array(), $override = true ) {
+function bb_register_theme_package( $theme = array(), $override = true ) {
 
 	// Create new BBP_Theme_Compat object from the $theme array
 	if ( is_array( $theme ) )
@@ -294,7 +294,7 @@ function bbp_register_theme_package( $theme = array(), $override = true ) {
  * @global object $post
  * @param array $args
  */
-function bbp_theme_compat_reset_post( $args = array() ) {
+function bb_theme_compat_reset_post( $args = array() ) {
 	global $wp_query, $post;
 
 	// Default arguments
@@ -451,7 +451,7 @@ function bbp_theme_compat_reset_post( $args = array() ) {
  * @uses bbp_get_reply_edit_template() To get reply edit template
  * @uses bbp_set_theme_compat_template() To set the global theme compat template
  */
-function bbp_template_include_theme_compat( $template = '' ) {
+function bb_template_include_theme_compat( $template = '' ) {
 
 	/**
 	 * If BuddyPress is activated at a network level, the action order is
@@ -693,7 +693,7 @@ function bbp_template_include_theme_compat( $template = '' ) {
  * @param string $content
  * @return type
  */
-function bbp_replace_the_content( $content = '' ) {
+function bb_replace_the_content( $content = '' ) {
 
 	// Bail if not inside the query loop
 	if ( ! in_the_loop() )
@@ -907,7 +907,7 @@ function bbp_replace_the_content( $content = '' ) {
  * @return bool|string False if it's a topic/forum and their first page,
  *                      otherwise the redirect url
  */
-function bbp_redirect_canonical( $redirect_url ) {
+function bb_redirect_canonical( $redirect_url ) {
 	global $wp_rewrite;
 
 	// Canonical is for the beautiful
@@ -962,7 +962,7 @@ function bbp_redirect_canonical( $redirect_url ) {
  * @param int $priority
  * @return bool
  */
-function bbp_remove_all_filters( $tag, $priority = false ) {
+function bb_remove_all_filters( $tag, $priority = false ) {
 	global $wp_filter, $merged_filters;
 
 	$bbp = bbpress();
@@ -1014,7 +1014,7 @@ function bbp_remove_all_filters( $tag, $priority = false ) {
  * @param int $priority
  * @return bool
  */
-function bbp_restore_all_filters( $tag, $priority = false ) {
+function bb_restore_all_filters( $tag, $priority = false ) {
 	global $wp_filter, $merged_filters;
 
 	$bbp = bbpress();
@@ -1063,7 +1063,7 @@ function bbp_restore_all_filters( $tag, $priority = false ) {
  * @param int $post_id ID of the post to check
  * @return bool True if open, false if closed
  */
-function bbp_force_comment_status( $open, $post_id = 0 ) {
+function bb_force_comment_status( $open, $post_id = 0 ) {
 
 	// Get the post type of the post ID
 	$post_type = get_post_type( $post_id );

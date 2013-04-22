@@ -19,7 +19,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
  *
  * @uses bbp_get_topic_post_type() To get the topic post type
  */
-function bbp_topic_post_type() {
+function bb_topic_post_type() {
 	echo bbp_get_topic_post_type();
 }
 	/**
@@ -31,7 +31,7 @@ function bbp_topic_post_type() {
 	 *                        post type id
 	 * @return string The unique topic post type id
 	 */
-	function bbp_get_topic_post_type() {
+	function bb_get_topic_post_type() {
 		return apply_filters( 'bbp_get_topic_post_type', bbpress()->topic_post_type );
 	}
 
@@ -44,7 +44,7 @@ function bbp_topic_post_type() {
  * @param $show_lead Optional. Default false
  * @return bool Yes if the topic appears as a lead, otherwise false
  */
-function bbp_show_lead_topic( $show_lead = false ) {
+function bb_show_lead_topic( $show_lead = false ) {
 
 	// Never separate the lead topic in feeds
 	if ( is_feed() )
@@ -81,7 +81,7 @@ function bbp_show_lead_topic( $show_lead = false ) {
  *                        and bbPres::topic_query
  * @return object Multidimensional array of topic information
  */
-function bbp_has_topics( $args = '' ) {
+function bb_has_topics( $args = '' ) {
 	global $wp_rewrite;
 
 	/** Defaults **************************************************************/
@@ -355,7 +355,7 @@ function bbp_has_topics( $args = '' ) {
  * @uses WP_Query bbPress::topic_query::have_posts()
  * @return object Topic information
  */
-function bbp_topics() {
+function bb_topics() {
 
 	// Put into variable to check against next
 	$have_posts = bbpress()->topic_query->have_posts();
@@ -375,7 +375,7 @@ function bbp_topics() {
  * @uses WP_Query bbPress::topic_query::the_post()
  * @return object Topic information
  */
-function bbp_the_topic() {
+function bb_the_topic() {
 	return bbpress()->topic_query->the_post();
 }
 
@@ -386,7 +386,7 @@ function bbp_the_topic() {
  *
  * @uses bbp_get_topic_id() To get the topic id
  */
-function bbp_topic_id( $topic_id = 0) {
+function bb_topic_id( $topic_id = 0) {
 	echo bbp_get_topic_id( $topic_id );
 }
 	/**
@@ -409,7 +409,7 @@ function bbp_topic_id( $topic_id = 0) {
 	 *                        supplied topic id
 	 * @return int The topic id
 	 */
-	function bbp_get_topic_id( $topic_id = 0 ) {
+	function bb_get_topic_id( $topic_id = 0 ) {
 		global $wp_query;
 
 		$bbp = bbpress();
@@ -459,7 +459,7 @@ function bbp_topic_id( $topic_id = 0) {
  *                        sanitation filter
  * @return mixed Null if error or topic (in specified form) if success
  */
-function bbp_get_topic( $topic, $output = OBJECT, $filter = 'raw' ) {
+function bb_get_topic( $topic, $output = OBJECT, $filter = 'raw' ) {
 
 	// Use topic ID
 	if ( empty( $topic ) || is_numeric( $topic ) )
@@ -501,7 +501,7 @@ function bbp_get_topic( $topic, $output = OBJECT, $filter = 'raw' ) {
  *                              shortcodes and other fun things.
  * @uses bbp_get_topic_permalink() To get the topic permalink
  */
-function bbp_topic_permalink( $topic_id = 0, $redirect_to = '' ) {
+function bb_topic_permalink( $topic_id = 0, $redirect_to = '' ) {
 	echo bbp_get_topic_permalink( $topic_id, $redirect_to );
 }
 	/**
@@ -519,7 +519,7 @@ function bbp_topic_permalink( $topic_id = 0, $redirect_to = '' ) {
 	 *                        and topic id
 	 * @return string Permanent link to topic
 	 */
-	function bbp_get_topic_permalink( $topic_id = 0, $redirect_to = '' ) {
+	function bb_get_topic_permalink( $topic_id = 0, $redirect_to = '' ) {
 		$topic_id = bbp_get_topic_id( $topic_id );
 
 		// Use the redirect address
@@ -542,7 +542,7 @@ function bbp_topic_permalink( $topic_id = 0, $redirect_to = '' ) {
  * @param int $topic_id Optional. Topic id
  * @uses bbp_get_topic_title() To get the topic title
  */
-function bbp_topic_title( $topic_id = 0 ) {
+function bb_topic_title( $topic_id = 0 ) {
 	echo bbp_get_topic_title( $topic_id );
 }
 	/**
@@ -557,7 +557,7 @@ function bbp_topic_title( $topic_id = 0 ) {
 	 *                        topic id
 	 * @return string Title of topic
 	 */
-	function bbp_get_topic_title( $topic_id = 0 ) {
+	function bb_get_topic_title( $topic_id = 0 ) {
 		$topic_id = bbp_get_topic_id( $topic_id );
 		$title    = get_the_title( $topic_id );
 
@@ -571,7 +571,7 @@ function bbp_topic_title( $topic_id = 0 ) {
  *
  * @param string $title Default text to use as title
  */
-function bbp_topic_archive_title( $title = '' ) {
+function bb_topic_archive_title( $title = '' ) {
 	echo bbp_get_topic_archive_title( $title );
 }
 	/**
@@ -590,7 +590,7 @@ function bbp_topic_archive_title( $title = '' ) {
 	 *
 	 * @return string The topic archive title
 	 */
-	function bbp_get_topic_archive_title( $title = '' ) {
+	function bb_get_topic_archive_title( $title = '' ) {
 
 		// If no title was passed
 		if ( empty( $title ) ) {
@@ -618,7 +618,7 @@ function bbp_topic_archive_title( $title = '' ) {
  * @param int $topic_id Optional. Topic id
  * @uses bbp_get_topic_content() To get the topic content
  */
-function bbp_topic_content( $topic_id = 0 ) {
+function bb_topic_content( $topic_id = 0 ) {
 	echo bbp_get_topic_content( $topic_id );
 }
 	/**
@@ -635,7 +635,7 @@ function bbp_topic_content( $topic_id = 0 ) {
 	 *                        and topic id
 	 * @return string Content of the topic
 	 */
-	function bbp_get_topic_content( $topic_id = 0 ) {
+	function bb_get_topic_content( $topic_id = 0 ) {
 		$topic_id = bbp_get_topic_id( $topic_id );
 
 		// Check if password is required
@@ -656,7 +656,7 @@ function bbp_topic_content( $topic_id = 0 ) {
  * @param int $length Optional. Length of the excerpt. Defaults to 100 letters
  * @uses bbp_get_topic_excerpt() To get the topic excerpt
  */
-function bbp_topic_excerpt( $topic_id = 0, $length = 100 ) {
+function bb_topic_excerpt( $topic_id = 0, $length = 100 ) {
 	echo bbp_get_topic_excerpt( $topic_id, $length );
 }
 	/**
@@ -674,7 +674,7 @@ function bbp_topic_excerpt( $topic_id = 0, $length = 100 ) {
 	 *                        topic id and length
 	 * @return string topic Excerpt
 	 */
-	function bbp_get_topic_excerpt( $topic_id = 0, $length = 100 ) {
+	function bb_get_topic_excerpt( $topic_id = 0, $length = 100 ) {
 		$topic_id = bbp_get_topic_id( $topic_id );
 		$length   = (int) $length;
 		$excerpt  = get_post_field( 'post_excerpt', $topic_id );
@@ -710,7 +710,7 @@ function bbp_topic_excerpt( $topic_id = 0, $length = 100 ) {
  * @param bool $gmt Optional. Use GMT
  * @uses bbp_get_topic_post_date() to get the output
  */
-function bbp_topic_post_date( $topic_id = 0, $humanize = false, $gmt = false ) {
+function bb_topic_post_date( $topic_id = 0, $humanize = false, $gmt = false ) {
 	echo bbp_get_topic_post_date( $topic_id, $humanize, $gmt );
 }
 	/**
@@ -726,7 +726,7 @@ function bbp_topic_post_date( $topic_id = 0, $humanize = false, $gmt = false ) {
 	 * @uses bbp_get_time_since() to maybe humanize the topic post time
 	 * @return string
 	 */
-	function bbp_get_topic_post_date( $topic_id = 0, $humanize = false, $gmt = false ) {
+	function bb_get_topic_post_date( $topic_id = 0, $humanize = false, $gmt = false ) {
 		$topic_id = bbp_get_topic_id( $topic_id );
 
 		// 4 days, 4 hours ago
@@ -754,7 +754,7 @@ function bbp_topic_post_date( $topic_id = 0, $humanize = false, $gmt = false ) {
  * @param mixed $args See {@link bbp_get_topic_pagination()}
  * @uses bbp_get_topic_pagination() To get the topic pagination links
  */
-function bbp_topic_pagination( $args = '' ) {
+function bb_topic_pagination( $args = '' ) {
 	echo bbp_get_topic_pagination( $args );
 }
 	/**
@@ -781,7 +781,7 @@ function bbp_topic_pagination( $args = '' ) {
 	 *                        and arguments
 	 * @return string Pagination links
 	 */
-	function bbp_get_topic_pagination( $args = '' ) {
+	function bb_get_topic_pagination( $args = '' ) {
 		global $wp_rewrite;
 
 		// Parse arguments against default values
@@ -847,7 +847,7 @@ function bbp_topic_pagination( $args = '' ) {
  *                        content, original content and topic id
  * @return string Content with the revisions appended
  */
-function bbp_topic_content_append_revisions( $content = '', $topic_id = 0 ) {
+function bb_topic_content_append_revisions( $content = '', $topic_id = 0 ) {
 
 	// Bail if in admin or feed
 	if ( is_admin() || is_feed() )
@@ -867,7 +867,7 @@ function bbp_topic_content_append_revisions( $content = '', $topic_id = 0 ) {
  * @param int $topic_id Optional. Topic id
  * @uses bbp_get_topic_revision_log() To get the topic revision log
  */
-function bbp_topic_revision_log( $topic_id = 0 ) {
+function bb_topic_revision_log( $topic_id = 0 ) {
 	echo bbp_get_topic_revision_log( $topic_id );
 }
 	/**
@@ -887,7 +887,7 @@ function bbp_topic_revision_log( $topic_id = 0 ) {
 	 *                        log and topic id
 	 * @return string Revision log of the topic
 	 */
-	function bbp_get_topic_revision_log( $topic_id = 0 ) {
+	function bb_get_topic_revision_log( $topic_id = 0 ) {
 		// Create necessary variables
 		$topic_id     = bbp_get_topic_id( $topic_id );
 		$revision_log = bbp_get_topic_raw_revision_log( $topic_id );
@@ -941,7 +941,7 @@ function bbp_topic_revision_log( $topic_id = 0 ) {
 		 *                        with the log and topic id
 		 * @return string Raw revision log of the topic
 		 */
-		function bbp_get_topic_raw_revision_log( $topic_id = 0 ) {
+		function bb_get_topic_raw_revision_log( $topic_id = 0 ) {
 			$topic_id = bbp_get_topic_id( $topic_id );
 
 			$revision_log = get_post_meta( $topic_id, '_bbp_revision_log', true );
@@ -962,7 +962,7 @@ function bbp_topic_revision_log( $topic_id = 0 ) {
  *                        with the revisions and topic id
  * @return string Topic revisions
  */
-function bbp_get_topic_revisions( $topic_id = 0 ) {
+function bb_get_topic_revisions( $topic_id = 0 ) {
 	$topic_id  = bbp_get_topic_id( $topic_id );
 	$revisions = wp_get_post_revisions( $topic_id, array( 'order' => 'ASC' ) );
 
@@ -980,7 +980,7 @@ function bbp_get_topic_revisions( $topic_id = 0 ) {
  *                        with the revision count and topic id
  * @return string Topic revision count
  */
-function bbp_get_topic_revision_count( $topic_id = 0, $integer = false ) {
+function bb_get_topic_revision_count( $topic_id = 0, $integer = false ) {
 	$count  = (int) count( bbp_get_topic_revisions( $topic_id ) );
 	$filter = ( true === $integer ) ? 'bbp_get_topic_revision_count_int' : 'bbp_get_topic_revision_count';
 
@@ -995,7 +995,7 @@ function bbp_get_topic_revision_count( $topic_id = 0, $integer = false ) {
  * @param int $topic_id Optional. Topic id
  * @uses bbp_get_topic_status() To get the topic status
  */
-function bbp_topic_status( $topic_id = 0 ) {
+function bb_topic_status( $topic_id = 0 ) {
 	echo bbp_get_topic_status( $topic_id );
 }
 	/**
@@ -1010,7 +1010,7 @@ function bbp_topic_status( $topic_id = 0 ) {
 	 *                        and topic id
 	 * @return string Status of topic
 	 */
-	function bbp_get_topic_status( $topic_id = 0 ) {
+	function bb_get_topic_status( $topic_id = 0 ) {
 		$topic_id = bbp_get_topic_id( $topic_id );
 
 		return apply_filters( 'bbp_get_topic_status', get_post_status( $topic_id ), $topic_id );
@@ -1027,7 +1027,7 @@ function bbp_topic_status( $topic_id = 0 ) {
  * @uses bbp_is_topic_closed() To check if the topic is closed
  * @return bool True if open, false if closed.
  */
-function bbp_is_topic_open( $topic_id = 0 ) {
+function bb_is_topic_open( $topic_id = 0 ) {
 	return !bbp_is_topic_closed( $topic_id );
 }
 
@@ -1042,7 +1042,7 @@ function bbp_is_topic_open( $topic_id = 0 ) {
 	 *
 	 * @return bool True if closed, false if not.
 	 */
-	function bbp_is_topic_closed( $topic_id = 0 ) {
+	function bb_is_topic_closed( $topic_id = 0 ) {
 		$closed = bbp_get_topic_status( $topic_id ) == bbp_get_closed_status_id();
 		return (bool) apply_filters( 'bbp_is_topic_closed', (bool) $closed, $topic_id );
 	}
@@ -1062,7 +1062,7 @@ function bbp_is_topic_open( $topic_id = 0 ) {
  * @uses bbp_is_topic_super_sticky() To check if the topic is a super sticky
  * @return bool True if sticky or super sticky, false if not.
  */
-function bbp_is_topic_sticky( $topic_id = 0, $check_super = true ) {
+function bb_is_topic_sticky( $topic_id = 0, $check_super = true ) {
 	$topic_id = bbp_get_topic_id( $topic_id );
 	$forum_id = bbp_get_topic_forum_id( $topic_id );
 	$stickies = bbp_get_stickies( $forum_id );
@@ -1083,7 +1083,7 @@ function bbp_is_topic_sticky( $topic_id = 0, $check_super = true ) {
  * @uses bbp_get_super_stickies() To get the super stickies
  * @return bool True if super sticky, false if not.
  */
-function bbp_is_topic_super_sticky( $topic_id = 0 ) {
+function bb_is_topic_super_sticky( $topic_id = 0 ) {
 	$topic_id = bbp_get_topic_id( $topic_id );
 	$stickies = bbp_get_super_stickies( $topic_id );
 
@@ -1101,7 +1101,7 @@ function bbp_is_topic_super_sticky( $topic_id = 0 ) {
  * @uses apply_filters() Calls 'bbp_is_topic_published' with the topic id
  * @return bool True if published, false if not.
  */
-function bbp_is_topic_published( $topic_id = 0 ) {
+function bb_is_topic_published( $topic_id = 0 ) {
 	$topic_status = bbp_get_topic_status( bbp_get_topic_id( $topic_id ) ) == bbp_get_public_status_id();
 	return (bool) apply_filters( 'bbp_is_topic_published', (bool) $topic_status, $topic_id );
 }
@@ -1117,7 +1117,7 @@ function bbp_is_topic_published( $topic_id = 0 ) {
  * @uses apply_filters() Calls 'bbp_is_topic_spam' with the topic id
  * @return bool True if spam, false if not.
  */
-function bbp_is_topic_spam( $topic_id = 0 ) {
+function bb_is_topic_spam( $topic_id = 0 ) {
 	$topic_status = bbp_get_topic_status( bbp_get_topic_id( $topic_id ) ) == bbp_get_spam_status_id();
 	return (bool) apply_filters( 'bbp_is_topic_spam', (bool) $topic_status, $topic_id );
 }
@@ -1133,7 +1133,7 @@ function bbp_is_topic_spam( $topic_id = 0 ) {
  * @uses apply_filters() Calls 'bbp_is_topic_trash' with the topic id
  * @return bool True if trashed, false if not.
  */
-function bbp_is_topic_trash( $topic_id = 0 ) {
+function bb_is_topic_trash( $topic_id = 0 ) {
 	$topic_status = bbp_get_topic_status( bbp_get_topic_id( $topic_id ) ) == bbp_get_trash_status_id();
 	return (bool) apply_filters( 'bbp_is_topic_trash', (bool) $topic_status, $topic_id );
 }
@@ -1150,7 +1150,7 @@ function bbp_is_topic_trash( $topic_id = 0 ) {
  * @uses apply_filters() Calls 'bbp_is_topic_anonymous' with the topic id
  * @return bool True if the post is by an anonymous user, false if not.
  */
-function bbp_is_topic_anonymous( $topic_id = 0 ) {
+function bb_is_topic_anonymous( $topic_id = 0 ) {
 	$topic_id = bbp_get_topic_id( $topic_id );
 	$retval   = false;
 
@@ -1175,7 +1175,7 @@ function bbp_is_topic_anonymous( $topic_id = 0 ) {
  * @param int $topic_id Optional. Topic id
  * @uses bbp_get_topic_author() To get the topic author
  */
-function bbp_topic_author( $topic_id = 0 ) {
+function bb_topic_author( $topic_id = 0 ) {
 	echo bbp_get_topic_author( $topic_id );
 }
 	/**
@@ -1194,7 +1194,7 @@ function bbp_topic_author( $topic_id = 0 ) {
 	 *                        and topic id
 	 * @return string Author of topic
 	 */
-	function bbp_get_topic_author( $topic_id = 0 ) {
+	function bb_get_topic_author( $topic_id = 0 ) {
 		$topic_id = bbp_get_topic_id( $topic_id );
 
 		if ( !bbp_is_topic_anonymous( $topic_id ) ) {
@@ -1214,7 +1214,7 @@ function bbp_topic_author( $topic_id = 0 ) {
  * @param int $topic_id Optional. Topic id
  * @uses bbp_get_topic_author_id() To get the topic author id
  */
-function bbp_topic_author_id( $topic_id = 0 ) {
+function bb_topic_author_id( $topic_id = 0 ) {
 	echo bbp_get_topic_author_id( $topic_id );
 }
 	/**
@@ -1229,7 +1229,7 @@ function bbp_topic_author_id( $topic_id = 0 ) {
 	 *                        id and topic id
 	 * @return string Author of topic
 	 */
-	function bbp_get_topic_author_id( $topic_id = 0 ) {
+	function bb_get_topic_author_id( $topic_id = 0 ) {
 		$topic_id  = bbp_get_topic_id( $topic_id );
 		$author_id = get_post_field( 'post_author', $topic_id );
 
@@ -1245,7 +1245,7 @@ function bbp_topic_author_id( $topic_id = 0 ) {
  * @uses bbp_get_topic_author_display_name() To get the topic author's display
  *                                            name
  */
-function bbp_topic_author_display_name( $topic_id = 0 ) {
+function bb_topic_author_display_name( $topic_id = 0 ) {
 	echo bbp_get_topic_author_display_name( $topic_id );
 }
 	/**
@@ -1264,7 +1264,7 @@ function bbp_topic_author_display_name( $topic_id = 0 ) {
 	 *                        display name and topic id
 	 * @return string Topic's author's display name
 	 */
-	function bbp_get_topic_author_display_name( $topic_id = 0 ) {
+	function bb_get_topic_author_display_name( $topic_id = 0 ) {
 		$topic_id = bbp_get_topic_id( $topic_id );
 
 		// Check for anonymous user
@@ -1306,7 +1306,7 @@ function bbp_topic_author_display_name( $topic_id = 0 ) {
  * @param int $size Optional. Avatar size. Defaults to 40
  * @uses bbp_get_topic_author_avatar() To get the topic author avatar
  */
-function bbp_topic_author_avatar( $topic_id = 0, $size = 40 ) {
+function bb_topic_author_avatar( $topic_id = 0, $size = 40 ) {
 	echo bbp_get_topic_author_avatar( $topic_id, $size );
 }
 	/**
@@ -1326,7 +1326,7 @@ function bbp_topic_author_avatar( $topic_id = 0, $size = 40 ) {
 	 *                        avatar, topic id and size
 	 * @return string Avatar of the author of the topic
 	 */
-	function bbp_get_topic_author_avatar( $topic_id = 0, $size = 40 ) {
+	function bb_get_topic_author_avatar( $topic_id = 0, $size = 40 ) {
 		$author_avatar = '';
 
 		$topic_id = bbp_get_topic_id( $topic_id );
@@ -1349,7 +1349,7 @@ function bbp_topic_author_avatar( $topic_id = 0, $size = 40 ) {
  * @param mixed|int $args If it is an integer, it is used as topic_id. Optional.
  * @uses bbp_get_topic_author_link() To get the topic author link
  */
-function bbp_topic_author_link( $args = '' ) {
+function bb_topic_author_link( $args = '' ) {
 	echo bbp_get_topic_author_link( $args );
 }
 	/**
@@ -1373,7 +1373,7 @@ function bbp_topic_author_link( $args = '' ) {
 	 *                        and args
 	 * @return string Author link of topic
 	 */
-	function bbp_get_topic_author_link( $args = '' ) {
+	function bb_get_topic_author_link( $args = '' ) {
 
 		// Parse arguments against default values
 		$r = bbp_parse_args( $args, array(
@@ -1460,7 +1460,7 @@ function bbp_topic_author_link( $args = '' ) {
  * @param int $topic_id Optional. Topic id
  * @uses bbp_get_topic_author_url() To get the topic author url
  */
-function bbp_topic_author_url( $topic_id = 0 ) {
+function bb_topic_author_url( $topic_id = 0 ) {
 	echo bbp_get_topic_author_url( $topic_id );
 }
 
@@ -1480,7 +1480,7 @@ function bbp_topic_author_url( $topic_id = 0 ) {
 	 *                        topic id
 	 * @return string Author URL of topic
 	 */
-	function bbp_get_topic_author_url( $topic_id = 0 ) {
+	function bb_get_topic_author_url( $topic_id = 0 ) {
 		$topic_id = bbp_get_topic_id( $topic_id );
 
 		// Check for anonymous user
@@ -1506,7 +1506,7 @@ function bbp_topic_author_url( $topic_id = 0 ) {
  * @param int $topic_id Optional. Reply id
  * @uses bbp_get_topic_author_email() To get the topic author email
  */
-function bbp_topic_author_email( $topic_id = 0 ) {
+function bb_topic_author_email( $topic_id = 0 ) {
 	echo bbp_get_topic_author_email( $topic_id );
 }
 	/**
@@ -1525,7 +1525,7 @@ function bbp_topic_author_email( $topic_id = 0 ) {
 	 *                        email & topic id
 	 * @return string Topic author email address
 	 */
-	function bbp_get_topic_author_email( $topic_id = 0 ) {
+	function bb_get_topic_author_email( $topic_id = 0 ) {
 		$topic_id = bbp_get_topic_id( $topic_id );
 
 		// Not anonymous user
@@ -1559,7 +1559,7 @@ function bbp_topic_author_email( $topic_id = 0 ) {
  * @param array $args Optional.
  * @uses bbp_get_topic_author_role() To get the topic author role
  */
-function bbp_topic_author_role( $args = array() ) {
+function bb_topic_author_role( $args = array() ) {
 	echo bbp_get_topic_author_role( $args );
 }
 	/**
@@ -1575,7 +1575,7 @@ function bbp_topic_author_role( $args = array() ) {
 	 *                        role & args
 	 * @return string topic author role
 	 */
-	function bbp_get_topic_author_role( $args = array() ) {
+	function bb_get_topic_author_role( $args = array() ) {
 
 		// Parse arguments against default values
 		$r = bbp_parse_args( $args, array(
@@ -1601,7 +1601,7 @@ function bbp_topic_author_role( $args = array() ) {
  * @param int $topic_id Optional. Topic id
  * @uses bbp_get_topic_forum_title() To get the topic's forum title
  */
-function bbp_topic_forum_title( $topic_id = 0 ) {
+function bb_topic_forum_title( $topic_id = 0 ) {
 	echo bbp_get_topic_forum_title( $topic_id );
 }
 	/**
@@ -1616,7 +1616,7 @@ function bbp_topic_forum_title( $topic_id = 0 ) {
 	 *                        title and topic id
 	 * @return string Topic forum title
 	 */
-	function bbp_get_topic_forum_title( $topic_id = 0 ) {
+	function bb_get_topic_forum_title( $topic_id = 0 ) {
 		$topic_id = bbp_get_topic_id( $topic_id );
 		$forum_id = bbp_get_topic_forum_id( $topic_id );
 
@@ -1631,7 +1631,7 @@ function bbp_topic_forum_title( $topic_id = 0 ) {
  * @param int $topic_id Optional. Topic id
  * @uses bbp_get_topic_forum_id()
  */
-function bbp_topic_forum_id( $topic_id = 0 ) {
+function bb_topic_forum_id( $topic_id = 0 ) {
 	echo bbp_get_topic_forum_id( $topic_id );
 }
 	/**
@@ -1646,7 +1646,7 @@ function bbp_topic_forum_id( $topic_id = 0 ) {
 	 *                        id and topic id
 	 * @return int Topic forum id
 	 */
-	function bbp_get_topic_forum_id( $topic_id = 0 ) {
+	function bb_get_topic_forum_id( $topic_id = 0 ) {
 		$topic_id = bbp_get_topic_id( $topic_id );
 		$forum_id = get_post_meta( $topic_id, '_bbp_forum_id', true );
 
@@ -1661,7 +1661,7 @@ function bbp_topic_forum_id( $topic_id = 0 ) {
  * @param int $topic_id Optional. Forum id
  * @uses bbp_get_topic_last_active_id() To get the topic's last active id
  */
-function bbp_topic_last_active_id( $topic_id = 0 ) {
+function bb_topic_last_active_id( $topic_id = 0 ) {
 	echo bbp_get_topic_last_active_id( $topic_id );
 }
 	/**
@@ -1676,7 +1676,7 @@ function bbp_topic_last_active_id( $topic_id = 0 ) {
 	 *                        the last active id and topic id
 	 * @return int Forum's last active id
 	 */
-	function bbp_get_topic_last_active_id( $topic_id = 0 ) {
+	function bb_get_topic_last_active_id( $topic_id = 0 ) {
 		$topic_id  = bbp_get_topic_id( $topic_id );
 		$active_id = get_post_meta( $topic_id, '_bbp_last_active_id', true );
 
@@ -1691,7 +1691,7 @@ function bbp_topic_last_active_id( $topic_id = 0 ) {
  * @param int $topic_id Optional. Topic id
  * @uses bbp_get_topic_last_active_time() To get topic freshness
  */
-function bbp_topic_last_active_time( $topic_id = 0 ) {
+function bb_topic_last_active_time( $topic_id = 0 ) {
 	echo bbp_get_topic_last_active_time( $topic_id );
 }
 	/**
@@ -1710,7 +1710,7 @@ function bbp_topic_last_active_time( $topic_id = 0 ) {
 	 *                        freshness and topic id
 	 * @return string Topic freshness
 	 */
-	function bbp_get_topic_last_active_time( $topic_id = 0 ) {
+	function bb_get_topic_last_active_time( $topic_id = 0 ) {
 		$topic_id = bbp_get_topic_id( $topic_id );
 
 		// Try to get the most accurate freshness time possible
@@ -1740,7 +1740,7 @@ function bbp_topic_last_active_time( $topic_id = 0 ) {
  * @param int $topic_id Optional. Topic id
  * @uses bbp_get_topic_last_reply_id() To get the topic last reply id
  */
-function bbp_topic_last_reply_id( $topic_id = 0 ) {
+function bb_topic_last_reply_id( $topic_id = 0 ) {
 	echo bbp_get_topic_last_reply_id( $topic_id );
 }
 	/**
@@ -1755,7 +1755,7 @@ function bbp_topic_last_reply_id( $topic_id = 0 ) {
 	 *                        last reply id and topic id
 	 * @return int Topic last reply id
 	 */
-	function bbp_get_topic_last_reply_id( $topic_id = 0 ) {
+	function bb_get_topic_last_reply_id( $topic_id = 0 ) {
 		$topic_id = bbp_get_topic_id( $topic_id );
 		$reply_id = get_post_meta( $topic_id, '_bbp_last_reply_id', true );
 
@@ -1771,7 +1771,7 @@ function bbp_topic_last_reply_id( $topic_id = 0 ) {
  * @param int $topic_id Optional. Topic id
  * @uses bbp_get_topic_last_reply_title() To get the topic last reply title
  */
-function bbp_topic_last_reply_title( $topic_id = 0 ) {
+function bb_topic_last_reply_title( $topic_id = 0 ) {
 	echo bbp_get_topic_last_reply_title( $topic_id );
 }
 	/**
@@ -1785,7 +1785,7 @@ function bbp_topic_last_reply_title( $topic_id = 0 ) {
 	 *                        the reply title and topic id
 	 * @return string Topic last reply title
 	 */
-	function bbp_get_topic_last_reply_title( $topic_id = 0 ) {
+	function bb_get_topic_last_reply_title( $topic_id = 0 ) {
 		$topic_id = bbp_get_topic_id( $topic_id );
 		return apply_filters( 'bbp_get_topic_last_topic_title', bbp_get_reply_title( bbp_get_topic_last_reply_id( $topic_id ) ), $topic_id );
 	}
@@ -1798,7 +1798,7 @@ function bbp_topic_last_reply_title( $topic_id = 0 ) {
  * @param int $topic_id Optional. Topic id
  * @uses bbp_get_topic_last_reply_permalink() To get the topic's last reply link
  */
-function bbp_topic_last_reply_permalink( $topic_id = 0 ) {
+function bb_topic_last_reply_permalink( $topic_id = 0 ) {
 	echo bbp_get_topic_last_reply_permalink( $topic_id );
 }
 	/**
@@ -1814,7 +1814,7 @@ function bbp_topic_last_reply_permalink( $topic_id = 0 ) {
 	 *                        the reply permalink and topic id
 	 * @return string Permanent link to the reply
 	 */
-	function bbp_get_topic_last_reply_permalink( $topic_id = 0 ) {
+	function bb_get_topic_last_reply_permalink( $topic_id = 0 ) {
 		$topic_id = bbp_get_topic_id( $topic_id );
 		return apply_filters( 'bbp_get_topic_last_reply_permalink', bbp_get_reply_permalink( bbp_get_topic_last_reply_id( $topic_id ) ) );
 	}
@@ -1827,7 +1827,7 @@ function bbp_topic_last_reply_permalink( $topic_id = 0 ) {
  * @param int $topic_id Optional. Topic id
  * @uses bbp_get_topic_last_reply_url() To get the topic last reply url
  */
-function bbp_topic_last_reply_url( $topic_id = 0 ) {
+function bb_topic_last_reply_url( $topic_id = 0 ) {
 	echo bbp_get_topic_last_reply_url( $topic_id );
 }
 	/**
@@ -1844,7 +1844,7 @@ function bbp_topic_last_reply_url( $topic_id = 0 ) {
 	 *                        the reply url and topic id
 	 * @return string Topic last reply url
 	 */
-	function bbp_get_topic_last_reply_url( $topic_id = 0 ) {
+	function bb_get_topic_last_reply_url( $topic_id = 0 ) {
 		$topic_id = bbp_get_topic_id( $topic_id );
 		$reply_id = bbp_get_topic_last_reply_id( $topic_id );
 
@@ -1866,7 +1866,7 @@ function bbp_topic_last_reply_url( $topic_id = 0 ) {
  * @param int $topic_id Optional. Topic id
  * @uses bbp_get_topic_freshness_link() To get the topic freshness link
  */
-function bbp_topic_freshness_link( $topic_id = 0 ) {
+function bb_topic_freshness_link( $topic_id = 0 ) {
 	echo bbp_get_topic_freshness_link( $topic_id );
 }
 	/**
@@ -1884,7 +1884,7 @@ function bbp_topic_freshness_link( $topic_id = 0 ) {
 	 *                        link and topic id
 	 * @return string Topic freshness link
 	 */
-	function bbp_get_topic_freshness_link( $topic_id = 0 ) {
+	function bb_get_topic_freshness_link( $topic_id = 0 ) {
 		$topic_id   = bbp_get_topic_id( $topic_id );
 		$link_url   = bbp_get_topic_last_reply_url( $topic_id );
 		$title      = bbp_get_topic_last_reply_title( $topic_id );
@@ -1906,7 +1906,7 @@ function bbp_topic_freshness_link( $topic_id = 0 ) {
  * @param int $topic_id Optional. Topic id
  * @uses bbp_get_topic_replies_link() To get the topic replies link
  */
-function bbp_topic_replies_link( $topic_id = 0 ) {
+function bb_topic_replies_link( $topic_id = 0 ) {
 	echo bbp_get_topic_replies_link( $topic_id );
 }
 
@@ -1929,7 +1929,7 @@ function bbp_topic_replies_link( $topic_id = 0 ) {
 	 * @uses apply_filters() Calls 'bbp_get_topic_replies_link' with the
 	 *                        replies link and topic id
 	 */
-	function bbp_get_topic_replies_link( $topic_id = 0 ) {
+	function bb_get_topic_replies_link( $topic_id = 0 ) {
 
 		$topic    = bbp_get_topic( bbp_get_topic_id( (int) $topic_id ) );
 		$topic_id = $topic->ID;
@@ -1973,7 +1973,7 @@ function bbp_topic_replies_link( $topic_id = 0 ) {
  * @param boolean $integer Optional. Whether or not to format the result
  * @uses bbp_get_topic_reply_count() To get the topic reply count
  */
-function bbp_topic_reply_count( $topic_id = 0, $integer = false ) {
+function bb_topic_reply_count( $topic_id = 0, $integer = false ) {
 	echo bbp_get_topic_reply_count( $topic_id, $integer );
 }
 	/**
@@ -1989,7 +1989,7 @@ function bbp_topic_reply_count( $topic_id = 0, $integer = false ) {
 	 *                        reply count and topic id
 	 * @return int Reply count
 	 */
-	function bbp_get_topic_reply_count( $topic_id = 0, $integer = false ) {
+	function bb_get_topic_reply_count( $topic_id = 0, $integer = false ) {
 		$topic_id = bbp_get_topic_id( $topic_id );
 		$replies  = (int) get_post_meta( $topic_id, '_bbp_reply_count', true );
 		$filter   = ( true === $integer ) ? 'bbp_get_topic_reply_count_int' : 'bbp_get_topic_reply_count';
@@ -2006,7 +2006,7 @@ function bbp_topic_reply_count( $topic_id = 0, $integer = false ) {
  * @param boolean $integer Optional. Whether or not to format the result
  * @uses bbp_get_topic_post_count() To get the topic post count
  */
-function bbp_topic_post_count( $topic_id = 0, $integer = false ) {
+function bb_topic_post_count( $topic_id = 0, $integer = false ) {
 	echo bbp_get_topic_post_count( $topic_id, $integer );
 }
 	/**
@@ -2022,7 +2022,7 @@ function bbp_topic_post_count( $topic_id = 0, $integer = false ) {
 	 *                        post count and topic id
 	 * @return int Post count
 	 */
-	function bbp_get_topic_post_count( $topic_id = 0, $integer = false ) {
+	function bb_get_topic_post_count( $topic_id = 0, $integer = false ) {
 		$topic_id = bbp_get_topic_id( $topic_id );
 		$replies  = (int) get_post_meta( $topic_id, '_bbp_reply_count', true ) + 1;
 		$filter   = ( true === $integer ) ? 'bbp_get_topic_post_count_int' : 'bbp_get_topic_post_count';
@@ -2040,7 +2040,7 @@ function bbp_topic_post_count( $topic_id = 0, $integer = false ) {
  * @param boolean $integer Optional. Whether or not to format the result
  * @uses bbp_get_topic_reply_count_hidden() To get the topic hidden reply count
  */
-function bbp_topic_reply_count_hidden( $topic_id = 0, $integer = false ) {
+function bb_topic_reply_count_hidden( $topic_id = 0, $integer = false ) {
 	echo bbp_get_topic_reply_count_hidden( $topic_id, $integer );
 }
 	/**
@@ -2057,7 +2057,7 @@ function bbp_topic_reply_count_hidden( $topic_id = 0, $integer = false ) {
 	 *                        the hidden reply count and topic id
 	 * @return int Topic hidden reply count
 	 */
-	function bbp_get_topic_reply_count_hidden( $topic_id = 0, $integer = false ) {
+	function bb_get_topic_reply_count_hidden( $topic_id = 0, $integer = false ) {
 		$topic_id = bbp_get_topic_id( $topic_id );
 		$replies  = (int) get_post_meta( $topic_id, '_bbp_reply_count_hidden', true );
 		$filter   = ( true === $integer ) ? 'bbp_get_topic_reply_count_hidden_int' : 'bbp_get_topic_reply_count_hidden';
@@ -2073,7 +2073,7 @@ function bbp_topic_reply_count_hidden( $topic_id = 0, $integer = false ) {
  * @param int $topic_id Optional. Topic id
  * @uses bbp_get_topic_voice_count() To get the topic voice count
  */
-function bbp_topic_voice_count( $topic_id = 0, $integer = false ) {
+function bb_topic_voice_count( $topic_id = 0, $integer = false ) {
 	echo bbp_get_topic_voice_count( $topic_id, $integer );
 }
 	/**
@@ -2088,7 +2088,7 @@ function bbp_topic_voice_count( $topic_id = 0, $integer = false ) {
 	 *                        voice count and topic id
 	 * @return int Voice count of the topic
 	 */
-	function bbp_get_topic_voice_count( $topic_id = 0, $integer = false ) {
+	function bb_get_topic_voice_count( $topic_id = 0, $integer = false ) {
 		$topic_id = bbp_get_topic_id( $topic_id );
 		$voices   = (int) get_post_meta( $topic_id, '_bbp_voice_count', true );
 		$filter   = ( true === $integer ) ? 'bbp_get_topic_voice_count_int' : 'bbp_get_topic_voice_count';
@@ -2103,7 +2103,7 @@ function bbp_topic_voice_count( $topic_id = 0, $integer = false ) {
  * @param mixed $args See {@link bbp_get_topic_tag_list()}
  * @uses bbp_get_topic_tag_list() To get the topic tag list
  */
-function bbp_topic_tag_list( $topic_id = 0, $args = '' ) {
+function bb_topic_tag_list( $topic_id = 0, $args = '' ) {
 	echo bbp_get_topic_tag_list( $topic_id, $args );
 }
 	/**
@@ -2118,7 +2118,7 @@ function bbp_topic_tag_list( $topic_id = 0, $args = '' ) {
 	 * @uses get_the_term_list() To get the tags list
 	 * @return string Tag list of the topic
 	 */
-	function bbp_get_topic_tag_list( $topic_id = 0, $args = '' ) {
+	function bb_get_topic_tag_list( $topic_id = 0, $args = '' ) {
 
 		// Bail if topic-tags are off
 		if ( ! bbp_allow_topic_tags() )
@@ -2166,7 +2166,7 @@ function bbp_topic_tag_list( $topic_id = 0, $args = '' ) {
  * @param array Extra classes you can pass when calling this function
  * @uses bbp_get_topic_class() To get the topic class
  */
-function bbp_topic_class( $topic_id = 0, $classes = array() ) {
+function bb_topic_class( $topic_id = 0, $classes = array() ) {
 	echo bbp_get_topic_class( $topic_id, $classes );
 }
 	/**
@@ -2184,7 +2184,7 @@ function bbp_topic_class( $topic_id = 0, $classes = array() ) {
 	 *                        and topic id
 	 * @return string Row class of a topic
 	 */
-	function bbp_get_topic_class( $topic_id = 0, $classes = array() ) {
+	function bb_get_topic_class( $topic_id = 0, $classes = array() ) {
 		$bbp       = bbpress();
 		$topic_id  = bbp_get_topic_id( $topic_id );
 		$count     = isset( $bbp->topic_query->current_post ) ? $bbp->topic_query->current_post : 1;
@@ -2210,7 +2210,7 @@ function bbp_topic_class( $topic_id = 0, $classes = array() ) {
  * @param mixed $args See {@link bbp_get_topic_admin_links()}
  * @uses bbp_get_topic_admin_links() To get the topic admin links
  */
-function bbp_topic_admin_links( $args = '' ) {
+function bb_topic_admin_links( $args = '' ) {
 	echo bbp_get_topic_admin_links( $args );
 }
 	/**
@@ -2237,7 +2237,7 @@ function bbp_topic_admin_links( $args = '' ) {
 	 *                        topic admin links and args
 	 * @return string Topic admin links
 	 */
-	function bbp_get_topic_admin_links( $args = '' ) {
+	function bb_get_topic_admin_links( $args = '' ) {
 
 		if ( !bbp_is_single_topic() )
 			return;
@@ -2299,7 +2299,7 @@ function bbp_topic_admin_links( $args = '' ) {
  * @param mixed $args See {@link bbp_get_topic_edit_link()}
  * @uses bbp_get_topic_edit_link() To get the topic edit link
  */
-function bbp_topic_edit_link( $args = '' ) {
+function bb_topic_edit_link( $args = '' ) {
 	echo bbp_get_topic_edit_link( $args );
 }
 
@@ -2322,7 +2322,7 @@ function bbp_topic_edit_link( $args = '' ) {
 	 *                        and args
 	 * @return string Topic edit link
 	 */
-	function bbp_get_topic_edit_link( $args = '' ) {
+	function bb_get_topic_edit_link( $args = '' ) {
 
 		// Parse arguments against default values
 		$r = bbp_parse_args( $args, array(
@@ -2363,7 +2363,7 @@ function bbp_topic_edit_link( $args = '' ) {
  * @param int $topic_id Optional. Topic id
  * @uses bbp_get_topic_edit_url() To get the topic edit url
  */
-function bbp_topic_edit_url( $topic_id = 0 ) {
+function bb_topic_edit_url( $topic_id = 0 ) {
 	echo bbp_get_topic_edit_url( $topic_id );
 }
 	/**
@@ -2379,7 +2379,7 @@ function bbp_topic_edit_url( $topic_id = 0 ) {
 	 *                        url and topic id
 	 * @return string Topic edit url
 	 */
-	function bbp_get_topic_edit_url( $topic_id = 0 ) {
+	function bb_get_topic_edit_url( $topic_id = 0 ) {
 		global $wp_rewrite;
 
 		$bbp = bbpress();
@@ -2415,7 +2415,7 @@ function bbp_topic_edit_url( $topic_id = 0 ) {
  * @param mixed $args See {@link bbp_get_topic_trash_link()}
  * @uses bbp_get_topic_trash_link() To get the topic trash link
  */
-function bbp_topic_trash_link( $args = '' ) {
+function bb_topic_trash_link( $args = '' ) {
 	echo bbp_get_topic_trash_link( $args );
 }
 
@@ -2445,7 +2445,7 @@ function bbp_topic_trash_link( $args = '' ) {
 	 *                        and args
 	 * @return string Topic trash link
 	 */
-	function bbp_get_topic_trash_link( $args = '' ) {
+	function bb_get_topic_trash_link( $args = '' ) {
 
 		// Parse arguments against default values
 		$r = bbp_parse_args( $args, array(
@@ -2489,7 +2489,7 @@ function bbp_topic_trash_link( $args = '' ) {
  * @param mixed $args See {@link bbp_get_topic_close_link()}
  * @uses bbp_get_topic_close_link() To get the topic close link
  */
-function bbp_topic_close_link( $args = '' ) {
+function bb_topic_close_link( $args = '' ) {
 	echo bbp_get_topic_close_link( $args );
 }
 
@@ -2515,7 +2515,7 @@ function bbp_topic_close_link( $args = '' ) {
 	 *                        and args
 	 * @return string Topic close link
 	 */
-	function bbp_get_topic_close_link( $args = '' ) {
+	function bb_get_topic_close_link( $args = '' ) {
 
 		// Parse arguments against default values
 		$r = bbp_parse_args( $args, array(
@@ -2548,7 +2548,7 @@ function bbp_topic_close_link( $args = '' ) {
  * @param mixed $args See {@link bbp_get_topic_stick_link()}
  * @uses bbp_get_topic_stick_link() To get the topic stick link
  */
-function bbp_topic_stick_link( $args = '' ) {
+function bb_topic_stick_link( $args = '' ) {
 	echo bbp_get_topic_stick_link( $args );
 }
 
@@ -2576,7 +2576,7 @@ function bbp_topic_stick_link( $args = '' ) {
 	 *                        and args
 	 * @return string Topic stick link
 	 */
-	function bbp_get_topic_stick_link( $args = '' ) {
+	function bb_get_topic_stick_link( $args = '' ) {
 
 		// Parse arguments against default values
 		$r = bbp_parse_args( $args, array(
@@ -2624,7 +2624,7 @@ function bbp_topic_stick_link( $args = '' ) {
  * @param mixed $args
  * @uses bbp_get_topic_merge_link() To get the topic merge link
  */
-function bbp_topic_merge_link( $args = '' ) {
+function bb_topic_merge_link( $args = '' ) {
 	echo bbp_get_topic_merge_link( $args );
 }
 
@@ -2647,7 +2647,7 @@ function bbp_topic_merge_link( $args = '' ) {
 	 *                        and args
 	 * @return string Topic merge link
 	 */
-	function bbp_get_topic_merge_link( $args = '' ) {
+	function bb_get_topic_merge_link( $args = '' ) {
 
 		// Parse arguments against default values
 		$r = bbp_parse_args( $args, array(
@@ -2676,7 +2676,7 @@ function bbp_topic_merge_link( $args = '' ) {
  * @param mixed $args See {@link bbp_get_topic_spam_link()}
  * @uses bbp_get_topic_spam_link() Topic spam link
  */
-function bbp_topic_spam_link( $args = '' ) {
+function bb_topic_spam_link( $args = '' ) {
 	echo bbp_get_topic_spam_link( $args );
 }
 
@@ -2702,7 +2702,7 @@ function bbp_topic_spam_link( $args = '' ) {
 	 *                        and args
 	 * @return string Topic spam link
 	 */
-	function bbp_get_topic_spam_link( $args = '' ) {
+	function bb_get_topic_spam_link( $args = '' ) {
 
 		// Parse arguments against default values
 		$r = bbp_parse_args( $args, array(
@@ -2736,7 +2736,7 @@ function bbp_topic_spam_link( $args = '' ) {
  *
  * @uses bbp_get_forum_pagination_count() To get the forum pagination count
  */
-function bbp_forum_pagination_count() {
+function bb_forum_pagination_count() {
 	echo bbp_get_forum_pagination_count();
 }
 	/**
@@ -2749,7 +2749,7 @@ function bbp_forum_pagination_count() {
 	 *                        pagination count
 	 * @return string Forum Pagintion count
 	 */
-	function bbp_get_forum_pagination_count() {
+	function bb_get_forum_pagination_count() {
 		$bbp = bbpress();
 
 		if ( empty( $bbp->topic_query ) )
@@ -2782,7 +2782,7 @@ function bbp_forum_pagination_count() {
  *
  * @uses bbp_get_forum_pagination_links() To get the pagination links
  */
-function bbp_forum_pagination_links() {
+function bb_forum_pagination_links() {
 	echo bbp_get_forum_pagination_links();
 }
 	/**
@@ -2793,7 +2793,7 @@ function bbp_forum_pagination_links() {
 	 * @uses bbPress::topic_query::pagination_links To get the links
 	 * @return string Pagination links
 	 */
-	function bbp_get_forum_pagination_links() {
+	function bb_get_forum_pagination_links() {
 		$bbp = bbpress();
 
 		if ( empty( $bbp->topic_query ) )
@@ -2814,7 +2814,7 @@ function bbp_forum_pagination_links() {
  *                        status and topic id
  * @uses bbp_add_error() To add an error message
  */
-function bbp_topic_notices() {
+function bb_topic_notices() {
 
 	// Bail if not viewing a topic
 	if ( !bbp_is_single_topic() )
@@ -2868,7 +2868,7 @@ function bbp_topic_notices() {
  * @uses bbp_is_topic_super_sticky() To check if the topic is a super sticky
  * @uses bbp_is_topic_sticky() To check if the topic is a sticky
  */
-function bbp_topic_type_select( $args = '' ) {
+function bb_topic_type_select( $args = '' ) {
 
 	// Parse arguments against default values
 	$r = bbp_parse_args( $args, array(
@@ -2945,7 +2945,7 @@ function bbp_topic_type_select( $args = '' ) {
  * @param array $args See {@link bbp_get_single_topic_description()}
  * @uses bbp_get_single_topic_description() Return the eventual output
  */
-function bbp_single_topic_description( $args = '' ) {
+function bb_single_topic_description( $args = '' ) {
 	echo bbp_get_single_topic_description( $args );
 }
 	/**
@@ -2969,7 +2969,7 @@ function bbp_single_topic_description( $args = '' ) {
 	 *                        the description and args
 	 * @return string Filtered topic description
 	 */
-	function bbp_get_single_topic_description( $args = '' ) {
+	function bb_get_single_topic_description( $args = '' ) {
 
 		// Parse arguments against default values
 		$r = bbp_parse_args( $args, array(
@@ -3028,7 +3028,7 @@ function bbp_single_topic_description( $args = '' ) {
  *
  * @uses bbp_get_topic_post_type() To get the topic post type
  */
-function bbp_topic_tag_tax_id() {
+function bb_topic_tag_tax_id() {
 	echo bbp_get_topic_tag_tax_id();
 }
 	/**
@@ -3039,7 +3039,7 @@ function bbp_topic_tag_tax_id() {
 	 * @uses apply_filters() Calls 'bbp_get_topic_tag_tax_id' with the topic tax id
 	 * @return string The unique topic tag taxonomy
 	 */
-	function bbp_get_topic_tag_tax_id() {
+	function bb_get_topic_tag_tax_id() {
 		return apply_filters( 'bbp_get_topic_tag_tax_id', bbpress()->topic_tag_tax_id );
 	}
 
@@ -3050,7 +3050,7 @@ function bbp_topic_tag_tax_id() {
  *
  * @uses bbp_get_topic_tag_id()
  */
-function bbp_topic_tag_id( $tag = '' ) {
+function bb_topic_tag_id( $tag = '' ) {
 	echo bbp_get_topic_tag_id( $tag );
 }
 	/**
@@ -3065,7 +3065,7 @@ function bbp_topic_tag_id( $tag = '' ) {
 	 *
 	 * @return string Term Name
 	 */
-	function bbp_get_topic_tag_id( $tag = '' ) {
+	function bb_get_topic_tag_id( $tag = '' ) {
 
 		// Get the term
 		if ( ! empty( $tag ) ) {
@@ -3094,7 +3094,7 @@ function bbp_topic_tag_id( $tag = '' ) {
  *
  * @uses bbp_get_topic_tag_name()
  */
-function bbp_topic_tag_name( $tag = '' ) {
+function bb_topic_tag_name( $tag = '' ) {
 	echo bbp_get_topic_tag_name( $tag );
 }
 	/**
@@ -3109,7 +3109,7 @@ function bbp_topic_tag_name( $tag = '' ) {
 	 *
 	 * @return string Term Name
 	 */
-	function bbp_get_topic_tag_name( $tag = '' ) {
+	function bb_get_topic_tag_name( $tag = '' ) {
 
 		// Get the term
 		if ( ! empty( $tag ) ) {
@@ -3138,7 +3138,7 @@ function bbp_topic_tag_name( $tag = '' ) {
  *
  * @uses bbp_get_topic_tag_slug()
  */
-function bbp_topic_tag_slug( $tag = '' ) {
+function bb_topic_tag_slug( $tag = '' ) {
 	echo bbp_get_topic_tag_slug( $tag );
 }
 	/**
@@ -3153,7 +3153,7 @@ function bbp_topic_tag_slug( $tag = '' ) {
 	 *
 	 * @return string Term Name
 	 */
-	function bbp_get_topic_tag_slug( $tag = '' ) {
+	function bb_get_topic_tag_slug( $tag = '' ) {
 
 		// Get the term
 		if ( ! empty( $tag ) ) {
@@ -3182,7 +3182,7 @@ function bbp_topic_tag_slug( $tag = '' ) {
  *
  * @uses bbp_get_topic_tag_link()
  */
-function bbp_topic_tag_link( $tag = '' ) {
+function bb_topic_tag_link( $tag = '' ) {
 	echo bbp_get_topic_tag_link( $tag );
 }
 	/**
@@ -3197,7 +3197,7 @@ function bbp_topic_tag_link( $tag = '' ) {
 	 *
 	 * @return string Term Name
 	 */
-	function bbp_get_topic_tag_link( $tag = '' ) {
+	function bb_get_topic_tag_link( $tag = '' ) {
 
 		// Get the term
 		if ( ! empty( $tag ) ) {
@@ -3226,7 +3226,7 @@ function bbp_topic_tag_link( $tag = '' ) {
  *
  * @uses bbp_get_topic_tag_edit_link()
  */
-function bbp_topic_tag_edit_link( $tag = '' ) {
+function bb_topic_tag_edit_link( $tag = '' ) {
 	echo bbp_get_topic_tag_edit_link( $tag );
 }
 	/**
@@ -3241,7 +3241,7 @@ function bbp_topic_tag_edit_link( $tag = '' ) {
 	 *
 	 * @return string Term Name
 	 */
-	function bbp_get_topic_tag_edit_link( $tag = '' ) {
+	function bb_get_topic_tag_edit_link( $tag = '' ) {
 		global $wp_rewrite;
 
 		// Get the term
@@ -3281,7 +3281,7 @@ function bbp_topic_tag_edit_link( $tag = '' ) {
  *
  * @uses bbp_get_topic_tag_description()
  */
-function bbp_topic_tag_description( $args = array() ) {
+function bb_topic_tag_description( $args = array() ) {
 	echo bbp_get_topic_tag_description( $args );
 }
 	/**
@@ -3297,7 +3297,7 @@ function bbp_topic_tag_description( $args = array() ) {
 	 *
 	 * @return string Term Name
 	 */
-	function bbp_get_topic_tag_description( $args = array() ) {
+	function bb_get_topic_tag_description( $args = array() ) {
 
 		// Parse arguments against default values
 		$r = bbp_parse_args( $args, array(
@@ -3336,7 +3336,7 @@ function bbp_topic_tag_description( $args = array() ) {
  *
  * @uses bbp_get_form_topic_title() To get the value of topic title field
  */
-function bbp_form_topic_title() {
+function bb_form_topic_title() {
 	echo bbp_get_form_topic_title();
 }
 	/**
@@ -3348,7 +3348,7 @@ function bbp_form_topic_title() {
 	 * @uses apply_filters() Calls 'bbp_get_form_topic_title' with the title
 	 * @return string Value of topic title field
 	 */
-	function bbp_get_form_topic_title() {
+	function bb_get_form_topic_title() {
 
 		// Get _POST data
 		if ( bbp_is_post_request() && isset( $_POST['bbp_topic_title'] ) ) {
@@ -3373,7 +3373,7 @@ function bbp_form_topic_title() {
  *
  * @uses bbp_get_form_topic_content() To get value of topic content field
  */
-function bbp_form_topic_content() {
+function bb_form_topic_content() {
 	echo bbp_get_form_topic_content();
 }
 	/**
@@ -3385,7 +3385,7 @@ function bbp_form_topic_content() {
 	 * @uses apply_filters() Calls 'bbp_get_form_topic_content' with the content
 	 * @return string Value of topic content field
 	 */
-	function bbp_get_form_topic_content() {
+	function bb_get_form_topic_content() {
 
 		// Get _POST data
 		if ( bbp_is_post_request() && isset( $_POST['bbp_topic_content'] ) ) {
@@ -3410,7 +3410,7 @@ function bbp_form_topic_content() {
  * @uses do_action()
  * @todo Links and filter
  */
-function bbp_topic_row_actions() {
+function bb_topic_row_actions() {
 	do_action( 'bbp_topic_row_actions' );
 }
 
@@ -3420,7 +3420,7 @@ function bbp_topic_row_actions() {
  * @since bbPress (r2976)
  * @uses bbp_get_form_topic_tags() To get the value of topic tags field
  */
-function bbp_form_topic_tags() {
+function bb_form_topic_tags() {
 	echo bbp_get_form_topic_tags();
 }
 	/**
@@ -3432,7 +3432,7 @@ function bbp_form_topic_tags() {
 	 * @uses apply_filters() Calls 'bbp_get_form_topic_tags' with the tags
 	 * @return string Value of topic tags field
 	 */
-	function bbp_get_form_topic_tags() {
+	function bb_get_form_topic_tags() {
 
 		// Get _POST data
 		if ( bbp_is_post_request() && isset( $_POST['bbp_topic_tags'] ) ) {
@@ -3502,7 +3502,7 @@ function bbp_form_topic_tags() {
  *
  * @uses bbp_get_form_topic_forum() To get the topic's forum id
  */
-function bbp_form_topic_forum() {
+function bb_form_topic_forum() {
 	echo bbp_get_form_topic_forum();
 }
 	/**
@@ -3515,7 +3515,7 @@ function bbp_form_topic_forum() {
 	 * @uses apply_filters() Calls 'bbp_get_form_topic_forum' with the forum
 	 * @return string Value of topic content field
 	 */
-	function bbp_get_form_topic_forum() {
+	function bb_get_form_topic_forum() {
 
 		// Get _POST data
 		if ( bbp_is_post_request() && isset( $_POST['bbp_forum_id'] ) ) {
@@ -3540,7 +3540,7 @@ function bbp_form_topic_forum() {
  *
  * @uses bbp_get_form_topic_subscribed() To get the subscribed checkbox value
  */
-function bbp_form_topic_subscribed() {
+function bb_form_topic_subscribed() {
 	echo bbp_get_form_topic_subscribed();
 }
 	/**
@@ -3555,7 +3555,7 @@ function bbp_form_topic_subscribed() {
 	 *                        option
 	 * @return string Checked value of topic subscription
 	 */
-	function bbp_get_form_topic_subscribed() {
+	function bb_get_form_topic_subscribed() {
 
 		// Get _POST data
 		if ( bbp_is_post_request() && isset( $_POST['bbp_topic_subscription'] ) ) {
@@ -3598,7 +3598,7 @@ function bbp_form_topic_subscribed() {
  *
  * @uses bbp_get_form_topic_log_edit() To get the topic log edit value
  */
-function bbp_form_topic_log_edit() {
+function bb_form_topic_log_edit() {
 	echo bbp_get_form_topic_log_edit();
 }
 	/**
@@ -3610,7 +3610,7 @@ function bbp_form_topic_log_edit() {
 	 *                        log edit value
 	 * @return string Topic log edit checked value
 	 */
-	function bbp_get_form_topic_log_edit() {
+	function bb_get_form_topic_log_edit() {
 
 		// Get _POST data
 		if ( bbp_is_post_request() && isset( $_POST['bbp_log_topic_edit'] ) ) {
@@ -3634,7 +3634,7 @@ function bbp_form_topic_log_edit() {
  *
  * @uses bbp_get_form_topic_edit_reason() To get the topic edit reason value
  */
-function bbp_form_topic_edit_reason() {
+function bb_form_topic_edit_reason() {
 	echo bbp_get_form_topic_edit_reason();
 }
 	/**
@@ -3646,7 +3646,7 @@ function bbp_form_topic_edit_reason() {
 	 *                        topic edit reason value
 	 * @return string Topic edit reason value
 	 */
-	function bbp_get_form_topic_edit_reason() {
+	function bb_get_form_topic_edit_reason() {
 
 		// Get _POST data
 		if ( bbp_is_post_request() && isset( $_POST['bbp_topic_edit_reason'] ) ) {
