@@ -25,7 +25,7 @@ if ( !class_exists( 'BBP_Forums_Group_Extension' ) && class_exists( 'BP_Group_Ex
  * @subpackage BuddyPress
  * @todo Everything
  */
-class BBP_Forums_Group_Extension extends BP_Group_Extension {
+class BB_Forums_Group_Extension extends BP_Group_Extension {
 
 	/** Methods ***************************************************************/
 

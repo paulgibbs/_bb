@@ -18,7 +18,7 @@ if ( !class_exists( 'BBP_Admin' ) ) :
  * @subpackage Administration
  * @since bbPress (r2464)
  */
-class BBP_Admin {
+class BB_Admin {
 
 	/** Directory *************************************************************/
 

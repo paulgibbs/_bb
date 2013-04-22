@@ -24,7 +24,7 @@ if ( !class_exists( 'BBP_Component' ) ) :
  *
  * @since bbPress (r2688)
  */
-class BBP_Component {
+class BB_Component {
 
 	/**
 	 * @var string Unique name (for internal identification)
@@ -182,7 +182,7 @@ if ( class_exists( 'Walker' ) ) :
  * @since bbPress (r2746)
  * @uses Walker
  */
-class BBP_Walker_Dropdown extends Walker {
+class BB_Walker_Dropdown extends Walker {
 
 	/**
 	 * @see Walker::$tree_type

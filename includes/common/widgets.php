@@ -21,7 +21,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
  *
  * @uses WP_Widget
  */
-class BBP_Login_Widget extends WP_Widget {
+class BB_Login_Widget extends WP_Widget {
 
 	/**
 	 * bbPress Login Widget
@@ -225,7 +225,7 @@ class BBP_Login_Widget extends WP_Widget {
  *
  * @uses WP_Widget
  */
-class BBP_Views_Widget extends WP_Widget {
+class BB_Views_Widget extends WP_Widget {
 
 	/**
 	 * bbPress View Widget
@@ -366,7 +366,7 @@ class BBP_Views_Widget extends WP_Widget {
  *
  * @uses WP_Widget
  */
-class BBP_Search_Widget extends WP_Widget {
+class BB_Search_Widget extends WP_Widget {
 
 	/**
 	 * bbPress Search Widget
@@ -490,7 +490,7 @@ class BBP_Search_Widget extends WP_Widget {
  *
  * @uses WP_Widget
  */
-class BBP_Forums_Widget extends WP_Widget {
+class BB_Forums_Widget extends WP_Widget {
 
 	/**
 	 * bbPress Forum Widget
@@ -668,7 +668,7 @@ class BBP_Forums_Widget extends WP_Widget {
  *
  * @uses WP_Widget
  */
-class BBP_Topics_Widget extends WP_Widget {
+class BB_Topics_Widget extends WP_Widget {
 
 	/**
 	 * bbPress Topic Widget
@@ -922,7 +922,7 @@ class BBP_Topics_Widget extends WP_Widget {
  *
  * @uses WP_Widget
  */
-class BBP_Stats_Widget extends WP_Widget {
+class BB_Stats_Widget extends WP_Widget {
 
 	/**
 	 * bbPress Stats Widget
@@ -1052,7 +1052,7 @@ class BBP_Stats_Widget extends WP_Widget {
  *
  * @uses WP_Widget
  */
-class BBP_Replies_Widget extends WP_Widget {
+class BB_Replies_Widget extends WP_Widget {
 
 	/**
 	 * bbPress Replies Widget

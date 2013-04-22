@@ -19,7 +19,7 @@ if ( !class_exists( 'BBP_BuddyPress_Activity' ) ) :
  * @package bbPress
  * @subpackage BuddyPress
  */
-class BBP_BuddyPress_Activity {
+class BB_BuddyPress_Activity {
 
 	/** Variables *************************************************************/
 

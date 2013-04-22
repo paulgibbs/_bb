@@ -16,7 +16,7 @@ if ( !class_exists( 'BBP_Shortcodes' ) ) :
  *
  * @since bbPress (r3031)
  */
-class BBP_Shortcodes {
+class BB_Shortcodes {
 
 	/** Vars ******************************************************************/
 

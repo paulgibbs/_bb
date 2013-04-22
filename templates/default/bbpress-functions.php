@@ -32,7 +32,7 @@ if ( !class_exists( 'BBP_Default' ) ) :
  * @package bbPress
  * @subpackage BBP_Theme_Compat
  */
-class BBP_Default extends BBP_Theme_Compat {
+class BB_Default extends BBP_Theme_Compat {
 
 	/** Functions *************************************************************/
 

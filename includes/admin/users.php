@@ -18,7 +18,7 @@ if ( !class_exists( 'BBP_Users_Admin' ) ) :
  * @subpackage Administration
  * @since bbPress (r2464)
  */
-class BBP_Users_Admin {
+class BB_Users_Admin {
 
 	/**
 	 * The bbPress users admin loader

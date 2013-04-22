@@ -19,7 +19,7 @@ if ( !class_exists( 'BBP_Forums_Members' ) ) :
  * @package bbPress
  * @subpackage BuddyPress
  */
-class BBP_BuddyPress_Members {
+class BB_BuddyPress_Members {
 
 	/**
 	 * Main constructor for modifying bbPress profile links

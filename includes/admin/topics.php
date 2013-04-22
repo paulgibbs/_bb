@@ -18,7 +18,7 @@ if ( !class_exists( 'BBP_Topics_Admin' ) ) :
  * @subpackage Administration
  * @since bbPress (r2464)
  */
-class BBP_Topics_Admin {
+class BB_Topics_Admin {
 
 	/** Variables *************************************************************/
 

@@ -33,7 +33,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
  *
  * @since bbPress (r3506)
  */
-class BBP_Theme_Compat {
+class BB_Theme_Compat {
 
 	/**
 	 * Should be like:

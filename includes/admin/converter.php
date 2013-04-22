@@ -15,7 +15,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
 /**
  * Main BBP_Converter Class
  */
-class BBP_Converter {
+class BB_Converter {
 
 	/**
 	 * The main bbPress Converter loader
@@ -521,7 +521,7 @@ class BBP_Converter {
  *
  * @since bbPress (r3813)
  */
-abstract class BBP_Converter_Base {
+abstract class BB_Converter_Base {
 
 	/**
 	 * @var array() This is the field mapping array to process.

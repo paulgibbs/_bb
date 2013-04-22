@@ -19,7 +19,7 @@ if ( !class_exists( 'BBP_Akismet' ) ) :
  * @package bbPress
  * @subpackage Akismet
  */
-class BBP_Akismet {
+class BB_Akismet {
 
 	/**
 	 * The main bbPress Akismet loader

@@ -29,7 +29,7 @@ if ( !class_exists( 'BBP_Forums_Component' ) ) :
  * @package bbPress
  * @subpackage BuddyPress
  */
-class BBP_Forums_Component extends BP_Component {
+class BB_Forums_Component extends BP_Component {
 
 	/**
 	 * Start the forums component creation process

@@ -30,7 +30,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
  * @package bbPress
  * @subpackage Cache
  */
-class BBP_Skip_Children {
+class BB_Skip_Children {
 
 	/**
 	 * @var int Post ID being updated
