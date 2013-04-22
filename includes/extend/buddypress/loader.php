@@ -20,7 +20,7 @@
 // Exit if accessed directly
 if ( !defined( 'ABSPATH' ) ) exit;
 
-if ( !class_exists( 'BBP_Forums_Component' ) ) :
+if ( !class_exists( 'BB_Forums_Component' ) ) :
 /**
  * Loads Forums Component
  *
@@ -127,16 +127,16 @@ class BB_Forums_Component extends BP_Component {
 	public function setup_components() {
 
 		// Always load the members component
-		bbpress()->extend->buddypress->members = new BBP_BuddyPress_Members;
+		bbpress()->extend->buddypress->members = new BB_BuddyPress_Members;
 
 		// Create new activity class
 		if ( bp_is_active( 'activity' ) ) {
-			bbpress()->extend->buddypress->activity = new BBP_BuddyPress_Activity;
+			bbpress()->extend->buddypress->activity = new BB_BuddyPress_Activity;
 		}
 
 		// Register the group extension only if groups are active
 		if ( bbp_is_group_forums_active() && bp_is_active( 'groups' ) ) {
-			bp_register_group_extension( 'BBP_Forums_Group_Extension' );
+			bp_register_group_extension( 'BB_Forums_Group_Extension' );
 		}
 	}
 

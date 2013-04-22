@@ -824,10 +824,10 @@ final class bbPress {
 	 *
 	 * @since bbPress (r3031)
 	 *
-	 * @uses BBP_Shortcodes
+	 * @uses BB_Shortcodes
 	 */
 	public function register_shortcodes() {
-		$this->shortcodes = new BBP_Shortcodes();
+		$this->shortcodes = new BB_Shortcodes();
 	}
 
 	/**

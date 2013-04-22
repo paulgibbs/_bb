@@ -10,7 +10,7 @@
 // Exit if accessed directly
 if ( !defined( 'ABSPATH' ) ) exit;
 
-if ( !class_exists( 'BBP_Forums_Members' ) ) :
+if ( !class_exists( 'BB_Forums_Members' ) ) :
 /**
  * Member profile modifications
  *

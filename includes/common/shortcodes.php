@@ -10,7 +10,7 @@
 // Exit if accessed directly
 if ( !defined( 'ABSPATH' ) ) exit;
 
-if ( !class_exists( 'BBP_Shortcodes' ) ) :
+if ( !class_exists( 'BB_Shortcodes' ) ) :
 /**
  * bbPress Shortcode Class
  *
@@ -167,7 +167,7 @@ class BB_Shortcodes {
 	 *
 	 * @since bbPress( r3079)
 	 *
-	 * @uses BBP_Shortcodes::unset_globals() Cleans up global values
+	 * @uses BB_Shortcodes::unset_globals() Cleans up global values
 	 * @return string Contents of output buffer.
 	 */
 	private function end() {

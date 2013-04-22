@@ -10,7 +10,7 @@
 // Exit if accessed directly
 if ( !defined( 'ABSPATH' ) ) exit;
 
-if ( !class_exists( 'BBP_Component' ) ) :
+if ( !class_exists( 'BB_Component' ) ) :
 /**
  * bbPress Component Class
  *
@@ -66,9 +66,9 @@ class BB_Component {
 	 *  - slug: Unique slug (used in query string and permalinks)
 	 *  - query: The loop for this component (WP_Query)
 	 *  - current_id: The current ID of the queried object
-	 * @uses BBP_Component::setup_globals() Setup the globals needed
-	 * @uses BBP_Component::includes() Include the required files
-	 * @uses BBP_Component::setup_actions() Setup the hooks and actions
+	 * @uses BB_Component::setup_globals() Setup the globals needed
+	 * @uses BB_Component::includes() Include the required files
+	 * @uses BB_Component::setup_actions() Setup the hooks and actions
 	 */
 	public function __construct( $args = '' ) {
 		if ( empty( $args ) )
@@ -85,8 +85,8 @@ class BB_Component {
 	 * @since bbPress (r2700)
 	 * @access private
 	 *
-	 * @uses apply_filters() Calls 'bbp_{@link BBP_Component::name}_id'
-	 * @uses apply_filters() Calls 'bbp_{@link BBP_Component::name}_slug'
+	 * @uses apply_filters() Calls 'bbp_{@link BB_Component::name}_id'
+	 * @uses apply_filters() Calls 'bbp_{@link BB_Component::name}_slug'
 	 */
 	private function setup_globals( $args = '' ) {
 		$this->name = $args['name'];
@@ -100,7 +100,7 @@ class BB_Component {
 	 * @since bbPress (r2700)
 	 * @access private
 	 *
-	 * @uses do_action() Calls 'bbp_{@link BBP_Component::name}includes'
+	 * @uses do_action() Calls 'bbp_{@link BB_Component::name}includes'
 	 */
 	private function includes() {
 		do_action( 'bbp_' . $this->name . 'includes' );
@@ -114,7 +114,7 @@ class BB_Component {
 	 *
 	 * @uses add_action() To add various actions
 	 * @uses do_action() Calls
-	 *                    'bbp_{@link BBP_Component::name}setup_actions'
+	 *                    'bbp_{@link BB_Component::name}setup_actions'
 	 */
 	private function setup_actions() {
 		add_action( 'bbp_register_post_types',    array( $this, 'register_post_types'    ), 10, 2 ); // Register post types
@@ -131,7 +131,7 @@ class BB_Component {
 	 *
 	 * @since bbPress (r2700)
 	 *
-	 * @uses do_action() Calls 'bbp_{@link BBP_Component::name}_register_post_types'
+	 * @uses do_action() Calls 'bbp_{@link BB_Component::name}_register_post_types'
 	 */
 	public function register_post_types() {
 		do_action( 'bbp_' . $this->name . '_register_post_types' );
@@ -142,7 +142,7 @@ class BB_Component {
 	 *
 	 * @since bbPress (r2700)
 	 *
-	 * @uses do_action() Calls 'bbp_{@link BBP_Component::name}_register_taxonomies'
+	 * @uses do_action() Calls 'bbp_{@link BB_Component::name}_register_taxonomies'
 	 */
 	public function register_taxonomies() {
 		do_action( 'bbp_' . $this->name . '_register_taxonomies' );
@@ -153,7 +153,7 @@ class BB_Component {
 	 *
 	 * @since bbPress (r2700)
 	 *
-	 * @uses do_action() Calls 'bbp_{@link BBP_Component::name}_add_rewrite_tags'
+	 * @uses do_action() Calls 'bbp_{@link BB_Component::name}_add_rewrite_tags'
 	 */
 	public function add_rewrite_tags() {
 		do_action( 'bbp_' . $this->name . '_add_rewrite_tags' );
@@ -164,13 +164,13 @@ class BB_Component {
 	 *
 	 * @since bbPress (r2700)
 	 *
-	 * @uses do_action() Calls 'bbp_{@link BBP_Component::name}_generate_rewrite_rules'
+	 * @uses do_action() Calls 'bbp_{@link BB_Component::name}_generate_rewrite_rules'
 	 */
 	public function generate_rewrite_rules( $wp_rewrite ) {
 		do_action_ref_array( 'bbp_' . $this->name . '_generate_rewrite_rules', $wp_rewrite );
 	}
 }
-endif; // BBP_Component
+endif; // BB_Component
 
 if ( class_exists( 'Walker' ) ) :
 /**

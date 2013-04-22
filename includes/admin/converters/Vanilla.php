@@ -6,7 +6,7 @@
  * @since bbPress (r4717)
  * @link Codex Docs http://codex.bbpress.org/import-forums/vanilla
  */
-class Vanilla extends BBP_Converter_Base {
+class Vanilla extends BB_Converter_Base {
 
 	/**
 	 * Main Constructor

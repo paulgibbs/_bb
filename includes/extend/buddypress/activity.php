@@ -10,7 +10,7 @@
 // Exit if accessed directly
 if ( !defined( 'ABSPATH' ) ) exit;
 
-if ( !class_exists( 'BBP_BuddyPress_Activity' ) ) :
+if ( !class_exists( 'BB_BuddyPress_Activity' ) ) :
 /**
  * Loads BuddyPress Activity extension
  *

@@ -6,7 +6,7 @@
  * @since bbPress (r4638)
  * @link Codex Docs http://codex.bbpress.org/import-forums/simplepress/
  */
-class SimplePress5 extends BBP_Converter_Base {
+class SimplePress5 extends BB_Converter_Base {
 
 	/**
 	 * Main Constructor

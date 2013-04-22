@@ -6,7 +6,7 @@
  * @since bbPress (r3816)
  * @link Codex Docs http://codex.bbpress.org/import-forums/bbpress-1-x-buddypress-group-forums
  */
-class bbPress1 extends BBP_Converter_Base {
+class bbPress1 extends BB_Converter_Base {
 
 	/**
 	 * Main constructor

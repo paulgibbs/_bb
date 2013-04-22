@@ -15,7 +15,7 @@
 // Exit if accessed directly
 if ( !defined( 'ABSPATH' ) ) exit;
 
-if ( !class_exists( 'BBP_Forums_Group_Extension' ) && class_exists( 'BP_Group_Extension' ) ) :
+if ( !class_exists( 'BB_Forums_Group_Extension' ) && class_exists( 'BP_Group_Extension' ) ) :
 /**
  * Loads Group Extension for Forums Component
  *
@@ -422,7 +422,7 @@ class BB_Forums_Group_Extension extends BP_Group_Extension {
 	 * @since bbPress (r4814)
 	 *
 	 * @uses add_meta_box
-	 * @uses BBP_Forums_Group_Extension::group_admin_ui_display_metabox() To display the edit screen
+	 * @uses BB_Forums_Group_Extension::group_admin_ui_display_metabox() To display the edit screen
 	 */
 	public function group_admin_ui_edit_screen() {
 		add_meta_box(
@@ -442,7 +442,7 @@ class BB_Forums_Group_Extension extends BP_Group_Extension {
 	 *
 	 * @param object $item (group object)
 	 * @uses add_meta_box
-	 * @uses BBP_Forums_Group_Extension::edit_screen() To get the html
+	 * @uses BB_Forums_Group_Extension::edit_screen() To get the html
 	 */
 	public function group_admin_ui_display_metabox( $item ) {
 		$this->edit_screen( $item );
@@ -626,7 +626,7 @@ class BB_Forums_Group_Extension extends BP_Group_Extension {
 	 *
 	 * @param int $group_id The group ID
 	 * @uses bbp_get_group_forum_ids()
-	 * @uses BBP_Forums_Group_Extension::remove_forum()
+	 * @uses BB_Forums_Group_Extension::remove_forum()
 	 */
 	public function disconnect_forum_from_group( $group_id = 0 ) {
 
@@ -1327,7 +1327,7 @@ class BB_Forums_Group_Extension extends BP_Group_Extension {
 	 *
 	 * @since bbPress (r4396)
 	 *
-	 * @param array $args Arguments from BBP_BuddyPress_Activity::record_activity()
+	 * @param array $args Arguments from BB_BuddyPress_Activity::record_activity()
 	 * @uses groups_get_current_group() To see if we're posting from a BP group
 	 *
 	 * @return array

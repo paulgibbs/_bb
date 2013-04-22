@@ -6,7 +6,7 @@
  * @since bbPress (r4713)
  * @link Codex Docs http://codex.bbpress.org/import-forums/invision
  */
-class Invision extends BBP_Converter_Base {
+class Invision extends BB_Converter_Base {
 
 	/**
 	 * Main Constructor

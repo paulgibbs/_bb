@@ -10,7 +10,7 @@
 // Exit if accessed directly
 if ( !defined( 'ABSPATH' ) ) exit;
 
-if ( !class_exists( 'BBP_Forums_Admin' ) ) :
+if ( !class_exists( 'BB_Forums_Admin' ) ) :
 /**
  * Loads bbPress forums admin area
  *
@@ -34,9 +34,9 @@ class BB_Forums_Admin {
 	 *
 	 * @since bbPress (r2515)
 	 *
-	 * @uses BBP_Forums_Admin::setup_globals() Setup the globals needed
-	 * @uses BBP_Forums_Admin::setup_actions() Setup the hooks and actions
-	 * @uses BBP_Forums_Admin::setup_help() Setup the help text
+	 * @uses BB_Forums_Admin::setup_globals() Setup the globals needed
+	 * @uses BB_Forums_Admin::setup_actions() Setup the hooks and actions
+	 * @uses BB_Forums_Admin::setup_help() Setup the help text
 	 */
 	public function __construct() {
 		$this->setup_globals();
@@ -587,8 +587,8 @@ endif; // class_exists check
  *
  * @since bbPress (r2596)
  *
- * @uses BBP_Forums_Admin
+ * @uses BB_Forums_Admin
  */
 function bb_admin_forums() {
-	bbpress()->admin->forums = new BBP_Forums_Admin();
+	bbpress()->admin->forums = new BB_Forums_Admin();
 }

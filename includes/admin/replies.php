@@ -10,7 +10,7 @@
 // Exit if accessed directly
 if ( !defined( 'ABSPATH' ) ) exit;
 
-if ( !class_exists( 'BBP_Replies_Admin' ) ) :
+if ( !class_exists( 'BB_Replies_Admin' ) ) :
 /**
  * Loads bbPress replies admin area
  *
@@ -34,9 +34,9 @@ class BB_Replies_Admin {
 	 *
 	 * @since bbPress (r2515)
 	 *
-	 * @uses BBP_Replies_Admin::setup_globals() Setup the globals needed
-	 * @uses BBP_Replies_Admin::setup_actions() Setup the hooks and actions
-	 * @uses BBP_Replies_Admin::setup_actions() Setup the help text
+	 * @uses BB_Replies_Admin::setup_globals() Setup the globals needed
+	 * @uses BB_Replies_Admin::setup_actions() Setup the hooks and actions
+	 * @uses BB_Replies_Admin::setup_actions() Setup the help text
 	 */
 	public function __construct() {
 		$this->setup_globals();
@@ -505,7 +505,7 @@ class BB_Replies_Admin {
 	 * Toggle reply notices
 	 *
 	 * Display the success/error notices from
-	 * {@link BBP_Admin::toggle_reply()}
+	 * {@link BB_Admin::toggle_reply()}
 	 *
 	 * @since bbPress (r2740)
 	 *
@@ -906,8 +906,8 @@ endif; // class_exists check
  *
  * @since bbPress (r2596)
  *
- * @uses BBP_Replies_Admin
+ * @uses BB_Replies_Admin
  */
 function bb_admin_replies() {
-	bbpress()->admin->replies = new BBP_Replies_Admin();
+	bbpress()->admin->replies = new BB_Replies_Admin();
 }

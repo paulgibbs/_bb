@@ -13,7 +13,7 @@
  * There are a few common places that additional actions can currently be found
  *
  *  - bbPress: In {@link bbPress::setup_actions()} in bbpress.php
- *  - Admin: More in {@link BBP_Admin::setup_actions()} in admin.php
+ *  - Admin: More in {@link BB_Admin::setup_actions()} in admin.php
  *
  * @see /core/filters.php
  */
@@ -133,13 +133,13 @@ add_action( 'bp_include', 'bbp_setup_buddypress', 10 ); // Social network integr
 add_action( 'bbp_after_setup_theme', 'bbp_load_theme_functions', 10 );
 
 // Widgets
-add_action( 'bbp_widgets_init', array( 'BBP_Login_Widget',   'register_widget' ), 10 );
-add_action( 'bbp_widgets_init', array( 'BBP_Views_Widget',   'register_widget' ), 10 );
-add_action( 'bbp_widgets_init', array( 'BBP_Search_Widget',  'register_widget' ), 10 );
-add_action( 'bbp_widgets_init', array( 'BBP_Forums_Widget',  'register_widget' ), 10 );
-add_action( 'bbp_widgets_init', array( 'BBP_Topics_Widget',  'register_widget' ), 10 );
-add_action( 'bbp_widgets_init', array( 'BBP_Replies_Widget', 'register_widget' ), 10 );
-add_action( 'bbp_widgets_init', array( 'BBP_Stats_Widget',   'register_widget' ), 10 );
+add_action( 'bbp_widgets_init', array( 'BB_Login_Widget',   'register_widget' ), 10 );
+add_action( 'bbp_widgets_init', array( 'BB_Views_Widget',   'register_widget' ), 10 );
+add_action( 'bbp_widgets_init', array( 'BB_Search_Widget',  'register_widget' ), 10 );
+add_action( 'bbp_widgets_init', array( 'BB_Forums_Widget',  'register_widget' ), 10 );
+add_action( 'bbp_widgets_init', array( 'BB_Topics_Widget',  'register_widget' ), 10 );
+add_action( 'bbp_widgets_init', array( 'BB_Replies_Widget', 'register_widget' ), 10 );
+add_action( 'bbp_widgets_init', array( 'BB_Stats_Widget',   'register_widget' ), 10 );
 
 // Notices (loaded after bbp_init for translations)
 add_action( 'bbp_head',             'bbp_login_notices'    );

@@ -32,7 +32,7 @@ function bb_setup_akismet() {
 	require( bbpress()->includes_dir . 'extend/akismet.php' );
 
 	// Instantiate Akismet for bbPress
-	bbpress()->extend->akismet = new BBP_Akismet();
+	bbpress()->extend->akismet = new BB_Akismet();
 }
 
 /**
@@ -65,5 +65,5 @@ function bb_setup_buddypress() {
 	require( bbpress()->includes_dir . 'extend/buddypress/loader.php' );
 
 	// Instantiate BuddyPress for bbPress
-	bbpress()->extend->buddypress = new BBP_Forums_Component();
+	bbpress()->extend->buddypress = new BB_Forums_Component();
 }

@@ -13,7 +13,7 @@
  * There are a few common places that additional filters can currently be found
  *
  *  - bbPress: In {@link bbPress::setup_actions()} in bbpress.php
- *  - Admin: More in {@link BBP_Admin::setup_actions()} in admin.php
+ *  - Admin: More in {@link BB_Admin::setup_actions()} in admin.php
  *
  * @see /core/actions.php
  */

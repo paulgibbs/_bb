@@ -13,7 +13,7 @@
 if ( !defined( 'ABSPATH' ) ) exit;
 
 /**
- * Main BBP_Converter Class
+ * Main BB_Converter Class
  */
 class BB_Converter {
 
@@ -21,8 +21,8 @@ class BB_Converter {
 	 * The main bbPress Converter loader
 	 *
 	 * @since bbPress (r3813)
-	 * @uses BBP_Converter::includes() Include the required files
-	 * @uses BBP_Converter::setup_actions() Setup the actions
+	 * @uses BB_Converter::includes() Include the required files
+	 * @uses BB_Converter::setup_actions() Setup the actions
 	 */
 	public function __construct() {
 

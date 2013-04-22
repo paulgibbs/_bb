@@ -3,7 +3,7 @@
 /**
  * Implementation of Example converter.
  */
-class Example_Converter extends BBP_Converter_Base
+class Example_Converter extends BB_Converter_Base
 {
 	function __construct()
 	{

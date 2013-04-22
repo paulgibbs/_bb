@@ -50,7 +50,7 @@ class BB_Login_Widget extends WP_Widget {
 	 * @uses register_widget()
 	 */
 	public static function register_widget() {
-		register_widget( 'BBP_Login_Widget' );
+		register_widget( 'BB_Login_Widget' );
 	}
 
 	/**
@@ -173,8 +173,8 @@ class BB_Login_Widget extends WP_Widget {
 	 * @since bbPress (r2827)
 	 *
 	 * @param $instance Instance
-	 * @uses BBP_Login_Widget::get_field_id() To output the field id
-	 * @uses BBP_Login_Widget::get_field_name() To output the field name
+	 * @uses BB_Login_Widget::get_field_id() To output the field id
+	 * @uses BB_Login_Widget::get_field_name() To output the field name
 	 */
 	public function form( $instance = array() ) {
 
@@ -254,7 +254,7 @@ class BB_Views_Widget extends WP_Widget {
 	 * @uses register_widget()
 	 */
 	public static function register_widget() {
-		register_widget( 'BBP_Views_Widget' );
+		register_widget( 'BB_Views_Widget' );
 	}
 
 	/**
@@ -325,8 +325,8 @@ class BB_Views_Widget extends WP_Widget {
 	 * @since bbPress (r3020)
 	 *
 	 * @param $instance Instance
-	 * @uses BBP_Views_Widget::get_field_id() To output the field id
-	 * @uses BBP_Views_Widget::get_field_name() To output the field name
+	 * @uses BB_Views_Widget::get_field_id() To output the field id
+	 * @uses BB_Views_Widget::get_field_name() To output the field name
 	 */
 	public function form( $instance = array() ) {
 
@@ -395,7 +395,7 @@ class BB_Search_Widget extends WP_Widget {
 	 * @uses register_widget()
 	 */
 	public static function register_widget() {
-		register_widget( 'BBP_Search_Widget' );
+		register_widget( 'BB_Search_Widget' );
 	}
 
 	/**
@@ -449,8 +449,8 @@ class BB_Search_Widget extends WP_Widget {
 	 * @since bbPress (r4579)
 	 *
 	 * @param $instance Instance
-	 * @uses BBP_Search_Widget::get_field_id() To output the field id
-	 * @uses BBP_Search_Widget::get_field_name() To output the field name
+	 * @uses BB_Search_Widget::get_field_id() To output the field id
+	 * @uses BB_Search_Widget::get_field_name() To output the field name
 	 */
 	public function form( $instance ) {
 
@@ -519,7 +519,7 @@ class BB_Forums_Widget extends WP_Widget {
 	 * @uses register_widget()
 	 */
 	public static function register_widget() {
-		register_widget( 'BBP_Forums_Widget' );
+		register_widget( 'BB_Forums_Widget' );
 	}
 
 	/**
@@ -616,8 +616,8 @@ class BB_Forums_Widget extends WP_Widget {
 	 * @since bbPress (r2653)
 	 *
 	 * @param $instance Instance
-	 * @uses BBP_Forums_Widget::get_field_id() To output the field id
-	 * @uses BBP_Forums_Widget::get_field_name() To output the field name
+	 * @uses BB_Forums_Widget::get_field_id() To output the field id
+	 * @uses BB_Forums_Widget::get_field_name() To output the field name
 	 */
 	public function form( $instance ) {
 
@@ -697,7 +697,7 @@ class BB_Topics_Widget extends WP_Widget {
 	 * @uses register_widget()
 	 */
 	public static function register_widget() {
-		register_widget( 'BBP_Topics_Widget' );
+		register_widget( 'BB_Topics_Widget' );
 	}
 
 	/**
@@ -857,8 +857,8 @@ class BB_Topics_Widget extends WP_Widget {
 	 * @since bbPress (r2653)
 	 *
 	 * @param $instance Instance
-	 * @uses BBP_Topics_Widget::get_field_id() To output the field id
-	 * @uses BBP_Topics_Widget::get_field_name() To output the field name
+	 * @uses BB_Topics_Widget::get_field_id() To output the field id
+	 * @uses BB_Topics_Widget::get_field_name() To output the field name
 	 */
 	public function form( $instance = array() ) {
 
@@ -951,7 +951,7 @@ class BB_Stats_Widget extends WP_Widget {
 	 * @uses register_widget()
 	 */
 	public static function register_widget() {
-		register_widget( 'BBP_Stats_Widget' );
+		register_widget( 'BB_Stats_Widget' );
 	}
 
 	/**
@@ -1081,7 +1081,7 @@ class BB_Replies_Widget extends WP_Widget {
 	 * @uses register_widget()
 	 */
 	public static function register_widget() {
-		register_widget( 'BBP_Replies_Widget' );
+		register_widget( 'BB_Replies_Widget' );
 	}
 
 	/**
@@ -1214,8 +1214,8 @@ class BB_Replies_Widget extends WP_Widget {
 	 * @since bbPress (r2653)
 	 *
 	 * @param $instance Instance
-	 * @uses BBP_Replies_Widget::get_field_id() To output the field id
-	 * @uses BBP_Replies_Widget::get_field_name() To output the field name
+	 * @uses BB_Replies_Widget::get_field_id() To output the field id
+	 * @uses BB_Replies_Widget::get_field_name() To output the field name
 	 */
 	public function form( $instance = array() ) {
 

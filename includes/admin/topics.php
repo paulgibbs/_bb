@@ -10,7 +10,7 @@
 // Exit if accessed directly
 if ( !defined( 'ABSPATH' ) ) exit;
 
-if ( !class_exists( 'BBP_Topics_Admin' ) ) :
+if ( !class_exists( 'BB_Topics_Admin' ) ) :
 /**
  * Loads bbPress topics admin area
  *
@@ -34,9 +34,9 @@ class BB_Topics_Admin {
 	 *
 	 * @since bbPress (r2515)
 	 *
-	 * @uses BBP_Topics_Admin::setup_globals() Setup the globals needed
-	 * @uses BBP_Topics_Admin::setup_actions() Setup the hooks and actions
-	 * @uses BBP_Topics_Admin::setup_help() Setup the help text
+	 * @uses BB_Topics_Admin::setup_globals() Setup the globals needed
+	 * @uses BB_Topics_Admin::setup_actions() Setup the hooks and actions
+	 * @uses BB_Topics_Admin::setup_help() Setup the help text
 	 */
 	public function __construct() {
 		$this->setup_globals();
@@ -550,7 +550,7 @@ class BB_Topics_Admin {
 	 * Toggle topic notices
 	 *
 	 * Display the success/error notices from
-	 * {@link BBP_Admin::toggle_topic()}
+	 * {@link BB_Admin::toggle_topic()}
 	 *
 	 * @since bbPress (r2727)
 	 *
@@ -978,8 +978,8 @@ endif; // class_exists check
  *
  * @since bbPress (r2596)
  *
- * @uses BBP_Forums_Admin
+ * @uses BB_Forums_Admin
  */
 function bb_admin_topics() {
-	bbpress()->admin->topics = new BBP_Topics_Admin();
+	bbpress()->admin->topics = new BB_Topics_Admin();
 }

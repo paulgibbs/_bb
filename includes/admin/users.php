@@ -10,7 +10,7 @@
 // Exit if accessed directly
 if ( !defined( 'ABSPATH' ) ) exit;
 
-if ( !class_exists( 'BBP_Users_Admin' ) ) :
+if ( !class_exists( 'BB_Users_Admin' ) ) :
 /**
  * Loads bbPress users admin area
  *
@@ -25,8 +25,8 @@ class BB_Users_Admin {
 	 *
 	 * @since bbPress (r2515)
 	 *
-	 * @uses BBP_Users_Admin::setup_globals() Setup the globals needed
-	 * @uses BBP_Users_Admin::setup_actions() Setup the hooks and actions
+	 * @uses BB_Users_Admin::setup_globals() Setup the globals needed
+	 * @uses BB_Users_Admin::setup_actions() Setup the hooks and actions
 	 */
 	public function __construct() {
 		$this->setup_actions();
@@ -246,5 +246,5 @@ class BB_Users_Admin {
 		return $retval;
 	}
 }
-new BBP_Users_Admin();
+new BB_Users_Admin();
 endif; // class exists

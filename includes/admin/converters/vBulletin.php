@@ -6,7 +6,7 @@
  * @since bbPress (r4724)
  * @link Codex Docs http://codex.bbpress.org/import-forums/vbulletin
  */
-class vBulletin extends BBP_Converter_Base {
+class vBulletin extends BB_Converter_Base {
 
 	/**
 	 * Main constructor

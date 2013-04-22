@@ -6,7 +6,7 @@
  * @since bbPress (r4689)
  * @link Codex Docs http://codex.bbpress.org/import-forums/phpbb
  */
-class phpBB extends BBP_Converter_Base {
+class phpBB extends BB_Converter_Base {
 
 	/**
 	 * Main Constructor

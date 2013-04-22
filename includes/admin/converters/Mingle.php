@@ -6,7 +6,7 @@
  * @since bbPress (r4691)
  * @link Codex Docs http://codex.bbpress.org/import-forums/mingle
  */
-class Mingle extends BBP_Converter_Base {
+class Mingle extends BB_Converter_Base {
 
 	/**
 	 * Main constructor

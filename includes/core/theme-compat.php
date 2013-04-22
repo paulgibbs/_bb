@@ -28,7 +28,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
  * Theme Compatibility base class
  *
  * This is only intended to be extended, and is included here as a basic guide
- * for future Theme Packs to use. @link BBP_Twenty_Ten is a good example of
+ * for future Theme Packs to use. @link BB_Twenty_Ten is a good example of
  * extending this class, as is @link bbp_setup_theme_compat()
  *
  * @since bbPress (r3506)
@@ -90,13 +90,13 @@ class BB_Theme_Compat {
  * Setup the default theme compat theme
  *
  * @since bbPress (r3311)
- * @param BBP_Theme_Compat $theme
+ * @param BB_Theme_Compat $theme
  */
 function bb_setup_theme_compat( $theme = '' ) {
 	$bbp = bbpress();
 
 	// Make sure theme package is available, set to default if not
-	if ( ! isset( $bbp->theme_compat->packages[$theme] ) || ! is_a( $bbp->theme_compat->packages[$theme], 'BBP_Theme_Compat' ) ) {
+	if ( ! isset( $bbp->theme_compat->packages[$theme] ) || ! is_a( $bbp->theme_compat->packages[$theme], 'BB_Theme_Compat' ) ) {
 		$theme = 'default';
 	}
 
@@ -269,12 +269,12 @@ function bb_is_theme_compat_original_template( $template = '' ) {
  */
 function bb_register_theme_package( $theme = array(), $override = true ) {
 
-	// Create new BBP_Theme_Compat object from the $theme array
+	// Create new BB_Theme_Compat object from the $theme array
 	if ( is_array( $theme ) )
-		$theme = new BBP_Theme_Compat( $theme );
+		$theme = new BB_Theme_Compat( $theme );
 
 	// Bail if $theme isn't a proper object
-	if ( ! is_a( $theme, 'BBP_Theme_Compat' ) )
+	if ( ! is_a( $theme, 'BB_Theme_Compat' ) )
 		return;
 
 	// Load up bbPress
@@ -705,7 +705,7 @@ function bb_replace_the_content( $content = '' ) {
 	$new_content = '';
 
 	// Bail if shortcodes are unset somehow
-	if ( !is_a( $bbp->shortcodes, 'BBP_Shortcodes' ) )
+	if ( !is_a( $bbp->shortcodes, 'BB_Shortcodes' ) )
 		return $content;
 
 	// Use shortcode API to display forums/topics/replies because they are

@@ -117,7 +117,7 @@ class BB_Skip_Children {
 		wp_suspend_cache_invalidation( $this->original_cache_invalidation );
 	}
 }
-new BBP_Skip_Children();
+new BB_Skip_Children();
 
 /** General *******************************************************************/
 

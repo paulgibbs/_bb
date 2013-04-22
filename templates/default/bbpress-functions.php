@@ -4,7 +4,7 @@
  * Functions of bbPress's Default theme
  *
  * @package bbPress
- * @subpackage BBP_Theme_Compat
+ * @subpackage BB_Theme_Compat
  * @since bbPress (r3732)
  */
 
@@ -13,7 +13,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
 
 /** Theme Setup ***************************************************************/
 
-if ( !class_exists( 'BBP_Default' ) ) :
+if ( !class_exists( 'BB_Default' ) ) :
 
 /**
  * Loads bbPress Default Theme functionality
@@ -25,14 +25,14 @@ if ( !class_exists( 'BBP_Default' ) ) :
  * can copy these files into your theme without needing to merge anything
  * together; bbPress should safely handle the rest.
  *
- * See @link BBP_Theme_Compat() for more.
+ * See @link BB_Theme_Compat() for more.
  *
  * @since bbPress (r3732)
  *
  * @package bbPress
- * @subpackage BBP_Theme_Compat
+ * @subpackage BB_Theme_Compat
  */
-class BB_Default extends BBP_Theme_Compat {
+class BB_Default extends BB_Theme_Compat {
 
 	/** Functions *************************************************************/
 
@@ -41,8 +41,8 @@ class BB_Default extends BBP_Theme_Compat {
 	 *
 	 * @since bbPress (r3732)
 	 *
-	 * @uses BBP_Default::setup_globals()
-	 * @uses BBP_Default::setup_actions()
+	 * @uses BB_Default::setup_globals()
+	 * @uses BB_Default::setup_actions()
 	 */
 	public function __construct() {
 		$this->setup_globals();
@@ -431,5 +431,5 @@ class BB_Default extends BBP_Theme_Compat {
 		bbp_ajax_response( true, bbp_get_user_subscribe_link( $attrs, $user_id, false ), 200 );
 	}
 }
-new BBP_Default();
+new BB_Default();
 endif;

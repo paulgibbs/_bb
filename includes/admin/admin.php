@@ -10,7 +10,7 @@
 // Exit if accessed directly
 if ( !defined( 'ABSPATH' ) ) exit;
 
-if ( !class_exists( 'BBP_Admin' ) ) :
+if ( !class_exists( 'BB_Admin' ) ) :
 /**
  * Loads bbPress plugin admin area
  *
@@ -65,9 +65,9 @@ class BB_Admin {
 	 *
 	 * @since bbPress (r2515)
 	 *
-	 * @uses BBP_Admin::setup_globals() Setup the globals needed
-	 * @uses BBP_Admin::includes() Include the required files
-	 * @uses BBP_Admin::setup_actions() Setup the hooks and actions
+	 * @uses BB_Admin::setup_globals() Setup the globals needed
+	 * @uses BB_Admin::includes() Include the required files
+	 * @uses BB_Admin::setup_actions() Setup the hooks and actions
 	 */
 	public function __construct() {
 		$this->setup_globals();
@@ -1699,10 +1699,10 @@ endif; // class_exists check
  *
  * @since bbPress (r2596)
  *
- * @uses BBP_Admin
+ * @uses BB_Admin
  */
 function bb_admin() {
-	bbpress()->admin = new BBP_Admin();
+	bbpress()->admin = new BB_Admin();
 
-	bbpress()->admin->converter = new BBP_Converter();
+	bbpress()->admin->converter = new BB_Converter();
 }
