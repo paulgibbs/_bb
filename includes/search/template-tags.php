@@ -15,7 +15,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
 /**
  * The main search loop. WordPress does the heavy lifting.
  *
- * @since bbPress (r4579)
+ * @since barebones (1.0)
  *
  * @param mixed $args All the arguments supported by {@link WP_Query}
  * @uses bb_get_view_all() Are we showing all results?
@@ -148,7 +148,7 @@ function bb_has_search_results( $args = '' ) {
 /**
  * Whether there are more search results available in the loop
  *
- * @since bbPress (r4579)
+ * @since barebones (1.0)
  *
  * @uses WP_Query bbPress::search_query::have_posts() To check if there are more
  *                                                     search results available
@@ -169,7 +169,7 @@ function bb_search_results() {
 /**
  * Loads up the current search result in the loop
  *
- * @since bbPress (r4579)
+ * @since barebones (1.0)
  *
  * @uses WP_Query bbPress::search_query::the_post() To get the current search result
  * @return object Search information
@@ -188,7 +188,7 @@ function bb_the_search_result() {
 /**
  * Output the search page title
  *
- * @since bbPress (r4579)
+ * @since barebones (1.0)
  *
  * @uses bb_get_search_title()
  */
@@ -199,7 +199,7 @@ function bb_search_title() {
 	/**
 	 * Get the search page title
 	 *
-	 * @since bbPress (r4579)
+	 * @since barebones (1.0)
 	 *
 	 * @uses bb_get_search_terms()
 	 */
@@ -221,7 +221,7 @@ function bb_search_title() {
 /**
  * Output the search url
  *
- * @since bbPress (r4579)
+ * @since barebones (1.0)
  *
  * @uses bb_get_search_url() To get the search url
  */
@@ -231,7 +231,7 @@ function bb_search_url() {
 	/**
 	 * Return the search url
 	 *
-	 * @since bbPress (r4579)
+	 * @since barebones (1.0)
 	 *
 	 * @uses user_trailingslashit() To fix slashes
 	 * @uses trailingslashit() To fix slashes
@@ -261,7 +261,7 @@ function bb_search_url() {
 /**
  * Output the search terms
  *
- * @since bbPress (r4579)
+ * @since barebones (1.0)
  *
  * @param string $search_terms Optional. Search terms
  * @uses bb_get_search_terms() To get the search terms
@@ -273,7 +273,7 @@ function bb_search_terms( $search_terms = '' ) {
 	/**
 	 * Get the search terms
 	 *
-	 * @since bbPress (r4579)
+	 * @since barebones (1.0)
 	 *
 	 * If search terms are supplied, those are used. Otherwise check the
 	 * search rewrite id query var.
@@ -296,7 +296,7 @@ function bb_search_terms( $search_terms = '' ) {
 /**
  * Output the search result pagination count
  *
- * @since bbPress (r4579)
+ * @since barebones (1.0)
  *
  * @uses bb_get_search_pagination_count() To get the search result pagination count
  */
@@ -307,7 +307,7 @@ function bb_search_pagination_count() {
 	/**
 	 * Return the search results pagination count
 	 *
-	 * @since bbPress (r4579)
+	 * @since barebones (1.0)
 	 *
 	 * @uses bb_number_format() To format the number value
 	 * @uses apply_filters() Calls 'bb_get_search_pagination_count' with the
@@ -344,7 +344,7 @@ function bb_search_pagination_count() {
 /**
  * Output search pagination links
  *
- * @since bbPress (r4579)
+ * @since barebones (1.0)
  *
  * @uses bb_get_search_pagination_links() To get the search pagination links
  */
@@ -355,7 +355,7 @@ function bb_search_pagination_links() {
 	/**
 	 * Return search pagination links
 	 *
-	 * @since bbPress (r4579)
+	 * @since barebones (1.0)
 	 *
 	 * @uses apply_filters() Calls 'bb_get_search_pagination_links' with the
 	 *                        pagination links

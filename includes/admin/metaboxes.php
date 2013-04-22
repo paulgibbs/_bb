@@ -14,7 +14,7 @@
  *
  * Adds a dashboard widget with forum statistics
  *
- * @since bbPress (r2770)
+ * @since barebones (1.0)
  *
  * @uses bb_get_version() To get the current bbPress version
  * @uses bb_get_statistics() To get the forum statistics
@@ -238,7 +238,7 @@ function bb_dashboard_widget_right_now() {
  *
  * The metabox that holds all of the additional forum information
  *
- * @since bbPress (r2744)
+ * @since barebones (1.0)
  *
  * @uses bb_is_forum_closed() To check if a forum is closed or not
  * @uses bb_is_forum_category() To check if a forum is a category or not
@@ -336,7 +336,7 @@ function bb_forum_metabox() {
  *
  * The metabox that holds all of the additional topic information
  *
- * @since bbPress (r2464)
+ * @since barebones (1.0)
  *
  * @uses bb_get_topic_forum_id() To get the topic forum id
  * @uses do_action() Calls 'bb_topic_metabox'
@@ -387,7 +387,7 @@ function bb_topic_metabox() {
  *
  * The metabox that holds all of the additional reply information
  *
- * @since bbPress (r2464)
+ * @since barebones (1.0)
  *
  * @uses bb_get_topic_post_type() To get the topic post type
  * @uses do_action() Calls 'bb_reply_metabox'
@@ -445,7 +445,7 @@ function bb_reply_metabox() {
 /**
  * Anonymous user information metabox
  *
- * @since bbPress (r2828)
+ * @since barebones (1.0)
  *
  * @uses bb_is_reply_anonymous() To check if reply is anonymous
  * @uses bb_is_topic_anonymous() To check if topic is anonymous

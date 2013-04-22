@@ -13,7 +13,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
 /**
  * Redirect back to $url when attempting to use the login page
  *
- * @since bbPress (r2815)
+ * @since barebones (1.0)
  *
  * @param string $url The url
  * @param string $raw_url Raw url
@@ -44,7 +44,7 @@ function bb_redirect_login( $url = '', $raw_url = '', $user = '' ) {
 /**
  * Is an anonymous topic/reply being made?
  *
- * @since bbPres (r2688)
+ * @since barebones (1.0)
  *
  * @uses is_user_logged_in() Is the user logged in?
  * @uses bb_allow_anonymous() Is anonymous posting allowed?
@@ -64,7 +64,7 @@ function bb_is_anonymous() {
 /**
  * Echoes the values for current poster (uses WP comment cookies)
  *
- * @since bbPress (r2734)
+ * @since barebones (1.0)
  *
  * @param string $key Which value to echo?
  * @uses bb_get_current_anonymous_user_data() To get the current anonymous user
@@ -77,7 +77,7 @@ function bb_current_anonymous_user_data( $key = '' ) {
 	/**
 	 * Get the cookies for current poster (uses WP comment cookies).
 	 *
-	 * @since bbPress (r2734)
+	 * @since barebones (1.0)
 	 *
 	 * @param string $key Optional. Which value to get? If not given, then
 	 *                     an array is returned.
@@ -110,7 +110,7 @@ function bb_current_anonymous_user_data( $key = '' ) {
 /**
  * Set the cookies for current poster (uses WP comment cookies)
  *
- * @since bbPress (r2734)
+ * @since barebones (1.0)
  *
  * @param array $anonymous_data With keys 'bb_anonymous_name',
  *                               'bb_anonymous_email', 'bb_anonymous_website'.
@@ -134,7 +134,7 @@ function bb_set_current_anonymous_user_data( $anonymous_data = array() ) {
 /**
  * Get the poster IP address
  *
- * @since bbPress (r3120)
+ * @since barebones (1.0)
  *
  * @return string
  */
@@ -147,7 +147,7 @@ function bb_current_author_ip() {
 /**
  * Get the poster user agent
  *
- * @since bbPress (r3446)
+ * @since barebones (1.0)
  *
  * @return string
  */
@@ -162,7 +162,7 @@ function bb_current_author_ua() {
 /**
  * Return the raw database count of topics by a user
  *
- * @since bbPress (r3633)
+ * @since barebones (1.0)
  * @global WPDB $wpdb
  * @uses bb_get_user_id()
  * @uses get_posts_by_author_sql()
@@ -186,7 +186,7 @@ function bb_get_user_topic_count_raw( $user_id = 0 ) {
 /**
  * Return the raw database count of replies by a user
  *
- * @since bbPress (r3633)
+ * @since barebones (1.0)
  * @global WPDB $wpdb
  * @uses bb_get_user_id()
  * @uses get_posts_by_author_sql()
@@ -212,7 +212,7 @@ function bb_get_user_reply_count_raw( $user_id = 0 ) {
 /**
  * Get the users who have made the topic favorite
  *
- * @since bbPress (r2658)
+ * @since barebones (1.0)
  *
  * @param int $topic_id Optional. Topic id
  * @uses wpdb::get_col() To execute our query and get the column back
@@ -240,7 +240,7 @@ function bb_get_topic_favoriters( $topic_id = 0 ) {
 /**
  * Get a user's favorite topics
  *
- * @since bbPress (r2652)
+ * @since barebones (1.0)
  *
  * @param int $user_id Optional. User id
  * @uses bb_get_user_favorites_topic_ids() To get the user's favorites
@@ -270,7 +270,7 @@ function bb_get_user_favorites( $user_id = 0 ) {
 /**
  * Get a user's favorite topics' ids
  *
- * @since bbPress (r2652)
+ * @since barebones (1.0)
  *
  * @param int $user_id Optional. User id
  * @uses bb_get_user_id() To get the user id
@@ -294,7 +294,7 @@ function bb_get_user_favorites_topic_ids( $user_id = 0 ) {
 /**
  * Check if a topic is in user's favorites or not
  *
- * @since bbPress (r2652)
+ * @since barebones (1.0)
  *
  * @param int $user_id Optional. User id
  * @param int $topic_id Optional. Topic id
@@ -343,7 +343,7 @@ function bb_is_user_favorite( $user_id = 0, $topic_id = 0 ) {
 /**
  * Add a topic to user's favorites
  *
- * @since bbPress (r2652)
+ * @since barebones (1.0)
  *
  * @param int $user_id Optional. User id
  * @param int $topic_id Optional. Topic id
@@ -376,7 +376,7 @@ function bb_add_user_favorite( $user_id = 0, $topic_id = 0 ) {
 /**
  * Remove a topic from user's favorites
  *
- * @since bbPress (r2652)
+ * @since barebones (1.0)
  *
  * @param int $user_id Optional. User id
  * @param int $topic_id Optional. Topic id
@@ -518,7 +518,7 @@ function bb_favorites_handler( $action = '' ) {
 /**
  * Get the users who have subscribed to the topic
  *
- * @since bbPress (r2668)
+ * @since barebones (1.0)
  *
  * @param int $topic_id Optional. Topic id
  * @uses wpdb::get_col() To execute our query and get the column back
@@ -548,7 +548,7 @@ function bb_get_topic_subscribers( $topic_id = 0 ) {
 /**
  * Get a user's subscribed topics
  *
- * @since bbPress (r2668)
+ * @since barebones (1.0)
  *
  * @param int $user_id Optional. User id
  * @uses bb_get_user_subscribed_topic_ids() To get the user's subscriptions
@@ -577,7 +577,7 @@ function bb_get_user_subscriptions( $user_id = 0 ) {
 /**
  * Get a user's subscribed topics' ids
  *
- * @since bbPress (r2668)
+ * @since barebones (1.0)
  *
  * @param int $user_id Optional. User id
  * @uses bb_get_user_id() To get the user id
@@ -601,7 +601,7 @@ function bb_get_user_subscribed_topic_ids( $user_id = 0 ) {
 /**
  * Check if a topic is in user's subscription list or not
  *
- * @since bbPress (r2668)
+ * @since barebones (1.0)
  *
  * @param int $user_id Optional. User id
  * @param int $topic_id Optional. Topic id
@@ -651,7 +651,7 @@ function bb_is_user_subscribed( $user_id = 0, $topic_id = 0 ) {
 /**
  * Add a topic to user's subscriptions
  *
- * @since bbPress (r2668)
+ * @since barebones (1.0)
  *
  * @param int $user_id Optional. User id
  * @param int $topic_id Optional. Topic id
@@ -688,7 +688,7 @@ function bb_add_user_subscription( $user_id = 0, $topic_id = 0 ) {
 /**
  * Remove a topic from user's subscriptions
  *
- * @since bbPress (r2668)
+ * @since barebones (1.0)
  *
  * @param int $user_id Optional. User id
  * @param int $topic_id Optional. Topic id
@@ -947,7 +947,7 @@ function bb_edit_user_handler( $action = '' ) {
  * output actions if they don't want any unexpected junk to appear there, and
  * also avoids needing to pollute the templates with additional logic and actions.
  *
- * @since bbPress (r4273)
+ * @since barebones (1.0)
  *
  * @uses bb_is_user_home_edit() To switch the action fired
  * @uses get_userdata() To get the current user's data
@@ -964,7 +964,7 @@ function bb_user_edit_after() {
 /**
  * Get the topics that a user created
  *
- * @since bbPress (r2660)
+ * @since barebones (1.0)
  *
  * @param int $user_id Optional. User id
  * @uses bb_get_user_id() To get the topic id
@@ -996,7 +996,7 @@ function bb_get_user_topics_started( $user_id = 0 ) {
 /**
  * Get the replies that a user created
  *
- * @since bbPress (r4225)
+ * @since barebones (1.0)
  *
  * @param int $user_id Optional. User id
  * @uses bb_get_user_id() To get the topic id
@@ -1028,7 +1028,7 @@ function bb_get_user_replies_created( $user_id = 0 ) {
 /**
  * Get the total number of users on the forums
  *
- * @since bbPress (r2769)
+ * @since barebones (1.0)
  * @uses count_users() To execute our query and get the var back
  * @uses apply_filters() Calls 'bb_get_total_users' with number of users
  * @return int Total number of users
@@ -1048,7 +1048,7 @@ function bb_get_total_users() {
  * met. We assume a user cannot perform this task, and look for ways they can
  * earn the ability to access this template.
  * 
- * @since bbPress (r3605)
+ * @since barebones (1.0)
  *
  * @uses bb_is_topic_edit()
  * @uses current_user_can()
@@ -1088,7 +1088,7 @@ function bb_check_user_edit() {
 /**
  * Check if a user is blocked, or cannot spectate the forums.
  *
- * @since bbPress (r2996)
+ * @since barebones (1.0)
  *
  * @uses is_user_logged_in() To check if user is logged in
  * @uses bb_is_user_keymaster() To check if user is a keymaster
@@ -1114,7 +1114,7 @@ function bb_forum_enforce_blocked() {
 /**
  * Convert passwords from previous platfrom encryption to WordPress encryption.
  *
- * @since bbPress (r3813)
+ * @since barebones (1.0)
  * @global WPDB $wpdb
  */
 function bb_user_maybe_convert_pass() {

@@ -3,7 +3,7 @@
 /**
  * Implementation of SimplePress v5 converter.
  *
- * @since bbPress (r4638)
+ * @since barebones (1.0)
  * @link Codex Docs http://codex.bbpress.org/import-forums/simplepress/
  */
 class SimplePress5 extends BB_Converter_Base {

@@ -12,7 +12,7 @@
 /**
  * Return topic capabilities
  *
- * @since bbPress (r2593)
+ * @since barebones (1.0)
  *
  * @uses apply_filters() Calls 'bb_get_topic_caps' with the capabilities
  * @return array Topic capabilities
@@ -32,7 +32,7 @@ function bb_get_topic_caps() {
 /**
  * Return topic tag capabilities
  *
- * @since bbPress (r2593)
+ * @since barebones (1.0)
  *
  * @uses apply_filters() Calls 'bb_get_topic_tag_caps' with the capabilities
  * @return array Topic tag capabilities
@@ -49,7 +49,7 @@ function bb_get_topic_tag_caps() {
 /**
  * Maps topic capabilities
  *
- * @since bbPress (r4242)
+ * @since barebones (1.0)
  *
  * @param array $caps Capabilities for meta capability
  * @param string $cap Capability name
@@ -207,7 +207,7 @@ function bb_map_topic_meta_caps( $caps = array(), $cap = '', $user_id = 0, $args
 /**
  * Maps topic tag capabilities
  *
- * @since bbPress (r4242)
+ * @since barebones (1.0)
  *
  * @param array $caps Capabilities for meta capability
  * @param string $cap Capability name

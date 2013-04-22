@@ -3,7 +3,7 @@
 /**
  * bbPress 1.1 Converter
  *
- * @since bbPress (r3816)
+ * @since barebones (1.0)
  * @link Codex Docs http://codex.bbpress.org/import-forums/bbpress-1-x-buddypress-group-forums
  */
 class bbPress1 extends BB_Converter_Base {

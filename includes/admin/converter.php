@@ -20,7 +20,7 @@ class BB_Converter {
 	/**
 	 * The main bbPress Converter loader
 	 *
-	 * @since bbPress (r3813)
+	 * @since barebones (1.0)
 	 * @uses BB_Converter::includes() Include the required files
 	 * @uses BB_Converter::setup_actions() Setup the actions
 	 */
@@ -55,7 +55,7 @@ class BB_Converter {
 	/**
 	 * Setup the default actions
 	 *
-	 * @since bbPress (r3813)
+	 * @since barebones (1.0)
 	 * @uses add_action() To add various actions
 	 */
 	private function setup_actions() {
@@ -73,7 +73,7 @@ class BB_Converter {
 	/**
 	 * Register the settings
 	 *
-	 * @since bbPress (r3813)
+	 * @since barebones (1.0)
 	 * @uses add_settings_section() To add our own settings section
 	 * @uses add_settings_field() To add various settings fields
 	 * @uses register_setting() To register various settings
@@ -138,7 +138,7 @@ class BB_Converter {
 	/**
 	 * Admin scripts
 	 *
-	 * @since bbPress (r3813)
+	 * @since barebones (1.0)
 	 */
 	public function admin_head() { ?>
 
@@ -275,7 +275,7 @@ class BB_Converter {
 	/**
 	 * Wrap the converter output in paragraph tags, so styling can be applied
 	 *
-	 * @since bbPress (r4052)
+	 * @since barebones (1.0)
 	 *
 	 * @param string $output
 	 */
@@ -295,7 +295,7 @@ class BB_Converter {
 	/**
 	 * Callback processor
 	 *
-	 * @since bbPress (r3813)
+	 * @since barebones (1.0)
 	 */
 	public function process_callback() {
 
@@ -481,7 +481,7 @@ class BB_Converter {
 	/**
 	 * Create Tables for fast syncing
 	 *
-	 * @since bbPress (r3813)
+	 * @since barebones (1.0)
 	 */
 	public function sync_table( $drop = false ) {
 		global $wpdb;
@@ -519,7 +519,7 @@ class BB_Converter {
 /**
  * Base class to be extended by specific individual importers
  *
- * @since bbPress (r3813)
+ * @since barebones (1.0)
  */
 abstract class BB_Converter_Base {
 

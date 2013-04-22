@@ -25,7 +25,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
  * child posts whenever a parent post is modified. This can cause thousands of
  * cache invalidations to occur on a single edit, which is no good for anyone.
  *
- * @since bbPress (r4011)
+ * @since barebones (1.0)
  *
  * @package bbPress
  * @subpackage Cache
@@ -47,7 +47,7 @@ class BB_Skip_Children {
 	/**
 	 * Hook into the 'pre_post_update' action.
 	 *
-	 * @since bbPress (r4011)
+	 * @since barebones (1.0)
 	 */
 	public function __construct() {
 		add_action( 'pre_post_update', array( $this, 'pre_post_update' ) );
@@ -60,7 +60,7 @@ class BB_Skip_Children {
 	 * post ID to be used later, and adds an action to 'clean_post_cache' that
 	 * prevents child post caches from being cleared.
 	 *
-	 * @since bbPress (r4011)
+	 * @since barebones (1.0)
 	 *
 	 * @param int $post_id The post ID being updated
 	 * @return If invalid post data
@@ -83,7 +83,7 @@ class BB_Skip_Children {
 	 * Skip cache invalidation of related posts if the post ID being invalidated
 	 * is not the one that was just updated.
 	 *
-	 * @since bbPress (r4011)
+	 * @since barebones (1.0)
 	 *
 	 * @param int $post_id The post ID of the cache being invalidated
 	 * @return If invalid post data
@@ -110,7 +110,7 @@ class BB_Skip_Children {
 	/**
 	 * Restore the cache invalidation to its previous value.
 	 *
-	 * @since bbPress (r4011)
+	 * @since barebones (1.0)
 	 * @uses wp_suspend_cache_invalidation()
 	 */
 	public function restore_cache_invalidation() {
@@ -126,7 +126,7 @@ new BB_Skip_Children();
  *
  * Will call to clean the term object cache associated with the post ID.
  *
- * @since bbPress (r4040)
+ * @since barebones (1.0)
  *
  * @uses do_action() Calls 'bb_clean_post_cache' on $id
  * @param object|int $_post The post object or ID to remove from the cache

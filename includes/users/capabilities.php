@@ -12,7 +12,7 @@
 /**
  * Maps primary capabilities
  *
- * @since bbPress (r4242)
+ * @since barebones (1.0)
  *
  * @param array $caps Capabilities for meta capability
  * @param string $cap Capability name
@@ -47,7 +47,7 @@ function bb_map_primary_meta_caps( $caps = array(), $cap = '', $user_id = 0, $ar
 /**
  * Return a user's main role
  *
- * @since bbPress (r3860)
+ * @since barebones (1.0)
  *
  * @param int $user_id
  * @uses bb_get_user_id() To get the user id
@@ -100,7 +100,7 @@ function bb_set_user_role( $user_id = 0, $new_role = '' ) {
 /**
  * Return a user's forums role
  *
- * @since bbPress (r3860)
+ * @since barebones (1.0)
  *
  * @param int $user_id
  * @uses bb_get_user_id() To get the user id
@@ -131,7 +131,7 @@ function bb_get_user_role( $user_id = 0 ) {
 /**
  * Return a user's blog role
  *
- * @since bbPress (r4446)
+ * @since barebones (1.0)
  *
  * @param int $user_id
  * @uses bb_get_user_id() To get the user id
@@ -171,7 +171,7 @@ function bb_get_user_blog_role( $user_id = 0 ) {
  * Helper function hooked to 'bb_profile_update' action to save or
  * update user roles and capabilities.
  *
- * @since bbPress (r4235)
+ * @since barebones (1.0)
  *
  * @param int $user_id
  * @uses bb_reset_user_caps() to reset caps
@@ -213,7 +213,7 @@ function bb_profile_update_role( $user_id = 0 ) {
  * This function will bail if the forum is not global in a multisite
  * installation of WordPress, or if the user is marked as spam or deleted.
  *
- * @since bbPress (r3380)
+ * @since barebones (1.0)
  *
  * @uses is_user_logged_in() To bail if user is not logged in
  * @uses bb_get_user_role() To bail if user already has a role
@@ -299,7 +299,7 @@ function bb_set_current_user_default_role() {
  * appropriate bbPress roles to WordPress users that wouldn't already have a
  * role in the forums. Also guarantees WordPress admins get the Keymaster role.
  *
- * @since bbPress (r4334)
+ * @since barebones (1.0)
  *
  * @return array Filtered array of WordPress roles to bbPress roles
  */
@@ -323,7 +323,7 @@ function bb_get_user_role_map() {
 /**
  * Checks if the user has been marked as a spammer.
  *
- * @since bbPress (r3355)
+ * @since barebones (1.0)
  *
  * @param int $user_id int The ID for the user.
  * @return bool True if spammer, False if not.
@@ -359,7 +359,7 @@ function bb_is_user_spammer( $user_id = 0 ) {
 /**
  * Mark a users topics and replies as spam when the user is marked as spam
  *
- * @since bbPress (r3405)
+ * @since barebones (1.0)
  *
  * @global WPDB $wpdb
  * @param int $user_id Optional. User ID to spam. Defaults to displayed user.
@@ -448,7 +448,7 @@ function bb_make_spam_user( $user_id = 0 ) {
 /**
  * Mark a users topics and replies as spam when the user is marked as spam
  *
- * @since bbPress (r3405)
+ * @since barebones (1.0)
  *
  * @global WPDB $wpdb
  * @param int $user_id Optional. User ID to unspam. Defaults to displayed user.
@@ -536,7 +536,7 @@ function bb_make_ham_user( $user_id = 0 ) {
 /**
  * Checks if the user has been marked as deleted.
  *
- * @since bbPress (r3355)
+ * @since barebones (1.0)
  *
  * @param int $user_id int The ID for the user.
  * @return bool True if deleted, False if not.
@@ -572,7 +572,7 @@ function bb_is_user_deleted( $user_id = 0 ) {
 /**
  * Checks if user is active
  *
- * @since bbPress (r3502)
+ * @since barebones (1.0)
  *
  * @uses is_user_logged_in() To check if user is logged in
  * @uses bb_get_displayed_user_id() To get current user ID
@@ -607,7 +607,7 @@ function bb_is_user_active( $user_id = 0 ) {
 /**
  * Checks if user is not active.
  *
- * @since bbPress (r3502)
+ * @since barebones (1.0)
  *
  * @uses is_user_logged_in() To check if user is logged in
  * @uses bb_get_displayed_user_id() To get current user ID
@@ -633,7 +633,7 @@ function bb_is_user_inactive( $user_id = 0 ) {
 /**
  * Checks if user is a keymaster
  *
- * @since bbPress (r4783)
+ * @since barebones (1.0)
  *
  * @param int $user_id 
  * @return bool True if keymaster, false if not
@@ -650,7 +650,7 @@ function bb_is_user_keymaster( $user_id = 0 ) {
 /**
  * Does a user have a profile for the current site
  *
- * @since bbPress (r4362)
+ * @since barebones (1.0)
  *
  * @param int $user_id User ID to check
  * @param int $blog_id Blog ID to check

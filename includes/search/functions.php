@@ -15,7 +15,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
 /**
  * Run the search query
  *
- * @since bbPress (r4579) 
+ * @since barebones (1.0)
  *
  * @param mixed $new_args New arguments
  * @uses bb_get_search_query_args() To get the search query args
@@ -40,7 +40,7 @@ function bb_search_query( $new_args = '' ) {
 /**
  * Return the search's query args
  *
- * @since bbPress (r4579)
+ * @since barebones (1.0)
  *
  * @uses bb_get_search_terms() To get the search terms
  * @return array Query arguments

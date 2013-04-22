@@ -14,7 +14,7 @@ if ( !class_exists( 'BB_Forums_Members' ) ) :
 /**
  * Member profile modifications
  *
- * @since bbPress (r4395)
+ * @since barebones (1.0)
  *
  * @package bbPress
  * @subpackage BuddyPress
@@ -24,7 +24,7 @@ class BB_BuddyPress_Members {
 	/**
 	 * Main constructor for modifying bbPress profile links
 	 *
-	 * @since bbPress (r4395)
+	 * @since barebones (1.0)
 	 */
 	public function __construct() {
 		$this->setup_actions();
@@ -34,7 +34,7 @@ class BB_BuddyPress_Members {
 	/**
 	 * Setup the actions
 	 *
-	 * @since bbPress (r4395)
+	 * @since barebones (1.0)
 	 *
 	 * @access private
 	 * @uses add_filter() To add various filters
@@ -61,7 +61,7 @@ class BB_BuddyPress_Members {
 	/**
 	 * Setup the filters
 	 *
-	 * @since bbPress (r4395)
+	 * @since barebones (1.0)
 	 *
 	 * @access private
 	 * @uses add_filter() To add various filters
@@ -78,7 +78,7 @@ class BB_BuddyPress_Members {
 	/**
 	 * Override bbPress profile URL with BuddyPress profile URL
 	 *
-	 * @since bbPress (r3401)
+	 * @since barebones (1.0)
 	 * @param string $url
 	 * @param int $user_id
 	 * @param string $user_nicename
@@ -120,7 +120,7 @@ class BB_BuddyPress_Members {
 	/**
 	 * Override bbPress favorites URL with BuddyPress profile URL
 	 *
-	 * @since bbPress (r3721)
+	 * @since barebones (1.0)
 	 * @param string $url
 	 * @param int $user_id
 	 * @return string
@@ -133,7 +133,7 @@ class BB_BuddyPress_Members {
 	/**
 	 * Override bbPress subscriptions URL with BuddyPress profile URL
 	 *
-	 * @since bbPress (r3721)
+	 * @since barebones (1.0)
 	 * @param string $url
 	 * @param int $user_id
 	 * @return string
@@ -147,7 +147,7 @@ class BB_BuddyPress_Members {
 	 * Set favorites and subscriptions query variables if viewing member profile
 	 * pages.
 	 *
-	 * @since bbPress (r4615)
+	 * @since barebones (1.0)
 	 *
 	 * @global WP_Query $wp_query
 	 * @return If not viewing your own profile

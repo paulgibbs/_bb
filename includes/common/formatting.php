@@ -17,7 +17,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
  *
  * Allows all users to post links, quotes, code, formatting, lists, and images
  *
- * @since bbPress (r4603)
+ * @since barebones (1.0)
  *
  * @return array Associative array of allowed tags and attributes
  */
@@ -68,7 +68,7 @@ function bb_kses_allowed_tags() {
 /**
  * Custom kses filter for forum topics and replies, for filtering incoming data
  *
- * @since bbPress (r4603)
+ * @since barebones (1.0)
  *
  * @param string $data Content to filter, expected to be escaped with slashes
  * @return string Filtered content
@@ -80,7 +80,7 @@ function bb_filter_kses( $data = '' ) {
 /**
  * Custom kses filter for forum topics and replies, for raw data
  *
- * @since bbPress (r4603)
+ * @since barebones (1.0)
  *
  * @param string $data Content to filter, expected to not be escaped
  * @return string Filtered content
@@ -94,7 +94,7 @@ function bb_kses_data( $data = '' ) {
 /**
  * Filter the topic or reply content and output code and pre tags
  *
- * @since bbPress (r4641)
+ * @since barebones (1.0)
  *
  * @param string $content Topic and reply content
  * @return string Partially encodedd content
@@ -111,7 +111,7 @@ function bb_code_trick( $content = '' ) {
  * When editing a topic or reply, reverse the code trick so the textarea
  * contains the correct editable content.
  *
- * @since bbPress (r4641)
+ * @since barebones (1.0)
  *
  * @param string $content Topic and reply content
  * @return string Partially encodedd content
@@ -135,7 +135,7 @@ function bb_code_trick_reverse( $content = '' ) {
 /**
  * Filter the content and encode any bad HTML tags
  *
- * @since bbPress (r4641)
+ * @since barebones (1.0)
  *
  * @param string $content Topic and reply content
  * @return string Partially encodedd content
@@ -182,7 +182,7 @@ function bb_encode_bad( $content = '' ) {
 /**
  * Callback to encode the tags in topic or reply content
  *
- * @since bbPress (r4641)
+ * @since barebones (1.0)
  *
  * @param array $matches
  * @return string
@@ -206,7 +206,7 @@ function bb_encode_callback( $matches = array() ) {
 /**
  * Callback to decode the tags in topic or reply content
  *
- * @since bbPress (r4641)
+ * @since barebones (1.0)
  *
  * @param array $matches
  * @return string
@@ -233,7 +233,7 @@ function bb_decode_callback( $matches = array() ) {
 /**
  * Callback to replace empty HTML tags in a content string
  *
- * @since bbPress (r4641)
+ * @since barebones (1.0)
  *
  * @internal Used by bb_encode_bad()
  * @param string $content
@@ -249,7 +249,7 @@ function bb_encode_empty_callback( &$content = '', $key = '', $preg = '' ) {
 /**
  * Callback to replace normal HTML tags in a content string
  *
- * @since bbPress (r4641)
+ * @since barebones (1.0)
  *
  * @internal Used by bb_encode_bad()
  * @param type $content

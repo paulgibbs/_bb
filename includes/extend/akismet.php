@@ -14,7 +14,7 @@ if ( !class_exists( 'BB_Akismet' ) ) :
 /**
  * Loads Akismet extension
  *
- * @since bbPress (r3277)
+ * @since barebones (1.0)
  *
  * @package bbPress
  * @subpackage Akismet
@@ -24,7 +24,7 @@ class BB_Akismet {
 	/**
 	 * The main bbPress Akismet loader
 	 *
-	 * @since bbPress (r3277)
+	 * @since barebones (1.0)
 	 *
 	 * @uses add_filter()
 	 */
@@ -35,7 +35,7 @@ class BB_Akismet {
 	/**
 	 * Setup the admin hooks
 	 *
-	 * @since bbPress (r3277)
+	 * @since barebones (1.0)
 	 * @access private
 	 *
 	 * @uses add_filter() To add various filters
@@ -74,7 +74,7 @@ class BB_Akismet {
 	/**
 	 * Converts topic/reply data into Akismet comment checking format
 	 *
-	 * @since bbPress (r3277)
+	 * @since barebones (1.0)
 	 *
 	 * @param string $post_data
 	 *
@@ -192,7 +192,7 @@ class BB_Akismet {
 	/**
 	 * Submit a post for spamming or hamming
 	 *
-	 * @since bbPress (r3277)
+	 * @since barebones (1.0)
 	 *
 	 * @param int $post_id
 	 *
@@ -327,7 +327,7 @@ class BB_Akismet {
 	/**
 	 * Ping Akismet service and check for spam/ham response
 	 *
-	 * @since bbPress (r3277)
+	 * @since barebones (1.0)
 	 *
 	 * @param array $post_data
 	 * @param string $check Accepts check|submit
@@ -407,7 +407,7 @@ class BB_Akismet {
 	/**
 	 * Update post meta after a spam check
 	 *
-	 * @since bbPress (r3308)
+	 * @since barebones (1.0)
 	 *
 	 * @param int $post_id
 	 * @param object $_post
@@ -495,7 +495,7 @@ class BB_Akismet {
 	/**
 	 * Update a post's Akismet history
 	 *
-	 * @since bbPress (r3308)
+	 * @since barebones (1.0)
 	 *
 	 * @param int $post_id
 	 * @param string $message
@@ -531,7 +531,7 @@ class BB_Akismet {
 	/**
 	 * Get a post's Akismet history
 	 *
-	 * @since bbPress (r3308)
+	 * @since barebones (1.0)
 	 *
 	 * @param int $post_id
 	 *
@@ -554,7 +554,7 @@ class BB_Akismet {
 	/**
 	 * Handle any terms submitted with a post flagged as spam
 	 *
-	 * @since bbPress (r3308)
+	 * @since barebones (1.0)
 	 *
 	 * @param string $terms Comma-separated list of terms
 	 * @param int $topic_id
@@ -590,7 +590,7 @@ class BB_Akismet {
 	 * This code is directly taken from the akismet_http_post() function and
 	 * documented to bbPress 2.0 standard.
 	 *
-	 * @since bbPress (r3466)
+	 * @since barebones (1.0)
 	 *
 	 * @param string $request The request we are sending
 	 * @param string $host The host to send our request to
@@ -686,7 +686,7 @@ class BB_Akismet {
 	/**
 	 * Return a user's roles on this site (including super_admin)
 	 *
-	 * @since bbPress (r4812)
+	 * @since barebones (1.0)
 	 *
 	 * @param type $user_id
 	 * @return boolean

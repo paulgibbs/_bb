@@ -15,7 +15,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
 /**
  * Output a validated user id
  *
- * @since bbPress (r2729)
+ * @since barebones (1.0)
  *
  * @param int $user_id Optional. User id
  * @param bool $displayed_user_fallback Fallback on displayed user?
@@ -28,7 +28,7 @@ function bb_user_id( $user_id = 0, $displayed_user_fallback = true, $current_use
 	/**
 	 * Return a validated user id
 	 *
-	 * @since bbPress (r2729)
+	 * @since barebones (1.0)
 	 *
 	 * @param int $user_id Optional. User id
 	 * @param bool $displayed_user_fallback Fallback on displayed user?
@@ -63,7 +63,7 @@ function bb_user_id( $user_id = 0, $displayed_user_fallback = true, $current_use
 /**
  * Output ID of current user
  *
- * @since bbPress (r2574)
+ * @since barebones (1.0)
  *
  * @uses bb_get_current_user_id() To get the current user id
  */
@@ -73,7 +73,7 @@ function bb_current_user_id() {
 	/**
 	 * Return ID of current user
 	 *
-	 * @since bbPress (r2574)
+	 * @since barebones (1.0)
 	 *
 	 * @uses bb_get_user_id() To get the current user id
 	 * @uses apply_filters() Calls 'bb_get_current_user_id' with the id
@@ -86,7 +86,7 @@ function bb_current_user_id() {
 /**
  * Output ID of displayed user
  *
- * @since bbPress (r2688)
+ * @since barebones (1.0)
  *
  * @uses bb_get_displayed_user_id() To get the displayed user id
  */
@@ -96,7 +96,7 @@ function bb_displayed_user_id() {
 	/**
 	 * Return ID of displayed user
 	 *
-	 * @since bbPress (r2688)
+	 * @since barebones (1.0)
 	 *
 	 * @uses bb_get_user_id() To get the displayed user id
 	 * @uses apply_filters() Calls 'bb_get_displayed_user_id' with the id
@@ -109,7 +109,7 @@ function bb_displayed_user_id() {
 /**
  * Output a sanitized user field value
  *
- * @since bbPress (r2688)
+ * @since barebones (1.0)
  *
  * @param string $field Field to get
  * @uses bb_get_displayed_user_field() To get the field
@@ -120,7 +120,7 @@ function bb_displayed_user_field( $field = '' ) {
 	/**
 	 * Return a sanitized user field value
 	 *
-	 * @since bbPress (r2688)
+	 * @since barebones (1.0)
 	 *
 	 * @param string $field Field to get
 	 * @uses sanitize_text_field() To sanitize the field
@@ -143,7 +143,7 @@ function bb_displayed_user_field( $field = '' ) {
 /**
  * Output name of current user
  *
- * @since bbPress (r2574)
+ * @since barebones (1.0)
  *
  * @uses bb_get_current_user_name() To get the current user name
  */
@@ -153,7 +153,7 @@ function bb_current_user_name() {
 	/**
 	 * Return name of current user
 	 *
-	 * @since bbPress (r2574)
+	 * @since barebones (1.0)
 	 *
 	 * @uses apply_filters() Calls 'bb_get_current_user_name' with the
 	 *                        current user name
@@ -170,7 +170,7 @@ function bb_current_user_name() {
 /**
  * Output avatar of current user
  *
- * @since bbPress (r2574)
+ * @since barebones (1.0)
  *
  * @param int $size Size of the avatar. Defaults to 40
  * @uses bb_get_current_user_avatar() To get the current user avatar
@@ -182,7 +182,7 @@ function bb_current_user_avatar( $size = 40 ) {
 	/**
 	 * Return avatar of current user
 	 *
-	 * @since bbPress (r2574)
+	 * @since barebones (1.0)
 	 *
 	 * @param int $size Size of the avatar. Defaults to 40
 	 * @uses bb_get_current_user_id() To get the current user id
@@ -207,7 +207,7 @@ function bb_current_user_avatar( $size = 40 ) {
 /**
  * Output link to the profile page of a user
  *
- * @since bbPress (r2688)
+ * @since barebones (1.0)
  *
  * @param int $user_id Optional. User id
  * @uses bb_get_user_profile_link() To get user profile link
@@ -218,7 +218,7 @@ function bb_user_profile_link( $user_id = 0 ) {
 	/**
 	 * Return link to the profile page of a user
 	 *
-	 * @since bbPress (r2688)
+	 * @since barebones (1.0)
 	 *
 	 * @param int $user_id Optional. User id
 	 * @uses bb_get_user_id() To get user id
@@ -245,7 +245,7 @@ function bb_user_profile_link( $user_id = 0 ) {
 /**
  * Output a users nicename to the screen
  *
- * @since bbPress (r4671)
+ * @since barebones (1.0)
  *
  * @param int $user_id User ID whose nicename to get
  * @param array $args before|after|user_id|force
@@ -256,7 +256,7 @@ function bb_user_nicename( $user_id = 0, $args = array() ) {
 	/**
 	 * Return a users nicename to the screen
 	 *
-	 * @since bbPress (r4671)
+	 * @since barebones (1.0)
 	 *
 	 * @param int $user_id User ID whose nicename to get
 	 * @param array $args before|after|user_id|force
@@ -297,7 +297,7 @@ function bb_user_nicename( $user_id = 0, $args = array() ) {
 /**
  * Output URL to the profile page of a user
  *
- * @since bbPress (r2688)
+ * @since barebones (1.0)
  *
  * @param int $user_id Optional. User id
  * @param string $user_nicename Optional. User nicename
@@ -309,7 +309,7 @@ function bb_user_profile_url( $user_id = 0, $user_nicename = '' ) {
 	/**
 	 * Return URL to the profile page of a user
 	 *
-	 * @since bbPress (r2688)
+	 * @since barebones (1.0)
 	 *
 	 * @param int $user_id Optional. User id
 	 * @param string $user_nicename Optional. User nicename
@@ -358,7 +358,7 @@ function bb_user_profile_url( $user_id = 0, $user_nicename = '' ) {
 /**
  * Output link to the profile edit page of a user
  *
- * @since bbPress (r2688)
+ * @since barebones (1.0)
  *
  * @param int $user_id Optional. User id
  * @uses bb_get_user_profile_edit_link() To get user profile edit link
@@ -369,7 +369,7 @@ function bb_user_profile_edit_link( $user_id = 0 ) {
 	/**
 	 * Return link to the profile edit page of a user
 	 *
-	 * @since bbPress (r2688)
+	 * @since barebones (1.0)
 	 *
 	 * @param int $user_id Optional. User id
 	 * @uses bb_get_user_id() To get user id
@@ -395,7 +395,7 @@ function bb_user_profile_edit_link( $user_id = 0 ) {
 /**
  * Output URL to the profile edit page of a user
  *
- * @since bbPress (r2688)
+ * @since barebones (1.0)
  *
  * @param int $user_id Optional. User id
  * @param string $user_nicename Optional. User nicename
@@ -407,7 +407,7 @@ function bb_user_profile_edit_url( $user_id = 0, $user_nicename = '' ) {
 	/**
 	 * Return URL to the profile edit page of a user
 	 *
-	 * @since bbPress (r2688)
+	 * @since barebones (1.0)
 	 *
 	 * @param int $user_id Optional. User id
 	 * @param string $user_nicename Optional. User nicename
@@ -455,7 +455,7 @@ function bb_user_profile_edit_url( $user_id = 0, $user_nicename = '' ) {
 /**
  * Output a user's main role for display
  *
- * @since bbPress (r3860)
+ * @since barebones (1.0)
  *
  * @param int $user_id
  * @uses bb_get_user_display_role To get the user display role
@@ -466,7 +466,7 @@ function bb_user_display_role( $user_id = 0 ) {
 	/**
 	 * Return a user's main role for display
 	 *
-	 * @since bbPress (r3860)
+	 * @since barebones (1.0)
 	 *
 	 * @param int $user_id
 	 * @uses bb_get_user_id() to verify the user ID
@@ -507,7 +507,7 @@ function bb_user_display_role( $user_id = 0 ) {
 /**
  * Output the link to the admin section
  *
- * @since bbPress (r2827)
+ * @since barebones (1.0)
  *
  * @param mixed $args Optional. See {@link bb_get_admin_link()}
  * @uses bb_get_admin_link() To get the admin link
@@ -518,7 +518,7 @@ function bb_admin_link( $args = '' ) {
 	/**
 	 * Return the link to the admin section
 	 *
-	 * @since bbPress (r2827)
+	 * @since barebones (1.0)
 	 *
 	 * @param mixed $args Optional. This function supports these arguments:
 	 *  - text: The text
@@ -553,7 +553,7 @@ function bb_admin_link( $args = '' ) {
 /**
  * Output the author IP address of a post
  *
- * @since bbPress (r3120)
+ * @since barebones (1.0)
  *
  * @param mixed $args Optional. If it is an integer, it is used as post id.
  * @uses bb_get_author_ip() To get the post author link
@@ -564,7 +564,7 @@ function bb_author_ip( $args = '' ) {
 	/**
 	 * Return the author IP address of a post
 	 *
-	 * @since bbPress (r3120)
+	 * @since barebones (1.0)
 	 *
 	 * @param mixed $args Optional. If an integer, it is used as reply id.
 	 * @uses get_post_meta() To check if it's a topic page
@@ -600,7 +600,7 @@ function bb_author_ip( $args = '' ) {
 /**
  * Output the link to the user's favorites page (profile page)
  *
- * @since bbPress (r2652)
+ * @since barebones (1.0)
  *
  * @param int $user_id Optional. User id
  * @uses bb_get_favorites_permalink() To get the favorites permalink
@@ -611,7 +611,7 @@ function bb_favorites_permalink( $user_id = 0 ) {
 	/**
 	 * Return the link to the user's favorites page (profile page)
 	 *
-	 * @since bbPress (r2652)
+	 * @since barebones (1.0)
 	 *
 	 * @param int $user_id Optional. User id
 	 * @uses bb_get_user_profile_url() To get the user profile url
@@ -659,7 +659,7 @@ function bb_favorites_permalink( $user_id = 0 ) {
 /**
  * Output the link to make a topic favorite/remove a topic from favorites
  *
- * @since bbPress (r2652)
+ * @since barebones (1.0)
  *
  * @param mixed $args See {@link bb_get_user_favorites_link()}
  * @param int $user_id Optional. User id
@@ -675,7 +675,7 @@ function bb_user_favorites_link( $args = array(), $user_id = 0, $wrap = true ) {
 	 * Return the link to make a topic favorite/remove a topic from
 	 * favorites
 	 *
-	 * @since bbPress (r2652)
+	 * @since barebones (1.0)
 	 *
 	 * @param mixed $args This function supports these arguments:
 	 *  - subscribe: Favorite text
@@ -762,7 +762,7 @@ function bb_user_favorites_link( $args = array(), $user_id = 0, $wrap = true ) {
 /**
  * Output the link to the user's subscriptions page (profile page)
  *
- * @since bbPress (r2688)
+ * @since barebones (1.0)
  *
  * @param int $user_id Optional. User id
  * @uses bb_get_subscriptions_permalink() To get the subscriptions link
@@ -773,7 +773,7 @@ function bb_subscriptions_permalink( $user_id = 0 ) {
 	/**
 	 * Return the link to the user's subscriptions page (profile page)
 	 *
-	 * @since bbPress (r2688)
+	 * @since barebones (1.0)
 	 *
 	 * @param int $user_id Optional. User id
 	 * @uses bb_get_user_profile_url() To get the user profile url
@@ -821,7 +821,7 @@ function bb_subscriptions_permalink( $user_id = 0 ) {
 /**
  * Output the link to subscribe/unsubscribe from a topic
  *
- * @since bbPress (r2668)
+ * @since barebones (1.0)
  *
  * @param mixed $args See {@link bb_get_user_subscribe_link()}
  * @param int $user_id Optional. User id
@@ -834,7 +834,7 @@ function bb_user_subscribe_link( $args = '', $user_id = 0, $wrap = true ) {
 	/**
 	 * Return the link to subscribe/unsubscribe from a topic
 	 *
-	 * @since bbPress (r2668)
+	 * @since barebones (1.0)
 	 *
 	 * @param mixed $args This function supports these arguments:
 	 *  - subscribe: Subscribe text
@@ -921,7 +921,7 @@ function bb_user_subscribe_link( $args = '', $user_id = 0, $wrap = true ) {
 /**
  * Edit profile success message
  *
- * @since bbPress (r2688)
+ * @since barebones (1.0)
  *
  * @uses bb_is_single_user() To check if it's the profile page
  * @uses bb_is_single_user_edit() To check if it's the profile edit page
@@ -939,7 +939,7 @@ function bb_notice_edit_user_success() {
 /**
  * Super admin privileges notice
  *
- * @since bbPress (r2688)
+ * @since barebones (1.0)
  *
  * @uses is_multisite() To check if the blog is multisite
  * @uses bb_is_single_user() To check if it's the profile page
@@ -964,7 +964,7 @@ function bb_notice_edit_user_is_super_admin() {
 /**
  * Drop down for selecting the user's display name
  *
- * @since bbPress (r2688)
+ * @since barebones (1.0)
  */
 function bb_edit_user_display_name() {
 	$bbp            = bbpress();
@@ -1007,7 +1007,7 @@ function bb_edit_user_display_name() {
 /**
  * Output blog role selector (for user edit)
  *
- * @since bbPress (r2688)
+ * @since barebones (1.0)
  */
 function bb_edit_user_blog_role() {
 
@@ -1036,7 +1036,7 @@ function bb_edit_user_blog_role() {
 /**
  * Output forum role selector (for user edit)
  *
- * @since bbPress (r4284)
+ * @since barebones (1.0)
  */
 function bb_edit_user_forums_role() {
 
@@ -1071,7 +1071,7 @@ function bb_edit_user_forums_role() {
 /**
  * Return user contact methods Selectbox
  *
- * @since bbPress (r2688)
+ * @since barebones (1.0)
  *
  * @uses _wp_get_user_contactmethods() To get the contact methods
  * @uses apply_filters() Calls 'bb_edit_user_contact_methods' with the methods
@@ -1090,7 +1090,7 @@ function bb_edit_user_contact_methods() {
 /**
  * Output the link to the user's topics
  *
- * @since bbPress (r4225)
+ * @since barebones (1.0)
  *
  * @param int $user_id Optional. User id
  * @uses bb_get_favorites_permalink() To get the favorites permalink
@@ -1101,7 +1101,7 @@ function bb_user_topics_created_url( $user_id = 0 ) {
 	/**
 	 * Return the link to the user's topics
 	 *
-	 * @since bbPress (r4225)
+	 * @since barebones (1.0)
 	 *
 	 * @param int $user_id Optional. User id
 	 * @uses bb_get_user_profile_url() To get the user profile url
@@ -1150,7 +1150,7 @@ function bb_user_topics_created_url( $user_id = 0 ) {
 /**
  * Output the link to the user's replies
  *
- * @since bbPress (r4225)
+ * @since barebones (1.0)
  *
  * @param int $user_id Optional. User id
  * @uses bb_get_favorites_permalink() To get the favorites permalink
@@ -1161,7 +1161,7 @@ function bb_user_replies_created_url( $user_id = 0 ) {
 	/**
 	 * Return the link to the user's replies
 	 *
-	 * @since bbPress (r4225)
+	 * @since barebones (1.0)
 	 *
 	 * @param int $user_id Optional. User id
 	 * @uses bb_get_user_profile_url() To get the user profile url
@@ -1210,7 +1210,7 @@ function bb_user_replies_created_url( $user_id = 0 ) {
 /**
  * Handle the login and registration template notices
  *
- * @since bbPress (r2970)
+ * @since barebones (1.0)
  *
  * @uses WP_Error bbPress::errors::add() To add an error or message
  */
@@ -1253,7 +1253,7 @@ function bb_login_notices() {
  * This should be used before {@link get_header()} is called in template files
  * where the user should never have access to the contents of that file.
  *
- * @since bbPress (r2815)
+ * @since barebones (1.0)
  *
  * @param string $url The URL to redirect to
  * @uses is_user_logged_in() Check if user is logged in
@@ -1278,7 +1278,7 @@ function bb_logged_in_redirect( $url = '' ) {
 /**
  * Output the required hidden fields when logging in
  *
- * @since bbPress (r2815)
+ * @since barebones (1.0)
  *
  * @uses apply_filters() To allow custom redirection
  * @uses bb_redirect_to_field() To output the hidden request url field
@@ -1304,7 +1304,7 @@ function bb_user_login_fields() {
 /**
  * Output the required hidden fields when registering
  *
- * @since bbPress (r2815)
+ * @since barebones (1.0)
  *
  * @uses add_query_arg() To add query args
  * @uses bb_login_url() To get the login url
@@ -1333,7 +1333,7 @@ function bb_user_register_fields() {
 /**
  * Output the required hidden fields when user lost password
  *
- * @since bbPress (r2815)
+ * @since barebones (1.0)
  *
  * @uses apply_filters() To allow custom redirection
  * @uses wp_referer_field() Set referer
@@ -1359,7 +1359,7 @@ function bb_user_lost_pass_fields() {
 /**
  * Output the author link of a post
  *
- * @since bbPress (r2875)
+ * @since barebones (1.0)
  *
  * @param mixed $args Optional. If it is an integer, it is used as post id.
  * @uses bb_get_author_link() To get the post author link
@@ -1370,7 +1370,7 @@ function bb_author_link( $args = '' ) {
 	/**
 	 * Return the author link of the post
 	 *
-	 * @since bbPress (r2875)
+	 * @since barebones (1.0)
 	 *
 	 * @param mixed $args Optional. If an integer, it is used as reply id.
 	 * @uses bb_is_topic() To check if it's a topic page
@@ -1459,7 +1459,7 @@ function bb_author_link( $args = '' ) {
 /**
  * Check if the user can access a specific forum
  *
- * @since bbPress (r3127)
+ * @since barebones (1.0)
  *
  * @uses bb_get_current_user_id()
  * @uses bb_get_forum_id()
@@ -1513,7 +1513,7 @@ function bb_user_can_view_forum( $args = '' ) {
 /**
  * Check if the current user can publish topics
  *
- * @since bbPress (r3127)
+ * @since barebones (1.0)
  *
  * @uses bb_is_user_keymaster()
  * @uses is_user_logged_in()
@@ -1549,7 +1549,7 @@ function bb_current_user_can_publish_topics() {
 /**
  * Check if the current user can publish forums
  *
- * @since bbPress (r3549)
+ * @since barebones (1.0)
  *
  * @uses bb_is_user_keymaster()
  * @uses bb_is_user_active()
@@ -1579,7 +1579,7 @@ function bb_current_user_can_publish_forums() {
 /**
  * Check if the current user can publish replies
  *
- * @since bbPress (r3127)
+ * @since barebones (1.0)
  *
  * @uses bb_is_user_keymaster()
  * @uses is_user_logged_in()
@@ -1623,7 +1623,7 @@ function bb_current_user_can_publish_replies() {
 /**
  * Get the forums the current user has the ability to see and post to
  *
- * @since bbPress (r3127)
+ * @since barebones (1.0)
  *
  * @uses bb_get_forum_post_type()
  * @uses get_posts()
@@ -1672,7 +1672,7 @@ function bb_get_forums_for_current_user( $args = array() ) {
 /**
  * Performs a series of checks to ensure the current user can create forums.
  *
- * @since bbPress (r3549)
+ * @since barebones (1.0)
  *
  * @uses bb_is_user_keymaster()
  * @uses bb_is_forum_edit()
@@ -1706,7 +1706,7 @@ function bb_current_user_can_access_create_forum_form() {
 /**
  * Performs a series of checks to ensure the current user can create topics.
  *
- * @since bbPress (r3127)
+ * @since barebones (1.0)
  *
  * @uses bb_is_user_keymaster()
  * @uses bb_is_topic_edit()
@@ -1742,7 +1742,7 @@ function bb_current_user_can_access_create_topic_form() {
 /**
  * Performs a series of checks to ensure the current user can create replies.
  *
- * @since bbPress (r3127)
+ * @since barebones (1.0)
  *
  * @uses bb_is_user_keymaster()
  * @uses bb_is_topic_edit()

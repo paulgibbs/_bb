@@ -16,7 +16,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
 /**
  * Loads Akismet inside the bbPress global class
  *
- * @since bbPress (r3277)
+ * @since barebones (1.0)
  *
  * @return If bbPress is not active
  */
@@ -39,7 +39,7 @@ function bb_setup_akismet() {
  * Requires and creates the BuddyPress extension, and adds component creation
  * action to bp_init hook. @see bb_setup_buddypress_component()
  *
- * @since bbPress (r3395)
+ * @since barebones (1.0)
  * @return If BuddyPress is not active
  */
 function bb_setup_buddypress() {
@@ -49,7 +49,7 @@ function bb_setup_buddypress() {
 		/**
 		 * Helper for BuddyPress 1.6 and earlier
 		 *
-		 * @since bbPress (r4395)
+		 * @since barebones (1.0)
 		 * @return BuddyPress
 		 */
 		function buddypress() {

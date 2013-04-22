@@ -3,7 +3,7 @@
 /**
  * Implementation of Mingle Forums converter.
  *
- * @since bbPress (r4691)
+ * @since barebones (1.0)
  * @link Codex Docs http://codex.bbpress.org/import-forums/mingle
  */
 class Mingle extends BB_Converter_Base {

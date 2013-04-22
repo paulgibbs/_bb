@@ -16,7 +16,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
  * A wrapper for wp_insert_post() that also includes the necessary meta values
  * for the reply to function properly.
  *
- * @since bbPress (r3349)
+ * @since barebones (1.0)
  *
  * @uses bb_parse_args()
  * @uses bb_get_reply_post_type()
@@ -75,7 +75,7 @@ function bb_insert_reply( $reply_data = array(), $reply_meta = array() ) {
 /**
  * Handles the front end reply submission
  *
- * @since bbPress (r2574)
+ * @since barebones (1.0)
  *
  * @param string $action The requested action to compare this function to
  * @uses bb_add_error() To add an error message
@@ -765,7 +765,7 @@ function bb_update_reply( $reply_id = 0, $topic_id = 0, $forum_id = 0, $anonymou
 /**
  * Walk up the ancestor tree from the current reply, and update all the counts
  *
- * @since bbPress (r2884)
+ * @since barebones (1.0)
  *
  * @param int $reply_id Optional. Reply id
  * @param string $last_active_time Optional. Last active time
@@ -889,7 +889,7 @@ function bb_update_reply_walker( $reply_id, $last_active_time = '', $forum_id = 
 /**
  * Update the reply with its forum id it is in
  *
- * @since bbPress (r2855)
+ * @since barebones (1.0)
  *
  * @param int $reply_id Optional. Reply id to update
  * @param int $forum_id Optional. Forum id
@@ -938,7 +938,7 @@ function bb_update_reply_forum_id( $reply_id = 0, $forum_id = 0 ) {
 /**
  * Update the reply with its topic id it is in
  *
- * @since bbPress (r2855)
+ * @since barebones (1.0)
  *
  * @param int $reply_id Optional. Reply id to update
  * @param int $topic_id Optional. Topic id
@@ -987,7 +987,7 @@ function bb_update_reply_topic_id( $reply_id = 0, $topic_id = 0 ) {
 /**
  * Update the revision log of the reply
  *
- * @since bbPress (r2782)
+ * @since barebones (1.0)
  *
  * @param mixed $args Supports these args:
  *  - reply_id: reply id
@@ -1031,7 +1031,7 @@ function bb_update_reply_revision_log( $args = '' ) {
  *
  * Handles the front end move reply submission
  *
- * @since bbPress (r4521)
+ * @since barebones (1.0)
  *
  * @param string $action The requested action to compare this function to
  * @uses bb_add_error() To add an error message
@@ -1281,7 +1281,7 @@ function bb_move_reply_handler( $action = '' ) {
  * When a reply is moved, update the counts of source and destination topic
  * and their forums.
  *
- * @since bbPress (r4521)
+ * @since barebones (1.0)
  *
  * @param int $move_reply_id Move reply id
  * @param int $source_topic_id Source topic id
@@ -1324,7 +1324,7 @@ function bb_move_reply_count( $move_reply_id, $source_topic_id, $destination_top
  * Handles the front end spamming/unspamming and trashing/untrashing/deleting of
  * replies
  *
- * @since bbPress (r2740)
+ * @since barebones (1.0)
  *
  * @param string $action The requested action to compare this function to
  * @uses bb_get_reply() To get the reply
@@ -1465,7 +1465,7 @@ function bb_toggle_reply_handler( $action = '' ) {
 /**
  * Marks a reply as spam
  *
- * @since bbPress (r2740)
+ * @since barebones (1.0)
  *
  * @param int $reply_id Reply id
  * @uses get_post() To get the reply
@@ -1511,7 +1511,7 @@ function bb_spam_reply( $reply_id = 0 ) {
 /**
  * Unspams a reply
  *
- * @since bbPress (r2740)
+ * @since barebones (1.0)
  *
  * @param int $reply_id Reply id
  * @uses get_post() To get the reply
@@ -1665,7 +1665,7 @@ function bb_untrashed_reply( $reply_id = 0 ) {
 /**
  * Return the replies per page setting
  *
- * @since bbPress (r3540)
+ * @since barebones (1.0)
  *
  * @param int $default Default replies per page (15)
  * @uses get_option() To get the setting
@@ -1688,7 +1688,7 @@ function bb_get_replies_per_page( $default = 15 ) {
 /**
  * Return the replies per RSS page setting
  *
- * @since bbPress (r3540)
+ * @since barebones (1.0)
  *
  * @param int $default Default replies per page (25)
  * @uses get_option() To get the setting
@@ -1713,7 +1713,7 @@ function bb_get_replies_per_rss_page( $default = 25 ) {
 /**
  * Check if autoembeds are enabled and hook them in if so
  *
- * @since bbPress (r3752)
+ * @since barebones (1.0)
  * @global WP_Embed $wp_embed
  */
 function bb_reply_content_autoembed() {
@@ -1732,7 +1732,7 @@ function bb_reply_content_autoembed() {
  * This function filters the 'post_where' of the WP_Query, and changes the query
  * to include both the topic AND its children in the same loop.
  *
- * @since bbPress (r4058)
+ * @since barebones (1.0)
  *
  * @param string $where
  * @return string
@@ -1797,7 +1797,7 @@ function _bb_has_replies_where( $where = '', $query = false ) {
 /**
  * Output an RSS2 feed of replies, based on the query passed.
  *
- * @since bbPress (r3171)
+ * @since barebones (1.0)
  *
  * @uses bb_version()
  * @uses bb_is_single_topic()
@@ -1934,7 +1934,7 @@ function bb_display_replies_feed_rss2( $replies_query = array() ) {
 /**
  * Redirect if unathorized user is attempting to edit a reply
  *
- * @since bbPress (r3605)
+ * @since barebones (1.0)
  *
  * @uses bb_is_reply_edit()
  * @uses current_user_can()
@@ -1965,7 +1965,7 @@ function bb_check_reply_edit() {
  * freshness order. By updating the menu_order accordingly, we're able to
  * leverage core WordPress query ordering much more effectively.
  *
- * @since bbPress (r3933)
+ * @since barebones (1.0)
  *
  * @global type $wpdb
  * @param type $reply_id
@@ -1995,7 +1995,7 @@ function bb_update_reply_position( $reply_id = 0, $reply_position = 0 ) {
  * Get the position of a reply by querying the DB directly for the replies
  * of a given topic.
  *
- * @since bbPress (r3933)
+ * @since barebones (1.0)
  *
  * @param int $reply_id
  * @param int $topic_id

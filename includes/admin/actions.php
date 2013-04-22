@@ -86,7 +86,7 @@ add_filter( 'post_type_link', 'bb_filter_sample_permalink', 10, 4 );
  * When a new site is created in a multisite installation, run the activation
  * routine on that site
  *
- * @since bbPress (r3283)
+ * @since barebones (1.0)
  *
  * @param int $blog_id
  * @param int $user_id
@@ -116,7 +116,7 @@ function bb_new_site( $blog_id, $user_id, $domain, $path, $site_id, $meta ) {
 /**
  * Piggy back admin_init action
  *
- * @since bbPress (r3766)
+ * @since barebones (1.0)
  * @uses do_action() Calls 'bb_admin_init'
  */
 function bb_admin_init() {
@@ -126,7 +126,7 @@ function bb_admin_init() {
 /**
  * Piggy back admin_menu action
  *
- * @since bbPress (r3766)
+ * @since barebones (1.0)
  * @uses do_action() Calls 'bb_admin_menu'
  */
 function bb_admin_menu() {
@@ -136,7 +136,7 @@ function bb_admin_menu() {
 /**
  * Piggy back admin_head action
  *
- * @since bbPress (r3766)
+ * @since barebones (1.0)
  * @uses do_action() Calls 'bb_admin_head'
  */
 function bb_admin_head() {
@@ -146,7 +146,7 @@ function bb_admin_head() {
 /**
  * Piggy back admin_notices action
  *
- * @since bbPress (r3766)
+ * @since barebones (1.0)
  * @uses do_action() Calls 'bb_admin_notices'
  */
 function bb_admin_notices() {
@@ -156,7 +156,7 @@ function bb_admin_notices() {
 /**
  * Dedicated action to register bbPress importers
  *
- * @since bbPress (r3766)
+ * @since barebones (1.0)
  * @uses do_action() Calls 'bb_admin_notices'
  */
 function bb_register_importers() {
@@ -166,7 +166,7 @@ function bb_register_importers() {
 /**
  * Dedicated action to register admin styles
  *
- * @since bbPress (r3766)
+ * @since barebones (1.0)
  * @uses do_action() Calls 'bb_admin_notices'
  */
 function bb_register_admin_style() {
@@ -176,7 +176,7 @@ function bb_register_admin_style() {
 /**
  * Dedicated action to register admin settings
  *
- * @since bbPress (r3766)
+ * @since barebones (1.0)
  * @uses do_action() Calls 'bb_register_admin_settings'
  */
 function bb_register_admin_settings() {

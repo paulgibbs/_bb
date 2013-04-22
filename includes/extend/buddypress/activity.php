@@ -14,7 +14,7 @@ if ( !class_exists( 'BB_BuddyPress_Activity' ) ) :
 /**
  * Loads BuddyPress Activity extension
  *
- * @since bbPress (r3395)
+ * @since barebones (1.0)
  *
  * @package bbPress
  * @subpackage BuddyPress
@@ -84,7 +84,7 @@ class BB_BuddyPress_Activity {
 	/**
 	 * The bbPress BuddyPress Activity loader
 	 *
-	 * @since bbPress (r3395)
+	 * @since barebones (1.0)
 	 */
 	public function __construct() {
 		$this->setup_globals();
@@ -96,7 +96,7 @@ class BB_BuddyPress_Activity {
 	/**
 	 * Extension variables
 	 *
-	 * @since bbPress (r3395)
+	 * @since barebones (1.0)
 	 * @access private
 	 * @uses apply_filters() Calls various filters
 	 */
@@ -122,7 +122,7 @@ class BB_BuddyPress_Activity {
 	/**
 	 * Setup the actions
 	 *
-	 * @since bbPress (r3395)
+	 * @since barebones (1.0)
 	 * @access private
 	 * @uses add_filter() To add various filters
 	 * @uses add_action() To add various actions
@@ -157,7 +157,7 @@ class BB_BuddyPress_Activity {
 	/**
 	 * Setup the filters
 	 *
-	 * @since bbPress (r3395)
+	 * @since barebones (1.0)
 	 * @access private
 	 * @uses add_filter() To add various filters
 	 * @uses add_action() To add various actions
@@ -177,7 +177,7 @@ class BB_BuddyPress_Activity {
 	 * Allow the variables, actions, and filters to be modified by third party
 	 * plugins and themes.
 	 *
-	 * @since bbPress (r3902)
+	 * @since barebones (1.0)
 	 */
 	private function fully_loaded() {
 		do_action_ref_array( 'bb_buddypress_activity_loaded', array( $this ) );
@@ -188,7 +188,7 @@ class BB_BuddyPress_Activity {
 	/**
 	 * Register our activity actions with BuddyPress
 	 *
-	 * @since bbPress (r3395)
+	 * @since barebones (1.0)
 	 * @uses bp_activity_set_action()
 	 */
 	public function register_activity_actions() {
@@ -201,7 +201,7 @@ class BB_BuddyPress_Activity {
 	/**
 	 * Wrapper for recoding bbPress actions to the BuddyPress activity stream
 	 *
-	 * @since bbPress (r3395)
+	 * @since barebones (1.0)
 	 * @param type $args Array of arguments for bp_activity_add()
 	 * @uses bb_get_current_user_id()
 	 * @uses bp_core_current_time()
@@ -234,7 +234,7 @@ class BB_BuddyPress_Activity {
 	/**
 	 * Wrapper for deleting bbPress actions from BuddyPress activity stream
 	 *
-	 * @since bbPress (r3395)
+	 * @since barebones (1.0)
 	 * @param type $args Array of arguments for bp_activity_add()
 	 * @uses bb_get_current_user_id()
 	 * @uses bp_core_current_time()
@@ -288,7 +288,7 @@ class BB_BuddyPress_Activity {
 	/**
 	 * Maybe disable activity stream comments on select actions
 	 *
-	 * @since bbPress (r3399)
+	 * @since barebones (1.0)
 	 * @global BP_Activity_Template $activities_template
 	 * @param boolean $can_comment
 	 * @uses bp_get_activity_action_name()
@@ -325,7 +325,7 @@ class BB_BuddyPress_Activity {
 	/**
 	 * Maybe link directly to topics and replies in activity stream entries
 	 *
-	 * @since bbPress (r3399)
+	 * @since barebones (1.0)
 	 * @param string $link
 	 * @param mixed $activity_object
 	 * @return string The link to the activity stream item
@@ -349,7 +349,7 @@ class BB_BuddyPress_Activity {
 	/**
 	 * Append forum options to activity filter select box
 	 *
-	 * @since bbPress (r3653)
+	 * @since barebones (1.0)
 	 */
 	function activity_filter_options() {
 	?>
@@ -365,7 +365,7 @@ class BB_BuddyPress_Activity {
 	/**
 	 * Record an activity stream entry when a topic is created or updated
 	 *
-	 * @since bbPress (r3395)
+	 * @since barebones (1.0)
 	 * @param int $topic_id
 	 * @param int $forum_id
 	 * @param array $anonymous_data
@@ -509,7 +509,7 @@ class BB_BuddyPress_Activity {
 	/**
 	 * Record an activity stream entry when a reply is created
 	 *
-	 * @since bbPress (r3395)
+	 * @since barebones (1.0)
 	 * @param int $topic_id
 	 * @param int $forum_id
 	 * @param array $anonymous_data

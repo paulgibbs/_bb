@@ -31,7 +31,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
  * for future Theme Packs to use. @link BB_Twenty_Ten is a good example of
  * extending this class, as is @link bb_setup_theme_compat()
  *
- * @since bbPress (r3506)
+ * @since barebones (1.0)
  */
 class BB_Theme_Compat {
 
@@ -52,7 +52,7 @@ class BB_Theme_Compat {
 	/**
 	 * Pass the $properties to the object on creation.
 	 *
-	 * @since bbPress (r3926)
+	 * @since barebones (1.0)
 	 * @param array $properties
 	 */
     public function __construct( Array $properties = array() ) {
@@ -62,7 +62,7 @@ class BB_Theme_Compat {
 	/**
 	 * Set a theme's property.
 	 *
-	 * @since bbPress (r3926)
+	 * @since barebones (1.0)
 	 * @param string $property
 	 * @param mixed $value
 	 * @return mixed
@@ -74,7 +74,7 @@ class BB_Theme_Compat {
 	/**
 	 * Get a theme's property.
 	 *
-	 * @since bbPress (r3926)
+	 * @since barebones (1.0)
 	 * @param string $property
 	 * @param mixed $value
 	 * @return mixed
@@ -89,7 +89,7 @@ class BB_Theme_Compat {
 /**
  * Setup the default theme compat theme
  *
- * @since bbPress (r3311)
+ * @since barebones (1.0)
  * @param BB_Theme_Compat $theme
  */
 function bb_setup_theme_compat( $theme = '' ) {
@@ -110,7 +110,7 @@ function bb_setup_theme_compat( $theme = '' ) {
  * This can be filtered or set manually. Tricky theme authors can override the
  * default and include their own bbPress compatibility layers for their themes.
  *
- * @since bbPress (r3506)
+ * @since barebones (1.0)
  * @uses apply_filters()
  * @return string
  */
@@ -124,7 +124,7 @@ function bb_get_theme_compat_id() {
  * This can be filtered or set manually. Tricky theme authors can override the
  * default and include their own bbPress compatibility layers for their themes.
  *
- * @since bbPress (r3506)
+ * @since barebones (1.0)
  * @uses apply_filters()
  * @return string
  */
@@ -138,7 +138,7 @@ function bb_get_theme_compat_name() {
  * This can be filtered or set manually. Tricky theme authors can override the
  * default and include their own bbPress compatibility layers for their themes.
  *
- * @since bbPress (r3506)
+ * @since barebones (1.0)
  * @uses apply_filters()
  * @return string
  */
@@ -152,7 +152,7 @@ function bb_get_theme_compat_version() {
  * or set manually. Tricky theme authors can override the default and include
  * their own bbPress compatibility layers for their themes.
  *
- * @since bbPress (r3032)
+ * @since barebones (1.0)
  * @uses apply_filters()
  * @return string
  */
@@ -166,7 +166,7 @@ function bb_get_theme_compat_dir() {
  * or set manually. Tricky theme authors can override the default and include
  * their own bbPress compatibility layers for their themes.
  *
- * @since bbPress (r3032)
+ * @since barebones (1.0)
  * @uses apply_filters()
  * @return string
  */
@@ -177,7 +177,7 @@ function bb_get_theme_compat_url() {
 /**
  * Gets true/false if page is currently inside theme compatibility
  *
- * @since bbPress (r3265)
+ * @since barebones (1.0)
  * @return bool
  */
 function bb_is_theme_compat_active() {
@@ -192,7 +192,7 @@ function bb_is_theme_compat_active() {
 /**
  * Sets true/false if page is currently inside theme compatibility
  *
- * @since bbPress (r3265)
+ * @since barebones (1.0)
  * @param bool $set
  * @return bool
  */
@@ -208,7 +208,7 @@ function bb_set_theme_compat_active( $set = true ) {
  * Stash possible template files for the current query. Useful if plugins want
  * to override them, or see what files are being scanned for inclusion.
  *
- * @since bbPress (r3311)
+ * @since barebones (1.0)
  */
 function bb_set_theme_compat_templates( $templates = array() ) {
 	bbpress()->theme_compat->templates = $templates;
@@ -222,7 +222,7 @@ function bb_set_theme_compat_templates( $templates = array() ) {
  * Stash the template file for the current query. Useful if plugins want
  * to override it, or see what file is being included.
  *
- * @since bbPress (r3311)
+ * @since barebones (1.0)
  */
 function bb_set_theme_compat_template( $template = '' ) {
 	bbpress()->theme_compat->template = $template;
@@ -236,7 +236,7 @@ function bb_set_theme_compat_template( $template = '' ) {
  * Stash the original template file for the current query. Useful for checking
  * if bbPress was able to find a more appropriate template.
  *
- * @since bbPress (r3926)
+ * @since barebones (1.0)
  */
 function bb_set_theme_compat_original_template( $template = '' ) {
 	bbpress()->theme_compat->original_template = $template;
@@ -250,7 +250,7 @@ function bb_set_theme_compat_original_template( $template = '' ) {
  * Stash the original template file for the current query. Useful for checking
  * if bbPress was able to find a more appropriate template.
  *
- * @since bbPress (r3926)
+ * @since barebones (1.0)
  */
 function bb_is_theme_compat_original_template( $template = '' ) {
 	$bbp = bbpress();
@@ -264,7 +264,7 @@ function bb_is_theme_compat_original_template( $template = '' ) {
 /**
  * Register a new bbPress theme package to the active theme packages array
  *
- * @since bbPress (r3829)
+ * @since barebones (1.0)
  * @param array $theme
  */
 function bb_register_theme_package( $theme = array(), $override = true ) {
@@ -289,7 +289,7 @@ function bb_register_theme_package( $theme = array(), $override = true ) {
  * This fun little function fills up some WordPress globals with dummy data to
  * stop your average page template from complaining about it missing.
  *
- * @since bbPress (r3108)
+ * @since barebones (1.0)
  * @global WP_Query $wp_query
  * @global object $post
  * @param array $args
@@ -427,7 +427,7 @@ function bb_theme_compat_reset_post( $args = array() ) {
  * Reset main query vars and filter 'the_content' to output a bbPress
  * template part as needed.
  *
- * @since bbPress (r3032)
+ * @since barebones (1.0)
  * @param string $template
  * @uses bb_is_single_user() To check if page is single user
  * @uses bb_get_single_user_template() To get user template
@@ -689,7 +689,7 @@ function bb_template_include_theme_compat( $template = '' ) {
  * many existing themes either use query_posts() or fail to use wp_reset_query()
  * when running queries before the main loop, causing theme compat to fail.
  *
- * @since bbPress (r3034)
+ * @since barebones (1.0)
  * @param string $content
  * @return type
  */
@@ -898,7 +898,7 @@ function bb_replace_the_content( $content = '' ) {
 /**
  * Remove the canonical redirect to allow pretty pagination
  *
- * @since bbPress (r2628)
+ * @since barebones (1.0)
  * @param string $redirect_url Redirect url
  * @uses WP_Rewrite::using_permalinks() To check if the blog is using permalinks
  * @uses bb_get_paged() To get the current page number
@@ -955,7 +955,7 @@ function bb_redirect_canonical( $redirect_url ) {
  * Removes all filters from a WordPress filter, and stashes them in the $bbp
  * global in the event they need to be restored later.
  *
- * @since bbPress (r3251)
+ * @since barebones (1.0)
  * @global WP_filter $wp_filter
  * @global array $merged_filters
  * @param string $tag
@@ -1007,7 +1007,7 @@ function bb_remove_all_filters( $tag, $priority = false ) {
  * Restores filters from the $bbp global that were removed using
  * bb_remove_all_filters()
  *
- * @since bbPress (r3251)
+ * @since barebones (1.0)
  * @global WP_filter $wp_filter
  * @global array $merged_filters
  * @param string $tag
@@ -1058,7 +1058,7 @@ function bb_restore_all_filters( $tag, $priority = false ) {
 /**
  * Force comments_status to 'closed' for bbPress post types
  *
- * @since bbPress (r3589)
+ * @since barebones (1.0)
  * @param bool $open True if open, false if closed
  * @param int $post_id ID of the post to check
  * @return bool True if open, false if closed

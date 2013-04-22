@@ -16,7 +16,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
 /**
  * Output the URL to use for theme-side bbPress AJAX requests
  *
- * @since bbPress (r4543)
+ * @since barebones (1.0)
  *
  * @uses bb_get_ajax_url() To get the URL to use for AJAX requests
  */
@@ -26,7 +26,7 @@ function bb_ajax_url() {
 	/**
 	 * Return the URL to use for theme-side bbPress AJAX requests
 	 *
-	 * @since bbPress (r4543)
+	 * @since barebones (1.0)
 	 *
 	 * @global WP $wp
 	 * @return string
@@ -43,7 +43,7 @@ function bb_ajax_url() {
 /**
  * Is this a bbPress AJAX request?
  *
- * @since bbPress (r4543)
+ * @since barebones (1.0)
  *
  * @return bool Looking for bbp-ajax
  */
@@ -55,7 +55,7 @@ function bb_is_ajax() {
  * Hooked to the 'bb_template_redirect' action, this is bbPress's custom
  * theme-side ajax handler.
  *
- * @since bbPress (r4543)
+ * @since barebones (1.0)
  *
  * @return If not a bbPress ajax request
  */
@@ -84,7 +84,7 @@ function bb_do_ajax() {
 /**
  * Helper method to return JSON response for the ajax calls
  *
- * @since bbPress (r4542)
+ * @since barebones (1.0)
  *
  * @param bool $success
  * @param string $content

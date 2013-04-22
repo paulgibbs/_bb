@@ -3,7 +3,7 @@
 /**
  * Implementation of Invision Power Board v3.x converter.
  *
- * @since bbPress (r4713)
+ * @since barebones (1.0)
  * @link Codex Docs http://codex.bbpress.org/import-forums/invision
  */
 class Invision extends BB_Converter_Base {

@@ -16,7 +16,7 @@ if ( !class_exists( 'BB_Forums_Admin' ) ) :
  *
  * @package bbPress
  * @subpackage Administration
- * @since bbPress (r2464)
+ * @since barebones (1.0)
  */
 class BB_Forums_Admin {
 
@@ -32,7 +32,7 @@ class BB_Forums_Admin {
 	/**
 	 * The main bbPress forums admin loader
 	 *
-	 * @since bbPress (r2515)
+	 * @since barebones (1.0)
 	 *
 	 * @uses BB_Forums_Admin::setup_globals() Setup the globals needed
 	 * @uses BB_Forums_Admin::setup_actions() Setup the hooks and actions
@@ -46,7 +46,7 @@ class BB_Forums_Admin {
 	/**
 	 * Setup the admin hooks, actions and filters
 	 *
-	 * @since bbPress (r2646)
+	 * @since barebones (1.0)
 	 * @access private
 	 *
 	 * @uses add_action() To add various actions
@@ -82,7 +82,7 @@ class BB_Forums_Admin {
 	/**
 	 * Should we bail out of this method?
 	 *
-	 * @since bbPress (r4067)
+	 * @since barebones (1.0)
 	 * @return boolean
 	 */
 	private function bail() {
@@ -95,7 +95,7 @@ class BB_Forums_Admin {
 	/**
 	 * Admin globals
 	 *
-	 * @since bbPress (r2646)
+	 * @since barebones (1.0)
 	 * @access private
 	 */
 	private function setup_globals() {
@@ -107,7 +107,7 @@ class BB_Forums_Admin {
 	/**
 	 * Contextual help for bbPress forum edit page
 	 *
-	 * @since bbPress (r3119)
+	 * @since barebones (1.0)
 	 * @uses get_current_screen()
 	 */
 	public function edit_help() {
@@ -168,7 +168,7 @@ class BB_Forums_Admin {
 	/**
 	 * Contextual help for bbPress forum edit page
 	 *
-	 * @since bbPress (r3119)
+	 * @since barebones (1.0)
 	 * @uses get_current_screen()
 	 */
 	public function new_help() {
@@ -239,7 +239,7 @@ class BB_Forums_Admin {
 	/**
 	 * Add the forum attributes metabox
 	 *
-	 * @since bbPress (r2746)
+	 * @since barebones (1.0)
 	 *
 	 * @uses bb_get_forum_post_type() To get the forum post type
 	 * @uses add_meta_box() To add the metabox
@@ -264,7 +264,7 @@ class BB_Forums_Admin {
 	/**
 	 * Pass the forum attributes for processing
 	 *
-	 * @since bbPress (r2746)
+	 * @since barebones (1.0)
 	 *
 	 * @param int $forum_id Forum id
 	 * @uses current_user_can() To check if the current user is capable of
@@ -324,7 +324,7 @@ class BB_Forums_Admin {
 	/**
 	 * Add some general styling to the admin area
 	 *
-	 * @since bbPress (r2464)
+	 * @since barebones (1.0)
 	 *
 	 * @uses bb_get_forum_post_type() To get the forum post type
 	 * @uses bb_get_topic_post_type() To get the topic post type
@@ -404,7 +404,7 @@ class BB_Forums_Admin {
 	/**
 	 * Manage the column headers for the forums page
 	 *
-	 * @since bbPress (r2485)
+	 * @since barebones (1.0)
 	 *
 	 * @param array $columns The columns
 	 * @uses apply_filters() Calls 'bb_admin_forums_column_headers' with
@@ -431,7 +431,7 @@ class BB_Forums_Admin {
 	/**
 	 * Print extra columns for the forums page
 	 *
-	 * @since bbPress (r2485)
+	 * @since barebones (1.0)
 	 *
 	 * @param string $column Column
 	 * @param int $forum_id Forum id
@@ -487,7 +487,7 @@ class BB_Forums_Admin {
 	 * Remove the quick-edit action link and display the description under
 	 * the forum title
 	 *
-	 * @since bbPress (r2577)
+	 * @since barebones (1.0)
 	 *
 	 * @param array $actions Actions
 	 * @param array $forum Forum object
@@ -509,7 +509,7 @@ class BB_Forums_Admin {
 	/**
 	 * Custom user feedback messages for forum post type
 	 *
-	 * @since bbPress (r3080)
+	 * @since barebones (1.0)
 	 *
 	 * @global int $post_ID
 	 * @uses bb_get_forum_permalink()
@@ -585,7 +585,7 @@ endif; // class_exists check
  * This is currently here to make hooking and unhooking of the admin UI easy.
  * It could use dependency injection in the future, but for now this is easier.
  *
- * @since bbPress (r2596)
+ * @since barebones (1.0)
  *
  * @uses BB_Forums_Admin
  */

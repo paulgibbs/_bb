@@ -17,7 +17,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
 /**
  * Adds bbPress theme support to any active WordPress theme
  *
- * @since bbPress (r3032)
+ * @since barebones (1.0)
  *
  * @param string $slug
  * @param string $name Optional. Default null
@@ -50,7 +50,7 @@ function bb_get_template_part( $slug, $name = null ) {
  * inherit from a parent theme can just overload one file. If the template is
  * not found in either of those, it looks in the theme-compat folder last.
  *
- * @since bbPres (r3618)
+ * @since barebones (1.0)
  *
  * @param string|array $template_names Template file(s) to search for, in order.
  * @param bool $load If true the template file will be loaded if it is found.
@@ -116,7 +116,7 @@ function bb_locate_template( $template_names, $load = false, $require_once = tru
  * relationship, to allow for custom template locations. Used in conjunction
  * with bb_locate_template(), this allows for easy template overrides.
  *
- * @since bbPress (r4323)
+ * @since barebones (1.0)
  *
  * @param string $location Callback function that returns the 
  * @param int $priority
@@ -134,7 +134,7 @@ function bb_register_template_stack( $location_callback = '', $priority = 10 ) {
 /**
  * Deregisters a previously registered template stack location.
  *
- * @since bbPress (r4652)
+ * @since barebones (1.0)
  *
  * @param string $location Callback function that returns the
  * @param int $priority
@@ -156,7 +156,7 @@ function bb_deregister_template_stack( $location_callback = '', $priority = 10 )
  *
  * @see bb_register_template_stack()
  *
- * @since bbPress (r4323)
+ * @since barebones (1.0)
  *
  * @global array $wp_filter Stores all of the filters
  * @global array $merged_filters Merges the filter hooks using this function.
@@ -210,7 +210,7 @@ function bb_get_template_stack() {
  * the use of {@link bb_locate_template()}. Allows for more generic template
  * locations without the use of the other get_*_template() functions.
  *
- * @since bbPress (r3629)
+ * @since barebones (1.0)
  *
  * @param string $type Filename without extension.
  * @param array $templates An optional list of template candidates
@@ -238,7 +238,7 @@ function bb_get_query_template( $type, $templates = array() ) {
 /**
  * Get the possible subdirectories to check for templates in
  *
- * @since bbPress (r3738)
+ * @since barebones (1.0)
  * @param array $templates Templates we are looking for
  * @return array Possible subfolders to look in
  */
@@ -254,7 +254,7 @@ function bb_get_template_locations( $templates = array() ) {
 /**
  * Add template locations to template files being searched for
  *
- * @since bbPress (r3738)
+ * @since barebones (1.0)
  *
  * @param array $templates
  * @return array() 
@@ -290,7 +290,7 @@ function bb_add_template_stack_locations( $stacks = array() ) {
  * If it's a view page, WP_Query::bb_is_view is set to true
  * If it's a search page, WP_Query::bb_is_search is set to true
  *
- * @since bbPress (r2688)
+ * @since barebones (1.0)
  *
  * @param WP_Query $posts_query
  *

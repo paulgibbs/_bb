@@ -3,7 +3,7 @@
 /**
  * Implementation of vBulletin v4.x Converter.
  *
- * @since bbPress (r4724)
+ * @since barebones (1.0)
  * @link Codex Docs http://codex.bbpress.org/import-forums/vbulletin
  */
 class vBulletin extends BB_Converter_Base {

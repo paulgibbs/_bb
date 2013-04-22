@@ -16,7 +16,7 @@ if ( !class_exists( 'BB_Admin' ) ) :
  *
  * @package bbPress
  * @subpackage Administration
- * @since bbPress (r2464)
+ * @since barebones (1.0)
  */
 class BB_Admin {
 
@@ -63,7 +63,7 @@ class BB_Admin {
 	/**
 	 * The main bbPress admin loader
 	 *
-	 * @since bbPress (r2515)
+	 * @since barebones (1.0)
 	 *
 	 * @uses BB_Admin::setup_globals() Setup the globals needed
 	 * @uses BB_Admin::includes() Include the required files
@@ -78,7 +78,7 @@ class BB_Admin {
 	/**
 	 * Admin globals
 	 *
-	 * @since bbPress (r2646)
+	 * @since barebones (1.0)
 	 * @access private
 	 */
 	private function setup_globals() {
@@ -92,7 +92,7 @@ class BB_Admin {
 	/**
 	 * Include required files
 	 *
-	 * @since bbPress (r2646)
+	 * @since barebones (1.0)
 	 * @access private
 	 */
 	private function includes() {
@@ -110,7 +110,7 @@ class BB_Admin {
 	/**
 	 * Setup the admin hooks, actions and filters
 	 *
-	 * @since bbPress (r2646)
+	 * @since barebones (1.0)
 	 * @access private
 	 *
 	 * @uses add_action() To add various actions
@@ -166,7 +166,7 @@ class BB_Admin {
 	/**
 	 * Add the admin menus
 	 *
-	 * @since bbPress (r2646)
+	 * @since barebones (1.0)
 	 *
 	 * @uses add_management_page() To add the Recount page in Tools section
 	 * @uses add_options_page() To add the Forums settings page in Settings
@@ -273,7 +273,7 @@ class BB_Admin {
 	/**
 	 * Add the network admin menus
 	 *
-	 * @since bbPress (r3689)
+	 * @since barebones (1.0)
 	 * @uses add_submenu_page() To add the Update Forums page in Updates
 	 */
 	public function network_admin_menus() {
@@ -295,7 +295,7 @@ class BB_Admin {
 	/**
 	 * If this is a new installation, create some initial forum content.
 	 *
-	 * @since bbPress (r3767)
+	 * @since barebones (1.0)
 	 * @return type
 	 */
 	public static function new_install() {
@@ -308,7 +308,7 @@ class BB_Admin {
 	/**
 	 * Register the settings
 	 *
-	 * @since bbPress (r2737)
+	 * @since barebones (1.0)
 	 *
 	 * @uses add_settings_section() To add our own settings section
 	 * @uses add_settings_field() To add various settings fields
@@ -352,7 +352,7 @@ class BB_Admin {
 	/**
 	 * Maps settings capabilities
 	 *
-	 * @since bbPress (r4242)
+	 * @since barebones (1.0)
 	 *
 	 * @param array $caps Capabilities for meta capability
 	 * @param string $cap Capability name
@@ -412,7 +412,7 @@ class BB_Admin {
 	/**
 	 * Register the importers
 	 *
-	 * @since bbPress (r2737)
+	 * @since barebones (1.0)
 	 *
 	 * @uses apply_filters() Calls 'bb_importer_path' filter to allow plugins
 	 *                        to customize the importer script locations.
@@ -450,7 +450,7 @@ class BB_Admin {
 	 *
 	 * Shows a nag message in admin area about the theme not supporting bbPress
 	 *
-	 * @since bbPress (r2743)
+	 * @since barebones (1.0)
 	 *
 	 * @uses current_user_can() To check notice should be displayed.
 	 */
@@ -461,7 +461,7 @@ class BB_Admin {
 	/**
 	 * Add Settings link to plugins area
 	 *
-	 * @since bbPress (r2737)
+	 * @since barebones (1.0)
 	 *
 	 * @param array $links Links array in which we would prepend our link
 	 * @param string $file Current plugin basename
@@ -483,7 +483,7 @@ class BB_Admin {
 	/**
 	 * Add the 'Right now in Forums' dashboard widget
 	 *
-	 * @since bbPress (r2770)
+	 * @since barebones (1.0)
 	 *
 	 * @uses wp_add_dashboard_widget() To add the dashboard widget
 	 */
@@ -493,7 +493,7 @@ class BB_Admin {
 
 	/**
 	 * Enqueue any admin scripts we might need
-	 * @since bbPress (4260)
+	 * @since barebones (1.0)
 	 */
 	public function enqueue_scripts() {
 		wp_enqueue_script( 'suggest' );
@@ -502,7 +502,7 @@ class BB_Admin {
 	/**
 	 * Add some general styling to the admin area
 	 *
-	 * @since bbPress (r2464)
+	 * @since barebones (1.0)
 	 *
 	 * @uses bb_get_forum_post_type() To get the forum post type
 	 * @uses bb_get_topic_post_type() To get the topic post type
@@ -1237,7 +1237,7 @@ class BB_Admin {
 	 * way to be certain what the relative path of the admin images is.
 	 * We are including the two most common configurations here, just in case.
 	 *
-	 * @since bbPress (r2521)
+	 * @since barebones (1.0)
 	 *
 	 * @uses wp_admin_css_color() To register the color scheme
 	 */
@@ -1258,7 +1258,7 @@ class BB_Admin {
 	/**
 	 * Hide theme compat package selection if only 1 package is registered
 	 *
-	 * @since bbPress (r4315)
+	 * @since barebones (1.0)
 	 *
 	 * @param array $sections Forums settings sections
 	 * @return array
@@ -1273,7 +1273,7 @@ class BB_Admin {
 	/**
 	 * Allow keymaster role to save Forums settings
 	 *
-	 * @since bbPress (r4678)
+	 * @since barebones (1.0)
 	 *
 	 * @param string $capability
 	 * @return string Return 'keep_gate' capability
@@ -1288,7 +1288,7 @@ class BB_Admin {
 	/**
 	 * Ajax action for facilitating the forum auto-suggest
 	 *
-	 * @since bbPress (r4261)
+	 * @since barebones (1.0)
 	 *
 	 * @uses get_posts()
 	 * @uses bb_get_topic_post_type()
@@ -1317,7 +1317,7 @@ class BB_Admin {
 	/**
 	 * Output the about screen
 	 *
-	 * @since bbPress (r4159)
+	 * @since barebones (1.0)
 	 */
 	public function about_screen() {
 
@@ -1420,7 +1420,7 @@ class BB_Admin {
 	 * Hardcoding this in here is pretty janky. It's fine for 2.2, but we'll
 	 * want to leverage api.wordpress.org eventually.
 	 *
-	 * @since bbPress (r4159)
+	 * @since barebones (1.0)
 	 */
 	public function credits_screen() {
 
@@ -1533,7 +1533,7 @@ class BB_Admin {
 	/**
 	 * Update all bbPress forums across all sites
 	 *
-	 * @since bbPress (r3689)
+	 * @since barebones (1.0)
 	 *
 	 * @global WPDB $wpdb
 	 * @uses get_blog_option()
@@ -1580,7 +1580,7 @@ class BB_Admin {
 	/**
 	 * Update all bbPress forums across all sites
 	 *
-	 * @since bbPress (r3689)
+	 * @since barebones (1.0)
 	 *
 	 * @global WPDB $wpdb
 	 * @uses get_blog_option()
@@ -1697,7 +1697,7 @@ endif; // class_exists check
 /**
  * Setup bbPress Admin
  *
- * @since bbPress (r2596)
+ * @since barebones (1.0)
  *
  * @uses BB_Admin
  */

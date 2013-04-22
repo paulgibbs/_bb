@@ -16,7 +16,7 @@ if ( !class_exists( 'BB_Topics_Admin' ) ) :
  *
  * @package bbPress
  * @subpackage Administration
- * @since bbPress (r2464)
+ * @since barebones (1.0)
  */
 class BB_Topics_Admin {
 
@@ -32,7 +32,7 @@ class BB_Topics_Admin {
 	/**
 	 * The main bbPress topics admin loader
 	 *
-	 * @since bbPress (r2515)
+	 * @since barebones (1.0)
 	 *
 	 * @uses BB_Topics_Admin::setup_globals() Setup the globals needed
 	 * @uses BB_Topics_Admin::setup_actions() Setup the hooks and actions
@@ -46,7 +46,7 @@ class BB_Topics_Admin {
 	/**
 	 * Setup the admin hooks, actions and filters
 	 *
-	 * @since bbPress (r2646)
+	 * @since barebones (1.0)
 	 * @access private
 	 *
 	 * @uses add_action() To add various actions
@@ -93,7 +93,7 @@ class BB_Topics_Admin {
 	/**
 	 * Should we bail out of this method?
 	 *
-	 * @since bbPress (r4067)
+	 * @since barebones (1.0)
 	 * @return boolean
 	 */
 	private function bail() {
@@ -106,7 +106,7 @@ class BB_Topics_Admin {
 	/**
 	 * Admin globals
 	 *
-	 * @since bbPress (r2646)
+	 * @since barebones (1.0)
 	 * @access private
 	 */
 	private function setup_globals() {
@@ -118,7 +118,7 @@ class BB_Topics_Admin {
 	/**
 	 * Contextual help for bbPress topic edit page
 	 *
-	 * @since bbPress (r3119)
+	 * @since barebones (1.0)
 	 * @uses get_current_screen()
 	 */
 	public function edit_help() {
@@ -183,7 +183,7 @@ class BB_Topics_Admin {
 	/**
 	 * Contextual help for bbPress topic edit page
 	 *
-	 * @since bbPress (r3119)
+	 * @since barebones (1.0)
 	 * @uses get_current_screen()
 	 */
 	public function new_help() {
@@ -251,7 +251,7 @@ class BB_Topics_Admin {
 	/**
 	 * Add the topic attributes metabox
 	 *
-	 * @since bbPress (r2744)
+	 * @since barebones (1.0)
 	 *
 	 * @uses bb_get_topic_post_type() To get the topic post type
 	 * @uses add_meta_box() To add the metabox
@@ -276,7 +276,7 @@ class BB_Topics_Admin {
 	/**
 	 * Pass the topic attributes for processing
 	 *
-	 * @since bbPress (r2746)
+	 * @since barebones (1.0)
 	 *
 	 * @param int $topic_id Topic id
 	 * @uses current_user_can() To check if the current user is capable of
@@ -350,7 +350,7 @@ class BB_Topics_Admin {
 	/**
 	 * Add the author info metabox
 	 *
-	 * @since bbPress (r2828)
+	 * @since barebones (1.0)
 	 *
 	 * @uses bb_get_topic() To get the topic
 	 * @uses bb_get_reply() To get the reply
@@ -384,7 +384,7 @@ class BB_Topics_Admin {
 	/**
 	 * Add some general styling to the admin area
 	 *
-	 * @since bbPress (r2464)
+	 * @since barebones (1.0)
 	 *
 	 * @uses bb_get_forum_post_type() To get the forum post type
 	 * @uses bb_get_topic_post_type() To get the topic post type
@@ -456,7 +456,7 @@ class BB_Topics_Admin {
 	 * Handles the admin-side opening/closing, sticking/unsticking and
 	 * spamming/unspamming of topics
 	 *
-	 * @since bbPress (r2727)
+	 * @since barebones (1.0)
 	 *
 	 * @uses bb_get_topic() To get the topic
 	 * @uses current_user_can() To check if the user is capable of editing
@@ -552,7 +552,7 @@ class BB_Topics_Admin {
 	 * Display the success/error notices from
 	 * {@link BB_Admin::toggle_topic()}
 	 *
-	 * @since bbPress (r2727)
+	 * @since barebones (1.0)
 	 *
 	 * @uses bb_get_topic() To get the topic
 	 * @uses bb_get_topic_title() To get the topic title of the topic
@@ -627,7 +627,7 @@ class BB_Topics_Admin {
 	/**
 	 * Manage the column headers for the topics page
 	 *
-	 * @since bbPress (r2485)
+	 * @since barebones (1.0)
 	 *
 	 * @param array $columns The columns
 	 * @uses apply_filters() Calls 'bb_admin_topics_column_headers' with
@@ -655,7 +655,7 @@ class BB_Topics_Admin {
 	/**
 	 * Print extra columns for the topics page
 	 *
-	 * @since bbPress (r2485)
+	 * @since barebones (1.0)
 	 *
 	 * @param string $column Column
 	 * @param int $topic_id Topic id
@@ -756,7 +756,7 @@ class BB_Topics_Admin {
 	 * Remove the quick-edit action link under the topic title and add the
 	 * content and close/stick/spam links
 	 *
-	 * @since bbPress (r2485)
+	 * @since barebones (1.0)
 	 *
 	 * @param array $actions Actions
 	 * @param array $topic Topic object
@@ -844,7 +844,7 @@ class BB_Topics_Admin {
 	/**
 	 * Add forum dropdown to topic and reply list table filters
 	 *
-	 * @since bbPress (r2991)
+	 * @since barebones (1.0)
 	 *
 	 * @uses bb_get_reply_post_type() To get the reply post type
 	 * @uses bb_get_topic_post_type() To get the topic post type
@@ -875,7 +875,7 @@ class BB_Topics_Admin {
 	/**
 	 * Adjust the request query and include the forum id
 	 *
-	 * @since bbPress (r2991)
+	 * @since barebones (1.0)
 	 *
 	 * @param array $query_vars Query variables from {@link WP_Query}
 	 * @uses is_admin() To check if it's the admin section
@@ -900,7 +900,7 @@ class BB_Topics_Admin {
 	/**
 	 * Custom user feedback messages for topic post type
 	 *
-	 * @since bbPress (r3080)
+	 * @since barebones (1.0)
 	 *
 	 * @global int $post_ID
 	 * @uses bb_get_topic_permalink()
@@ -976,7 +976,7 @@ endif; // class_exists check
  * This is currently here to make hooking and unhooking of the admin UI easy.
  * It could use dependency injection in the future, but for now this is easier.
  *
- * @since bbPress (r2596)
+ * @since barebones (1.0)
  *
  * @uses BB_Forums_Admin
  */

@@ -236,7 +236,7 @@ add_filter( 'bb_map_meta_caps', 'bb_map_topic_tag_meta_caps', 10, 4 ); // Topic 
 /**
  * Deprecated locale filter
  *
- * @since bbPress (r4213)
+ * @since barebones (1.0)
  *
  * @param type $locale
  * @return type
@@ -249,7 +249,7 @@ add_filter( 'bb_plugin_locale', '_bb_filter_locale', 10, 1 );
 /**
  * Deprecated forums query filter
  *
- * @since bbPress (r3961)
+ * @since barebones (1.0)
  * @param type $args
  * @return type
  */
@@ -261,7 +261,7 @@ add_filter( 'bb_after_has_forums_parse_args', '_bb_has_forums_query' );
 /**
  * Deprecated topics query filter
  *
- * @since bbPress (r3961)
+ * @since barebones (1.0)
  * @param type $args
  * @return type
  */
@@ -273,7 +273,7 @@ add_filter( 'bb_after_has_topics_parse_args', '_bb_has_topics_query' );
 /**
  * Deprecated replies query filter
  *
- * @since bbPress (r3961)
+ * @since barebones (1.0)
  * @param type $args
  * @return type
  */

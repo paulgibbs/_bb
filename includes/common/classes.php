@@ -22,7 +22,7 @@ if ( !class_exists( 'BB_Component' ) ) :
  * @package bbPress
  * @subpackage Classes
  *
- * @since bbPress (r2688)
+ * @since barebones (1.0)
  */
 class BB_Component {
 
@@ -58,7 +58,7 @@ class BB_Component {
 	/**
 	 * bbPress Component loader
 	 *
-	 * @since bbPress (r2700)
+	 * @since barebones (1.0)
 	 *
 	 * @param mixed $args Required. Supports these args:
 	 *  - name: Unique name (for internal identification)
@@ -82,7 +82,7 @@ class BB_Component {
 	/**
 	 * Component global variables
 	 *
-	 * @since bbPress (r2700)
+	 * @since barebones (1.0)
 	 * @access private
 	 *
 	 * @uses apply_filters() Calls 'bb_{@link BB_Component::name}_id'
@@ -97,7 +97,7 @@ class BB_Component {
 	/**
 	 * Include required files
 	 *
-	 * @since bbPress (r2700)
+	 * @since barebones (1.0)
 	 * @access private
 	 *
 	 * @uses do_action() Calls 'bb_{@link BB_Component::name}includes'
@@ -109,7 +109,7 @@ class BB_Component {
 	/**
 	 * Setup the actions
 	 *
-	 * @since bbPress (r2700)
+	 * @since barebones (1.0)
 	 * @access private
 	 *
 	 * @uses add_action() To add various actions
@@ -129,7 +129,7 @@ class BB_Component {
 	/**
 	 * Setup the component post types
 	 *
-	 * @since bbPress (r2700)
+	 * @since barebones (1.0)
 	 *
 	 * @uses do_action() Calls 'bb_{@link BB_Component::name}_register_post_types'
 	 */
@@ -140,7 +140,7 @@ class BB_Component {
 	/**
 	 * Register component specific taxonomies
 	 *
-	 * @since bbPress (r2700)
+	 * @since barebones (1.0)
 	 *
 	 * @uses do_action() Calls 'bb_{@link BB_Component::name}_register_taxonomies'
 	 */
@@ -151,7 +151,7 @@ class BB_Component {
 	/**
 	 * Add any additional rewrite tags
 	 *
-	 * @since bbPress (r2700)
+	 * @since barebones (1.0)
 	 *
 	 * @uses do_action() Calls 'bb_{@link BB_Component::name}_add_rewrite_tags'
 	 */
@@ -162,7 +162,7 @@ class BB_Component {
 	/**
 	 * Generate any additional rewrite rules
 	 *
-	 * @since bbPress (r2700)
+	 * @since barebones (1.0)
 	 *
 	 * @uses do_action() Calls 'bb_{@link BB_Component::name}_generate_rewrite_rules'
 	 */
@@ -179,7 +179,7 @@ if ( class_exists( 'Walker' ) ) :
  * @package bbPress
  * @subpackage Classes
  *
- * @since bbPress (r2746)
+ * @since barebones (1.0)
  * @uses Walker
  */
 class BB_Walker_Dropdown extends Walker {
@@ -187,7 +187,7 @@ class BB_Walker_Dropdown extends Walker {
 	/**
 	 * @see Walker::$tree_type
 	 *
-	 * @since bbPress (r2746)
+	 * @since barebones (1.0)
 	 *
 	 * @var string
 	 */
@@ -196,7 +196,7 @@ class BB_Walker_Dropdown extends Walker {
 	/**
 	 * @see Walker::$db_fields
 	 *
-	 * @since bbPress (r2746)
+	 * @since barebones (1.0)
 	 *
 	 * @var array
 	 */
@@ -207,7 +207,7 @@ class BB_Walker_Dropdown extends Walker {
 	/**
 	 * Set the tree_type
 	 *
-	 * @since bbPress (r2746)
+	 * @since barebones (1.0)
 	 */
 	public function __construct() {
 		$this->tree_type = bb_get_forum_post_type();
@@ -216,7 +216,7 @@ class BB_Walker_Dropdown extends Walker {
 	/**
 	 * @see Walker::start_el()
 	 *
-	 * @since bbPress (r2746)
+	 * @since barebones (1.0)
 	 *
 	 * @param string $output Passed by reference. Used to append additional
 	 *                        content.

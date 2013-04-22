@@ -14,7 +14,7 @@ if ( !class_exists( 'BB_Shortcodes' ) ) :
 /**
  * bbPress Shortcode Class
  *
- * @since bbPress (r3031)
+ * @since barebones (1.0)
  */
 class BB_Shortcodes {
 
@@ -30,7 +30,7 @@ class BB_Shortcodes {
 	/**
 	 * Add the register_shortcodes action to bb_init
 	 *
-	 * @since bbPress (r3031)
+	 * @since barebones (1.0)
 	 *
 	 * @uses setup_globals()
 	 * @uses add_shortcodes()
@@ -43,7 +43,7 @@ class BB_Shortcodes {
 	/**
 	 * Shortcode globals
 	 *
-	 * @since bbPress (r3143)
+	 * @since barebones (1.0)
 	 * @access private
 	 *
 	 * @uses apply_filters()
@@ -99,7 +99,7 @@ class BB_Shortcodes {
 	/**
 	 * Register the bbPress shortcodes
 	 *
-	 * @since bbPress (r3031)
+	 * @since barebones (1.0)
 	 *
 	 * @uses add_shortcode()
 	 * @uses do_action()
@@ -113,7 +113,7 @@ class BB_Shortcodes {
 	/**
 	 * Unset some globals in the $bbp object that hold query related info
 	 *
-	 * @since bbPress (r3034)
+	 * @since barebones (1.0)
 	 */
 	private function unset_globals() {
 		$bbp = bbpress();
@@ -143,7 +143,7 @@ class BB_Shortcodes {
 	 * than outputting the HTML at run-time. This allows shortcodes to appear
 	 * in the correct location in the_content() instead of when it's created.
 	 *
-	 * @since bbPress (r3079)
+	 * @since barebones (1.0)
 	 *
 	 * @param string $query_name
 	 *
@@ -165,7 +165,7 @@ class BB_Shortcodes {
 	/**
 	 * Return the contents of the output buffer and flush its contents.
 	 *
-	 * @since bbPress( r3079)
+	 * @since barebones (1.0)
 	 *
 	 * @uses BB_Shortcodes::unset_globals() Cleans up global values
 	 * @return string Contents of output buffer.
@@ -196,7 +196,7 @@ class BB_Shortcodes {
 	 * Display an index of all visible root level forums in an output buffer
 	 * and return to ensure that post/page contents are displayed first.
 	 *
-	 * @since bbPress (r3031)
+	 * @since barebones (1.0)
 	 *
 	 * @param array $attr
 	 * @param string $content
@@ -222,7 +222,7 @@ class BB_Shortcodes {
 	 * Display the contents of a specific forum ID in an output buffer
 	 * and return to ensure that post/page contents are displayed first.
 	 *
-	 * @since bbPress (r3031)
+	 * @since barebones (1.0)
 	 *
 	 * @param array $attr
 	 * @param string $content
@@ -263,7 +263,7 @@ class BB_Shortcodes {
 	 * Display the forum form in an output buffer and return to ensure
 	 * post/page contents are displayed first.
 	 *
-	 * @since bbPress (r3566)
+	 * @since barebones (1.0)
 	 *
 	 * @uses get_template_part()
 	 */
@@ -285,7 +285,7 @@ class BB_Shortcodes {
 	 * Display an index of all visible root level topics in an output buffer
 	 * and return to ensure that post/page contents are displayed first.
 	 *
-	 * @since bbPress (r3031)
+	 * @since barebones (1.0)
 	 *
 	 * @param array $attr
 	 * @param string $content
@@ -317,7 +317,7 @@ class BB_Shortcodes {
 	 * Display the contents of a specific topic ID in an output buffer
 	 * and return to ensure that post/page contents are displayed first.
 	 *
-	 * @since bbPress (r3031)
+	 * @since barebones (1.0)
 	 *
 	 * @param array $attr
 	 * @param string $content
@@ -377,7 +377,7 @@ class BB_Shortcodes {
 	 * Display the topic form in an output buffer and return to ensure
 	 * post/page contents are displayed first.
 	 *
-	 * @since bbPress (r3031)
+	 * @since barebones (1.0)
 	 *
 	 * @uses get_template_part()
 	 */
@@ -399,7 +399,7 @@ class BB_Shortcodes {
 	 * Display the contents of a specific reply ID in an output buffer
 	 * and return to ensure that post/page contents are displayed first.
 	 *
-	 * @since bbPress (r3031)
+	 * @since barebones (1.0)
 	 *
 	 * @param array $attr
 	 * @param string $content
@@ -459,7 +459,7 @@ class BB_Shortcodes {
 	 * Display the reply form in an output buffer and return to ensure
 	 * post/page contents are displayed first.
 	 *
-	 * @since bbPress (r3031)
+	 * @since barebones (1.0)
 	 *
 	 * @uses get_template_part()
 	 */
@@ -481,7 +481,7 @@ class BB_Shortcodes {
 	 * Display a tag cloud of all topic tags in an output buffer and return to
 	 * ensure that post/page contents are displayed first.
 	 *
-	 * @since bbPress (r3110)
+	 * @since barebones (1.0)
 	 *
 	 * @return string
 	 */
@@ -509,7 +509,7 @@ class BB_Shortcodes {
 	 * Display the contents of a specific topic tag in an output buffer
 	 * and return to ensure that post/page contents are displayed first.
 	 *
-	 * @since bbPress (r3110)
+	 * @since barebones (1.0)
 	 *
 	 * @param array $attr
 	 * @param string $content
@@ -547,7 +547,7 @@ class BB_Shortcodes {
 	 * Display the contents of a specific topic tag in an output buffer
 	 * and return to ensure that post/page contents are displayed first.
 	 *
-	 * @since bbPress (r3346)
+	 * @since barebones (1.0)
 	 *
 	 * @param array $attr
 	 * @param string $content
@@ -575,7 +575,7 @@ class BB_Shortcodes {
 	 * Display the contents of a specific view in an output buffer and return to
 	 * ensure that post/page contents are displayed first.
 	 *
-	 * @since bbPress (r3031)
+	 * @since barebones (1.0)
 	 *
 	 * @param array $attr
 	 * @param string $content
@@ -614,7 +614,7 @@ class BB_Shortcodes {
 	 * Display the search form in an output buffer and return to ensure
 	 * post/page contents are displayed first.
 	 *
-	 * @since bbPress (r4585)
+	 * @since barebones (1.0)
 	 *
 	 * @uses get_template_part()
 	 */
@@ -634,7 +634,7 @@ class BB_Shortcodes {
 	 * Display the contents of search results in an output buffer and return to
 	 * ensure that post/page contents are displayed first.
 	 *
-	 * @since bbPress (r4579)
+	 * @since barebones (1.0)
 	 *
 	 * @param array $attr
 	 * @param string $content
@@ -671,7 +671,7 @@ class BB_Shortcodes {
 	/**
 	 * Display a login form
 	 *
-	 * @since bbPress (r3302)
+	 * @since barebones (1.0)
 	 *
 	 * @return string
 	 */
@@ -696,7 +696,7 @@ class BB_Shortcodes {
 	/**
 	 * Display a register form
 	 *
-	 * @since bbPress (r3302)
+	 * @since barebones (1.0)
 	 *
 	 * @return string
 	 */
@@ -721,7 +721,7 @@ class BB_Shortcodes {
 	/**
 	 * Display a lost password form
 	 *
-	 * @since bbPress (r3302)
+	 * @since barebones (1.0)
 	 *
 	 * @return string
 	 */
@@ -748,7 +748,7 @@ class BB_Shortcodes {
 	/**
 	 * Display forum statistics
 	 *
-	 * @since bbPress (r4509)
+	 * @since barebones (1.0)
 	 *
 	 * @return shring
 	 */
@@ -770,7 +770,7 @@ class BB_Shortcodes {
 	/**
 	 * Display a breadcrumb
 	 *
-	 * @since bbPress (r3302)
+	 * @since barebones (1.0)
 	 *
 	 * @return string
 	 */
@@ -794,7 +794,7 @@ class BB_Shortcodes {
 	/**
 	 * Filter the query for the topic index
 	 *
-	 * @since bbPress (r3637)
+	 * @since barebones (1.0)
 	 *
 	 * @param array $args
 	 * @return array
@@ -809,7 +809,7 @@ class BB_Shortcodes {
 	/**
 	 * Filter the query for topic tags
 	 *
-	 * @since bbPress (r3637)
+	 * @since barebones (1.0)
 	 *
 	 * @param array $args
 	 * @return array

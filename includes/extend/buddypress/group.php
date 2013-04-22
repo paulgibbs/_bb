@@ -19,7 +19,7 @@ if ( !class_exists( 'BB_Forums_Group_Extension' ) && class_exists( 'BP_Group_Ext
 /**
  * Loads Group Extension for Forums Component
  *
- * @since bbPress (r3552)
+ * @since barebones (1.0)
  *
  * @package bbPress
  * @subpackage BuddyPress
@@ -32,7 +32,7 @@ class BB_Forums_Group_Extension extends BP_Group_Extension {
 	/**
 	 * Setup bbPress group extension variables
 	 *
-	 * @since bbPress (r3552)
+	 * @since barebones (1.0)
 	 */
 	public function __construct() {
 		$this->setup_variables();
@@ -44,7 +44,7 @@ class BB_Forums_Group_Extension extends BP_Group_Extension {
 	/**
 	 * Setup the group forums class variables
 	 *
-	 * @since bbPress ()
+	 * @since barebones (1.0)
 	 */
 	private function setup_variables() {
 
@@ -77,7 +77,7 @@ class BB_Forums_Group_Extension extends BP_Group_Extension {
 	/**
 	 * Setup the group forums class actions
 	 *
-	 * @since bbPress (r4552)
+	 * @since barebones (1.0)
 	 */
 	private function setup_actions() {
 
@@ -100,7 +100,7 @@ class BB_Forums_Group_Extension extends BP_Group_Extension {
 	/**
 	 * Setup the group forums class filters
 	 *
-	 * @since bbPress (r4552)
+	 * @since barebones (1.0)
 	 */
 	private function setup_filters() {
 
@@ -166,7 +166,7 @@ class BB_Forums_Group_Extension extends BP_Group_Extension {
 	/**
 	 * Maybe unset the group forum nav item if group does not have a forum
 	 *
-	 * @since bbPress (r4552)
+	 * @since barebones (1.0)
 	 *
 	 * @return If not viewing a single group
 	 */
@@ -186,7 +186,7 @@ class BB_Forums_Group_Extension extends BP_Group_Extension {
 	/**
 	 * Allow group members to have advanced priviledges in group forum topics.
 	 *
-	 * @since bbPress (r4434)
+	 * @since barebones (1.0)
 	 *
 	 * @param array $caps
 	 * @param string $cap
@@ -236,7 +236,7 @@ class BB_Forums_Group_Extension extends BP_Group_Extension {
 	/**
 	 * Remove the topic meta cap map, so it doesn't interfere with sidebars.
 	 *
-	 * @since bbPress (r4434)
+	 * @since barebones (1.0)
 	 */
 	public function remove_group_forum_meta_cap_map() {
 		remove_filter( 'bb_map_meta_caps', array( $this, 'map_group_forum_meta_caps' ), 99, 4 );
@@ -247,7 +247,7 @@ class BB_Forums_Group_Extension extends BP_Group_Extension {
 	/**
 	 * Show forums and new forum form when editing a group
 	 *
-	 * @since bbPress (r3563)
+	 * @since barebones (1.0)
 	 * @param object $group (the group to edit if in Group Admin UI)
 	 * @uses is_admin() To check if we're in the Group Admin UI
 	 * @uses bb_get_template_part()
@@ -312,7 +312,7 @@ class BB_Forums_Group_Extension extends BP_Group_Extension {
 	/**
 	 * Save the Group Forum data on edit
 	 *
-	 * @since bbPress (r3465)
+	 * @since barebones (1.0)
 	 * @param int $group_id (to handle Group Admin UI hook bp_group_admin_edit_after )
 	 * @uses bb_new_forum_handler() To check for forum creation
 	 * @uses bb_edit_forum_handler() To check for forum edit
@@ -419,7 +419,7 @@ class BB_Forums_Group_Extension extends BP_Group_Extension {
 	/**
 	 * Adds a metabox to BuddyPress Group Admin UI
 	 *
-	 * @since bbPress (r4814)
+	 * @since barebones (1.0)
 	 *
 	 * @uses add_meta_box
 	 * @uses BB_Forums_Group_Extension::group_admin_ui_display_metabox() To display the edit screen
@@ -438,7 +438,7 @@ class BB_Forums_Group_Extension extends BP_Group_Extension {
 	/**
 	 * Displays the bbPress metabox in BuddyPress Group Admin UI
 	 *
-	 * @since bbPress (r4814)
+	 * @since barebones (1.0)
 	 *
 	 * @param object $item (group object)
 	 * @uses add_meta_box
@@ -453,7 +453,7 @@ class BB_Forums_Group_Extension extends BP_Group_Extension {
 	/**
 	 * Show forums and new forum form when creating a group
 	 *
-	 * @since bbPress (r3465)
+	 * @since barebones (1.0)
 	 */
 	public function create_screen() {
 
@@ -480,7 +480,7 @@ class BB_Forums_Group_Extension extends BP_Group_Extension {
 	/**
 	 * Save the Group Forum data on create
 	 *
-	 * @since bbPress (r3465)
+	 * @since barebones (1.0)
 	 */
 	public function create_screen_save() {
 
@@ -574,7 +574,7 @@ class BB_Forums_Group_Extension extends BP_Group_Extension {
 	/**
 	 * Creating a group forum or category (including root for group)
 	 *
-	 * @since bbPress (r3653)
+	 * @since barebones (1.0)
 	 * @param type $forum_args
 	 * @uses bb_get_forum_id()
 	 * @uses bp_get_current_group_id()
@@ -599,7 +599,7 @@ class BB_Forums_Group_Extension extends BP_Group_Extension {
 	/**
 	 * Removing a group forum or category (including root for group)
 	 *
-	 * @since bbPress (r3653)
+	 * @since barebones (1.0)
 	 * @param type $forum_args
 	 * @uses bb_get_forum_id()
 	 * @uses bp_get_current_group_id()
@@ -653,7 +653,7 @@ class BB_Forums_Group_Extension extends BP_Group_Extension {
 	/**
 	 * Toggle the enable_forum group setting on or off
 	 *
-	 * @since bbPress (r4612)
+	 * @since barebones (1.0)
 	 *
 	 * @param int $group_id The group to toggle
 	 * @param bool $enabled True for on, false for off
@@ -692,7 +692,7 @@ class BB_Forums_Group_Extension extends BP_Group_Extension {
 	 * As of right now, bbPress only supports 1-to-1 group forum relationships.
 	 * In the future, many-to-many should be allowed.
 	 *
-	 * @since bbPress (r3653)
+	 * @since barebones (1.0)
 	 * @uses bp_get_current_group_id()
 	 * @uses bb_get_group_forum_ids()
 	 * @uses bb_has_forums()
@@ -889,7 +889,7 @@ class BB_Forums_Group_Extension extends BP_Group_Extension {
 	/**
 	 * Strip super stickies from the topic query
 	 *
-	 * @since bbPress (r4810)
+	 * @since barebones (1.0)
 	 * @access private
 	 * @param array $super the super sticky post ID's
 	 * @return array (empty)
@@ -902,7 +902,7 @@ class BB_Forums_Group_Extension extends BP_Group_Extension {
 	/**
 	 * Unset the type super sticky from topic type
 	 *
-	 * @since bbPress (r4810)
+	 * @since barebones (1.0)
 	 * @access private
 	 * @param array $args
 	 * @return array $args without the to-front link
@@ -915,7 +915,7 @@ class BB_Forums_Group_Extension extends BP_Group_Extension {
 	/**
 	 * Ugly preg_replace to hide the to front admin link
 	 *
-	 * @since bbPress (r4810)
+	 * @since barebones (1.0)
 	 * @access private
 	 * @param string $retval
 	 * @param array $args
@@ -934,7 +934,7 @@ class BB_Forums_Group_Extension extends BP_Group_Extension {
 	/**
 	 * Redirect to the group forum screen
 	 *
-	 * @since bbPress (r3653)
+	 * @since barebones (1.0)
 	 * @param str $redirect_url
 	 * @param str $redirect_to
 	 */
@@ -951,7 +951,7 @@ class BB_Forums_Group_Extension extends BP_Group_Extension {
 	/**
 	 * Redirect to the group forum screen
 	 *
-	 * @since bbPress (r3653)
+	 * @since barebones (1.0)
 	 */
 	public function new_reply_redirect_to( $redirect_url = '', $redirect_to = '', $reply_id = 0 ) {
 		global $wp_rewrite;
@@ -985,7 +985,7 @@ class BB_Forums_Group_Extension extends BP_Group_Extension {
 	/**
 	 * Redirect to the group admin forum edit screen
 	 *
-	 * @since bbPress (r3653)
+	 * @since barebones (1.0)
 	 * @uses groups_get_current_group()
 	 * @uses bp_is_group_admin_screen()
 	 * @uses trailingslashit()
@@ -1029,7 +1029,7 @@ class BB_Forums_Group_Extension extends BP_Group_Extension {
 	/**
 	 * Permissions to view the 'New Topic'/'Reply To' form in a BuddyPress group.
 	 *
-	 * @since bbPress (r4608)
+	 * @since barebones (1.0)
 	 *
 	 * @param bool $retval Are we allowed to view the reply form?
 	 * @uses bp_is_group() To determine if we're on a group page
@@ -1141,7 +1141,7 @@ class BB_Forums_Group_Extension extends BP_Group_Extension {
 	/**
 	 * Map a forum permalink to its corresponding group
 	 *
-	 * @since bbPress (r3802)
+	 * @since barebones (1.0)
 	 * @param string $url
 	 * @param int $forum_id
 	 * @uses maybe_map_permalink_to_group()
@@ -1154,7 +1154,7 @@ class BB_Forums_Group_Extension extends BP_Group_Extension {
 	/**
 	 * Map a topic permalink to its group forum
 	 *
-	 * @since bbPress (r3802)
+	 * @since barebones (1.0)
 	 * @param string $url
 	 * @param int $topic_id
 	 * @uses maybe_map_permalink_to_group()
@@ -1167,7 +1167,7 @@ class BB_Forums_Group_Extension extends BP_Group_Extension {
 	/**
 	 * Map a reply permalink to its group forum
 	 *
-	 * @since bbPress (r3802)
+	 * @since barebones (1.0)
 	 * @param string $url
 	 * @param int $reply_id
 	 * @uses maybe_map_permalink_to_group()
@@ -1281,7 +1281,7 @@ class BB_Forums_Group_Extension extends BP_Group_Extension {
 	 * Ensure that forum content associated with a BuddyPress group can only be
 	 * viewed via the group URL.
 	 *
-	 * @since bbPress (r3802)
+	 * @since barebones (1.0)
 	 */
 	public function redirect_canonical() {
 
@@ -1325,7 +1325,7 @@ class BB_Forums_Group_Extension extends BP_Group_Extension {
 	/**
 	 * Map a forum post to its corresponding group in the group activity stream.
 	 *
-	 * @since bbPress (r4396)
+	 * @since barebones (1.0)
 	 *
 	 * @param array $args Arguments from BB_BuddyPress_Activity::record_activity()
 	 * @uses groups_get_current_group() To see if we're posting from a BP group

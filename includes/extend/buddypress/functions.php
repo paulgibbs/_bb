@@ -16,7 +16,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
 /**
  * Filter the current bbPress user ID with the current BuddyPress user ID
  *
- * @since bbPress (r3552)
+ * @since barebones (1.0)
  *
  * @param int $user_id
  * @param bool $displayed_user_fallback
@@ -52,7 +52,7 @@ add_filter( 'bb_get_user_id', 'bb_filter_user_id', 10, 3 );
 /**
  * Filter the bbPress is_single_user function with BuddyPress eqivalent
  *
- * @since bbPress (r3552)
+ * @since barebones (1.0)
  *
  * @param bool $is Optional. Default false
  * @return bool True if viewing single user, false if not
@@ -68,7 +68,7 @@ add_filter( 'bb_is_single_user', 'bb_filter_is_single_user', 10, 1 );
 /**
  * Filter the bbPress is_user_home function with BuddyPress eqivalent
  *
- * @since bbPress (r3552)
+ * @since barebones (1.0)
  *
  * @param bool $is Optional. Default false
  * @return bool True if viewing single user, false if not
@@ -86,7 +86,7 @@ add_filter( 'bb_is_user_home', 'bb_filter_is_user_home', 10, 1 );
 /**
  * Hook bbPress topics template into plugins template
  *
- * @since bbPress (r3552)
+ * @since barebones (1.0)
  *
  * @uses add_action() To add the content hook
  * @uses bp_core_load_template() To load the plugins template
@@ -99,7 +99,7 @@ function bb_member_forums_screen_topics() {
 /**
  * Hook bbPress replies template into plugins template
  *
- * @since bbPress (r3552)
+ * @since barebones (1.0)
  *
  * @uses add_action() To add the content hook
  * @uses bp_core_load_template() To load the plugins template
@@ -112,7 +112,7 @@ function bb_member_forums_screen_replies() {
 /**
  * Hook bbPress favorites template into plugins template
  *
- * @since bbPress (r3552)
+ * @since barebones (1.0)
  *
  * @uses add_action() To add the content hook
  * @uses bp_core_load_template() To load the plugins template
@@ -125,7 +125,7 @@ function bb_member_forums_screen_favorites() {
 /**
  * Hook bbPress subscriptions template into plugins template
  *
- * @since bbPress (r3552)
+ * @since barebones (1.0)
  *
  * @uses add_action() To add the content hook
  * @uses bp_core_load_template() To load the plugins template
@@ -140,7 +140,7 @@ function bb_member_forums_screen_subscriptions() {
 /**
  * Get the topics created template part
  *
- * @since bbPress (r3552)
+ * @since barebones (1.0)
  *
  * @uses bb_get_template_part()s
  */
@@ -159,7 +159,7 @@ function bb_member_forums_topics_content() {
 /**
  * Get the topics replied to template part
  *
- * @since bbPress (r3552)
+ * @since barebones (1.0)
  *
  * @uses bb_get_template_part()
  */
@@ -178,7 +178,7 @@ function bb_member_forums_replies_content() {
 /**
  * Get the topics favorited template part
  *
- * @since bbPress (r3552)
+ * @since barebones (1.0)
  *
  * @uses bb_get_template_part()
  */
@@ -197,7 +197,7 @@ function bb_member_forums_favorites_content() {
 /**
  * Get the topics subscribed template part
  *
- * @since bbPress (r3552)
+ * @since barebones (1.0)
  *
  * @uses bb_get_template_part()
  */
@@ -226,7 +226,7 @@ function bb_member_forums_subscriptions_content() {
  * Get forum ID's for a group
  *
  * @param type $group_id
- * @since bbPress (r3653)
+ * @since barebones (1.0)
  */
 function bb_get_group_forum_ids( $group_id = 0 ) {
 
@@ -255,7 +255,7 @@ function bb_get_group_forum_ids( $group_id = 0 ) {
  * Get group ID's for a forum
  *
  * @param type $forum_id
- * @since bbPress (r3653)
+ * @since barebones (1.0)
  */
 function bb_get_forum_group_ids( $forum_id = 0 ) {
 
@@ -284,7 +284,7 @@ function bb_get_forum_group_ids( $forum_id = 0 ) {
  * Get forum ID's for a group
  *
  * @param type $group_id
- * @since bbPress (r3653)
+ * @since barebones (1.0)
  */
 function bb_update_group_forum_ids( $group_id = 0, $forum_ids = array() ) {
 
@@ -303,7 +303,7 @@ function bb_update_group_forum_ids( $group_id = 0, $forum_ids = array() ) {
  * Update group ID's for a forum
  *
  * @param type $forum_id
- * @since bbPress (r3653)
+ * @since barebones (1.0)
  */
 function bb_update_forum_group_ids( $forum_id = 0, $group_ids = array() ) {
 	$forum_id = bb_get_forum_id( $forum_id );
@@ -319,7 +319,7 @@ function bb_update_forum_group_ids( $forum_id = 0, $group_ids = array() ) {
  * Add a group to a forum
  *
  * @param type $group_id
- * @since bbPress (r3653)
+ * @since barebones (1.0)
  */
 function bb_add_group_id_to_forum( $forum_id = 0, $group_id = 0 ) {
 
@@ -344,7 +344,7 @@ function bb_add_group_id_to_forum( $forum_id = 0, $group_id = 0 ) {
  * Remove a forum from a group
  *
  * @param type $group_id
- * @since bbPress (r3653)
+ * @since barebones (1.0)
  */
 function bb_add_forum_id_to_group( $group_id = 0, $forum_id = 0 ) {
 
@@ -369,7 +369,7 @@ function bb_add_forum_id_to_group( $group_id = 0, $forum_id = 0 ) {
  * Remove a group from a forum
  *
  * @param type $group_id
- * @since bbPress (r3653)
+ * @since barebones (1.0)
  */
 function bb_remove_group_id_from_forum( $forum_id = 0, $group_id = 0 ) {
 
@@ -394,7 +394,7 @@ function bb_remove_group_id_from_forum( $forum_id = 0, $group_id = 0 ) {
  * Remove a forum from a group
  *
  * @param type $group_id
- * @since bbPress (r3653)
+ * @since barebones (1.0)
  */
 function bb_remove_forum_id_from_group( $group_id = 0, $forum_id = 0 ) {
 
@@ -419,7 +419,7 @@ function bb_remove_forum_id_from_group( $group_id = 0, $forum_id = 0 ) {
  * Remove a group from aall forums
  *
  * @param type $group_id
- * @since bbPress (r3653)
+ * @since barebones (1.0)
  */
 function bb_remove_group_id_from_all_forums( $group_id = 0 ) {
 
@@ -440,7 +440,7 @@ function bb_remove_group_id_from_all_forums( $group_id = 0 ) {
  * Remove a forum from all groups
  *
  * @param type $forum_id
- * @since bbPress (r3653)
+ * @since barebones (1.0)
  */
 function bb_remove_forum_id_from_all_groups( $forum_id = 0 ) {
 
@@ -457,7 +457,7 @@ function bb_remove_forum_id_from_all_groups( $forum_id = 0 ) {
 /**
  * Return true if a forum is a group forum
  *
- * @since bbPress (r4571)
+ * @since barebones (1.0)
  *
  * @param int $forum_id
  * @uses bb_get_forum_id() To get the forum id
@@ -484,7 +484,7 @@ function bb_is_forum_group_forum( $forum_id = 0 ) {
 /**
  * Is the current user an admin of the current group
  *
- * @since bbPress (r4632)
+ * @since barebones (1.0)
  *
  * @uses is_user_logged_in()
  * @uses bp_is_group()
@@ -513,7 +513,7 @@ function bb_group_is_admin() {
 /**
  * Is the current user a moderator of the current group
  *
- * @since bbPress (r4632)
+ * @since barebones (1.0)
  *
  * @uses is_user_logged_in()
  * @uses bp_is_group()
@@ -542,7 +542,7 @@ function bb_group_is_mod() {
 /**
  * Is the current user a member of the current group
  *
- * @since bbPress (r4632)
+ * @since barebones (1.0)
  *
  * @uses is_user_logged_in()
  * @uses bp_is_group()
@@ -571,7 +571,7 @@ function bb_group_is_member() {
 /**
  * Is the current user banned from the current group
  *
- * @since bbPress (r4632)
+ * @since barebones (1.0)
  *
  * @uses is_user_logged_in()
  * @uses bp_is_group()
@@ -600,7 +600,7 @@ function bb_group_is_banned() {
 /**
  * Is the current user the creator of the current group
  *
- * @since bbPress (r4632)
+ * @since barebones (1.0)
  *
  * @uses is_user_logged_in()
  * @uses bp_is_group()

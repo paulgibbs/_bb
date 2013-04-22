@@ -16,7 +16,7 @@ if ( !class_exists( 'BB_Replies_Admin' ) ) :
  *
  * @package bbPress
  * @subpackage Administration
- * @since bbPress (r2464)
+ * @since barebones (1.0)
  */
 class BB_Replies_Admin {
 
@@ -32,7 +32,7 @@ class BB_Replies_Admin {
 	/**
 	 * The main bbPress admin loader
 	 *
-	 * @since bbPress (r2515)
+	 * @since barebones (1.0)
 	 *
 	 * @uses BB_Replies_Admin::setup_globals() Setup the globals needed
 	 * @uses BB_Replies_Admin::setup_actions() Setup the hooks and actions
@@ -46,7 +46,7 @@ class BB_Replies_Admin {
 	/**
 	 * Setup the admin hooks, actions and filters
 	 *
-	 * @since bbPress (r2646)
+	 * @since barebones (1.0)
 	 * @access private
 	 *
 	 * @uses add_action() To add various actions
@@ -93,7 +93,7 @@ class BB_Replies_Admin {
 	/**
 	 * Should we bail out of this method?
 	 *
-	 * @since bbPress (r4067)
+	 * @since barebones (1.0)
 	 * @return boolean
 	 */
 	private function bail() {
@@ -106,7 +106,7 @@ class BB_Replies_Admin {
 	/**
 	 * Admin globals
 	 *
-	 * @since bbPress (r2646)
+	 * @since barebones (1.0)
 	 * @access private
 	 */
 	private function setup_globals() {
@@ -118,7 +118,7 @@ class BB_Replies_Admin {
 	/**
 	 * Contextual help for bbPress reply edit page
 	 *
-	 * @since bbPress (r3119)
+	 * @since barebones (1.0)
 	 * @uses get_current_screen()
 	 */
 	public function edit_help() {
@@ -182,7 +182,7 @@ class BB_Replies_Admin {
 	/**
 	 * Contextual help for bbPress reply edit page
 	 *
-	 * @since bbPress (r3119)
+	 * @since barebones (1.0)
 	 * @uses get_current_screen()
 	 */
 	public function new_help() {
@@ -250,7 +250,7 @@ class BB_Replies_Admin {
 	/**
 	 * Add the reply attributes metabox
 	 *
-	 * @since bbPress (r2746)
+	 * @since barebones (1.0)
 	 *
 	 * @uses bb_get_reply_post_type() To get the reply post type
 	 * @uses add_meta_box() To add the metabox
@@ -275,7 +275,7 @@ class BB_Replies_Admin {
 	/**
 	 * Pass the reply attributes for processing
 	 *
-	 * @since bbPress (r2746)
+	 * @since barebones (1.0)
 	 *
 	 * @param int $reply_id Reply id
 	 * @uses current_user_can() To check if the current user is capable of
@@ -332,7 +332,7 @@ class BB_Replies_Admin {
 	 *
 	 * Allows editing of information about an author
 	 *
-	 * @since bbPress (r2828)
+	 * @since barebones (1.0)
 	 *
 	 * @uses bb_get_topic() To get the topic
 	 * @uses bb_get_reply() To get the reply
@@ -366,7 +366,7 @@ class BB_Replies_Admin {
 	/**
 	 * Add some general styling to the admin area
 	 *
-	 * @since bbPress (r2464)
+	 * @since barebones (1.0)
 	 *
 	 * @uses bb_get_forum_post_type() To get the forum post type
 	 * @uses bb_get_topic_post_type() To get the topic post type
@@ -437,7 +437,7 @@ class BB_Replies_Admin {
 	 *
 	 * Handles the admin-side spamming/unspamming of replies
 	 *
-	 * @since bbPress (r2740)
+	 * @since barebones (1.0)
 	 *
 	 * @uses bb_get_reply() To get the reply
 	 * @uses current_user_can() To check if the user is capable of editing
@@ -507,7 +507,7 @@ class BB_Replies_Admin {
 	 * Display the success/error notices from
 	 * {@link BB_Admin::toggle_reply()}
 	 *
-	 * @since bbPress (r2740)
+	 * @since barebones (1.0)
 	 *
 	 * @uses bb_get_reply() To get the reply
 	 * @uses bb_get_reply_title() To get the reply title of the reply
@@ -562,7 +562,7 @@ class BB_Replies_Admin {
 	/**
 	 * Manage the column headers for the replies page
 	 *
-	 * @since bbPress (r2577)
+	 * @since barebones (1.0)
 	 *
 	 * @param array $columns The columns
 	 * @uses apply_filters() Calls 'bb_admin_replies_column_headers' with
@@ -588,7 +588,7 @@ class BB_Replies_Admin {
 	/**
 	 * Print extra columns for the replies page
 	 *
-	 * @since bbPress (r2577)
+	 * @since barebones (1.0)
 	 *
 	 * @param string $column Column
 	 * @param int $reply_id reply id
@@ -707,7 +707,7 @@ class BB_Replies_Admin {
 	 * Remove the quick-edit action link under the reply title and add the
 	 * content and spam link
 	 *
-	 * @since bbPress (r2577)
+	 * @since barebones (1.0)
 	 *
 	 * @param array $actions Actions
 	 * @param array $reply Reply object
@@ -772,7 +772,7 @@ class BB_Replies_Admin {
 	/**
 	 * Add forum dropdown to topic and reply list table filters
 	 *
-	 * @since bbPress (r2991)
+	 * @since barebones (1.0)
 	 *
 	 * @uses bb_get_reply_post_type() To get the reply post type
 	 * @uses bb_get_topic_post_type() To get the topic post type
@@ -803,7 +803,7 @@ class BB_Replies_Admin {
 	/**
 	 * Adjust the request query and include the forum id
 	 *
-	 * @since bbPress (r2991)
+	 * @since barebones (1.0)
 	 *
 	 * @param array $query_vars Query variables from {@link WP_Query}
 	 * @uses is_admin() To check if it's the admin section
@@ -828,7 +828,7 @@ class BB_Replies_Admin {
 	/**
 	 * Custom user feedback messages for reply post type
 	 *
-	 * @since bbPress (r3080)
+	 * @since barebones (1.0)
 	 *
 	 * @global int $post_ID
 	 * @uses bb_get_topic_permalink()
@@ -904,7 +904,7 @@ endif; // class_exists check
  * This is currently here to make hooking and unhooking of the admin UI easy.
  * It could use dependency injection in the future, but for now this is easier.
  *
- * @since bbPress (r2596)
+ * @since barebones (1.0)
  *
  * @uses BB_Replies_Admin
  */

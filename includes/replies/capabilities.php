@@ -12,7 +12,7 @@
 /**
  * Return reply capabilities
  *
- * @since bbPress (r2593)
+ * @since barebones (1.0)
  *
  * @uses apply_filters() Calls 'bb_get_reply_caps' with the capabilities
  * @return array Reply capabilities
@@ -31,7 +31,7 @@ function bb_get_reply_caps() {
 /**
  * Maps topic capabilities
  *
- * @since bbPress (r4242)
+ * @since barebones (1.0)
  *
  * @param array $caps Capabilities for meta capability
  * @param string $cap Capability name

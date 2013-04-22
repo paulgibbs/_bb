@@ -13,7 +13,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
 /**
  * If there is no raw DB version, this is the first installation
  *
- * @since bbPress (r3764)
+ * @since barebones (1.0)
  *
  * @uses get_option()
  * @uses bb_get_db_version() To get bbPress's database version
@@ -26,7 +26,7 @@ function bb_is_install() {
 /**
  * Compare the bbPress version to the DB version to determine if updating
  *
- * @since bbPress (r3421)
+ * @since barebones (1.0)
  *
  * @uses get_option()
  * @uses bb_get_db_version() To get bbPress's database version
@@ -45,7 +45,7 @@ function bb_is_update() {
  * Note that this function currently is not used in bbPress core and is here
  * for third party plugins to use to check for bbPress activation.
  *
- * @since bbPress (r3421)
+ * @since barebones (1.0)
  *
  * @return bool True if activating bbPress, false if not
  */
@@ -88,7 +88,7 @@ function bb_is_activation( $basename = '' ) {
 /**
  * Determine if bbPress is being deactivated
  *
- * @since bbPress (r3421)
+ * @since barebones (1.0)
  * @return bool True if deactivating bbPress, false if not
  */
 function bb_is_deactivation( $basename = '' ) {
@@ -130,7 +130,7 @@ function bb_is_deactivation( $basename = '' ) {
 /**
  * Update the DB to the latest version
  *
- * @since bbPress (r3421)
+ * @since barebones (1.0)
  * @uses update_option()
  * @uses bb_get_db_version() To get bbPress's database version
  */
@@ -141,7 +141,7 @@ function bb_version_bump() {
 /**
  * Setup the bbPress updater
  *
- * @since bbPress (r3419)
+ * @since barebones (1.0)
  *
  * @uses bb_version_updater()
  * @uses bb_version_bump()
@@ -160,7 +160,7 @@ function bb_setup_updater() {
 /**
  * Create a default forum, topic, and reply
  *
- * @since bbPress (r3767)
+ * @since barebones (1.0)
  * @param array $args Array of arguments to override default values
  */
 function bb_create_initial_content( $args = array() ) {
@@ -222,7 +222,7 @@ function bb_create_initial_content( $args = array() ) {
  * This is most-often used when the data schema changes, but should also be used
  * to correct issues with bbPress meta-data silently on software update.
  *
- * @since bbPress (r4104)
+ * @since barebones (1.0)
  */
 function bb_version_updater() {
 
@@ -283,7 +283,7 @@ function bb_version_updater() {
 /**
  * Redirect user to bbPress's What's New page on activation
  *
- * @since bbPress (r4389)
+ * @since barebones (1.0)
  *
  * @internal Used internally to redirect bbPress to the about page on activation
  *

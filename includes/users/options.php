@@ -13,7 +13,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
 /**
  * Get the default user options and their values
  *
- * @since bbPress (r3910)
+ * @since barebones (1.0)
  * @return array Filtered user option names and values
  */
 function bb_get_default_user_options() {
@@ -33,7 +33,7 @@ function bb_get_default_user_options() {
  *
  * This is destructive, so existing bbPress user options will be overridden.
  *
- * @since bbPress (r3910)
+ * @since barebones (1.0)
  * @uses bb_get_default_user_options() To get default options
  * @uses update_user_option() Adds default options
  * @uses do_action() Calls 'bb_add_user_options'
@@ -59,7 +59,7 @@ function bb_add_user_options( $user_id = 0 ) {
  * Hooked to bb_uninstall, it is only called once when bbPress is uninstalled.
  * This is destructive, so existing bbPress user options will be destroyed.
  *
- * @since bbPress (r3910)
+ * @since barebones (1.0)
  * @uses bb_get_default_user_options() To get default options
  * @uses delete_user_option() Removes default options
  * @uses do_action() Calls 'bb_delete_options'
@@ -83,7 +83,7 @@ function bb_delete_user_options( $user_id = 0 ) {
  * Add filters to each bbPress option and allow them to be overloaded from
  * inside the $bbp->options array.
  *
- * @since bbPress (r3910)
+ * @since barebones (1.0)
  * @uses bb_get_default_user_options() To get default options
  * @uses add_filter() To add filters to 'pre_option_{$key}'
  * @uses do_action() Calls 'bb_add_option_filters'
@@ -102,7 +102,7 @@ function bb_setup_user_option_filters() {
  * Filter default options and allow them to be overloaded from inside the
  * $bbp->user_options array.
  *
- * @since bbPress (r3910)
+ * @since barebones (1.0)
  * @param bool $value Optional. Default value false
  * @return mixed false if not overloaded, mixed if set
  */
@@ -122,7 +122,7 @@ function bb_filter_get_user_option( $value = false, $option = '', $user = 0 ) {
 /**
  * Output a users topic count
  *
- * @since bbPress (r3632)
+ * @since barebones (1.0)
  *
  * @param int $user_id
  * @param boolean $integer Optional. Whether or not to format the result
@@ -135,7 +135,7 @@ function bb_user_topic_count( $user_id = 0, $integer = false ) {
 	/**
 	 * Return a users reply count
 	 *
-	 * @since bbPress (r3632)
+	 * @since barebones (1.0)
 	 *
 	 * @param int $user_id
 	 * @param boolean $integer Optional. Whether or not to format the result
@@ -160,7 +160,7 @@ function bb_user_topic_count( $user_id = 0, $integer = false ) {
 /**
  * Output a users reply count
  *
- * @since bbPress (r3632)
+ * @since barebones (1.0)
  *
  * @param int $user_id
  * @param boolean $integer Optional. Whether or not to format the result
@@ -173,7 +173,7 @@ function bb_user_reply_count( $user_id = 0, $integer = false ) {
 	/**
 	 * Return a users reply count
 	 *
-	 * @since bbPress (r3632)
+	 * @since barebones (1.0)
 	 *
 	 * @param int $user_id
 	 * @param boolean $integer Optional. Whether or not to format the result
@@ -198,7 +198,7 @@ function bb_user_reply_count( $user_id = 0, $integer = false ) {
 /**
  * Output a users total post count
  *
- * @since bbPress (r3632)
+ * @since barebones (1.0)
  *
  * @param int $user_id
  * @param boolean $integer Optional. Whether or not to format the result
@@ -211,7 +211,7 @@ function bb_user_post_count( $user_id = 0, $integer = false ) {
 	/**
 	 * Return a users total post count
 	 *
-	 * @since bbPress (r3632)
+	 * @since barebones (1.0)
 	 *
 	 * @param int $user_id
 	 * @param boolean $integer Optional. Whether or not to format the result
@@ -240,7 +240,7 @@ function bb_user_post_count( $user_id = 0, $integer = false ) {
 /**
  * Update a users last posted time, for use with post throttling
  *
- * @since bbPress (r3910)
+ * @since barebones (1.0)
  * @param int $user_id User ID to update
  * @param int $time Time in time() format
  * @return bool False if no user or failure, true if successful
@@ -262,7 +262,7 @@ function bb_update_user_last_posted( $user_id = 0, $time = 0 ) {
 /**
  * Output the raw value of the last posted time.
  *
- * @since bbPress (r3910)
+ * @since barebones (1.0)
  * @param int $user_id User ID to retrieve value for
  * @uses bb_get_user_last_posted() To output the last posted time
  */
@@ -273,7 +273,7 @@ function bb_user_last_posted( $user_id = 0 ) {
 	/**
 	 * Return the raw value of teh last posted time.
 	 *
-	 * @since bbPress (r3910)
+	 * @since barebones (1.0)
 	 * @param int $user_id User ID to retrieve value for
 	 * @return mixed False if no user, time() format if exists
 	 */

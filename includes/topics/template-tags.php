@@ -15,7 +15,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
 /**
  * Output the unique id of the custom post type for topics
  *
- * @since bbPress (r2857)
+ * @since barebones (1.0)
  *
  * @uses bb_get_topic_post_type() To get the topic post type
  */
@@ -25,7 +25,7 @@ function bb_topic_post_type() {
 	/**
 	 * Return the unique id of the custom post type for topics
 	 *
-	 * @since bbPress (r2857)
+	 * @since barebones (1.0)
 	 *
 	 * @uses apply_filters() Calls 'bb_get_topic_post_type' with the topic
 	 *                        post type id
@@ -40,7 +40,7 @@ function bb_topic_post_type() {
  * - Traditional: Topics are included in the reply loop (default)
  * - New Style: Topics appear as "lead" posts, ahead of replies
  *
- * @since bbPress (r2954)
+ * @since barebones (1.0)
  * @param $show_lead Optional. Default false
  * @return bool Yes if the topic appears as a lead, otherwise false
  */
@@ -58,7 +58,7 @@ function bb_show_lead_topic( $show_lead = false ) {
 /**
  * The main topic loop. WordPress makes this easy for us
  *
- * @since bbPress (r2485)
+ * @since barebones (1.0)
  *
  * @param mixed $args All the arguments supported by {@link WP_Query}
  * @uses current_user_can() To check if the current user can edit other's topics
@@ -350,7 +350,7 @@ function bb_has_topics( $args = '' ) {
 /**
  * Whether there are more topics available in the loop
  *
- * @since bbPress (r2485)
+ * @since barebones (1.0)
  *
  * @uses WP_Query bbPress::topic_query::have_posts()
  * @return object Topic information
@@ -370,7 +370,7 @@ function bb_topics() {
 /**
  * Loads up the current topic in the loop
  *
- * @since bbPress (r2485)
+ * @since barebones (1.0)
  *
  * @uses WP_Query bbPress::topic_query::the_post()
  * @return object Topic information
@@ -382,7 +382,7 @@ function bb_the_topic() {
 /**
  * Output the topic id
  *
- * @since bbPress (r2485)
+ * @since barebones (1.0)
  *
  * @uses bb_get_topic_id() To get the topic id
  */
@@ -392,7 +392,7 @@ function bb_topic_id( $topic_id = 0) {
 	/**
 	 * Return the topic id
 	 *
-	 * @since bbPress (r2485)
+	 * @since barebones (1.0)
 	 *
 	 * @param $topic_id Optional. Used to check emptiness
 	 * @uses bbPress::topic_query::post::ID To get the topic id
@@ -449,7 +449,7 @@ function bb_topic_id( $topic_id = 0) {
 /**
  * Gets a topic
  *
- * @since bbPress (r2787)
+ * @since barebones (1.0)
  *
  * @param int|object $topic Topic id or topic object
  * @param string $output Optional. OBJECT, ARRAY_A, or ARRAY_N. Default = OBJECT
@@ -494,7 +494,7 @@ function bb_get_topic( $topic, $output = OBJECT, $filter = 'raw' ) {
 /**
  * Output the link to the topic in the topic loop
  *
- * @since bbPress (r2485)
+ * @since barebones (1.0)
  *
  * @param int $topic_id Optional. Topic id
  * @param $string $redirect_to Optional. Pass a redirect value for use with
@@ -507,7 +507,7 @@ function bb_topic_permalink( $topic_id = 0, $redirect_to = '' ) {
 	/**
 	 * Return the link to the topic
 	 *
-	 * @since bbPress (r2485)
+	 * @since barebones (1.0)
 	 *
 	 * @param int $topic_id Optional. Topic id
 	 * @param $string $redirect_to Optional. Pass a redirect value for use with
@@ -537,7 +537,7 @@ function bb_topic_permalink( $topic_id = 0, $redirect_to = '' ) {
 /**
  * Output the title of the topic
  *
- * @since bbPress (r2485)
+ * @since barebones (1.0)
  *
  * @param int $topic_id Optional. Topic id
  * @uses bb_get_topic_title() To get the topic title
@@ -548,7 +548,7 @@ function bb_topic_title( $topic_id = 0 ) {
 	/**
 	 * Return the title of the topic
 	 *
-	 * @since bbPress (r2485)
+	 * @since barebones (1.0)
 	 *
 	 * @param int $topic_id Optional. Topic id
 	 * @uses bb_get_topic_id() To get the topic id
@@ -567,7 +567,7 @@ function bb_topic_title( $topic_id = 0 ) {
 /**
  * Output the topic archive title
  *
- * @since bbPress (r3249)
+ * @since barebones (1.0)
  *
  * @param string $title Default text to use as title
  */
@@ -577,7 +577,7 @@ function bb_topic_archive_title( $title = '' ) {
 	/**
 	 * Return the topic archive title
 	 *
-	 * @since bbPress (r3249)
+	 * @since barebones (1.0)
 	 *
 	 * @param string $title Default text to use as title
 	 *
@@ -613,7 +613,7 @@ function bb_topic_archive_title( $title = '' ) {
 /**
  * Output the content of the topic
  *
- * @since bbPress (r2780)
+ * @since barebones (1.0)
  *
  * @param int $topic_id Optional. Topic id
  * @uses bb_get_topic_content() To get the topic content
@@ -624,7 +624,7 @@ function bb_topic_content( $topic_id = 0 ) {
 	/**
 	 * Return the content of the topic
 	 *
-	 * @since bbPress (r2780)
+	 * @since barebones (1.0)
 	 *
 	 * @param int $topic_id Optional. Topic id
 	 * @uses bb_get_topic_id() To get the topic id
@@ -650,7 +650,7 @@ function bb_topic_content( $topic_id = 0 ) {
 /**
  * Output the excerpt of the topic
  *
- * @since bbPress (r2780)
+ * @since barebones (1.0)
  *
  * @param int $topic_id Optional. Topic id
  * @param int $length Optional. Length of the excerpt. Defaults to 100 letters
@@ -662,7 +662,7 @@ function bb_topic_excerpt( $topic_id = 0, $length = 100 ) {
 	/**
 	 * Return the excerpt of the topic
 	 *
-	 * @since bbPress (r2780)
+	 * @since barebones (1.0)
 	 *
 	 * @param int $topic_id Optional. topic id
 	 * @param int $length Optional. Length of the excerpt. Defaults to 100
@@ -703,7 +703,7 @@ function bb_topic_excerpt( $topic_id = 0, $length = 100 ) {
 /**
  * Output the post date and time of a topic
  *
- * @since bbPress (r4155)
+ * @since barebones (1.0)
  *
  * @param int $topic_id Optional. Topic id.
  * @param bool $humanize Optional. Humanize output using time_since
@@ -716,7 +716,7 @@ function bb_topic_post_date( $topic_id = 0, $humanize = false, $gmt = false ) {
 	/**
 	 * Return the post date and time of a topic
 	 *
-	 * @since bbPress (r4155)
+	 * @since barebones (1.0)
 	 *
 	 * @param int $topic_id Optional. Topic id.
 	 * @param bool $humanize Optional. Humanize output using time_since
@@ -749,7 +749,7 @@ function bb_topic_post_date( $topic_id = 0, $humanize = false, $gmt = false ) {
 /**
  * Output pagination links of a topic within the topic loop
  *
- * @since bbPress (r2966)
+ * @since barebones (1.0)
  *
  * @param mixed $args See {@link bb_get_topic_pagination()}
  * @uses bb_get_topic_pagination() To get the topic pagination links
@@ -760,7 +760,7 @@ function bb_topic_pagination( $args = '' ) {
 	/**
 	 * Returns pagination links of a topic within the topic loop
 	 *
-	 * @since bbPress (r2966)
+	 * @since barebones (1.0)
 	 *
 	 * @param mixed $args This function supports these arguments:
 	 *  - topic_id: Topic id
@@ -838,7 +838,7 @@ function bb_topic_pagination( $args = '' ) {
 /**
  * Append revisions to the topic content
  *
- * @since bbPress (r2782)
+ * @since barebones (1.0)
  *
  * @param string $content Optional. Content to which we need to append the revisions to
  * @param int $topic_id Optional. Topic id
@@ -862,7 +862,7 @@ function bb_topic_content_append_revisions( $content = '', $topic_id = 0 ) {
 /**
  * Output the revision log of the topic
  *
- * @since bbPress (r2782)
+ * @since barebones (1.0)
  *
  * @param int $topic_id Optional. Topic id
  * @uses bb_get_topic_revision_log() To get the topic revision log
@@ -873,7 +873,7 @@ function bb_topic_revision_log( $topic_id = 0 ) {
 	/**
 	 * Return the formatted revision log of the topic
 	 *
-	 * @since bbPress (r2782)
+	 * @since barebones (1.0)
 	 *
 	 * @param int $topic_id Optional. Topic id
 	 * @uses bb_get_topic_id() To get the topic id
@@ -932,7 +932,7 @@ function bb_topic_revision_log( $topic_id = 0 ) {
 		/**
 		 * Return the raw revision log of the topic
 		 *
-		 * @since bbPress (r2782)
+		 * @since barebones (1.0)
 		 *
 		 * @param int $topic_id Optional. Topic id
 		 * @uses bb_get_topic_id() To get the topic id
@@ -953,7 +953,7 @@ function bb_topic_revision_log( $topic_id = 0 ) {
 /**
  * Return the revisions of the topic
  *
- * @since bbPress (r2782)
+ * @since barebones (1.0)
  *
  * @param int $topic_id Optional. Topic id
  * @uses bb_get_topic_id() To get the topic id
@@ -972,7 +972,7 @@ function bb_get_topic_revisions( $topic_id = 0 ) {
 /**
  * Return the revision count of the topic
  *
- * @since bbPress (r2782)
+ * @since barebones (1.0)
  *
  * @param int $topic_id Optional. Topic id
  * @uses bb_get_topic_revisions() To get the topic revisions
@@ -990,7 +990,7 @@ function bb_get_topic_revision_count( $topic_id = 0, $integer = false ) {
 /**
  * Output the status of the topic
  *
- * @since bbPress (r2667)
+ * @since barebones (1.0)
  *
  * @param int $topic_id Optional. Topic id
  * @uses bb_get_topic_status() To get the topic status
@@ -1001,7 +1001,7 @@ function bb_topic_status( $topic_id = 0 ) {
 	/**
 	 * Return the status of the topic
 	 *
-	 * @since bbPress (r2667)
+	 * @since barebones (1.0)
 	 *
 	 * @param int $topic_id Optional. Topic id
 	 * @uses bb_get_topic_id() To get the topic id
@@ -1019,7 +1019,7 @@ function bb_topic_status( $topic_id = 0 ) {
 /**
  * Is the topic open to new replies?
  *
- * @since bbPress (r2727)
+ * @since barebones (1.0)
  *
  * @uses bb_get_topic_status()
  *
@@ -1034,7 +1034,7 @@ function bb_is_topic_open( $topic_id = 0 ) {
 	/**
 	 * Is the topic closed to new replies?
 	 *
-	 * @since bbPress (r2746)
+	 * @since barebones (1.0)
 	 *
 	 * @param int $topic_id Optional. Topic id
 	 * @uses bb_get_topic_status() To get the topic status
@@ -1050,7 +1050,7 @@ function bb_is_topic_open( $topic_id = 0 ) {
 /**
  * Is the topic a sticky or super sticky?
  *
- * @since bbPress (r2754)
+ * @since barebones (1.0)
  *
  * @param int $topic_id Optional. Topic id
  * @param int $check_super Optional. If set to true and if the topic is not a
@@ -1076,7 +1076,7 @@ function bb_is_topic_sticky( $topic_id = 0, $check_super = true ) {
 /**
  * Is the topic a super sticky?
  *
- * @since bbPress (r2754)
+ * @since barebones (1.0)
  *
  * @param int $topic_id Optional. Topic id
  * @uses bb_get_topic_id() To get the topic id
@@ -1093,7 +1093,7 @@ function bb_is_topic_super_sticky( $topic_id = 0 ) {
 /**
  * Is the topic not spam or deleted?
  *
- * @since bbPress (r3496)
+ * @since barebones (1.0)
  *
  * @param int $topic_id Optional. Topic id
  * @uses bb_get_topic_id() To get the topic id
@@ -1109,7 +1109,7 @@ function bb_is_topic_published( $topic_id = 0 ) {
 /**
  * Is the topic marked as spam?
  *
- * @since bbPress (r2727)
+ * @since barebones (1.0)
  *
  * @param int $topic_id Optional. Topic id
  * @uses bb_get_topic_id() To get the topic id
@@ -1125,7 +1125,7 @@ function bb_is_topic_spam( $topic_id = 0 ) {
 /**
  * Is the topic trashed?
  *
- * @since bbPress (r2888)
+ * @since barebones (1.0)
  *
  * @param int $topic_id Optional. Topic id
  * @uses bb_get_topic_id() To get the topic id
@@ -1141,7 +1141,7 @@ function bb_is_topic_trash( $topic_id = 0 ) {
 /**
  * Is the posted by an anonymous user?
  *
- * @since bbPress (r2753)
+ * @since barebones (1.0)
  *
  * @param int $topic_id Optional. Topic id
  * @uses bb_get_topic_id() To get the topic id
@@ -1170,7 +1170,7 @@ function bb_is_topic_anonymous( $topic_id = 0 ) {
 /**
  * Output the author of the topic
  *
- * @since bbPress (r2590)
+ * @since barebones (1.0)
  *
  * @param int $topic_id Optional. Topic id
  * @uses bb_get_topic_author() To get the topic author
@@ -1181,7 +1181,7 @@ function bb_topic_author( $topic_id = 0 ) {
 	/**
 	 * Return the author of the topic
 	 *
-	 * @since bbPress (r2590)
+	 * @since barebones (1.0)
 	 *
 	 * @param int $topic_id Optional. Topic id
 	 * @uses bb_get_topic_id() To get the topic id
@@ -1209,7 +1209,7 @@ function bb_topic_author( $topic_id = 0 ) {
 /**
  * Output the author ID of the topic
  *
- * @since bbPress (r2590)
+ * @since barebones (1.0)
  *
  * @param int $topic_id Optional. Topic id
  * @uses bb_get_topic_author_id() To get the topic author id
@@ -1220,7 +1220,7 @@ function bb_topic_author_id( $topic_id = 0 ) {
 	/**
 	 * Return the author ID of the topic
 	 *
-	 * @since bbPress (r2590)
+	 * @since barebones (1.0)
 	 *
 	 * @param int $topic_id Optional. Topic id
 	 * @uses bb_get_topic_id() To get the topic id
@@ -1239,7 +1239,7 @@ function bb_topic_author_id( $topic_id = 0 ) {
 /**
  * Output the author display_name of the topic
  *
- * @since bbPress (r2590)
+ * @since barebones (1.0)
  *
  * @param int $topic_id Optional. Topic id
  * @uses bb_get_topic_author_display_name() To get the topic author's display
@@ -1251,7 +1251,7 @@ function bb_topic_author_display_name( $topic_id = 0 ) {
 	/**
 	 * Return the author display_name of the topic
 	 *
-	 * @since bbPress (r2485)
+	 * @since barebones (1.0)
 	 *
 	 * @param int $topic_id Optional. Topic id
 	 * @uses bb_get_topic_id() To get the topic id
@@ -1300,7 +1300,7 @@ function bb_topic_author_display_name( $topic_id = 0 ) {
 /**
  * Output the author avatar of the topic
  *
- * @since bbPress (r2590)
+ * @since barebones (1.0)
  *
  * @param int $topic_id Optional. Topic id
  * @param int $size Optional. Avatar size. Defaults to 40
@@ -1312,7 +1312,7 @@ function bb_topic_author_avatar( $topic_id = 0, $size = 40 ) {
 	/**
 	 * Return the author avatar of the topic
 	 *
-	 * @since bbPress (r2590)
+	 * @since barebones (1.0)
 	 *
 	 * @param int $topic_id Optional. Topic id
 	 * @param int $size Optional. Avatar size. Defaults to 40
@@ -1344,7 +1344,7 @@ function bb_topic_author_avatar( $topic_id = 0, $size = 40 ) {
 /**
  * Output the author link of the topic
  *
- * @since bbPress (r2717)
+ * @since barebones (1.0)
  *
  * @param mixed|int $args If it is an integer, it is used as topic_id. Optional.
  * @uses bb_get_topic_author_link() To get the topic author link
@@ -1355,7 +1355,7 @@ function bb_topic_author_link( $args = '' ) {
 	/**
 	 * Return the author link of the topic
 	 *
-	 * @since bbPress (r2717)
+	 * @since barebones (1.0)
 	 *
 	 * @param mixed|int $args If it is an integer, it is used as topic id.
 	 *                         Optional.
@@ -1455,7 +1455,7 @@ function bb_topic_author_link( $args = '' ) {
 /**
  * Output the author url of the topic
  *
- * @since bbPress (r2590)
+ * @since barebones (1.0)
  *
  * @param int $topic_id Optional. Topic id
  * @uses bb_get_topic_author_url() To get the topic author url
@@ -1467,7 +1467,7 @@ function bb_topic_author_url( $topic_id = 0 ) {
 	/**
 	 * Return the author url of the topic
 	 *
-	 * @since bbPress (r2590)
+	 * @since barebones (1.0)
 	 *
 	 * @param int $topic_id Optional. Topic id
 	 * @uses bb_get_topic_id() To get the topic id
@@ -1501,7 +1501,7 @@ function bb_topic_author_url( $topic_id = 0 ) {
 /**
  * Output the topic author email address
  *
- * @since bbPress (r3445)
+ * @since barebones (1.0)
  *
  * @param int $topic_id Optional. Reply id
  * @uses bb_get_topic_author_email() To get the topic author email
@@ -1512,7 +1512,7 @@ function bb_topic_author_email( $topic_id = 0 ) {
 	/**
 	 * Return the topic author email address
 	 *
-	 * @since bbPress (r3445)
+	 * @since barebones (1.0)
 	 *
 	 * @param int $topic_id Optional. Reply id
 	 * @uses bb_get_topic_id() To get the topic id
@@ -1554,7 +1554,7 @@ function bb_topic_author_email( $topic_id = 0 ) {
 /**
  * Output the topic author role
  *
- * @since bbPress (r3860)
+ * @since barebones (1.0)
  *
  * @param array $args Optional.
  * @uses bb_get_topic_author_role() To get the topic author role
@@ -1565,7 +1565,7 @@ function bb_topic_author_role( $args = array() ) {
 	/**
 	 * Return the topic author role
 	 *
-	 * @since bbPress (r3860)
+	 * @since barebones (1.0)
 	 *
 	 * @param array $args Optional.
 	 * @uses bb_get_topic_id() To get the topic id
@@ -1596,7 +1596,7 @@ function bb_topic_author_role( $args = array() ) {
 /**
  * Output the title of the forum a topic belongs to
  *
- * @since bbPress (r2485)
+ * @since barebones (1.0)
  *
  * @param int $topic_id Optional. Topic id
  * @uses bb_get_topic_forum_title() To get the topic's forum title
@@ -1607,7 +1607,7 @@ function bb_topic_forum_title( $topic_id = 0 ) {
 	/**
 	 * Return the title of the forum a topic belongs to
 	 *
-	 * @since bbPress (r2485)
+	 * @since barebones (1.0)
 	 *
 	 * @param int $topic_id Optional. Topic id
 	 * @uses bb_get_topic_id() To get topic id
@@ -1626,7 +1626,7 @@ function bb_topic_forum_title( $topic_id = 0 ) {
 /**
  * Output the forum id a topic belongs to
  *
- * @since bbPress (r2491)
+ * @since barebones (1.0)
  *
  * @param int $topic_id Optional. Topic id
  * @uses bb_get_topic_forum_id()
@@ -1637,7 +1637,7 @@ function bb_topic_forum_id( $topic_id = 0 ) {
 	/**
 	 * Return the forum id a topic belongs to
 	 *
-	 * @since bbPress (r2491)
+	 * @since barebones (1.0)
 	 *
 	 * @param int $topic_id Optional. Topic id
 	 * @uses bb_get_topic_id() To get topic id
@@ -1656,7 +1656,7 @@ function bb_topic_forum_id( $topic_id = 0 ) {
 /**
  * Output the topics last active ID
  *
- * @since bbPress (r2860)
+ * @since barebones (1.0)
  *
  * @param int $topic_id Optional. Forum id
  * @uses bb_get_topic_last_active_id() To get the topic's last active id
@@ -1667,7 +1667,7 @@ function bb_topic_last_active_id( $topic_id = 0 ) {
 	/**
 	 * Return the topics last active ID
 	 *
-	 * @since bbPress (r2860)
+	 * @since barebones (1.0)
 	 *
 	 * @param int $topic_id Optional. Forum id
 	 * @uses bb_get_topic_id() To get the topic id
@@ -1686,7 +1686,7 @@ function bb_topic_last_active_id( $topic_id = 0 ) {
 /**
  * Output the topics last update date/time (aka freshness)
  *
- * @since bbPress (r2625)
+ * @since barebones (1.0)
  *
  * @param int $topic_id Optional. Topic id
  * @uses bb_get_topic_last_active_time() To get topic freshness
@@ -1697,7 +1697,7 @@ function bb_topic_last_active_time( $topic_id = 0 ) {
 	/**
 	 * Return the topics last update date/time (aka freshness)
 	 *
-	 * @since bbPress (r2625)
+	 * @since barebones (1.0)
 	 *
 	 * @param int $topic_id Optional. Topic id
 	 * @uses bb_get_topic_id() To get topic id
@@ -1735,7 +1735,7 @@ function bb_topic_last_active_time( $topic_id = 0 ) {
 /**
  * Output the id of the topics last reply
  *
- * @since bbPress (r2625)
+ * @since barebones (1.0)
  *
  * @param int $topic_id Optional. Topic id
  * @uses bb_get_topic_last_reply_id() To get the topic last reply id
@@ -1746,7 +1746,7 @@ function bb_topic_last_reply_id( $topic_id = 0 ) {
 	/**
 	 * Return the topics last update date/time (aka freshness)
 	 *
-	 * @since bbPress (r2625)
+	 * @since barebones (1.0)
 	 *
 	 * @param int $topic_id Optional. Topic id
 	 * @uses bb_get_topic_id() To get the topic id
@@ -1793,7 +1793,7 @@ function bb_topic_last_reply_title( $topic_id = 0 ) {
 /**
  * Output the link to the last reply in a topic
  *
- * @since bbPress (r2464)
+ * @since barebones (1.0)
  *
  * @param int $topic_id Optional. Topic id
  * @uses bb_get_topic_last_reply_permalink() To get the topic's last reply link
@@ -1804,7 +1804,7 @@ function bb_topic_last_reply_permalink( $topic_id = 0 ) {
 	/**
 	 * Return the link to the last reply in a topic
 	 *
-	 * @since bbPress (r2464)
+	 * @since barebones (1.0)
 	 *
 	 * @param int $topic_id Optional. Topic id
 	 * @uses bb_get_topic_id() To get the topic id
@@ -1822,7 +1822,7 @@ function bb_topic_last_reply_permalink( $topic_id = 0 ) {
 /**
  * Output the link to the last reply in a topic
  *
- * @since bbPress (r2683)
+ * @since barebones (1.0)
  *
  * @param int $topic_id Optional. Topic id
  * @uses bb_get_topic_last_reply_url() To get the topic last reply url
@@ -1833,7 +1833,7 @@ function bb_topic_last_reply_url( $topic_id = 0 ) {
 	/**
 	 * Return the link to the last reply in a topic
 	 *
-	 * @since bbPress (r2683)
+	 * @since barebones (1.0)
 	 *
 	 * @param int $topic_id Optional. Topic id
 	 * @uses bb_get_topic_id() To get the topic id
@@ -1861,7 +1861,7 @@ function bb_topic_last_reply_url( $topic_id = 0 ) {
  * Output link to the most recent activity inside a topic, complete with link
  * attributes and content.
  *
- * @since bbPress (r2625)
+ * @since barebones (1.0)
  *
  * @param int $topic_id Optional. Topic id
  * @uses bb_get_topic_freshness_link() To get the topic freshness link
@@ -1873,7 +1873,7 @@ function bb_topic_freshness_link( $topic_id = 0 ) {
 	 * Returns link to the most recent activity inside a topic, complete
 	 * with link attributes and content.
 	 *
-	 * @since bbPress (r2625)
+	 * @since barebones (1.0)
 	 *
 	 * @param int $topic_id Optional. Topic id
 	 * @uses bb_get_topic_id() To get the topic id
@@ -1901,7 +1901,7 @@ function bb_topic_freshness_link( $topic_id = 0 ) {
 /**
  * Output the replies link of the topic
  *
- * @since bbPress (r2740)
+ * @since barebones (1.0)
  *
  * @param int $topic_id Optional. Topic id
  * @uses bb_get_topic_replies_link() To get the topic replies link
@@ -1913,7 +1913,7 @@ function bb_topic_replies_link( $topic_id = 0 ) {
 	/**
 	 * Return the replies link of the topic
 	 *
-	 * @since bbPress (r2740)
+	 * @since barebones (1.0)
 	 *
 	 * @param int $topic_id Optional. Topic id
 	 * @uses bb_get_topic_id() To get the topic id
@@ -1967,7 +1967,7 @@ function bb_topic_replies_link( $topic_id = 0 ) {
 /**
  * Output total reply count of a topic
  *
- * @since bbPress (r2485)
+ * @since barebones (1.0)
  *
  * @param int $topic_id Optional. Topic id
  * @param boolean $integer Optional. Whether or not to format the result
@@ -1979,7 +1979,7 @@ function bb_topic_reply_count( $topic_id = 0, $integer = false ) {
 	/**
 	 * Return total reply count of a topic
 	 *
-	 * @since bbPress (r2485)
+	 * @since barebones (1.0)
 	 *
 	 * @param int $topic_id Optional. Topic id
 	 * @param boolean $integer Optional. Whether or not to format the result
@@ -2000,7 +2000,7 @@ function bb_topic_reply_count( $topic_id = 0, $integer = false ) {
 /**
  * Output total post count of a topic
  *
- * @since bbPress (r2954)
+ * @since barebones (1.0)
  *
  * @param int $topic_id Optional. Topic id
  * @param boolean $integer Optional. Whether or not to format the result
@@ -2012,7 +2012,7 @@ function bb_topic_post_count( $topic_id = 0, $integer = false ) {
 	/**
 	 * Return total post count of a topic
 	 *
-	 * @since bbPress (r2954)
+	 * @since barebones (1.0)
 	 *
 	 * @param int $topic_id Optional. Topic id
 	 * @param boolean $integer Optional. Whether or not to format the result
@@ -2034,7 +2034,7 @@ function bb_topic_post_count( $topic_id = 0, $integer = false ) {
  * Output total hidden reply count of a topic (hidden includes trashed and
  * spammed replies)
  *
- * @since bbPress (r2740)
+ * @since barebones (1.0)
  *
  * @param int $topic_id Optional. Topic id
  * @param boolean $integer Optional. Whether or not to format the result
@@ -2047,7 +2047,7 @@ function bb_topic_reply_count_hidden( $topic_id = 0, $integer = false ) {
 	 * Return total hidden reply count of a topic (hidden includes trashed
 	 * and spammed replies)
 	 *
-	 * @since bbPress (r2740)
+	 * @since barebones (1.0)
 	 *
 	 * @param int $topic_id Optional. Topic id
 	 * @param boolean $integer Optional. Whether or not to format the result
@@ -2068,7 +2068,7 @@ function bb_topic_reply_count_hidden( $topic_id = 0, $integer = false ) {
 /**
  * Output total voice count of a topic
  *
- * @since bbPress (r2567)
+ * @since barebones (1.0)
  *
  * @param int $topic_id Optional. Topic id
  * @uses bb_get_topic_voice_count() To get the topic voice count
@@ -2079,7 +2079,7 @@ function bb_topic_voice_count( $topic_id = 0, $integer = false ) {
 	/**
 	 * Return total voice count of a topic
 	 *
-	 * @since bbPress (r2567)
+	 * @since barebones (1.0)
 	 *
 	 * @param int $topic_id Optional. Topic id
 	 * @uses bb_get_topic_id() To get the topic id
@@ -2160,7 +2160,7 @@ function bb_topic_tag_list( $topic_id = 0, $args = '' ) {
 /**
  * Output the row class of a topic
  *
- * @since bbPress (r2667)
+ * @since barebones (1.0)
  *
  * @param int $topic_id Optional. Topic id
  * @param array Extra classes you can pass when calling this function
@@ -2172,7 +2172,7 @@ function bb_topic_class( $topic_id = 0, $classes = array() ) {
 	/**
 	 * Return the row class of a topic
 	 *
-	 * @since bbPress (r2667)
+	 * @since barebones (1.0)
 	 *
 	 * @param int $topic_id Optional. Topic id
 	 * @param array Extra classes you can pass when calling this function
@@ -2294,7 +2294,7 @@ function bb_topic_admin_links( $args = '' ) {
 /**
  * Output the edit link of the topic
  *
- * @since bbPress (r2727)
+ * @since barebones (1.0)
  *
  * @param mixed $args See {@link bb_get_topic_edit_link()}
  * @uses bb_get_topic_edit_link() To get the topic edit link
@@ -2306,7 +2306,7 @@ function bb_topic_edit_link( $args = '' ) {
 	/**
 	 * Return the edit link of the topic
 	 *
-	 * @since bbPress (r2727)
+	 * @since barebones (1.0)
 	 *
 	 * @param mixed $args This function supports these args:
 	 *  - id: Optional. Topic id
@@ -2358,7 +2358,7 @@ function bb_topic_edit_link( $args = '' ) {
 /**
  * Output URL to the topic edit page
  *
- * @since bbPress (r2753)
+ * @since barebones (1.0)
  *
  * @param int $topic_id Optional. Topic id
  * @uses bb_get_topic_edit_url() To get the topic edit url
@@ -2369,7 +2369,7 @@ function bb_topic_edit_url( $topic_id = 0 ) {
 	/**
 	 * Return URL to the topic edit page
 	 *
-	 * @since bbPress (r2753)
+	 * @since barebones (1.0)
 	 *
 	 * @param int $topic_id Optional. Topic id
 	 * @uses bb_get_topic_id() To get the topic id
@@ -2410,7 +2410,7 @@ function bb_topic_edit_url( $topic_id = 0 ) {
 /**
  * Output the trash link of the topic
  *
- * @since bbPress (r2727)
+ * @since barebones (1.0)
  *
  * @param mixed $args See {@link bb_get_topic_trash_link()}
  * @uses bb_get_topic_trash_link() To get the topic trash link
@@ -2422,7 +2422,7 @@ function bb_topic_trash_link( $args = '' ) {
 	/**
 	 * Return the trash link of the topic
 	 *
-	 * @since bbPress (r2727)
+	 * @since barebones (1.0)
 	 *
 	 * @param mixed $args This function supports these args:
 	 *  - id: Optional. Topic id
@@ -2484,7 +2484,7 @@ function bb_topic_trash_link( $args = '' ) {
 /**
  * Output the close link of the topic
  *
- * @since bbPress (r2727)
+ * @since barebones (1.0)
  *
  * @param mixed $args See {@link bb_get_topic_close_link()}
  * @uses bb_get_topic_close_link() To get the topic close link
@@ -2496,7 +2496,7 @@ function bb_topic_close_link( $args = '' ) {
 	/**
 	 * Return the close link of the topic
 	 *
-	 * @since bbPress (r2727)
+	 * @since barebones (1.0)
 	 *
 	 * @param mixed $args This function supports these args:
 	 *  - id: Optional. Topic id
@@ -2543,7 +2543,7 @@ function bb_topic_close_link( $args = '' ) {
 /**
  * Output the stick link of the topic
  *
- * @since bbPress (r2754)
+ * @since barebones (1.0)
  *
  * @param mixed $args See {@link bb_get_topic_stick_link()}
  * @uses bb_get_topic_stick_link() To get the topic stick link
@@ -2555,7 +2555,7 @@ function bb_topic_stick_link( $args = '' ) {
 	/**
 	 * Return the stick link of the topic
 	 *
-	 * @since bbPress (r2754)
+	 * @since barebones (1.0)
 	 *
 	 * @param mixed $args This function supports these args:
 	 *  - id: Optional. Topic id
@@ -2619,7 +2619,7 @@ function bb_topic_stick_link( $args = '' ) {
 /**
  * Output the merge link of the topic
  *
- * @since bbPress (r2756)
+ * @since barebones (1.0)
  *
  * @param mixed $args
  * @uses bb_get_topic_merge_link() To get the topic merge link
@@ -2631,7 +2631,7 @@ function bb_topic_merge_link( $args = '' ) {
 	/**
 	 * Return the merge link of the topic
 	 *
-	 * @since bbPress (r2756)
+	 * @since barebones (1.0)
 	 *
 	 * @param mixed $args This function supports these args:
 	 *  - id: Optional. Topic id
@@ -2671,7 +2671,7 @@ function bb_topic_merge_link( $args = '' ) {
 /**
  * Output the spam link of the topic
  *
- * @since bbPress (r2727)
+ * @since barebones (1.0)
  *
  * @param mixed $args See {@link bb_get_topic_spam_link()}
  * @uses bb_get_topic_spam_link() Topic spam link
@@ -2683,7 +2683,7 @@ function bb_topic_spam_link( $args = '' ) {
 	/**
 	 * Return the spam link of the topic
 	 *
-	 * @since bbPress (r2727)
+	 * @since barebones (1.0)
 	 *
 	 * @param mixed $args This function supports these args:
 	 *  - id: Optional. Topic id
@@ -2732,7 +2732,7 @@ function bb_topic_spam_link( $args = '' ) {
 /**
  * Output the pagination count
  *
- * @since bbPress (r2519)
+ * @since barebones (1.0)
  *
  * @uses bb_get_forum_pagination_count() To get the forum pagination count
  */
@@ -2742,7 +2742,7 @@ function bb_forum_pagination_count() {
 	/**
 	 * Return the pagination count
 	 *
-	 * @since bbPress (r2519)
+	 * @since barebones (1.0)
 	 *
 	 * @uses bb_number_format() To format the number value
 	 * @uses apply_filters() Calls 'bb_get_forum_pagination_count' with the
@@ -2778,7 +2778,7 @@ function bb_forum_pagination_count() {
 /**
  * Output pagination links
  *
- * @since bbPress (r2519)
+ * @since barebones (1.0)
  *
  * @uses bb_get_forum_pagination_links() To get the pagination links
  */
@@ -2788,7 +2788,7 @@ function bb_forum_pagination_links() {
 	/**
 	 * Return pagination links
 	 *
-	 * @since bbPress (r2519)
+	 * @since barebones (1.0)
 	 *
 	 * @uses bbPress::topic_query::pagination_links To get the links
 	 * @return string Pagination links
@@ -2805,7 +2805,7 @@ function bb_forum_pagination_links() {
 /**
  * Displays topic notices
  *
- * @since bbPress (r2744)
+ * @since barebones (1.0)
  *
  * @uses bb_is_single_topic() To check if it's a topic page
  * @uses bb_get_topic_status() To get the topic status
@@ -2853,7 +2853,7 @@ function bb_topic_notices() {
 /**
  * Displays topic type select box (normal/sticky/super sticky)
  *
- * @since bbPress (r2784)
+ * @since barebones (1.0)
  *
  * @param $args This function supports these arguments:
  *  - stick_text: Sticky text
@@ -2940,7 +2940,7 @@ function bb_topic_type_select( $args = '' ) {
  * Output a fancy description of the current topic, including total topics,
  * total replies, and last activity.
  *
- * @since bbPress (r2860)
+ * @since barebones (1.0)
  *
  * @param array $args See {@link bb_get_single_topic_description()}
  * @uses bb_get_single_topic_description() Return the eventual output
@@ -2952,7 +2952,7 @@ function bb_single_topic_description( $args = '' ) {
 	 * Return a fancy description of the current topic, including total topics,
 	 * total replies, and last activity.
 	 *
-	 * @since bbPress (r2860)
+	 * @since barebones (1.0)
 	 *
 	 * @param mixed $args This function supports these arguments:
 	 *  - topic_id: Topic id
@@ -3024,7 +3024,7 @@ function bb_single_topic_description( $args = '' ) {
 /**
  * Output the unique id of the topic tag taxonomy
  *
- * @since bbPress (r3348)
+ * @since barebones (1.0)
  *
  * @uses bb_get_topic_post_type() To get the topic post type
  */
@@ -3034,7 +3034,7 @@ function bb_topic_tag_tax_id() {
 	/**
 	 * Return the unique id of the topic tag taxonomy
 	 *
-	 * @since bbPress (r3348)
+	 * @since barebones (1.0)
 	 *
 	 * @uses apply_filters() Calls 'bb_get_topic_tag_tax_id' with the topic tax id
 	 * @return string The unique topic tag taxonomy
@@ -3046,7 +3046,7 @@ function bb_topic_tag_tax_id() {
 /**
  * Output the id of the current tag
  *
- * @since bbPress (r3109)
+ * @since barebones (1.0)
  *
  * @uses bb_get_topic_tag_id()
  */
@@ -3056,7 +3056,7 @@ function bb_topic_tag_id( $tag = '' ) {
 	/**
 	 * Return the id of the current tag
 	 *
-	 * @since bbPress (r3109)
+	 * @since barebones (1.0)
 	 *
 	 * @uses get_term_by()
 	 * @uses get_queried_object()
@@ -3090,7 +3090,7 @@ function bb_topic_tag_id( $tag = '' ) {
 /**
  * Output the name of the current tag
  *
- * @since bbPress (r3109)
+ * @since barebones (1.0)
  *
  * @uses bb_get_topic_tag_name()
  */
@@ -3100,7 +3100,7 @@ function bb_topic_tag_name( $tag = '' ) {
 	/**
 	 * Return the name of the current tag
 	 *
-	 * @since bbPress (r3109)
+	 * @since barebones (1.0)
 	 *
 	 * @uses get_term_by()
 	 * @uses get_queried_object()
@@ -3134,7 +3134,7 @@ function bb_topic_tag_name( $tag = '' ) {
 /**
  * Output the slug of the current tag
  *
- * @since bbPress (r3109)
+ * @since barebones (1.0)
  *
  * @uses bb_get_topic_tag_slug()
  */
@@ -3144,7 +3144,7 @@ function bb_topic_tag_slug( $tag = '' ) {
 	/**
 	 * Return the slug of the current tag
 	 *
-	 * @since bbPress (r3109)
+	 * @since barebones (1.0)
 	 *
 	 * @uses get_term_by()
 	 * @uses get_queried_object()
@@ -3178,7 +3178,7 @@ function bb_topic_tag_slug( $tag = '' ) {
 /**
  * Output the link of the current tag
  *
- * @since bbPress (r3348)
+ * @since barebones (1.0)
  *
  * @uses bb_get_topic_tag_link()
  */
@@ -3188,7 +3188,7 @@ function bb_topic_tag_link( $tag = '' ) {
 	/**
 	 * Return the link of the current tag
 	 *
-	 * @since bbPress (r3348)
+	 * @since barebones (1.0)
 	 *
 	 * @uses get_term_by()
 	 * @uses get_queried_object()
@@ -3222,7 +3222,7 @@ function bb_topic_tag_link( $tag = '' ) {
 /**
  * Output the link of the current tag
  *
- * @since bbPress (r3348)
+ * @since barebones (1.0)
  *
  * @uses bb_get_topic_tag_edit_link()
  */
@@ -3232,7 +3232,7 @@ function bb_topic_tag_edit_link( $tag = '' ) {
 	/**
 	 * Return the link of the current tag
 	 *
-	 * @since bbPress (r3348)
+	 * @since barebones (1.0)
 	 *
 	 * @uses get_term_by()
 	 * @uses get_queried_object()
@@ -3277,7 +3277,7 @@ function bb_topic_tag_edit_link( $tag = '' ) {
 /**
  * Output the description of the current tag
  *
- * @since bbPress (r3109)
+ * @since barebones (1.0)
  *
  * @uses bb_get_topic_tag_description()
  */
@@ -3287,7 +3287,7 @@ function bb_topic_tag_description( $args = array() ) {
 	/**
 	 * Return the description of the current tag
 	 *
-	 * @since bbPress (r3109)
+	 * @since barebones (1.0)
 	 *
 	 * @uses get_term_by()
 	 * @uses get_queried_object()
@@ -3332,7 +3332,7 @@ function bb_topic_tag_description( $args = array() ) {
 /**
  * Output the value of topic title field
  *
- * @since bbPress (r2976)
+ * @since barebones (1.0)
  *
  * @uses bb_get_form_topic_title() To get the value of topic title field
  */
@@ -3342,7 +3342,7 @@ function bb_form_topic_title() {
 	/**
 	 * Return the value of topic title field
 	 *
-	 * @since bbPress (r2976)
+	 * @since barebones (1.0)
 	 *
 	 * @uses bb_is_topic_edit() To check if it's topic edit page
 	 * @uses apply_filters() Calls 'bb_get_form_topic_title' with the title
@@ -3369,7 +3369,7 @@ function bb_form_topic_title() {
 /**
  * Output the value of topic content field
  *
- * @since bbPress (r2976)
+ * @since barebones (1.0)
  *
  * @uses bb_get_form_topic_content() To get value of topic content field
  */
@@ -3379,7 +3379,7 @@ function bb_form_topic_content() {
 	/**
 	 * Return the value of topic content field
 	 *
-	 * @since bbPress (r2976)
+	 * @since barebones (1.0)
 	 *
 	 * @uses bb_is_topic_edit() To check if it's the topic edit page
 	 * @uses apply_filters() Calls 'bb_get_form_topic_content' with the content
@@ -3406,7 +3406,7 @@ function bb_form_topic_content() {
 /**
  * Allow topic rows to have adminstrative actions
  *
- * @since bbPress (r3653)
+ * @since barebones (1.0)
  * @uses do_action()
  * @todo Links and filter
  */
@@ -3417,7 +3417,7 @@ function bb_topic_row_actions() {
 /**
  * Output value of topic tags field
  *
- * @since bbPress (r2976)
+ * @since barebones (1.0)
  * @uses bb_get_form_topic_tags() To get the value of topic tags field
  */
 function bb_form_topic_tags() {
@@ -3426,7 +3426,7 @@ function bb_form_topic_tags() {
 	/**
 	 * Return value of topic tags field
 	 *
-	 * @since bbPress (r2976)
+	 * @since barebones (1.0)
 	 *
 	 * @uses bb_is_topic_edit() To check if it's the topic edit page
 	 * @uses apply_filters() Calls 'bb_get_form_topic_tags' with the tags
@@ -3498,7 +3498,7 @@ function bb_form_topic_tags() {
 /**
  * Output value of topic forum
  *
- * @since bbPress (r2976)
+ * @since barebones (1.0)
  *
  * @uses bb_get_form_topic_forum() To get the topic's forum id
  */
@@ -3508,7 +3508,7 @@ function bb_form_topic_forum() {
 	/**
 	 * Return value of topic forum
 	 *
-	 * @since bbPress (r2976)
+	 * @since barebones (1.0)
 	 *
 	 * @uses bb_is_topic_edit() To check if it's the topic edit page
 	 * @uses bb_get_topic_forum_id() To get the topic forum id
@@ -3536,7 +3536,7 @@ function bb_form_topic_forum() {
 /**
  * Output checked value of topic subscription
  *
- * @since bbPress (r2976)
+ * @since barebones (1.0)
  *
  * @uses bb_get_form_topic_subscribed() To get the subscribed checkbox value
  */
@@ -3546,7 +3546,7 @@ function bb_form_topic_subscribed() {
 	/**
 	 * Return checked value of topic subscription
 	 *
-	 * @since bbPress (r2976)
+	 * @since barebones (1.0)
 	 *
 	 * @uses bb_is_topic_edit() To check if it's the topic edit page
 	 * @uses bb_is_user_subscribed() To check if the user is subscribed to
@@ -3594,7 +3594,7 @@ function bb_form_topic_subscribed() {
 /**
  * Output checked value of topic log edit field
  *
- * @since bbPress (r2976)
+ * @since barebones (1.0)
  *
  * @uses bb_get_form_topic_log_edit() To get the topic log edit value
  */
@@ -3604,7 +3604,7 @@ function bb_form_topic_log_edit() {
 	/**
 	 * Return checked value of topic log edit field
 	 *
-	 * @since bbPress (r2976)
+	 * @since barebones (1.0)
 	 *
 	 * @uses apply_filters() Calls 'bb_get_form_topic_log_edit' with the
 	 *                        log edit value
@@ -3630,7 +3630,7 @@ function bb_form_topic_log_edit() {
 /**
  * Output the value of the topic edit reason
  *
- * @since bbPress (r2976)
+ * @since barebones (1.0)
  *
  * @uses bb_get_form_topic_edit_reason() To get the topic edit reason value
  */
@@ -3640,7 +3640,7 @@ function bb_form_topic_edit_reason() {
 	/**
 	 * Return the value of the topic edit reason
 	 *
-	 * @since bbPress (r2976)
+	 * @since barebones (1.0)
 	 *
 	 * @uses apply_filters() Calls 'bb_get_form_topic_edit_reason' with the
 	 *                        topic edit reason value
