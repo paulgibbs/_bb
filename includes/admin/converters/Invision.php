@@ -31,7 +31,7 @@ class Invision extends BB_Converter_Base {
 			'from_tablename'  => 'forums',
 			'from_fieldname'  => 'id',
 			'to_type'         => 'forum',
-			'to_fieldname'    => '_bbp_forum_id'
+			'to_fieldname'    => '_bb_forum_id'
 		);
 
 		// Forum parent id (If no parent, then 0. Stored in postmeta)
@@ -39,7 +39,7 @@ class Invision extends BB_Converter_Base {
 			'from_tablename'  => 'forums',
 			'from_fieldname'  => 'parent_id',
 			'to_type'         => 'forum',
-			'to_fieldname'    => '_bbp_forum_parent_id'
+			'to_fieldname'    => '_bb_forum_parent_id'
 		);
 
 		// Forum topic count (Stored in postmeta)
@@ -47,7 +47,7 @@ class Invision extends BB_Converter_Base {
 			'from_tablename' => 'forums',
 			'from_fieldname' => 'topics',
 			'to_type'        => 'forum',
-			'to_fieldname'   => '_bbp_topic_count'
+			'to_fieldname'   => '_bb_topic_count'
 		);
 
 		// Forum reply count (Stored in postmeta)
@@ -55,7 +55,7 @@ class Invision extends BB_Converter_Base {
 			'from_tablename' => 'forums',
 			'from_fieldname' => 'posts',
 			'to_type'        => 'forum',
-			'to_fieldname'   => '_bbp_reply_count'
+			'to_fieldname'   => '_bb_reply_count'
 		);
 
 		// Forum total topic count (Stored in postmeta)
@@ -63,7 +63,7 @@ class Invision extends BB_Converter_Base {
 			'from_tablename' => 'forums',
 			'from_fieldname' => 'topics',
 			'to_type'        => 'forum',
-			'to_fieldname'   => '_bbp_total_topic_count'
+			'to_fieldname'   => '_bb_total_topic_count'
 		);
 
 		// Forum total reply count (Stored in postmeta)
@@ -71,7 +71,7 @@ class Invision extends BB_Converter_Base {
 			'from_tablename' => 'forums',
 			'from_fieldname' => 'posts',
 			'to_type'        => 'forum',
-			'to_fieldname'   => '_bbp_total_reply_count'
+			'to_fieldname'   => '_bb_total_reply_count'
 		);
 
 		// Forum title.
@@ -137,7 +137,7 @@ class Invision extends BB_Converter_Base {
 			'from_tablename'  => 'topics',
 			'from_fieldname'  => 'tid',
 			'to_type'         => 'topic',
-			'to_fieldname'    => '_bbp_topic_id'
+			'to_fieldname'    => '_bb_topic_id'
 		);
 
 		// Topic reply count (Stored in postmeta)
@@ -145,7 +145,7 @@ class Invision extends BB_Converter_Base {
 			'from_tablename'  => 'topics',
 			'from_fieldname'  => 'posts',
 			'to_type'         => 'topic',
-			'to_fieldname'    => '_bbp_reply_count',
+			'to_fieldname'    => '_bb_reply_count',
 			'callback_method' => 'callback_topic_reply_count'
 		);
 
@@ -154,7 +154,7 @@ class Invision extends BB_Converter_Base {
 			'from_tablename'  => 'topics',
 			'from_fieldname'  => 'forum_id',
 			'to_type'         => 'topic',
-			'to_fieldname'    => '_bbp_forum_id',
+			'to_fieldname'    => '_bb_forum_id',
 			'callback_method' => 'callback_forumid'
 		);
 
@@ -239,7 +239,7 @@ class Invision extends BB_Converter_Base {
 			'from_tablename' => 'topics',
 			'from_fieldname' => 'last_post',
 			'to_type'        => 'topic',
-			'to_fieldname'   => '_bbp_last_active_time',
+			'to_fieldname'   => '_bb_last_active_time',
 			'callback_method' => 'callback_datetime'
 		);
 
@@ -269,7 +269,7 @@ class Invision extends BB_Converter_Base {
 			'from_tablename'  => 'posts',
 			'from_fieldname'  => 'pid',
 			'to_type'         => 'reply',
-			'to_fieldname'    => '_bbp_post_id'
+			'to_fieldname'    => '_bb_post_id'
 		);
 
 		// Reply parent forum id (If no parent, then 0. Stored in postmeta)
@@ -277,7 +277,7 @@ class Invision extends BB_Converter_Base {
 			'from_tablename'  => 'posts',
 			'from_fieldname'  => 'topic_id',
 			'to_type'         => 'reply',
-			'to_fieldname'    => '_bbp_forum_id',
+			'to_fieldname'    => '_bb_forum_id',
 			'callback_method' => 'callback_topicid_to_forumid'
 		);
 
@@ -286,7 +286,7 @@ class Invision extends BB_Converter_Base {
 			'from_tablename'  => 'posts',
 			'from_fieldname'  => 'topic_id',
 			'to_type'         => 'reply',
-			'to_fieldname'    => '_bbp_topic_id',
+			'to_fieldname'    => '_bb_topic_id',
 			'callback_method' => 'callback_topicid'
 		);
 
@@ -295,7 +295,7 @@ class Invision extends BB_Converter_Base {
 			'from_tablename'  => 'posts',
 			'from_fieldname'  => 'ip_address',
 			'to_type'         => 'reply',
-			'to_fieldname'    => '_bbp_author_ip'
+			'to_fieldname'    => '_bb_author_ip'
 		);
 
 		// Reply author.
@@ -375,7 +375,7 @@ class Invision extends BB_Converter_Base {
 			'from_tablename'  => 'members',
 			'from_fieldname'  => 'member_id',
 			'to_type'         => 'user',
-			'to_fieldname'    => '_bbp_user_id'
+			'to_fieldname'    => '_bb_user_id'
 		);
 
 		// Store old User password (Stored in usermeta serialized with salt)
@@ -383,7 +383,7 @@ class Invision extends BB_Converter_Base {
 			'from_tablename'  => 'members',
 			'from_fieldname'  => 'members_pass_hash',
 			'to_type'         => 'user',
-			'to_fieldname'    => '_bbp_password',
+			'to_fieldname'    => '_bb_password',
 			'callback_method' => 'callback_savepass'
 		);
 
@@ -398,7 +398,7 @@ class Invision extends BB_Converter_Base {
 		// User password verify class (Stored in usermeta for verifying password)
 		$this->field_map[] = array(
 			'to_type'         => 'user',
-			'to_fieldname'    => '_bbp_class',
+			'to_fieldname'    => '_bb_class',
 			'default' => 'Invision'
 		);
 

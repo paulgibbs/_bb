@@ -16,10 +16,10 @@ if ( !defined( 'ABSPATH' ) ) exit;
  * Output the bbPress version
  *
  * @since bbPress (r3468)
- * @uses bbp_get_version() To get the bbPress version
+ * @uses bb_get_version() To get the bbPress version
  */
 function bb_version() {
-	echo bbp_get_version();
+	echo bb_get_version();
 }
 	/**
 	 * Return the bbPress version
@@ -35,10 +35,10 @@ function bb_version() {
  * Output the bbPress database version
  *
  * @since bbPress (r3468)
- * @uses bbp_get_version() To get the bbPress version
+ * @uses bb_get_version() To get the bbPress version
  */
 function bb_db_version() {
-	echo bbp_get_db_version();
+	echo bb_get_db_version();
 }
 	/**
 	 * Return the bbPress database version
@@ -54,10 +54,10 @@ function bb_db_version() {
  * Output the bbPress database version directly from the database
  *
  * @since bbPress (r3468)
- * @uses bbp_get_version() To get the current bbPress version
+ * @uses bb_get_version() To get the current bbPress version
  */
 function bb_db_version_raw() {
-	echo bbp_get_db_version_raw();
+	echo bb_get_db_version_raw();
 }
 	/**
 	 * Return the bbPress database version directly from the database
@@ -66,7 +66,7 @@ function bb_db_version_raw() {
 	 * @retrun string The current bbPress version
 	 */
 	function bb_get_db_version_raw() {
-		return get_option( '_bbp_db_version', '' );
+		return get_option( '_bb_db_version', '' );
 	}
 
 /** Post Meta *****************************************************************/
@@ -82,10 +82,10 @@ function bb_db_version_raw() {
 function bb_update_forum_id( $post_id, $forum_id ) {
 
 	// Allow the forum ID to be updated 'just in time' before save
-	$forum_id = apply_filters( 'bbp_update_forum_id', $forum_id, $post_id );
+	$forum_id = apply_filters( 'bb_update_forum_id', $forum_id, $post_id );
 
 	// Update the post meta forum ID
-	update_post_meta( $post_id, '_bbp_forum_id', (int) $forum_id );
+	update_post_meta( $post_id, '_bb_forum_id', (int) $forum_id );
 }
 
 /**
@@ -99,10 +99,10 @@ function bb_update_forum_id( $post_id, $forum_id ) {
 function bb_update_topic_id( $post_id, $topic_id ) {
 
 	// Allow the topic ID to be updated 'just in time' before save
-	$topic_id = apply_filters( 'bbp_update_topic_id', $topic_id, $post_id );
+	$topic_id = apply_filters( 'bb_update_topic_id', $topic_id, $post_id );
 
 	// Update the post meta topic ID
-	update_post_meta( $post_id, '_bbp_topic_id', (int) $topic_id );
+	update_post_meta( $post_id, '_bb_topic_id', (int) $topic_id );
 }
 
 /**
@@ -116,10 +116,10 @@ function bb_update_topic_id( $post_id, $topic_id ) {
 function bb_update_reply_id( $post_id, $reply_id ) {
 
 	// Allow the reply ID to be updated 'just in time' before save
-	$reply_id = apply_filters( 'bbp_update_reply_id', $reply_id, $post_id );
+	$reply_id = apply_filters( 'bb_update_reply_id', $reply_id, $post_id );
 
 	// Update the post meta reply ID
-	update_post_meta( $post_id, '_bbp_reply_id',(int) $reply_id );
+	update_post_meta( $post_id, '_bb_reply_id',(int) $reply_id );
 }
 
 /** Views *********************************************************************/
@@ -146,7 +146,7 @@ function bb_get_views() {
  *
  * @param string $view View name
  * @param string $title View title
- * @param mixed $query_args {@link bbp_has_topics()} arguments.
+ * @param mixed $query_args {@link bb_has_topics()} arguments.
  * @param bool $feed Have a feed for the view? Defaults to true. NOT IMPLEMENTED
  * @param string $capability Capability that the current user must have
  * @uses sanitize_title() To sanitize the view name
@@ -166,7 +166,7 @@ function bb_register_view( $view, $title, $query_args = '', $feed = true, $capab
 	if ( empty( $view ) || empty( $title ) )
 		return false;
 
-	$query_args = bbp_parse_args( $query_args, '', 'register_view' );
+	$query_args = bb_parse_args( $query_args, '', 'register_view' );
 
 	// Set show_stickies to false if it wasn't supplied
 	if ( !isset( $query_args['show_stickies'] ) )
@@ -208,27 +208,27 @@ function bb_deregister_view( $view ) {
  * @since bbPress (r2789)
  *
  * @param string $view Optional. View id
- * @param mixed $new_args New arguments. See {@link bbp_has_topics()}
- * @uses bbp_get_view_id() To get the view id
- * @uses bbp_get_view_query_args() To get the view query args
+ * @param mixed $new_args New arguments. See {@link bb_has_topics()}
+ * @uses bb_get_view_id() To get the view id
+ * @uses bb_get_view_query_args() To get the view query args
  * @uses sanitize_title() To sanitize the view name
- * @uses bbp_has_topics() To make the topics query
+ * @uses bb_has_topics() To make the topics query
  * @return bool False if the view doesn't exist, otherwise if topics are there
  */
 function bb_view_query( $view = '', $new_args = '' ) {
 
-	$view = bbp_get_view_id( $view );
+	$view = bb_get_view_id( $view );
 	if ( empty( $view ) )
 		return false;
 
-	$query_args = bbp_get_view_query_args( $view );
+	$query_args = bb_get_view_query_args( $view );
 
 	if ( !empty( $new_args ) ) {
-		$new_args   = bbp_parse_args( $new_args, '', 'view_query' );
+		$new_args   = bb_parse_args( $new_args, '', 'view_query' );
 		$query_args = array_merge( $query_args, $new_args );
 	}
 
-	return bbp_has_topics( $query_args );
+	return bb_has_topics( $query_args );
 }
 
 /**
@@ -237,14 +237,14 @@ function bb_view_query( $view = '', $new_args = '' ) {
  * @since bbPress (r2789)
  *
  * @param string $view View name
- * @uses bbp_get_view_id() To get the view id
+ * @uses bb_get_view_id() To get the view id
  * @return array Query arguments
  */
 function bb_get_view_query_args( $view ) {
-	$view   = bbp_get_view_id( $view );
+	$view   = bb_get_view_id( $view );
 	$retval = !empty( $view ) ? bbpress()->views[$view]['query'] : false;
 
-	return apply_filters( 'bbp_get_view_query_args', $retval, $view );
+	return apply_filters( 'bb_get_view_query_args', $retval, $view );
 }
 
 /** Errors ********************************************************************/
@@ -278,7 +278,7 @@ function bb_add_error( $code = '', $message = '', $data = '' ) {
 function bb_has_errors() {
 	$has_errors = bbpress()->errors->get_error_codes() ? true : false;
 
-	return apply_filters( 'bbp_has_errors', $has_errors, bbpress()->errors );
+	return apply_filters( 'bb_has_errors', $has_errors, bbpress()->errors );
 }
 
 /** Mentions ******************************************************************/
@@ -308,13 +308,13 @@ function bb_find_mentions( $content = '' ) {
  *
  * @since bbPress (r4323)
  *
- * @uses bbp_find_mentions() To get usernames in content areas
+ * @uses bb_find_mentions() To get usernames in content areas
  * @return string $content Content filtered for mentions
  */
 function bb_mention_filter( $content = '' ) {
 
 	// Get Usernames and bail if none exist
-	$usernames = bbp_find_mentions( $content );
+	$usernames = bb_find_mentions( $content );
 	if ( empty( $usernames ) )
 		return $content;
 
@@ -323,11 +323,11 @@ function bb_mention_filter( $content = '' ) {
 
 		// Skip if username does not exist or user is not active
 		$user = get_user_by( 'slug', $username );
-		if ( empty( $user->ID ) || bbp_is_user_inactive( $user->ID ) )
+		if ( empty( $user->ID ) || bb_is_user_inactive( $user->ID ) )
 			continue;
 
 		// Replace name in content
-		$content = preg_replace( '/(@' . $username . '\b)/', sprintf( '<a href="%1$s" rel="nofollow">@%2$s</a>', bbp_get_user_profile_url( $user->ID ), $username ), $content );
+		$content = preg_replace( '/(@' . $username . '\b)/', sprintf( '<a href="%1$s" rel="nofollow">@%2$s</a>', bb_get_user_profile_url( $user->ID ), $username ), $content );
 	}
 
 	// Return modified content

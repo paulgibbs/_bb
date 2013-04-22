@@ -51,14 +51,14 @@ class BB_Replies_Admin {
 	 *
 	 * @uses add_action() To add various actions
 	 * @uses add_filter() To add various filters
-	 * @uses bbp_get_forum_post_type() To get the forum post type
-	 * @uses bbp_get_topic_post_type() To get the topic post type
-	 * @uses bbp_get_reply_post_type() To get the reply post type
+	 * @uses bb_get_forum_post_type() To get the forum post type
+	 * @uses bb_get_topic_post_type() To get the topic post type
+	 * @uses bb_get_reply_post_type() To get the reply post type
 	 */
 	private function setup_actions() {
 
 		// Add some general styling to the admin area
-		add_action( 'bbp_admin_head',        array( $this, 'admin_head'       ) );
+		add_action( 'bb_admin_head',        array( $this, 'admin_head'       ) );
 
 		// Messages
 		add_filter( 'post_updated_messages', array( $this, 'updated_messages' ) );
@@ -74,7 +74,7 @@ class BB_Replies_Admin {
 		add_action( 'add_meta_boxes', array( $this, 'reply_attributes_metabox'      ) );
 		add_action( 'save_post',      array( $this, 'reply_attributes_metabox_save' ) );
 
-		// Check if there are any bbp_toggle_reply_* requests on admin_init, also have a message displayed
+		// Check if there are any bb_toggle_reply_* requests on admin_init, also have a message displayed
 		add_action( 'load-edit.php',  array( $this, 'toggle_reply'        ) );
 		add_action( 'admin_notices',  array( $this, 'toggle_reply_notice' ) );
 
@@ -83,7 +83,7 @@ class BB_Replies_Admin {
 
 		// Add ability to filter topics and replies per forum
 		add_filter( 'restrict_manage_posts', array( $this, 'filter_dropdown'  ) );
-		add_filter( 'bbp_request',           array( $this, 'filter_post_rows' ) );
+		add_filter( 'bb_request',           array( $this, 'filter_post_rows' ) );
 
 		// Contextual Help
 		add_action( 'load-edit.php',     array( $this, 'edit_help' ) );
@@ -110,7 +110,7 @@ class BB_Replies_Admin {
 	 * @access private
 	 */
 	private function setup_globals() {
-		$this->post_type = bbp_get_reply_post_type();
+		$this->post_type = bb_get_reply_post_type();
 	}
 
 	/** Contextual Help *******************************************************/
@@ -252,24 +252,24 @@ class BB_Replies_Admin {
 	 *
 	 * @since bbPress (r2746)
 	 *
-	 * @uses bbp_get_reply_post_type() To get the reply post type
+	 * @uses bb_get_reply_post_type() To get the reply post type
 	 * @uses add_meta_box() To add the metabox
-	 * @uses do_action() Calls 'bbp_reply_attributes_metabox'
+	 * @uses do_action() Calls 'bb_reply_attributes_metabox'
 	 */
 	public function reply_attributes_metabox() {
 
 		if ( $this->bail() ) return;
 
 		add_meta_box (
-			'bbp_reply_attributes',
+			'bb_reply_attributes',
 			__( 'Reply Attributes', 'bbpress' ),
-			'bbp_reply_metabox',
+			'bb_reply_metabox',
 			$this->post_type,
 			'side',
 			'high'
 		);
 
-		do_action( 'bbp_reply_attributes_metabox' );
+		do_action( 'bb_reply_attributes_metabox' );
 	}
 
 	/**
@@ -280,7 +280,7 @@ class BB_Replies_Admin {
 	 * @param int $reply_id Reply id
 	 * @uses current_user_can() To check if the current user is capable of
 	 *                           editing the reply
-	 * @uses do_action() Calls 'bbp_reply_attributes_metabox_save' with the
+	 * @uses do_action() Calls 'bb_reply_attributes_metabox_save' with the
 	 *                    reply id and parent id
 	 * @return int Parent id
 	 */
@@ -293,7 +293,7 @@ class BB_Replies_Admin {
 			return $reply_id;
 
 		// Bail if not a post request
-		if ( ! bbp_is_post_request() )
+		if ( ! bb_is_post_request() )
 			return $reply_id;
 
 		// Check action exists
@@ -301,7 +301,7 @@ class BB_Replies_Admin {
 			return $reply_id;
 
 		// Nonce check
-		if ( empty( $_POST['bbp_reply_metabox'] ) || !wp_verify_nonce( $_POST['bbp_reply_metabox'], 'bbp_reply_metabox_save' ) )
+		if ( empty( $_POST['bb_reply_metabox'] ) || !wp_verify_nonce( $_POST['bb_reply_metabox'], 'bb_reply_metabox_save' ) )
 			return $reply_id;
 
 		// Current user cannot edit this reply
@@ -310,19 +310,19 @@ class BB_Replies_Admin {
 
 		// Get the reply meta post values
 		$topic_id = !empty( $_POST['parent_id']    ) ? (int) $_POST['parent_id']    : 0;
-		$forum_id = !empty( $_POST['bbp_forum_id'] ) ? (int) $_POST['bbp_forum_id'] : bbp_get_topic_forum_id( $topic_id );
+		$forum_id = !empty( $_POST['bb_forum_id'] ) ? (int) $_POST['bb_forum_id'] : bb_get_topic_forum_id( $topic_id );
 
 		// Get reply author data
-		$anonymous_data = bbp_filter_anonymous_post_data();
-		$author_id      = bbp_get_reply_author_id( $reply_id );
+		$anonymous_data = bb_filter_anonymous_post_data();
+		$author_id      = bb_get_reply_author_id( $reply_id );
 		$is_edit        = (bool) isset( $_POST['save'] );
 
 		// Formally update the reply
-		bbp_update_reply( $reply_id, $topic_id, $forum_id, $anonymous_data, $author_id, $is_edit );
+		bb_update_reply( $reply_id, $topic_id, $forum_id, $anonymous_data, $author_id, $is_edit );
 
 		// Allow other fun things to happen
-		do_action( 'bbp_reply_attributes_metabox_save', $reply_id, $topic_id, $forum_id );
-		do_action( 'bbp_author_metabox_save',           $reply_id, $anonymous_data      );
+		do_action( 'bb_reply_attributes_metabox_save', $reply_id, $topic_id, $forum_id );
+		do_action( 'bb_author_metabox_save',           $reply_id, $anonymous_data      );
 
 		return $reply_id;
 	}
@@ -334,12 +334,12 @@ class BB_Replies_Admin {
 	 *
 	 * @since bbPress (r2828)
 	 *
-	 * @uses bbp_get_topic() To get the topic
-	 * @uses bbp_get_reply() To get the reply
-	 * @uses bbp_get_topic_post_type() To get the topic post type
-	 * @uses bbp_get_reply_post_type() To get the reply post type
+	 * @uses bb_get_topic() To get the topic
+	 * @uses bb_get_reply() To get the reply
+	 * @uses bb_get_topic_post_type() To get the topic post type
+	 * @uses bb_get_reply_post_type() To get the reply post type
 	 * @uses add_meta_box() To add the metabox
-	 * @uses do_action() Calls 'bbp_author_metabox' with the topic/reply
+	 * @uses do_action() Calls 'bb_author_metabox' with the topic/reply
 	 *                    id
 	 */
 	public function author_metabox() {
@@ -352,15 +352,15 @@ class BB_Replies_Admin {
 
 		// Add the metabox
 		add_meta_box(
-			'bbp_author_metabox',
+			'bb_author_metabox',
 			__( 'Author Information', 'bbpress' ),
-			'bbp_author_metabox',
+			'bb_author_metabox',
 			$this->post_type,
 			'side',
 			'high'
 		);
 
-		do_action( 'bbp_author_metabox', get_the_ID() );
+		do_action( 'bb_author_metabox', get_the_ID() );
 	}
 
 	/**
@@ -368,11 +368,11 @@ class BB_Replies_Admin {
 	 *
 	 * @since bbPress (r2464)
 	 *
-	 * @uses bbp_get_forum_post_type() To get the forum post type
-	 * @uses bbp_get_topic_post_type() To get the topic post type
-	 * @uses bbp_get_reply_post_type() To get the reply post type
+	 * @uses bb_get_forum_post_type() To get the forum post type
+	 * @uses bb_get_topic_post_type() To get the topic post type
+	 * @uses bb_get_reply_post_type() To get the reply post type
 	 * @uses sanitize_html_class() To sanitize the classes
-	 * @uses do_action() Calls 'bbp_admin_head'
+	 * @uses do_action() Calls 'bb_admin_head'
 	 */
 	public function admin_head() {
 
@@ -388,33 +388,33 @@ class BB_Replies_Admin {
 				width: 60px;
 			}
 
-			.column-bbp_forum_topic_count,
-			.column-bbp_forum_reply_count,
-			.column-bbp_topic_reply_count,
-			.column-bbp_topic_voice_count {
+			.column-bb_forum_topic_count,
+			.column-bb_forum_reply_count,
+			.column-bb_topic_reply_count,
+			.column-bb_topic_voice_count {
 				width: 8% !important;
 			}
 
 			.column-author,
-			.column-bbp_reply_author,
-			.column-bbp_topic_author {
+			.column-bb_reply_author,
+			.column-bb_topic_author {
 				width: 10% !important;
 			}
 
-			.column-bbp_topic_forum,
-			.column-bbp_reply_forum,
-			.column-bbp_reply_topic {
+			.column-bb_topic_forum,
+			.column-bb_reply_forum,
+			.column-bb_reply_topic {
 				width: 10% !important;
 			}
 
-			.column-bbp_forum_freshness,
-			.column-bbp_topic_freshness {
+			.column-bb_forum_freshness,
+			.column-bb_topic_freshness {
 				width: 10% !important;
 			}
 
-			.column-bbp_forum_created,
-			.column-bbp_topic_created,
-			.column-bbp_reply_created {
+			.column-bb_forum_created,
+			.column-bb_topic_created,
+			.column-bb_reply_created {
 				width: 15% !important;
 			}
 
@@ -439,16 +439,16 @@ class BB_Replies_Admin {
 	 *
 	 * @since bbPress (r2740)
 	 *
-	 * @uses bbp_get_reply() To get the reply
+	 * @uses bb_get_reply() To get the reply
 	 * @uses current_user_can() To check if the user is capable of editing
 	 *                           the reply
 	 * @uses wp_die() To die if the user isn't capable or the post wasn't
 	 *                 found
 	 * @uses check_admin_referer() To verify the nonce and check referer
-	 * @uses bbp_is_reply_spam() To check if the reply is marked as spam
-	 * @uses bbp_unspam_reply() To unmark the reply as spam
-	 * @uses bbp_spam_reply() To mark the reply as spam
-	 * @uses do_action() Calls 'bbp_toggle_reply_admin' with success, post
+	 * @uses bb_is_reply_spam() To check if the reply is marked as spam
+	 * @uses bb_unspam_reply() To unmark the reply as spam
+	 * @uses bb_spam_reply() To mark the reply as spam
+	 * @uses do_action() Calls 'bb_toggle_reply_admin' with success, post
 	 *                    data, action and message
 	 * @uses add_query_arg() To add custom args to the url
 	 * @uses wp_safe_redirect() Redirect the page to custom url
@@ -458,14 +458,14 @@ class BB_Replies_Admin {
 		if ( $this->bail() ) return;
 
 		// Only proceed if GET is a reply toggle action
-		if ( bbp_is_get_request() && !empty( $_GET['action'] ) && in_array( $_GET['action'], array( 'bbp_toggle_reply_spam' ) ) && !empty( $_GET['reply_id'] ) ) {
+		if ( bb_is_get_request() && !empty( $_GET['action'] ) && in_array( $_GET['action'], array( 'bb_toggle_reply_spam' ) ) && !empty( $_GET['reply_id'] ) ) {
 			$action    = $_GET['action'];            // What action is taking place?
 			$reply_id  = (int) $_GET['reply_id'];    // What's the reply id?
 			$success   = false;                      // Flag
 			$post_data = array( 'ID' => $reply_id ); // Prelim array
 
 			// Get reply and die if empty
-			$reply = bbp_get_reply( $reply_id );
+			$reply = bb_get_reply( $reply_id );
 			if ( empty( $reply ) ) // Which reply?
 				wp_die( __( 'The reply was not found!', 'bbpress' ) );
 
@@ -473,24 +473,24 @@ class BB_Replies_Admin {
 				wp_die( __( 'You do not have the permission to do that!', 'bbpress' ) );
 
 			switch ( $action ) {
-				case 'bbp_toggle_reply_spam' :
+				case 'bb_toggle_reply_spam' :
 					check_admin_referer( 'spam-reply_' . $reply_id );
 
-					$is_spam = bbp_is_reply_spam( $reply_id );
+					$is_spam = bb_is_reply_spam( $reply_id );
 					$message = $is_spam ? 'unspammed' : 'spammed';
-					$success = $is_spam ? bbp_unspam_reply( $reply_id ) : bbp_spam_reply( $reply_id );
+					$success = $is_spam ? bb_unspam_reply( $reply_id ) : bb_spam_reply( $reply_id );
 
 					break;
 			}
 
 			$success = wp_update_post( $post_data );
-			$message = array( 'bbp_reply_toggle_notice' => $message, 'reply_id' => $reply->ID );
+			$message = array( 'bb_reply_toggle_notice' => $message, 'reply_id' => $reply->ID );
 
 			if ( false == $success || is_wp_error( $success ) )
 				$message['failed'] = '1';
 
 			// Do additional reply toggle actions (admin side)
-			do_action( 'bbp_toggle_reply_admin', $success, $post_data, $action, $message );
+			do_action( 'bb_toggle_reply_admin', $success, $post_data, $action, $message );
 
 			// Redirect back to the reply
 			$redirect = add_query_arg( $message, remove_query_arg( array( 'action', 'reply_id' ) ) );
@@ -509,10 +509,10 @@ class BB_Replies_Admin {
 	 *
 	 * @since bbPress (r2740)
 	 *
-	 * @uses bbp_get_reply() To get the reply
-	 * @uses bbp_get_reply_title() To get the reply title of the reply
+	 * @uses bb_get_reply() To get the reply
+	 * @uses bb_get_reply_title() To get the reply title of the reply
 	 * @uses esc_html() To sanitize the reply title
-	 * @uses apply_filters() Calls 'bbp_toggle_reply_notice_admin' with
+	 * @uses apply_filters() Calls 'bb_toggle_reply_notice_admin' with
 	 *                        message, reply id, notice and is it a failure
 	 */
 	public function toggle_reply_notice() {
@@ -520,8 +520,8 @@ class BB_Replies_Admin {
 		if ( $this->bail() ) return;
 
 		// Only proceed if GET is a reply toggle action
-		if ( bbp_is_get_request() && !empty( $_GET['bbp_reply_toggle_notice'] ) && in_array( $_GET['bbp_reply_toggle_notice'], array( 'spammed', 'unspammed' ) ) && !empty( $_GET['reply_id'] ) ) {
-			$notice     = $_GET['bbp_reply_toggle_notice'];         // Which notice?
+		if ( bb_is_get_request() && !empty( $_GET['bb_reply_toggle_notice'] ) && in_array( $_GET['bb_reply_toggle_notice'], array( 'spammed', 'unspammed' ) ) && !empty( $_GET['reply_id'] ) ) {
+			$notice     = $_GET['bb_reply_toggle_notice'];         // Which notice?
 			$reply_id   = (int) $_GET['reply_id'];                  // What's the reply id?
 			$is_failure = !empty( $_GET['failed'] ) ? true : false; // Was that a failure?
 
@@ -530,11 +530,11 @@ class BB_Replies_Admin {
 				return;
 
 			// Get reply and bail if empty
-			$reply = bbp_get_reply( $reply_id );
+			$reply = bb_get_reply( $reply_id );
 			if ( empty( $reply ) )
 				return;
 
-			$reply_title = esc_html( bbp_get_reply_title( $reply->ID ) );
+			$reply_title = esc_html( bb_get_reply_title( $reply->ID ) );
 
 			switch ( $notice ) {
 				case 'spammed' :
@@ -547,7 +547,7 @@ class BB_Replies_Admin {
 			}
 
 			// Do additional reply toggle notice filters (admin side)
-			$message = apply_filters( 'bbp_toggle_reply_notice_admin', $message, $reply->ID, $notice, $is_failure );
+			$message = apply_filters( 'bb_toggle_reply_notice_admin', $message, $reply->ID, $notice, $is_failure );
 
 			?>
 
@@ -565,7 +565,7 @@ class BB_Replies_Admin {
 	 * @since bbPress (r2577)
 	 *
 	 * @param array $columns The columns
-	 * @uses apply_filters() Calls 'bbp_admin_replies_column_headers' with
+	 * @uses apply_filters() Calls 'bb_admin_replies_column_headers' with
 	 *                        the columns
 	 * @return array $columns bbPress reply columns
 	 */
@@ -576,13 +576,13 @@ class BB_Replies_Admin {
 		$columns = array(
 			'cb'                => '<input type="checkbox" />',
 			'title'             => __( 'Title',   'bbpress' ),
-			'bbp_reply_forum'   => __( 'Forum',   'bbpress' ),
-			'bbp_reply_topic'   => __( 'Topic',   'bbpress' ),
-			'bbp_reply_author'  => __( 'Author',  'bbpress' ),
-			'bbp_reply_created' => __( 'Created', 'bbpress' ),
+			'bb_reply_forum'   => __( 'Forum',   'bbpress' ),
+			'bb_reply_topic'   => __( 'Topic',   'bbpress' ),
+			'bb_reply_author'  => __( 'Author',  'bbpress' ),
+			'bb_reply_created' => __( 'Created', 'bbpress' ),
 		);
 
-		return apply_filters( 'bbp_admin_replies_column_headers', $columns );
+		return apply_filters( 'bb_admin_replies_column_headers', $columns );
 	}
 
 	/**
@@ -592,25 +592,25 @@ class BB_Replies_Admin {
 	 *
 	 * @param string $column Column
 	 * @param int $reply_id reply id
-	 * @uses bbp_get_reply_topic_id() To get the topic id of the reply
-	 * @uses bbp_topic_title() To output the reply's topic title
+	 * @uses bb_get_reply_topic_id() To get the topic id of the reply
+	 * @uses bb_topic_title() To output the reply's topic title
 	 * @uses apply_filters() Calls 'reply_topic_row_actions' with an array
 	 *                        of reply topic actions
-	 * @uses bbp_get_topic_permalink() To get the topic permalink
-	 * @uses bbp_get_topic_forum_id() To get the forum id of the topic of
+	 * @uses bb_get_topic_permalink() To get the topic permalink
+	 * @uses bb_get_topic_forum_id() To get the forum id of the topic of
 	 *                                 the reply
-	 * @uses bbp_get_forum_permalink() To get the forum permalink
+	 * @uses bb_get_forum_permalink() To get the forum permalink
 	 * @uses admin_url() To get the admin url of post.php
 	 * @uses add_query_arg() To add custom args to the url
 	 * @uses apply_filters() Calls 'reply_topic_forum_row_actions' with an
 	 *                        array of reply topic forum actions
-	 * @uses bbp_reply_author_display_name() To output the reply author name
+	 * @uses bb_reply_author_display_name() To output the reply author name
 	 * @uses get_the_date() Get the reply creation date
 	 * @uses get_the_time() Get the reply creation time
 	 * @uses esc_attr() To sanitize the reply creation time
-	 * @uses bbp_get_reply_last_active_time() To get the time when the reply was
+	 * @uses bb_get_reply_last_active_time() To get the time when the reply was
 	 *                                    last active
-	 * @uses do_action() Calls 'bbp_admin_replies_column_data' with the
+	 * @uses do_action() Calls 'bb_admin_replies_column_data' with the
 	 *                    column and reply id
 	 */
 	public function replies_column_data( $column, $reply_id ) {
@@ -618,19 +618,19 @@ class BB_Replies_Admin {
 		if ( $this->bail() ) return;
 
 		// Get topic ID
-		$topic_id = bbp_get_reply_topic_id( $reply_id );
+		$topic_id = bb_get_reply_topic_id( $reply_id );
 
 		// Populate Column Data
 		switch ( $column ) {
 
 			// Topic
-			case 'bbp_reply_topic' :
+			case 'bb_reply_topic' :
 
 				// Output forum name
 				if ( !empty( $topic_id ) ) {
 
 					// Topic Title
-					$topic_title = bbp_get_topic_title( $topic_id );
+					$topic_title = bb_get_topic_title( $topic_id );
 					if ( empty( $topic_title ) ) {
 						$topic_title = __( 'No Topic', 'bbpress' );
 					}
@@ -646,17 +646,17 @@ class BB_Replies_Admin {
 				break;
 
 			// Forum
-			case 'bbp_reply_forum' :
+			case 'bb_reply_forum' :
 
 				// Get Forum ID's
-				$reply_forum_id = bbp_get_reply_forum_id( $reply_id );
-				$topic_forum_id = bbp_get_topic_forum_id( $topic_id );
+				$reply_forum_id = bb_get_reply_forum_id( $reply_id );
+				$topic_forum_id = bb_get_topic_forum_id( $topic_id );
 
 				// Output forum name
 				if ( !empty( $reply_forum_id ) ) {
 
 					// Forum Title
-					$forum_title = bbp_get_forum_title( $reply_forum_id );
+					$forum_title = bb_get_forum_title( $reply_forum_id );
 					if ( empty( $forum_title ) ) {
 						$forum_title = __( 'No Forum', 'bbpress' );
 					}
@@ -679,12 +679,12 @@ class BB_Replies_Admin {
 				break;
 
 			// Author
-			case 'bbp_reply_author' :
-				bbp_reply_author_display_name ( $reply_id );
+			case 'bb_reply_author' :
+				bb_reply_author_display_name ( $reply_id );
 				break;
 
 			// Freshness
-			case 'bbp_reply_created':
+			case 'bb_reply_created':
 
 				// Output last activity time and date
 				printf( __( '%1$s <br /> %2$s', 'bbpress' ),
@@ -696,7 +696,7 @@ class BB_Replies_Admin {
 
 			// Do action for anything else
 			default :
-				do_action( 'bbp_admin_replies_column_data', $column, $reply_id );
+				do_action( 'bb_admin_replies_column_data', $column, $reply_id );
 				break;
 		}
 	}
@@ -711,13 +711,13 @@ class BB_Replies_Admin {
 	 *
 	 * @param array $actions Actions
 	 * @param array $reply Reply object
-	 * @uses bbp_get_reply_post_type() To get the reply post type
-	 * @uses bbp_reply_content() To output reply content
-	 * @uses bbp_get_reply_permalink() To get the reply link
-	 * @uses bbp_get_reply_title() To get the reply title
+	 * @uses bb_get_reply_post_type() To get the reply post type
+	 * @uses bb_reply_content() To output reply content
+	 * @uses bb_get_reply_permalink() To get the reply link
+	 * @uses bb_get_reply_title() To get the reply title
 	 * @uses current_user_can() To check if the current user can edit or
 	 *                           delete the reply
-	 * @uses bbp_is_reply_spam() To check if the reply is marked as spam
+	 * @uses bb_is_reply_spam() To check if the reply is marked as spam
 	 * @uses get_post_type_object() To get the reply post type object
 	 * @uses add_query_arg() To add custom args to the url
 	 * @uses remove_query_arg() To remove custom args from the url
@@ -732,17 +732,17 @@ class BB_Replies_Admin {
 		unset( $actions['inline hide-if-no-js'] );
 
 		// Reply view links to topic
-		$actions['view'] = '<a href="' . bbp_get_reply_url( $reply->ID ) . '" title="' . esc_attr( sprintf( __( 'View &#8220;%s&#8221;', 'bbpress' ), bbp_get_reply_title( $reply->ID ) ) ) . '" rel="permalink">' . __( 'View', 'bbpress' ) . '</a>';
+		$actions['view'] = '<a href="' . bb_get_reply_url( $reply->ID ) . '" title="' . esc_attr( sprintf( __( 'View &#8220;%s&#8221;', 'bbpress' ), bb_get_reply_title( $reply->ID ) ) ) . '" rel="permalink">' . __( 'View', 'bbpress' ) . '</a>';
 
 		// User cannot view replies in trash
-		if ( ( bbp_get_trash_status_id() == $reply->post_status ) && !current_user_can( 'view_trash' ) )
+		if ( ( bb_get_trash_status_id() == $reply->post_status ) && !current_user_can( 'view_trash' ) )
 			unset( $actions['view'] );
 
 		// Only show the actions if the user is capable of viewing them
 		if ( current_user_can( 'moderate', $reply->ID ) ) {
-			if ( in_array( $reply->post_status, array( bbp_get_public_status_id(), bbp_get_spam_status_id() ) ) ) {
-				$spam_uri  = esc_url( wp_nonce_url( add_query_arg( array( 'reply_id' => $reply->ID, 'action' => 'bbp_toggle_reply_spam' ), remove_query_arg( array( 'bbp_reply_toggle_notice', 'reply_id', 'failed', 'super' ) ) ), 'spam-reply_'  . $reply->ID ) );
-				if ( bbp_is_reply_spam( $reply->ID ) ) {
+			if ( in_array( $reply->post_status, array( bb_get_public_status_id(), bb_get_spam_status_id() ) ) ) {
+				$spam_uri  = esc_url( wp_nonce_url( add_query_arg( array( 'reply_id' => $reply->ID, 'action' => 'bb_toggle_reply_spam' ), remove_query_arg( array( 'bb_reply_toggle_notice', 'reply_id', 'failed', 'super' ) ) ), 'spam-reply_'  . $reply->ID ) );
+				if ( bb_is_reply_spam( $reply->ID ) ) {
 					$actions['spam'] = '<a href="' . $spam_uri . '" title="' . esc_attr__( 'Mark the reply as not spam', 'bbpress' ) . '">' . __( 'Not spam', 'bbpress' ) . '</a>';
 				} else {
 					$actions['spam'] = '<a href="' . $spam_uri . '" title="' . esc_attr__( 'Mark this reply as spam',    'bbpress' ) . '">' . __( 'Spam',     'bbpress' ) . '</a>';
@@ -752,16 +752,16 @@ class BB_Replies_Admin {
 
 		// Trash
 		if ( current_user_can( 'delete_reply', $reply->ID ) ) {
-			if ( bbp_get_trash_status_id() == $reply->post_status ) {
-				$post_type_object = get_post_type_object( bbp_get_reply_post_type() );
-				$actions['untrash'] = "<a title='" . esc_attr__( 'Restore this item from the Trash', 'bbpress' ) . "' href='" . add_query_arg( array( '_wp_http_referer' => add_query_arg( array( 'post_type' => bbp_get_reply_post_type() ), admin_url( 'edit.php' ) ) ), wp_nonce_url( admin_url( sprintf( $post_type_object->_edit_link . '&amp;action=untrash', $reply->ID ) ), 'untrash-' . $reply->post_type . '_' . $reply->ID ) ) . "'>" . __( 'Restore', 'bbpress' ) . "</a>";
+			if ( bb_get_trash_status_id() == $reply->post_status ) {
+				$post_type_object = get_post_type_object( bb_get_reply_post_type() );
+				$actions['untrash'] = "<a title='" . esc_attr__( 'Restore this item from the Trash', 'bbpress' ) . "' href='" . add_query_arg( array( '_wp_http_referer' => add_query_arg( array( 'post_type' => bb_get_reply_post_type() ), admin_url( 'edit.php' ) ) ), wp_nonce_url( admin_url( sprintf( $post_type_object->_edit_link . '&amp;action=untrash', $reply->ID ) ), 'untrash-' . $reply->post_type . '_' . $reply->ID ) ) . "'>" . __( 'Restore', 'bbpress' ) . "</a>";
 			} elseif ( EMPTY_TRASH_DAYS ) {
-				$actions['trash'] = "<a class='submitdelete' title='" . esc_attr__( 'Move this item to the Trash', 'bbpress' ) . "' href='" . add_query_arg( array( '_wp_http_referer' => add_query_arg( array( 'post_type' => bbp_get_reply_post_type() ), admin_url( 'edit.php' ) ) ), get_delete_post_link( $reply->ID ) ) . "'>" . __( 'Trash', 'bbpress' ) . "</a>";
+				$actions['trash'] = "<a class='submitdelete' title='" . esc_attr__( 'Move this item to the Trash', 'bbpress' ) . "' href='" . add_query_arg( array( '_wp_http_referer' => add_query_arg( array( 'post_type' => bb_get_reply_post_type() ), admin_url( 'edit.php' ) ) ), get_delete_post_link( $reply->ID ) ) . "'>" . __( 'Trash', 'bbpress' ) . "</a>";
 			}
 
-			if ( bbp_get_trash_status_id() == $reply->post_status || !EMPTY_TRASH_DAYS ) {
-				$actions['delete'] = "<a class='submitdelete' title='" . esc_attr__( 'Delete this item permanently', 'bbpress' ) . "' href='" . add_query_arg( array( '_wp_http_referer' => add_query_arg( array( 'post_type' => bbp_get_reply_post_type() ), admin_url( 'edit.php' ) ) ), get_delete_post_link( $reply->ID, '', true ) ) . "'>" . __( 'Delete Permanently', 'bbpress' ) . "</a>";
-			} elseif ( bbp_get_spam_status_id() == $reply->post_status ) {
+			if ( bb_get_trash_status_id() == $reply->post_status || !EMPTY_TRASH_DAYS ) {
+				$actions['delete'] = "<a class='submitdelete' title='" . esc_attr__( 'Delete this item permanently', 'bbpress' ) . "' href='" . add_query_arg( array( '_wp_http_referer' => add_query_arg( array( 'post_type' => bb_get_reply_post_type() ), admin_url( 'edit.php' ) ) ), get_delete_post_link( $reply->ID, '', true ) ) . "'>" . __( 'Delete Permanently', 'bbpress' ) . "</a>";
+			} elseif ( bb_get_spam_status_id() == $reply->post_status ) {
 				unset( $actions['trash'] );
 			}
 		}
@@ -774,9 +774,9 @@ class BB_Replies_Admin {
 	 *
 	 * @since bbPress (r2991)
 	 *
-	 * @uses bbp_get_reply_post_type() To get the reply post type
-	 * @uses bbp_get_topic_post_type() To get the topic post type
-	 * @uses bbp_dropdown() To generate a forum dropdown
+	 * @uses bb_get_reply_post_type() To get the reply post type
+	 * @uses bb_get_topic_post_type() To get the topic post type
+	 * @uses bb_dropdown() To generate a forum dropdown
 	 * @return bool False. If post type is not topic or reply
 	 */
 	public function filter_dropdown() {
@@ -784,17 +784,17 @@ class BB_Replies_Admin {
 		if ( $this->bail() ) return;
 
 		// Add Empty Spam button
-		if ( !empty( $_GET['post_status'] ) && ( bbp_get_spam_status_id() == $_GET['post_status'] ) && current_user_can( 'moderate' ) ) {
+		if ( !empty( $_GET['post_status'] ) && ( bb_get_spam_status_id() == $_GET['post_status'] ) && current_user_can( 'moderate' ) ) {
 			wp_nonce_field( 'bulk-destroy', '_destroy_nonce' );
 			$title = esc_attr__( 'Empty Spam', 'bbpress' );
 			submit_button( $title, 'button-secondary apply', 'delete_all', false );
 		}
 
 		// Get which forum is selected
-		$selected = !empty( $_GET['bbp_forum_id'] ) ? $_GET['bbp_forum_id'] : '';
+		$selected = !empty( $_GET['bb_forum_id'] ) ? $_GET['bb_forum_id'] : '';
 
 		// Show the forums dropdown
-		bbp_dropdown( array(
+		bb_dropdown( array(
 			'selected'  => $selected,
 			'show_none' => __( 'In all forums', 'bbpress' )
 		) );
@@ -807,8 +807,8 @@ class BB_Replies_Admin {
 	 *
 	 * @param array $query_vars Query variables from {@link WP_Query}
 	 * @uses is_admin() To check if it's the admin section
-	 * @uses bbp_get_topic_post_type() To get the topic post type
-	 * @uses bbp_get_reply_post_type() To get the reply post type
+	 * @uses bb_get_topic_post_type() To get the topic post type
+	 * @uses bb_get_reply_post_type() To get the reply post type
 	 * @return array Processed Query Vars
 	 */
 	public function filter_post_rows( $query_vars ) {
@@ -816,9 +816,9 @@ class BB_Replies_Admin {
 		if ( $this->bail() ) return $query_vars;
 
 		// Add post_parent query_var if one is present
-		if ( !empty( $_GET['bbp_forum_id'] ) ) {
-			$query_vars['meta_key']   = '_bbp_forum_id';
-			$query_vars['meta_value'] = $_GET['bbp_forum_id'];
+		if ( !empty( $_GET['bb_forum_id'] ) ) {
+			$query_vars['meta_key']   = '_bb_forum_id';
+			$query_vars['meta_value'] = $_GET['bb_forum_id'];
 		}
 
 		// Return manipulated query_vars
@@ -831,7 +831,7 @@ class BB_Replies_Admin {
 	 * @since bbPress (r3080)
 	 *
 	 * @global int $post_ID
-	 * @uses bbp_get_topic_permalink()
+	 * @uses bb_get_topic_permalink()
 	 * @uses wp_post_revision_title()
 	 * @uses esc_url()
 	 * @uses add_query_arg()
@@ -846,10 +846,10 @@ class BB_Replies_Admin {
 		if ( $this->bail() ) return $messages;
 
 		// URL for the current topic
-		$topic_url = bbp_get_topic_permalink( bbp_get_reply_topic_id( $post_ID ) );
+		$topic_url = bb_get_topic_permalink( bb_get_reply_topic_id( $post_ID ) );
 
 		// Current reply's post_date
-		$post_date = bbp_get_global_post_field( 'post_date', 'raw' );
+		$post_date = bb_get_global_post_field( 'post_date', 'raw' );
 
 		// Messages array
 		$messages[$this->post_type] = array(

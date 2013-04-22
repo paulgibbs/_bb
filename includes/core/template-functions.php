@@ -21,7 +21,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
  *
  * @param string $slug
  * @param string $name Optional. Default null
- * @uses bbp_locate_template()
+ * @uses bb_locate_template()
  * @uses load_template()
  * @uses get_template_part()
  */
@@ -37,10 +37,10 @@ function bb_get_template_part( $slug, $name = null ) {
 	$templates[] = $slug . '.php';
 
 	// Allow template parst to be filtered
-	$templates = apply_filters( 'bbp_get_template_part', $templates, $slug, $name );
+	$templates = apply_filters( 'bb_get_template_part', $templates, $slug, $name );
 
 	// Return the part that is found
-	return bbp_locate_template( $templates, true, false );
+	return bb_locate_template( $templates, true, false );
 }
 
 /**
@@ -62,7 +62,7 @@ function bb_locate_template( $template_names, $load = false, $require_once = tru
 
 	// No file found yet
 	$located            = false;
-	$template_locations = bbp_get_template_stack();
+	$template_locations = bb_get_template_stack();
 
 	// Try to find a template file
 	foreach ( (array) $template_names as $template_name ) {
@@ -96,9 +96,9 @@ function bb_locate_template( $template_names, $load = false, $require_once = tru
 	 * and should not be used to short-circuit any part of the template locator.
 	 *
 	 * If you want to override a specific template part, please either filter
-	 * 'bbp_get_template_part' or add a new location to the template stack.
+	 * 'bb_get_template_part' or add a new location to the template stack.
 	 */
-	do_action( 'bbp_locate_template', $located, $template_name, $template_names, $template_locations, $load, $require_once );
+	do_action( 'bb_locate_template', $located, $template_name, $template_names, $template_locations, $load, $require_once );
 
 	// Maybe load the template if one was located
 	if ( ( true == $load ) && !empty( $located ) ) {
@@ -114,7 +114,7 @@ function bb_locate_template( $template_names, $load = false, $require_once = tru
  *
  * This allows for templates to live in places beyond just the parent/child
  * relationship, to allow for custom template locations. Used in conjunction
- * with bbp_locate_template(), this allows for easy template overrides.
+ * with bb_locate_template(), this allows for easy template overrides.
  *
  * @since bbPress (r4323)
  *
@@ -128,7 +128,7 @@ function bb_register_template_stack( $location_callback = '', $priority = 10 ) {
 		return false;
 
 	// Add location callback to template stack
-	return add_filter( 'bbp_template_stack', $location_callback, (int) $priority );
+	return add_filter( 'bb_template_stack', $location_callback, (int) $priority );
 }
 
 /**
@@ -138,7 +138,7 @@ function bb_register_template_stack( $location_callback = '', $priority = 10 ) {
  *
  * @param string $location Callback function that returns the
  * @param int $priority
- * @see bbp_register_template_stack()
+ * @see bb_register_template_stack()
  */
 function bb_deregister_template_stack( $location_callback = '', $priority = 10 ) {
 
@@ -147,14 +147,14 @@ function bb_deregister_template_stack( $location_callback = '', $priority = 10 )
 		return false;
 
 	// Remove location callback to template stack
-	return remove_filter( 'bbp_template_stack', $location_callback, (int) $priority );
+	return remove_filter( 'bb_template_stack', $location_callback, (int) $priority );
 }
 
 /**
- * Call the functions added to the 'bbp_template_stack' filter hook, and return
+ * Call the functions added to the 'bb_template_stack' filter hook, and return
  * an array of the template locations.
  *
- * @see bbp_register_template_stack()
+ * @see bb_register_template_stack()
  *
  * @since bbPress (r4323)
  *
@@ -168,10 +168,10 @@ function bb_get_template_stack() {
 	global $wp_filter, $merged_filters, $wp_current_filter;
 
 	// Setup some default variables
-	$tag  = 'bbp_template_stack';
+	$tag  = 'bb_template_stack';
 	$args = $stack = array();
 
-	// Add 'bbp_template_stack' to the current filter array
+	// Add 'bb_template_stack' to the current filter array
 	$wp_current_filter[] = $tag;
 
 	// Sort
@@ -183,7 +183,7 @@ function bb_get_template_stack() {
 	// Ensure we're always at the beginning of the filter array
 	reset( $wp_filter[ $tag ] );
 
-	// Loop through 'bbp_template_stack' filters, and call callback functions
+	// Loop through 'bb_template_stack' filters, and call callback functions
 	do {
 		foreach( (array) current( $wp_filter[$tag] ) as $the_ ) {
 			if ( ! is_null( $the_['function'] ) ) {
@@ -193,13 +193,13 @@ function bb_get_template_stack() {
 		}
 	} while ( next( $wp_filter[$tag] ) !== false );
 
-	// Remove 'bbp_template_stack' from the current filter array
+	// Remove 'bb_template_stack' from the current filter array
 	array_pop( $wp_current_filter );
 
 	// Remove empties and duplicates
 	$stack = array_unique( array_filter( $stack ) );
 
-	return (array) apply_filters( 'bbp_get_template_stack', $stack ) ;
+	return (array) apply_filters( 'bb_get_template_stack', $stack ) ;
 }
 
 /**
@@ -207,16 +207,16 @@ function bb_get_template_stack() {
  *
  * Used to quickly retrieve the path of a template without including the file
  * extension. It will also check the parent theme and theme-compat theme with
- * the use of {@link bbp_locate_template()}. Allows for more generic template
+ * the use of {@link bb_locate_template()}. Allows for more generic template
  * locations without the use of the other get_*_template() functions.
  *
  * @since bbPress (r3629)
  *
  * @param string $type Filename without extension.
  * @param array $templates An optional list of template candidates
- * @uses bbp_set_theme_compat_templates()
- * @uses bbp_locate_template()
- * @uses bbp_set_theme_compat_template()
+ * @uses bb_set_theme_compat_templates()
+ * @uses bb_locate_template()
+ * @uses bb_set_theme_compat_template()
  * @return string Full path to file.
  */
 function bb_get_query_template( $type, $templates = array() ) {
@@ -227,12 +227,12 @@ function bb_get_query_template( $type, $templates = array() ) {
 
 	// Filter possible templates, try to match one, and set any bbPress theme
 	// compat properties so they can be cross-checked later.
-	$templates = apply_filters( "bbp_get_{$type}_template", $templates );
-	$templates = bbp_set_theme_compat_templates( $templates );
-	$template  = bbp_locate_template( $templates );
-	$template  = bbp_set_theme_compat_template( $template );
+	$templates = apply_filters( "bb_get_{$type}_template", $templates );
+	$templates = bb_set_theme_compat_templates( $templates );
+	$template  = bb_locate_template( $templates );
+	$template  = bb_set_theme_compat_template( $template );
 
-	return apply_filters( "bbp_{$type}_template", $template );
+	return apply_filters( "bb_{$type}_template", $template );
 }
 
 /**
@@ -248,7 +248,7 @@ function bb_get_template_locations( $templates = array() ) {
 		'forums',
 		''
 	);
-	return apply_filters( 'bbp_get_template_locations', $locations, $templates );
+	return apply_filters( 'bb_get_template_locations', $locations, $templates );
 }
 
 /**
@@ -263,32 +263,32 @@ function bb_add_template_stack_locations( $stacks = array() ) {
 	$retval = array();
 
 	// Get alternate locations
-	$locations = bbp_get_template_locations();
+	$locations = bb_get_template_locations();
 
 	// Loop through locations and stacks and combine
 	foreach ( (array) $stacks as $stack )
 		foreach ( (array) $locations as $custom_location )
 			$retval[] = untrailingslashit( trailingslashit( $stack ) . $custom_location );
 
-	return apply_filters( 'bbp_add_template_stack_locations', array_unique( $retval ), $stacks );
+	return apply_filters( 'bb_add_template_stack_locations', array_unique( $retval ), $stacks );
 }
 
 /**
  * Add checks for bbPress conditions to parse_query action
  *
- * If it's a user page, WP_Query::bbp_is_single_user is set to true.
- * If it's a user edit page, WP_Query::bbp_is_single_user_edit is set to true
+ * If it's a user page, WP_Query::bb_is_single_user is set to true.
+ * If it's a user edit page, WP_Query::bb_is_single_user_edit is set to true
  * and the the 'wp-admin/includes/user.php' file is included.
  * In addition, on user/user edit pages, WP_Query::home is set to false & query
- * vars 'bbp_user_id' with the displayed user id and 'author_name' with the
+ * vars 'bb_user_id' with the displayed user id and 'author_name' with the
  * displayed user's nicename are added.
  *
- * If it's a forum edit, WP_Query::bbp_is_forum_edit is set to true
- * If it's a topic edit, WP_Query::bbp_is_topic_edit is set to true
- * If it's a reply edit, WP_Query::bbp_is_reply_edit is set to true.
+ * If it's a forum edit, WP_Query::bb_is_forum_edit is set to true
+ * If it's a topic edit, WP_Query::bb_is_topic_edit is set to true
+ * If it's a reply edit, WP_Query::bb_is_reply_edit is set to true.
  *
- * If it's a view page, WP_Query::bbp_is_view is set to true
- * If it's a search page, WP_Query::bbp_is_search is set to true
+ * If it's a view page, WP_Query::bb_is_view is set to true
+ * If it's a search page, WP_Query::bb_is_search is set to true
  *
  * @since bbPress (r2688)
  *
@@ -302,10 +302,10 @@ function bb_add_template_stack_locations( $stacks = array() ) {
  * @uses is_user_member_of_blog() To check if user profile page exists
  * @uses WP_Query::set_404() To set a 404 status
  * @uses apply_filters() Calls 'enable_edit_any_user_configuration' with true
- * @uses bbp_get_view_query_args() To get the view query args
- * @uses bbp_get_forum_post_type() To get the forum post type
- * @uses bbp_get_topic_post_type() To get the topic post type
- * @uses bbp_get_reply_post_type() To get the reply post type
+ * @uses bb_get_view_query_args() To get the view query args
+ * @uses bb_get_forum_post_type() To get the forum post type
+ * @uses bb_get_topic_post_type() To get the topic post type
+ * @uses bb_get_reply_post_type() To get the reply post type
  * @uses remove_action() To remove the auto save post revision action
  */
 function bb_parse_query( $posts_query ) {
@@ -323,52 +323,52 @@ function bb_parse_query( $posts_query ) {
 		return;
 
 	// Get query variables
-	$bbp_view = $posts_query->get( bbp_get_view_rewrite_id() );
-	$bbp_user = $posts_query->get( bbp_get_user_rewrite_id() );
-	$is_edit  = $posts_query->get( bbp_get_edit_rewrite_id() );
+	$bb_view = $posts_query->get( bb_get_view_rewrite_id() );
+	$bb_user = $posts_query->get( bb_get_user_rewrite_id() );
+	$is_edit  = $posts_query->get( bb_get_edit_rewrite_id() );
 
 	// It is a user page - We'll also check if it is user edit
-	if ( !empty( $bbp_user ) ) {
+	if ( !empty( $bb_user ) ) {
 
 		// Not a user_id so try email and slug
-		if ( get_option( 'permalink_structure' ) || ! is_numeric( $bbp_user ) ) {
+		if ( get_option( 'permalink_structure' ) || ! is_numeric( $bb_user ) ) {
 
 			// Email was passed
-			if ( is_email( $bbp_user ) ) {
-				$bbp_user = get_user_by( 'email', $bbp_user );
+			if ( is_email( $bb_user ) ) {
+				$bb_user = get_user_by( 'email', $bb_user );
 
 			// Try nicename
 			} else {
-				$bbp_user = get_user_by( 'slug', $bbp_user );
+				$bb_user = get_user_by( 'slug', $bb_user );
 			}
 
 			// If we were successful, set to ID
-			if ( is_object( $bbp_user ) ) {
-				$bbp_user = $bbp_user->ID;
+			if ( is_object( $bb_user ) ) {
+				$bb_user = $bb_user->ID;
 			}
 		}
 
 		// Cast as int, just in case
-		$bbp_user = (int) $bbp_user;
+		$bb_user = (int) $bb_user;
 
 		// 404 and bail if user does not have a profile
-		if ( ! bbp_user_has_profile( $bbp_user ) ) {
+		if ( ! bb_user_has_profile( $bb_user ) ) {
 			$posts_query->set_404();
 			return;
 		}
 
 		/** User Exists *******************************************************/
 
-		$is_favs    = $posts_query->get( bbp_get_user_favorites_rewrite_id()     );
-		$is_subs    = $posts_query->get( bbp_get_user_subscriptions_rewrite_id() );
-		$is_topics  = $posts_query->get( bbp_get_user_topics_rewrite_id()        );
-		$is_replies = $posts_query->get( bbp_get_user_replies_rewrite_id()       );
+		$is_favs    = $posts_query->get( bb_get_user_favorites_rewrite_id()     );
+		$is_subs    = $posts_query->get( bb_get_user_subscriptions_rewrite_id() );
+		$is_topics  = $posts_query->get( bb_get_user_topics_rewrite_id()        );
+		$is_replies = $posts_query->get( bb_get_user_replies_rewrite_id()       );
 
 		// View or edit?
 		if ( !empty( $is_edit ) ) {
 
 			// We are editing a profile
-			$posts_query->bbp_is_single_user_edit = true;
+			$posts_query->bb_is_single_user_edit = true;
 
 			// Load the core WordPress contact methods
 			if ( !function_exists( '_wp_get_user_contactmethods' ) ) {
@@ -386,31 +386,31 @@ function bb_parse_query( $posts_query ) {
 			}
 
 			// Editing a user
-			$posts_query->bbp_is_edit = true;
+			$posts_query->bb_is_edit = true;
 
 		// User favorites
 		} elseif ( ! empty( $is_favs ) ) {
-			$posts_query->bbp_is_single_user_favs = true;
+			$posts_query->bb_is_single_user_favs = true;
 
 		// User subscriptions
 		} elseif ( ! empty( $is_subs ) ) {
-			$posts_query->bbp_is_single_user_subs = true;
+			$posts_query->bb_is_single_user_subs = true;
 
 		// User topics
 		} elseif ( ! empty( $is_topics ) ) {
-			$posts_query->bbp_is_single_user_topics = true;
+			$posts_query->bb_is_single_user_topics = true;
 
 		// User topics
 		} elseif ( ! empty( $is_replies ) ) {
-			$posts_query->bbp_is_single_user_replies = true;
+			$posts_query->bb_is_single_user_replies = true;
 
 		// User profile
 		} else {
-			$posts_query->bbp_is_single_user_profile = true;
+			$posts_query->bb_is_single_user_profile = true;
 		}
 
 		// Looking at a single user
-		$posts_query->bbp_is_single_user = true;
+		$posts_query->bb_is_single_user = true;
 
 		// Make sure 404 is not set
 		$posts_query->is_404  = false;
@@ -419,15 +419,15 @@ function bb_parse_query( $posts_query ) {
 		$posts_query->is_home = false;
 
 		// Get the user data
-		$user = get_userdata( $bbp_user );
+		$user = get_userdata( $bb_user );
 
 		// User is looking at their own profile
 		if ( get_current_user_id() == $user->ID ) {
-			$posts_query->bbp_is_single_user_home = true;
+			$posts_query->bb_is_single_user_home = true;
 		}
 
-		// Set bbp_user_id for future reference
-		$posts_query->set( 'bbp_user_id', $user->ID );
+		// Set bb_user_id for future reference
+		$posts_query->set( 'bb_user_id', $user->ID );
 
 		// Set author_name as current user's nicename to get correct posts
 		$posts_query->set( 'author_name', $user->user_nicename );
@@ -436,10 +436,10 @@ function bb_parse_query( $posts_query ) {
 		bbpress()->displayed_user = $user;
 
 	// View Page
-	} elseif ( !empty( $bbp_view ) ) {
+	} elseif ( !empty( $bb_view ) ) {
 
 		// Check if the view exists by checking if there are query args are set
-		$view_args = bbp_get_view_query_args( $bbp_view );
+		$view_args = bb_get_view_query_args( $bb_view );
 
 		// Bail if view args is false (view isn't registered)
 		if ( false === $view_args ) {
@@ -451,21 +451,21 @@ function bb_parse_query( $posts_query ) {
 		$posts_query->is_home     = false;
 
 		// We are in a custom topic view
-		$posts_query->bbp_is_view = true;
+		$posts_query->bb_is_view = true;
 
 	// Search Page
-	} elseif ( isset( $posts_query->query_vars[ bbp_get_search_rewrite_id() ] ) ) {
+	} elseif ( isset( $posts_query->query_vars[ bb_get_search_rewrite_id() ] ) ) {
 
 		// Check if there are search query args set
-		$search_terms = bbp_get_search_terms();
+		$search_terms = bb_get_search_terms();
 		if ( !empty( $search_terms ) )
-			$posts_query->bbp_search_terms = $search_terms;
+			$posts_query->bb_search_terms = $search_terms;
 
 		// Correct is_home variable
 		$posts_query->is_home = false;
 
 		// We are in a search query
-		$posts_query->bbp_is_search = true;
+		$posts_query->bb_is_search = true;
 
 	// Forum/Topic/Reply Edit Page
 	} elseif ( !empty( $is_edit ) ) {
@@ -478,37 +478,37 @@ function bb_parse_query( $posts_query ) {
 			switch( $post_type ) {
 
 				// We are editing a forum
-				case bbp_get_forum_post_type() :
-					$posts_query->bbp_is_forum_edit = true;
-					$posts_query->bbp_is_edit       = true;
+				case bb_get_forum_post_type() :
+					$posts_query->bb_is_forum_edit = true;
+					$posts_query->bb_is_edit       = true;
 					break;
 
 				// We are editing a topic
-				case bbp_get_topic_post_type() :
-					$posts_query->bbp_is_topic_edit = true;
-					$posts_query->bbp_is_edit       = true;
+				case bb_get_topic_post_type() :
+					$posts_query->bb_is_topic_edit = true;
+					$posts_query->bb_is_edit       = true;
 					break;
 
 				// We are editing a reply
-				case bbp_get_reply_post_type() :
-					$posts_query->bbp_is_reply_edit = true;
-					$posts_query->bbp_is_edit       = true;
+				case bb_get_reply_post_type() :
+					$posts_query->bb_is_reply_edit = true;
+					$posts_query->bb_is_edit       = true;
 					break;
 			}
 
 		// We are editing a topic tag
-		} elseif ( bbp_is_topic_tag() ) {
-			$posts_query->bbp_is_topic_tag_edit = true;
-			$posts_query->bbp_is_edit           = true;
+		} elseif ( bb_is_topic_tag() ) {
+			$posts_query->bb_is_topic_tag_edit = true;
+			$posts_query->bb_is_edit           = true;
 		}
 
 		// We save post revisions on our own
 		remove_action( 'pre_post_update', 'wp_save_post_revision' );
 
 	// Topic tag page
-	} elseif ( bbp_is_topic_tag() ) {
-		$posts_query->set( 'bbp_topic_tag',  get_query_var( 'term' )   );
-		$posts_query->set( 'post_type',      bbp_get_topic_post_type() );
-		$posts_query->set( 'posts_per_page', bbp_get_topics_per_page() );
+	} elseif ( bb_is_topic_tag() ) {
+		$posts_query->set( 'bb_topic_tag',  get_query_var( 'term' )   );
+		$posts_query->set( 'post_type',      bb_get_topic_post_type() );
+		$posts_query->set( 'posts_per_page', bb_get_topics_per_page() );
 	}
 }

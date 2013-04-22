@@ -30,7 +30,7 @@ class Mingle extends BB_Converter_Base {
 			'from_tablename' => 'forum_forums',
 			'from_fieldname' => 'id',
 			'to_type'        => 'forum',
-			'to_fieldname'   => '_bbp_forum_id'
+			'to_fieldname'   => '_bb_forum_id'
 		);
 
 		// Forum parent id (If no parent, then 0. Stored in postmeta)
@@ -38,7 +38,7 @@ class Mingle extends BB_Converter_Base {
 			'from_tablename' => 'forum_forums',
 			'from_fieldname' => 'parent_id',
 			'to_type'        => 'forum',
-			'to_fieldname'   => '_bbp_forum_parent_id'
+			'to_fieldname'   => '_bb_forum_parent_id'
 		);
 
 		// Forum title.
@@ -103,7 +103,7 @@ class Mingle extends BB_Converter_Base {
 			'from_tablename' => 'forum_threads',
 			'from_fieldname' => 'id',
 			'to_type'        => 'topic',
-			'to_fieldname'   => '_bbp_topic_id'
+			'to_fieldname'   => '_bb_topic_id'
 		);
 
 		// Topic parent forum id (If no parent, then 0. Stored in postmeta)
@@ -111,7 +111,7 @@ class Mingle extends BB_Converter_Base {
 			'from_tablename'  => 'forum_threads',
 			'from_fieldname'  => 'parent_id',
 			'to_type'         => 'topic',
-			'to_fieldname'    => '_bbp_forum_id',
+			'to_fieldname'    => '_bb_forum_id',
 			'callback_method' => 'callback_forumid'
 		);
 
@@ -191,7 +191,7 @@ class Mingle extends BB_Converter_Base {
 			'from_tablename' => 'forum_threads',
 			'from_fieldname' => 'last_post',
 			'to_type'        => 'topic',
-			'to_fieldname'   => '_bbp_last_active_time'
+			'to_fieldname'   => '_bb_last_active_time'
 		);
 
 		// Topic status (Open or Closed)
@@ -216,7 +216,7 @@ class Mingle extends BB_Converter_Base {
 			'from_tablename' => 'forum_posts',
 			'from_fieldname' => 'id',
 			'to_type'        => 'reply',
-			'to_fieldname'   => '_bbp_post_id'
+			'to_fieldname'   => '_bb_post_id'
 		);
 
 		// Setup reply section table joins
@@ -229,7 +229,7 @@ class Mingle extends BB_Converter_Base {
 			'join_expression' => 'ON forum_posts.parent_id = forum_threads.id',
 			'from_expression' => 'WHERE forum_threads.subject != forum_posts.subject',
 			'to_type'         => 'reply',
-			'to_fieldname'    => '_bbp_last_active_time'
+			'to_fieldname'    => '_bb_last_active_time'
 		);
 
 		// Reply parent forum id (If no parent, then 0. Stored in postmeta)
@@ -237,7 +237,7 @@ class Mingle extends BB_Converter_Base {
 			'from_tablename'  => 'forum_posts',
 			'from_fieldname'  => 'parent_id',
 			'to_type'         => 'reply',
-			'to_fieldname'    => '_bbp_forum_id',
+			'to_fieldname'    => '_bb_forum_id',
 			'callback_method' => 'callback_topicid_to_forumid'
 		);
 
@@ -246,7 +246,7 @@ class Mingle extends BB_Converter_Base {
 			'from_tablename'  => 'forum_posts',
 			'from_fieldname'  => 'id',
 			'to_type'         => 'reply',
-			'to_fieldname'    => '_bbp_topic_id',
+			'to_fieldname'    => '_bb_topic_id',
 			'callback_method' => 'callback_topicid'
 		);
 
@@ -327,7 +327,7 @@ class Mingle extends BB_Converter_Base {
 			'from_tablename' => 'users',
 			'from_fieldname' => 'ID',
 			'to_type'        => 'user',
-			'to_fieldname'   => '_bbp_user_id'
+			'to_fieldname'   => '_bb_user_id'
 		);
 
 		// Store old User password (Stored in usermeta)
@@ -335,7 +335,7 @@ class Mingle extends BB_Converter_Base {
 			'from_tablename' => 'users',
 			'from_fieldname' => 'user_pass',
 			'to_type'        => 'user',
-			'to_fieldname'   => '_bbp_password'
+			'to_fieldname'   => '_bb_password'
 		);
 
 		// User name.

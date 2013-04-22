@@ -51,14 +51,14 @@ class BB_Forums_Admin {
 	 *
 	 * @uses add_action() To add various actions
 	 * @uses add_filter() To add various filters
-	 * @uses bbp_get_forum_post_type() To get the forum post type
-	 * @uses bbp_get_topic_post_type() To get the topic post type
-	 * @uses bbp_get_reply_post_type() To get the reply post type
+	 * @uses bb_get_forum_post_type() To get the forum post type
+	 * @uses bb_get_topic_post_type() To get the topic post type
+	 * @uses bb_get_reply_post_type() To get the reply post type
 	 */
 	private function setup_actions() {
 
 		// Add some general styling to the admin area
-		add_action( 'bbp_admin_head',        array( $this, 'admin_head'       ) );
+		add_action( 'bb_admin_head',        array( $this, 'admin_head'       ) );
 
 		// Messages
 		add_filter( 'post_updated_messages', array( $this, 'updated_messages' ) );
@@ -99,7 +99,7 @@ class BB_Forums_Admin {
 	 * @access private
 	 */
 	private function setup_globals() {
-		$this->post_type = bbp_get_forum_post_type();
+		$this->post_type = bb_get_forum_post_type();
 	}
 
 	/** Contextual Help *******************************************************/
@@ -241,24 +241,24 @@ class BB_Forums_Admin {
 	 *
 	 * @since bbPress (r2746)
 	 *
-	 * @uses bbp_get_forum_post_type() To get the forum post type
+	 * @uses bb_get_forum_post_type() To get the forum post type
 	 * @uses add_meta_box() To add the metabox
-	 * @uses do_action() Calls 'bbp_forum_attributes_metabox'
+	 * @uses do_action() Calls 'bb_forum_attributes_metabox'
 	 */
 	public function attributes_metabox() {
 
 		if ( $this->bail() ) return;
 
 		add_meta_box (
-			'bbp_forum_attributes',
+			'bb_forum_attributes',
 			__( 'Forum Attributes', 'bbpress' ),
-			'bbp_forum_metabox',
+			'bb_forum_metabox',
 			$this->post_type,
 			'side',
 			'high'
 		);
 
-		do_action( 'bbp_forum_attributes_metabox' );
+		do_action( 'bb_forum_attributes_metabox' );
 	}
 
 	/**
@@ -269,17 +269,17 @@ class BB_Forums_Admin {
 	 * @param int $forum_id Forum id
 	 * @uses current_user_can() To check if the current user is capable of
 	 *                           editing the forum
-	 * @uses bbp_get_forum() To get the forum
-	 * @uses bbp_is_forum_closed() To check if the forum is closed
-	 * @uses bbp_is_forum_category() To check if the forum is a category
-	 * @uses bbp_is_forum_private() To check if the forum is private
-	 * @uses bbp_close_forum() To close the forum
-	 * @uses bbp_open_forum() To open the forum
-	 * @uses bbp_categorize_forum() To make the forum a category
-	 * @uses bbp_normalize_forum() To make the forum normal (not category)
-	 * @uses bbp_privatize_forum() To mark the forum as private
-	 * @uses bbp_publicize_forum() To mark the forum as public
-	 * @uses do_action() Calls 'bbp_forum_attributes_metabox_save' with the
+	 * @uses bb_get_forum() To get the forum
+	 * @uses bb_is_forum_closed() To check if the forum is closed
+	 * @uses bb_is_forum_category() To check if the forum is a category
+	 * @uses bb_is_forum_private() To check if the forum is private
+	 * @uses bb_close_forum() To close the forum
+	 * @uses bb_open_forum() To open the forum
+	 * @uses bb_categorize_forum() To make the forum a category
+	 * @uses bb_normalize_forum() To make the forum normal (not category)
+	 * @uses bb_privatize_forum() To mark the forum as private
+	 * @uses bb_publicize_forum() To mark the forum as public
+	 * @uses do_action() Calls 'bb_forum_attributes_metabox_save' with the
 	 *                    forum id
 	 * @return int Forum id
 	 */
@@ -292,15 +292,15 @@ class BB_Forums_Admin {
 			return $forum_id;
 
 		// Bail if not a post request
-		if ( ! bbp_is_post_request() )
+		if ( ! bb_is_post_request() )
 			return $forum_id;
 
 		// Nonce check
-		if ( empty( $_POST['bbp_forum_metabox'] ) || !wp_verify_nonce( $_POST['bbp_forum_metabox'], 'bbp_forum_metabox_save' ) )
+		if ( empty( $_POST['bb_forum_metabox'] ) || !wp_verify_nonce( $_POST['bb_forum_metabox'], 'bb_forum_metabox_save' ) )
 			return $forum_id;
 
 		// Only save for forum post-types
-		if ( ! bbp_is_forum( $forum_id ) )
+		if ( ! bb_is_forum( $forum_id ) )
 			return $forum_id;
 
 		// Bail if current user cannot edit this forum
@@ -311,12 +311,12 @@ class BB_Forums_Admin {
 		$parent_id = ( !empty( $_POST['parent_id'] ) && is_numeric( $_POST['parent_id'] ) ) ? (int) $_POST['parent_id'] : 0;
 
 		// Update the forum meta bidness
-		bbp_update_forum( array(
+		bb_update_forum( array(
 			'forum_id'    => $forum_id,
 			'post_parent' => (int) $parent_id
 		) );
 
-		do_action( 'bbp_forum_attributes_metabox_save', $forum_id );
+		do_action( 'bb_forum_attributes_metabox_save', $forum_id );
 
 		return $forum_id;
 	}
@@ -326,11 +326,11 @@ class BB_Forums_Admin {
 	 *
 	 * @since bbPress (r2464)
 	 *
-	 * @uses bbp_get_forum_post_type() To get the forum post type
-	 * @uses bbp_get_topic_post_type() To get the topic post type
-	 * @uses bbp_get_reply_post_type() To get the reply post type
+	 * @uses bb_get_forum_post_type() To get the forum post type
+	 * @uses bb_get_topic_post_type() To get the topic post type
+	 * @uses bb_get_reply_post_type() To get the reply post type
 	 * @uses sanitize_html_class() To sanitize the classes
-	 * @uses do_action() Calls 'bbp_admin_head'
+	 * @uses do_action() Calls 'bb_admin_head'
 	 */
 	public function admin_head() {
 
@@ -351,39 +351,39 @@ class BB_Forums_Admin {
 				width: 60px;
 			}
 
-			#bbp_forum_attributes hr {
+			#bb_forum_attributes hr {
 				border-style: solid;
 				border-width: 1px;
 				border-color: #ccc #fff #fff #ccc;
 			}
 
-			.column-bbp_forum_topic_count,
-			.column-bbp_forum_reply_count,
-			.column-bbp_topic_reply_count,
-			.column-bbp_topic_voice_count {
+			.column-bb_forum_topic_count,
+			.column-bb_forum_reply_count,
+			.column-bb_topic_reply_count,
+			.column-bb_topic_voice_count {
 				width: 8% !important;
 			}
 
 			.column-author,
-			.column-bbp_reply_author,
-			.column-bbp_topic_author {
+			.column-bb_reply_author,
+			.column-bb_topic_author {
 				width: 10% !important;
 			}
 
-			.column-bbp_topic_forum,
-			.column-bbp_reply_forum,
-			.column-bbp_reply_topic {
+			.column-bb_topic_forum,
+			.column-bb_reply_forum,
+			.column-bb_reply_topic {
 				width: 10% !important;
 			}
 
-			.column-bbp_forum_freshness,
-			.column-bbp_topic_freshness {
+			.column-bb_forum_freshness,
+			.column-bb_topic_freshness {
 				width: 10% !important;
 			}
 
-			.column-bbp_forum_created,
-			.column-bbp_topic_created,
-			.column-bbp_reply_created {
+			.column-bb_forum_created,
+			.column-bb_topic_created,
+			.column-bb_reply_created {
 				width: 15% !important;
 			}
 
@@ -407,7 +407,7 @@ class BB_Forums_Admin {
 	 * @since bbPress (r2485)
 	 *
 	 * @param array $columns The columns
-	 * @uses apply_filters() Calls 'bbp_admin_forums_column_headers' with
+	 * @uses apply_filters() Calls 'bb_admin_forums_column_headers' with
 	 *                        the columns
 	 * @return array $columns bbPress forum columns
 	 */
@@ -418,14 +418,14 @@ class BB_Forums_Admin {
 		$columns = array (
 			'cb'                    => '<input type="checkbox" />',
 			'title'                 => __( 'Forum',     'bbpress' ),
-			'bbp_forum_topic_count' => __( 'Topics',    'bbpress' ),
-			'bbp_forum_reply_count' => __( 'Replies',   'bbpress' ),
+			'bb_forum_topic_count' => __( 'Topics',    'bbpress' ),
+			'bb_forum_reply_count' => __( 'Replies',   'bbpress' ),
 			'author'                => __( 'Creator',   'bbpress' ),
-			'bbp_forum_created'     => __( 'Created' ,  'bbpress' ),
-			'bbp_forum_freshness'   => __( 'Freshness', 'bbpress' )
+			'bb_forum_created'     => __( 'Created' ,  'bbpress' ),
+			'bb_forum_freshness'   => __( 'Freshness', 'bbpress' )
 		);
 
-		return apply_filters( 'bbp_admin_forums_column_headers', $columns );
+		return apply_filters( 'bb_admin_forums_column_headers', $columns );
 	}
 
 	/**
@@ -435,14 +435,14 @@ class BB_Forums_Admin {
 	 *
 	 * @param string $column Column
 	 * @param int $forum_id Forum id
-	 * @uses bbp_forum_topic_count() To output the forum topic count
-	 * @uses bbp_forum_reply_count() To output the forum reply count
+	 * @uses bb_forum_topic_count() To output the forum topic count
+	 * @uses bb_forum_reply_count() To output the forum reply count
 	 * @uses get_the_date() Get the forum creation date
 	 * @uses get_the_time() Get the forum creation time
 	 * @uses esc_attr() To sanitize the forum creation time
-	 * @uses bbp_get_forum_last_active_time() To get the time when the forum was
+	 * @uses bb_get_forum_last_active_time() To get the time when the forum was
 	 *                                    last active
-	 * @uses do_action() Calls 'bbp_admin_forums_column_data' with the
+	 * @uses do_action() Calls 'bb_admin_forums_column_data' with the
 	 *                    column and forum id
 	 */
 	public function column_data( $column, $forum_id ) {
@@ -450,15 +450,15 @@ class BB_Forums_Admin {
 		if ( $this->bail() ) return;
 
 		switch ( $column ) {
-			case 'bbp_forum_topic_count' :
-				bbp_forum_topic_count( $forum_id );
+			case 'bb_forum_topic_count' :
+				bb_forum_topic_count( $forum_id );
 				break;
 
-			case 'bbp_forum_reply_count' :
-				bbp_forum_reply_count( $forum_id );
+			case 'bb_forum_reply_count' :
+				bb_forum_reply_count( $forum_id );
 				break;
 
-			case 'bbp_forum_created':
+			case 'bb_forum_created':
 				printf( __( '%1$s <br /> %2$s', 'bbpress' ),
 					get_the_date(),
 					esc_attr( get_the_time() )
@@ -466,8 +466,8 @@ class BB_Forums_Admin {
 
 				break;
 
-			case 'bbp_forum_freshness' :
-				$last_active = bbp_get_forum_last_active_time( $forum_id, false );
+			case 'bb_forum_freshness' :
+				$last_active = bb_get_forum_last_active_time( $forum_id, false );
 				if ( !empty( $last_active ) )
 					echo $last_active;
 				else
@@ -476,7 +476,7 @@ class BB_Forums_Admin {
 				break;
 
 			default:
-				do_action( 'bbp_admin_forums_column_data', $column, $forum_id );
+				do_action( 'bb_admin_forums_column_data', $column, $forum_id );
 				break;
 		}
 	}
@@ -501,7 +501,7 @@ class BB_Forums_Admin {
 		unset( $actions['inline hide-if-no-js'] );
 
 		// simple hack to show the forum description under the title
-		bbp_forum_content( $forum->ID );
+		bb_forum_content( $forum->ID );
 
 		return $actions;
 	}
@@ -512,7 +512,7 @@ class BB_Forums_Admin {
 	 * @since bbPress (r3080)
 	 *
 	 * @global int $post_ID
-	 * @uses bbp_get_forum_permalink()
+	 * @uses bb_get_forum_permalink()
 	 * @uses wp_post_revision_title()
 	 * @uses esc_url()
 	 * @uses add_query_arg()
@@ -527,10 +527,10 @@ class BB_Forums_Admin {
 		if ( $this->bail() ) return $messages;
 
 		// URL for the current forum
-		$forum_url = bbp_get_forum_permalink( $post_ID );
+		$forum_url = bb_get_forum_permalink( $post_ID );
 
 		// Current forum's post_date
-		$post_date = bbp_get_global_post_field( 'post_date', 'raw' );
+		$post_date = bb_get_global_post_field( 'post_date', 'raw' );
 
 		// Messages array
 		$messages[$this->post_type] = array(

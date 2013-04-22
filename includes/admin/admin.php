@@ -119,24 +119,24 @@ class BB_Admin {
 	private function setup_actions() {
 
 		// Bail to prevent interfering with the deactivation process
-		if ( bbp_is_deactivation() )
+		if ( bb_is_deactivation() )
 			return;
 
 		/** General Actions ***************************************************/
 
-		add_action( 'bbp_admin_menu',              array( $this, 'admin_menus'                ) ); // Add menu item to settings menu
-		add_action( 'bbp_admin_head',              array( $this, 'admin_head'                 ) ); // Add some general styling to the admin area
-		add_action( 'bbp_admin_notices',           array( $this, 'activation_notice'          ) ); // Add notice if not using a bbPress theme
-		add_action( 'bbp_register_admin_style',    array( $this, 'register_admin_style'       ) ); // Add green admin style
-		add_action( 'bbp_register_admin_settings', array( $this, 'register_admin_settings'    ) ); // Add settings
-		add_action( 'bbp_activation',              array( $this, 'new_install'                ) ); // Add menu item to settings menu
+		add_action( 'bb_admin_menu',              array( $this, 'admin_menus'                ) ); // Add menu item to settings menu
+		add_action( 'bb_admin_head',              array( $this, 'admin_head'                 ) ); // Add some general styling to the admin area
+		add_action( 'bb_admin_notices',           array( $this, 'activation_notice'          ) ); // Add notice if not using a bbPress theme
+		add_action( 'bb_register_admin_style',    array( $this, 'register_admin_style'       ) ); // Add green admin style
+		add_action( 'bb_register_admin_settings', array( $this, 'register_admin_settings'    ) ); // Add settings
+		add_action( 'bb_activation',              array( $this, 'new_install'                ) ); // Add menu item to settings menu
 		add_action( 'admin_enqueue_scripts',       array( $this, 'enqueue_scripts'            ) ); // Add enqueued JS and CSS
 		add_action( 'wp_dashboard_setup',          array( $this, 'dashboard_widget_right_now' ) ); // Forums 'Right now' Dashboard widget
 
 		/** Ajax **************************************************************/
 
-		add_action( 'wp_ajax_bbp_suggest_topic',        array( $this, 'suggest_topic' ) );
-		add_action( 'wp_ajax_nopriv_bbp_suggest_topic', array( $this, 'suggest_topic' ) );
+		add_action( 'wp_ajax_bb_suggest_topic',        array( $this, 'suggest_topic' ) );
+		add_action( 'wp_ajax_nopriv_bb_suggest_topic', array( $this, 'suggest_topic' ) );
 
 		/** Filters ***********************************************************/
 
@@ -144,10 +144,10 @@ class BB_Admin {
 		add_filter( 'plugin_action_links', array( $this, 'modify_plugin_action_links' ), 10, 2 );
 
 		// Map settings capabilities
-		add_filter( 'bbp_map_meta_caps',   array( $this, 'map_settings_meta_caps' ), 10, 4 );
+		add_filter( 'bb_map_meta_caps',   array( $this, 'map_settings_meta_caps' ), 10, 4 );
 
 		// Hide the theme compat package selection
-		add_filter( 'bbp_admin_get_settings_sections', array( $this, 'hide_theme_compat_packages' ) );
+		add_filter( 'bb_admin_get_settings_sections', array( $this, 'hide_theme_compat_packages' ) );
 
 		// Allow keymasters to save forums settings
 		add_filter( 'option_page_capability_bbpress',  array( $this, 'option_page_capability_bbpress' ) );
@@ -160,7 +160,7 @@ class BB_Admin {
 		/** Dependencies ******************************************************/
 
 		// Allow plugins to modify these actions
-		do_action_ref_array( 'bbp_admin_loaded', array( &$this ) );
+		do_action_ref_array( 'bb_admin_loaded', array( &$this ) );
 	}
 
 	/**
@@ -177,40 +177,40 @@ class BB_Admin {
 		$hooks = array();
 
 		// These are later removed in admin_head
-		if ( current_user_can( 'bbp_tools_page' ) ) {
-			if ( current_user_can( 'bbp_tools_repair_page' ) ) {
+		if ( current_user_can( 'bb_tools_page' ) ) {
+			if ( current_user_can( 'bb_tools_repair_page' ) ) {
 				$hooks[] = add_management_page(
 					__( 'Repair Forums', 'bbpress' ),
 					__( 'Forum Repair',  'bbpress' ),
 					$this->minimum_capability,
 					'bbp-repair',
-					'bbp_admin_repair'
+					'bb_admin_repair'
 				);
 			}
 
-			if ( current_user_can( 'bbp_tools_import_page' ) ) {
+			if ( current_user_can( 'bb_tools_import_page' ) ) {
 				$hooks[] = add_management_page(
 					__( 'Import Forums', 'bbpress' ),
 					__( 'Forum Import',  'bbpress' ),
 					$this->minimum_capability,
 					'bbp-converter',
-					'bbp_converter_settings'
+					'bb_converter_settings'
 				);
 			}
 
-			if ( current_user_can( 'bbp_tools_reset_page' ) ) {
+			if ( current_user_can( 'bb_tools_reset_page' ) ) {
 				$hooks[] = add_management_page(
 					__( 'Reset Forums', 'bbpress' ),
 					__( 'Forum Reset',  'bbpress' ),
 					$this->minimum_capability,
 					'bbp-reset',
-					'bbp_admin_reset'
+					'bb_admin_reset'
 				);
 			}
 
 			// Fudge the highlighted subnav item when on a bbPress admin page
 			foreach( $hooks as $hook ) {
-				add_action( "admin_head-$hook", 'bbp_tools_modify_menu_highlight' );
+				add_action( "admin_head-$hook", 'bb_tools_modify_menu_highlight' );
 			}
 
 			// Forums Tools Root
@@ -219,23 +219,23 @@ class BB_Admin {
 				__( 'Forums', 'bbpress' ),
 				$this->minimum_capability,
 				'bbp-repair',
-				'bbp_admin_repair'
+				'bb_admin_repair'
 			);
 		}
 
 		// Are settings enabled?
-		if ( current_user_can( 'bbp_settings_page' ) ) {
+		if ( current_user_can( 'bb_settings_page' ) ) {
 			add_options_page(
 				__( 'Forums',  'bbpress' ),
 				__( 'Forums',  'bbpress' ),
 				$this->minimum_capability,
 				'bbpress',
-				'bbp_admin_settings'
+				'bb_admin_settings'
 			);
 		}
 
 		// These are later removed in admin_head
-		if ( current_user_can( 'bbp_about_page' ) ) {
+		if ( current_user_can( 'bb_about_page' ) ) {
 
 			// About
 			add_dashboard_page(
@@ -299,10 +299,10 @@ class BB_Admin {
 	 * @return type
 	 */
 	public static function new_install() {
-		if ( !bbp_is_install() )
+		if ( !bb_is_install() )
 			return;
 
-		bbp_create_initial_content();
+		bb_create_initial_content();
 	}
 
 	/**
@@ -318,7 +318,7 @@ class BB_Admin {
 	public static function register_admin_settings() {
 
 		// Bail if no sections available
-		$sections = bbp_admin_get_settings_sections();
+		$sections = bb_admin_get_settings_sections();
 		if ( empty( $sections ) )
 			return false;
 
@@ -330,7 +330,7 @@ class BB_Admin {
 				continue;
 
 			// Only add section and fields if section has fields
-			$fields = bbp_admin_get_settings_fields_for_section( $section_id );
+			$fields = bb_admin_get_settings_fields_for_section( $section_id );
 			if ( empty( $fields ) )
 				continue;
 
@@ -360,7 +360,7 @@ class BB_Admin {
 	 * @param mixed $args Arguments
 	 * @uses get_post() To get the post
 	 * @uses get_post_type_object() To get the post type object
-	 * @uses apply_filters() Calls 'bbp_map_meta_caps' with caps, cap, user id and
+	 * @uses apply_filters() Calls 'bb_map_meta_caps' with caps, cap, user id and
 	 *                        args
 	 * @return array Actual capabilities for meta capability
 	 */
@@ -370,7 +370,7 @@ class BB_Admin {
 		switch ( $cap ) {
 
 			// BuddyPress
-			case 'bbp_settings_buddypress' :
+			case 'bb_settings_buddypress' :
 				if ( ( is_plugin_active( 'buddypress/bp-loader.php' ) && defined( 'BP_VERSION' ) && bp_is_root_blog() ) && is_super_admin() ) {
 					$caps = array( bbpress()->admin->minimum_capability );
 				} else {
@@ -380,7 +380,7 @@ class BB_Admin {
 				break;
 
 			// Akismet
-			case 'bbp_settings_akismet' :
+			case 'bb_settings_akismet' :
 				if ( ( is_plugin_active( 'akismet/akismet.php' ) && defined( 'AKISMET_VERSION' ) ) && is_super_admin() ) {
 					$caps = array( bbpress()->admin->minimum_capability );
 				} else {
@@ -390,23 +390,23 @@ class BB_Admin {
 				break;
 
 			// bbPress
-			case 'bbp_about_page'            : // About and Credits
-			case 'bbp_tools_page'            : // Tools Page
-			case 'bbp_tools_repair_page'     : // Tools - Repair Page
-			case 'bbp_tools_import_page'     : // Tools - Import Page
-			case 'bbp_tools_reset_page'      : // Tools - Reset Page
-			case 'bbp_settings_page'         : // Settings Page
-			case 'bbp_settings_main'         : // Settings - General
-			case 'bbp_settings_theme_compat' : // Settings - Theme compat
-			case 'bbp_settings_root_slugs'   : // Settings - Root slugs
-			case 'bbp_settings_single_slugs' : // Settings - Single slugs
-			case 'bbp_settings_per_page'     : // Settings - Per page
-			case 'bbp_settings_per_rss_page' : // Settings - Per RSS page
+			case 'bb_about_page'            : // About and Credits
+			case 'bb_tools_page'            : // Tools Page
+			case 'bb_tools_repair_page'     : // Tools - Repair Page
+			case 'bb_tools_import_page'     : // Tools - Import Page
+			case 'bb_tools_reset_page'      : // Tools - Reset Page
+			case 'bb_settings_page'         : // Settings Page
+			case 'bb_settings_main'         : // Settings - General
+			case 'bb_settings_theme_compat' : // Settings - Theme compat
+			case 'bb_settings_root_slugs'   : // Settings - Root slugs
+			case 'bb_settings_single_slugs' : // Settings - Single slugs
+			case 'bb_settings_per_page'     : // Settings - Per page
+			case 'bb_settings_per_rss_page' : // Settings - Per RSS page
 				$caps = array( bbpress()->admin->minimum_capability );
 				break;
 		}
 
-		return apply_filters( 'bbp_map_settings_meta_caps', $caps, $cap, $user_id, $args );
+		return apply_filters( 'bb_map_settings_meta_caps', $caps, $cap, $user_id, $args );
 	}
 
 	/**
@@ -414,7 +414,7 @@ class BB_Admin {
 	 *
 	 * @since bbPress (r2737)
 	 *
-	 * @uses apply_filters() Calls 'bbp_importer_path' filter to allow plugins
+	 * @uses apply_filters() Calls 'bb_importer_path' filter to allow plugins
 	 *                        to customize the importer script locations.
 	 */
 	public function register_importers() {
@@ -427,13 +427,13 @@ class BB_Admin {
 		require_once( ABSPATH . 'wp-admin/includes/import.php' );
 
 		// Load our importers
-		$importers = apply_filters( 'bbp_importers', array( 'bbpress' ) );
+		$importers = apply_filters( 'bb_importers', array( 'bbpress' ) );
 
 		// Loop through included importers
 		foreach ( $importers as $importer ) {
 
 			// Allow custom importer directory
-			$import_dir  = apply_filters( 'bbp_importer_path', $this->admin_dir . 'importers', $importer );
+			$import_dir  = apply_filters( 'bb_importer_path', $this->admin_dir . 'importers', $importer );
 
 			// Compile the importer path
 			$import_file = trailingslashit( $import_dir ) . $importer . '.php';
@@ -488,7 +488,7 @@ class BB_Admin {
 	 * @uses wp_add_dashboard_widget() To add the dashboard widget
 	 */
 	public static function dashboard_widget_right_now() {
-		wp_add_dashboard_widget( 'bbp-dashboard-right-now', __( 'Right Now in Forums', 'bbpress' ), 'bbp_dashboard_widget_right_now' );
+		wp_add_dashboard_widget( 'bbp-dashboard-right-now', __( 'Right Now in Forums', 'bbpress' ), 'bb_dashboard_widget_right_now' );
 	}
 
 	/**
@@ -504,9 +504,9 @@ class BB_Admin {
 	 *
 	 * @since bbPress (r2464)
 	 *
-	 * @uses bbp_get_forum_post_type() To get the forum post type
-	 * @uses bbp_get_topic_post_type() To get the topic post type
-	 * @uses bbp_get_reply_post_type() To get the reply post type
+	 * @uses bb_get_forum_post_type() To get the forum post type
+	 * @uses bb_get_topic_post_type() To get the topic post type
+	 * @uses bb_get_reply_post_type() To get the reply post type
 	 * @uses sanitize_html_class() To sanitize the classes
 	 */
 	public function admin_head() {
@@ -523,7 +523,7 @@ class BB_Admin {
 		$wp_admin_url     = admin_url( 'images/' );
 
 		// Icons for top level admin menus
-		$version          = bbp_get_version();
+		$version          = bb_get_version();
 		$menu_icon_url    = $this->images_url . 'menu.png?ver='       . $version;
 		$icon32_url       = $this->images_url . 'icons32.png?ver='    . $version;
 		$menu_icon_url_2x = $this->images_url . 'menu-2x.png?ver='    . $version;
@@ -539,21 +539,21 @@ class BB_Admin {
 		}
 
 		// Top level menu classes
-		$forum_class = sanitize_html_class( bbp_get_forum_post_type() );
-		$topic_class = sanitize_html_class( bbp_get_topic_post_type() );
-		$reply_class = sanitize_html_class( bbp_get_reply_post_type() );
+		$forum_class = sanitize_html_class( bb_get_forum_post_type() );
+		$topic_class = sanitize_html_class( bb_get_topic_post_type() );
+		$reply_class = sanitize_html_class( bb_get_reply_post_type() );
 
-		if ( ( 'post' == get_current_screen()->base ) && ( bbp_get_reply_post_type() == get_current_screen()->post_type ) ) : ?>
+		if ( ( 'post' == get_current_screen()->base ) && ( bb_get_reply_post_type() == get_current_screen()->post_type ) ) : ?>
 
 		<script type="text/javascript">
 			jQuery(document).ready(function() {
 
-				var bbp_topic_id = jQuery( '#bbp_topic_id' );
+				var bb_topic_id = jQuery( '#bb_topic_id' );
 
-				bbp_topic_id.suggest( ajaxurl + '?action=bbp_suggest_topic', {
+				bb_topic_id.suggest( ajaxurl + '?action=bb_suggest_topic', {
 					onSelect: function() {
 						var value = this.value;
-						bbp_topic_id.val( value.substr( 0, value.indexOf( ' ' ) ) );
+						bb_topic_id.val( value.substr( 0, value.indexOf( ' ' ) ) );
 					}
 				} );
 			});
@@ -565,9 +565,9 @@ class BB_Admin {
 		/*<![CDATA[*/
 
 			/* Kludge for too-wide forums dropdown */
-			#poststuff #bbp_forum_attributes select#parent_id,
-			#poststuff #bbp_topic_attributes select#parent_id,
-			#poststuff #bbp_reply_attributes select#bbp_forum_id {
+			#poststuff #bb_forum_attributes select#parent_id,
+			#poststuff #bb_topic_attributes select#parent_id,
+			#poststuff #bb_reply_attributes select#bb_forum_id {
 				max-width: 170px;
 			}
 
@@ -1265,7 +1265,7 @@ class BB_Admin {
 	 */
 	public function hide_theme_compat_packages( $sections = array() ) {
 		if ( count( bbpress()->theme_compat->packages ) <= 1 )
-			unset( $sections['bbp_settings_theme_compat'] );
+			unset( $sections['bb_settings_theme_compat'] );
 
 		return $sections;
 	}
@@ -1291,22 +1291,22 @@ class BB_Admin {
 	 * @since bbPress (r4261)
 	 *
 	 * @uses get_posts()
-	 * @uses bbp_get_topic_post_type()
-	 * @uses bbp_get_topic_id()
-	 * @uses bbp_get_topic_title()
+	 * @uses bb_get_topic_post_type()
+	 * @uses bb_get_topic_id()
+	 * @uses bb_get_topic_title()
 	 */
 	public function suggest_topic() {
 
 		// TRy to get some topics
 		$topics = get_posts( array(
 			's'         => like_escape( $_REQUEST['q'] ),
-			'post_type' => bbp_get_topic_post_type()
+			'post_type' => bb_get_topic_post_type()
 		) );
 
 		// If we found some topics, loop through and display them
 		if ( ! empty( $topics ) ) {
 			foreach ( (array) $topics as $post ) {
-				echo sprintf( __( '%s - %s', 'bbpress' ), bbp_get_topic_id( $post->ID ), bbp_get_topic_title( $post->ID ) ) . "\n";
+				echo sprintf( __( '%s - %s', 'bbpress' ), bb_get_topic_id( $post->ID ), bb_get_topic_title( $post->ID ) ) . "\n";
 			}
 		}
 		die();
@@ -1321,7 +1321,7 @@ class BB_Admin {
 	 */
 	public function about_screen() {
 
-		list( $display_version ) = explode( '-', bbp_get_version() ); ?>
+		list( $display_version ) = explode( '-', bb_get_version() ); ?>
 
 		<div class="wrap about-wrap">
 			<h1><?php printf( __( 'Welcome to bbPress %s', 'bbpress' ), $display_version ); ?></h1>
@@ -1424,7 +1424,7 @@ class BB_Admin {
 	 */
 	public function credits_screen() {
 
-		list( $display_version ) = explode( '-', bbp_get_version() ); ?>
+		list( $display_version ) = explode( '-', bb_get_version() ); ?>
 
 		<div class="wrap about-wrap">
 			<h1><?php printf( __( 'Welcome to bbPress %s', 'bbpress' ), $display_version ); ?></h1>
@@ -1555,7 +1555,7 @@ class BB_Admin {
 			case 'bbp-update' :
 
 				// Run the full updater
-				bbp_version_updater(); ?>
+				bb_version_updater(); ?>
 
 				<p><?php _e( 'All done!', 'bbpress' ); ?></p>
 				<a class="button" href="index.php?page=bbp-update"><?php _e( 'Go Back', 'bbpress' ); ?></a>
@@ -1648,7 +1648,7 @@ class BB_Admin {
 
 							// Run the updater on this site
 							if ( is_plugin_active_for_network( $basename ) || is_plugin_active( $basename ) ) {
-								bbp_version_updater();
+								bb_version_updater();
 							}
 
 							// restore original blog
@@ -1656,7 +1656,7 @@ class BB_Admin {
 
 							// Do some actions to allow plugins to do things too
 							do_action( 'after_bbpress_upgrade', $response             );
-							do_action( 'bbp_upgrade_site',      $details[ 'blog_id' ] );
+							do_action( 'bb_upgrade_site',      $details[ 'blog_id' ] );
 
 						endforeach; ?>
 

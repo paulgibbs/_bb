@@ -38,49 +38,49 @@ if ( !defined( 'ABSPATH' ) ) exit;
  *
  *           v--WordPress Actions       v--bbPress Sub-actions
  */
-add_action( 'admin_menu',              'bbp_admin_menu'                    );
-add_action( 'admin_init',              'bbp_admin_init'                    );
-add_action( 'admin_head',              'bbp_admin_head'                    );
-add_action( 'admin_notices',           'bbp_admin_notices'                 );
-add_action( 'custom_menu_order',       'bbp_admin_custom_menu_order'       );
-add_action( 'menu_order',              'bbp_admin_menu_order'              );
-add_action( 'wpmu_new_blog',           'bbp_new_site',               10, 6 );
+add_action( 'admin_menu',              'bb_admin_menu'                    );
+add_action( 'admin_init',              'bb_admin_init'                    );
+add_action( 'admin_head',              'bb_admin_head'                    );
+add_action( 'admin_notices',           'bb_admin_notices'                 );
+add_action( 'custom_menu_order',       'bb_admin_custom_menu_order'       );
+add_action( 'menu_order',              'bb_admin_menu_order'              );
+add_action( 'wpmu_new_blog',           'bb_new_site',               10, 6 );
 
 // Hook on to admin_init
-add_action( 'bbp_admin_init', 'bbp_admin_forums'                );
-add_action( 'bbp_admin_init', 'bbp_admin_topics'                );
-add_action( 'bbp_admin_init', 'bbp_admin_replies'               );
-add_action( 'bbp_admin_init', 'bbp_setup_updater',          999 );
-add_action( 'bbp_admin_init', 'bbp_register_importers'          );
-add_action( 'bbp_admin_init', 'bbp_register_admin_style'        );
-add_action( 'bbp_admin_init', 'bbp_register_admin_settings'     );
-add_action( 'bbp_admin_init', 'bbp_do_activation_redirect', 1   );
+add_action( 'bb_admin_init', 'bb_admin_forums'                );
+add_action( 'bb_admin_init', 'bb_admin_topics'                );
+add_action( 'bb_admin_init', 'bb_admin_replies'               );
+add_action( 'bb_admin_init', 'bb_setup_updater',          999 );
+add_action( 'bb_admin_init', 'bb_register_importers'          );
+add_action( 'bb_admin_init', 'bb_register_admin_style'        );
+add_action( 'bb_admin_init', 'bb_register_admin_settings'     );
+add_action( 'bb_admin_init', 'bb_do_activation_redirect', 1   );
 
 // Initialize the admin area
-add_action( 'bbp_init', 'bbp_admin' );
+add_action( 'bb_init', 'bb_admin' );
 
 // Reset the menu order
-add_action( 'bbp_admin_menu', 'bbp_admin_separator' );
+add_action( 'bb_admin_menu', 'bb_admin_separator' );
 
 // Activation
-add_action( 'bbp_activation', 'bbp_delete_rewrite_rules'    );
+add_action( 'bb_activation', 'bb_delete_rewrite_rules'    );
 
 // Deactivation
-add_action( 'bbp_deactivation', 'bbp_remove_caps'          );
-add_action( 'bbp_deactivation', 'bbp_delete_rewrite_rules' );
+add_action( 'bb_deactivation', 'bb_remove_caps'          );
+add_action( 'bb_deactivation', 'bb_delete_rewrite_rules' );
 
 // New Site
-add_action( 'bbp_new_site', 'bbp_create_initial_content', 8 );
+add_action( 'bb_new_site', 'bb_create_initial_content', 8 );
 
 // Contextual Helpers
-add_action( 'load-settings_page_bbpress', 'bbp_admin_settings_help' );
+add_action( 'load-settings_page_bbpress', 'bb_admin_settings_help' );
 
 // Handle submission of Tools pages
-add_action( 'load-tools_page_bbp-repair', 'bbp_admin_repair_handler' );
-add_action( 'load-tools_page_bbp-reset',  'bbp_admin_reset_handler'  );
+add_action( 'load-tools_page_bbp-repair', 'bb_admin_repair_handler' );
+add_action( 'load-tools_page_bbp-reset',  'bb_admin_reset_handler'  );
 
 // Add sample permalink filter
-add_filter( 'post_type_link', 'bbp_filter_sample_permalink', 10, 4 );
+add_filter( 'post_type_link', 'bb_filter_sample_permalink', 10, 4 );
 
 /**
  * When a new site is created in a multisite installation, run the activation
@@ -105,7 +105,7 @@ function bb_new_site( $blog_id, $user_id, $domain, $path, $site_id, $meta ) {
 	switch_to_blog( $blog_id );
 
 	// Do the bbPress activation routine
-	do_action( 'bbp_new_site', $blog_id, $user_id, $domain, $path, $site_id, $meta );
+	do_action( 'bb_new_site', $blog_id, $user_id, $domain, $path, $site_id, $meta );
 
 	// restore original blog
 	restore_current_blog();
@@ -117,68 +117,68 @@ function bb_new_site( $blog_id, $user_id, $domain, $path, $site_id, $meta ) {
  * Piggy back admin_init action
  *
  * @since bbPress (r3766)
- * @uses do_action() Calls 'bbp_admin_init'
+ * @uses do_action() Calls 'bb_admin_init'
  */
 function bb_admin_init() {
-	do_action( 'bbp_admin_init' );
+	do_action( 'bb_admin_init' );
 }
 
 /**
  * Piggy back admin_menu action
  *
  * @since bbPress (r3766)
- * @uses do_action() Calls 'bbp_admin_menu'
+ * @uses do_action() Calls 'bb_admin_menu'
  */
 function bb_admin_menu() {
-	do_action( 'bbp_admin_menu' );
+	do_action( 'bb_admin_menu' );
 }
 
 /**
  * Piggy back admin_head action
  *
  * @since bbPress (r3766)
- * @uses do_action() Calls 'bbp_admin_head'
+ * @uses do_action() Calls 'bb_admin_head'
  */
 function bb_admin_head() {
-	do_action( 'bbp_admin_head' );
+	do_action( 'bb_admin_head' );
 }
 
 /**
  * Piggy back admin_notices action
  *
  * @since bbPress (r3766)
- * @uses do_action() Calls 'bbp_admin_notices'
+ * @uses do_action() Calls 'bb_admin_notices'
  */
 function bb_admin_notices() {
-	do_action( 'bbp_admin_notices' );
+	do_action( 'bb_admin_notices' );
 }
 
 /**
  * Dedicated action to register bbPress importers
  *
  * @since bbPress (r3766)
- * @uses do_action() Calls 'bbp_admin_notices'
+ * @uses do_action() Calls 'bb_admin_notices'
  */
 function bb_register_importers() {
-	do_action( 'bbp_register_importers' );
+	do_action( 'bb_register_importers' );
 }
 
 /**
  * Dedicated action to register admin styles
  *
  * @since bbPress (r3766)
- * @uses do_action() Calls 'bbp_admin_notices'
+ * @uses do_action() Calls 'bb_admin_notices'
  */
 function bb_register_admin_style() {
-	do_action( 'bbp_register_admin_style' );
+	do_action( 'bb_register_admin_style' );
 }
 
 /**
  * Dedicated action to register admin settings
  *
  * @since bbPress (r3766)
- * @uses do_action() Calls 'bbp_register_admin_settings'
+ * @uses do_action() Calls 'bb_register_admin_settings'
  */
 function bb_register_admin_settings() {
-	do_action( 'bbp_register_admin_settings' );
+	do_action( 'bb_register_admin_settings' );
 }

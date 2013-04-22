@@ -8,11 +8,11 @@
  */
 
 // Get the statistics
-$stats = bbp_get_statistics(); ?>
+$stats = bb_get_statistics(); ?>
 
 <dl role="main">
 
-	<?php do_action( 'bbp_before_statistics' ); ?>
+	<?php do_action( 'bb_before_statistics' ); ?>
 
 	<dt><?php _e( 'Registered Users', 'bbpress' ); ?></dt>
 	<dd>
@@ -70,7 +70,7 @@ $stats = bbp_get_statistics(); ?>
 
 	<?php endif; ?>
 
-	<?php do_action( 'bbp_after_statistics' ); ?>
+	<?php do_action( 'bb_after_statistics' ); ?>
 
 </dl>
 

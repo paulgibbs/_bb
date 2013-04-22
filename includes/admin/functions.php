@@ -21,9 +21,9 @@ function bb_admin_separator() {
 
 	// Caps necessary where a separator is necessary
 	$caps = array(
-		'bbp_forums_admin',
-		'bbp_topics_admin',
-		'bbp_replies_admin',
+		'bb_forums_admin',
+		'bb_topics_admin',
+		'bb_replies_admin',
 	);
 
 	// Loop through caps, and look for a reason to show the separator
@@ -65,7 +65,7 @@ function bb_admin_custom_menu_order( $menu_order = false ) {
  * @since bbPress (r2957)
  *
  * @param array $menu_order Menu Order
- * @uses bbp_get_forum_post_type() To get the forum post type
+ * @uses bb_get_forum_post_type() To get the forum post type
  * @return array Modified menu order
  */
 function bb_admin_menu_order( $menu_order ) {
@@ -75,15 +75,15 @@ function bb_admin_menu_order( $menu_order ) {
 		return $menu_order;
 
 	// Initialize our custom order array
-	$bbp_menu_order = array();
+	$bb_menu_order = array();
 
 	// Menu values
 	$second_sep   = 'separator2';
 	$custom_menus = array(
 		'separator-bbpress',                               // Separator
-		'edit.php?post_type=' . bbp_get_forum_post_type(), // Forums
-		'edit.php?post_type=' . bbp_get_topic_post_type(), // Topics
-		'edit.php?post_type=' . bbp_get_reply_post_type()  // Replies
+		'edit.php?post_type=' . bb_get_forum_post_type(), // Forums
+		'edit.php?post_type=' . bb_get_topic_post_type(), // Topics
+		'edit.php?post_type=' . bb_get_reply_post_type()  // Replies
 	);
 
 	// Loop through menu order and do some rearranging
@@ -95,21 +95,21 @@ function bb_admin_menu_order( $menu_order ) {
 			// Add our custom menus
 			foreach( $custom_menus as $custom_menu ) {
 				if ( array_search( $custom_menu, $menu_order ) ) {
-					$bbp_menu_order[] = $custom_menu;
+					$bb_menu_order[] = $custom_menu;
 				}
 			}
 
 			// Add the appearance separator
-			$bbp_menu_order[] = $second_sep;
+			$bb_menu_order[] = $second_sep;
 
 		// Skip our menu items
 		} elseif ( ! in_array( $item, $custom_menus ) ) {
-			$bbp_menu_order[] = $item;
+			$bb_menu_order[] = $item;
 		}
 	}
 
 	// Return our custom order
-	return $bbp_menu_order;
+	return $bb_menu_order;
 }
 
 /**
@@ -123,14 +123,14 @@ function bb_admin_menu_order( $menu_order ) {
  * @param bool $sample Optional, defaults to false. Is it a sample permalink.
  *
  * @uses is_admin() To make sure we're on an admin page
- * @uses bbp_is_custom_post_type() To get the forum post type
+ * @uses bb_is_custom_post_type() To get the forum post type
  *
  * @return string The custom post type permalink
  */
 function bb_filter_sample_permalink( $post_link, $_post, $leavename = false, $sample = false ) {
 
 	// Bail if not on an admin page and not getting a sample permalink
-	if ( !empty( $sample ) && is_admin() && bbp_is_custom_post_type() )
+	if ( !empty( $sample ) && is_admin() && bb_is_custom_post_type() )
 		return urldecode( $post_link );
 
 	// Return post link
@@ -148,8 +148,8 @@ function bb_do_uninstall( $site_id = 0 ) {
 		$site_id = get_current_blog_id();
 
 	switch_to_blog( $site_id );
-	bbp_delete_options();
-	bbp_remove_caps();
+	bb_delete_options();
+	bb_remove_caps();
 	flush_rewrite_rules();
 	restore_current_blog();
 }
@@ -173,11 +173,11 @@ function bb_do_uninstall( $site_id = 0 ) {
 function bb_do_activation_redirect() {
 
 	// Bail if no activation redirect
-    if ( ! get_transient( '_bbp_activation_redirect' ) )
+    if ( ! get_transient( '_bb_activation_redirect' ) )
 		return;
 
 	// Delete the redirect transient
-	delete_transient( '_bbp_activation_redirect' );
+	delete_transient( '_bb_activation_redirect' );
 
 	// Bail if activating from network, or bulk
 	if ( is_network_admin() || isset( $_GET['activate-multi'] ) )
@@ -213,7 +213,7 @@ function bb_tools_modify_menu_highlight() {
  * @param string $active_tab Name of the tab that is active
  */
 function bb_tools_admin_tabs( $active_tab = '' ) {
-	echo bbp_get_tools_admin_tabs( $active_tab );
+	echo bb_get_tools_admin_tabs( $active_tab );
 }
 
 	/**
@@ -230,7 +230,7 @@ function bb_tools_admin_tabs( $active_tab = '' ) {
 		$active_class = 'nav-tab nav-tab-active';
 
 		// Setup core admin tabs
-		$tabs = apply_filters( 'bbp_tools_admin_tabs', array(
+		$tabs = apply_filters( 'bb_tools_admin_tabs', array(
 			'0' => array(
 				'href' => get_admin_url( '', add_query_arg( array( 'page' => 'bbp-repair'    ), 'tools.php' ) ),
 				'name' => __( 'Repair Forums', 'bbpress' )

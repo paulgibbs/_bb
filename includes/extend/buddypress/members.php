@@ -48,14 +48,14 @@ class BB_BuddyPress_Members {
 		/** Favorites *********************************************************/
 
 		// Move handler to 'bp_actions' - BuddyPress bypasses template_loader
-		remove_action( 'template_redirect', 'bbp_favorites_handler', 1 );
-		add_action(    'bp_actions',        'bbp_favorites_handler', 1 );
+		remove_action( 'template_redirect', 'bb_favorites_handler', 1 );
+		add_action(    'bp_actions',        'bb_favorites_handler', 1 );
 
 		/** Subscriptions *****************************************************/
 
 		// Move handler to 'bp_actions' - BuddyPress bypasses template_loader
-		remove_action( 'template_redirect', 'bbp_subscriptions_handler', 1 );
-		add_action(    'bp_actions',        'bbp_subscriptions_handler', 1 );
+		remove_action( 'template_redirect', 'bb_subscriptions_handler', 1 );
+		add_action(    'bp_actions',        'bb_subscriptions_handler', 1 );
 	}
 
 	/**
@@ -68,9 +68,9 @@ class BB_BuddyPress_Members {
 	 * @uses add_action() To add various actions
 	 */
 	private function setup_filters() {
-		add_filter( 'bbp_pre_get_user_profile_url',    array( $this, 'user_profile_url'            )        );
-		add_filter( 'bbp_get_favorites_permalink',     array( $this, 'get_favorites_permalink'     ), 10, 2 );
-		add_filter( 'bbp_get_subscriptions_permalink', array( $this, 'get_subscriptions_permalink' ), 10, 2 );
+		add_filter( 'bb_pre_get_user_profile_url',    array( $this, 'user_profile_url'            )        );
+		add_filter( 'bb_get_favorites_permalink',     array( $this, 'get_favorites_permalink'     ), 10, 2 );
+		add_filter( 'bb_get_subscriptions_permalink', array( $this, 'get_subscriptions_permalink' ), 10, 2 );
 	}
 
 	/** Filters ***************************************************************/
@@ -101,11 +101,11 @@ class BB_BuddyPress_Members {
 				$profile_url = bp_core_get_user_domain( $user_id ) . 'forums/replies';
 
 			// 'favorites' action
-			} elseif ( bbp_is_favorites_active() && bp_is_current_action( 'favorites' ) ) {
+			} elseif ( bb_is_favorites_active() && bp_is_current_action( 'favorites' ) ) {
 				$profile_url = $this->get_favorites_permalink( '', $user_id );
 
 			// 'subscriptions' action
-			} elseif ( bbp_is_subscriptions_active() && bp_is_current_action( 'subscriptions' ) ) {
+			} elseif ( bb_is_subscriptions_active() && bp_is_current_action( 'subscriptions' ) ) {
 				$profile_url = $this->get_subscriptions_permalink( '', $user_id );
 			}
 
@@ -161,12 +161,12 @@ class BB_BuddyPress_Members {
 		global $wp_query;
 
 		// 'favorites' action
-		if ( bbp_is_favorites_active() && bp_is_current_action( 'favorites' ) ) {
-			$wp_query->bbp_is_single_user_favs = true;
+		if ( bb_is_favorites_active() && bp_is_current_action( 'favorites' ) ) {
+			$wp_query->bb_is_single_user_favs = true;
 
 		// 'subscriptions' action
-		} elseif ( bbp_is_subscriptions_active() && bp_is_current_action( 'subscriptions' ) ) {
-			$wp_query->bbp_is_single_user_subs = true;
+		} elseif ( bb_is_subscriptions_active() && bp_is_current_action( 'subscriptions' ) ) {
+			$wp_query->bb_is_single_user_subs = true;
 		}
 	}
 }

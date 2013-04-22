@@ -9,9 +9,9 @@
 
 ?>
 
-<?php do_action( 'bbp_template_before_replies_loop' ); ?>
+<?php do_action( 'bb_template_before_replies_loop' ); ?>
 
-<ul id="topic-<?php bbp_topic_id(); ?>-replies" class="forums bbp-replies">
+<ul id="topic-<?php bb_topic_id(); ?>-replies" class="forums bbp-replies">
 
 	<li class="bbp-header">
 
@@ -19,13 +19,13 @@
 
 		<div class="bbp-reply-content">
 
-			<?php if ( !bbp_show_lead_topic() ) : ?>
+			<?php if ( !bb_show_lead_topic() ) : ?>
 
 				<?php _e( 'Posts', 'bbpress' ); ?>
 
-				<?php bbp_user_subscribe_link(); ?>
+				<?php bb_user_subscribe_link(); ?>
 
-				<?php bbp_user_favorites_link(); ?>
+				<?php bb_user_favorites_link(); ?>
 
 			<?php else : ?>
 
@@ -39,9 +39,9 @@
 
 	<li class="bbp-body">
 
-		<?php while ( bbp_replies() ) : bbp_the_reply(); ?>
+		<?php while ( bb_replies() ) : bb_the_reply(); ?>
 
-			<?php bbp_get_template_part( 'loop', 'single-reply' ); ?>
+			<?php bb_get_template_part( 'loop', 'single-reply' ); ?>
 
 		<?php endwhile; ?>
 
@@ -53,7 +53,7 @@
 
 		<div class="bbp-reply-content">
 
-			<?php if ( !bbp_show_lead_topic() ) : ?>
+			<?php if ( !bb_show_lead_topic() ) : ?>
 
 				<?php _e( 'Posts', 'bbpress' ); ?>
 
@@ -67,6 +67,6 @@
 
 	</li><!-- .bbp-footer -->
 
-</ul><!-- #topic-<?php bbp_topic_id(); ?>-replies -->
+</ul><!-- #topic-<?php bb_topic_id(); ?>-replies -->
 
-<?php do_action( 'bbp_template_after_replies_loop' ); ?>
+<?php do_action( 'bb_template_after_replies_loop' ); ?>

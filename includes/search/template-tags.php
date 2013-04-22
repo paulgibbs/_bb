@@ -18,22 +18,22 @@ if ( !defined( 'ABSPATH' ) ) exit;
  * @since bbPress (r4579)
  *
  * @param mixed $args All the arguments supported by {@link WP_Query}
- * @uses bbp_get_view_all() Are we showing all results?
- * @uses bbp_get_public_status_id() To get the public status id
- * @uses bbp_get_closed_status_id() To get the closed status id
- * @uses bbp_get_spam_status_id() To get the spam status id
- * @uses bbp_get_trash_status_id() To get the trash status id
- * @uses bbp_get_forum_post_type() To get the forum post type
- * @uses bbp_get_topic_post_type() To get the topic post type
- * @uses bbp_get_reply_post_type() To get the reply post type
- * @uses bbp_get_replies_per_page() To get the replies per page option
- * @uses bbp_get_paged() To get the current page value
- * @uses bbp_get_search_terms() To get the search terms
+ * @uses bb_get_view_all() Are we showing all results?
+ * @uses bb_get_public_status_id() To get the public status id
+ * @uses bb_get_closed_status_id() To get the closed status id
+ * @uses bb_get_spam_status_id() To get the spam status id
+ * @uses bb_get_trash_status_id() To get the trash status id
+ * @uses bb_get_forum_post_type() To get the forum post type
+ * @uses bb_get_topic_post_type() To get the topic post type
+ * @uses bb_get_reply_post_type() To get the reply post type
+ * @uses bb_get_replies_per_page() To get the replies per page option
+ * @uses bb_get_paged() To get the current page value
+ * @uses bb_get_search_terms() To get the search terms
  * @uses WP_Query To make query and get the search results
  * @uses WP_Rewrite::using_permalinks() To check if the blog is using permalinks
- * @uses bbp_get_search_url() To get the forum search url
+ * @uses bb_get_search_url() To get the forum search url
  * @uses paginate_links() To paginate search results
- * @uses apply_filters() Calls 'bbp_has_search_results' with
+ * @uses apply_filters() Calls 'bb_has_search_results' with
  *                        bbPress::search_query::have_posts()
  *                        and bbPress::reply_query
  * @return object Multidimensional array of search information
@@ -44,30 +44,30 @@ function bb_has_search_results( $args = '' ) {
 	/** Defaults **************************************************************/
 
 	// What are the default allowed statuses (based on user caps)
-	if ( bbp_get_view_all( 'edit_others_replies' ) ) {
-		$post_statuses = array( bbp_get_public_status_id(), bbp_get_closed_status_id(), bbp_get_spam_status_id(), bbp_get_trash_status_id() );
+	if ( bb_get_view_all( 'edit_others_replies' ) ) {
+		$post_statuses = array( bb_get_public_status_id(), bb_get_closed_status_id(), bb_get_spam_status_id(), bb_get_trash_status_id() );
 	} else {
-		$post_statuses = array( bbp_get_public_status_id(), bbp_get_closed_status_id() );
+		$post_statuses = array( bb_get_public_status_id(), bb_get_closed_status_id() );
 	}
 
-	$default_post_type   = array( bbp_get_forum_post_type(), bbp_get_topic_post_type(), bbp_get_reply_post_type() );
+	$default_post_type   = array( bb_get_forum_post_type(), bb_get_topic_post_type(), bb_get_reply_post_type() );
 	$default_post_status = join( ',', $post_statuses );
 
 	// Default query args
 	$default = array(
 		'post_type'      => $default_post_type,         // Forums, topics, and replies
 		'post_status'    => $default_post_status,       // Of this status
-		'posts_per_page' => bbp_get_replies_per_page(), // This many
-		'paged'          => bbp_get_paged(),            // On this page
+		'posts_per_page' => bb_get_replies_per_page(), // This many
+		'paged'          => bb_get_paged(),            // On this page
 		'orderby'        => 'date',                     // Sorted by date
 		'order'          => 'DESC',                     // Most recent first
-		's'              => bbp_get_search_terms(),     // This is a search
+		's'              => bb_get_search_terms(),     // This is a search
 	);
 
 	/** Setup *****************************************************************/
 
 	// Parse arguments against default values
-	$r = bbp_parse_args( $args, $default, 'has_search_results' );
+	$r = bb_parse_args( $args, $default, 'has_search_results' );
 
 	// Don't bother if we don't have search terms
 	if ( empty( $r['s'] ) )
@@ -102,7 +102,7 @@ function bb_has_search_results( $args = '' ) {
 
 			// Default search location
 			} else {
-				$base = trailingslashit( bbp_get_search_url() );
+				$base = trailingslashit( bb_get_search_url() );
 
 			}
 
@@ -115,13 +115,13 @@ function bb_has_search_results( $args = '' ) {
 		}
 
 		// Add args
-		$add_args = isset( $_GET[bbp_get_search_rewrite_id()] ) ? array( bbp_get_search_rewrite_id() => urlencode( bbp_get_search_terms() ) ) : array();
-		if ( bbp_get_view_all() )
+		$add_args = isset( $_GET[bb_get_search_rewrite_id()] ) ? array( bb_get_search_rewrite_id() => urlencode( bb_get_search_terms() ) ) : array();
+		if ( bb_get_view_all() )
 			$add_args['view'] = 'all';
 
 		// Add pagination to query object
 		$bbp->search_query->pagination_links = paginate_links(
-			apply_filters( 'bbp_search_results_pagination', array(
+			apply_filters( 'bb_search_results_pagination', array(
 				'base'      => $base,
 				'format'    => '',
 				'total'     => ceil( (int) $bbp->search_query->found_posts / (int) $r['posts_per_page'] ),
@@ -142,7 +142,7 @@ function bb_has_search_results( $args = '' ) {
 	}
 
 	// Return object
-	return apply_filters( 'bbp_has_search_results', $bbp->search_query->have_posts(), $bbp->search_query );
+	return apply_filters( 'bb_has_search_results', $bbp->search_query->have_posts(), $bbp->search_query );
 }
 
 /**
@@ -178,9 +178,9 @@ function bb_the_search_result() {
 	$search_result = bbpress()->search_query->the_post();
 
 	// Reset each current (forum|topic|reply) id
-	bbpress()->current_forum_id = bbp_get_forum_id();
-	bbpress()->current_topic_id = bbp_get_topic_id();
-	bbpress()->current_reply_id = bbp_get_reply_id();
+	bbpress()->current_forum_id = bb_get_forum_id();
+	bbpress()->current_topic_id = bb_get_topic_id();
+	bbpress()->current_reply_id = bb_get_reply_id();
 
 	return $search_result;
 }
@@ -190,10 +190,10 @@ function bb_the_search_result() {
  *
  * @since bbPress (r4579)
  *
- * @uses bbp_get_search_title()
+ * @uses bb_get_search_title()
  */
 function bb_search_title() {
-	echo bbp_get_search_title();
+	echo bb_get_search_title();
 }
 
 	/**
@@ -201,12 +201,12 @@ function bb_search_title() {
 	 *
 	 * @since bbPress (r4579)
 	 *
-	 * @uses bbp_get_search_terms()
+	 * @uses bb_get_search_terms()
 	 */
 	function bb_get_search_title() {
 
 		// Get search terms
-		$search_terms = bbp_get_search_terms();
+		$search_terms = bb_get_search_terms();
 
 		// No search terms specified
 		if ( empty( $search_terms ) ) {
@@ -223,10 +223,10 @@ function bb_search_title() {
  *
  * @since bbPress (r4579)
  *
- * @uses bbp_get_search_url() To get the search url
+ * @uses bb_get_search_url() To get the search url
  */
 function bb_search_url() {
-	echo bbp_get_search_url();
+	echo bb_get_search_url();
 }
 	/**
 	 * Return the search url
@@ -235,8 +235,8 @@ function bb_search_url() {
 	 *
 	 * @uses user_trailingslashit() To fix slashes
 	 * @uses trailingslashit() To fix slashes
-	 * @uses bbp_get_forums_url() To get the root forums url
-	 * @uses bbp_get_search_slug() To get the search slug
+	 * @uses bb_get_forums_url() To get the root forums url
+	 * @uses bb_get_search_slug() To get the search slug
 	 * @uses add_query_arg() To help make unpretty permalinks
 	 * @return string Search url
 	 */
@@ -245,16 +245,16 @@ function bb_search_url() {
 
 		// Pretty permalinks
 		if ( $wp_rewrite->using_permalinks() ) {
-			$url = $wp_rewrite->root . bbp_get_search_slug();
+			$url = $wp_rewrite->root . bb_get_search_slug();
 			$url = home_url( user_trailingslashit( $url ) );
 
 		// Unpretty permalinks
 		} else {
-			$search_terms = bbp_get_search_terms();
-			$url = add_query_arg( array( 'bbp_search' => urlencode( $search_terms ) ), home_url( '/' ) );
+			$search_terms = bb_get_search_terms();
+			$url = add_query_arg( array( 'bb_search' => urlencode( $search_terms ) ), home_url( '/' ) );
 		}
 
-		return apply_filters( 'bbp_get_search_url', $url );
+		return apply_filters( 'bb_get_search_url', $url );
 	}
 
 
@@ -264,10 +264,10 @@ function bb_search_url() {
  * @since bbPress (r4579)
  *
  * @param string $search_terms Optional. Search terms
- * @uses bbp_get_search_terms() To get the search terms
+ * @uses bb_get_search_terms() To get the search terms
  */
 function bb_search_terms( $search_terms = '' ) {
-	echo bbp_get_search_terms( $search_terms );
+	echo bb_get_search_terms( $search_terms );
 }
 
 	/**
@@ -280,12 +280,12 @@ function bb_search_terms( $search_terms = '' ) {
 	 *
 	 * @param string $search_terms Optional. Search terms
 	 * @uses sanitize_title() To sanitize the search terms
-	 * @uses get_query_var*( To get the search terms from query var 'bbp_search'
+	 * @uses get_query_var*( To get the search terms from query var 'bb_search'
 	 * @return bool|string Search terms on success, false on failure
 	 */
 	function bb_get_search_terms( $search_terms = '' ) {
 
-		$search_terms = !empty( $search_terms ) ? sanitize_title( $search_terms ) : get_query_var( bbp_get_search_rewrite_id() );
+		$search_terms = !empty( $search_terms ) ? sanitize_title( $search_terms ) : get_query_var( bb_get_search_rewrite_id() );
 
 		if ( !empty( $search_terms ) )
 			return $search_terms;
@@ -298,10 +298,10 @@ function bb_search_terms( $search_terms = '' ) {
  *
  * @since bbPress (r4579)
  *
- * @uses bbp_get_search_pagination_count() To get the search result pagination count
+ * @uses bb_get_search_pagination_count() To get the search result pagination count
  */
 function bb_search_pagination_count() {
-	echo bbp_get_search_pagination_count();
+	echo bb_get_search_pagination_count();
 }
 
 	/**
@@ -309,8 +309,8 @@ function bb_search_pagination_count() {
 	 *
 	 * @since bbPress (r4579)
 	 *
-	 * @uses bbp_number_format() To format the number value
-	 * @uses apply_filters() Calls 'bbp_get_search_pagination_count' with the
+	 * @uses bb_number_format() To format the number value
+	 * @uses apply_filters() Calls 'bb_get_search_pagination_count' with the
 	 *                        pagination count
 	 * @return string Search pagination count
 	 */
@@ -322,10 +322,10 @@ function bb_search_pagination_count() {
 
 		// Set pagination values
 		$start_num = intval( ( $bbp->search_query->paged - 1 ) * $bbp->search_query->posts_per_page ) + 1;
-		$from_num  = bbp_number_format( $start_num );
-		$to_num    = bbp_number_format( ( $start_num + ( $bbp->search_query->posts_per_page - 1 ) > $bbp->search_query->found_posts ) ? $bbp->search_query->found_posts : $start_num + ( $bbp->search_query->posts_per_page - 1 ) );
+		$from_num  = bb_number_format( $start_num );
+		$to_num    = bb_number_format( ( $start_num + ( $bbp->search_query->posts_per_page - 1 ) > $bbp->search_query->found_posts ) ? $bbp->search_query->found_posts : $start_num + ( $bbp->search_query->posts_per_page - 1 ) );
 		$total_int = (int) $bbp->search_query->found_posts;
-		$total     = bbp_number_format( $total_int );
+		$total     = bb_number_format( $total_int );
 
 		// Single page of results
 		if ( empty( $to_num ) ) {
@@ -338,7 +338,7 @@ function bb_search_pagination_count() {
 		}
 
 		// Filter and return
-		return apply_filters( 'bbp_get_search_pagination_count', $retstr );
+		return apply_filters( 'bb_get_search_pagination_count', $retstr );
 	}
 
 /**
@@ -346,10 +346,10 @@ function bb_search_pagination_count() {
  *
  * @since bbPress (r4579)
  *
- * @uses bbp_get_search_pagination_links() To get the search pagination links
+ * @uses bb_get_search_pagination_links() To get the search pagination links
  */
 function bb_search_pagination_links() {
-	echo bbp_get_search_pagination_links();
+	echo bb_get_search_pagination_links();
 }
 
 	/**
@@ -357,7 +357,7 @@ function bb_search_pagination_links() {
 	 *
 	 * @since bbPress (r4579)
 	 *
-	 * @uses apply_filters() Calls 'bbp_get_search_pagination_links' with the
+	 * @uses apply_filters() Calls 'bb_get_search_pagination_links' with the
 	 *                        pagination links
 	 * @return string Search pagination links
 	 */
@@ -367,5 +367,5 @@ function bb_search_pagination_links() {
 		if ( !isset( $bbp->search_query->pagination_links ) || empty( $bbp->search_query->pagination_links ) )
 			return false;
 
-		return apply_filters( 'bbp_get_search_pagination_links', $bbp->search_query->pagination_links );
+		return apply_filters( 'bb_get_search_pagination_links', $bbp->search_query->pagination_links );
 	}

@@ -85,13 +85,13 @@ class BB_Component {
 	 * @since bbPress (r2700)
 	 * @access private
 	 *
-	 * @uses apply_filters() Calls 'bbp_{@link BB_Component::name}_id'
-	 * @uses apply_filters() Calls 'bbp_{@link BB_Component::name}_slug'
+	 * @uses apply_filters() Calls 'bb_{@link BB_Component::name}_id'
+	 * @uses apply_filters() Calls 'bb_{@link BB_Component::name}_slug'
 	 */
 	private function setup_globals( $args = '' ) {
 		$this->name = $args['name'];
-		$this->id   = apply_filters( 'bbp_' . $this->name . '_id',   $args['id']   );
-		$this->slug = apply_filters( 'bbp_' . $this->name . '_slug', $args['slug'] );
+		$this->id   = apply_filters( 'bb_' . $this->name . '_id',   $args['id']   );
+		$this->slug = apply_filters( 'bb_' . $this->name . '_slug', $args['slug'] );
 	}
 
 	/**
@@ -100,10 +100,10 @@ class BB_Component {
 	 * @since bbPress (r2700)
 	 * @access private
 	 *
-	 * @uses do_action() Calls 'bbp_{@link BB_Component::name}includes'
+	 * @uses do_action() Calls 'bb_{@link BB_Component::name}includes'
 	 */
 	private function includes() {
-		do_action( 'bbp_' . $this->name . 'includes' );
+		do_action( 'bb_' . $this->name . 'includes' );
 	}
 
 	/**
@@ -114,16 +114,16 @@ class BB_Component {
 	 *
 	 * @uses add_action() To add various actions
 	 * @uses do_action() Calls
-	 *                    'bbp_{@link BB_Component::name}setup_actions'
+	 *                    'bb_{@link BB_Component::name}setup_actions'
 	 */
 	private function setup_actions() {
-		add_action( 'bbp_register_post_types',    array( $this, 'register_post_types'    ), 10, 2 ); // Register post types
-		add_action( 'bbp_register_taxonomies',    array( $this, 'register_taxonomies'    ), 10, 2 ); // Register taxonomies
-		add_action( 'bbp_add_rewrite_tags',       array( $this, 'add_rewrite_tags'       ), 10, 2 ); // Add the rewrite tags
-		add_action( 'bbp_generate_rewrite_rules', array( $this, 'generate_rewrite_rules' ), 10, 2 ); // Generate rewrite rules
+		add_action( 'bb_register_post_types',    array( $this, 'register_post_types'    ), 10, 2 ); // Register post types
+		add_action( 'bb_register_taxonomies',    array( $this, 'register_taxonomies'    ), 10, 2 ); // Register taxonomies
+		add_action( 'bb_add_rewrite_tags',       array( $this, 'add_rewrite_tags'       ), 10, 2 ); // Add the rewrite tags
+		add_action( 'bb_generate_rewrite_rules', array( $this, 'generate_rewrite_rules' ), 10, 2 ); // Generate rewrite rules
 
 		// Additional actions can be attached here
-		do_action( 'bbp_' . $this->name . 'setup_actions' );
+		do_action( 'bb_' . $this->name . 'setup_actions' );
 	}
 
 	/**
@@ -131,10 +131,10 @@ class BB_Component {
 	 *
 	 * @since bbPress (r2700)
 	 *
-	 * @uses do_action() Calls 'bbp_{@link BB_Component::name}_register_post_types'
+	 * @uses do_action() Calls 'bb_{@link BB_Component::name}_register_post_types'
 	 */
 	public function register_post_types() {
-		do_action( 'bbp_' . $this->name . '_register_post_types' );
+		do_action( 'bb_' . $this->name . '_register_post_types' );
 	}
 
 	/**
@@ -142,10 +142,10 @@ class BB_Component {
 	 *
 	 * @since bbPress (r2700)
 	 *
-	 * @uses do_action() Calls 'bbp_{@link BB_Component::name}_register_taxonomies'
+	 * @uses do_action() Calls 'bb_{@link BB_Component::name}_register_taxonomies'
 	 */
 	public function register_taxonomies() {
-		do_action( 'bbp_' . $this->name . '_register_taxonomies' );
+		do_action( 'bb_' . $this->name . '_register_taxonomies' );
 	}
 
 	/**
@@ -153,10 +153,10 @@ class BB_Component {
 	 *
 	 * @since bbPress (r2700)
 	 *
-	 * @uses do_action() Calls 'bbp_{@link BB_Component::name}_add_rewrite_tags'
+	 * @uses do_action() Calls 'bb_{@link BB_Component::name}_add_rewrite_tags'
 	 */
 	public function add_rewrite_tags() {
-		do_action( 'bbp_' . $this->name . '_add_rewrite_tags' );
+		do_action( 'bb_' . $this->name . '_add_rewrite_tags' );
 	}
 
 	/**
@@ -164,10 +164,10 @@ class BB_Component {
 	 *
 	 * @since bbPress (r2700)
 	 *
-	 * @uses do_action() Calls 'bbp_{@link BB_Component::name}_generate_rewrite_rules'
+	 * @uses do_action() Calls 'bb_{@link BB_Component::name}_generate_rewrite_rules'
 	 */
 	public function generate_rewrite_rules( $wp_rewrite ) {
-		do_action_ref_array( 'bbp_' . $this->name . '_generate_rewrite_rules', $wp_rewrite );
+		do_action_ref_array( 'bb_' . $this->name . '_generate_rewrite_rules', $wp_rewrite );
 	}
 }
 endif; // BB_Component
@@ -210,7 +210,7 @@ class BB_Walker_Dropdown extends Walker {
 	 * @since bbPress (r2746)
 	 */
 	public function __construct() {
-		$this->tree_type = bbp_get_forum_post_type();
+		$this->tree_type = bb_get_forum_post_type();
 	}
 
 	/**
@@ -225,11 +225,11 @@ class BB_Walker_Dropdown extends Walker {
 	 *                    for padding.
 	 * @param array $args Uses 'selected' argument for selected post to set
 	 *                     selected HTML attribute for option element.
-	 * @uses bbp_is_forum_category() To check if the forum is a category
+	 * @uses bb_is_forum_category() To check if the forum is a category
 	 * @uses current_user_can() To check if the current user can post in
 	 *                           closed forums
-	 * @uses bbp_is_forum_closed() To check if the forum is closed
-	 * @uses apply_filters() Calls 'bbp_walker_dropdown_post_title' with the
+	 * @uses bb_is_forum_closed() To check if the forum is closed
+	 * @uses apply_filters() Calls 'bb_walker_dropdown_post_title' with the
 	 *                        title, output, post, depth and args
 	 */
 	public function start_el( &$output, $_post, $depth, $args ) {
@@ -242,9 +242,9 @@ class BB_Walker_Dropdown extends Walker {
 		// - the forum is a category
 		// - forum is closed
 		if (	( true == $args['disable_categories'] )
-				&& ( bbp_get_forum_post_type() == $_post->post_type )
-				&& ( bbp_is_forum_category( $_post->ID )
-					|| ( !current_user_can( 'edit_forum', $_post->ID ) && bbp_is_forum_closed( $_post->ID )
+				&& ( bb_get_forum_post_type() == $_post->post_type )
+				&& ( bb_is_forum_category( $_post->ID )
+					|| ( !current_user_can( 'edit_forum', $_post->ID ) && bb_is_forum_closed( $_post->ID )
 				)
 			) ) {
 			$output .= ' disabled="disabled" value=""';
@@ -253,7 +253,7 @@ class BB_Walker_Dropdown extends Walker {
 		}
 
 		$output .= '>';
-		$title   = apply_filters( 'bbp_walker_dropdown_post_title', $_post->post_title, $output, $_post, $depth, $args );
+		$title   = apply_filters( 'bb_walker_dropdown_post_title', $_post->post_title, $output, $_post, $depth, $args );
 		$output .= $pad . esc_html( $title );
 		$output .= "</option>\n";
 	}

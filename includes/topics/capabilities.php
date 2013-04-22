@@ -14,11 +14,11 @@
  *
  * @since bbPress (r2593)
  *
- * @uses apply_filters() Calls 'bbp_get_topic_caps' with the capabilities
+ * @uses apply_filters() Calls 'bb_get_topic_caps' with the capabilities
  * @return array Topic capabilities
  */
 function bb_get_topic_caps() {
-	return apply_filters( 'bbp_get_topic_caps', array (
+	return apply_filters( 'bb_get_topic_caps', array (
 		'edit_posts'          => 'edit_topics',
 		'edit_others_posts'   => 'edit_others_topics',
 		'publish_posts'       => 'publish_topics',
@@ -34,11 +34,11 @@ function bb_get_topic_caps() {
  *
  * @since bbPress (r2593)
  *
- * @uses apply_filters() Calls 'bbp_get_topic_tag_caps' with the capabilities
+ * @uses apply_filters() Calls 'bb_get_topic_tag_caps' with the capabilities
  * @return array Topic tag capabilities
  */
 function bb_get_topic_tag_caps() {
-	return apply_filters( 'bbp_get_topic_tag_caps', array (
+	return apply_filters( 'bb_get_topic_tag_caps', array (
 		'manage_terms' => 'manage_topic_tags',
 		'edit_terms'   => 'edit_topic_tags',
 		'delete_terms' => 'delete_topic_tags',
@@ -84,7 +84,7 @@ function bb_map_topic_meta_caps( $caps = array(), $cap = '', $user_id = 0, $args
 					$post_type = get_post_type_object( $_post->post_type );
 
 					// Post is public
-					if ( bbp_get_public_status_id() == $_post->post_status ) {
+					if ( bb_get_public_status_id() == $_post->post_status ) {
 						$caps = array( 'spectate' );
 
 					// User is author so allow read
@@ -140,7 +140,7 @@ function bb_map_topic_meta_caps( $caps = array(), $cap = '', $user_id = 0, $args
 				$caps      = array();
 
 				// Add 'do_not_allow' cap if user is spam or deleted
-				if ( bbp_is_user_inactive( $user_id ) ) {
+				if ( bb_is_user_inactive( $user_id ) ) {
 					$caps[] = 'do_not_allow';
 
 				// User is author so allow edit
@@ -168,7 +168,7 @@ function bb_map_topic_meta_caps( $caps = array(), $cap = '', $user_id = 0, $args
 				$caps      = array();
 
 				// Add 'do_not_allow' cap if user is spam or deleted
-				if ( bbp_is_user_inactive( $user_id ) ) {
+				if ( bb_is_user_inactive( $user_id ) ) {
 					$caps[] = 'do_not_allow';
 
 				// Moderators can always edit forum content
@@ -196,12 +196,12 @@ function bb_map_topic_meta_caps( $caps = array(), $cap = '', $user_id = 0, $args
 
 		/** Admin *************************************************************/
 
-		case 'bbp_topics_admin' :
+		case 'bb_topics_admin' :
 			$caps = array( 'moderate' );
 			break;
 	}
 
-	return apply_filters( 'bbp_map_topic_meta_caps', $caps, $cap, $user_id, $args );
+	return apply_filters( 'bb_map_topic_meta_caps', $caps, $cap, $user_id, $args );
 }
 
 /**
@@ -224,7 +224,7 @@ function bb_map_topic_tag_meta_caps( $caps, $cap, $user_id, $args ) {
 		case 'edit_topic_tags'      :
 		case 'delete_topic_tags'    :
 		case 'assign_topic_tags'    :
-		case 'bbp_topic_tags_admin' :
+		case 'bb_topic_tags_admin' :
 
 			// Moderators can always edit
 			if ( user_can( $user_id, 'moderate' ) ) {
@@ -232,5 +232,5 @@ function bb_map_topic_tag_meta_caps( $caps, $cap, $user_id, $args ) {
 			}
 	}
 
-	return apply_filters( 'bbp_map_topic_tag_meta_caps', $caps, $cap, $user_id, $args );
+	return apply_filters( 'bb_map_topic_tag_meta_caps', $caps, $cap, $user_id, $args );
 }

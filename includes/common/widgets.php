@@ -30,12 +30,12 @@ class BB_Login_Widget extends WP_Widget {
 	 *
 	 * @since bbPress (r2827)
 	 *
-	 * @uses apply_filters() Calls 'bbp_login_widget_options' with the
+	 * @uses apply_filters() Calls 'bb_login_widget_options' with the
 	 *                        widget options
 	 */
 	public function __construct() {
-		$widget_ops = apply_filters( 'bbp_login_widget_options', array(
-			'classname'   => 'bbp_widget_login',
+		$widget_ops = apply_filters( 'bb_login_widget_options', array(
+			'classname'   => 'bb_widget_login',
 			'description' => __( 'A simple login form with optional links to sign-up and lost password pages.', 'bbpress' )
 		) );
 
@@ -60,7 +60,7 @@ class BB_Login_Widget extends WP_Widget {
 	 *
 	 * @param mixed $args Arguments
 	 * @param array $instance Instance
-	 * @uses apply_filters() Calls 'bbp_login_widget_title' with the title
+	 * @uses apply_filters() Calls 'bb_login_widget_title' with the title
 	 * @uses get_template_part() To get the login/logged in form
 	 */
 	public function widget( $args = array(), $instance = array() ) {
@@ -72,9 +72,9 @@ class BB_Login_Widget extends WP_Widget {
 		$settings['title'] = apply_filters( 'widget_title', $settings['title'], $instance, $this->id_base );
 
 		// bbPress filters
-		$settings['title']    = apply_filters( 'bbp_login_widget_title',    $settings['title'],    $instance, $this->id_base );
-		$settings['register'] = apply_filters( 'bbp_login_widget_register', $settings['register'], $instance, $this->id_base );
-		$settings['lostpass'] = apply_filters( 'bbp_login_widget_lostpass', $settings['lostpass'], $instance, $this->id_base );
+		$settings['title']    = apply_filters( 'bb_login_widget_title',    $settings['title'],    $instance, $this->id_base );
+		$settings['register'] = apply_filters( 'bb_login_widget_register', $settings['register'], $instance, $this->id_base );
+		$settings['lostpass'] = apply_filters( 'bb_login_widget_lostpass', $settings['lostpass'], $instance, $this->id_base );
 
 		echo $args['before_widget'];
 
@@ -84,22 +84,22 @@ class BB_Login_Widget extends WP_Widget {
 
 		if ( !is_user_logged_in() ) : ?>
 
-			<form method="post" action="<?php bbp_wp_login_action( array( 'context' => 'login_post' ) ); ?>" class="bbp-login-form">
+			<form method="post" action="<?php bb_wp_login_action( array( 'context' => 'login_post' ) ); ?>" class="bbp-login-form">
 				<fieldset>
 					<legend><?php _e( 'Log In', 'bbpress' ); ?></legend>
 
 					<div class="bbp-username">
 						<label for="user_login"><?php _e( 'Username', 'bbpress' ); ?>: </label>
-						<input type="text" name="log" value="<?php bbp_sanitize_val( 'user_login', 'text' ); ?>" size="20" id="user_login" tabindex="<?php bbp_tab_index(); ?>" />
+						<input type="text" name="log" value="<?php bb_sanitize_val( 'user_login', 'text' ); ?>" size="20" id="user_login" tabindex="<?php bb_tab_index(); ?>" />
 					</div>
 
 					<div class="bbp-password">
 						<label for="user_pass"><?php _e( 'Password', 'bbpress' ); ?>: </label>
-						<input type="password" name="pwd" value="<?php bbp_sanitize_val( 'user_pass', 'password' ); ?>" size="20" id="user_pass" tabindex="<?php bbp_tab_index(); ?>" />
+						<input type="password" name="pwd" value="<?php bb_sanitize_val( 'user_pass', 'password' ); ?>" size="20" id="user_pass" tabindex="<?php bb_tab_index(); ?>" />
 					</div>
 
 					<div class="bbp-remember-me">
-						<input type="checkbox" name="rememberme" value="forever" <?php checked( bbp_get_sanitize_val( 'rememberme', 'checkbox' ), true, true ); ?> id="rememberme" tabindex="<?php bbp_tab_index(); ?>" />
+						<input type="checkbox" name="rememberme" value="forever" <?php checked( bb_get_sanitize_val( 'rememberme', 'checkbox' ), true, true ); ?> id="rememberme" tabindex="<?php bb_tab_index(); ?>" />
 						<label for="rememberme"><?php _e( 'Remember Me', 'bbpress' ); ?></label>
 					</div>
 
@@ -107,9 +107,9 @@ class BB_Login_Widget extends WP_Widget {
 
 						<?php do_action( 'login_form' ); ?>
 
-						<button type="submit" name="user-submit" id="user-submit" tabindex="<?php bbp_tab_index(); ?>" class="button submit user-submit"><?php _e( 'Log In', 'bbpress' ); ?></button>
+						<button type="submit" name="user-submit" id="user-submit" tabindex="<?php bb_tab_index(); ?>" class="button submit user-submit"><?php _e( 'Log In', 'bbpress' ); ?></button>
 
-						<?php bbp_user_login_fields(); ?>
+						<?php bb_user_login_fields(); ?>
 
 					</div>
 
@@ -139,10 +139,10 @@ class BB_Login_Widget extends WP_Widget {
 		<?php else : ?>
 
 			<div class="bbp-logged-in">
-				<a href="<?php bbp_user_profile_url( bbp_get_current_user_id() ); ?>" class="submit user-submit"><?php echo get_avatar( bbp_get_current_user_id(), '40' ); ?></a>
-				<h4><?php bbp_user_profile_link( bbp_get_current_user_id() ); ?></h4>
+				<a href="<?php bb_user_profile_url( bb_get_current_user_id() ); ?>" class="submit user-submit"><?php echo get_avatar( bb_get_current_user_id(), '40' ); ?></a>
+				<h4><?php bb_user_profile_link( bb_get_current_user_id() ); ?></h4>
 
-				<?php bbp_logout_link(); ?>
+				<?php bb_logout_link(); ?>
 			</div>
 
 		<?php endif;
@@ -205,10 +205,10 @@ class BB_Login_Widget extends WP_Widget {
 	 * @since bbPress (r4802)
 	 *
 	 * @param $instance Instance
-	 * @uses bbp_parse_args() To merge widget settings into defaults
+	 * @uses bb_parse_args() To merge widget settings into defaults
 	 */
 	public function parse_settings( $instance = array() ) {
-		return bbp_parse_args( $instance, array(
+		return bb_parse_args( $instance, array(
 			'title'    => '',
 			'register' => '',
 			'lostpass' => ''
@@ -234,11 +234,11 @@ class BB_Views_Widget extends WP_Widget {
 	 *
 	 * @since bbPress (r3020)
 	 *
-	 * @uses apply_filters() Calls 'bbp_views_widget_options' with the
+	 * @uses apply_filters() Calls 'bb_views_widget_options' with the
 	 *                        widget options
 	 */
 	public function __construct() {
-		$widget_ops = apply_filters( 'bbp_views_widget_options', array(
+		$widget_ops = apply_filters( 'bb_views_widget_options', array(
 			'classname'   => 'widget_display_views',
 			'description' => __( 'A list of registered optional topic views.', 'bbpress' )
 		) );
@@ -264,15 +264,15 @@ class BB_Views_Widget extends WP_Widget {
 	 *
 	 * @param mixed $args Arguments
 	 * @param array $instance Instance
-	 * @uses apply_filters() Calls 'bbp_view_widget_title' with the title
-	 * @uses bbp_get_views() To get the views
-	 * @uses bbp_view_url() To output the view url
-	 * @uses bbp_view_title() To output the view title
+	 * @uses apply_filters() Calls 'bb_view_widget_title' with the title
+	 * @uses bb_get_views() To get the views
+	 * @uses bb_view_url() To output the view url
+	 * @uses bb_view_title() To output the view title
 	 */
 	public function widget( $args = array(), $instance = array() ) {
 
 		// Only output widget contents if views exist
-		if ( ! bbp_get_views() ) {
+		if ( ! bb_get_views() ) {
 			return;
 		}
 
@@ -283,7 +283,7 @@ class BB_Views_Widget extends WP_Widget {
 		$settings['title'] = apply_filters( 'widget_title',          $settings['title'], $instance, $this->id_base );
 
 		// bbPress filter
-		$settings['title'] = apply_filters( 'bbp_view_widget_title', $settings['title'], $instance, $this->id_base );
+		$settings['title'] = apply_filters( 'bb_view_widget_title', $settings['title'], $instance, $this->id_base );
 
 		echo $args['before_widget'];
 
@@ -293,9 +293,9 @@ class BB_Views_Widget extends WP_Widget {
 
 		<ul>
 
-			<?php foreach ( array_keys( bbp_get_views() ) as $view ) : ?>
+			<?php foreach ( array_keys( bb_get_views() ) as $view ) : ?>
 
-				<li><a class="bbp-view-title" href="<?php bbp_view_url( $view ); ?>" title="<?php bbp_view_title( $view ); ?>"><?php bbp_view_title( $view ); ?></a></li>
+				<li><a class="bbp-view-title" href="<?php bb_view_url( $view ); ?>" title="<?php bb_view_title( $view ); ?>"><?php bb_view_title( $view ); ?></a></li>
 
 			<?php endforeach; ?>
 
@@ -348,10 +348,10 @@ class BB_Views_Widget extends WP_Widget {
 	 * @since bbPress (r4802)
 	 *
 	 * @param $instance Instance
-	 * @uses bbp_parse_args() To merge widget settings into defaults
+	 * @uses bb_parse_args() To merge widget settings into defaults
 	 */
 	public function parse_settings( $instance = array() ) {
-		return bbp_parse_args( $instance, array(
+		return bb_parse_args( $instance, array(
 			'title' => ''
 		), 'view_widget_settings' );
 	}
@@ -375,11 +375,11 @@ class BB_Search_Widget extends WP_Widget {
 	 *
 	 * @since bbPress (r4579)
 	 *
-	 * @uses apply_filters() Calls 'bbp_search_widget_options' with the
+	 * @uses apply_filters() Calls 'bb_search_widget_options' with the
 	 *                        widget options
 	 */
 	public function __construct() {
-		$widget_ops = apply_filters( 'bbp_search_widget_options', array(
+		$widget_ops = apply_filters( 'bb_search_widget_options', array(
 			'classname'   => 'widget_display_search',
 			'description' => __( 'The bbPress forum search form.', 'bbpress' )
 		) );
@@ -403,7 +403,7 @@ class BB_Search_Widget extends WP_Widget {
 	 *
 	 * @since bbPress (r4579)
 	 *
-	 * @uses apply_filters() Calls 'bbp_search_widget_title' with the title
+	 * @uses apply_filters() Calls 'bb_search_widget_title' with the title
 	 * @uses get_template_part() To get the search form
 	 */
 	public function widget( $args, $instance ) {
@@ -415,7 +415,7 @@ class BB_Search_Widget extends WP_Widget {
 		$settings['title'] = apply_filters( 'widget_title',            $settings['title'], $instance, $this->id_base );
 
 		// bbPress filter
-		$settings['title'] = apply_filters( 'bbp_search_widget_title', $settings['title'], $instance, $this->id_base );
+		$settings['title'] = apply_filters( 'bb_search_widget_title', $settings['title'], $instance, $this->id_base );
 
 		echo $args['before_widget'];
 
@@ -423,7 +423,7 @@ class BB_Search_Widget extends WP_Widget {
 			echo $args['before_title'] . $settings['title'] . $args['after_title'];
 		}
 
-		bbp_get_template_part( 'form', 'search' );
+		bb_get_template_part( 'form', 'search' );
 
 		echo $args['after_widget'];
 	}
@@ -472,10 +472,10 @@ class BB_Search_Widget extends WP_Widget {
 	 * @since bbPress (r4802)
 	 *
 	 * @param $instance Instance
-	 * @uses bbp_parse_args() To merge widget settings into defaults
+	 * @uses bb_parse_args() To merge widget settings into defaults
 	 */
 	public function parse_settings( $instance = array() ) {
-		return bbp_parse_args( $instance, array(
+		return bb_parse_args( $instance, array(
 			'title' => __( 'Search Forums', 'bbpress' )
 		), 'search_widget_settings' );
 	}
@@ -499,11 +499,11 @@ class BB_Forums_Widget extends WP_Widget {
 	 *
 	 * @since bbPress (r2653)
 	 *
-	 * @uses apply_filters() Calls 'bbp_forums_widget_options' with the
+	 * @uses apply_filters() Calls 'bb_forums_widget_options' with the
 	 *                        widget options
 	 */
 	public function __construct() {
-		$widget_ops = apply_filters( 'bbp_forums_widget_options', array(
+		$widget_ops = apply_filters( 'bb_forums_widget_options', array(
 			'classname'   => 'widget_display_forums',
 			'description' => __( 'A list of forums with an option to set the parent.', 'bbpress' )
 		) );
@@ -529,16 +529,16 @@ class BB_Forums_Widget extends WP_Widget {
 	 *
 	 * @param mixed $args Arguments
 	 * @param array $instance Instance
-	 * @uses apply_filters() Calls 'bbp_forum_widget_title' with the title
+	 * @uses apply_filters() Calls 'bb_forum_widget_title' with the title
 	 * @uses get_option() To get the forums per page option
 	 * @uses current_user_can() To check if the current user can read
 	 *                           private() To resety name
-	 * @uses bbp_has_forums() The main forum loop
-	 * @uses bbp_forums() To check whether there are more forums available
+	 * @uses bb_has_forums() The main forum loop
+	 * @uses bb_forums() To check whether there are more forums available
 	 *                     in the loop
-	 * @uses bbp_the_forum() Loads up the current forum in the loop
-	 * @uses bbp_forum_permalink() To display the forum permalink
-	 * @uses bbp_forum_title() To display the forum title
+	 * @uses bb_the_forum() Loads up the current forum in the loop
+	 * @uses bb_forum_permalink() To display the forum permalink
+	 * @uses bb_forum_title() To display the forum title
 	 */
 	public function widget( $args, $instance ) {
 
@@ -549,15 +549,15 @@ class BB_Forums_Widget extends WP_Widget {
 		$settings['title'] = apply_filters( 'widget_title',           $settings['title'], $instance, $this->id_base );
 
 		// bbPress filter
-		$settings['title'] = apply_filters( 'bbp_forum_widget_title', $settings['title'], $instance, $this->id_base );
+		$settings['title'] = apply_filters( 'bb_forum_widget_title', $settings['title'], $instance, $this->id_base );
 
 		// Note: private and hidden forums will be excluded via the
-		// bbp_pre_get_posts_exclude_forums filter and function.
+		// bb_pre_get_posts_exclude_forums filter and function.
 		$widget_query = new WP_Query( array(
-			'post_type'      => bbp_get_forum_post_type(),
+			'post_type'      => bb_get_forum_post_type(),
 			'post_parent'    => $settings['parent_forum'],
-			'post_status'    => bbp_get_public_status_id(),
-			'posts_per_page' => get_option( '_bbp_forums_per_page', 50 ),
+			'post_status'    => bb_get_public_status_id(),
+			'posts_per_page' => get_option( '_bb_forums_per_page', 50 ),
 			'orderby'        => 'menu_order',
 			'order'          => 'ASC'
 		) );
@@ -577,7 +577,7 @@ class BB_Forums_Widget extends WP_Widget {
 
 			<?php while ( $widget_query->have_posts() ) : $widget_query->the_post(); ?>
 
-				<li><a class="bbp-forum-title" href="<?php bbp_forum_permalink( $widget_query->post->ID ); ?>" title="<?php bbp_forum_title( $widget_query->post->ID ); ?>"><?php bbp_forum_title( $widget_query->post->ID ); ?></a></li>
+				<li><a class="bbp-forum-title" href="<?php bb_forum_permalink( $widget_query->post->ID ); ?>" title="<?php bb_forum_title( $widget_query->post->ID ); ?>"><?php bb_forum_title( $widget_query->post->ID ); ?></a></li>
 
 			<?php endwhile; ?>
 
@@ -649,10 +649,10 @@ class BB_Forums_Widget extends WP_Widget {
 	 * @since bbPress (r4802)
 	 *
 	 * @param $instance Instance
-	 * @uses bbp_parse_args() To merge widget settings into defaults
+	 * @uses bb_parse_args() To merge widget settings into defaults
 	 */
 	public function parse_settings( $instance = array() ) {
-		return bbp_parse_args( $instance, array(
+		return bb_parse_args( $instance, array(
 			'title'        => __( 'Forums', 'bbpress' ),
 			'parent_forum' => 0
 		), 'forum_widget_settings' );
@@ -677,11 +677,11 @@ class BB_Topics_Widget extends WP_Widget {
 	 *
 	 * @since bbPress (r2653)
 	 *
-	 * @uses apply_filters() Calls 'bbp_topics_widget_options' with the
+	 * @uses apply_filters() Calls 'bb_topics_widget_options' with the
 	 *                        widget options
 	 */
 	public function __construct() {
-		$widget_ops = apply_filters( 'bbp_topics_widget_options', array(
+		$widget_ops = apply_filters( 'bb_topics_widget_options', array(
 			'classname'   => 'widget_display_topics',
 			'description' => __( 'A list of recent topics, sorted by popularity or freshness.', 'bbpress' )
 		) );
@@ -707,12 +707,12 @@ class BB_Topics_Widget extends WP_Widget {
 	 *
 	 * @param mixed $args
 	 * @param array $instance
-	 * @uses apply_filters() Calls 'bbp_topic_widget_title' with the title
-	 * @uses bbp_topic_permalink() To display the topic permalink
-	 * @uses bbp_topic_title() To display the topic title
-	 * @uses bbp_get_topic_last_active_time() To get the topic last active
+	 * @uses apply_filters() Calls 'bb_topic_widget_title' with the title
+	 * @uses bb_topic_permalink() To display the topic permalink
+	 * @uses bb_topic_title() To display the topic title
+	 * @uses bb_get_topic_last_active_time() To get the topic last active
 	 *                                         time
-	 * @uses bbp_get_topic_id() To get the topic id
+	 * @uses bb_get_topic_id() To get the topic id
 	 */
 	public function widget( $args = array(), $instance = array() ) {
 
@@ -723,7 +723,7 @@ class BB_Topics_Widget extends WP_Widget {
 		$settings['title'] = apply_filters( 'widget_title',           $settings['title'], $instance, $this->id_base );
 
 		// bbPress filter
-		$settings['title'] = apply_filters( 'bbp_topic_widget_title', $settings['title'], $instance, $this->id_base );
+		$settings['title'] = apply_filters( 'bb_topic_widget_title', $settings['title'], $instance, $this->id_base );
 
 		// How do we want to order our results?
 		switch ( $settings['order_by'] ) {
@@ -731,12 +731,12 @@ class BB_Topics_Widget extends WP_Widget {
 			// Order by most recent replies
 			case 'freshness' :
 				$topics_query = array(
-					'post_type'      => bbp_get_topic_post_type(),
+					'post_type'      => bb_get_topic_post_type(),
 					'post_parent'    => $settings['parent_forum'],
 					'posts_per_page' => (int) $settings['max_shown'],
-					'post_status'    => array( bbp_get_public_status_id(), bbp_get_closed_status_id() ),
+					'post_status'    => array( bb_get_public_status_id(), bb_get_closed_status_id() ),
 					'show_stickies'  => false,
-					'meta_key'       => '_bbp_last_active_time',
+					'meta_key'       => '_bb_last_active_time',
 					'orderby'        => 'meta_value',
 					'order'          => 'DESC',
 				);
@@ -745,12 +745,12 @@ class BB_Topics_Widget extends WP_Widget {
 			// Order by total number of replies
 			case 'popular' :
 				$topics_query = array(
-					'post_type'      => bbp_get_topic_post_type(),
+					'post_type'      => bb_get_topic_post_type(),
 					'post_parent'    => $settings['parent_forum'],
 					'posts_per_page' => (int) $settings['max_shown'],
-					'post_status'    => array( bbp_get_public_status_id(), bbp_get_closed_status_id() ),
+					'post_status'    => array( bb_get_public_status_id(), bb_get_closed_status_id() ),
 					'show_stickies'  => false,
-					'meta_key'       => '_bbp_reply_count',
+					'meta_key'       => '_bb_reply_count',
 					'orderby'        => 'meta_value',
 					'order'          => 'DESC'
 				);
@@ -760,10 +760,10 @@ class BB_Topics_Widget extends WP_Widget {
 			case 'newness' :
 			default :
 				$topics_query = array(
-					'post_type'      => bbp_get_topic_post_type(),
+					'post_type'      => bb_get_topic_post_type(),
 					'post_parent'    => $settings['parent_forum'],
 					'posts_per_page' => (int) $settings['max_shown'],
-					'post_status'    => array( bbp_get_public_status_id(), bbp_get_closed_status_id() ),
+					'post_status'    => array( bb_get_public_status_id(), bb_get_closed_status_id() ),
 					'show_stickies'  => false,
 					'order'          => 'DESC'
 				);
@@ -771,7 +771,7 @@ class BB_Topics_Widget extends WP_Widget {
 		}
 
 		// Note: private and hidden forums will be excluded via the
-		// bbp_pre_get_posts_exclude_forums filter and function.
+		// bb_pre_get_posts_exclude_forums filter and function.
 		$widget_query = new WP_Query( $topics_query );
 
 		// Bail if no topics are found
@@ -790,16 +790,16 @@ class BB_Topics_Widget extends WP_Widget {
 			<?php while ( $widget_query->have_posts() ) :
 
 				$widget_query->the_post();
-				$topic_id    = bbp_get_topic_id( $widget_query->post->ID );
+				$topic_id    = bb_get_topic_id( $widget_query->post->ID );
 				$author_link = '';
 
 				// Maybe get the topic author
 				if ( 'on' == $settings['show_user'] ) :
-					$author_link = bbp_get_topic_author_link( array( 'post_id' => $topic_id, 'type' => 'both', 'size' => 14 ) );
+					$author_link = bb_get_topic_author_link( array( 'post_id' => $topic_id, 'type' => 'both', 'size' => 14 ) );
 				endif; ?>
 
 				<li>
-					<a class="bbp-forum-title" href="<?php echo esc_url( bbp_get_topic_permalink( $topic_id ) ); ?>" title="<?php echo esc_attr( bbp_get_topic_title( $topic_id ) ); ?>"><?php bbp_topic_title( $topic_id ); ?></a>
+					<a class="bbp-forum-title" href="<?php echo esc_url( bb_get_topic_permalink( $topic_id ) ); ?>" title="<?php echo esc_attr( bb_get_topic_title( $topic_id ) ); ?>"><?php bb_topic_title( $topic_id ); ?></a>
 
 					<?php if ( ! empty( $author_link ) ) : ?>
 
@@ -809,7 +809,7 @@ class BB_Topics_Widget extends WP_Widget {
 
 					<?php if ( 'on' == $settings['show_date'] ) : ?>
 
-						<div><?php bbp_topic_last_active_time( $topic_id ); ?></div>
+						<div><?php bb_topic_last_active_time( $topic_id ); ?></div>
 
 					<?php endif; ?>
 
@@ -899,10 +899,10 @@ class BB_Topics_Widget extends WP_Widget {
 	 * @since bbPress (r4802)
 	 *
 	 * @param $instance Instance
-	 * @uses bbp_parse_args() To merge widget options into defaults
+	 * @uses bb_parse_args() To merge widget options into defaults
 	 */
 	public function parse_settings( $instance = array() ) {
-		return bbp_parse_args( $instance, array(
+		return bb_parse_args( $instance, array(
 			'title'        => __( 'Recent Topics', 'bbpress' ),
 			'max_shown'    => 5,
 			'show_date'    => false,
@@ -931,11 +931,11 @@ class BB_Stats_Widget extends WP_Widget {
 	 *
 	 * @since bbPress (r4509)
 	 *
-	 * @uses  apply_filters() Calls 'bbp_stats_widget_options' with the
+	 * @uses  apply_filters() Calls 'bb_stats_widget_options' with the
 	 *        widget options
 	 */
 	public function __construct() {
-		$widget_ops = apply_filters( 'bbp_stats_widget_options', array(
+		$widget_ops = apply_filters( 'bb_stats_widget_options', array(
 			'classname'   => 'widget_display_stats',
 			'description' => __( 'Some statistics from your forum.', 'bbpress' )
 		) );
@@ -962,8 +962,8 @@ class BB_Stats_Widget extends WP_Widget {
 	 * @param mixed $args     Arguments
 	 * @param array $instance Instance
 	 *
-	 * @uses apply_filters() Calls 'bbp_stats_widget_title' with the title
-	 * @uses bbp_get_template_part() To get the content-forum-statistics template
+	 * @uses apply_filters() Calls 'bb_stats_widget_title' with the title
+	 * @uses bb_get_template_part() To get the content-forum-statistics template
 	 */
 	public function widget( $args = array(), $instance = array() ) {
 
@@ -974,7 +974,7 @@ class BB_Stats_Widget extends WP_Widget {
 		$settings['title'] = apply_filters( 'widget_title',           $settings['title'], $instance, $this->id_base );
 
 		// bbPress widget title filter
-		$settings['title'] = apply_filters( 'bbp_stats_widget_title', $settings['title'], $instance, $this->id_base );
+		$settings['title'] = apply_filters( 'bb_stats_widget_title', $settings['title'], $instance, $this->id_base );
 
 		echo $args['before_widget'];
 
@@ -982,7 +982,7 @@ class BB_Stats_Widget extends WP_Widget {
 			echo $args['before_title'] . $settings['title'] . $args['after_title'];
 		}
 
-		bbp_get_template_part( 'content', 'statistics' );
+		bb_get_template_part( 'content', 'statistics' );
 
 		echo $args['after_widget'];
 	}
@@ -1033,10 +1033,10 @@ class BB_Stats_Widget extends WP_Widget {
 	 * @since bbPress (r4802)
 	 *
 	 * @param $instance Instance
-	 * @uses bbp_parse_args() To merge widget settings into defaults
+	 * @uses bb_parse_args() To merge widget settings into defaults
 	 */
 	public function parse_settings( $instance = array() ) {
-		return bbp_parse_args( $instance, array(
+		return bb_parse_args( $instance, array(
 			'title' => __( 'Forum Statistics', 'bbpress' )
 		),
 		'stats_widget_settings' );
@@ -1061,11 +1061,11 @@ class BB_Replies_Widget extends WP_Widget {
 	 *
 	 * @since bbPress (r2653)
 	 *
-	 * @uses apply_filters() Calls 'bbp_replies_widget_options' with the
+	 * @uses apply_filters() Calls 'bb_replies_widget_options' with the
 	 *                        widget options
 	 */
 	public function __construct() {
-		$widget_ops = apply_filters( 'bbp_replies_widget_options', array(
+		$widget_ops = apply_filters( 'bb_replies_widget_options', array(
 			'classname'   => 'widget_display_replies',
 			'description' => __( 'A list of the most recent replies.', 'bbpress' )
 		) );
@@ -1091,13 +1091,13 @@ class BB_Replies_Widget extends WP_Widget {
 	 *
 	 * @param mixed $args
 	 * @param array $instance
-	 * @uses apply_filters() Calls 'bbp_reply_widget_title' with the title
-	 * @uses bbp_get_reply_author_link() To get the reply author link
-	 * @uses bbp_get_reply_author() To get the reply author name
-	 * @uses bbp_get_reply_id() To get the reply id
-	 * @uses bbp_get_reply_url() To get the reply url
-	 * @uses bbp_get_reply_excerpt() To get the reply excerpt
-	 * @uses bbp_get_reply_topic_title() To get the reply topic title
+	 * @uses apply_filters() Calls 'bb_reply_widget_title' with the title
+	 * @uses bb_get_reply_author_link() To get the reply author link
+	 * @uses bb_get_reply_author() To get the reply author name
+	 * @uses bb_get_reply_id() To get the reply id
+	 * @uses bb_get_reply_url() To get the reply url
+	 * @uses bb_get_reply_excerpt() To get the reply excerpt
+	 * @uses bb_get_reply_topic_title() To get the reply topic title
 	 * @uses get_the_date() To get the date of the reply
 	 * @uses get_the_time() To get the time of the reply
 	 */
@@ -1110,13 +1110,13 @@ class BB_Replies_Widget extends WP_Widget {
 		$settings['title'] = apply_filters( 'widget_title',             $settings['title'], $instance, $this->id_base );
 
 		// bbPress filter
-		$settings['title'] = apply_filters( 'bbp_replies_widget_title', $settings['title'], $instance, $this->id_base );
+		$settings['title'] = apply_filters( 'bb_replies_widget_title', $settings['title'], $instance, $this->id_base );
 
 		// Note: private and hidden forums will be excluded via the
-		// bbp_pre_get_posts_exclude_forums filter and function.
+		// bb_pre_get_posts_exclude_forums filter and function.
 		$widget_query = new WP_Query( array(
-			'post_type'      => bbp_get_reply_post_type(),
-			'post_status'    => array( bbp_get_public_status_id(), bbp_get_closed_status_id() ),
+			'post_type'      => bb_get_reply_post_type(),
+			'post_status'    => array( bb_get_public_status_id(), bb_get_closed_status_id() ),
 			'posts_per_page' => (int) $settings['max_shown']
 		) );
 
@@ -1140,12 +1140,12 @@ class BB_Replies_Widget extends WP_Widget {
 					<?php
 
 					// Verify the reply ID
-					$reply_id   = bbp_get_reply_id( $widget_query->post->ID );
-					$reply_link = '<a class="bbp-reply-topic-title" href="' . esc_url( bbp_get_reply_url( $reply_id ) ) . '" title="' . esc_attr( bbp_get_reply_excerpt( $reply_id, 50 ) ) . '">' . bbp_get_reply_topic_title( $reply_id ) . '</a>';
+					$reply_id   = bb_get_reply_id( $widget_query->post->ID );
+					$reply_link = '<a class="bbp-reply-topic-title" href="' . esc_url( bb_get_reply_url( $reply_id ) ) . '" title="' . esc_attr( bb_get_reply_excerpt( $reply_id, 50 ) ) . '">' . bb_get_reply_topic_title( $reply_id ) . '</a>';
 
 					// Only query user if showing them
 					if ( 'on' == $settings['show_user'] ) :
-						$author_link = bbp_get_reply_author_link( array( 'post_id' => $reply_id, 'type' => 'both', 'size' => 14 ) );
+						$author_link = bb_get_reply_author_link( array( 'post_id' => $reply_id, 'type' => 'both', 'size' => 14 ) );
 					else :
 						$author_link = false;
 					endif;
@@ -1154,13 +1154,13 @@ class BB_Replies_Widget extends WP_Widget {
 					if ( ( 'on' == $settings['show_date'] ) && !empty( $author_link ) ) :
 
 						// translators: 1: reply author, 2: reply link, 3: reply timestamp
-						printf( _x( '%1$s on %2$s %3$s', 'widgets', 'bbpress' ), $author_link, $reply_link, '<div>' . bbp_get_time_since( get_the_time( 'U' ) ) . '</div>' );
+						printf( _x( '%1$s on %2$s %3$s', 'widgets', 'bbpress' ), $author_link, $reply_link, '<div>' . bb_get_time_since( get_the_time( 'U' ) ) . '</div>' );
 
 					// Reply link and timestamp
 					elseif ( 'on' == $settings['show_date'] ) :
 
 						// translators: 1: reply link, 2: reply timestamp
-						printf( _x( '%1$s %2$s',         'widgets', 'bbpress' ), $reply_link,  '<div>' . bbp_get_time_since( get_the_time( 'U' ) ) . '</div>'              );
+						printf( _x( '%1$s %2$s',         'widgets', 'bbpress' ), $reply_link,  '<div>' . bb_get_time_since( get_the_time( 'U' ) ) . '</div>'              );
 
 					// Reply author and title
 					elseif ( !empty( $author_link ) ) :
@@ -1236,10 +1236,10 @@ class BB_Replies_Widget extends WP_Widget {
 	 * @since bbPress (r4802)
 	 *
 	 * @param $instance Instance
-	 * @uses bbp_parse_args() To merge widget settings into defaults
+	 * @uses bb_parse_args() To merge widget settings into defaults
 	 */
 	public function parse_settings( $instance = array() ) {
-		return bbp_parse_args( $instance, array(
+		return bb_parse_args( $instance, array(
 			'title'     => __( 'Recent Replies', 'bbpress' ),
 			'max_shown' => 5,
 			'show_date' => false,

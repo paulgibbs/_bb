@@ -11,31 +11,31 @@
 
 <div id="bbpress-forums">
 
-	<?php bbp_breadcrumb(); ?>
+	<?php bb_breadcrumb(); ?>
 
-	<?php bbp_set_query_name( 'bbp_search' ); ?>
+	<?php bb_set_query_name( 'bb_search' ); ?>
 
-	<?php do_action( 'bbp_template_before_search' ); ?>
+	<?php do_action( 'bb_template_before_search' ); ?>
 
-	<?php if ( bbp_has_search_results() ) : ?>
+	<?php if ( bb_has_search_results() ) : ?>
 
-		 <?php bbp_get_template_part( 'pagination', 'search' ); ?>
+		 <?php bb_get_template_part( 'pagination', 'search' ); ?>
 
-		 <?php bbp_get_template_part( 'loop',       'search' ); ?>
+		 <?php bb_get_template_part( 'loop',       'search' ); ?>
 
-		 <?php bbp_get_template_part( 'pagination', 'search' ); ?>
+		 <?php bb_get_template_part( 'pagination', 'search' ); ?>
 
-	<?php elseif ( bbp_get_search_terms() ) : ?>
+	<?php elseif ( bb_get_search_terms() ) : ?>
 
-		 <?php bbp_get_template_part( 'feedback',   'no-search' ); ?>
+		 <?php bb_get_template_part( 'feedback',   'no-search' ); ?>
 
 	<?php else : ?>
 
-		<?php bbp_get_template_part( 'form', 'search' ); ?>
+		<?php bb_get_template_part( 'form', 'search' ); ?>
 
 	<?php endif; ?>
 
-	<?php do_action( 'bbp_template_after_search_results' ); ?>
+	<?php do_action( 'bb_template_after_search_results' ); ?>
 
 </div>
 

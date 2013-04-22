@@ -26,7 +26,7 @@ function bb_setup_akismet() {
 	if ( !defined( 'AKISMET_VERSION' ) ) return;
 
 	// Bail if Akismet is turned off
-	if ( !bbp_is_akismet_active() ) return;
+	if ( !bb_is_akismet_active() ) return;
 
 	// Include the Akismet Component
 	require( bbpress()->includes_dir . 'extend/akismet.php' );
@@ -37,7 +37,7 @@ function bb_setup_akismet() {
 
 /**
  * Requires and creates the BuddyPress extension, and adds component creation
- * action to bp_init hook. @see bbp_setup_buddypress_component()
+ * action to bp_init hook. @see bb_setup_buddypress_component()
  *
  * @since bbPress (r3395)
  * @return If BuddyPress is not active

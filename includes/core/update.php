@@ -16,11 +16,11 @@ if ( !defined( 'ABSPATH' ) ) exit;
  * @since bbPress (r3764)
  *
  * @uses get_option()
- * @uses bbp_get_db_version() To get bbPress's database version
+ * @uses bb_get_db_version() To get bbPress's database version
  * @return bool True if update, False if not
  */
 function bb_is_install() {
-	return ! bbp_get_db_version_raw();
+	return ! bb_get_db_version_raw();
 }
 
 /**
@@ -29,12 +29,12 @@ function bb_is_install() {
  * @since bbPress (r3421)
  *
  * @uses get_option()
- * @uses bbp_get_db_version() To get bbPress's database version
+ * @uses bb_get_db_version() To get bbPress's database version
  * @return bool True if update, False if not
  */
 function bb_is_update() {
-	$raw    = (int) bbp_get_db_version_raw();
-	$cur    = (int) bbp_get_db_version();
+	$raw    = (int) bb_get_db_version_raw();
+	$cur    = (int) bb_get_db_version();
 	$retval = (bool) ( $raw < $cur );
 	return $retval;
 }
@@ -132,10 +132,10 @@ function bb_is_deactivation( $basename = '' ) {
  *
  * @since bbPress (r3421)
  * @uses update_option()
- * @uses bbp_get_db_version() To get bbPress's database version
+ * @uses bb_get_db_version() To get bbPress's database version
  */
 function bb_version_bump() {
-	update_option( '_bbp_db_version', bbp_get_db_version() );
+	update_option( '_bb_db_version', bb_get_db_version() );
 }
 
 /**
@@ -143,18 +143,18 @@ function bb_version_bump() {
  *
  * @since bbPress (r3419)
  *
- * @uses bbp_version_updater()
- * @uses bbp_version_bump()
+ * @uses bb_version_updater()
+ * @uses bb_version_bump()
  * @uses flush_rewrite_rules()
  */
 function bb_setup_updater() {
 
 	// Bail if no update needed
-	if ( ! bbp_is_update() )
+	if ( ! bb_is_update() )
 		return;
 
 	// Call the automated updater
-	bbp_version_updater();
+	bb_version_updater();
 }
 
 /**
@@ -166,7 +166,7 @@ function bb_setup_updater() {
 function bb_create_initial_content( $args = array() ) {
 
 	// Parse arguments against default values
-	$r = bbp_parse_args( $args, array(
+	$r = bb_parse_args( $args, array(
 		'forum_parent'  => 0,
 		'forum_status'  => 'publish',
 		'forum_title'   => __( 'General',                                  'bbpress' ),
@@ -178,7 +178,7 @@ function bb_create_initial_content( $args = array() ) {
 	), 'create_initial_content' );
 
 	// Create the initial forum
-	$forum_id = bbp_insert_forum( array(
+	$forum_id = bb_insert_forum( array(
 		'post_parent'  => $r['forum_parent'],
 		'post_status'  => $r['forum_status'],
 		'post_title'   => $r['forum_title'],
@@ -186,7 +186,7 @@ function bb_create_initial_content( $args = array() ) {
 	) );
 
 	// Create the initial topic
-	$topic_id = bbp_insert_topic(
+	$topic_id = bb_insert_topic(
 		array(
 			'post_parent'  => $forum_id,
 			'post_title'   => $r['topic_title'],
@@ -196,7 +196,7 @@ function bb_create_initial_content( $args = array() ) {
 	);
 
 	// Create the initial reply
-	$reply_id = bbp_insert_reply(
+	$reply_id = bb_insert_reply(
 		array(
 			'post_parent'  => $topic_id,
 			'post_title'   => $r['reply_title'],
@@ -227,7 +227,7 @@ function bb_create_initial_content( $args = array() ) {
 function bb_version_updater() {
 
 	// Get the raw database version
-	$raw_db_version = (int) bbp_get_db_version_raw();
+	$raw_db_version = (int) bb_get_db_version_raw();
 
 	/** 2.0 Branch ************************************************************/
 
@@ -246,7 +246,7 @@ function bb_version_updater() {
 		 *
 		 * @link http://bbpress.trac.wordpress.org/ticket/1891
 		 */
-		bbp_admin_repair_forum_visibility();
+		bb_admin_repair_forum_visibility();
 	}
 
 	/** 2.2 Branch ************************************************************/
@@ -255,13 +255,13 @@ function bb_version_updater() {
 	if ( $raw_db_version < 220 ) {
 
 		// Remove the Moderator role from the database
-		remove_role( bbp_get_moderator_role() );
+		remove_role( bb_get_moderator_role() );
 
 		// Remove the Participant role from the database
-		remove_role( bbp_get_participant_role() );
+		remove_role( bb_get_participant_role() );
 
 		// Remove capabilities
-		bbp_remove_caps();
+		bb_remove_caps();
 	}
 
 	/** 2.3 Branch ************************************************************/
@@ -274,10 +274,10 @@ function bb_version_updater() {
 	/** All done! *************************************************************/
 
 	// Bump the version
-	bbp_version_bump();
+	bb_version_bump();
 
 	// Delete rewrite rules to force a flush
-	bbp_delete_rewrite_rules();
+	bb_delete_rewrite_rules();
 }
 
 /**
@@ -299,5 +299,5 @@ function bb_add_activation_redirect() {
 		return;
 
 	// Add the transient to redirect
-    set_transient( '_bbp_activation_redirect', true, 30 );
+    set_transient( '_bb_activation_redirect', true, 30 );
 }

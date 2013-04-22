@@ -73,11 +73,11 @@ class BB_Users_Admin {
 			return;
 
 		// Get the roles
-		$dynamic_roles = bbp_get_dynamic_roles();
+		$dynamic_roles = bb_get_dynamic_roles();
 
 		// Only keymasters can set other keymasters
-		if ( ! bbp_is_user_keymaster() )
-			unset( $dynamic_roles[ bbp_get_keymaster_role() ] ); ?>
+		if ( ! bb_is_user_keymaster() )
+			unset( $dynamic_roles[ bb_get_keymaster_role() ] ); ?>
 
 		<h3><?php _e( 'Forums', 'bbpress' ); ?></h3>
 
@@ -87,7 +87,7 @@ class BB_Users_Admin {
 					<th><label for="bbp-forums-role"><?php _e( 'Forum Role', 'bbpress' ); ?></label></th>
 					<td>
 
-						<?php $user_role = bbp_get_user_role( $profileuser->ID ); ?>
+						<?php $user_role = bb_get_user_role( $profileuser->ID ); ?>
 
 						<select name="bbp-forums-role" id="bbp-forums-role">
 
@@ -129,11 +129,11 @@ class BB_Users_Admin {
 			return;
 
 		// Get the roles
-		$dynamic_roles = bbp_get_dynamic_roles();
+		$dynamic_roles = bb_get_dynamic_roles();
 
 		// Only keymasters can set other keymasters
-		if ( ! bbp_is_user_keymaster() )
-			unset( $dynamic_roles[ bbp_get_keymaster_role() ] ); ?>
+		if ( ! bb_is_user_keymaster() )
+			unset( $dynamic_roles[ bb_get_keymaster_role() ] ); ?>
 
 		<label class="screen-reader-text" for="bbp-new-role"><?php _e( 'Change forum role to&hellip;', 'bbpress' ) ?></label>
 		<select name="bbp-new-role" id="bbp-new-role" style="display:inline-block; float:none;">
@@ -149,9 +149,9 @@ class BB_Users_Admin {
 	 * Table
 	 *
 	 * @uses current_user_can() to check for 'promote users' capability
-	 * @uses bbp_get_dynamic_roles() to get forum roles
-	 * @uses bbp_get_user_role() to get a user's current forums role
-	 * @uses bbp_set_user_role() to set the user's new forums role
+	 * @uses bb_get_dynamic_roles() to get forum roles
+	 * @uses bb_get_user_role() to get a user's current forums role
+	 * @uses bb_set_user_role() to set the user's new forums role
 	 * @return bool Always false
 	 */
 	public function user_role_bulk_change() {
@@ -169,12 +169,12 @@ class BB_Users_Admin {
 			return;
 
 		// Check that the new role exists
-		$dynamic_roles = bbp_get_dynamic_roles();
+		$dynamic_roles = bb_get_dynamic_roles();
 		if ( empty( $dynamic_roles[ $_REQUEST['bbp-new-role'] ] ) )
 			return;
 
 		// Get the current user ID
-		$current_user_id = (int) bbp_get_current_user_id();
+		$current_user_id = (int) bb_get_current_user_id();
 
 		// Run through user ids
 		foreach ( (array) $_REQUEST['users'] as $user_id ) {
@@ -185,16 +185,16 @@ class BB_Users_Admin {
 				continue;
 
 			// Set up user and role data
-			$user_role = bbp_get_user_role( $user_id );			
+			$user_role = bb_get_user_role( $user_id );			
 			$new_role  = sanitize_text_field( $_REQUEST['bbp-new-role'] );
 
 			// Only keymasters can set other keymasters
-			if ( in_array( bbp_get_keymaster_role(), array( $user_role, $new_role ) ) && ! bbp_is_user_keymaster() )
+			if ( in_array( bb_get_keymaster_role(), array( $user_role, $new_role ) ) && ! bb_is_user_keymaster() )
 				continue;
 
 			// Set the new forums role
 			if ( $new_role != $user_role ) {
-				bbp_set_user_role( $user_id, $new_role );
+				bb_set_user_role( $user_id, $new_role );
 			}
 		}
 	}
@@ -210,7 +210,7 @@ class BB_Users_Admin {
 	 */
 	public static function user_role_column( $columns = array() ) {
 		$columns['role']          = __( 'Site Role',  'bbpress' );
-		$columns['bbp_user_role'] = __( 'Forum Role', 'bbpress' );
+		$columns['bb_user_role'] = __( 'Forum Role', 'bbpress' );
 
 		return $columns;
 	}
@@ -229,15 +229,15 @@ class BB_Users_Admin {
 	public static function user_role_row( $retval = '', $column_name = '', $user_id = 0 ) {
 
 		// Only looking for bbPress's user role column
-		if ( 'bbp_user_role' == $column_name ) {
+		if ( 'bb_user_role' == $column_name ) {
 
 			// Get the users role
-			$user_role = bbp_get_user_role( $user_id );
+			$user_role = bb_get_user_role( $user_id );
 			$retval    = false;
 
 			// Translate user role for display
 			if ( ! empty( $user_role ) ) {
-				$roles  = bbp_get_dynamic_roles();
+				$roles  = bb_get_dynamic_roles();
 				$retval = translate_user_role( $roles[$user_role]['name'] );
 			}
 		}

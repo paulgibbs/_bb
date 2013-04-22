@@ -570,14 +570,14 @@ td.bbp-topic-counts {
 	margin: 0 0 8px;
 }
 
-textarea#bbp_reply_content,
-textarea#bbp_topic_content,
-textarea#bbp_forum_content {
+textarea#bb_reply_content,
+textarea#bb_topic_content,
+textarea#bb_forum_content {
 	width: 97%;
 	box-sizing: border-box;
 }
 
-textarea#bbp_forum_content {
+textarea#bb_forum_content {
 	height: 210px;
 }
 
@@ -591,7 +591,7 @@ textarea#bbp_forum_content {
 /**
  * Fix for too-long forum names, usually from conversion
  */
-#bbpress-forums fieldset select#bbp_forum_id {
+#bbpress-forums fieldset select#bb_forum_id {
 	max-width: 200px;
 }
 
@@ -933,8 +933,8 @@ fieldset div.avatar {
 /* =BuddyPress Activity Streams
 -------------------------------------------------------------- */
 
-.activity-list li.bbp_topic_create .activity-content .activity-inner,
-.activity-list li.bbp_reply_create .activity-content .activity-inner {
+.activity-list li.bb_topic_create .activity-content .activity-inner,
+.activity-list li.bb_reply_create .activity-content .activity-inner {
 	border-right: 2px solid #eaeaea;
 	margin-right: 5px;
 	padding-right: 10px;

@@ -65,7 +65,7 @@ class BB_Forums_Component extends BP_Component {
 		}
 
 		// BuddyPress Group Extension class
-		if ( bbp_is_group_forums_active() && bp_is_active( 'groups' ) ) {
+		if ( bb_is_group_forums_active() && bp_is_active( 'groups' ) ) {
 			require( bbpress()->includes_dir . 'extend/buddypress/group.php' );
 		}
 	}
@@ -135,7 +135,7 @@ class BB_Forums_Component extends BP_Component {
 		}
 
 		// Register the group extension only if groups are active
-		if ( bbp_is_group_forums_active() && bp_is_active( 'groups' ) ) {
+		if ( bb_is_group_forums_active() && bp_is_active( 'groups' ) ) {
 			bp_register_group_extension( 'BB_Forums_Group_Extension' );
 		}
 	}
@@ -147,7 +147,7 @@ class BB_Forums_Component extends BP_Component {
 	 * @since bbPress (r3902)
 	 */
 	private function fully_loaded() {
-		do_action_ref_array( 'bbp_buddypress_loaded', array( $this ) );
+		do_action_ref_array( 'bb_buddypress_loaded', array( $this ) );
 	}
 
 	/**
@@ -170,7 +170,7 @@ class BB_Forums_Component extends BP_Component {
 			'name'                => __( 'Forums', 'bbpress' ),
 			'slug'                => $this->slug,
 			'position'            => 80,
-			'screen_function'     => 'bbp_member_forums_screen_topics',
+			'screen_function'     => 'bb_member_forums_screen_topics',
 			'default_subnav_slug' => 'topics',
 			'item_css_id'         => $this->id
 		);
@@ -192,7 +192,7 @@ class BB_Forums_Component extends BP_Component {
 			'slug'            => 'topics',
 			'parent_url'      => $forums_link,
 			'parent_slug'     => $this->slug,
-			'screen_function' => 'bbp_member_forums_screen_topics',
+			'screen_function' => 'bb_member_forums_screen_topics',
 			'position'        => 20,
 			'item_css_id'     => 'topics'
 		);
@@ -203,7 +203,7 @@ class BB_Forums_Component extends BP_Component {
 			'slug'            => 'replies',
 			'parent_url'      => $forums_link,
 			'parent_slug'     => $this->slug,
-			'screen_function' => 'bbp_member_forums_screen_replies',
+			'screen_function' => 'bb_member_forums_screen_replies',
 			'position'        => 40,
 			'item_css_id'     => 'replies'
 		);
@@ -214,7 +214,7 @@ class BB_Forums_Component extends BP_Component {
 			'slug'            => 'favorites',
 			'parent_url'      => $forums_link,
 			'parent_slug'     => $this->slug,
-			'screen_function' => 'bbp_member_forums_screen_favorites',
+			'screen_function' => 'bb_member_forums_screen_favorites',
 			'position'        => 60,
 			'item_css_id'     => 'favorites'
 		);
@@ -226,7 +226,7 @@ class BB_Forums_Component extends BP_Component {
 				'slug'            => 'subscriptions',
 				'parent_url'      => $forums_link,
 				'parent_slug'     => $this->slug,
-				'screen_function' => 'bbp_member_forums_screen_subscriptions',
+				'screen_function' => 'bb_member_forums_screen_subscriptions',
 				'position'        => 60,
 				'item_css_id'     => 'subscriptions'
 			);

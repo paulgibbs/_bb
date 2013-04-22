@@ -9,34 +9,34 @@
 
 ?>
 
-<?php if ( bbp_is_anonymous() || ( bbp_is_topic_edit() && bbp_is_topic_anonymous() ) || ( bbp_is_reply_edit() && bbp_is_reply_anonymous() ) ) : ?>
+<?php if ( bb_is_anonymous() || ( bb_is_topic_edit() && bb_is_topic_anonymous() ) || ( bb_is_reply_edit() && bb_is_reply_anonymous() ) ) : ?>
 
-	<?php do_action( 'bbp_theme_before_anonymous_form' ); ?>
+	<?php do_action( 'bb_theme_before_anonymous_form' ); ?>
 
 	<fieldset class="bbp-form">
-		<legend><?php ( bbp_is_topic_edit() || bbp_is_reply_edit() ) ? _e( 'Author Information', 'bbpress' ) : _e( 'Your information:', 'bbpress' ); ?></legend>
+		<legend><?php ( bb_is_topic_edit() || bb_is_reply_edit() ) ? _e( 'Author Information', 'bbpress' ) : _e( 'Your information:', 'bbpress' ); ?></legend>
 
-		<?php do_action( 'bbp_theme_anonymous_form_extras_top' ); ?>
+		<?php do_action( 'bb_theme_anonymous_form_extras_top' ); ?>
 
 		<p>
-			<label for="bbp_anonymous_author"><?php _e( 'Name (required):', 'bbpress' ); ?></label><br />
-			<input type="text" id="bbp_anonymous_author"  value="<?php bbp_is_topic_edit() ? bbp_topic_author()       : bbp_is_reply_edit() ? bbp_reply_author()       : bbp_current_anonymous_user_data( 'name' );    ?>" tabindex="<?php bbp_tab_index(); ?>" size="40" name="bbp_anonymous_name" />
+			<label for="bb_anonymous_author"><?php _e( 'Name (required):', 'bbpress' ); ?></label><br />
+			<input type="text" id="bb_anonymous_author"  value="<?php bb_is_topic_edit() ? bb_topic_author()       : bb_is_reply_edit() ? bb_reply_author()       : bb_current_anonymous_user_data( 'name' );    ?>" tabindex="<?php bb_tab_index(); ?>" size="40" name="bb_anonymous_name" />
 		</p>
 
 		<p>
-			<label for="bbp_anonymous_email"><?php _e( 'Mail (will not be published) (required):', 'bbpress' ); ?></label><br />
-			<input type="text" id="bbp_anonymous_email"   value="<?php bbp_is_topic_edit() ? bbp_topic_author_email() : bbp_is_reply_edit() ? bbp_reply_author_email() : bbp_current_anonymous_user_data( 'email' );   ?>" tabindex="<?php bbp_tab_index(); ?>" size="40" name="bbp_anonymous_email" />
+			<label for="bb_anonymous_email"><?php _e( 'Mail (will not be published) (required):', 'bbpress' ); ?></label><br />
+			<input type="text" id="bb_anonymous_email"   value="<?php bb_is_topic_edit() ? bb_topic_author_email() : bb_is_reply_edit() ? bb_reply_author_email() : bb_current_anonymous_user_data( 'email' );   ?>" tabindex="<?php bb_tab_index(); ?>" size="40" name="bb_anonymous_email" />
 		</p>
 
 		<p>
-			<label for="bbp_anonymous_website"><?php _e( 'Website:', 'bbpress' ); ?></label><br />
-			<input type="text" id="bbp_anonymous_website" value="<?php bbp_is_topic_edit() ? bbp_topic_author_url()   : bbp_is_reply_edit() ? bbp_reply_author_url()   : bbp_current_anonymous_user_data( 'website' ); ?>" tabindex="<?php bbp_tab_index(); ?>" size="40" name="bbp_anonymous_website" />
+			<label for="bb_anonymous_website"><?php _e( 'Website:', 'bbpress' ); ?></label><br />
+			<input type="text" id="bb_anonymous_website" value="<?php bb_is_topic_edit() ? bb_topic_author_url()   : bb_is_reply_edit() ? bb_reply_author_url()   : bb_current_anonymous_user_data( 'website' ); ?>" tabindex="<?php bb_tab_index(); ?>" size="40" name="bb_anonymous_website" />
 		</p>
 
-		<?php do_action( 'bbp_theme_anonymous_form_extras_bottom' ); ?>
+		<?php do_action( 'bb_theme_anonymous_form_extras_bottom' ); ?>
 
 	</fieldset>
 
-	<?php do_action( 'bbp_theme_after_anonymous_form' ); ?>
+	<?php do_action( 'bb_theme_after_anonymous_form' ); ?>
 
 <?php endif; ?>

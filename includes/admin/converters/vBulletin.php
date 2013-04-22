@@ -30,7 +30,7 @@ class vBulletin extends BB_Converter_Base {
 			'from_tablename' => 'forum',
 			'from_fieldname' => 'forumid',
 			'to_type'        => 'forum',
-			'to_fieldname'   => '_bbp_forum_id'
+			'to_fieldname'   => '_bb_forum_id'
 		);
 
 		// Forum parent id (If no parent, then 0. Stored in postmeta)
@@ -38,7 +38,7 @@ class vBulletin extends BB_Converter_Base {
 			'from_tablename' => 'forum',
 			'from_fieldname' => 'parentid',
 			'to_type'        => 'forum',
-			'to_fieldname'   => '_bbp_forum_parent_id'
+			'to_fieldname'   => '_bb_forum_parent_id'
 		);
 
 		// Forum topic count (Stored in postmeta)
@@ -46,7 +46,7 @@ class vBulletin extends BB_Converter_Base {
 			'from_tablename' => 'forum',
 			'from_fieldname' => 'threadcount',
 			'to_type'        => 'forum',
-			'to_fieldname'   => '_bbp_topic_count'
+			'to_fieldname'   => '_bb_topic_count'
 		);
 
 		// Forum reply count (Stored in postmeta)
@@ -54,7 +54,7 @@ class vBulletin extends BB_Converter_Base {
 			'from_tablename' => 'forum',
 			'from_fieldname' => 'replycount',
 			'to_type'        => 'forum',
-			'to_fieldname'   => '_bbp_reply_count'
+			'to_fieldname'   => '_bb_reply_count'
 		);
 
 		// Forum title.
@@ -120,7 +120,7 @@ class vBulletin extends BB_Converter_Base {
 			'from_tablename' => 'thread',
 			'from_fieldname' => 'threadid',
 			'to_type'        => 'topic',
-			'to_fieldname'   => '_bbp_topic_id'
+			'to_fieldname'   => '_bb_topic_id'
 		);
 
 		// Topic parent forum id (If no parent, then 0. Stored in postmeta)
@@ -128,7 +128,7 @@ class vBulletin extends BB_Converter_Base {
 			'from_tablename'  => 'thread',
 			'from_fieldname'  => 'forumid',
 			'to_type'         => 'topic',
-			'to_fieldname'    => '_bbp_forum_id',
+			'to_fieldname'    => '_bb_forum_id',
 			'callback_method' => 'callback_forumid'
 		);
 
@@ -137,7 +137,7 @@ class vBulletin extends BB_Converter_Base {
 			'from_tablename'  => 'thread',
 			'from_fieldname'  => 'replycount',
 			'to_type'         => 'topic',
-			'to_fieldname'    => '_bbp_reply_count',
+			'to_fieldname'    => '_bb_reply_count',
 			'callback_method' => 'callback_topic_reply_count'
 		);
 
@@ -222,7 +222,7 @@ class vBulletin extends BB_Converter_Base {
 			'from_tablename' => 'thread',
 			'from_fieldname' => 'lastpost',
 			'to_type'        => 'topic',
-			'to_fieldname'   => '_bbp_last_active_time',
+			'to_fieldname'   => '_bb_last_active_time',
 			'callback_method' => 'callback_datetime'
 		);
 
@@ -272,7 +272,7 @@ class vBulletin extends BB_Converter_Base {
 			'from_tablename'  => 'post',
 			'from_fieldname'  => 'postid',
 			'to_type'         => 'reply',
-			'to_fieldname'    => '_bbp_post_id'
+			'to_fieldname'    => '_bb_post_id'
 		);
 
 		// Reply parent forum id (If no parent, then 0. Stored in postmeta)
@@ -283,7 +283,7 @@ class vBulletin extends BB_Converter_Base {
 			'join_type'       => 'INNER',
 			'join_expression' => 'USING (threadid) WHERE post.parentid != 0',
 			'to_type'         => 'reply',
-			'to_fieldname'    => '_bbp_forum_id',
+			'to_fieldname'    => '_bb_forum_id',
 			'callback_method' => 'callback_topicid_to_forumid'
 		);
 
@@ -292,7 +292,7 @@ class vBulletin extends BB_Converter_Base {
 			'from_tablename'  => 'post',
 			'from_fieldname'  => 'threadid',
 			'to_type'         => 'reply',
-			'to_fieldname'    => '_bbp_topic_id',
+			'to_fieldname'    => '_bb_topic_id',
 			'callback_method' => 'callback_topicid'
 		);
 
@@ -301,7 +301,7 @@ class vBulletin extends BB_Converter_Base {
 			'from_tablename' => 'post',
 			'from_fieldname' => 'ipaddress',
 			'to_type'        => 'reply',
-			'to_fieldname'   => '_bbp_author_ip'
+			'to_fieldname'   => '_bb_author_ip'
 		);
 
 		// Reply author.
@@ -381,7 +381,7 @@ class vBulletin extends BB_Converter_Base {
 			'from_tablename' => 'user',
 			'from_fieldname' => 'userid',
 			'to_type'        => 'user',
-			'to_fieldname'   => '_bbp_user_id'
+			'to_fieldname'   => '_bb_user_id'
 		);
 
 		// Store old User password (Stored in usermeta serialized with salt)
@@ -389,7 +389,7 @@ class vBulletin extends BB_Converter_Base {
 			'from_tablename'  => 'user',
 			'from_fieldname'  => 'password',
 			'to_type'         => 'user',
-			'to_fieldname'    => '_bbp_password',
+			'to_fieldname'    => '_bb_password',
 			'callback_method' => 'callback_savepass'
 		);
 
@@ -404,7 +404,7 @@ class vBulletin extends BB_Converter_Base {
 		// User password verify class (Stored in usermeta for verifying password)
 		$this->field_map[] = array(
 			'to_type'      => 'user',
-			'to_fieldname' => '_bbp_class',
+			'to_fieldname' => '_bb_class',
 			'default'      => 'vBulletin'
 		);
 
@@ -462,7 +462,7 @@ class vBulletin extends BB_Converter_Base {
 			'from_tablename' => 'user',
 			'from_fieldname' => 'icq',
 			'to_type'        => 'user',
-			'to_fieldname'   => '_bbp_vbulletin_user_icq'
+			'to_fieldname'   => '_bb_vbulletin_user_icq'
 		);
 
 		// User MSN (Stored in usermeta)
@@ -470,7 +470,7 @@ class vBulletin extends BB_Converter_Base {
 			'from_tablename' => 'user',
 			'from_fieldname' => 'msn',
 			'to_type'        => 'user',
-			'to_fieldname'   => '_bbp_vbulletin_user_msn'
+			'to_fieldname'   => '_bb_vbulletin_user_msn'
 		);
 
 		// User Skype (Stored in usermeta)
@@ -478,7 +478,7 @@ class vBulletin extends BB_Converter_Base {
 			'from_tablename' => 'user',
 			'from_fieldname' => 'skype',
 			'to_type'        => 'user',
-			'to_fieldname'   => '_bbp_vbulletin_user_skype'
+			'to_fieldname'   => '_bb_vbulletin_user_skype'
 		);
 	}
 

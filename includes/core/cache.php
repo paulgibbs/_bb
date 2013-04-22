@@ -68,7 +68,7 @@ class BB_Skip_Children {
 	public function pre_post_update( $post_id = 0 ) {
 
 		// Bail if post ID is not a bbPress post type
-		if ( empty( $post_id ) || ! bbp_is_custom_post_type( $post_id ) )
+		if ( empty( $post_id ) || ! bb_is_custom_post_type( $post_id ) )
 			return;
 
 		// Store the $post_id
@@ -128,7 +128,7 @@ new BB_Skip_Children();
  *
  * @since bbPress (r4040)
  *
- * @uses do_action() Calls 'bbp_clean_post_cache' on $id
+ * @uses do_action() Calls 'bb_clean_post_cache' on $id
  * @param object|int $_post The post object or ID to remove from the cache
  */
 function bb_clean_post_cache( $_post = '' ) {
@@ -143,26 +143,26 @@ function bb_clean_post_cache( $_post = '' ) {
 
 	clean_object_term_cache( $_post->ID, $_post->post_type );
 
-	do_action( 'bbp_clean_post_cache', $_post->ID, $_post );
+	do_action( 'bb_clean_post_cache', $_post->ID, $_post );
 
 	// Child query types to clean
 	$post_types = array(
-		bbp_get_topic_post_type(),
-		bbp_get_forum_post_type(),
-		bbp_get_reply_post_type()
+		bb_get_topic_post_type(),
+		bb_get_forum_post_type(),
+		bb_get_reply_post_type()
 	);
 
 	// Loop through query types and clean caches
 	foreach ( $post_types as $post_type ) {
-		wp_cache_delete( 'bbp_get_forum_'     . $_post->ID . '_reply_id',                              'bbpress_posts' );
-		wp_cache_delete( 'bbp_parent_'        . $_post->ID . '_type_' . $post_type . '_child_last_id', 'bbpress_posts' );
-		wp_cache_delete( 'bbp_parent_'        . $_post->ID . '_type_' . $post_type . '_child_count',   'bbpress_posts' );
-		wp_cache_delete( 'bbp_parent_public_' . $_post->ID . '_type_' . $post_type . '_child_ids',     'bbpress_posts' );
-		wp_cache_delete( 'bbp_parent_all_'    . $_post->ID . '_type_' . $post_type . '_child_ids',     'bbpress_posts' );
+		wp_cache_delete( 'bb_get_forum_'     . $_post->ID . '_reply_id',                              'bbpress_posts' );
+		wp_cache_delete( 'bb_parent_'        . $_post->ID . '_type_' . $post_type . '_child_last_id', 'bbpress_posts' );
+		wp_cache_delete( 'bb_parent_'        . $_post->ID . '_type_' . $post_type . '_child_count',   'bbpress_posts' );
+		wp_cache_delete( 'bb_parent_public_' . $_post->ID . '_type_' . $post_type . '_child_ids',     'bbpress_posts' );
+		wp_cache_delete( 'bb_parent_all_'    . $_post->ID . '_type_' . $post_type . '_child_ids',     'bbpress_posts' );
 	}
 
 	// Invalidate parent caches
 	if ( ! empty( $_post->post_parent ) ) {
-		bbp_clean_post_cache( $_post->post_parent );
+		bb_clean_post_cache( $_post->post_parent );
 	}
 }

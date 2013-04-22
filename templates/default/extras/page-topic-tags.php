@@ -9,9 +9,9 @@
 
 get_header(); ?>
 
-	<?php do_action( 'bbp_before_main_content' ); ?>
+	<?php do_action( 'bb_before_main_content' ); ?>
 
-	<?php do_action( 'bbp_template_notices' ); ?>
+	<?php do_action( 'bb_template_notices' ); ?>
 
 	<?php while ( have_posts() ) : the_post(); ?>
 
@@ -23,11 +23,11 @@ get_header(); ?>
 
 				<div id="bbpress-forums">
 
-					<?php bbp_breadcrumb(); ?>
+					<?php bb_breadcrumb(); ?>
 
 					<div id="bbp-topic-hot-tags">
 
-						<?php wp_tag_cloud( array( 'smallest' => 9, 'largest' => 38, 'number' => 80, 'taxonomy' => bbp_get_topic_tag_tax_id() ) ); ?>
+						<?php wp_tag_cloud( array( 'smallest' => 9, 'largest' => 38, 'number' => 80, 'taxonomy' => bb_get_topic_tag_tax_id() ) ); ?>
 
 					</div>
 				</div>
@@ -36,7 +36,7 @@ get_header(); ?>
 
 	<?php endwhile; ?>
 
-	<?php do_action( 'bbp_after_main_content' ); ?>
+	<?php do_action( 'bb_after_main_content' ); ?>
 
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>

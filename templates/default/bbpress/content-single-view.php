@@ -11,24 +11,24 @@
 
 <div id="bbpress-forums">
 
-	<?php bbp_breadcrumb(); ?>
+	<?php bb_breadcrumb(); ?>
 
-	<?php bbp_set_query_name( 'bbp_view' ); ?>
+	<?php bb_set_query_name( 'bb_view' ); ?>
 
-	<?php if ( bbp_view_query() ) : ?>
+	<?php if ( bb_view_query() ) : ?>
 
-		<?php bbp_get_template_part( 'pagination', 'topics'    ); ?>
+		<?php bb_get_template_part( 'pagination', 'topics'    ); ?>
 
-		<?php bbp_get_template_part( 'loop',       'topics'    ); ?>
+		<?php bb_get_template_part( 'loop',       'topics'    ); ?>
 
-		<?php bbp_get_template_part( 'pagination', 'topics'    ); ?>
+		<?php bb_get_template_part( 'pagination', 'topics'    ); ?>
 
 	<?php else : ?>
 
-		<?php bbp_get_template_part( 'feedback',   'no-topics' ); ?>
+		<?php bb_get_template_part( 'feedback',   'no-topics' ); ?>
 
 	<?php endif; ?>
 
-	<?php bbp_reset_query_name(); ?>
+	<?php bb_reset_query_name(); ?>
 
 </div>

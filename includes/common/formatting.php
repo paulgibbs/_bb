@@ -22,7 +22,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
  * @return array Associative array of allowed tags and attributes
  */
 function bb_kses_allowed_tags() {
-	return apply_filters( 'bbp_kses_allowed_tags', array(
+	return apply_filters( 'bb_kses_allowed_tags', array(
 
 		// Links
 		'a' => array(
@@ -74,7 +74,7 @@ function bb_kses_allowed_tags() {
  * @return string Filtered content
  */
 function bb_filter_kses( $data = '' ) {
-	return addslashes( wp_kses( stripslashes( $data ), bbp_kses_allowed_tags() ) );
+	return addslashes( wp_kses( stripslashes( $data ), bb_kses_allowed_tags() ) );
 }
 
 /**
@@ -86,7 +86,7 @@ function bb_filter_kses( $data = '' ) {
  * @return string Filtered content
  */
 function bb_kses_data( $data = '' ) {
-	return wp_kses( $data , bbp_kses_allowed_tags() );
+	return wp_kses( $data , bb_kses_allowed_tags() );
 }
 
 /** Formatting ****************************************************************/
@@ -101,8 +101,8 @@ function bb_kses_data( $data = '' ) {
  */
 function bb_code_trick( $content = '' ) {
 	$content = str_replace( array( "\r\n", "\r" ), "\n", $content );
-	$content = preg_replace_callback( "|(`)(.*?)`|",      'bbp_encode_callback', $content );
-	$content = preg_replace_callback( "!(^|\n)`(.*?)`!s", 'bbp_encode_callback', $content );
+	$content = preg_replace_callback( "|(`)(.*?)`|",      'bb_encode_callback', $content );
+	$content = preg_replace_callback( "!(^|\n)`(.*?)`!s", 'bb_encode_callback', $content );
 
 	return $content;
 }
@@ -120,7 +120,7 @@ function bb_code_trick_reverse( $content = '' ) {
 
 	// Setup variables
 	$openers = array( '<p>', '<br />' );
-	$content    = preg_replace_callback( "!(<pre><code>|<code>)(.*?)(</code></pre>|</code>)!s", 'bbp_decode_callback', $content );
+	$content    = preg_replace_callback( "!(<pre><code>|<code>)(.*?)(</code></pre>|</code>)!s", 'bb_decode_callback', $content );
 
 	// Do the do
 	$content    = str_replace( $openers,       '',       $content );
@@ -145,7 +145,7 @@ function bb_encode_bad( $content = '' ) {
 	// Setup variables
 	$content = _wp_specialchars( $content, ENT_NOQUOTES );
 	$content = preg_split( '@(`[^`]*`)@m', $content, -1, PREG_SPLIT_NO_EMPTY + PREG_SPLIT_DELIM_CAPTURE );
-	$allowed = bbp_kses_allowed_tags();
+	$allowed = bb_kses_allowed_tags();
 	$empty   = array(
 		'br'    => true,
 		'hr'    => true,
@@ -167,9 +167,9 @@ function bb_encode_bad( $content = '' ) {
 
 		// Which walker to use based on the tag and argments
 		if ( isset( $empty[$tag] ) ) {
-			array_walk( $content, 'bbp_encode_empty_callback',  $preg );
+			array_walk( $content, 'bb_encode_empty_callback',  $preg );
 		} else {
-			array_walk( $content, 'bbp_encode_normal_callback', $preg );
+			array_walk( $content, 'bb_encode_normal_callback', $preg );
 		}
 	}
 
@@ -235,7 +235,7 @@ function bb_decode_callback( $matches = array() ) {
  *
  * @since bbPress (r4641)
  *
- * @internal Used by bbp_encode_bad()
+ * @internal Used by bb_encode_bad()
  * @param string $content
  * @param string $key Not used
  * @param string $preg
@@ -251,7 +251,7 @@ function bb_encode_empty_callback( &$content = '', $key = '', $preg = '' ) {
  *
  * @since bbPress (r4641)
  *
- * @internal Used by bbp_encode_bad()
+ * @internal Used by bb_encode_bad()
  * @param type $content
  * @param type $key
  * @param type $preg

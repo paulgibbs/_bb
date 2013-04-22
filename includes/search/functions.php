@@ -18,23 +18,23 @@ if ( !defined( 'ABSPATH' ) ) exit;
  * @since bbPress (r4579) 
  *
  * @param mixed $new_args New arguments
- * @uses bbp_get_search_query_args() To get the search query args
- * @uses bbp_parse_args() To parse the args
- * @uses bbp_has_search_results() To make the search query
+ * @uses bb_get_search_query_args() To get the search query args
+ * @uses bb_parse_args() To parse the args
+ * @uses bb_has_search_results() To make the search query
  * @return bool False if no results, otherwise if search results are there
  */
 function bb_search_query( $new_args = '' ) {
 
 	// Existing arguments 
-	$query_args = bbp_get_search_query_args();
+	$query_args = bb_get_search_query_args();
 
 	// Merge arguments
 	if ( !empty( $new_args ) ) {
-		$new_args   = bbp_parse_args( $new_args, '', 'search_query' );
+		$new_args   = bb_parse_args( $new_args, '', 'search_query' );
 		$query_args = array_merge( $query_args, $new_args );
 	}
 
-	return bbp_has_search_results( $query_args );
+	return bb_has_search_results( $query_args );
 }
 
 /**
@@ -42,14 +42,14 @@ function bb_search_query( $new_args = '' ) {
  *
  * @since bbPress (r4579)
  *
- * @uses bbp_get_search_terms() To get the search terms
+ * @uses bb_get_search_terms() To get the search terms
  * @return array Query arguments
  */
 function bb_get_search_query_args() {
 
 	// Get search terms
-	$search_terms = bbp_get_search_terms();
+	$search_terms = bb_get_search_terms();
 	$retval = !empty( $search_terms ) ? array( 's' => $search_terms ) : array();
 
-	return apply_filters( 'bbp_get_search_query_args', $retval );
+	return apply_filters( 'bb_get_search_query_args', $retval );
 }

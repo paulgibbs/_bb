@@ -18,10 +18,10 @@ if ( !defined( 'ABSPATH' ) ) exit;
  *
  * @since bbPress (r4543)
  *
- * @uses bbp_get_ajax_url() To get the URL to use for AJAX requests
+ * @uses bb_get_ajax_url() To get the URL to use for AJAX requests
  */
 function bb_ajax_url() {
-	echo bbp_get_ajax_url();
+	echo bb_get_ajax_url();
 }
 	/**
 	 * Return the URL to use for theme-side bbPress AJAX requests
@@ -37,7 +37,7 @@ function bb_ajax_url() {
 		$base_url = home_url( trailingslashit( $wp->request ), ( is_ssl() ? 'https' : 'http' ) );
 		$ajaxurl  = add_query_arg( array( 'bbp-ajax' => 'true' ), $base_url );
 
-		return apply_filters( 'bbp_get_ajax_url', $ajaxurl );
+		return apply_filters( 'bb_get_ajax_url', $ajaxurl );
 	}
 
 /**
@@ -52,7 +52,7 @@ function bb_is_ajax() {
 }
 
 /**
- * Hooked to the 'bbp_template_redirect' action, this is bbPress's custom
+ * Hooked to the 'bb_template_redirect' action, this is bbPress's custom
  * theme-side ajax handler.
  *
  * @since bbPress (r4543)
@@ -62,7 +62,7 @@ function bb_is_ajax() {
 function bb_do_ajax() {
 
 	// Bail if not an ajax request
-	if ( ! bbp_is_ajax() )
+	if ( ! bb_is_ajax() )
 		return;
 
 	// Set WordPress core ajax constant
@@ -75,7 +75,7 @@ function bb_do_ajax() {
 	send_nosniff_header();
 
 	// Perform custom bbPress ajax
-	do_action( 'bbp_ajax_' . $_REQUEST['action'] );
+	do_action( 'bb_ajax_' . $_REQUEST['action'] );
 
 	// All done
 	die( '0' );
