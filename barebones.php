@@ -1,23 +1,19 @@
 <?php
-
 /**
- * The barebones Plugin
- *
- * barebones is forum software with a twist from the creators of WordPress.
+ * The barebones plugin
  *
  * @package barebones
- * @subpackage Main
  */
 
 /**
  * Plugin Name: barebones
  * Plugin URI:  http://example.org
- * Description: barebones is forum software with a twist from the creators of WordPress.
- * Author:      The barebones Community
+ * Description: barebones helps you quickly start building a powerful, modern WordPress plugin.
+ * Author:      You
  * Author URI:  http://example.org
- * Version:     2.4-bleeding
+ * Version:     1.0
  * Text Domain: barebones
- * Domain Path: /languages/
+ * Domain Path: ../../languages/plugins/
  */
 
 // Exit if accessed directly
@@ -25,9 +21,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
 
 if ( !class_exists( 'barebones' ) ) :
 /**
- * Main barebones Class
- *
- * "How doth the little busy bee, improve each shining hour..."
+ * Main barebones class
  *
  * @since barebones (1.0)
  */
@@ -48,22 +42,13 @@ final class barebones {
 	 */
 	private $data;
 
-	/** Not Magic *************************************************************/
 
-	/**
-	 * @var mixed False when not logged in; WP_User object when logged in
-	 */
-	public $current_user = false;
+	/** Not Magic *************************************************************/
 
 	/**
 	 * @var obj Add-ons append to this (Akismet, BuddyPress, etc...)
 	 */
 	public $extend;
-
-	/**
-	 * @var array Topic views
-	 */
-	public $views        = array();
 
 	/**
 	 * @var array Overloads get_option()
@@ -74,6 +59,7 @@ final class barebones {
 	 * @var array Overloads get_user_meta()
 	 */
 	public $user_options = array();
+
 
 	/** Singleton *************************************************************/
 
@@ -110,6 +96,7 @@ final class barebones {
 		return self::$instance;
 	}
 
+
 	/** Magic Methods *********************************************************/
 
 	/**
@@ -126,14 +113,14 @@ final class barebones {
 	 *
 	 * @since barebones (1.0)
 	 */
-	public function __clone() { _doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'barebones' ), '2.1' ); }
+	public function __clone() { _doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'barebones' ), '1.0' ); }
 
 	/**
 	 * A dummy magic method to prevent barebones from being unserialized
 	 *
 	 * @since barebones (1.0)
 	 */
-	public function __wakeup() { _doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'barebones' ), '2.1' ); }
+	public function __wakeup() { _doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'barebones' ), '1.0' ); }
 
 	/**
 	 * Magic method for checking the existence of a certain custom field
@@ -170,6 +157,7 @@ final class barebones {
 	 */
 	public function __call( $name = '', $args = array() ) { unset( $name, $args ); return null; }
 
+
 	/** Private Methods *******************************************************/
 
 	/**
@@ -186,8 +174,9 @@ final class barebones {
 
 		/** Versions **********************************************************/
 
-		$this->version    = '2.4-bleeding-4852';
-		$this->db_version = '240';
+		$this->version    = '1.0-bleeding-1';
+		$this->db_version = '117';
+
 
 		/** Paths *************************************************************/
 
@@ -208,62 +197,34 @@ final class barebones {
 		$this->themes_dir   = apply_filters( 'bb_themes_dir',   trailingslashit( $this->plugin_dir . 'templates' ) );
 		$this->themes_url   = apply_filters( 'bb_themes_url',   trailingslashit( $this->plugin_url . 'templates' ) );
 
+
 		/** Identifiers *******************************************************/
 
 		// Post type identifiers
 		$this->forum_post_type   = apply_filters( 'bb_forum_post_type',  'forum'     );
-		$this->topic_post_type   = apply_filters( 'bb_topic_post_type',  'topic'     );
-		$this->reply_post_type   = apply_filters( 'bb_reply_post_type',  'reply'     );
 		$this->topic_tag_tax_id  = apply_filters( 'bb_topic_tag_tax_id', 'topic-tag' );
 
-		// Status identifiers
-		$this->spam_status_id    = apply_filters( 'bb_spam_post_status',    'spam'    );
-		$this->closed_status_id  = apply_filters( 'bb_closed_post_status',  'closed'  );
-		$this->orphan_status_id  = apply_filters( 'bb_orphan_post_status',  'orphan'  );
-		$this->public_status_id  = apply_filters( 'bb_public_post_status',  'publish' );
-		$this->pending_status_id = apply_filters( 'bb_pending_post_status', 'pending' );
-		$this->private_status_id = apply_filters( 'bb_private_post_status', 'private' );
-		$this->hidden_status_id  = apply_filters( 'bb_hidden_post_status',  'hidden'  );
-		$this->trash_status_id   = apply_filters( 'bb_trash_post_status',   'trash'   );
-
 		// Other identifiers
-		$this->user_id           = apply_filters( 'bb_user_id',   'bb_user'   );
-		$this->tops_id           = apply_filters( 'bb_tops_id',   'bb_tops'   );
-		$this->reps_id           = apply_filters( 'bb_reps_id',   'bb_reps'   );
-		$this->favs_id           = apply_filters( 'bb_favs_id',   'bb_favs'   );
-		$this->subs_id           = apply_filters( 'bb_subs_id',   'bb_subs'   );
-		$this->view_id           = apply_filters( 'bb_view_id',   'bb_view'   );
-		$this->search_id         = apply_filters( 'bb_search_id', 'bb_search' );
-		$this->edit_id           = apply_filters( 'bb_edit_id',   'edit'       );
+		$this->edit_id           = apply_filters( 'bb_edit_id', 'edit' );
+
 
 		/** Queries ***********************************************************/
 
-		$this->current_forum_id     = 0; // Current forum id
-		$this->current_topic_id     = 0; // Current topic id
-		$this->current_reply_id     = 0; // Current reply id
-		$this->current_topic_tag_id = 0; // Current topic tag id
+		$this->current_forum_id  = 0; // Current forum id
+		$this->forum_query       = new stdClass(); // Main forum query
 
-		$this->forum_query    = new stdClass(); // Main forum query
-		$this->topic_query    = new stdClass(); // Main topic query
-		$this->reply_query    = new stdClass(); // Main reply query
-		$this->search_query   = new stdClass(); // Main search query
 
 		/** Theme Compat ******************************************************/
 
 		$this->theme_compat   = new stdClass(); // Base theme compatibility class
 		$this->filters        = new stdClass(); // Used when adding/removing filters
 
-		/** Users *************************************************************/
-
-		$this->current_user   = new stdClass(); // Currently logged in user
-		$this->displayed_user = new stdClass(); // Currently displayed user
 
 		/** Misc **************************************************************/
 
 		$this->domain         = 'barebones';      // Unique identifier for retrieving translated strings
 		$this->extend         = new stdClass(); // Plugins add data here
 		$this->errors         = new WP_Error(); // Feedback
-		$this->tab_index      = apply_filters( 'bb_default_tab_index', 100 );
 	}
 
 	/**
@@ -303,31 +264,13 @@ final class barebones {
 		require( $this->includes_dir . 'forums/functions.php'      );
 		require( $this->includes_dir . 'forums/template-tags.php'  );
 
-		// Topics
-		require( $this->includes_dir . 'topics/capabilities.php'   );
-		require( $this->includes_dir . 'topics/functions.php'      );
-		require( $this->includes_dir . 'topics/template-tags.php'  );
-
-		// Replies
-		require( $this->includes_dir . 'replies/capabilities.php'  );
-		require( $this->includes_dir . 'replies/functions.php'     );
-		require( $this->includes_dir . 'replies/template-tags.php' );
-
-		// Search
-		require( $this->includes_dir . 'search/functions.php'      );
-		require( $this->includes_dir . 'search/template-tags.php'  );
-
-		// Users
-		require( $this->includes_dir . 'users/capabilities.php'    );
-		require( $this->includes_dir . 'users/functions.php'       );
-		require( $this->includes_dir . 'users/template-tags.php'   );
-		require( $this->includes_dir . 'users/options.php'         );
 
 		/** Hooks *************************************************************/
 
 		require( $this->includes_dir . 'core/extend.php'  );
 		require( $this->includes_dir . 'core/actions.php' );
 		require( $this->includes_dir . 'core/filters.php' );
+
 
 		/** Admin *************************************************************/
 
@@ -358,7 +301,6 @@ final class barebones {
 		// Array of barebones core actions
 		$actions = array(
 			'setup_theme',              // Setup the default theme compat
-			'setup_current_user',       // Setup currently logged in user
 			'register_post_types',      // Register post types (forum|topic|reply)
 			'register_post_statuses',   // Register post statuses (closed|spam|orphan|hidden)
 			'register_taxonomies',      // Register taxonomies (topic-tag)
@@ -422,13 +364,7 @@ final class barebones {
 	}
 
 	/**
-	 * Load the translation file for current language. Checks the languages
-	 * folder inside the barebones plugin first, and then the default WordPress
-	 * languages folder.
-	 *
-	 * Note that custom translation files inside the barebones plugin folder
-	 * will be removed on barebones updates. If you're creating custom
-	 * translation files, please use the global language folder.
+	 * Load the translation file for current language. Checks the default languages folder.
 	 *
 	 * @since barebones (1.0)
 	 *
@@ -438,26 +374,15 @@ final class barebones {
 	 * @return bool True on success, false on failure
 	 */
 	public function load_textdomain() {
-
 		// Traditional WordPress plugin locale filter
-		$locale        = apply_filters( 'plugin_locale',  get_locale(), $this->domain );
-		$mofile        = sprintf( '%1$s-%2$s.mo', $this->domain, $locale );
+		$locale = apply_filters( 'plugin_locale',  get_locale(), $this->domain );
+		$mofile = sprintf( '%1$s-%2$s.mo', $this->domain, $locale );
 
-		// Setup paths to current locale file
-		$mofile_local  = $this->lang_dir . $mofile;
-		$mofile_global = WP_LANG_DIR . '/barebones/' . $mofile;
+		// Look in global /wp-content/languages/plugins/ folder
+		$mofile_global = WP_LANG_DIR . '/plugins/' . $mofile;
 
-		// Look in global /wp-content/languages/barebones folder
-		if ( file_exists( $mofile_global ) ) {
-			return load_textdomain( $this->domain, $mofile_global );
-
-		// Look in local /wp-content/plugins/barebones/bbp-languages/ folder
-		} elseif ( file_exists( $mofile_local ) ) {
-			return load_textdomain( $this->domain, $mofile_local );
-		}
-
-		// Nothing found
-		return false;
+		if ( file_exists( $mofile_global ) )
+			load_textdomain( $this->domain, $mofile_global );
 	}
 
 	/**
@@ -529,120 +454,6 @@ final class barebones {
 				'menu_icon'           => ''
 			) )
 		);
-
-		/** Topics ************************************************************/
-
-		// Topic labels
-		$post_type['labels'] = array(
-			'name'               => __( 'Topics',                   'barebones' ),
-			'menu_name'          => __( 'Topics',                   'barebones' ),
-			'singular_name'      => __( 'Topic',                    'barebones' ),
-			'all_items'          => __( 'All Topics',               'barebones' ),
-			'add_new'            => __( 'New Topic',                'barebones' ),
-			'add_new_item'       => __( 'Create New Topic',         'barebones' ),
-			'edit'               => __( 'Edit',                     'barebones' ),
-			'edit_item'          => __( 'Edit Topic',               'barebones' ),
-			'new_item'           => __( 'New Topic',                'barebones' ),
-			'view'               => __( 'View Topic',               'barebones' ),
-			'view_item'          => __( 'View Topic',               'barebones' ),
-			'search_items'       => __( 'Search Topics',            'barebones' ),
-			'not_found'          => __( 'No topics found',          'barebones' ),
-			'not_found_in_trash' => __( 'No topics found in Trash', 'barebones' ),
-			'parent_item_colon'  => __( 'Forum:',                   'barebones' )
-		);
-
-		// Topic rewrite
-		$post_type['rewrite'] = array(
-			'slug'       => bb_get_topic_slug(),
-			'with_front' => false
-		);
-
-		// Topic supports
-		$post_type['supports'] = array(
-			'title',
-			'editor',
-			'revisions'
-		);
-
-		// Register Topic content type
-		register_post_type(
-			bb_get_topic_post_type(),
-			apply_filters( 'bb_register_topic_post_type', array(
-				'labels'              => $post_type['labels'],
-				'rewrite'             => $post_type['rewrite'],
-				'supports'            => $post_type['supports'],
-				'description'         => __( 'barebones Topics', 'barebones' ),
-				'capabilities'        => bb_get_topic_caps(),
-				'capability_type'     => array( 'topic', 'topics' ),
-				'menu_position'       => 555555,
-				'has_archive'         => bb_get_topic_archive_slug(),
-				'exclude_from_search' => true,
-				'show_in_nav_menus'   => false,
-				'public'              => true,
-				'show_ui'             => current_user_can( 'bb_topics_admin' ),
-				'can_export'          => true,
-				'hierarchical'        => false,
-				'query_var'           => true,
-				'menu_icon'           => ''
-			)
-		) );
-
-		/** Replies ***********************************************************/
-
-		// Reply labels
-		$post_type['labels'] = array(
-			'name'               => __( 'Replies',                   'barebones' ),
-			'menu_name'          => __( 'Replies',                   'barebones' ),
-			'singular_name'      => __( 'Reply',                     'barebones' ),
-			'all_items'          => __( 'All Replies',               'barebones' ),
-			'add_new'            => __( 'New Reply',                 'barebones' ),
-			'add_new_item'       => __( 'Create New Reply',          'barebones' ),
-			'edit'               => __( 'Edit',                      'barebones' ),
-			'edit_item'          => __( 'Edit Reply',                'barebones' ),
-			'new_item'           => __( 'New Reply',                 'barebones' ),
-			'view'               => __( 'View Reply',                'barebones' ),
-			'view_item'          => __( 'View Reply',                'barebones' ),
-			'search_items'       => __( 'Search Replies',            'barebones' ),
-			'not_found'          => __( 'No replies found',          'barebones' ),
-			'not_found_in_trash' => __( 'No replies found in Trash', 'barebones' ),
-			'parent_item_colon'  => __( 'Topic:',                    'barebones' )
-		);
-
-		// Reply rewrite
-		$post_type['rewrite'] = array(
-			'slug'       => bb_get_reply_slug(),
-			'with_front' => false
-		);
-
-		// Reply supports
-		$post_type['supports'] = array(
-			'title',
-			'editor',
-			'revisions'
-		);
-
-		// Register reply content type
-		register_post_type(
-			bb_get_reply_post_type(),
-			apply_filters( 'bb_register_reply_post_type', array(
-				'labels'              => $post_type['labels'],
-				'rewrite'             => $post_type['rewrite'],
-				'supports'            => $post_type['supports'],
-				'description'         => __( 'barebones Replies', 'barebones' ),
-				'capabilities'        => bb_get_reply_caps(),
-				'capability_type'     => array( 'reply', 'replies' ),
-				'menu_position'       => 555555,
-				'exclude_from_search' => true,
-				'has_archive'         => false,
-				'show_in_nav_menus'   => false,
-				'public'              => true,
-				'show_ui'             => current_user_can( 'bb_replies_admin' ),
-				'can_export'          => true,
-				'hierarchical'        => false,
-				'query_var'           => true,
-				'menu_icon'           => ''
-			) )
-		);
 	}
 
 	/**
@@ -658,79 +469,6 @@ final class barebones {
 	 *                           modify $wp_post_statuses accordingly
 	 */
 	public static function register_post_statuses() {
-
-		// Closed
-		register_post_status(
-			bb_get_closed_status_id(),
-			apply_filters( 'bb_register_closed_post_status', array(
-				'label'             => _x( 'Closed', 'post', 'barebones' ),
-				'label_count'       => _nx_noop( 'Closed <span class="count">(%s)</span>', 'Closed <span class="count">(%s)</span>', 'post', 'barebones' ),
-				'public'            => true,
-				'show_in_admin_all' => true
-			) )
-		);
-
-		// Spam
-		register_post_status(
-			bb_get_spam_status_id(),
-			apply_filters( 'bb_register_spam_post_status', array(
-				'label'                     => _x( 'Spam', 'post', 'barebones' ),
-				'label_count'               => _nx_noop( 'Spam <span class="count">(%s)</span>', 'Spam <span class="count">(%s)</span>', 'post', 'barebones' ),
-				'protected'                 => true,
-				'exclude_from_search'       => true,
-				'show_in_admin_status_list' => true,
-				'show_in_admin_all_list'    => false
-			) )
-		 );
-
-		// Orphan
-		register_post_status(
-			bb_get_orphan_status_id(),
-			apply_filters( 'bb_register_orphan_post_status', array(
-				'label'                     => _x( 'Orphan', 'post', 'barebones' ),
-				'label_count'               => _nx_noop( 'Orphan <span class="count">(%s)</span>', 'Orphans <span class="count">(%s)</span>', 'post', 'barebones' ),
-				'protected'                 => true,
-				'exclude_from_search'       => true,
-				'show_in_admin_status_list' => true,
-				'show_in_admin_all_list'    => false
-			) )
-		);
-
-		// Hidden
-		register_post_status(
-			bb_get_hidden_status_id(),
-			apply_filters( 'bb_register_hidden_post_status', array(
-				'label'                     => _x( 'Hidden', 'post', 'barebones' ),
-				'label_count'               => _nx_noop( 'Hidden <span class="count">(%s)</span>', 'Hidden <span class="count">(%s)</span>', 'post', 'barebones' ),
-				'private'                   => true,
-				'exclude_from_search'       => true,
-				'show_in_admin_status_list' => true,
-				'show_in_admin_all_list'    => true
-			) )
-		);
-
-		/**
-		 * Trash fix
-		 *
-		 * We need to remove the internal arg and change that to
-		 * protected so that the users with 'view_trash' cap can view
-		 * single trashed topics/replies in the front-end as wp_query
-		 * doesn't allow any hack for the trashed topics to be viewed.
-		 */
-		global $wp_post_statuses;
-
-		if ( !empty( $wp_post_statuses['trash'] ) ) {
-
-			// User can view trash so set internal to false
-			if ( current_user_can( 'view_trash' ) ) {
-				$wp_post_statuses['trash']->internal  = false;
-				$wp_post_statuses['trash']->protected = true;
-
-			// User cannot view trash so set internal to true
-			} else {
-				$wp_post_statuses['trash']->internal = true;
-			}
-		}
 	}
 
 	/**
@@ -784,40 +522,6 @@ final class barebones {
 	}
 
 	/**
-	 * Register the barebones views
-	 *
-	 * @since barebones (1.0)
-	 * @uses bb_register_view() To register the views
-	 */
-	public static function register_views() {
-
-		// Popular topics
-		bb_register_view(
-			'popular',
-			__( 'Most popular topics', 'barebones' ),
-			apply_filters( 'bb_register_view_popular', array(
-				'meta_key'      => '_bb_reply_count',
-				'max_num_pages' => 1,
-				'orderby'       => 'meta_value_num',
-				'show_stickies' => false
-			)
-		) );
-
-		// Topics with no replies
-		bb_register_view(
-			'no-replies',
-			__( 'Topics with no replies', 'barebones' ),
-			apply_filters( 'bb_register_view_no_replies', array(
-				'meta_key'      => '_bb_reply_count',
-				'meta_value'    => 1,
-				'meta_compare'  => '<',
-				'orderby'       => '',
-				'show_stickies' => false
-			)
-		) );
-	}
-
-	/**
 	 * Register the barebones shortcodes
 	 *
 	 * @since barebones (1.0)
@@ -828,20 +532,6 @@ final class barebones {
 		$this->shortcodes = new BB_Shortcodes();
 	}
 
-	/**
-	 * Setup the currently logged-in user
-	 *
-	 * Do not to call this prematurely, I.E. before the 'init' action has
-	 * started. This function is naturally hooked into 'init' to ensure proper
-	 * execution. get_currentuserinfo() is used to check for XMLRPC_REQUEST to
-	 * avoid xmlrpc errors.
-	 *
-	 * @since barebones (1.0)
-	 * @uses wp_get_current_user()
-	 */
-	public function setup_current_user() {
-		$this->current_user = &wp_get_current_user();
-	}
 
 	/** Custom Rewrite Rules **************************************************/
 
@@ -852,14 +542,7 @@ final class barebones {
 	 * @uses add_rewrite_tag() To add the rewrite tags
 	 */
 	public static function add_rewrite_tags() {
-		add_rewrite_tag( '%%' . bb_get_view_rewrite_id()               . '%%', '([^/]+)'   ); // View Page tag
-		add_rewrite_tag( '%%' . bb_get_edit_rewrite_id()               . '%%', '([1]{1,})' ); // Edit Page tag
-		add_rewrite_tag( '%%' . bb_get_search_rewrite_id()             . '%%', '([^/]+)'   ); // Search Results tag
-		add_rewrite_tag( '%%' . bb_get_user_rewrite_id()               . '%%', '([^/]+)'   ); // User Profile tag
-		add_rewrite_tag( '%%' . bb_get_user_favorites_rewrite_id()     . '%%', '([1]{1,})' ); // User Favorites tag
-		add_rewrite_tag( '%%' . bb_get_user_subscriptions_rewrite_id() . '%%', '([1]{1,})' ); // User Subscriptions tag
-		add_rewrite_tag( '%%' . bb_get_user_topics_rewrite_id()        . '%%', '([1]{1,})' ); // User Topics Tag
-		add_rewrite_tag( '%%' . bb_get_user_replies_rewrite_id()       . '%%', '([1]{1,})' ); // User Replies Tag
+		add_rewrite_tag( '%%' . bb_get_view_rewrite_id() . '%%', '([^/]+)'   ); // View Page tag
 	}
 
 	/**
@@ -874,78 +557,6 @@ final class barebones {
 	 *                                $wp_rewrite->rules
 	 */
 	public static function generate_rewrite_rules( $wp_rewrite ) {
-
-		// Slugs
-		$view_slug   = bb_get_view_slug();
-		$search_slug = bb_get_search_slug();
-		$user_slug   = bb_get_user_slug();
-
-		// Unique rewrite ID's
-		$edit_id     = bb_get_edit_rewrite_id();
-		$view_id     = bb_get_view_rewrite_id();
-		$search_id   = bb_get_search_rewrite_id();
-		$user_id     = bb_get_user_rewrite_id();
-		$favs_id     = bb_get_user_favorites_rewrite_id();
-		$subs_id     = bb_get_user_subscriptions_rewrite_id();
-		$tops_id     = bb_get_user_topics_rewrite_id();
-		$reps_id     = bb_get_user_replies_rewrite_id();
-
-		// Rewrite rule matches used repeatedly below
-		$root_rule   = '/([^/]+)/?$';
-		$edit_rule   = '/([^/]+)/edit/?$';
-		$feed_rule   = '/([^/]+)/feed/?$';
-		$page_rule   = '/([^/]+)/page/?([0-9]{1,})/?$';
-
-		// Search rules (without slug check)
-		$search_root_rule = '/?$';
-		$search_page_rule = '/page/?([0-9]{1,})/?$';
-
-		// User profile rules
-		$tops_rule      = '/([^/]+)/topics/?$';
-		$reps_rule      = '/([^/]+)/replies/?$';
-		$favs_rule      = '/([^/]+)/' . bb_get_user_favorites_slug()     . '/?$';
-		$subs_rule      = '/([^/]+)/' . bb_get_user_subscriptions_slug() . '/?$';
-		$tops_page_rule = '/([^/]+)/topics/page/?([0-9]{1,})/?$';
-		$reps_page_rule = '/([^/]+)/replies/page/?([0-9]{1,})/?$';
-		$favs_page_rule = '/([^/]+)/' . bb_get_user_favorites_slug()     . '/page/?([0-9]{1,})/?$';
-		$subs_page_rule = '/([^/]+)/' . bb_get_user_subscriptions_slug() . '/page/?([0-9]{1,})/?$';
-
-		// New barebones specific rules to merge with existing that are not
-		// handled automatically by custom post types or taxonomy types
-		$bb_rules = array(
-
-			// Edit Forum|Topic|Reply|Topic-tag
-			bb_get_forum_slug()         . $edit_rule => 'index.php?' . bb_get_forum_post_type()  . '=' . $wp_rewrite->preg_index( 1 ) . '&' . $edit_id . '=1',
-			bb_get_topic_slug()         . $edit_rule => 'index.php?' . bb_get_topic_post_type()  . '=' . $wp_rewrite->preg_index( 1 ) . '&' . $edit_id . '=1',
-			bb_get_reply_slug()         . $edit_rule => 'index.php?' . bb_get_reply_post_type()  . '=' . $wp_rewrite->preg_index( 1 ) . '&' . $edit_id . '=1',
-			bb_get_topic_tag_tax_slug() . $edit_rule => 'index.php?' . bb_get_topic_tag_tax_id() . '=' . $wp_rewrite->preg_index( 1 ) . '&' . $edit_id . '=1',
-
-			// User Pagination|Edit|View
-			$user_slug . $tops_page_rule => 'index.php?' . $user_id  . '=' . $wp_rewrite->preg_index( 1 ) . '&' . $tops_id . '=1&paged=' . $wp_rewrite->preg_index( 2 ),
-			$user_slug . $reps_page_rule => 'index.php?' . $user_id  . '=' . $wp_rewrite->preg_index( 1 ) . '&' . $reps_id . '=1&paged=' . $wp_rewrite->preg_index( 2 ),
-			$user_slug . $favs_page_rule => 'index.php?' . $user_id  . '=' . $wp_rewrite->preg_index( 1 ) . '&' . $favs_id . '=1&paged=' . $wp_rewrite->preg_index( 2 ),
-			$user_slug . $subs_page_rule => 'index.php?' . $user_id  . '=' . $wp_rewrite->preg_index( 1 ) . '&' . $subs_id . '=1&paged=' . $wp_rewrite->preg_index( 2 ),
-			$user_slug . $tops_rule      => 'index.php?' . $user_id  . '=' . $wp_rewrite->preg_index( 1 ) . '&' . $tops_id . '=1',
-			$user_slug . $reps_rule      => 'index.php?' . $user_id  . '=' . $wp_rewrite->preg_index( 1 ) . '&' . $reps_id . '=1',
-			$user_slug . $favs_rule      => 'index.php?' . $user_id  . '=' . $wp_rewrite->preg_index( 1 ) . '&' . $favs_id . '=1',
-			$user_slug . $subs_rule      => 'index.php?' . $user_id  . '=' . $wp_rewrite->preg_index( 1 ) . '&' . $subs_id . '=1',
-			$user_slug . $edit_rule      => 'index.php?' . $user_id  . '=' . $wp_rewrite->preg_index( 1 ) . '&' . $edit_id . '=1',
-			$user_slug . $root_rule      => 'index.php?' . $user_id  . '=' . $wp_rewrite->preg_index( 1 ),
-
-			// Topic-View Pagination|Feed|View
-			$view_slug . $page_rule => 'index.php?' . $view_id . '=' . $wp_rewrite->preg_index( 1 ) . '&paged=' . $wp_rewrite->preg_index( 2 ),
-			$view_slug . $feed_rule => 'index.php?' . $view_id . '=' . $wp_rewrite->preg_index( 1 ) . '&feed='  . $wp_rewrite->preg_index( 2 ),
-			$view_slug . $root_rule => 'index.php?' . $view_id . '=' . $wp_rewrite->preg_index( 1 ),
-
-			// Search All
-			$search_slug . $search_page_rule => 'index.php?paged=' . $wp_rewrite->preg_index( 1 ),
-			$search_slug . $search_root_rule => 'index.php?' . $search_id,
-		);
-
-		// Merge barebones rules with existing
-		$wp_rewrite->rules = array_merge( $bb_rules, $wp_rewrite->rules );
-
-		// Return merged rules
 		return $wp_rewrite;
 	}
 }
@@ -974,7 +585,6 @@ function barebones() {
 if ( defined( 'BAREBONES_LATE_LOAD' ) ) {
 	add_action( 'plugins_loaded', 'barebones', (int) BAREBONES_LATE_LOAD );
 
-// "And now here's something we hope you'll really like!"
 } else {
 	barebones();
 }
