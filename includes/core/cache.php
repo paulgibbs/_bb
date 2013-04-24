@@ -154,11 +154,11 @@ function bb_clean_post_cache( $_post = '' ) {
 
 	// Loop through query types and clean caches
 	foreach ( $post_types as $post_type ) {
-		wp_cache_delete( 'bb_get_forum_'     . $_post->ID . '_reply_id',                              'bbpress_posts' );
-		wp_cache_delete( 'bb_parent_'        . $_post->ID . '_type_' . $post_type . '_child_last_id', 'bbpress_posts' );
-		wp_cache_delete( 'bb_parent_'        . $_post->ID . '_type_' . $post_type . '_child_count',   'bbpress_posts' );
-		wp_cache_delete( 'bb_parent_public_' . $_post->ID . '_type_' . $post_type . '_child_ids',     'bbpress_posts' );
-		wp_cache_delete( 'bb_parent_all_'    . $_post->ID . '_type_' . $post_type . '_child_ids',     'bbpress_posts' );
+		wp_cache_delete( 'bb_get_forum_'     . $_post->ID . '_reply_id',                              'barebones_posts' );
+		wp_cache_delete( 'bb_parent_'        . $_post->ID . '_type_' . $post_type . '_child_last_id', 'barebones_posts' );
+		wp_cache_delete( 'bb_parent_'        . $_post->ID . '_type_' . $post_type . '_child_count',   'barebones_posts' );
+		wp_cache_delete( 'bb_parent_public_' . $_post->ID . '_type_' . $post_type . '_child_ids',     'barebones_posts' );
+		wp_cache_delete( 'bb_parent_all_'    . $_post->ID . '_type_' . $post_type . '_child_ids',     'barebones_posts' );
 	}
 
 	// Invalidate parent caches

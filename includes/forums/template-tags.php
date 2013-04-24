@@ -527,7 +527,7 @@ function bb_forum_freshness_link( $forum_id = 0) {
 		if ( !empty( $time_since ) && !empty( $link_url ) )
 			$anchor = '<a href="' . $link_url . '" title="' . esc_attr( $title ) . '">' . $time_since . '</a>';
 		else
-			$anchor = __( 'No Topics'' 'barebones' );
+			$anchor = __( 'No Topics', 'barebones' );
 
 		return apply_filters( 'bb_get_forum_freshness_link', $anchor, $forum_id, $time_since, $link_url, $title, $active_id );
 	}
@@ -1133,7 +1133,7 @@ function bb_forum_topics_link( $forum_id = 0 ) {
 		if ( !empty( $deleted ) && current_user_can( 'edit_others_topics' ) ) {
 
 			// Extra text
-			$extra = sprintf( __( ' (+ %d hidden)'' 'barebones' ), $deleted );
+			$extra = sprintf( __( ' (+ %d hidden)', 'barebones' ), $deleted );
 
 			// No link
 			if ( bb_get_view_all() ) {
@@ -1864,17 +1864,17 @@ function bb_single_forum_description( $args = '' ) {
 			if ( !empty( $reply_count ) ) {
 
 				if ( bb_is_forum_category( $forum_id ) ) {
-					$retstr = sprintf( __( 'This category contains %1$s and %2$s, and was last updated by %3$s %4$s.'' 'barebones' ), $topic_text, $reply_text, $last_updated_by, $time_since );
+					$retstr = sprintf( __( 'This category contains %1$s and %2$s, and was last updated by %3$s %4$s.', 'barebones' ), $topic_text, $reply_text, $last_updated_by, $time_since );
 				} else {
-					$retstr = sprintf( __( 'This forum contains %1$s and %2$s, and was last updated by %3$s %4$s.',    'bbpress' ), $topic_text, $reply_text, $last_updated_by, $time_since );
+					$retstr = sprintf( __( 'This forum contains %1$s and %2$s, and was last updated by %3$s %4$s.',    'barebones' ), $topic_text, $reply_text, $last_updated_by, $time_since );
 				}
 
 			} else {
 
 				if ( bb_is_forum_category( $forum_id ) ) {
-					$retstr = sprintf( __( 'This category contains %1$s, and was last updated by %2$s %3$s.'' 'barebones' ), $topic_text, $last_updated_by, $time_since );
+					$retstr = sprintf( __( 'This category contains %1$s, and was last updated by %2$s %3$s.', 'barebones' ), $topic_text, $last_updated_by, $time_since );
 				} else {
-					$retstr = sprintf( __( 'This forum contains %1$s, and was last updated by %2$s %3$s.',    'bbpress' ), $topic_text, $last_updated_by, $time_since );
+					$retstr = sprintf( __( 'This forum contains %1$s, and was last updated by %2$s %3$s.',    'barebones' ), $topic_text, $last_updated_by, $time_since );
 				}
 			}
 
@@ -1884,9 +1884,9 @@ function bb_single_forum_description( $args = '' ) {
 			if ( !empty( $reply_count ) ) {
 
 				if ( bb_is_forum_category( $forum_id ) ) {
-					$retstr = sprintf( __( 'This category contains %1$s and %2$s.'' 'barebones' ), $topic_text, $reply_text );
+					$retstr = sprintf( __( 'This category contains %1$s and %2$s.', 'barebones' ), $topic_text, $reply_text );
 				} else {
-					$retstr = sprintf( __( 'This forum contains %1$s and %2$s.',    'bbpress' ), $topic_text, $reply_text );
+					$retstr = sprintf( __( 'This forum contains %1$s and %2$s.',    'barebones' ), $topic_text, $reply_text );
 				}
 
 			} else {
@@ -1894,13 +1894,13 @@ function bb_single_forum_description( $args = '' ) {
 				if ( !empty( $topic_count ) ) {
 
 					if ( bb_is_forum_category( $forum_id ) ) {
-						$retstr = sprintf( __( 'This category contains %1$s.'' 'barebones' ), $topic_text );
+						$retstr = sprintf( __( 'This category contains %1$s.', 'barebones' ), $topic_text );
 					} else {
-						$retstr = sprintf( __( 'This forum contains %1$s.',    'bbpress' ), $topic_text );
+						$retstr = sprintf( __( 'This forum contains %1$s.',    'barebones' ), $topic_text );
 					}
 
 				} else {
-					$retstr = __( 'This forum is empty.'' 'barebones' );
+					$retstr = __( 'This forum is empty.', 'barebones' );
 				}
 			}
 		}
@@ -2135,8 +2135,8 @@ function bb_form_forum_type_dropdown( $forum_id = 0 ) {
 	function bb_get_form_forum_type_dropdown( $forum_id = 0 ) {
 		$forum_id   = bb_get_forum_id( $forum_id );
 		$forum_attr = apply_filters( 'bb_forum_types', array(
-			'forum'    => __( 'Forum',    'bbpress' ),
-			'category' => __( 'Category'' 'barebones' )
+			'forum'    => __( 'Forum',    'barebones' ),
+			'category' => __( 'Category', 'barebones' )
 		) );
 		$type_output = '<select name="bb_forum_type" id="bb_forum_type_select">' . "\n";
 
@@ -2173,8 +2173,8 @@ function bb_form_forum_status_dropdown( $forum_id = 0 ) {
 	function bb_get_form_forum_status_dropdown( $forum_id = 0 ) {
 		$forum_id   = bb_get_forum_id( $forum_id );
 		$forum_attr = apply_filters( 'bb_forum_statuses', array(
-			'open'   => _x( 'Open',   'Forum Status'' 'barebones' ),
-			'closed' => _x( 'Closed', 'Forum Status'' 'barebones' )
+			'open'   => _x( 'Open',   'Forum Status', 'barebones' ),
+			'closed' => _x( 'Closed', 'Forum Status', 'barebones' )
 		) );
 		$status_output = '<select name="bb_forum_status" id="bb_forum_status_select">' . "\n";
 
@@ -2211,9 +2211,9 @@ function bb_form_forum_visibility_dropdown( $forum_id = 0 ) {
 	function bb_get_form_forum_visibility_dropdown( $forum_id = 0 ) {
 		$forum_id   = bb_get_forum_id( $forum_id );
 		$forum_attr = apply_filters( 'bb_forum_visibilities', array(
-			bb_get_public_status_id()  => __( 'Public',  'bbpress' ),
-			bb_get_private_status_id() => __( 'Private'' 'barebones' ),
-			bb_get_hidden_status_id()  => __( 'Hidden',  'bbpress' )
+			bb_get_public_status_id()  => __( 'Public',  'barebones' ),
+			bb_get_private_status_id() => __( 'Private', 'barebones' ),
+			bb_get_hidden_status_id()  => __( 'Hidden',  'barebones' )
 		) );
 		$visibility_output = '<select name="bb_forum_visibility" id="bb_forum_visibility_select">' . "\n";
 
@@ -2283,7 +2283,7 @@ function bb_forum_topics_feed_link( $forum_id = 0 ) {
 				) ) );
 			}
 
-			$link = '<a href="' . $url . '" class="bbp-forum-rss-link topics"><span>' . __( 'Topics'' 'barebones' ) . '</span></a>';
+			$link = '<a href="' . $url . '" class="bbp-forum-rss-link topics"><span>' . __( 'Topics', 'barebones' ) . '</span></a>';
 		}
 
 		return apply_filters( 'bb_get_forum_topics_feed_link', $link, $url, $forum_id );
@@ -2347,7 +2347,7 @@ function bb_forum_replies_feed_link( $forum_id = 0 ) {
 				) ) );
 			}
 
-			$link = '<a href="' . $url . '" class="bbp-forum-rss-link replies"><span>' . __( 'Replies'' 'barebones' ) . '</span></a>';
+			$link = '<a href="' . $url . '" class="bbp-forum-rss-link replies"><span>' . __( 'Replies', 'barebones' ) . '</span></a>';
 		}
 
 		return apply_filters( 'bb_get_forum_replies_feed_link', $link, $url, $forum_id );

@@ -140,7 +140,7 @@ function bb_get_views() {
 /**
  * Register a barebones view
  *
- * @todo Implement feeds - See {@link http://trac.bbpress.org/ticket/1422}
+ * @todo Implement feeds - See {@link http://trac.example.org/ticket/1422}
  *
  * @since barebones (1.0)
  *

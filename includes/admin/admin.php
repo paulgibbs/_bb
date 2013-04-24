@@ -150,7 +150,7 @@ class BB_Admin {
 		add_filter( 'bb_admin_get_settings_sections', array( $this, 'hide_theme_compat_packages' ) );
 
 		// Allow keymasters to save forums settings
-		add_filter( 'option_page_capability_bbpress',  array( $this, 'option_page_capability_bbpress' ) );
+		add_filter( 'option_page_capability_barebones',  array( $this, 'option_page_capability_barebones' ) );
 
 		/** Network Admin *****************************************************/
 
@@ -180,8 +180,8 @@ class BB_Admin {
 		if ( current_user_can( 'bb_tools_page' ) ) {
 			if ( current_user_can( 'bb_tools_repair_page' ) ) {
 				$hooks[] = add_management_page(
-					__( 'Repair Forums'' 'barebones' ),
-					__( 'Forum Repair',  'bbpress' ),
+					__( 'Repair Forums', 'barebones' ),
+					__( 'Forum Repair',  'barebones' ),
 					$this->minimum_capability,
 					'bbp-repair',
 					'bb_admin_repair'
@@ -190,8 +190,8 @@ class BB_Admin {
 
 			if ( current_user_can( 'bb_tools_import_page' ) ) {
 				$hooks[] = add_management_page(
-					__( 'Import Forums'' 'barebones' ),
-					__( 'Forum Import',  'bbpress' ),
+					__( 'Import Forums', 'barebones' ),
+					__( 'Forum Import',  'barebones' ),
 					$this->minimum_capability,
 					'bbp-converter',
 					'bb_converter_settings'
@@ -200,8 +200,8 @@ class BB_Admin {
 
 			if ( current_user_can( 'bb_tools_reset_page' ) ) {
 				$hooks[] = add_management_page(
-					__( 'Reset Forums'' 'barebones' ),
-					__( 'Forum Reset',  'bbpress' ),
+					__( 'Reset Forums', 'barebones' ),
+					__( 'Forum Reset',  'barebones' ),
 					$this->minimum_capability,
 					'bbp-reset',
 					'bb_admin_reset'
@@ -215,8 +215,8 @@ class BB_Admin {
 
 			// Forums Tools Root
 			add_management_page(
-				__( 'Forums'' 'barebones' ),
-				__( 'Forums'' 'barebones' ),
+				__( 'Forums', 'barebones' ),
+				__( 'Forums', 'barebones' ),
 				$this->minimum_capability,
 				'bbp-repair',
 				'bb_admin_repair'
@@ -226,10 +226,10 @@ class BB_Admin {
 		// Are settings enabled?
 		if ( current_user_can( 'bb_settings_page' ) ) {
 			add_options_page(
-				__( 'Forums',  'bbpress' ),
-				__( 'Forums',  'bbpress' ),
+				__( 'Forums',  'barebones' ),
+				__( 'Forums',  'barebones' ),
 				$this->minimum_capability,
-				'bbpress',
+				'barebones',
 				'bb_admin_settings'
 			);
 		}
@@ -239,8 +239,8 @@ class BB_Admin {
 
 			// About
 			add_dashboard_page(
-				__( 'Welcome to barebones',  'bbpress' ),
-				__( 'Welcome to barebones',  'bbpress' ),
+				__( 'Welcome to barebones',  'barebones' ),
+				__( 'Welcome to barebones',  'barebones' ),
 				$this->minimum_capability,
 				'bbp-about',
 				array( $this, 'about_screen' )
@@ -248,8 +248,8 @@ class BB_Admin {
 
 			// Credits
 			add_dashboard_page(
-				__( 'Welcome to barebones',  'bbpress' ),
-				__( 'Welcome to barebones',  'bbpress' ),
+				__( 'Welcome to barebones',  'barebones' ),
+				__( 'Welcome to barebones',  'barebones' ),
 				$this->minimum_capability,
 				'bbp-credits',
 				array( $this, 'credits_screen' )
@@ -262,8 +262,8 @@ class BB_Admin {
 
 		add_submenu_page(
 			'index.php',
-			__( 'Update Forums'' 'barebones' ),
-			__( 'Update Forums'' 'barebones' ),
+			__( 'Update Forums', 'barebones' ),
+			__( 'Update Forums', 'barebones' ),
 			'manage_network',
 			'bbp-update',
 			array( $this, 'update_screen' )
@@ -284,10 +284,10 @@ class BB_Admin {
 
 		add_submenu_page(
 			'upgrade.php',
-			__( 'Update Forums'' 'barebones' ),
-			__( 'Update Forums'' 'barebones' ),
+			__( 'Update Forums', 'barebones' ),
+			__( 'Update Forums', 'barebones' ),
 			'manage_network',
-			'bbpress-update',
+			'barebones-update',
 			array( $this, 'network_update_screen' )
 		);
 	}
@@ -427,7 +427,7 @@ class BB_Admin {
 		require_once( ABSPATH . 'wp-admin/includes/import.php' );
 
 		// Load our importers
-		$importers = apply_filters( 'bb_importers', array( 'bbpress' ) );
+		$importers = apply_filters( 'bb_importers', array( 'barebones' ) );
 
 		// Loop through included importers
 		foreach ( $importers as $importer ) {
@@ -475,8 +475,8 @@ class BB_Admin {
 
 		// Add a few links to the existing links array
 		return array_merge( $links, array(
-			'settings' => '<a href="' . add_query_arg( array( 'page' => 'bbpress'   ), admin_url( 'options-general.php' ) ) . '">' . esc_html__( 'Settings'' 'barebones' ) . '</a>',
-			'about'    => '<a href="' . add_query_arg( array( 'page' => 'bbp-about' ), admin_url( 'index.php'           ) ) . '">' . esc_html__( 'About',    'bbpress' ) . '</a>'
+			'settings' => '<a href="' . add_query_arg( array( 'page' => 'barebones'   ), admin_url( 'options-general.php' ) ) . '">' . esc_html__( 'Settings', 'barebones' ) . '</a>',
+			'about'    => '<a href="' . add_query_arg( array( 'page' => 'bbp-about' ), admin_url( 'index.php'           ) ) . '">' . esc_html__( 'About',    'barebones' ) . '</a>'
 		) );
 	}
 
@@ -488,7 +488,7 @@ class BB_Admin {
 	 * @uses wp_add_dashboard_widget() To add the dashboard widget
 	 */
 	public static function dashboard_widget_right_now() {
-		wp_add_dashboard_widget( 'bbp-dashboard-right-now', __( 'Right Now in Forums'' 'barebones' ), 'bb_dashboard_widget_right_now' );
+		wp_add_dashboard_widget( 'bbp-dashboard-right-now', __( 'Right Now in Forums', 'barebones' ), 'bb_dashboard_widget_right_now' );
 	}
 
 	/**
@@ -813,7 +813,7 @@ class BB_Admin {
 				}
 			}
 
-			<?php if ( 'bbpress' == get_user_option( 'admin_color' ) ) : ?>
+			<?php if ( 'barebones' == get_user_option( 'admin_color' ) ) : ?>
 
 				/* Green Scheme Images */
 
@@ -1252,7 +1252,7 @@ class BB_Admin {
 		}
 
 		// Register the green scheme
-		wp_admin_css_color( 'bbpress', esc_html_x( 'Green', 'admin color scheme'' 'barebones' ), $green_scheme, array( '#222222', '#006600', '#deece1', '#6eb469' ) );
+		wp_admin_css_color( 'barebones', esc_html_x( 'Green', 'admin color scheme', 'barebones' ), $green_scheme, array( '#222222', '#006600', '#deece1', '#6eb469' ) );
 	}
 
 	/**
@@ -1278,7 +1278,7 @@ class BB_Admin {
 	 * @param string $capability
 	 * @return string Return 'keep_gate' capability
 	 */
-	public function option_page_capability_bbpress( $capability = 'manage_options' ) {
+	public function option_page_capability_barebones( $capability = 'manage_options' ) {
 		$capability = 'keep_gate';
 		return $capability;
 	}
@@ -1306,7 +1306,7 @@ class BB_Admin {
 		// If we found some topics, loop through and display them
 		if ( ! empty( $topics ) ) {
 			foreach ( (array) $topics as $post ) {
-				echo sprintf( __( '%s - %s'' 'barebones' ), bb_get_topic_id( $post->ID ), bb_get_topic_title( $post->ID ) ) . "\n";
+				echo sprintf( __( '%s - %s', 'barebones' ), bb_get_topic_id( $post->ID ), bb_get_topic_title( $post->ID ) ) . "\n";
 			}
 		}
 		die();
@@ -1324,89 +1324,89 @@ class BB_Admin {
 		list( $display_version ) = explode( '-', bb_get_version() ); ?>
 
 		<div class="wrap about-wrap">
-			<h1><?php printf( __( 'Welcome to barebones %s'' 'barebones' ), $display_version ); ?></h1>
-			<div class="about-text"><?php printf( __( 'Thank you for updating to the latest version! barebones %s goes great with pizza and popcorn, and will nicely complement your community too!'' 'barebones' ), $display_version ); ?></div>
-			<div class="bbp-badge"><?php printf( __( 'Version %s'' 'barebones' ), $display_version ); ?></div>
+			<h1><?php printf( __( 'Welcome to barebones %s', 'barebones' ), $display_version ); ?></h1>
+			<div class="about-text"><?php printf( __( 'Thank you for updating to the latest version! barebones %s goes great with pizza and popcorn, and will nicely complement your community too!', 'barebones' ), $display_version ); ?></div>
+			<div class="bbp-badge"><?php printf( __( 'Version %s', 'barebones' ), $display_version ); ?></div>
 
 			<h2 class="nav-tab-wrapper">
 				<a class="nav-tab nav-tab-active" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'bbp-about' ), 'index.php' ) ) ); ?>">
-					<?php _e( 'What&#8217;s New'' 'barebones' ); ?>
+					<?php _e( 'What&#8217;s New', 'barebones' ); ?>
 				</a><a class="nav-tab" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'bbp-credits' ), 'index.php' ) ) ); ?>">
-					<?php _e( 'Credits'' 'barebones' ); ?>
+					<?php _e( 'Credits', 'barebones' ); ?>
 				</a>
 			</h2>
 
 			<div class="changelog">
-				<h3><?php _e( 'Forum Search'' 'barebones' ); ?></h3>
+				<h3><?php _e( 'Forum Search', 'barebones' ); ?></h3>
 
 				<div class="feature-section">
-					<h4><?php _e( 'Only Forum Content'' 'barebones' ); ?></h4>
-					<p><?php _e( 'Allow your forums to be searched without mixing in your posts or pages.'' 'barebones' ); ?></p>
+					<h4><?php _e( 'Only Forum Content', 'barebones' ); ?></h4>
+					<p><?php _e( 'Allow your forums to be searched without mixing in your posts or pages.', 'barebones' ); ?></p>
 
-					<h4><?php _e( 'Choose Your Own Slug'' 'barebones' ); ?></h4>
-					<p><?php _e( 'Setup your forum search to live anywhere relative to the forum index.'' 'barebones' ); ?></p>
+					<h4><?php _e( 'Choose Your Own Slug', 'barebones' ); ?></h4>
+					<p><?php _e( 'Setup your forum search to live anywhere relative to the forum index.', 'barebones' ); ?></p>
 				</div>
 			</div>
 
 			<div class="changelog">
-				<h3><?php _e( 'New & Improved Forum Importers'' 'barebones' ); ?></h3>
+				<h3><?php _e( 'New & Improved Forum Importers', 'barebones' ); ?></h3>
 
 				<div class="feature-section">
-					<h4><?php _e( 'BBCodes & Smilies'' 'barebones' ); ?></h4>
-					<p><?php _e( 'Happy faces all-around now that the importers properly convert BBCodes & smilies. :)'' 'barebones' ); ?></p>
+					<h4><?php _e( 'BBCodes & Smilies', 'barebones' ); ?></h4>
+					<p><?php _e( 'Happy faces all-around now that the importers properly convert BBCodes & smilies. :)', 'barebones' ); ?></p>
 
-					<h4><?php _e( 'Vanilla'' 'barebones' ); ?></h4>
-					<p><?php _e( 'Tired of plain old Vanilla? Now you can easily switch to <del>Mint Chocolate Chip</del> barebones!'' 'barebones' ); ?></p>
+					<h4><?php _e( 'Vanilla', 'barebones' ); ?></h4>
+					<p><?php _e( 'Tired of plain old Vanilla? Now you can easily switch to <del>Mint Chocolate Chip</del> barebones!', 'barebones' ); ?></p>
 
-					<h4><?php _e( 'SimplePress'' 'barebones' ); ?></h4>
-					<p><?php _e( 'Converting an existing SimplePress powered forum to barebones has never been "simpler!"'' 'barebones' ); ?></p>
+					<h4><?php _e( 'SimplePress', 'barebones' ); ?></h4>
+					<p><?php _e( 'Converting an existing SimplePress powered forum to barebones has never been "simpler!"', 'barebones' ); ?></p>
 
-					<h4><?php _e( 'Mingle'' 'barebones' ); ?></h4>
-					<p><?php _e( 'No time to... chit-chat; convert your Mingle forums to barebones today!'' 'barebones' ); ?></p>
+					<h4><?php _e( 'Mingle', 'barebones' ); ?></h4>
+					<p><?php _e( 'No time to... chit-chat; convert your Mingle forums to barebones today!', 'barebones' ); ?></p>
 				</div>
 			</div>
 
 			<div class="changelog">
-				<h3><?php _e( 'Even Better BuddyPress Integration'' 'barebones' ); ?></h3>
+				<h3><?php _e( 'Even Better BuddyPress Integration', 'barebones' ); ?></h3>
 
 				<div class="feature-section">
-					<h4><?php _e( 'barebones powered BuddyPress Group Forums'' 'barebones' ); ?></h4>
-					<p><?php _e( 'Use barebones to manage your BuddyPress Group Forums, allowing for seamless integration and improved plugin performance.'' 'barebones' ); ?></p>
+					<h4><?php _e( 'barebones powered BuddyPress Group Forums', 'barebones' ); ?></h4>
+					<p><?php _e( 'Use barebones to manage your BuddyPress Group Forums, allowing for seamless integration and improved plugin performance.', 'barebones' ); ?></p>
 				</div>
 			</div>
 
 			<div class="changelog">
-				<h3><?php _e( 'Under the Hood'' 'barebones' ); ?></h3>
+				<h3><?php _e( 'Under the Hood', 'barebones' ); ?></h3>
 
 				<div class="feature-section col three-col">
 					<div>
-						<h4><?php _e( 'Smarter Fancy Editor'' 'barebones' ); ?></h4>
-						<p><?php _e( 'We simplified the Fancy Editor, and the allowed HTML tags that work with it.'' 'barebones' ); ?></p>
+						<h4><?php _e( 'Smarter Fancy Editor', 'barebones' ); ?></h4>
+						<p><?php _e( 'We simplified the Fancy Editor, and the allowed HTML tags that work with it.', 'barebones' ); ?></p>
 
-						<h4><?php _e( 'Better Code Posting'' 'barebones' ); ?></h4>
-						<p><?php _e( 'Your users can now post code snippets without too much hassle.'' 'barebones' ); ?></p>
+						<h4><?php _e( 'Better Code Posting', 'barebones' ); ?></h4>
+						<p><?php _e( 'Your users can now post code snippets without too much hassle.', 'barebones' ); ?></p>
 					</div>
 
 					<div>
-						<h4><?php _e( 'Template Stacking'' 'barebones' ); ?></h4>
-						<p><?php _e( 'Now you can replace specific template parts on the fly without modifying the existing theme.'' 'barebones' ); ?></p>
+						<h4><?php _e( 'Template Stacking', 'barebones' ); ?></h4>
+						<p><?php _e( 'Now you can replace specific template parts on the fly without modifying the existing theme.', 'barebones' ); ?></p>
 
-						<h4><?php _e( 'TwentyThirteen Tested'' 'barebones' ); ?></h4>
-						<p><?php _e( 'barebones 2.3 already works with the in-development TwentyThirteen theme, coming in a future version of WordPress.'' 'barebones' ); ?></p>
+						<h4><?php _e( 'TwentyThirteen Tested', 'barebones' ); ?></h4>
+						<p><?php _e( 'barebones 2.3 already works with the in-development TwentyThirteen theme, coming in a future version of WordPress.', 'barebones' ); ?></p>
 					</div>
 
 					<div class="last-feature">
-						<h4><?php _e( 'Statistics Shortcode'' 'barebones' ); ?></h4>
-						<p><?php _e( 'The old statistics easter-egg page was turned into an easy to use shortcode.'' 'barebones' ); ?></p>
+						<h4><?php _e( 'Statistics Shortcode', 'barebones' ); ?></h4>
+						<p><?php _e( 'The old statistics easter-egg page was turned into an easy to use shortcode.', 'barebones' ); ?></p>
 
-						<h4><?php _e( 'Green Theme Updated'' 'barebones' ); ?></h4>
-						<p><?php _e( 'The green admin theme easter-egg was updated to work with WordPress 3.5 changes.'' 'barebones' ); ?></p>
+						<h4><?php _e( 'Green Theme Updated', 'barebones' ); ?></h4>
+						<p><?php _e( 'The green admin theme easter-egg was updated to work with WordPress 3.5 changes.', 'barebones' ); ?></p>
 					</div>
 				</div>
 			</div>
 
 			<div class="return-to-dashboard">
-				<a href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'bbpress' ), 'options-general.php' ) ) ); ?>"><?php _e( 'Go to Forum Settings'' 'barebones' ); ?></a>
+				<a href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'barebones' ), 'options-general.php' ) ) ); ?>"><?php _e( 'Go to Forum Settings', 'barebones' ); ?></a>
 			</div>
 
 		</div>
@@ -1427,31 +1427,31 @@ class BB_Admin {
 		list( $display_version ) = explode( '-', bb_get_version() ); ?>
 
 		<div class="wrap about-wrap">
-			<h1><?php printf( __( 'Welcome to barebones %s'' 'barebones' ), $display_version ); ?></h1>
-			<div class="about-text"><?php printf( __( 'Thank you for updating to the latest version! barebones %s goes great with pizza and popcorn, and will nicely complement your community too!'' 'barebones' ), $display_version ); ?></div>
+			<h1><?php printf( __( 'Welcome to barebones %s', 'barebones' ), $display_version ); ?></h1>
+			<div class="about-text"><?php printf( __( 'Thank you for updating to the latest version! barebones %s goes great with pizza and popcorn, and will nicely complement your community too!', 'barebones' ), $display_version ); ?></div>
 			<div class="bbp-badge"><?php printf( __( 'Version %s' ), $display_version ); ?></div>
 
 			<h2 class="nav-tab-wrapper">
 				<a href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'bbp-about' ), 'index.php' ) ) ); ?>" class="nav-tab">
-					<?php _e( 'What&#8217;s New'' 'barebones' ); ?>
+					<?php _e( 'What&#8217;s New', 'barebones' ); ?>
 				</a><a href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'bbp-credits' ), 'index.php' ) ) ); ?>" class="nav-tab nav-tab-active">
-					<?php _e( 'Credits'' 'barebones' ); ?>
+					<?php _e( 'Credits', 'barebones' ); ?>
 				</a>
 			</h2>
 
-			<p class="about-description"><?php _e( 'barebones is created by a worldwide swarm of busy, busy bees.'' 'barebones' ); ?></p>
+			<p class="about-description"><?php _e( 'barebones is created by a worldwide swarm of busy, busy bees.', 'barebones' ); ?></p>
 
-			<h4 class="wp-people-group"><?php _e( 'Project Leaders'' 'barebones' ); ?></h4>
+			<h4 class="wp-people-group"><?php _e( 'Project Leaders', 'barebones' ); ?></h4>
 			<ul class="wp-people-group " id="wp-people-group-project-leaders">
 				<li class="wp-person" id="wp-person-matt">
 					<a href="http://profiles.wordpress.org/matt"><img src="http://0.gravatar.com/avatar/767fc9c115a1b989744c755db47feb60?s=60" class="gravatar" alt="Matt Mullenweg" /></a>
 					<a class="web" href="http://profiles.wordpress.org/matt">Matt Mullenweg</a>
-					<span class="title"><?php _e( 'Founding Developer'' 'barebones' ); ?></span>
+					<span class="title"><?php _e( 'Founding Developer', 'barebones' ); ?></span>
 				</li>
 				<li class="wp-person" id="wp-person-johnjamesjacoby">
 					<a href="http://profiles.wordpress.org/johnjamesjacoby"><img src="http://0.gravatar.com/avatar/81ec16063d89b162d55efe72165c105f?s=60" class="gravatar" alt="John James Jacoby" /></a>
 					<a class="web" href="http://profiles.wordpress.org/johnjamesjacoby">John James Jacoby</a>
-					<span class="title"><?php _e( 'Lead Developer'' 'barebones' ); ?></span>
+					<span class="title"><?php _e( 'Lead Developer', 'barebones' ); ?></span>
 				</li>
 				<li class="wp-person" id="wp-person-jmdodd">
 					<a href="http://profiles.wordpress.org/jmdodd"><img src="http://0.gravatar.com/avatar/6a7c997edea340616bcc6d0fe03f65dd?s=60" class="gravatar" alt="Jennifer M. Dodd" /></a>
@@ -1460,7 +1460,7 @@ class BB_Admin {
 				</li>
 			</ul>
 
-			<h4 class="wp-people-group"><?php _e( 'Contributing Developers'' 'barebones' ); ?></h4>
+			<h4 class="wp-people-group"><?php _e( 'Contributing Developers', 'barebones' ); ?></h4>
 			<ul class="wp-people-group " id="wp-people-group-contributing-developers">
 				<li class="wp-person" id="wp-person-netweb">
 					<a href="http://profiles.wordpress.org/netweb"><img src="http://0.gravatar.com/avatar/97e1620b501da675315ba7cfb740e80f?s=60" class="gravatar" alt="Stephen Edgar" /></a>
@@ -1479,7 +1479,7 @@ class BB_Admin {
 				</li>
 			</ul>
 
-			<h4 class="wp-people-group"><?php _e( 'Core Contributors to barebones 2.3'' 'barebones' ); ?></h4>
+			<h4 class="wp-people-group"><?php _e( 'Core Contributors to barebones 2.3', 'barebones' ); ?></h4>
 			<p class="wp-credits-list">
 				<a href="http://profiles.wordpress.org/alexvorn2">alexvorn2</a>,
 				<a href="http://profiles.wordpress.org/alex-ye">alex-ye</a>,
@@ -1520,7 +1520,7 @@ class BB_Admin {
 			</p>
 
 			<div class="return-to-dashboard">
-				<a href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'bbpress' ), 'options-general.php' ) ) ); ?>"><?php _e( 'Go to Forum Settings'' 'barebones' ); ?></a>
+				<a href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'barebones' ), 'options-general.php' ) ) ); ?>"><?php _e( 'Go to Forum Settings', 'barebones' ); ?></a>
 			</div>
 
 		</div>
@@ -1546,7 +1546,7 @@ class BB_Admin {
 
 		<div class="wrap">
 			<div id="icon-edit" class="icon32 icon32-posts-topic"><br /></div>
-			<h2><?php _e( 'Update Forum'' 'barebones' ); ?></h2>
+			<h2><?php _e( 'Update Forum', 'barebones' ); ?></h2>
 
 		<?php
 
@@ -1557,8 +1557,8 @@ class BB_Admin {
 				// Run the full updater
 				bb_version_updater(); ?>
 
-				<p><?php _e( 'All done!'' 'barebones' ); ?></p>
-				<a class="button" href="index.php?page=bbp-update"><?php _e( 'Go Back'' 'barebones' ); ?></a>
+				<p><?php _e( 'All done!', 'barebones' ); ?></p>
+				<a class="button" href="index.php?page=bbp-update"><?php _e( 'Go Back', 'barebones' ); ?></a>
 
 				<?php
 
@@ -1567,8 +1567,8 @@ class BB_Admin {
 			case 'show' :
 			default : ?>
 
-				<p><?php _e( 'You can update your forum through this page. Hit the link below to update.'' 'barebones' ); ?></p>
-				<p><a class="button" href="index.php?page=bbp-update&amp;action=bbp-update"><?php _e( 'Update Forum'' 'barebones' ); ?></a></p>
+				<p><?php _e( 'You can update your forum through this page. Hit the link below to update.', 'barebones' ); ?></p>
+				<p><a class="button" href="index.php?page=bbp-update&amp;action=bbp-update"><?php _e( 'Update Forum', 'barebones' ); ?></a></p>
 
 			<?php break;
 
@@ -1594,13 +1594,13 @@ class BB_Admin {
 
 		<div class="wrap">
 			<div id="icon-edit" class="icon32 icon32-posts-topic"><br /></div>
-			<h2><?php _e( 'Update Forums'' 'barebones' ); ?></h2>
+			<h2><?php _e( 'Update Forums', 'barebones' ); ?></h2>
 
 		<?php
 
 		// Taking action
 		switch ( $action ) {
-			case 'bbpress-update' :
+			case 'barebones-update' :
 
 				// Site counter
 				$n = isset( $_GET['n'] ) ? intval( $_GET['n'] ) : 0;
@@ -1611,8 +1611,8 @@ class BB_Admin {
 				// No blogs so all done!
 				if ( empty( $blogs ) ) : ?>
 
-					<p><?php _e( 'All done!'' 'barebones' ); ?></p>
-					<a class="button" href="update-core.php?page=bbpress-update"><?php _e( 'Go Back'' 'barebones' ); ?></a>
+					<p><?php _e( 'All done!', 'barebones' ); ?></p>
+					<a class="button" href="update-core.php?page=barebones-update"><?php _e( 'Go Back', 'barebones' ); ?></a>
 
 					<?php break; ?>
 
@@ -1639,7 +1639,7 @@ class BB_Admin {
 
 							// Site errored out, no response?
 							if ( is_wp_error( $response ) )
-								wp_die( sprintf( __( 'Warning! Problem updating %1$s. Your server may not be able to connect to sites running on it. Error message: <em>%2$s</em>'' 'barebones' ), $siteurl, $response->get_error_message() ) );
+								wp_die( sprintf( __( 'Warning! Problem updating %1$s. Your server may not be able to connect to sites running on it. Error message: <em>%2$s</em>', 'barebones' ), $siteurl, $response->get_error_message() ) );
 
 							// Switch to the new blog
 							switch_to_blog( $details[ 'blog_id' ] );
@@ -1655,7 +1655,7 @@ class BB_Admin {
 							restore_current_blog();
 
 							// Do some actions to allow plugins to do things too
-							do_action( 'after_bbpress_upgrade', $response             );
+							do_action( 'after_barebones_upgrade', $response             );
 							do_action( 'bb_upgrade_site',      $details[ 'blog_id' ] );
 
 						endforeach; ?>
@@ -1663,13 +1663,13 @@ class BB_Admin {
 					</ul>
 
 					<p>
-						<?php _e( 'If your browser doesn&#8217;t start loading the next page automatically, click this link:'' 'barebones' ); ?>
-						<a class="button" href="update-core.php?page=bbpress-update&amp;action=bbpress-update&amp;n=<?php echo ( $n + 5 ); ?>"><?php _e( 'Next Forums'' 'barebones' ); ?></a>
+						<?php _e( 'If your browser doesn&#8217;t start loading the next page automatically, click this link:', 'barebones' ); ?>
+						<a class="button" href="update-core.php?page=barebones-update&amp;action=barebones-update&amp;n=<?php echo ( $n + 5 ); ?>"><?php _e( 'Next Forums', 'barebones' ); ?></a>
 					</p>
 					<script type='text/javascript'>
 						<!--
 						function nextpage() {
-							location.href = 'update-core.php?page=bbpress-update&action=bbpress-update&n=<?php echo ( $n + 5 ) ?>';
+							location.href = 'update-core.php?page=barebones-update&action=barebones-update&n=<?php echo ( $n + 5 ) ?>';
 						}
 						setTimeout( 'nextpage()', 250 );
 						//-->
@@ -1682,8 +1682,8 @@ class BB_Admin {
 			case 'show' :
 			default : ?>
 
-				<p><?php _e( 'You can update all the forums on your network through this page. It works by calling the update script of each site automatically. Hit the link below to update.'' 'barebones' ); ?></p>
-				<p><a class="button" href="update-core.php?page=bbpress-update&amp;action=bbpress-update"><?php _e( 'Update Forums'' 'barebones' ); ?></a></p>
+				<p><?php _e( 'You can update all the forums on your network through this page. It works by calling the update script of each site automatically. Hit the link below to update.', 'barebones' ); ?></p>
+				<p><a class="button" href="update-core.php?page=barebones-update&amp;action=barebones-update"><?php _e( 'Update Forums', 'barebones' ); ?></a></p>
 
 			<?php break;
 

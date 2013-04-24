@@ -12,7 +12,7 @@
  *
  * There are a few common places that additional actions can currently be found
  *
- *  - barebones: In {@link barebones::setup_actions()} in bbpress.php
+ *  - barebones: In {@link barebones::setup_actions()} in barebones.php
  *  - Admin: More in {@link BB_Admin::setup_actions()} in admin.php
  *
  * @see /core/filters.php
@@ -129,7 +129,7 @@ add_action( 'bb_init', 'bb_topic_content_autoembed', 8   );
 add_action( 'bb_ready',  'bb_setup_akismet',    2  ); // Spam prevention for topics and replies
 add_action( 'bp_include', 'bb_setup_buddypress', 10 ); // Social network integration
 
-// Try to load the bbpress-functions.php file from the active themes
+// Try to load the barebones-functions.php file from the active themes
 add_action( 'bb_after_setup_theme', 'bb_load_theme_functions', 10 );
 
 // Widgets

@@ -12,7 +12,7 @@
  *
  * There are a few common places that additional actions can currently be found
  *
- *  - barebones: In {@link barebones::setup_actions()} in bbpress.php
+ *  - barebones: In {@link barebones::setup_actions()} in barebones.php
  *  - Admin: More in {@link BB_Admin::setup_actions()} in admin.php
  *
  * @see bbp-core-actions.php
@@ -73,7 +73,7 @@ add_action( 'bb_deactivation', 'bb_delete_rewrite_rules' );
 add_action( 'bb_new_site', 'bb_create_initial_content', 8 );
 
 // Contextual Helpers
-add_action( 'load-settings_page_bbpress', 'bb_admin_settings_help' );
+add_action( 'load-settings_page_barebones', 'bb_admin_settings_help' );
 
 // Handle submission of Tools pages
 add_action( 'load-tools_page_bbp-repair', 'bb_admin_repair_handler' );

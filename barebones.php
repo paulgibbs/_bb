@@ -5,20 +5,18 @@
  *
  * barebones is forum software with a twist from the creators of WordPress.
  *
- * $Id: bbpress.php 4852 2013-04-15 02:56:14Z johnjamesjacoby $
- *
  * @package barebones
  * @subpackage Main
  */
 
 /**
  * Plugin Name: barebones
- * Plugin URI:  http://bbpress.org
+ * Plugin URI:  http://example.org
  * Description: barebones is forum software with a twist from the creators of WordPress.
  * Author:      The barebones Community
- * Author URI:  http://bbpress.org
+ * Author URI:  http://example.org
  * Version:     2.4-bleeding
- * Text Domain: bbpress
+ * Text Domain: barebones
  * Domain Path: /languages/
  */
 
@@ -128,14 +126,14 @@ final class barebones {
 	 *
 	 * @since barebones (1.0)
 	 */
-	public function __clone() { _doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?'' 'barebones' ), '2.1' ); }
+	public function __clone() { _doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'barebones' ), '2.1' ); }
 
 	/**
 	 * A dummy magic method to prevent barebones from being unserialized
 	 *
 	 * @since barebones (1.0)
 	 */
-	public function __wakeup() { _doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?'' 'barebones' ), '2.1' ); }
+	public function __wakeup() { _doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'barebones' ), '2.1' ); }
 
 	/**
 	 * Magic method for checking the existence of a certain custom field
@@ -262,7 +260,7 @@ final class barebones {
 
 		/** Misc **************************************************************/
 
-		$this->domain         = 'bbpress';      // Unique identifier for retrieving translated strings
+		$this->domain         = 'barebones';      // Unique identifier for retrieving translated strings
 		$this->extend         = new stdClass(); // Plugins add data here
 		$this->errors         = new WP_Error(); // Feedback
 		$this->tab_index      = apply_filters( 'bb_default_tab_index', 100 );
@@ -367,7 +365,7 @@ final class barebones {
 			'register_shortcodes',      // Register shortcodes (bbp-login)
 			'register_views',           // Register the views (no-replies)
 			'register_theme_packages',  // Register bundled theme packages (bbp-theme-compat/bbp-themes)
-			'load_textdomain',          // Load textdomain (bbpress)
+			'load_textdomain',          // Load textdomain (barebones)
 			'add_rewrite_tags',         // Add rewrite tags (view|user|edit|search)
 			'generate_rewrite_rules'    // Generate rewrite rules (view|edit|search)
 		);
@@ -396,7 +394,7 @@ final class barebones {
 		// Register the default theme compatibility package
 		bb_register_theme_package( array(
 			'id'      => 'default',
-			'name'    => __( 'barebones Default'' 'barebones' ),
+			'name'    => __( 'barebones Default', 'barebones' ),
 			'version' => bb_get_version(),
 			'dir'     => trailingslashit( $this->themes_dir . 'default' ),
 			'url'     => trailingslashit( $this->themes_url . 'default' )
@@ -434,7 +432,7 @@ final class barebones {
 	 *
 	 * @since barebones (1.0)
 	 *
-	 * @uses apply_filters() Calls 'bbpress_locale' with the
+	 * @uses apply_filters() Calls 'barebones_locale' with the
 	 *                        {@link get_locale()} value
 	 * @uses load_textdomain() To load the textdomain
 	 * @return bool True on success, false on failure
@@ -447,13 +445,13 @@ final class barebones {
 
 		// Setup paths to current locale file
 		$mofile_local  = $this->lang_dir . $mofile;
-		$mofile_global = WP_LANG_DIR . '/bbpress/' . $mofile;
+		$mofile_global = WP_LANG_DIR . '/barebones/' . $mofile;
 
-		// Look in global /wp-content/languages/bbpress folder
+		// Look in global /wp-content/languages/barebones folder
 		if ( file_exists( $mofile_global ) ) {
 			return load_textdomain( $this->domain, $mofile_global );
 
-		// Look in local /wp-content/plugins/bbpress/bbp-languages/ folder
+		// Look in local /wp-content/plugins/barebones/bbp-languages/ folder
 		} elseif ( file_exists( $mofile_local ) ) {
 			return load_textdomain( $this->domain, $mofile_local );
 		}
@@ -479,21 +477,21 @@ final class barebones {
 
 		// Forum labels
 		$post_type['labels'] = array(
-			'name'               => __( 'Forums',                   'bbpress' ),
-			'menu_name'          => __( 'Forums',                   'bbpress' ),
-			'singular_name'      => __( 'Forum',                    'bbpress' ),
-			'all_items'          => __( 'All Forums',               'bbpress' ),
-			'add_new'            => __( 'New Forum',                'bbpress' ),
-			'add_new_item'       => __( 'Create New Forum',         'bbpress' ),
-			'edit'               => __( 'Edit',                     'bbpress' ),
-			'edit_item'          => __( 'Edit Forum',               'bbpress' ),
-			'new_item'           => __( 'New Forum',                'bbpress' ),
-			'view'               => __( 'View Forum',               'bbpress' ),
-			'view_item'          => __( 'View Forum',               'bbpress' ),
-			'search_items'       => __( 'Search Forums',            'bbpress' ),
-			'not_found'          => __( 'No forums found',          'bbpress' ),
-			'not_found_in_trash' => __( 'No forums found in Trash'' 'barebones' ),
-			'parent_item_colon'  => __( 'Parent Forum:',            'bbpress' )
+			'name'               => __( 'Forums',                   'barebones' ),
+			'menu_name'          => __( 'Forums',                   'barebones' ),
+			'singular_name'      => __( 'Forum',                    'barebones' ),
+			'all_items'          => __( 'All Forums',               'barebones' ),
+			'add_new'            => __( 'New Forum',                'barebones' ),
+			'add_new_item'       => __( 'Create New Forum',         'barebones' ),
+			'edit'               => __( 'Edit',                     'barebones' ),
+			'edit_item'          => __( 'Edit Forum',               'barebones' ),
+			'new_item'           => __( 'New Forum',                'barebones' ),
+			'view'               => __( 'View Forum',               'barebones' ),
+			'view_item'          => __( 'View Forum',               'barebones' ),
+			'search_items'       => __( 'Search Forums',            'barebones' ),
+			'not_found'          => __( 'No forums found',          'barebones' ),
+			'not_found_in_trash' => __( 'No forums found in Trash', 'barebones' ),
+			'parent_item_colon'  => __( 'Parent Forum:',            'barebones' )
 		);
 
 		// Forum rewrite
@@ -516,7 +514,7 @@ final class barebones {
 				'labels'              => $post_type['labels'],
 				'rewrite'             => $post_type['rewrite'],
 				'supports'            => $post_type['supports'],
-				'description'         => __( 'barebones Forums'' 'barebones' ),
+				'description'         => __( 'barebones Forums', 'barebones' ),
 				'capabilities'        => bb_get_forum_caps(),
 				'capability_type'     => array( 'forum', 'forums' ),
 				'menu_position'       => 555555,
@@ -536,21 +534,21 @@ final class barebones {
 
 		// Topic labels
 		$post_type['labels'] = array(
-			'name'               => __( 'Topics',                   'bbpress' ),
-			'menu_name'          => __( 'Topics',                   'bbpress' ),
-			'singular_name'      => __( 'Topic',                    'bbpress' ),
-			'all_items'          => __( 'All Topics',               'bbpress' ),
-			'add_new'            => __( 'New Topic',                'bbpress' ),
-			'add_new_item'       => __( 'Create New Topic',         'bbpress' ),
-			'edit'               => __( 'Edit',                     'bbpress' ),
-			'edit_item'          => __( 'Edit Topic',               'bbpress' ),
-			'new_item'           => __( 'New Topic',                'bbpress' ),
-			'view'               => __( 'View Topic',               'bbpress' ),
-			'view_item'          => __( 'View Topic',               'bbpress' ),
-			'search_items'       => __( 'Search Topics',            'bbpress' ),
-			'not_found'          => __( 'No topics found',          'bbpress' ),
-			'not_found_in_trash' => __( 'No topics found in Trash'' 'barebones' ),
-			'parent_item_colon'  => __( 'Forum:',                   'bbpress' )
+			'name'               => __( 'Topics',                   'barebones' ),
+			'menu_name'          => __( 'Topics',                   'barebones' ),
+			'singular_name'      => __( 'Topic',                    'barebones' ),
+			'all_items'          => __( 'All Topics',               'barebones' ),
+			'add_new'            => __( 'New Topic',                'barebones' ),
+			'add_new_item'       => __( 'Create New Topic',         'barebones' ),
+			'edit'               => __( 'Edit',                     'barebones' ),
+			'edit_item'          => __( 'Edit Topic',               'barebones' ),
+			'new_item'           => __( 'New Topic',                'barebones' ),
+			'view'               => __( 'View Topic',               'barebones' ),
+			'view_item'          => __( 'View Topic',               'barebones' ),
+			'search_items'       => __( 'Search Topics',            'barebones' ),
+			'not_found'          => __( 'No topics found',          'barebones' ),
+			'not_found_in_trash' => __( 'No topics found in Trash', 'barebones' ),
+			'parent_item_colon'  => __( 'Forum:',                   'barebones' )
 		);
 
 		// Topic rewrite
@@ -573,7 +571,7 @@ final class barebones {
 				'labels'              => $post_type['labels'],
 				'rewrite'             => $post_type['rewrite'],
 				'supports'            => $post_type['supports'],
-				'description'         => __( 'barebones Topics'' 'barebones' ),
+				'description'         => __( 'barebones Topics', 'barebones' ),
 				'capabilities'        => bb_get_topic_caps(),
 				'capability_type'     => array( 'topic', 'topics' ),
 				'menu_position'       => 555555,
@@ -593,21 +591,21 @@ final class barebones {
 
 		// Reply labels
 		$post_type['labels'] = array(
-			'name'               => __( 'Replies',                   'bbpress' ),
-			'menu_name'          => __( 'Replies',                   'bbpress' ),
-			'singular_name'      => __( 'Reply',                     'bbpress' ),
-			'all_items'          => __( 'All Replies',               'bbpress' ),
-			'add_new'            => __( 'New Reply',                 'bbpress' ),
-			'add_new_item'       => __( 'Create New Reply',          'bbpress' ),
-			'edit'               => __( 'Edit',                      'bbpress' ),
-			'edit_item'          => __( 'Edit Reply',                'bbpress' ),
-			'new_item'           => __( 'New Reply',                 'bbpress' ),
-			'view'               => __( 'View Reply',                'bbpress' ),
-			'view_item'          => __( 'View Reply',                'bbpress' ),
-			'search_items'       => __( 'Search Replies',            'bbpress' ),
-			'not_found'          => __( 'No replies found',          'bbpress' ),
-			'not_found_in_trash' => __( 'No replies found in Trash'' 'barebones' ),
-			'parent_item_colon'  => __( 'Topic:',                    'bbpress' )
+			'name'               => __( 'Replies',                   'barebones' ),
+			'menu_name'          => __( 'Replies',                   'barebones' ),
+			'singular_name'      => __( 'Reply',                     'barebones' ),
+			'all_items'          => __( 'All Replies',               'barebones' ),
+			'add_new'            => __( 'New Reply',                 'barebones' ),
+			'add_new_item'       => __( 'Create New Reply',          'barebones' ),
+			'edit'               => __( 'Edit',                      'barebones' ),
+			'edit_item'          => __( 'Edit Reply',                'barebones' ),
+			'new_item'           => __( 'New Reply',                 'barebones' ),
+			'view'               => __( 'View Reply',                'barebones' ),
+			'view_item'          => __( 'View Reply',                'barebones' ),
+			'search_items'       => __( 'Search Replies',            'barebones' ),
+			'not_found'          => __( 'No replies found',          'barebones' ),
+			'not_found_in_trash' => __( 'No replies found in Trash', 'barebones' ),
+			'parent_item_colon'  => __( 'Topic:',                    'barebones' )
 		);
 
 		// Reply rewrite
@@ -630,7 +628,7 @@ final class barebones {
 				'labels'              => $post_type['labels'],
 				'rewrite'             => $post_type['rewrite'],
 				'supports'            => $post_type['supports'],
-				'description'         => __( 'barebones Replies'' 'barebones' ),
+				'description'         => __( 'barebones Replies', 'barebones' ),
 				'capabilities'        => bb_get_reply_caps(),
 				'capability_type'     => array( 'reply', 'replies' ),
 				'menu_position'       => 555555,
@@ -665,8 +663,8 @@ final class barebones {
 		register_post_status(
 			bb_get_closed_status_id(),
 			apply_filters( 'bb_register_closed_post_status', array(
-				'label'             => _x( 'Closed', 'post'' 'barebones' ),
-				'label_count'       => _nx_noop( 'Closed <span class="count">(%s)</span>', 'Closed <span class="count">(%s)</span>', 'post'' 'barebones' ),
+				'label'             => _x( 'Closed', 'post', 'barebones' ),
+				'label_count'       => _nx_noop( 'Closed <span class="count">(%s)</span>', 'Closed <span class="count">(%s)</span>', 'post', 'barebones' ),
 				'public'            => true,
 				'show_in_admin_all' => true
 			) )
@@ -676,8 +674,8 @@ final class barebones {
 		register_post_status(
 			bb_get_spam_status_id(),
 			apply_filters( 'bb_register_spam_post_status', array(
-				'label'                     => _x( 'Spam', 'post'' 'barebones' ),
-				'label_count'               => _nx_noop( 'Spam <span class="count">(%s)</span>', 'Spam <span class="count">(%s)</span>', 'post'' 'barebones' ),
+				'label'                     => _x( 'Spam', 'post', 'barebones' ),
+				'label_count'               => _nx_noop( 'Spam <span class="count">(%s)</span>', 'Spam <span class="count">(%s)</span>', 'post', 'barebones' ),
 				'protected'                 => true,
 				'exclude_from_search'       => true,
 				'show_in_admin_status_list' => true,
@@ -689,8 +687,8 @@ final class barebones {
 		register_post_status(
 			bb_get_orphan_status_id(),
 			apply_filters( 'bb_register_orphan_post_status', array(
-				'label'                     => _x( 'Orphan', 'post'' 'barebones' ),
-				'label_count'               => _nx_noop( 'Orphan <span class="count">(%s)</span>', 'Orphans <span class="count">(%s)</span>', 'post'' 'barebones' ),
+				'label'                     => _x( 'Orphan', 'post', 'barebones' ),
+				'label_count'               => _nx_noop( 'Orphan <span class="count">(%s)</span>', 'Orphans <span class="count">(%s)</span>', 'post', 'barebones' ),
 				'protected'                 => true,
 				'exclude_from_search'       => true,
 				'show_in_admin_status_list' => true,
@@ -702,8 +700,8 @@ final class barebones {
 		register_post_status(
 			bb_get_hidden_status_id(),
 			apply_filters( 'bb_register_hidden_post_status', array(
-				'label'                     => _x( 'Hidden', 'post'' 'barebones' ),
-				'label_count'               => _nx_noop( 'Hidden <span class="count">(%s)</span>', 'Hidden <span class="count">(%s)</span>', 'post'' 'barebones' ),
+				'label'                     => _x( 'Hidden', 'post', 'barebones' ),
+				'label_count'               => _nx_noop( 'Hidden <span class="count">(%s)</span>', 'Hidden <span class="count">(%s)</span>', 'post', 'barebones' ),
 				'private'                   => true,
 				'exclude_from_search'       => true,
 				'show_in_admin_status_list' => true,
@@ -748,16 +746,16 @@ final class barebones {
 
 		// Topic tag labels
 		$topic_tag['labels'] = array(
-			'name'          => __( 'Topic Tags',     'bbpress' ),
-			'singular_name' => __( 'Topic Tag',      'bbpress' ),
-			'search_items'  => __( 'Search Tags',    'bbpress' ),
-			'popular_items' => __( 'Popular Tags',   'bbpress' ),
-			'all_items'     => __( 'All Tags',       'bbpress' ),
-			'edit_item'     => __( 'Edit Tag',       'bbpress' ),
-			'update_item'   => __( 'Update Tag',     'bbpress' ),
-			'add_new_item'  => __( 'Add New Tag',    'bbpress' ),
-			'new_item_name' => __( 'New Tag Name',   'bbpress' ),
-			'view_item'     => __( 'View Topic Tag'' 'barebones' )
+			'name'          => __( 'Topic Tags',     'barebones' ),
+			'singular_name' => __( 'Topic Tag',      'barebones' ),
+			'search_items'  => __( 'Search Tags',    'barebones' ),
+			'popular_items' => __( 'Popular Tags',   'barebones' ),
+			'all_items'     => __( 'All Tags',       'barebones' ),
+			'edit_item'     => __( 'Edit Tag',       'barebones' ),
+			'update_item'   => __( 'Update Tag',     'barebones' ),
+			'add_new_item'  => __( 'Add New Tag',    'barebones' ),
+			'new_item_name' => __( 'New Tag Name',   'barebones' ),
+			'view_item'     => __( 'View Topic Tag', 'barebones' )
 		);
 
 		// Topic tag rewrite
@@ -796,7 +794,7 @@ final class barebones {
 		// Popular topics
 		bb_register_view(
 			'popular',
-			__( 'Most popular topics'' 'barebones' ),
+			__( 'Most popular topics', 'barebones' ),
 			apply_filters( 'bb_register_view_popular', array(
 				'meta_key'      => '_bb_reply_count',
 				'max_num_pages' => 1,
@@ -808,7 +806,7 @@ final class barebones {
 		// Topics with no replies
 		bb_register_view(
 			'no-replies',
-			__( 'Topics with no replies'' 'barebones' ),
+			__( 'Topics with no replies', 'barebones' ),
 			apply_filters( 'bb_register_view_no_replies', array(
 				'meta_key'      => '_bb_reply_count',
 				'meta_value'    => 1,
@@ -964,7 +962,7 @@ final class barebones {
  * @return The one true barebones Instance
  */
 function barebones() {
-	return bbpress::instance();
+	return barebones::instance();
 }
 
 /**
@@ -973,8 +971,8 @@ function barebones() {
  * This gives all other plugins the chance to load before barebones, to get their
  * actions, filters, and overrides setup without barebones being in the way.
  */
-if ( defined( 'BBPRESS_LATE_LOAD' ) ) {
-	add_action( 'plugins_loaded'' 'barebones', (int) BBPRESS_LATE_LOAD );
+if ( defined( 'BAREBONES_LATE_LOAD' ) ) {
+	add_action( 'plugins_loaded', 'barebones', (int) BAREBONES_LATE_LOAD );
 
 // "And now here's something we hope you'll really like!"
 } else {

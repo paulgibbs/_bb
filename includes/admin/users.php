@@ -79,12 +79,12 @@ class BB_Users_Admin {
 		if ( ! bb_is_user_keymaster() )
 			unset( $dynamic_roles[ bb_get_keymaster_role() ] ); ?>
 
-		<h3><?php _e( 'Forums'' 'barebones' ); ?></h3>
+		<h3><?php _e( 'Forums', 'barebones' ); ?></h3>
 
 		<table class="form-table">
 			<tbody>
 				<tr>
-					<th><label for="bbp-forums-role"><?php _e( 'Forum Role'' 'barebones' ); ?></label></th>
+					<th><label for="bbp-forums-role"><?php _e( 'Forum Role', 'barebones' ); ?></label></th>
 					<td>
 
 						<?php $user_role = bb_get_user_role( $profileuser->ID ); ?>
@@ -93,11 +93,11 @@ class BB_Users_Admin {
 
 							<?php if ( ! empty( $user_role ) ) : ?>
 
-								<option value=""><?php _e( '&mdash; No role for these forums &mdash;'' 'barebones' ); ?></option>
+								<option value=""><?php _e( '&mdash; No role for these forums &mdash;', 'barebones' ); ?></option>
 
 							<?php else : ?>
 
-								<option value="" selected="selected"><?php _e( '&mdash; No role for these forums &mdash;'' 'barebones' ); ?></option>
+								<option value="" selected="selected"><?php _e( '&mdash; No role for these forums &mdash;', 'barebones' ); ?></option>
 
 							<?php endif; ?>
 
@@ -135,13 +135,13 @@ class BB_Users_Admin {
 		if ( ! bb_is_user_keymaster() )
 			unset( $dynamic_roles[ bb_get_keymaster_role() ] ); ?>
 
-		<label class="screen-reader-text" for="bbp-new-role"><?php _e( 'Change forum role to&hellip;'' 'barebones' ) ?></label>
+		<label class="screen-reader-text" for="bbp-new-role"><?php _e( 'Change forum role to&hellip;', 'barebones' ) ?></label>
 		<select name="bbp-new-role" id="bbp-new-role" style="display:inline-block; float:none;">
-			<option value=''><?php _e( 'Change forum role to&hellip;'' 'barebones' ) ?></option>
+			<option value=''><?php _e( 'Change forum role to&hellip;', 'barebones' ) ?></option>
 			<?php foreach ( $dynamic_roles as $role => $details ) : ?>
 				<option value="<?php echo esc_attr( $role ); ?>"><?php echo translate_user_role( $details['name'] ); ?></option>
 			<?php endforeach; ?>
-		</select><?php submit_button( __( 'Change'' 'barebones' ), 'secondary', 'bbp-change-role', false );
+		</select><?php submit_button( __( 'Change', 'barebones' ), 'secondary', 'bbp-change-role', false );
 	}
 
 	/**
@@ -209,8 +209,8 @@ class BB_Users_Admin {
 	 * @return array $columns
 	 */
 	public static function user_role_column( $columns = array() ) {
-		$columns['role']          = __( 'Site Role',  'bbpress' );
-		$columns['bb_user_role'] = __( 'Forum Role'' 'barebones' );
+		$columns['role']          = __( 'Site Role',  'barebones' );
+		$columns['bb_user_role'] = __( 'Forum Role', 'barebones' );
 
 		return $columns;
 	}

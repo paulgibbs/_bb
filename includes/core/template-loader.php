@@ -115,7 +115,7 @@ function bb_template_include_theme_supports( $template = '' ) {
 		$template = $new_template;
 
 		// @see: bb_template_include_theme_compat()
-		barebones()->theme_compat->bbpress_template = true;
+		barebones()->theme_compat->barebones_template = true;
 	}
 
 	return apply_filters( 'bb_template_include_theme_supports', $template );
@@ -140,7 +140,7 @@ function bb_load_theme_functions() {
 		return;
 
 	if ( ! defined( 'WP_INSTALLING' ) || ( !empty( $pagenow ) && ( 'wp-activate.php' !== $pagenow ) ) ) {
-		bb_locate_template( 'bbpress-functions.php', true );
+		bb_locate_template( 'barebones-functions.php', true );
 	}
 }
 
@@ -497,8 +497,8 @@ function bb_get_topic_tag_edit_template() {
  */
 function bb_get_theme_compat_templates() {
 	$templates = array(
-		'plugin-bbpress.php',
-		'bbpress.php',
+		'plugin-barebones.php',
+		'barebones.php',
 		'forums.php',
 		'forum.php',
 		'generic.php',
@@ -506,5 +506,5 @@ function bb_get_theme_compat_templates() {
 		'single.php',
 		'index.php'
 	);
-	return bb_get_query_template( 'bbpress', $templates );
+	return bb_get_query_template( 'barebones', $templates );
 }

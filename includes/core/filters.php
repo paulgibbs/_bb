@@ -12,7 +12,7 @@
  *
  * There are a few common places that additional filters can currently be found
  *
- *  - barebones: In {@link barebones::setup_actions()} in bbpress.php
+ *  - barebones: In {@link barebones::setup_actions()} in barebones.php
  *  - Admin: More in {@link BB_Admin::setup_actions()} in admin.php
  *
  * @see /core/actions.php
@@ -242,7 +242,7 @@ add_filter( 'bb_map_meta_caps', 'bb_map_topic_tag_meta_caps', 10, 4 ); // Topic 
  * @return type
  */
 function _bb_filter_locale( $locale = '' ) {
-	return apply_filters( 'bbpress_locale', $locale );
+	return apply_filters( 'barebones_locale', $locale );
 }
 add_filter( 'bb_plugin_locale', '_bb_filter_locale', 10, 1 );
 

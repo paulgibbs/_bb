@@ -169,12 +169,12 @@ function bb_create_initial_content( $args = array() ) {
 	$r = bb_parse_args( $args, array(
 		'forum_parent'  => 0,
 		'forum_status'  => 'publish',
-		'forum_title'   => __( 'General',                                  'bbpress' ),
-		'forum_content' => __( 'General chit-chat',                        'bbpress' ),
-		'topic_title'   => __( 'Hello World!',                             'bbpress' ),
-		'topic_content' => __( 'I am the first topic in your new forums.'' 'barebones' ),
-		'reply_title'   => __( 'Re: Hello World!',                         'bbpress' ),
-		'reply_content' => __( 'Oh, and this is what a reply looks like.'' 'barebones' ),
+		'forum_title'   => __( 'General',                                  'barebones' ),
+		'forum_content' => __( 'General chit-chat',                        'barebones' ),
+		'topic_title'   => __( 'Hello World!',                             'barebones' ),
+		'topic_content' => __( 'I am the first topic in your new forums.', 'barebones' ),
+		'reply_title'   => __( 'Re: Hello World!',                         'barebones' ),
+		'reply_content' => __( 'Oh, and this is what a reply looks like.', 'barebones' ),
 	), 'create_initial_content' );
 
 	// Create the initial forum

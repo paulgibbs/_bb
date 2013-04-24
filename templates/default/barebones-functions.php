@@ -65,7 +65,7 @@ class BB_Default extends BB_Theme_Compat {
 	private function setup_globals() {
 		$bbp           = barebones();
 		$this->id      = 'default';
-		$this->name    = __( 'barebones Default'' 'barebones' );
+		$this->name    = __( 'barebones Default', 'barebones' );
 		$this->version = bb_get_version();
 		$this->dir     = trailingslashit( $bbp->themes_dir . 'default' );
 		$this->url     = trailingslashit( $bbp->themes_url . 'default' );
@@ -141,22 +141,22 @@ class BB_Default extends BB_Theme_Compat {
 	public function enqueue_styles() {
 
 		// LTR or RTL
-		$file = is_rtl() ? 'css/bbpress-rtl.css' : 'css/bbpress.css';
+		$file = is_rtl() ? 'css/barebones-rtl.css' : 'css/barebones.css';
 
 		// Check child theme
 		if ( file_exists( trailingslashit( get_stylesheet_directory() ) . $file ) ) {
 			$location = trailingslashit( get_stylesheet_directory_uri() );
-			$handle   = 'bbp-child-bbpress';
+			$handle   = 'bbp-child-barebones';
 
 		// Check parent theme
 		} elseif ( file_exists( trailingslashit( get_template_directory() ) . $file ) ) {
 			$location = trailingslashit( get_template_directory_uri() );
-			$handle   = 'bbp-parent-bbpress';
+			$handle   = 'bbp-parent-barebones';
 
 		// barebones Theme Compatibility
 		} else {
 			$location = trailingslashit( $this->url );
-			$handle   = 'bbp-default-bbpress';
+			$handle   = 'bbp-default-barebones';
 		}
 
 		// Enqueue the barebones styling
@@ -181,7 +181,7 @@ class BB_Default extends BB_Theme_Compat {
 
 		// Topic favorite/subscribe
 		if ( bb_is_single_topic() ) {
-			wp_enqueue_script( 'bbpress-topic', $this->url . 'js/topic.js', array( 'jquery' ), $this->version );
+			wp_enqueue_script( 'barebones-topic', $this->url . 'js/topic.js', array( 'jquery' ), $this->version );
 		}
 
 		// User Profile edit
@@ -289,9 +289,9 @@ class BB_Default extends BB_Theme_Compat {
 		if ( !bb_is_single_topic() )
 			return;
 
-		wp_localize_script( 'bbpress-topic', 'bbpTopicJS', array(
+		wp_localize_script( 'barebones-topic', 'bbpTopicJS', array(
 			'bb_ajaxurl'        => bb_get_ajax_url(),
-			'generic_ajax_error' => __( 'Something went wrong. Refresh your browser and try again.'' 'barebones' ),
+			'generic_ajax_error' => __( 'Something went wrong. Refresh your browser and try again.', 'barebones' ),
 			'is_user_logged_in'  => is_user_logged_in(),
 			'fav_nonce'          => wp_create_nonce( 'toggle-favorite_' .     get_the_ID() ),
 			'subs_nonce'         => wp_create_nonce( 'toggle-subscription_' . get_the_ID() )
@@ -316,12 +316,12 @@ class BB_Default extends BB_Theme_Compat {
 
 		// Bail if favorites are not active
 		if ( ! bb_is_favorites_active() ) {
-			bb_ajax_response( false, __( 'Favorites are no longer active.'' 'barebones' ), 300 );
+			bb_ajax_response( false, __( 'Favorites are no longer active.', 'barebones' ), 300 );
 		}
 
 		// Bail if user is not logged in
 		if ( !is_user_logged_in() ) {
-			bb_ajax_response( false, __( 'Please login to make this topic a favorite.'' 'barebones' ), 301 );
+			bb_ajax_response( false, __( 'Please login to make this topic a favorite.', 'barebones' ), 301 );
 		}
 
 		// Get user and topic data
@@ -330,7 +330,7 @@ class BB_Default extends BB_Theme_Compat {
 
 		// Bail if user cannot add favorites for this user
 		if ( !current_user_can( 'edit_user', $user_id ) ) {
-			bb_ajax_response( false, __( 'You do not have permission to do this.'' 'barebones' ), 302 );
+			bb_ajax_response( false, __( 'You do not have permission to do this.', 'barebones' ), 302 );
 		}
 
 		// Get the topic
@@ -338,12 +338,12 @@ class BB_Default extends BB_Theme_Compat {
 
 		// Bail if topic cannot be found
 		if ( empty( $topic ) ) {
-			bb_ajax_response( false, __( 'The topic could not be found.'' 'barebones' ), 303 );
+			bb_ajax_response( false, __( 'The topic could not be found.', 'barebones' ), 303 );
 		}
 
 		// Bail if user did not take this action
 		if ( !isset( $_POST['nonce'] ) || !wp_verify_nonce( $_POST['nonce'], 'toggle-favorite_' . $topic->ID ) ) {
-			bb_ajax_response( false, __( 'Are you sure you meant to do that?'' 'barebones' ), 304 );
+			bb_ajax_response( false, __( 'Are you sure you meant to do that?', 'barebones' ), 304 );
 		}
 
 		// Take action
@@ -351,7 +351,7 @@ class BB_Default extends BB_Theme_Compat {
 
 		// Bail if action failed
 		if ( empty( $status ) ) {
-			bb_ajax_response( false, __( 'The request was unsuccessful. Please try again.'' 'barebones' ), 305 );
+			bb_ajax_response( false, __( 'The request was unsuccessful. Please try again.', 'barebones' ), 305 );
 		}
 
 		// Put subscription attributes in convenient array
@@ -383,12 +383,12 @@ class BB_Default extends BB_Theme_Compat {
 
 		// Bail if subscriptions are not active
 		if ( !bb_is_subscriptions_active() ) {
-			bb_ajax_response( false, __( 'Subscriptions are no longer active.'' 'barebones' ), 300 );
+			bb_ajax_response( false, __( 'Subscriptions are no longer active.', 'barebones' ), 300 );
 		}
 
 		// Bail if user is not logged in
 		if ( !is_user_logged_in() ) {
-			bb_ajax_response( false, __( 'Please login to subscribe to this topic.'' 'barebones' ), 301 );
+			bb_ajax_response( false, __( 'Please login to subscribe to this topic.', 'barebones' ), 301 );
 		}
 
 		// Get user and topic data
@@ -397,7 +397,7 @@ class BB_Default extends BB_Theme_Compat {
 
 		// Bail if user cannot add favorites for this user
 		if ( !current_user_can( 'edit_user', $user_id ) ) {
-			bb_ajax_response( false, __( 'You do not have permission to do this.'' 'barebones' ), 302 );
+			bb_ajax_response( false, __( 'You do not have permission to do this.', 'barebones' ), 302 );
 		}
 
 		// Get the topic
@@ -405,12 +405,12 @@ class BB_Default extends BB_Theme_Compat {
 
 		// Bail if topic cannot be found
 		if ( empty( $topic ) ) {
-			bb_ajax_response( false, __( 'The topic could not be found.'' 'barebones' ), 303 );
+			bb_ajax_response( false, __( 'The topic could not be found.', 'barebones' ), 303 );
 		}
 
 		// Bail if user did not take this action
 		if ( !isset( $_POST['nonce'] ) || !wp_verify_nonce( $_POST['nonce'], 'toggle-subscription_' . $topic->ID ) ) {
-			bb_ajax_response( false, __( 'Are you sure you meant to do that?'' 'barebones' ), 304 );
+			bb_ajax_response( false, __( 'Are you sure you meant to do that?', 'barebones' ), 304 );
 		}
 
 		// Take action
@@ -418,7 +418,7 @@ class BB_Default extends BB_Theme_Compat {
 
 		// Bail if action failed
 		if ( empty( $status ) ) {
-			bb_ajax_response( false, __( 'The request was unsuccessful. Please try again.'' 'barebones' ), 305 );
+			bb_ajax_response( false, __( 'The request was unsuccessful. Please try again.', 'barebones' ), 305 );
 		}
 
 		// Put subscription attributes in convenient array

@@ -244,7 +244,7 @@ function bb_get_query_template( $type, $templates = array() ) {
  */
 function bb_get_template_locations( $templates = array() ) {
 	$locations = array(
-		'bbpress',
+		'barebones',
 		'forums',
 		''
 	);

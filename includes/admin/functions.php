@@ -41,7 +41,7 @@ function bb_admin_separator() {
 
 	global $menu;
 
-	$menu[] = array( '', 'read', 'separator-bbpress', '', 'wp-menu-separator bbpress' );
+	$menu[] = array( '', 'read', 'separator-barebones', '', 'wp-menu-separator barebones' );
 }
 
 /**
@@ -80,7 +80,7 @@ function bb_admin_menu_order( $menu_order ) {
 	// Menu values
 	$second_sep   = 'separator2';
 	$custom_menus = array(
-		'separator-bbpress',                               // Separator
+		'separator-barebones',                               // Separator
 		'edit.php?post_type=' . bb_get_forum_post_type(), // Forums
 		'edit.php?post_type=' . bb_get_topic_post_type(), // Topics
 		'edit.php?post_type=' . bb_get_reply_post_type()  // Replies
@@ -233,15 +233,15 @@ function bb_tools_admin_tabs( $active_tab = '' ) {
 		$tabs = apply_filters( 'bb_tools_admin_tabs', array(
 			'0' => array(
 				'href' => get_admin_url( '', add_query_arg( array( 'page' => 'bbp-repair'    ), 'tools.php' ) ),
-				'name' => __( 'Repair Forums'' 'barebones' )
+				'name' => __( 'Repair Forums', 'barebones' )
 			),
 			'1' => array(
 				'href' => get_admin_url( '', add_query_arg( array( 'page' => 'bbp-converter' ), 'tools.php' ) ),
-				'name' => __( 'Import Forums'' 'barebones' )
+				'name' => __( 'Import Forums', 'barebones' )
 			),
 			'2' => array(
 				'href' => get_admin_url( '', add_query_arg( array( 'page' => 'bbp-reset'     ), 'tools.php' ) ),
-				'name' => __( 'Reset Forums'' 'barebones' )
+				'name' => __( 'Reset Forums', 'barebones' )
 			)
 		) );
 

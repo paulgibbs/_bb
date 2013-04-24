@@ -557,7 +557,7 @@ function bb_template_include_theme_compat( $template = '' ) {
 		// Reset post
 		bb_theme_compat_reset_post( array(
 			'ID'             => 0,
-			'post_title'     => __( 'Replies'' 'barebones' ),
+			'post_title'     => __( 'Replies', 'barebones' ),
 			'post_author'    => 0,
 			'post_date'      => 0,
 			'post_content'   => '',
@@ -628,7 +628,7 @@ function bb_template_include_theme_compat( $template = '' ) {
 			'post_date'      => 0,
 			'post_content'   => '',
 			'post_type'      => '',
-			'post_title'     => sprintf( __( 'Topic Tag: %s'' 'barebones' ), '<span>' . bb_get_topic_tag_name() . '</span>' ),
+			'post_title'     => sprintf( __( 'Topic Tag: %s', 'barebones' ), '<span>' . bb_get_topic_tag_name() . '</span>' ),
 			'post_status'    => bb_get_public_status_id(),
 			'comment_status' => 'closed'
 		) );
@@ -645,7 +645,7 @@ function bb_template_include_theme_compat( $template = '' ) {
 	 *
 	 * @see http://bbpress.trac.wordpress.org/ticket/1478/
 	 */
-	if ( !empty( barebones()->theme_compat->bbpress_template ) )
+	if ( !empty( barebones()->theme_compat->barebones_template ) )
 		return $template;
 
 	/**
@@ -662,8 +662,8 @@ function bb_template_include_theme_compat( $template = '' ) {
 	 * should be coded without superfluous mark-up and logic (prev/next
 	 * navigation, comments, date/time, etc...)
 	 * 
-	 * Hook into the 'bb_get_bbpress_template' to override the array of
-	 * possible templates, or 'bb_bbpress_template' to override the result.
+	 * Hook into the 'bb_get_barebones_template' to override the array of
+	 * possible templates, or 'bb_barebones_template' to override the result.
 	 */
 	if ( bb_is_theme_compat_active() ) {
 

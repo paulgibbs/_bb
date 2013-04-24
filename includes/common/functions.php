@@ -107,19 +107,19 @@ function bb_time_since( $older_date, $newer_date = false ) {
 	function bb_get_time_since( $older_date, $newer_date = false ) {
 
 		// Setup the strings
-		$unknown_text   = apply_filters( 'bb_core_time_since_unknown_text',   __( 'sometime',  'bbpress' ) );
-		$right_now_text = apply_filters( 'bb_core_time_since_right_now_text', __( 'right now'' 'barebones' ) );
-		$ago_text       = apply_filters( 'bb_core_time_since_ago_text',       __( '%s ago',    'bbpress' ) );
+		$unknown_text   = apply_filters( 'bb_core_time_since_unknown_text',   __( 'sometime',  'barebones' ) );
+		$right_now_text = apply_filters( 'bb_core_time_since_right_now_text', __( 'right now', 'barebones' ) );
+		$ago_text       = apply_filters( 'bb_core_time_since_ago_text',       __( '%s ago',    'barebones' ) );
 
 		// array of time period chunks
 		$chunks = array(
-			array( 60 * 60 * 24 * 365 , __( 'year',   'bbpress' ), __( 'years',   'bbpress' ) ),
-			array( 60 * 60 * 24 * 30 ,  __( 'month',  'bbpress' ), __( 'months',  'bbpress' ) ),
-			array( 60 * 60 * 24 * 7,    __( 'week',   'bbpress' ), __( 'weeks',   'bbpress' ) ),
-			array( 60 * 60 * 24 ,       __( 'day',    'bbpress' ), __( 'days',    'bbpress' ) ),
-			array( 60 * 60 ,            __( 'hour',   'bbpress' ), __( 'hours',   'bbpress' ) ),
-			array( 60 ,                 __( 'minute'' 'barebones' ), __( 'minutes'' 'barebones' ) ),
-			array( 1,                   __( 'second'' 'barebones' ), __( 'seconds'' 'barebones' ) )
+			array( 60 * 60 * 24 * 365 , __( 'year',   'barebones' ), __( 'years',   'barebones' ) ),
+			array( 60 * 60 * 24 * 30 ,  __( 'month',  'barebones' ), __( 'months',  'barebones' ) ),
+			array( 60 * 60 * 24 * 7,    __( 'week',   'barebones' ), __( 'weeks',   'barebones' ) ),
+			array( 60 * 60 * 24 ,       __( 'day',    'barebones' ), __( 'days',    'barebones' ) ),
+			array( 60 * 60 ,            __( 'hour',   'barebones' ), __( 'hours',   'barebones' ) ),
+			array( 60 ,                 __( 'minute', 'barebones' ), __( 'minutes', 'barebones' ) ),
+			array( 1,                   __( 'second', 'barebones' ), __( 'seconds', 'barebones' ) )
 		);
 
 		if ( !empty( $older_date ) && !is_numeric( $older_date ) ) {
@@ -174,7 +174,7 @@ function bb_time_since( $older_date, $newer_date = false ) {
 
 					// Add to output var
 					if ( 0 != $count2 ) {
-						$output .= ( 1 == $count2 ) ? _x( ',', 'Separator in time since'' 'barebones' ) . ' 1 '. $name2 : _x( ',', 'Separator in time since'' 'barebones' ) . ' ' . $count2 . ' ' . $chunks[$i + 1][2];
+						$output .= ( 1 == $count2 ) ? _x( ',', 'Separator in time since', 'barebones' ) . ' 1 '. $name2 : _x( ',', 'Separator in time since', 'barebones' ) . ' ' . $count2 . ' ' . $chunks[$i + 1][2];
 					}
 				}
 
@@ -507,9 +507,9 @@ function bb_get_statistics( $args = '' ) {
 			$topic_count_hidden = $topics['private'] + $topics['spammed'] + $topics['trashed'];
 
 			// Generate the hidden topic count's title attribute
-			$topic_titles[] = !empty( $topics['private'] ) ? sprintf( __( 'Private: %s'' 'barebones' ), number_format_i18n( $topics['private'] ) ) : '';
-			$topic_titles[] = !empty( $topics['spammed'] ) ? sprintf( __( 'Spammed: %s'' 'barebones' ), number_format_i18n( $topics['spammed'] ) ) : '';
-			$topic_titles[] = !empty( $topics['trashed'] ) ? sprintf( __( 'Trashed: %s'' 'barebones' ), number_format_i18n( $topics['trashed'] ) ) : '';
+			$topic_titles[] = !empty( $topics['private'] ) ? sprintf( __( 'Private: %s', 'barebones' ), number_format_i18n( $topics['private'] ) ) : '';
+			$topic_titles[] = !empty( $topics['spammed'] ) ? sprintf( __( 'Spammed: %s', 'barebones' ), number_format_i18n( $topics['spammed'] ) ) : '';
+			$topic_titles[] = !empty( $topics['trashed'] ) ? sprintf( __( 'Trashed: %s', 'barebones' ), number_format_i18n( $topics['trashed'] ) ) : '';
 
 			// Compile the hidden topic title
 			$hidden_topic_title = implode( ' | ', array_filter( $topic_titles ) );
@@ -539,9 +539,9 @@ function bb_get_statistics( $args = '' ) {
 			$reply_count_hidden = $replies['private'] + $replies['spammed'] + $replies['trashed'];
 
 			// Generate the hidden topic count's title attribute
-			$reply_titles[] = !empty( $replies['private'] ) ? sprintf( __( 'Private: %s'' 'barebones' ), number_format_i18n( $replies['private'] ) ) : '';
-			$reply_titles[] = !empty( $replies['spammed'] ) ? sprintf( __( 'Spammed: %s'' 'barebones' ), number_format_i18n( $replies['spammed'] ) ) : '';
-			$reply_titles[] = !empty( $replies['trashed'] ) ? sprintf( __( 'Trashed: %s'' 'barebones' ), number_format_i18n( $replies['trashed'] ) ) : '';
+			$reply_titles[] = !empty( $replies['private'] ) ? sprintf( __( 'Private: %s', 'barebones' ), number_format_i18n( $replies['private'] ) ) : '';
+			$reply_titles[] = !empty( $replies['spammed'] ) ? sprintf( __( 'Spammed: %s', 'barebones' ), number_format_i18n( $replies['spammed'] ) ) : '';
+			$reply_titles[] = !empty( $replies['trashed'] ) ? sprintf( __( 'Trashed: %s', 'barebones' ), number_format_i18n( $replies['trashed'] ) ) : '';
 
 			// Compile the hidden replies title
 			$hidden_reply_title = implode( ' | ', array_filter( $reply_titles ) );
@@ -619,11 +619,11 @@ function bb_filter_anonymous_post_data( $args = '' ) {
 	// Filter variables and add errors if necessary
 	$r['bb_anonymous_name'] = apply_filters( 'bb_pre_anonymous_post_author_name',  $r['bb_anonymous_name']  );
 	if ( empty( $r['bb_anonymous_name'] ) )
-		bb_add_error( 'bb_anonymous_name',  __( '<strong>ERROR</strong>: Invalid author name submitted!',   'bbpress' ) );
+		bb_add_error( 'bb_anonymous_name',  __( '<strong>ERROR</strong>: Invalid author name submitted!',   'barebones' ) );
 
 	$r['bb_anonymous_email'] = apply_filters( 'bb_pre_anonymous_post_author_email', $r['bb_anonymous_email'] );
 	if ( empty( $r['bb_anonymous_email'] ) )
-		bb_add_error( 'bb_anonymous_email', __( '<strong>ERROR</strong>: Invalid email address submitted!'' 'barebones' ) );
+		bb_add_error( 'bb_anonymous_email', __( '<strong>ERROR</strong>: Invalid email address submitted!', 'barebones' ) );
 
 	// Website is optional
 	$r['bb_anonymous_website'] = apply_filters( 'bb_pre_anonymous_post_author_website', $r['bb_anonymous_website'] );
@@ -687,7 +687,6 @@ function bb_check_for_duplicate( $post_data = array() ) {
 
 	// Unslash $r to pass through $wpdb->prepare()
 	//
-	// @see: http://bbpress.trac.wordpress.org/ticket/2185/
 	// @see: http://core.trac.wordpress.org/changeset/23973/
 	$r = function_exists( 'wp_unslash' ) ? wp_unslash( $r ) : stripslashes_deep( $r );
 
@@ -1075,7 +1074,7 @@ Post Link: %3$s
 
 You are receiving this email because you subscribed to a forum topic.
 
-Login and visit the topic to unsubscribe from these emails.'' 'barebones' ),
+Login and visit the topic to unsubscribe from these emails.', 'barebones' ),
 
 			$reply_author_name,
 			$reply_content,
@@ -1255,10 +1254,10 @@ function bb_get_public_child_last_id( $parent_id = 0, $post_type = 'post' ) {
 	$post_status = "'" . join( "', '", $post_status ) . "'";
 
 	// Check for cache and set if needed
-	$child_id = wp_cache_get( $cache_id, 'bbpress_posts' );
+	$child_id = wp_cache_get( $cache_id, 'barebones_posts' );
 	if ( empty( $child_id ) ) {
 		$child_id = $wpdb->get_var( $wpdb->prepare( "SELECT ID FROM {$wpdb->posts} WHERE post_parent = %d AND post_status IN ( {$post_status} ) AND post_type = '%s' ORDER BY ID DESC LIMIT 1;", $parent_id, $post_type ) );
-		wp_cache_set( $cache_id, $child_id, 'bbpress_posts' );
+		wp_cache_set( $cache_id, $child_id, 'barebones_posts' );
 	}
 
 	// Filter and return
@@ -1298,10 +1297,10 @@ function bb_get_public_child_count( $parent_id = 0, $post_type = 'post' ) {
 	$post_status = "'" . join( "', '", $post_status ) . "'";
 
 	// Check for cache and set if needed
-	$child_count = wp_cache_get( $cache_id, 'bbpress_posts' );
+	$child_count = wp_cache_get( $cache_id, 'barebones_posts' );
 	if ( empty( $child_count ) ) {
 		$child_count = $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(ID) FROM {$wpdb->posts} WHERE post_parent = %d AND post_status IN ( {$post_status} ) AND post_type = '%s';", $parent_id, $post_type ) );
-		wp_cache_set( $cache_id, $child_count, 'bbpress_posts' );
+		wp_cache_set( $cache_id, $child_count, 'barebones_posts' );
 	}
 
 	// Filter and return
@@ -1341,10 +1340,10 @@ function bb_get_public_child_ids( $parent_id = 0, $post_type = 'post' ) {
 	$post_status = "'" . join( "', '", $post_status ) . "'";
 
 	// Check for cache and set if needed
-	$child_ids = wp_cache_get( $cache_id, 'bbpress_posts' );
+	$child_ids = wp_cache_get( $cache_id, 'barebones_posts' );
 	if ( empty( $child_ids ) ) {
 		$child_ids = $wpdb->get_col( $wpdb->prepare( "SELECT ID FROM {$wpdb->posts} WHERE post_parent = %d AND post_status IN ( {$post_status} ) AND post_type = '%s' ORDER BY ID DESC;", $parent_id, $post_type ) );
-		wp_cache_set( $cache_id, $child_ids, 'bbpress_posts' );
+		wp_cache_set( $cache_id, $child_ids, 'barebones_posts' );
 	}
 
 	// Filter and return
@@ -1402,10 +1401,10 @@ function bb_get_all_child_ids( $parent_id = 0, $post_type = 'post' ) {
 	$post_status = "'" . join( "', '", $post_status ) . "'";
 
 	// Check for cache and set if needed
-	$child_ids = wp_cache_get( $cache_id, 'bbpress_posts' );
+	$child_ids = wp_cache_get( $cache_id, 'barebones_posts' );
 	if ( empty( $child_ids ) ) {
 		$child_ids = $wpdb->get_col( $wpdb->prepare( "SELECT ID FROM {$wpdb->posts} WHERE post_parent = %d AND post_status IN ( {$post_status} ) AND post_type = '%s' ORDER BY ID DESC;", $parent_id, $post_type ) );
-		wp_cache_set( $cache_id, $child_ids, 'bbpress_posts' );
+		wp_cache_set( $cache_id, $child_ids, 'barebones_posts' );
 	}
 
 	// Filter and return
@@ -1718,7 +1717,7 @@ function bb_set_404() {
 	global $wp_query;
 
 	if ( ! isset( $wp_query ) ) {
-		_doing_it_wrong( __FUNCTION__, __( 'Conditional query tags do not work before the query is run. Before then, they always return false.'' 'barebones' ), '3.1' );
+		_doing_it_wrong( __FUNCTION__, __( 'Conditional query tags do not work before the query is run. Before then, they always return false.', 'barebones' ), '3.1' );
 		return false;
 	}
 

@@ -409,31 +409,31 @@ function bb_get_dynamic_roles() {
 
 		// Keymaster
 		bb_get_keymaster_role() => array(
-			'name'         => __( 'Keymaster'' 'barebones' ),
+			'name'         => __( 'Keymaster', 'barebones' ),
 			'capabilities' => bb_get_caps_for_role( bb_get_keymaster_role() )
 		),
 
 		// Moderator
 		bb_get_moderator_role() => array(
-			'name'         => __( 'Moderator'' 'barebones' ),
+			'name'         => __( 'Moderator', 'barebones' ),
 			'capabilities' => bb_get_caps_for_role( bb_get_moderator_role() )
 		),
 
 		// Participant
 		bb_get_participant_role() => array(
-			'name'         => __( 'Participant'' 'barebones' ),
+			'name'         => __( 'Participant', 'barebones' ),
 			'capabilities' => bb_get_caps_for_role( bb_get_participant_role() )
 		),
 
 		// Spectator
 		bb_get_spectator_role() => array(
-			'name'         => __( 'Spectator'' 'barebones' ),
+			'name'         => __( 'Spectator', 'barebones' ),
 			'capabilities' => bb_get_caps_for_role( bb_get_spectator_role() )
 		),
 
 		// Blocked
 		bb_get_blocked_role() => array(
-			'name'         => __( 'Blocked'' 'barebones' ),
+			'name'         => __( 'Blocked', 'barebones' ),
 			'capabilities' => bb_get_caps_for_role( bb_get_blocked_role() )
 		)
 	) );
@@ -552,7 +552,7 @@ function bb_get_blocked_role() {
  * @deprecated since version 2.2
  */
 function bb_add_roles() {
-	_doing_it_wrong( 'bb_add_roles', __( 'Editable forum roles no longer exist.'' 'barebones' ), '2.2' );
+	_doing_it_wrong( 'bb_add_roles', __( 'Editable forum roles no longer exist.', 'barebones' ), '2.2' );
 }
 
 /**
@@ -562,5 +562,5 @@ function bb_add_roles() {
  * @deprecated since version 2.2
  */
 function bb_remove_roles() {
-	_doing_it_wrong( 'bb_remove_roles', __( 'Editable forum roles no longer exist.'' 'barebones' ), '2.2' );
+	_doing_it_wrong( 'bb_remove_roles', __( 'Editable forum roles no longer exist.', 'barebones' ), '2.2' );
 }
