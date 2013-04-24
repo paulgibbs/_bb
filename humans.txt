@@ -2,11 +2,11 @@ barebones
 
 
 /* TEAM */
-Name: Paul Gibbs
-Twitter: pgibbs
-
 Name: John James Jacoby
 Twitter: jjj
+
+Name: Paul Gibbs
+Twitter: pgibbs
 
 /* THANKS */
 bbPress, BuddyPress
