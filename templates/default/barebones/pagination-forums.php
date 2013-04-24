@@ -3,7 +3,7 @@
 /**
  * Pagination for pages of topics (when viewing a forum)
  *
- * @package bbPress
+ * @package barebones
  * @subpackage Theme
  */
 

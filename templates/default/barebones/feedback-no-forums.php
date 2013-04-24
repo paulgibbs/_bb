@@ -3,12 +3,12 @@
 /**
  * No Forums Feedback Part
  *
- * @package bbPress
+ * @package barebones
  * @subpackage Theme
  */
 
 ?>
 
 <div class="bbp-template-notice">
-	<p><?php _e( 'Oh bother! No forums were found here!', 'bbpress' ); ?></p>
+	<p><?php _e( 'Oh bother! No forums were found here!'' 'barebones' ); ?></p>
 </div>

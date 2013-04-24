@@ -1,9 +1,9 @@
 <?php
 
 /**
- * bbPress Updater
+ * barebones Updater
  *
- * @package bbPress
+ * @package barebones
  * @subpackage Updater
  */
 
@@ -50,7 +50,7 @@ function bb_is_update() {
  * @return bool True if activating bbPress, false if not
  */
 function bb_is_activation( $basename = '' ) {
-	$bbp    = bbpress();
+	$bbp    = barebones();
 	$action = false;
 
 	if ( ! empty( $_REQUEST['action'] ) && ( '-1' != $_REQUEST['action'] ) ) {
@@ -92,7 +92,7 @@ function bb_is_activation( $basename = '' ) {
  * @return bool True if deactivating bbPress, false if not
  */
 function bb_is_deactivation( $basename = '' ) {
-	$bbp    = bbpress();
+	$bbp    = barebones();
 	$action = false;
 	
 	if ( ! empty( $_REQUEST['action'] ) && ( '-1' != $_REQUEST['action'] ) ) {
@@ -172,9 +172,9 @@ function bb_create_initial_content( $args = array() ) {
 		'forum_title'   => __( 'General',                                  'bbpress' ),
 		'forum_content' => __( 'General chit-chat',                        'bbpress' ),
 		'topic_title'   => __( 'Hello World!',                             'bbpress' ),
-		'topic_content' => __( 'I am the first topic in your new forums.', 'bbpress' ),
+		'topic_content' => __( 'I am the first topic in your new forums.'' 'barebones' ),
 		'reply_title'   => __( 'Re: Hello World!',                         'bbpress' ),
-		'reply_content' => __( 'Oh, and this is what a reply looks like.', 'bbpress' ),
+		'reply_content' => __( 'Oh, and this is what a reply looks like.'' 'barebones' ),
 	), 'create_initial_content' );
 
 	// Create the initial forum
@@ -216,7 +216,7 @@ function bb_create_initial_content( $args = array() ) {
 }
 
 /**
- * bbPress's version updater looks at what the current database version is, and
+ * barebones's version updater looks at what the current database version is, and
  * runs whatever other code is needed.
  *
  * This is most-often used when the data schema changes, but should also be used

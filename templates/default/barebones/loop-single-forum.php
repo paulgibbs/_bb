@@ -3,7 +3,7 @@
 /**
  * Forums Loop - Single Forum
  *
- * @package bbPress
+ * @package barebones
  * @subpackage Theme
  */
 

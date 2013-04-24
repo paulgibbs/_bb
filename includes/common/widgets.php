@@ -1,11 +1,11 @@
 <?php
 
 /**
- * bbPress Widgets
+ * barebones Widgets
  *
  * Contains the forum list, topic list, reply list and login form widgets.
  *
- * @package bbPress
+ * @package barebones
  * @subpackage Widgets
  */
 
@@ -13,7 +13,7 @@
 if ( !defined( 'ABSPATH' ) ) exit;
 
 /**
- * bbPress Login Widget
+ * barebones Login Widget
  *
  * Adds a widget which displays the login form
  *
@@ -24,7 +24,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
 class BB_Login_Widget extends WP_Widget {
 
 	/**
-	 * bbPress Login Widget
+	 * barebones Login Widget
 	 *
 	 * Registers the login widget
 	 *
@@ -36,10 +36,10 @@ class BB_Login_Widget extends WP_Widget {
 	public function __construct() {
 		$widget_ops = apply_filters( 'bb_login_widget_options', array(
 			'classname'   => 'bb_widget_login',
-			'description' => __( 'A simple login form with optional links to sign-up and lost password pages.', 'bbpress' )
+			'description' => __( 'A simple login form with optional links to sign-up and lost password pages.'' 'barebones' )
 		) );
 
-		parent::__construct( false, __( '(bbPress) Login Widget', 'bbpress' ), $widget_ops );
+		parent::__construct( false, __( '(bbPress) Login Widget'' 'barebones' ), $widget_ops );
 	}
 
 	/**
@@ -86,28 +86,28 @@ class BB_Login_Widget extends WP_Widget {
 
 			<form method="post" action="<?php bb_wp_login_action( array( 'context' => 'login_post' ) ); ?>" class="bbp-login-form">
 				<fieldset>
-					<legend><?php _e( 'Log In', 'bbpress' ); ?></legend>
+					<legend><?php _e( 'Log In'' 'barebones' ); ?></legend>
 
 					<div class="bbp-username">
-						<label for="user_login"><?php _e( 'Username', 'bbpress' ); ?>: </label>
+						<label for="user_login"><?php _e( 'Username'' 'barebones' ); ?>: </label>
 						<input type="text" name="log" value="<?php bb_sanitize_val( 'user_login', 'text' ); ?>" size="20" id="user_login" tabindex="<?php bb_tab_index(); ?>" />
 					</div>
 
 					<div class="bbp-password">
-						<label for="user_pass"><?php _e( 'Password', 'bbpress' ); ?>: </label>
+						<label for="user_pass"><?php _e( 'Password'' 'barebones' ); ?>: </label>
 						<input type="password" name="pwd" value="<?php bb_sanitize_val( 'user_pass', 'password' ); ?>" size="20" id="user_pass" tabindex="<?php bb_tab_index(); ?>" />
 					</div>
 
 					<div class="bbp-remember-me">
 						<input type="checkbox" name="rememberme" value="forever" <?php checked( bb_get_sanitize_val( 'rememberme', 'checkbox' ), true, true ); ?> id="rememberme" tabindex="<?php bb_tab_index(); ?>" />
-						<label for="rememberme"><?php _e( 'Remember Me', 'bbpress' ); ?></label>
+						<label for="rememberme"><?php _e( 'Remember Me'' 'barebones' ); ?></label>
 					</div>
 
 					<div class="bbp-submit-wrapper">
 
 						<?php do_action( 'login_form' ); ?>
 
-						<button type="submit" name="user-submit" id="user-submit" tabindex="<?php bb_tab_index(); ?>" class="button submit user-submit"><?php _e( 'Log In', 'bbpress' ); ?></button>
+						<button type="submit" name="user-submit" id="user-submit" tabindex="<?php bb_tab_index(); ?>" class="button submit user-submit"><?php _e( 'Log In'' 'barebones' ); ?></button>
 
 						<?php bb_user_login_fields(); ?>
 
@@ -119,13 +119,13 @@ class BB_Login_Widget extends WP_Widget {
 
 							<?php if ( !empty( $settings['register'] ) ) : ?>
 
-								<a href="<?php echo esc_url( $settings['register'] ); ?>" title="<?php esc_attr_e( 'Register', 'bbpress' ); ?>" class="bbp-register-link"><?php _e( 'Register', 'bbpress' ); ?></a>
+								<a href="<?php echo esc_url( $settings['register'] ); ?>" title="<?php esc_attr_e( 'Register'' 'barebones' ); ?>" class="bbp-register-link"><?php _e( 'Register'' 'barebones' ); ?></a>
 
 							<?php endif; ?>
 
 							<?php if ( !empty( $settings['lostpass'] ) ) : ?>
 
-								<a href="<?php echo esc_url( $settings['lostpass'] ); ?>" title="<?php esc_attr_e( 'Lost Password', 'bbpress' ); ?>" class="bbp-lostpass-link"><?php _e( 'Lost Password', 'bbpress' ); ?></a>
+								<a href="<?php echo esc_url( $settings['lostpass'] ); ?>" title="<?php esc_attr_e( 'Lost Password'' 'barebones' ); ?>" class="bbp-lostpass-link"><?php _e( 'Lost Password'' 'barebones' ); ?></a>
 
 							<?php endif; ?>
 
@@ -182,17 +182,17 @@ class BB_Login_Widget extends WP_Widget {
 		$settings = $this->parse_settings( $instance ); ?>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'bbpress' ); ?>
+			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:'' 'barebones' ); ?>
 			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $settings['title'] ); ?>" /></label>
 		</p>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'register' ); ?>"><?php _e( 'Register URI:', 'bbpress' ); ?>
+			<label for="<?php echo $this->get_field_id( 'register' ); ?>"><?php _e( 'Register URI:'' 'barebones' ); ?>
 			<input class="widefat" id="<?php echo $this->get_field_id( 'register' ); ?>" name="<?php echo $this->get_field_name( 'register' ); ?>" type="text" value="<?php echo esc_url( $settings['register'] ); ?>" /></label>
 		</p>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'lostpass' ); ?>"><?php _e( 'Lost Password URI:', 'bbpress' ); ?>
+			<label for="<?php echo $this->get_field_id( 'lostpass' ); ?>"><?php _e( 'Lost Password URI:'' 'barebones' ); ?>
 			<input class="widefat" id="<?php echo $this->get_field_id( 'lostpass' ); ?>" name="<?php echo $this->get_field_name( 'lostpass' ); ?>" type="text" value="<?php echo esc_url( $settings['lostpass'] ); ?>" /></label>
 		</p>
 
@@ -217,7 +217,7 @@ class BB_Login_Widget extends WP_Widget {
 }
 
 /**
- * bbPress Views Widget
+ * barebones Views Widget
  *
  * Adds a widget which displays the view list
  *
@@ -228,7 +228,7 @@ class BB_Login_Widget extends WP_Widget {
 class BB_Views_Widget extends WP_Widget {
 
 	/**
-	 * bbPress View Widget
+	 * barebones View Widget
 	 *
 	 * Registers the view widget
 	 *
@@ -240,10 +240,10 @@ class BB_Views_Widget extends WP_Widget {
 	public function __construct() {
 		$widget_ops = apply_filters( 'bb_views_widget_options', array(
 			'classname'   => 'widget_display_views',
-			'description' => __( 'A list of registered optional topic views.', 'bbpress' )
+			'description' => __( 'A list of registered optional topic views.'' 'barebones' )
 		) );
 
-		parent::__construct( false, __( '(bbPress) Topic Views List', 'bbpress' ), $widget_ops );
+		parent::__construct( false, __( '(bbPress) Topic Views List'' 'barebones' ), $widget_ops );
 	}
 
 	/**
@@ -334,7 +334,7 @@ class BB_Views_Widget extends WP_Widget {
 		$settings = $this->parse_settings( $instance ); ?>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'bbpress' ); ?>
+			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:'' 'barebones' ); ?>
 				<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $settings['title'] ); ?>" />
 			</label>
 		</p>
@@ -358,7 +358,7 @@ class BB_Views_Widget extends WP_Widget {
 }
 
 /**
- * bbPress Search Widget
+ * barebones Search Widget
  *
  * Adds a widget which displays the forum search form
  *
@@ -369,7 +369,7 @@ class BB_Views_Widget extends WP_Widget {
 class BB_Search_Widget extends WP_Widget {
 
 	/**
-	 * bbPress Search Widget
+	 * barebones Search Widget
 	 *
 	 * Registers the search widget
 	 *
@@ -381,10 +381,10 @@ class BB_Search_Widget extends WP_Widget {
 	public function __construct() {
 		$widget_ops = apply_filters( 'bb_search_widget_options', array(
 			'classname'   => 'widget_display_search',
-			'description' => __( 'The bbPress forum search form.', 'bbpress' )
+			'description' => __( 'The bbPress forum search form.'' 'barebones' )
 		) );
 
-		parent::__construct( false, __( '(bbPress) Forum Search Form', 'bbpress' ), $widget_ops );
+		parent::__construct( false, __( '(bbPress) Forum Search Form'' 'barebones' ), $widget_ops );
 	}
 
 	/**
@@ -458,7 +458,7 @@ class BB_Search_Widget extends WP_Widget {
 		$settings = $this->parse_settings( $instance ); ?>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'bbpress' ); ?>
+			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:'' 'barebones' ); ?>
 				<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $settings['title'] ); ?>" />
 			</label>
 		</p>
@@ -476,13 +476,13 @@ class BB_Search_Widget extends WP_Widget {
 	 */
 	public function parse_settings( $instance = array() ) {
 		return bb_parse_args( $instance, array(
-			'title' => __( 'Search Forums', 'bbpress' )
+			'title' => __( 'Search Forums'' 'barebones' )
 		), 'search_widget_settings' );
 	}
 }
 
 /**
- * bbPress Forum Widget
+ * barebones Forum Widget
  *
  * Adds a widget which displays the forum list
  *
@@ -493,7 +493,7 @@ class BB_Search_Widget extends WP_Widget {
 class BB_Forums_Widget extends WP_Widget {
 
 	/**
-	 * bbPress Forum Widget
+	 * barebones Forum Widget
 	 *
 	 * Registers the forum widget
 	 *
@@ -505,10 +505,10 @@ class BB_Forums_Widget extends WP_Widget {
 	public function __construct() {
 		$widget_ops = apply_filters( 'bb_forums_widget_options', array(
 			'classname'   => 'widget_display_forums',
-			'description' => __( 'A list of forums with an option to set the parent.', 'bbpress' )
+			'description' => __( 'A list of forums with an option to set the parent.'' 'barebones' )
 		) );
 
-		parent::__construct( false, __( '(bbPress) Forums List', 'bbpress' ), $widget_ops );
+		parent::__construct( false, __( '(bbPress) Forums List'' 'barebones' ), $widget_ops );
 	}
 
 	/**
@@ -625,19 +625,19 @@ class BB_Forums_Widget extends WP_Widget {
 		$settings = $this->parse_settings( $instance ); ?>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'bbpress' ); ?>
+			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:'' 'barebones' ); ?>
 				<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $settings['title'] ); ?>" />
 			</label>
 		</p>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'parent_forum' ); ?>"><?php _e( 'Parent Forum ID:', 'bbpress' ); ?>
+			<label for="<?php echo $this->get_field_id( 'parent_forum' ); ?>"><?php _e( 'Parent Forum ID:'' 'barebones' ); ?>
 				<input class="widefat" id="<?php echo $this->get_field_id( 'parent_forum' ); ?>" name="<?php echo $this->get_field_name( 'parent_forum' ); ?>" type="text" value="<?php echo esc_attr( $settings['parent_forum'] ); ?>" />
 			</label>
 
 			<br />
 
-			<small><?php _e( '"0" to show only root - "any" to show all', 'bbpress' ); ?></small>
+			<small><?php _e( '"0" to show only root - "any" to show all'' 'barebones' ); ?></small>
 		</p>
 
 		<?php
@@ -653,14 +653,14 @@ class BB_Forums_Widget extends WP_Widget {
 	 */
 	public function parse_settings( $instance = array() ) {
 		return bb_parse_args( $instance, array(
-			'title'        => __( 'Forums', 'bbpress' ),
+			'title'        => __( 'Forums'' 'barebones' ),
 			'parent_forum' => 0
 		), 'forum_widget_settings' );
 	}
 }
 
 /**
- * bbPress Topic Widget
+ * barebones Topic Widget
  *
  * Adds a widget which displays the topic list
  *
@@ -671,7 +671,7 @@ class BB_Forums_Widget extends WP_Widget {
 class BB_Topics_Widget extends WP_Widget {
 
 	/**
-	 * bbPress Topic Widget
+	 * barebones Topic Widget
 	 *
 	 * Registers the topic widget
 	 *
@@ -683,10 +683,10 @@ class BB_Topics_Widget extends WP_Widget {
 	public function __construct() {
 		$widget_ops = apply_filters( 'bb_topics_widget_options', array(
 			'classname'   => 'widget_display_topics',
-			'description' => __( 'A list of recent topics, sorted by popularity or freshness.', 'bbpress' )
+			'description' => __( 'A list of recent topics, sorted by popularity or freshness.'' 'barebones' )
 		) );
 
-		parent::__construct( false, __( '(bbPress) Recent Topics', 'bbpress' ), $widget_ops );
+		parent::__construct( false, __( '(bbPress) Recent Topics'' 'barebones' ), $widget_ops );
 	}
 
 	/**
@@ -803,7 +803,7 @@ class BB_Topics_Widget extends WP_Widget {
 
 					<?php if ( ! empty( $author_link ) ) : ?>
 
-						<?php printf( _x( 'by %1$s', 'widgets', 'bbpress' ), '<span class="topic-author">' . $author_link . '</span>' ); ?>
+						<?php printf( _x( 'by %1$s', 'widgets'' 'barebones' ), '<span class="topic-author">' . $author_link . '</span>' ); ?>
 
 					<?php endif; ?>
 
@@ -866,27 +866,27 @@ class BB_Topics_Widget extends WP_Widget {
 		$settings = $this->parse_settings( $instance ); ?>
 
 		<p><label for="<?php echo $this->get_field_id( 'title'     ); ?>"><?php _e( 'Title:',                  'bbpress' ); ?> <input class="widefat" id="<?php echo $this->get_field_id( 'title'     ); ?>" name="<?php echo $this->get_field_name( 'title'     ); ?>" type="text" value="<?php echo esc_attr( $settings['title']     ); ?>" /></label></p>
-		<p><label for="<?php echo $this->get_field_id( 'max_shown' ); ?>"><?php _e( 'Maximum topics to show:', 'bbpress' ); ?> <input class="widefat" id="<?php echo $this->get_field_id( 'max_shown' ); ?>" name="<?php echo $this->get_field_name( 'max_shown' ); ?>" type="text" value="<?php echo esc_attr( $settings['max_shown'] ); ?>" /></label></p>
+		<p><label for="<?php echo $this->get_field_id( 'max_shown' ); ?>"><?php _e( 'Maximum topics to show:'' 'barebones' ); ?> <input class="widefat" id="<?php echo $this->get_field_id( 'max_shown' ); ?>" name="<?php echo $this->get_field_name( 'max_shown' ); ?>" type="text" value="<?php echo esc_attr( $settings['max_shown'] ); ?>" /></label></p>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'parent_forum' ); ?>"><?php _e( 'Parent Forum ID:', 'bbpress' ); ?>
+			<label for="<?php echo $this->get_field_id( 'parent_forum' ); ?>"><?php _e( 'Parent Forum ID:'' 'barebones' ); ?>
 				<input class="widefat" id="<?php echo $this->get_field_id( 'parent_forum' ); ?>" name="<?php echo $this->get_field_name( 'parent_forum' ); ?>" type="text" value="<?php echo esc_attr( $settings['parent_forum'] ); ?>" />
 			</label>
 
 			<br />
 
-			<small><?php _e( '"0" to show only root - "any" to show all', 'bbpress' ); ?></small>
+			<small><?php _e( '"0" to show only root - "any" to show all'' 'barebones' ); ?></small>
 		</p>
 
 		<p><label for="<?php echo $this->get_field_id( 'show_date' ); ?>"><?php _e( 'Show post date:',    'bbpress' ); ?> <input type="checkbox" id="<?php echo $this->get_field_id( 'show_date' ); ?>" name="<?php echo $this->get_field_name( 'show_date' ); ?>" <?php checked( 'on', $settings['show_date'] ); ?> /></label></p>
-		<p><label for="<?php echo $this->get_field_id( 'show_user' ); ?>"><?php _e( 'Show topic author:', 'bbpress' ); ?> <input type="checkbox" id="<?php echo $this->get_field_id( 'show_user' ); ?>" name="<?php echo $this->get_field_name( 'show_user' ); ?>" <?php checked( 'on', $settings['show_user'] ); ?> /></label></p>
+		<p><label for="<?php echo $this->get_field_id( 'show_user' ); ?>"><?php _e( 'Show topic author:'' 'barebones' ); ?> <input type="checkbox" id="<?php echo $this->get_field_id( 'show_user' ); ?>" name="<?php echo $this->get_field_name( 'show_user' ); ?>" <?php checked( 'on', $settings['show_user'] ); ?> /></label></p>
 
 		<p>
 			<label for="<?php echo $this->get_field_id( 'order_by' ); ?>"><?php _e( 'Order By:',        'bbpress' ); ?></label>
 			<select name="<?php echo $this->get_field_name( 'order_by' ); ?>" id="<?php echo $this->get_field_name( 'order_by' ); ?>">
 				<option <?php selected( $settings['order_by'], 'newness' );   ?> value="newness"><?php _e( 'Newest Topics',                'bbpress' ); ?></option>
 				<option <?php selected( $settings['order_by'], 'popular' );   ?> value="popular"><?php _e( 'Popular Topics',               'bbpress' ); ?></option>
-				<option <?php selected( $settings['order_by'], 'freshness' ); ?> value="freshness"><?php _e( 'Topics With Recent Replies', 'bbpress' ); ?></option>
+				<option <?php selected( $settings['order_by'], 'freshness' ); ?> value="freshness"><?php _e( 'Topics With Recent Replies'' 'barebones' ); ?></option>
 			</select>
 		</p>
 
@@ -903,7 +903,7 @@ class BB_Topics_Widget extends WP_Widget {
 	 */
 	public function parse_settings( $instance = array() ) {
 		return bb_parse_args( $instance, array(
-			'title'        => __( 'Recent Topics', 'bbpress' ),
+			'title'        => __( 'Recent Topics'' 'barebones' ),
 			'max_shown'    => 5,
 			'show_date'    => false,
 			'show_user'    => false,
@@ -914,7 +914,7 @@ class BB_Topics_Widget extends WP_Widget {
 }
 
 /**
- * bbPress Stats Widget
+ * barebones Stats Widget
  *
  * Adds a widget which displays the forum statistics
  *
@@ -925,7 +925,7 @@ class BB_Topics_Widget extends WP_Widget {
 class BB_Stats_Widget extends WP_Widget {
 
 	/**
-	 * bbPress Stats Widget
+	 * barebones Stats Widget
 	 *
 	 * Registers the stats widget
 	 *
@@ -937,10 +937,10 @@ class BB_Stats_Widget extends WP_Widget {
 	public function __construct() {
 		$widget_ops = apply_filters( 'bb_stats_widget_options', array(
 			'classname'   => 'widget_display_stats',
-			'description' => __( 'Some statistics from your forum.', 'bbpress' )
+			'description' => __( 'Some statistics from your forum.'' 'barebones' )
 		) );
 
-		parent::__construct( false, __( '(bbPress) Statistics', 'bbpress' ), $widget_ops );
+		parent::__construct( false, __( '(bbPress) Statistics'' 'barebones' ), $widget_ops );
 	}
 
 	/**
@@ -1019,7 +1019,7 @@ class BB_Stats_Widget extends WP_Widget {
 		$settings = $this->parse_settings( $instance ); ?>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'bbpress' ); ?>
+			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:'' 'barebones' ); ?>
 				<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $settings['title'] ); ?>"/>
 			</label>
 		</p>
@@ -1037,14 +1037,14 @@ class BB_Stats_Widget extends WP_Widget {
 	 */
 	public function parse_settings( $instance = array() ) {
 		return bb_parse_args( $instance, array(
-			'title' => __( 'Forum Statistics', 'bbpress' )
+			'title' => __( 'Forum Statistics'' 'barebones' )
 		),
 		'stats_widget_settings' );
 	}
 }
 
 /**
- * bbPress Replies Widget
+ * barebones Replies Widget
  *
  * Adds a widget which displays the replies list
  *
@@ -1055,7 +1055,7 @@ class BB_Stats_Widget extends WP_Widget {
 class BB_Replies_Widget extends WP_Widget {
 
 	/**
-	 * bbPress Replies Widget
+	 * barebones Replies Widget
 	 *
 	 * Registers the replies widget
 	 *
@@ -1067,10 +1067,10 @@ class BB_Replies_Widget extends WP_Widget {
 	public function __construct() {
 		$widget_ops = apply_filters( 'bb_replies_widget_options', array(
 			'classname'   => 'widget_display_replies',
-			'description' => __( 'A list of the most recent replies.', 'bbpress' )
+			'description' => __( 'A list of the most recent replies.'' 'barebones' )
 		) );
 
-		parent::__construct( false, __( '(bbPress) Recent Replies', 'bbpress' ), $widget_ops );
+		parent::__construct( false, __( '(bbPress) Recent Replies'' 'barebones' ), $widget_ops );
 	}
 
 	/**
@@ -1154,25 +1154,25 @@ class BB_Replies_Widget extends WP_Widget {
 					if ( ( 'on' == $settings['show_date'] ) && !empty( $author_link ) ) :
 
 						// translators: 1: reply author, 2: reply link, 3: reply timestamp
-						printf( _x( '%1$s on %2$s %3$s', 'widgets', 'bbpress' ), $author_link, $reply_link, '<div>' . bb_get_time_since( get_the_time( 'U' ) ) . '</div>' );
+						printf( _x( '%1$s on %2$s %3$s', 'widgets'' 'barebones' ), $author_link, $reply_link, '<div>' . bb_get_time_since( get_the_time( 'U' ) ) . '</div>' );
 
 					// Reply link and timestamp
 					elseif ( 'on' == $settings['show_date'] ) :
 
 						// translators: 1: reply link, 2: reply timestamp
-						printf( _x( '%1$s %2$s',         'widgets', 'bbpress' ), $reply_link,  '<div>' . bb_get_time_since( get_the_time( 'U' ) ) . '</div>'              );
+						printf( _x( '%1$s %2$s',         'widgets'' 'barebones' ), $reply_link,  '<div>' . bb_get_time_since( get_the_time( 'U' ) ) . '</div>'              );
 
 					// Reply author and title
 					elseif ( !empty( $author_link ) ) :
 
 						// translators: 1: reply author, 2: reply link
-						printf( _x( '%1$s on %2$s',      'widgets', 'bbpress' ), $author_link, $reply_link                                                                 );
+						printf( _x( '%1$s on %2$s',      'widgets'' 'barebones' ), $author_link, $reply_link                                                                 );
 
 					// Only the reply title
 					else :
 
 						// translators: 1: reply link
-						printf( _x( '%1$s',              'widgets', 'bbpress' ), $reply_link                                                                               );
+						printf( _x( '%1$s',              'widgets'' 'barebones' ), $reply_link                                                                               );
 
 					endif;
 
@@ -1223,7 +1223,7 @@ class BB_Replies_Widget extends WP_Widget {
 		$settings = $this->parse_settings( $instance ); ?>
 
 		<p><label for="<?php echo $this->get_field_id( 'title'     ); ?>"><?php _e( 'Title:',                   'bbpress' ); ?> <input class="widefat" id="<?php echo $this->get_field_id( 'title'     ); ?>" name="<?php echo $this->get_field_name( 'title'     ); ?>" type="text" value="<?php echo esc_attr( $settings['title']     ); ?>" /></label></p>
-		<p><label for="<?php echo $this->get_field_id( 'max_shown' ); ?>"><?php _e( 'Maximum replies to show:', 'bbpress' ); ?> <input class="widefat" id="<?php echo $this->get_field_id( 'max_shown' ); ?>" name="<?php echo $this->get_field_name( 'max_shown' ); ?>" type="text" value="<?php echo esc_attr( $settings['max_shown'] ); ?>" /></label></p>
+		<p><label for="<?php echo $this->get_field_id( 'max_shown' ); ?>"><?php _e( 'Maximum replies to show:'' 'barebones' ); ?> <input class="widefat" id="<?php echo $this->get_field_id( 'max_shown' ); ?>" name="<?php echo $this->get_field_name( 'max_shown' ); ?>" type="text" value="<?php echo esc_attr( $settings['max_shown'] ); ?>" /></label></p>
 		<p><label for="<?php echo $this->get_field_id( 'show_date' ); ?>"><?php _e( 'Show post date:',          'bbpress' ); ?> <input type="checkbox" id="<?php echo $this->get_field_id( 'show_date' ); ?>" name="<?php echo $this->get_field_name( 'show_date' ); ?>" <?php checked( 'on', $settings['show_date'] ); ?> /></label></p>
 		<p><label for="<?php echo $this->get_field_id( 'show_user' ); ?>"><?php _e( 'Show reply author:',       'bbpress' ); ?> <input type="checkbox" id="<?php echo $this->get_field_id( 'show_user' ); ?>" name="<?php echo $this->get_field_name( 'show_user' ); ?>" <?php checked( 'on', $settings['show_user'] ); ?> /></label></p>
 
@@ -1240,7 +1240,7 @@ class BB_Replies_Widget extends WP_Widget {
 	 */
 	public function parse_settings( $instance = array() ) {
 		return bb_parse_args( $instance, array(
-			'title'     => __( 'Recent Replies', 'bbpress' ),
+			'title'     => __( 'Recent Replies'' 'barebones' ),
 			'max_shown' => 5,
 			'show_date' => false,
 			'show_user' => false

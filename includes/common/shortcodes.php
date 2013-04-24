@@ -1,9 +1,9 @@
 <?php
 
 /**
- * bbPress Shortcodes
+ * barebones Shortcodes
  *
- * @package bbPress
+ * @package barebones
  * @subpackage Shortcodes
  */
 
@@ -12,7 +12,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
 
 if ( !class_exists( 'BB_Shortcodes' ) ) :
 /**
- * bbPress Shortcode Class
+ * barebones Shortcode Class
  *
  * @since barebones (1.0)
  */
@@ -116,7 +116,7 @@ class BB_Shortcodes {
 	 * @since barebones (1.0)
 	 */
 	private function unset_globals() {
-		$bbp = bbpress();
+		$bbp = barebones();
 
 		// Unset global queries
 		$bbp->forum_query  = new stdClass;
@@ -237,7 +237,7 @@ class BB_Shortcodes {
 			return $content;
 
 		// Set passed attribute to $forum_id for clarity
-		$forum_id = bbpress()->current_forum_id = $attr['id'];
+		$forum_id = barebones()->current_forum_id = $attr['id'];
 
 		// Bail if ID passed is not a forum
 		if ( !bb_is_forum( $forum_id ) )
@@ -334,7 +334,7 @@ class BB_Shortcodes {
 		$this->unset_globals();
 
 		// Set passed attribute to $forum_id for clarity
-		$topic_id = bbpress()->current_topic_id = $attr['id'];
+		$topic_id = barebones()->current_topic_id = $attr['id'];
 		$forum_id = bb_get_topic_forum_id( $topic_id );
 
 		// Bail if ID passed is not a topic
@@ -344,7 +344,7 @@ class BB_Shortcodes {
 		// Reset the queries if not in theme compat
 		if ( !bb_is_theme_compat_active() ) {
 
-			$bbp = bbpress();
+			$bbp = barebones();
 
 			// Reset necessary forum_query attributes for topics loop to function
 			$bbp->forum_query->query_vars['post_type'] = bb_get_forum_post_type();
@@ -416,7 +416,7 @@ class BB_Shortcodes {
 		$this->unset_globals();
 
 		// Set passed attribute to $reply_id for clarity
-		$reply_id = bbpress()->current_reply_id = $attr['id'];
+		$reply_id = barebones()->current_reply_id = $attr['id'];
 		$forum_id = bb_get_reply_forum_id( $reply_id );
 
 		// Bail if ID passed is not a reply
@@ -426,7 +426,7 @@ class BB_Shortcodes {
 		// Reset the queries if not in theme compat
 		if ( !bb_is_theme_compat_active() ) {
 
-			$bbp = bbpress();
+			$bbp = barebones();
 
 			// Reset necessary forum_query attributes for replys loop to function
 			$bbp->forum_query->query_vars['post_type'] = bb_get_forum_post_type();
@@ -534,7 +534,7 @@ class BB_Shortcodes {
 		$this->start( 'bb_topic_tag' );
 
 		// Set passed attribute to $ag_id for clarity
-		bbpress()->current_topic_tag_id = $tag_id = $attr['id'];
+		barebones()->current_topic_tag_id = $tag_id = $attr['id'];
 
 		// Output template
 		bb_get_template_part( 'content', 'archive-topic' );
@@ -818,7 +818,7 @@ class BB_Shortcodes {
 		$args['tax_query'] = array( array(
 			'taxonomy' => bb_get_topic_tag_tax_id(),
 			'field'    => 'id',
-			'terms'    => bbpress()->current_topic_tag_id
+			'terms'    => barebones()->current_topic_tag_id
 		) );
 
 		return $args;

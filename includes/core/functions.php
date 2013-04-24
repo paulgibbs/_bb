@@ -1,9 +1,9 @@
 <?php
 
 /**
- * bbPress Core Functions
+ * barebones Core Functions
  *
- * @package bbPress
+ * @package barebones
  * @subpackage Functions
  */
 
@@ -28,7 +28,7 @@ function bb_version() {
 	 * @retrun string The bbPress version
 	 */
 	function bb_get_version() {
-		return bbpress()->version;
+		return barebones()->version;
 	}
 
 /**
@@ -47,7 +47,7 @@ function bb_db_version() {
 	 * @retrun string The bbPress version
 	 */
 	function bb_get_db_version() {
-		return bbpress()->db_version;
+		return barebones()->db_version;
 	}
 
 /**
@@ -134,7 +134,7 @@ function bb_update_reply_id( $post_id, $reply_id ) {
  * @return array Views
  */
 function bb_get_views() {
-	return bbpress()->views;
+	return barebones()->views;
 }
 
 /**
@@ -159,7 +159,7 @@ function bb_register_view( $view, $title, $query_args = '', $feed = true, $capab
 	if ( ! empty( $capability ) && ! current_user_can( $capability ) )
 		return false;
 
-	$bbp   = bbpress();
+	$bbp   = barebones();
 	$view  = sanitize_title( $view );
 	$title = esc_html( $title );
 
@@ -191,7 +191,7 @@ function bb_register_view( $view, $title, $query_args = '', $feed = true, $capab
  * @return bool False if the view doesn't exist, true on success
  */
 function bb_deregister_view( $view ) {
-	$bbp  = bbpress();
+	$bbp  = barebones();
 	$view = sanitize_title( $view );
 
 	if ( !isset( $bbp->views[$view] ) )
@@ -242,7 +242,7 @@ function bb_view_query( $view = '', $new_args = '' ) {
  */
 function bb_get_view_query_args( $view ) {
 	$view   = bb_get_view_id( $view );
-	$retval = !empty( $view ) ? bbpress()->views[$view]['query'] : false;
+	$retval = !empty( $view ) ? barebones()->views[$view]['query'] : false;
 
 	return apply_filters( 'bb_get_view_query_args', $retval, $view );
 }
@@ -262,7 +262,7 @@ function bb_get_view_query_args( $view ) {
  * @param string $data Any additional data passed with the error message
  */
 function bb_add_error( $code = '', $message = '', $data = '' ) {
-	bbpress()->errors->add( $code, $message, $data );
+	barebones()->errors->add( $code, $message, $data );
 }
 
 /**
@@ -276,9 +276,9 @@ function bb_add_error( $code = '', $message = '', $data = '' ) {
  * @usese WP_Error::get_error_codes()
  */
 function bb_has_errors() {
-	$has_errors = bbpress()->errors->get_error_codes() ? true : false;
+	$has_errors = barebones()->errors->get_error_codes() ? true : false;
 
-	return apply_filters( 'bb_has_errors', $has_errors, bbpress()->errors );
+	return apply_filters( 'bb_has_errors', $has_errors, barebones()->errors );
 }
 
 /** Mentions ******************************************************************/
@@ -344,7 +344,7 @@ function bb_mention_filter( $content = '' ) {
  * @return string
  */
 function bb_get_public_status_id() {
-	return bbpress()->public_status_id;
+	return barebones()->public_status_id;
 }
 
 /**
@@ -355,7 +355,7 @@ function bb_get_public_status_id() {
  * @return string
  */
 function bb_get_pending_status_id() {
-	return bbpress()->pending_status_id;
+	return barebones()->pending_status_id;
 }
 
 /**
@@ -366,7 +366,7 @@ function bb_get_pending_status_id() {
  * @return string
  */
 function bb_get_private_status_id() {
-	return bbpress()->private_status_id;
+	return barebones()->private_status_id;
 }
 
 /**
@@ -377,7 +377,7 @@ function bb_get_private_status_id() {
  * @return string
  */
 function bb_get_hidden_status_id() {
-	return bbpress()->hidden_status_id;
+	return barebones()->hidden_status_id;
 }
 
 /**
@@ -388,7 +388,7 @@ function bb_get_hidden_status_id() {
  * @return string
  */
 function bb_get_closed_status_id() {
-	return bbpress()->closed_status_id;
+	return barebones()->closed_status_id;
 }
 
 /**
@@ -399,7 +399,7 @@ function bb_get_closed_status_id() {
  * @return string
  */
 function bb_get_spam_status_id() {
-	return bbpress()->spam_status_id;
+	return barebones()->spam_status_id;
 }
 
 /**
@@ -410,7 +410,7 @@ function bb_get_spam_status_id() {
  * @return string
  */
 function bb_get_trash_status_id() {
-	return bbpress()->trash_status_id;
+	return barebones()->trash_status_id;
 }
 
 /**
@@ -421,7 +421,7 @@ function bb_get_trash_status_id() {
  * @return string
  */
 function bb_get_orphan_status_id() {
-	return bbpress()->orphan_status_id;
+	return barebones()->orphan_status_id;
 }
 
 /** Rewrite IDs ***************************************************************/
@@ -433,7 +433,7 @@ function bb_get_orphan_status_id() {
  * @return string
  */
 function bb_get_user_rewrite_id() {
-	return bbpress()->user_id;
+	return barebones()->user_id;
 }
 
 /**
@@ -443,7 +443,7 @@ function bb_get_user_rewrite_id() {
  * @return string
  */
 function bb_get_edit_rewrite_id() {
-	return bbpress()->edit_id;
+	return barebones()->edit_id;
 }
 
 /**
@@ -454,7 +454,7 @@ function bb_get_edit_rewrite_id() {
  * @return string
  */
 function bb_get_search_rewrite_id() {
-	return bbpress()->search_id;
+	return barebones()->search_id;
 }
 
 /**
@@ -464,7 +464,7 @@ function bb_get_search_rewrite_id() {
  * @return string
  */
 function bb_get_user_topics_rewrite_id() {
-	return bbpress()->tops_id;
+	return barebones()->tops_id;
 }
 
 /**
@@ -474,7 +474,7 @@ function bb_get_user_topics_rewrite_id() {
  * @return string
  */
 function bb_get_user_replies_rewrite_id() {
-	return bbpress()->reps_id;
+	return barebones()->reps_id;
 }
 
 /**
@@ -484,7 +484,7 @@ function bb_get_user_replies_rewrite_id() {
  * @return string
  */
 function bb_get_user_favorites_rewrite_id() {
-	return bbpress()->favs_id;
+	return barebones()->favs_id;
 }
 
 /**
@@ -494,7 +494,7 @@ function bb_get_user_favorites_rewrite_id() {
  * @return string
  */
 function bb_get_user_subscriptions_rewrite_id() {
-	return bbpress()->subs_id;
+	return barebones()->subs_id;
 }
 
 /**
@@ -504,7 +504,7 @@ function bb_get_user_subscriptions_rewrite_id() {
  * @return string
  */
 function bb_get_view_rewrite_id() {
-	return bbpress()->view_id;
+	return barebones()->view_id;
 }
 
 /**

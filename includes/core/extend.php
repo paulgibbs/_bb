@@ -1,12 +1,12 @@
 <?php
 
 /**
- * bbPress Extentions
+ * barebones Extentions
  *
  * There's a world of really cool plugins out there, and bbPress comes with
  * support for some of the most popular ones.
  *
- * @package bbPress
+ * @package barebones
  * @subpackage Extend
  */
 
@@ -29,10 +29,10 @@ function bb_setup_akismet() {
 	if ( !bb_is_akismet_active() ) return;
 
 	// Include the Akismet Component
-	require( bbpress()->includes_dir . 'extend/akismet.php' );
+	require( barebones()->includes_dir . 'extend/akismet.php' );
 
 	// Instantiate Akismet for bbPress
-	bbpress()->extend->akismet = new BB_Akismet();
+	barebones()->extend->akismet = new BB_Akismet();
 }
 
 /**
@@ -62,8 +62,8 @@ function bb_setup_buddypress() {
 		return;
 
 	// Include the BuddyPress Component
-	require( bbpress()->includes_dir . 'extend/buddypress/loader.php' );
+	require( barebones()->includes_dir . 'extend/buddypress/loader.php' );
 
 	// Instantiate BuddyPress for bbPress
-	bbpress()->extend->buddypress = new BB_Forums_Component();
+	barebones()->extend->buddypress = new BB_Forums_Component();
 }

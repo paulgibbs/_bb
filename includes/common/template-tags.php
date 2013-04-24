@@ -1,12 +1,12 @@
 <?php
 
 /**
- * bbPress Common Template Tags
+ * barebones Common Template Tags
  *
  * Common template tags are ones that are used by more than one component, like
  * forums, topics, replies, users, topic tags, etc...
  *
- * @package bbPress
+ * @package barebones
  * @subpackage TemplateTags
  */
 
@@ -367,7 +367,7 @@ function bb_is_topic_tag() {
 	$retval = false;
 
 	// Check tax and query vars
-	if ( is_tax( bb_get_topic_tag_tax_id() ) || !empty( bbpress()->topic_query->is_tax ) || get_query_var( 'bb_topic_tag' ) )
+	if ( is_tax( bb_get_topic_tag_tax_id() ) || !empty( barebones()->topic_query->is_tax ) || get_query_var( 'bb_topic_tag' ) )
 		$retval = true;
 
 	return (bool) apply_filters( 'bb_is_topic_tag', $retval );
@@ -994,7 +994,7 @@ function bb_body_class( $wp_classes, $custom_classes = false ) {
  * @uses bb_is_topics_created()
  * @return bool In a bbPress page
  */
-function is_bbpress() {
+function is_barebones() {
 
 	// Defalt to false
 	$retval = false;
@@ -1235,7 +1235,7 @@ function bb_tab_index( $auto_increment = true ) {
 	 * @return int $bbp->tab_index The global tab index
 	 */
 	function bb_get_tab_index( $auto_increment = true ) {
-		$bbp = bbpress();
+		$bbp = barebones();
 
 		if ( true === $auto_increment )
 			++$bbp->tab_index;
@@ -1281,10 +1281,10 @@ function bb_dropdown( $args = '' ) {
 	 *  - select_id: ID of the select box. Defaults to 'bb_forum_id'
 	 *  - tab: Tabindex value. False or integer
 	 *  - options_only: Show only <options>? No <select>?
-	 *  - show_none: False or something like __( '(No Forum)', 'bbpress' ),
+	 *  - show_none: False or something like __( '(No Forum)'' 'barebones' ),
 	 *                will have value=""
 	 *  - none_found: False or something like
-	 *                 __( 'No forums to post to!', 'bbpress' )
+	 *                 __( 'No forums to post to!'' 'barebones' )
 	 *  - disable_categories: Disable forum categories and closed forums?
 	 *                         Defaults to true. Only for forums and when
 	 *                         the category option is displayed.
@@ -1372,7 +1372,7 @@ function bb_dropdown( $args = '' ) {
 		$select_id = $name;
 		$tab       = (int) $r['tab'];
 		$retval    = '';
-		$disabled  = disabled( isset( bbpress()->options[$r['disabled']] ), true, false );
+		$disabled  = disabled( isset( barebones()->options[$r['disabled']] ), true, false );
 		$post_arr  = array(
 			'post_type'          => $r['post_type'],
 			'post_status'        => $r['post_status'],
@@ -1412,17 +1412,17 @@ function bb_dropdown( $args = '' ) {
 
 				// Topics
 				case bb_get_topic_post_type() :
-					$retval = __( 'No topics available', 'bbpress' );
+					$retval = __( 'No topics available'' 'barebones' );
 					break;
 
 				// Forums
 				case bb_get_forum_post_type() :
-					$retval = __( 'No forums available', 'bbpress' );
+					$retval = __( 'No forums available'' 'barebones' );
 					break;
 
 				// Any other
 				default :
-					$retval = __( 'None available', 'bbpress' );
+					$retval = __( 'None available'' 'barebones' );
 					break;
 			}
 		}
@@ -1550,7 +1550,7 @@ function bb_reply_form_fields() {
 
 	else : ?>
 
-		<input type="hidden" name="bb_reply_title" id="bb_reply_title" value="<?php printf( __( 'Reply To: %s', 'bbpress' ), bb_get_topic_title() ); ?>" />
+		<input type="hidden" name="bb_reply_title" id="bb_reply_title" value="<?php printf( __( 'Reply To: %s'' 'barebones' ), bb_get_topic_title() ); ?>" />
 		<input type="hidden" name="bb_topic_id"    id="bb_topic_id"    value="<?php bb_topic_id(); ?>" />
 		<input type="hidden" name="action"          id="bb_post_action" value="bbp-new-reply" />
 
@@ -1854,7 +1854,7 @@ function bb_view_id( $view = '' ) {
 	 * @return bool|string ID on success, false on failure
 	 */
 	function bb_get_view_id( $view = '' ) {
-		$bbp = bbpress();
+		$bbp = barebones();
 
 		$view = !empty( $view ) ? sanitize_title( $view ) : get_query_var( 'bb_view' );
 
@@ -1889,7 +1889,7 @@ function bb_view_title( $view = '' ) {
 	 * @return bool|string Title on success, false on failure
 	 */
 	function bb_get_view_title( $view = '' ) {
-		$bbp = bbpress();
+		$bbp = barebones();
 
 		$view = bb_get_view_id( $view );
 		if ( empty( $view ) )
@@ -2069,7 +2069,7 @@ function bb_breadcrumb( $args = array() ) {
 
 			// Default to 'Home'
 			} else {
-				$pre_front_text = __( 'Home', 'bbpress' );
+				$pre_front_text = __( 'Home'' 'barebones' );
 			}
 		}
 
@@ -2139,15 +2139,15 @@ function bb_breadcrumb( $args = array() ) {
 
 			// If capable, include a link to edit the tag
 			if ( current_user_can( 'manage_topic_tags' ) ) {
-				$tag_data[] = '<a href="' . bb_get_topic_tag_edit_link() . '" class="bbp-edit-topic-tag-link">' . __( '(Edit)', 'bbpress' ) . '</a>';
+				$tag_data[] = '<a href="' . bb_get_topic_tag_edit_link() . '" class="bbp-edit-topic-tag-link">' . __( '(Edit)'' 'barebones' ) . '</a>';
 			}
 
 			// Implode the results of the tag data
-			$pre_current_text = sprintf( __( 'Topic Tag: %s', 'bbpress' ), implode( ' ', $tag_data ) );
+			$pre_current_text = sprintf( __( 'Topic Tag: %s'' 'barebones' ), implode( ' ', $tag_data ) );
 
 		// Edit Topic Tag
 		} elseif ( bb_is_topic_tag_edit() ) {
-			$pre_current_text = __( 'Edit', 'bbpress' );
+			$pre_current_text = __( 'Edit'' 'barebones' );
 
 		// Single
 		} else {
@@ -2164,7 +2164,7 @@ function bb_breadcrumb( $args = array() ) {
 			'after'           => '</p></div>',
 
 			// Separator
-			'sep'             => is_rtl() ? __( '&lsaquo;', 'bbpress' ) : __( '&rsaquo;', 'bbpress' ),
+			'sep'             => is_rtl() ? __( '&lsaquo;'' 'barebones' ) : __( '&rsaquo;'' 'barebones' ),
 			'pad_sep'         => 1,
 			'sep_before'      => '<span class="bbp-breadcrumb-sep">',
 			'sep_after'       => '</span>',
@@ -2257,11 +2257,11 @@ function bb_breadcrumb( $args = array() ) {
 
 		// Edit topic tag
 		} elseif ( bb_is_topic_tag_edit() ) {
-			$crumbs[] = '<a href="' . get_term_link( bb_get_topic_tag_id(), bb_get_topic_tag_tax_id() ) . '" class="bbp-breadcrumb-topic-tag">' . sprintf( __( 'Topic Tag: %s', 'bbpress' ), bb_get_topic_tag_name() ) . '</a>';
+			$crumbs[] = '<a href="' . get_term_link( bb_get_topic_tag_id(), bb_get_topic_tag_tax_id() ) . '" class="bbp-breadcrumb-topic-tag">' . sprintf( __( 'Topic Tag: %s'' 'barebones' ), bb_get_topic_tag_name() ) . '</a>';
 
 		// Search
 		} elseif ( bb_is_search() && bb_get_search_terms() ) {
-			$crumbs[] = '<a href="' . home_url( bb_get_search_slug() ) . '" class="bbp-breadcrumb-search">' . __( 'Search', 'bbpress' ) . '</a>';
+			$crumbs[] = '<a href="' . home_url( bb_get_search_slug() ) . '" class="bbp-breadcrumb-search">' . __( 'Search'' 'barebones' ) . '</a>';
 		}
 
 		/** Current ***********************************************************/
@@ -2366,7 +2366,7 @@ function bb_template_notices() {
 	$errors = $messages = array();
 
 	// Get bbPress
-	$bbp = bbpress();
+	$bbp = barebones();
 
 	// Loop through notices
 	foreach ( $bbp->errors->get_error_codes() as $code ) {
@@ -2432,7 +2432,7 @@ function bb_logout_link( $redirect_to = '' ) {
 	 * @return string The logout link
 	 */
 	function bb_get_logout_link( $redirect_to = '' ) {
-		return apply_filters( 'bb_get_logout_link', '<a href="' . wp_logout_url( $redirect_to ) . '" class="button logout-link">' . __( 'Log Out', 'bbpress' ) . '</a>', $redirect_to );
+		return apply_filters( 'bb_get_logout_link', '<a href="' . wp_logout_url( $redirect_to ) . '" class="button logout-link">' . __( 'Log Out'' 'barebones' ) . '</a>', $redirect_to );
 	}
 
 /** Title *********************************************************************/
@@ -2485,11 +2485,11 @@ function bb_title( $title = '', $sep = '&raquo;', $seplocation = '' ) {
 
 	// Forum page
 	} elseif ( bb_is_single_forum() ) {
-		$title = sprintf( __( 'Forum: %s', 'bbpress' ), bb_get_forum_title() );
+		$title = sprintf( __( 'Forum: %s'' 'barebones' ), bb_get_forum_title() );
 
 	// Topic page
 	} elseif ( bb_is_single_topic() ) {
-		$title = sprintf( __( 'Topic: %s', 'bbpress' ), bb_get_topic_title() );
+		$title = sprintf( __( 'Topic: %s'' 'barebones' ), bb_get_topic_title() );
 
 	// Replies
 	} elseif ( bb_is_single_reply() ) {
@@ -2498,7 +2498,7 @@ function bb_title( $title = '', $sep = '&raquo;', $seplocation = '' ) {
 	// Topic tag page (or edit)
 	} elseif ( bb_is_topic_tag() || bb_is_topic_tag_edit() || get_query_var( 'bb_topic_tag' ) ) {
 		$term  = get_queried_object();
-		$title = sprintf( __( 'Topic Tag: %s', 'bbpress' ), $term->name );
+		$title = sprintf( __( 'Topic Tag: %s'' 'barebones' ), $term->name );
 
 	/** Users *****************************************************************/
 
@@ -2507,12 +2507,12 @@ function bb_title( $title = '', $sep = '&raquo;', $seplocation = '' ) {
 
 		// Current users profile
 		if ( bb_is_user_home() ) {
-			$title = __( 'Your Profile', 'bbpress' );
+			$title = __( 'Your Profile'' 'barebones' );
 
 		// Other users profile
 		} else {
 			$userdata = get_userdata( bb_get_user_id() );
-			$title    = sprintf( __( '%s\'s Profile', 'bbpress' ), $userdata->display_name );
+			$title    = sprintf( __( '%s\'s Profile'' 'barebones' ), $userdata->display_name );
 		}
 
 	// Profile edit page
@@ -2520,19 +2520,19 @@ function bb_title( $title = '', $sep = '&raquo;', $seplocation = '' ) {
 
 		// Current users profile
 		if ( bb_is_user_home_edit() ) {
-			$title = __( 'Edit Your Profile', 'bbpress' );
+			$title = __( 'Edit Your Profile'' 'barebones' );
 
 		// Other users profile
 		} else {
 			$userdata = get_userdata( bb_get_user_id() );
-			$title    = sprintf( __( 'Edit %s\'s Profile', 'bbpress' ), $userdata->display_name );
+			$title    = sprintf( __( 'Edit %s\'s Profile'' 'barebones' ), $userdata->display_name );
 		}
 
 	/** Views *****************************************************************/
 
 	// Views
 	} elseif ( bb_is_single_view() ) {
-		$title = sprintf( __( 'View: %s', 'bbpress' ), bb_get_view_title() );
+		$title = sprintf( __( 'View: %s'' 'barebones' ), bb_get_view_title() );
 
 	/** Search ****************************************************************/
 

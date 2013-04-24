@@ -1,9 +1,9 @@
 <?php
 
 /**
- * bbPress Filters
+ * barebones Filters
  *
- * @package bbPress
+ * @package barebones
  * @subpackage Core
  *
  * This file contains the filters that are used through-out bbPress. They are
@@ -24,7 +24,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
 /**
  * Attach bbPress to WordPress
  *
- * bbPress uses its own internal actions to help aid in third-party plugin
+ * barebones uses its own internal actions to help aid in third-party plugin
  * development, and to limit the amount of potential future code changes when
  * updates to WordPress core occur.
  *
@@ -63,7 +63,7 @@ add_filter( 'editable_roles', 'bb_filter_blog_editable_roles' );
 /**
  * Feeds
  *
- * bbPress comes with a number of custom RSS2 feeds that get handled outside
+ * barebones comes with a number of custom RSS2 feeds that get handled outside
  * the normal scope of feeds that WordPress would normally serve. To do this,
  * we filter every page request, listen for a feed request, and trap it.
  */

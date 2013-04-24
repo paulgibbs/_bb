@@ -1,9 +1,9 @@
 <?php
 
 /**
- * bbPress Formatting
+ * barebones Formatting
  *
- * @package bbPress
+ * @package barebones
  * @subpackage Formatting
  */
 

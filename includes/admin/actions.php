@@ -1,9 +1,9 @@
 <?php
 
 /**
- * bbPress Admin Actions
+ * barebones Admin Actions
  *
- * @package bbPress
+ * @package barebones
  * @subpackage Admin
  *
  * This file contains the actions that are used through-out bbPress Admin. They
@@ -25,7 +25,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
 /**
  * Attach bbPress to WordPress
  *
- * bbPress uses its own internal actions to help aid in third-party plugin
+ * barebones uses its own internal actions to help aid in third-party plugin
  * development, and to limit the amount of potential future code changes when
  * updates to WordPress core occur.
  *
@@ -98,7 +98,7 @@ add_filter( 'post_type_link', 'bb_filter_sample_permalink', 10, 4 );
 function bb_new_site( $blog_id, $user_id, $domain, $path, $site_id, $meta ) {
 
 	// Bail if plugin is not network activated
-	if ( ! is_plugin_active_for_network( bbpress()->basename ) )
+	if ( ! is_plugin_active_for_network( barebones()->basename ) )
 		return;
 
 	// Switch to the new blog

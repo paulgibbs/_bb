@@ -1,12 +1,12 @@
 <?php
 
 /**
- * bbPress Common Functions
+ * barebones Common Functions
  *
  * Common functions are ones that are used by more than one component, like
  * forums, topics, replies, users, topic tags, etc...
  *
- * @package bbPress
+ * @package barebones
  * @subpackage Functions
  */
 
@@ -108,7 +108,7 @@ function bb_time_since( $older_date, $newer_date = false ) {
 
 		// Setup the strings
 		$unknown_text   = apply_filters( 'bb_core_time_since_unknown_text',   __( 'sometime',  'bbpress' ) );
-		$right_now_text = apply_filters( 'bb_core_time_since_right_now_text', __( 'right now', 'bbpress' ) );
+		$right_now_text = apply_filters( 'bb_core_time_since_right_now_text', __( 'right now'' 'barebones' ) );
 		$ago_text       = apply_filters( 'bb_core_time_since_ago_text',       __( '%s ago',    'bbpress' ) );
 
 		// array of time period chunks
@@ -118,8 +118,8 @@ function bb_time_since( $older_date, $newer_date = false ) {
 			array( 60 * 60 * 24 * 7,    __( 'week',   'bbpress' ), __( 'weeks',   'bbpress' ) ),
 			array( 60 * 60 * 24 ,       __( 'day',    'bbpress' ), __( 'days',    'bbpress' ) ),
 			array( 60 * 60 ,            __( 'hour',   'bbpress' ), __( 'hours',   'bbpress' ) ),
-			array( 60 ,                 __( 'minute', 'bbpress' ), __( 'minutes', 'bbpress' ) ),
-			array( 1,                   __( 'second', 'bbpress' ), __( 'seconds', 'bbpress' ) )
+			array( 60 ,                 __( 'minute'' 'barebones' ), __( 'minutes'' 'barebones' ) ),
+			array( 1,                   __( 'second'' 'barebones' ), __( 'seconds'' 'barebones' ) )
 		);
 
 		if ( !empty( $older_date ) && !is_numeric( $older_date ) ) {
@@ -174,7 +174,7 @@ function bb_time_since( $older_date, $newer_date = false ) {
 
 					// Add to output var
 					if ( 0 != $count2 ) {
-						$output .= ( 1 == $count2 ) ? _x( ',', 'Separator in time since', 'bbpress' ) . ' 1 '. $name2 : _x( ',', 'Separator in time since', 'bbpress' ) . ' ' . $count2 . ' ' . $chunks[$i + 1][2];
+						$output .= ( 1 == $count2 ) ? _x( ',', 'Separator in time since'' 'barebones' ) . ' 1 '. $name2 : _x( ',', 'Separator in time since'' 'barebones' ) . ' ' . $count2 . ' ' . $chunks[$i + 1][2];
 					}
 				}
 
@@ -507,9 +507,9 @@ function bb_get_statistics( $args = '' ) {
 			$topic_count_hidden = $topics['private'] + $topics['spammed'] + $topics['trashed'];
 
 			// Generate the hidden topic count's title attribute
-			$topic_titles[] = !empty( $topics['private'] ) ? sprintf( __( 'Private: %s', 'bbpress' ), number_format_i18n( $topics['private'] ) ) : '';
-			$topic_titles[] = !empty( $topics['spammed'] ) ? sprintf( __( 'Spammed: %s', 'bbpress' ), number_format_i18n( $topics['spammed'] ) ) : '';
-			$topic_titles[] = !empty( $topics['trashed'] ) ? sprintf( __( 'Trashed: %s', 'bbpress' ), number_format_i18n( $topics['trashed'] ) ) : '';
+			$topic_titles[] = !empty( $topics['private'] ) ? sprintf( __( 'Private: %s'' 'barebones' ), number_format_i18n( $topics['private'] ) ) : '';
+			$topic_titles[] = !empty( $topics['spammed'] ) ? sprintf( __( 'Spammed: %s'' 'barebones' ), number_format_i18n( $topics['spammed'] ) ) : '';
+			$topic_titles[] = !empty( $topics['trashed'] ) ? sprintf( __( 'Trashed: %s'' 'barebones' ), number_format_i18n( $topics['trashed'] ) ) : '';
 
 			// Compile the hidden topic title
 			$hidden_topic_title = implode( ' | ', array_filter( $topic_titles ) );
@@ -539,9 +539,9 @@ function bb_get_statistics( $args = '' ) {
 			$reply_count_hidden = $replies['private'] + $replies['spammed'] + $replies['trashed'];
 
 			// Generate the hidden topic count's title attribute
-			$reply_titles[] = !empty( $replies['private'] ) ? sprintf( __( 'Private: %s', 'bbpress' ), number_format_i18n( $replies['private'] ) ) : '';
-			$reply_titles[] = !empty( $replies['spammed'] ) ? sprintf( __( 'Spammed: %s', 'bbpress' ), number_format_i18n( $replies['spammed'] ) ) : '';
-			$reply_titles[] = !empty( $replies['trashed'] ) ? sprintf( __( 'Trashed: %s', 'bbpress' ), number_format_i18n( $replies['trashed'] ) ) : '';
+			$reply_titles[] = !empty( $replies['private'] ) ? sprintf( __( 'Private: %s'' 'barebones' ), number_format_i18n( $replies['private'] ) ) : '';
+			$reply_titles[] = !empty( $replies['spammed'] ) ? sprintf( __( 'Spammed: %s'' 'barebones' ), number_format_i18n( $replies['spammed'] ) ) : '';
+			$reply_titles[] = !empty( $replies['trashed'] ) ? sprintf( __( 'Trashed: %s'' 'barebones' ), number_format_i18n( $replies['trashed'] ) ) : '';
 
 			// Compile the hidden replies title
 			$hidden_reply_title = implode( ' | ', array_filter( $reply_titles ) );
@@ -623,7 +623,7 @@ function bb_filter_anonymous_post_data( $args = '' ) {
 
 	$r['bb_anonymous_email'] = apply_filters( 'bb_pre_anonymous_post_author_email', $r['bb_anonymous_email'] );
 	if ( empty( $r['bb_anonymous_email'] ) )
-		bb_add_error( 'bb_anonymous_email', __( '<strong>ERROR</strong>: Invalid email address submitted!', 'bbpress' ) );
+		bb_add_error( 'bb_anonymous_email', __( '<strong>ERROR</strong>: Invalid email address submitted!'' 'barebones' ) );
 
 	// Website is optional
 	$r['bb_anonymous_website'] = apply_filters( 'bb_pre_anonymous_post_author_website', $r['bb_anonymous_website'] );
@@ -1075,7 +1075,7 @@ Post Link: %3$s
 
 You are receiving this email because you subscribed to a forum topic.
 
-Login and visit the topic to unsubscribe from these emails.', 'bbpress' ),
+Login and visit the topic to unsubscribe from these emails.'' 'barebones' ),
 
 			$reply_author_name,
 			$reply_content,
@@ -1718,7 +1718,7 @@ function bb_set_404() {
 	global $wp_query;
 
 	if ( ! isset( $wp_query ) ) {
-		_doing_it_wrong( __FUNCTION__, __( 'Conditional query tags do not work before the query is run. Before then, they always return false.', 'bbpress' ), '3.1' );
+		_doing_it_wrong( __FUNCTION__, __( 'Conditional query tags do not work before the query is run. Before then, they always return false.'' 'barebones' ), '3.1' );
 		return false;
 	}
 

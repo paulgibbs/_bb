@@ -1,9 +1,9 @@
 <?php
 
 /**
- * bbPress Options
+ * barebones Options
  *
- * @package bbPress
+ * @package barebones
  * @subpackage Options
  */
 
@@ -25,7 +25,7 @@ function bb_get_default_options() {
 
 		/** DB Version ********************************************************/
 
-		'_bb_db_version'           => bbpress()->db_version,
+		'_bb_db_version'           => barebones()->db_version,
 
 		/** Settings **********************************************************/
 
@@ -178,8 +178,8 @@ function bb_pre_get_option( $value = '' ) {
 	$option = str_replace( 'pre_option_', '', current_filter() );
 
 	// Check the options global for preset value
-	if ( isset( bbpress()->options[$option] ) )
-		$value = bbpress()->options[$option];
+	if ( isset( barebones()->options[$option] ) )
+		$value = barebones()->options[$option];
 
 	// Always return a value, even if false
 	return $value;

@@ -1,9 +1,9 @@
 <?php
 
 /**
- * bbPress Forum Admin Class
+ * barebones Forum Admin Class
  *
- * @package bbPress
+ * @package barebones
  * @subpackage Administration
  */
 
@@ -14,7 +14,7 @@ if ( !class_exists( 'BB_Forums_Admin' ) ) :
 /**
  * Loads bbPress forums admin area
  *
- * @package bbPress
+ * @package barebones
  * @subpackage Administration
  * @since barebones (1.0)
  */
@@ -117,51 +117,51 @@ class BB_Forums_Admin {
 		// Overview
 		get_current_screen()->add_help_tab( array(
 			'id'		=> 'overview',
-			'title'		=> __( 'Overview', 'bbpress' ),
+			'title'		=> __( 'Overview'' 'barebones' ),
 			'content'	=>
-				'<p>' . __( 'This screen displays the individual forums on your site. You can customize the display of this screen to suit your workflow.', 'bbpress' ) . '</p>'
+				'<p>' . __( 'This screen displays the individual forums on your site. You can customize the display of this screen to suit your workflow.'' 'barebones' ) . '</p>'
 		) );
 
 		// Screen Content
 		get_current_screen()->add_help_tab( array(
 			'id'		=> 'screen-content',
-			'title'		=> __( 'Screen Content', 'bbpress' ),
+			'title'		=> __( 'Screen Content'' 'barebones' ),
 			'content'	=>
-				'<p>' . __( 'You can customize the display of this screen&#8217;s contents in a number of ways:', 'bbpress' ) . '</p>' .
+				'<p>' . __( 'You can customize the display of this screen&#8217;s contents in a number of ways:'' 'barebones' ) . '</p>' .
 				'<ul>' .
 					'<li>' . __( 'You can hide/display columns based on your needs and decide how many forums to list per screen using the Screen Options tab.',                                                                                                                                'bbpress' ) . '</li>' .
 					'<li>' . __( 'You can filter the list of forums by forum status using the text links in the upper left to show All, Published, or Trashed forums. The default view is to show all forums.',                                                                                 'bbpress' ) . '</li>' .
-					'<li>' . __( 'You can refine the list to show only forums from a specific month by using the dropdown menus above the forums list. Click the Filter button after making your selection. You also can refine the list by clicking on the forum creator in the forums list.', 'bbpress' ) . '</li>' .
+					'<li>' . __( 'You can refine the list to show only forums from a specific month by using the dropdown menus above the forums list. Click the Filter button after making your selection. You also can refine the list by clicking on the forum creator in the forums list.'' 'barebones' ) . '</li>' .
 				'</ul>'
 		) );
 
 		// Available Actions
 		get_current_screen()->add_help_tab( array(
 			'id'		=> 'action-links',
-			'title'		=> __( 'Available Actions', 'bbpress' ),
+			'title'		=> __( 'Available Actions'' 'barebones' ),
 			'content'	=>
-				'<p>' . __( 'Hovering over a row in the forums list will display action links that allow you to manage your forum. You can perform the following actions:', 'bbpress' ) . '</p>' .
+				'<p>' . __( 'Hovering over a row in the forums list will display action links that allow you to manage your forum. You can perform the following actions:'' 'barebones' ) . '</p>' .
 				'<ul>' .
 					'<li>' . __( '<strong>Edit</strong> takes you to the editing screen for that forum. You can also reach that screen by clicking on the forum title.',                                                                              'bbpress' ) . '</li>' .
 					'<li>' . __( '<strong>Trash</strong> removes your forum from this list and places it in the trash, from which you can permanently delete it.',                                                                                    'bbpress' ) . '</li>' .
-					'<li>' . __( '<strong>View</strong> will show you what your draft forum will look like if you publish it. View will take you to your live site to view the forum. Which link is available depends on your forum&#8217;s status.', 'bbpress' ) . '</li>' .
+					'<li>' . __( '<strong>View</strong> will show you what your draft forum will look like if you publish it. View will take you to your live site to view the forum. Which link is available depends on your forum&#8217;s status.'' 'barebones' ) . '</li>' .
 				'</ul>'
 		) );
 
 		// Bulk Actions
 		get_current_screen()->add_help_tab( array(
 			'id'		=> 'bulk-actions',
-			'title'		=> __( 'Bulk Actions', 'bbpress' ),
+			'title'		=> __( 'Bulk Actions'' 'barebones' ),
 			'content'	=>
 				'<p>' . __( 'You can also edit or move multiple forums to the trash at once. Select the forums you want to act on using the checkboxes, then select the action you want to take from the Bulk Actions menu and click Apply.',           'bbpress' ) . '</p>' .
-				'<p>' . __( 'When using Bulk Edit, you can change the metadata (categories, author, etc.) for all selected forums at once. To remove a forum from the grouping, just click the x next to its name in the Bulk Edit area that appears.', 'bbpress' ) . '</p>'
+				'<p>' . __( 'When using Bulk Edit, you can change the metadata (categories, author, etc.) for all selected forums at once. To remove a forum from the grouping, just click the x next to its name in the Bulk Edit area that appears.'' 'barebones' ) . '</p>'
 		) );
 
 		// Help Sidebar
 		get_current_screen()->set_help_sidebar(
-			'<p><strong>' . __( 'For more information:', 'bbpress' ) . '</strong></p>' .
+			'<p><strong>' . __( 'For more information:'' 'barebones' ) . '</strong></p>' .
 			'<p>' . __( '<a href="http://codex.bbpress.org" target="_blank">bbPress Documentation</a>',    'bbpress' ) . '</p>' .
-			'<p>' . __( '<a href="http://bbpress.org/forums/" target="_blank">bbPress Support Forums</a>', 'bbpress' ) . '</p>'
+			'<p>' . __( '<a href="http://bbpress.org/forums/" target="_blank">bbPress Support Forums</a>'' 'barebones' ) . '</p>'
 		);
 	}
 
@@ -175,64 +175,64 @@ class BB_Forums_Admin {
 
 		if ( $this->bail() ) return;
 
-		$customize_display = '<p>' . __( 'The title field and the big forum editing Area are fixed in place, but you can reposition all the other boxes using drag and drop, and can minimize or expand them by clicking the title bar of each box. Use the Screen Options tab to unhide more boxes (Excerpt, Send Trackbacks, Custom Fields, Discussion, Slug, Author) or to choose a 1- or 2-column layout for this screen.', 'bbpress' ) . '</p>';
+		$customize_display = '<p>' . __( 'The title field and the big forum editing Area are fixed in place, but you can reposition all the other boxes using drag and drop, and can minimize or expand them by clicking the title bar of each box. Use the Screen Options tab to unhide more boxes (Excerpt, Send Trackbacks, Custom Fields, Discussion, Slug, Author) or to choose a 1- or 2-column layout for this screen.'' 'barebones' ) . '</p>';
 
 		get_current_screen()->add_help_tab( array(
 			'id'      => 'customize-display',
-			'title'   => __( 'Customizing This Display', 'bbpress' ),
+			'title'   => __( 'Customizing This Display'' 'barebones' ),
 			'content' => $customize_display,
 		) );
 
 		get_current_screen()->add_help_tab( array(
 			'id'      => 'title-forum-editor',
-			'title'   => __( 'Title and Forum Editor', 'bbpress' ),
+			'title'   => __( 'Title and Forum Editor'' 'barebones' ),
 			'content' =>
-				'<p>' . __( '<strong>Title</strong> - Enter a title for your forum. After you enter a title, you&#8217;ll see the permalink below, which you can edit.', 'bbpress' ) . '</p>' .
-				'<p>' . __( '<strong>Forum Editor</strong> - Enter the text for your forum. There are two modes of editing: Visual and HTML. Choose the mode by clicking on the appropriate tab. Visual mode gives you a WYSIWYG editor. Click the last icon in the row to get a second row of controls. The HTML mode allows you to enter raw HTML along with your forum text. You can insert media files by clicking the icons above the forum editor and following the directions. You can go to the distraction-free writing screen via the Fullscreen icon in Visual mode (second to last in the top row) or the Fullscreen button in HTML mode (last in the row). Once there, you can make buttons visible by hovering over the top area. Exit Fullscreen back to the regular forum editor.', 'bbpress' ) . '</p>'
+				'<p>' . __( '<strong>Title</strong> - Enter a title for your forum. After you enter a title, you&#8217;ll see the permalink below, which you can edit.'' 'barebones' ) . '</p>' .
+				'<p>' . __( '<strong>Forum Editor</strong> - Enter the text for your forum. There are two modes of editing: Visual and HTML. Choose the mode by clicking on the appropriate tab. Visual mode gives you a WYSIWYG editor. Click the last icon in the row to get a second row of controls. The HTML mode allows you to enter raw HTML along with your forum text. You can insert media files by clicking the icons above the forum editor and following the directions. You can go to the distraction-free writing screen via the Fullscreen icon in Visual mode (second to last in the top row) or the Fullscreen button in HTML mode (last in the row). Once there, you can make buttons visible by hovering over the top area. Exit Fullscreen back to the regular forum editor.'' 'barebones' ) . '</p>'
 		) );
 
-		$publish_box = '<p>' . __( '<strong>Publish</strong> - You can set the terms of publishing your forum in the Publish box. For Status, Visibility, and Publish (immediately), click on the Edit link to reveal more options. Visibility includes options for password-protecting a forum or making it stay at the top of your blog indefinitely (sticky). Publish (immediately) allows you to set a future or past date and time, so you can schedule a forum to be published in the future or backdate a forum.', 'bbpress' ) . '</p>';
+		$publish_box = '<p>' . __( '<strong>Publish</strong> - You can set the terms of publishing your forum in the Publish box. For Status, Visibility, and Publish (immediately), click on the Edit link to reveal more options. Visibility includes options for password-protecting a forum or making it stay at the top of your blog indefinitely (sticky). Publish (immediately) allows you to set a future or past date and time, so you can schedule a forum to be published in the future or backdate a forum.'' 'barebones' ) . '</p>';
 
 		if ( current_theme_supports( 'forum-formats' ) && forum_type_supports( 'forum', 'forum-formats' ) ) {
-			$publish_box .= '<p>' . __( '<strong>forum Format</strong> - This designates how your theme will display a specific forum. For example, you could have a <em>standard</em> blog forum with a title and paragraphs, or a short <em>aside</em> that omits the title and contains a short text blurb. Please refer to the Codex for <a href="http://codex.wordpress.org/Post_Formats#Supported_Formats">descriptions of each forum format</a>. Your theme could enable all or some of 10 possible formats.', 'bbpress' ) . '</p>';
+			$publish_box .= '<p>' . __( '<strong>forum Format</strong> - This designates how your theme will display a specific forum. For example, you could have a <em>standard</em> blog forum with a title and paragraphs, or a short <em>aside</em> that omits the title and contains a short text blurb. Please refer to the Codex for <a href="http://codex.wordpress.org/Post_Formats#Supported_Formats">descriptions of each forum format</a>. Your theme could enable all or some of 10 possible formats.'' 'barebones' ) . '</p>';
 		}
 
 		if ( current_theme_supports( 'forum-thumbnails' ) && forum_type_supports( 'forum', 'thumbnail' ) ) {
-			$publish_box .= '<p>' . __( '<strong>Featured Image</strong> - This allows you to associate an image with your forum without inserting it. This is usually useful only if your theme makes use of the featured image as a forum thumbnail on the home page, a custom header, etc.', 'bbpress' ) . '</p>';
+			$publish_box .= '<p>' . __( '<strong>Featured Image</strong> - This allows you to associate an image with your forum without inserting it. This is usually useful only if your theme makes use of the featured image as a forum thumbnail on the home page, a custom header, etc.'' 'barebones' ) . '</p>';
 		}
 
 		get_current_screen()->add_help_tab( array(
 			'id'      => 'forum-attributes',
-			'title'   => __( 'Forum Attributes', 'bbpress' ),
+			'title'   => __( 'Forum Attributes'' 'barebones' ),
 			'content' =>
-				'<p>' . __( 'Select the attributes that your forum should have:', 'bbpress' ) . '</p>' .
+				'<p>' . __( 'Select the attributes that your forum should have:'' 'barebones' ) . '</p>' .
 				'<ul>' .
 					'<li>' . __( '<strong>Type</strong> indicates if the forum is a category or forum. Categories generally contain other forums.',                                                                                'bbpress' ) . '</li>' .
 					'<li>' . __( '<strong>Status</strong> allows you to close a forum to new topics and forums.',                                                                                                                  'bbpress' ) . '</li>' .
 					'<li>' . __( '<strong>Visibility</strong> lets you pick the scope of each forum and what users are allowed to access it.',                                                                                     'bbpress' ) . '</li>' .
-					'<li>' . __( '<strong>Parent</strong> dropdown determines the parent forum. Select the forum or category from the dropdown, or leave the default (No Parent) to create the forum at the root of your forums.', 'bbpress' ) . '</li>' .
+					'<li>' . __( '<strong>Parent</strong> dropdown determines the parent forum. Select the forum or category from the dropdown, or leave the default (No Parent) to create the forum at the root of your forums.'' 'barebones' ) . '</li>' .
 					'<li>' . __( '<strong>Order</strong> allows you to order your forums numerically.',                                                                                                                            'bbpress' ) . '</li>' .
 				'</ul>'
 		) );
 
 		get_current_screen()->add_help_tab( array(
 			'id'      => 'publish-box',
-			'title'   => __( 'Publish Box', 'bbpress' ),
+			'title'   => __( 'Publish Box'' 'barebones' ),
 			'content' => $publish_box,
 		) );
 
 		get_current_screen()->add_help_tab( array(
 			'id'      => 'discussion-settings',
-			'title'   => __( 'Discussion Settings', 'bbpress' ),
+			'title'   => __( 'Discussion Settings'' 'barebones' ),
 			'content' =>
-				'<p>' . __( '<strong>Send Trackbacks</strong> - Trackbacks are a way to notify legacy blog systems that you&#8217;ve linked to them. Enter the URL(s) you want to send trackbacks. If you link to other WordPress sites they&#8217;ll be notified automatically using pingbacks, and this field is unnecessary.', 'bbpress' ) . '</p>' .
-				'<p>' . __( '<strong>Discussion</strong> - You can turn comments and pings on or off, and if there are comments on the forum, you can see them here and moderate them.', 'bbpress' ) . '</p>'
+				'<p>' . __( '<strong>Send Trackbacks</strong> - Trackbacks are a way to notify legacy blog systems that you&#8217;ve linked to them. Enter the URL(s) you want to send trackbacks. If you link to other WordPress sites they&#8217;ll be notified automatically using pingbacks, and this field is unnecessary.'' 'barebones' ) . '</p>' .
+				'<p>' . __( '<strong>Discussion</strong> - You can turn comments and pings on or off, and if there are comments on the forum, you can see them here and moderate them.'' 'barebones' ) . '</p>'
 		) );
 
 		get_current_screen()->set_help_sidebar(
-			'<p><strong>' . __( 'For more information:', 'bbpress' ) . '</strong></p>' .
+			'<p><strong>' . __( 'For more information:'' 'barebones' ) . '</strong></p>' .
 			'<p>' . __( '<a href="http://codex.bbpress.org" target="_blank">bbPress Documentation</a>',    'bbpress' ) . '</p>' .
-			'<p>' . __( '<a href="http://bbpress.org/forums/" target="_blank">bbPress Support Forums</a>', 'bbpress' ) . '</p>'
+			'<p>' . __( '<a href="http://bbpress.org/forums/" target="_blank">bbPress Support Forums</a>'' 'barebones' ) . '</p>'
 		);
 	}
 
@@ -251,7 +251,7 @@ class BB_Forums_Admin {
 
 		add_meta_box (
 			'bb_forum_attributes',
-			__( 'Forum Attributes', 'bbpress' ),
+			__( 'Forum Attributes'' 'barebones' ),
 			'bb_forum_metabox',
 			$this->post_type,
 			'side',
@@ -422,7 +422,7 @@ class BB_Forums_Admin {
 			'bb_forum_reply_count' => __( 'Replies',   'bbpress' ),
 			'author'                => __( 'Creator',   'bbpress' ),
 			'bb_forum_created'     => __( 'Created' ,  'bbpress' ),
-			'bb_forum_freshness'   => __( 'Freshness', 'bbpress' )
+			'bb_forum_freshness'   => __( 'Freshness'' 'barebones' )
 		);
 
 		return apply_filters( 'bb_admin_forums_column_headers', $columns );
@@ -459,7 +459,7 @@ class BB_Forums_Admin {
 				break;
 
 			case 'bb_forum_created':
-				printf( __( '%1$s <br /> %2$s', 'bbpress' ),
+				printf( __( '%1$s <br /> %2$s'' 'barebones' ),
 					get_the_date(),
 					esc_attr( get_the_time() )
 				);
@@ -471,7 +471,7 @@ class BB_Forums_Admin {
 				if ( !empty( $last_active ) )
 					echo $last_active;
 				else
-					_e( 'No Topics', 'bbpress' );
+					_e( 'No Topics'' 'barebones' );
 
 				break;
 
@@ -537,41 +537,41 @@ class BB_Forums_Admin {
 			0 =>  '', // Left empty on purpose
 
 			// Updated
-			1 =>  sprintf( __( 'Forum updated. <a href="%s">View forum</a>', 'bbpress' ), $forum_url ),
+			1 =>  sprintf( __( 'Forum updated. <a href="%s">View forum</a>'' 'barebones' ), $forum_url ),
 
 			// Custom field updated
-			2 => __( 'Custom field updated.', 'bbpress' ),
+			2 => __( 'Custom field updated.'' 'barebones' ),
 
 			// Custom field deleted
-			3 => __( 'Custom field deleted.', 'bbpress' ),
+			3 => __( 'Custom field deleted.'' 'barebones' ),
 
 			// Forum updated
-			4 => __( 'Forum updated.', 'bbpress' ),
+			4 => __( 'Forum updated.'' 'barebones' ),
 
 			// Restored from revision
 			// translators: %s: date and time of the revision
 			5 => isset( $_GET['revision'] )
-					? sprintf( __( 'Forum restored to revision from %s', 'bbpress' ), wp_post_revision_title( (int) $_GET['revision'], false ) )
+					? sprintf( __( 'Forum restored to revision from %s'' 'barebones' ), wp_post_revision_title( (int) $_GET['revision'], false ) )
 					: false,
 
 			// Forum created
-			6 => sprintf( __( 'Forum created. <a href="%s">View forum</a>', 'bbpress' ), $forum_url ),
+			6 => sprintf( __( 'Forum created. <a href="%s">View forum</a>'' 'barebones' ), $forum_url ),
 
 			// Forum saved
-			7 => __( 'Forum saved.', 'bbpress' ),
+			7 => __( 'Forum saved.'' 'barebones' ),
 
 			// Forum submitted
-			8 => sprintf( __( 'Forum submitted. <a target="_blank" href="%s">Preview forum</a>', 'bbpress' ), esc_url( add_query_arg( 'preview', 'true', $forum_url ) ) ),
+			8 => sprintf( __( 'Forum submitted. <a target="_blank" href="%s">Preview forum</a>'' 'barebones' ), esc_url( add_query_arg( 'preview', 'true', $forum_url ) ) ),
 
 			// Forum scheduled
-			9 => sprintf( __( 'Forum scheduled for: <strong>%1$s</strong>. <a target="_blank" href="%2$s">Preview forum</a>', 'bbpress' ),
+			9 => sprintf( __( 'Forum scheduled for: <strong>%1$s</strong>. <a target="_blank" href="%2$s">Preview forum</a>'' 'barebones' ),
 					// translators: Publish box date format, see http://php.net/date
-					date_i18n( __( 'M j, Y @ G:i', 'bbpress' ),
+					date_i18n( __( 'M j, Y @ G:i'' 'barebones' ),
 					strtotime( $post_date ) ),
 					$forum_url ),
 
 			// Forum draft updated
-			10 => sprintf( __( 'Forum draft updated. <a target="_blank" href="%s">Preview forum</a>', 'bbpress' ), esc_url( add_query_arg( 'preview', 'true', $forum_url ) ) ),
+			10 => sprintf( __( 'Forum draft updated. <a target="_blank" href="%s">Preview forum</a>'' 'barebones' ), esc_url( add_query_arg( 'preview', 'true', $forum_url ) ) ),
 		);
 
 		return $messages;
@@ -590,5 +590,5 @@ endif; // class_exists check
  * @uses BB_Forums_Admin
  */
 function bb_admin_forums() {
-	bbpress()->admin->forums = new BB_Forums_Admin();
+	barebones()->admin->forums = new BB_Forums_Admin();
 }

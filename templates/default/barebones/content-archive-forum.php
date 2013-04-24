@@ -3,13 +3,13 @@
 /**
  * Archive Forum Content Part
  *
- * @package bbPress
+ * @package barebones
  * @subpackage Theme
  */
 
 ?>
 
-<div id="bbpress-forums">
+<div id="barebones-forums">
 
 	<div class="bbp-search-form">
 

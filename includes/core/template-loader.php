@@ -1,9 +1,9 @@
 <?php
 
 /**
- * bbPress Template Loader
+ * barebones Template Loader
  *
- * @package bbPress
+ * @package barebones
  * @subpackage TemplateLoader
  */
 
@@ -115,7 +115,7 @@ function bb_template_include_theme_supports( $template = '' ) {
 		$template = $new_template;
 
 		// @see: bb_template_include_theme_compat()
-		bbpress()->theme_compat->bbpress_template = true;
+		barebones()->theme_compat->bbpress_template = true;
 	}
 
 	return apply_filters( 'bb_template_include_theme_supports', $template );

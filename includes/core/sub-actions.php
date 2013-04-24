@@ -144,7 +144,7 @@ function bb_setup_current_user() {
 	// If the current user is being setup before the "init" action has fired,
 	// strange (and difficult to debug) role/capability issues will occur.
 	if ( ! did_action( 'after_setup_theme' ) ) {
-		_doing_it_wrong( __FUNCTION__, __( 'The current user is being initialized without using $wp->init().', 'bbpress' ), '2.3' );
+		_doing_it_wrong( __FUNCTION__, __( 'The current user is being initialized without using $wp->init().'' 'barebones' ), '2.3' );
 	}
 
 	do_action( 'bb_setup_current_user' );
@@ -271,7 +271,7 @@ function bb_user_register( $user_id = 0 ) {
 /** Final Action **************************************************************/
 
 /**
- * bbPress has loaded and initialized everything, and is okay to go
+ * barebones has loaded and initialized everything, and is okay to go
  *
  * @since barebones (1.0)
  * @uses do_action() Calls 'bb_ready'

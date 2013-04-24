@@ -1,9 +1,9 @@
 <?php
 
 /**
- * bbPress Core Theme Compatibility
+ * barebones Core Theme Compatibility
  *
- * @package bbPress
+ * @package barebones
  * @subpackage ThemeCompatibility
  */
 
@@ -93,7 +93,7 @@ class BB_Theme_Compat {
  * @param BB_Theme_Compat $theme
  */
 function bb_setup_theme_compat( $theme = '' ) {
-	$bbp = bbpress();
+	$bbp = barebones();
 
 	// Make sure theme package is available, set to default if not
 	if ( ! isset( $bbp->theme_compat->packages[$theme] ) || ! is_a( $bbp->theme_compat->packages[$theme], 'BB_Theme_Compat' ) ) {
@@ -115,7 +115,7 @@ function bb_setup_theme_compat( $theme = '' ) {
  * @return string
  */
 function bb_get_theme_compat_id() {
-	return apply_filters( 'bb_get_theme_compat_id', bbpress()->theme_compat->theme->id );
+	return apply_filters( 'bb_get_theme_compat_id', barebones()->theme_compat->theme->id );
 }
 
 /**
@@ -129,7 +129,7 @@ function bb_get_theme_compat_id() {
  * @return string
  */
 function bb_get_theme_compat_name() {
-	return apply_filters( 'bb_get_theme_compat_name', bbpress()->theme_compat->theme->name );
+	return apply_filters( 'bb_get_theme_compat_name', barebones()->theme_compat->theme->name );
 }
 
 /**
@@ -143,7 +143,7 @@ function bb_get_theme_compat_name() {
  * @return string
  */
 function bb_get_theme_compat_version() {
-	return apply_filters( 'bb_get_theme_compat_version', bbpress()->theme_compat->theme->version );
+	return apply_filters( 'bb_get_theme_compat_version', barebones()->theme_compat->theme->version );
 }
 
 /**
@@ -157,7 +157,7 @@ function bb_get_theme_compat_version() {
  * @return string
  */
 function bb_get_theme_compat_dir() {
-	return apply_filters( 'bb_get_theme_compat_dir', bbpress()->theme_compat->theme->dir );
+	return apply_filters( 'bb_get_theme_compat_dir', barebones()->theme_compat->theme->dir );
 }
 
 /**
@@ -171,7 +171,7 @@ function bb_get_theme_compat_dir() {
  * @return string
  */
 function bb_get_theme_compat_url() {
-	return apply_filters( 'bb_get_theme_compat_url', bbpress()->theme_compat->theme->url );
+	return apply_filters( 'bb_get_theme_compat_url', barebones()->theme_compat->theme->url );
 }
 
 /**
@@ -181,7 +181,7 @@ function bb_get_theme_compat_url() {
  * @return bool
  */
 function bb_is_theme_compat_active() {
-	$bbp = bbpress();
+	$bbp = barebones();
 
 	if ( empty( $bbp->theme_compat->active ) )
 		return false;
@@ -197,9 +197,9 @@ function bb_is_theme_compat_active() {
  * @return bool
  */
 function bb_set_theme_compat_active( $set = true ) {
-	bbpress()->theme_compat->active = $set;
+	barebones()->theme_compat->active = $set;
 
-	return (bool) bbpress()->theme_compat->active;
+	return (bool) barebones()->theme_compat->active;
 }
 
 /**
@@ -211,9 +211,9 @@ function bb_set_theme_compat_active( $set = true ) {
  * @since barebones (1.0)
  */
 function bb_set_theme_compat_templates( $templates = array() ) {
-	bbpress()->theme_compat->templates = $templates;
+	barebones()->theme_compat->templates = $templates;
 
-	return bbpress()->theme_compat->templates;
+	return barebones()->theme_compat->templates;
 }
 
 /**
@@ -225,9 +225,9 @@ function bb_set_theme_compat_templates( $templates = array() ) {
  * @since barebones (1.0)
  */
 function bb_set_theme_compat_template( $template = '' ) {
-	bbpress()->theme_compat->template = $template;
+	barebones()->theme_compat->template = $template;
 
-	return bbpress()->theme_compat->template;
+	return barebones()->theme_compat->template;
 }
 
 /**
@@ -239,9 +239,9 @@ function bb_set_theme_compat_template( $template = '' ) {
  * @since barebones (1.0)
  */
 function bb_set_theme_compat_original_template( $template = '' ) {
-	bbpress()->theme_compat->original_template = $template;
+	barebones()->theme_compat->original_template = $template;
 
-	return bbpress()->theme_compat->original_template;
+	return barebones()->theme_compat->original_template;
 }
 
 /**
@@ -253,7 +253,7 @@ function bb_set_theme_compat_original_template( $template = '' ) {
  * @since barebones (1.0)
  */
 function bb_is_theme_compat_original_template( $template = '' ) {
-	$bbp = bbpress();
+	$bbp = barebones();
 
 	if ( empty( $bbp->theme_compat->original_template ) )
 		return false;
@@ -278,7 +278,7 @@ function bb_register_theme_package( $theme = array(), $override = true ) {
 		return;
 
 	// Load up bbPress
-	$bbp = bbpress();
+	$bbp = barebones();
 
 	// Only override if the flag is set and not previously registered
 	if ( empty( $bbp->theme_compat->packages[$theme->id] ) || ( true === $override ) ) {
@@ -557,7 +557,7 @@ function bb_template_include_theme_compat( $template = '' ) {
 		// Reset post
 		bb_theme_compat_reset_post( array(
 			'ID'             => 0,
-			'post_title'     => __( 'Replies', 'bbpress' ),
+			'post_title'     => __( 'Replies'' 'barebones' ),
 			'post_author'    => 0,
 			'post_date'      => 0,
 			'post_content'   => '',
@@ -628,7 +628,7 @@ function bb_template_include_theme_compat( $template = '' ) {
 			'post_date'      => 0,
 			'post_content'   => '',
 			'post_type'      => '',
-			'post_title'     => sprintf( __( 'Topic Tag: %s', 'bbpress' ), '<span>' . bb_get_topic_tag_name() . '</span>' ),
+			'post_title'     => sprintf( __( 'Topic Tag: %s'' 'barebones' ), '<span>' . bb_get_topic_tag_name() . '</span>' ),
 			'post_status'    => bb_get_public_status_id(),
 			'comment_status' => 'closed'
 		) );
@@ -645,7 +645,7 @@ function bb_template_include_theme_compat( $template = '' ) {
 	 *
 	 * @see http://bbpress.trac.wordpress.org/ticket/1478/
 	 */
-	if ( !empty( bbpress()->theme_compat->bbpress_template ) )
+	if ( !empty( barebones()->theme_compat->bbpress_template ) )
 		return $template;
 
 	/**
@@ -699,7 +699,7 @@ function bb_replace_the_content( $content = '' ) {
 	if ( ! in_the_loop() )
 		return $content;
 
-	$bbp = bbpress();
+	$bbp = barebones();
 
 	// Define local variable(s)
 	$new_content = '';
@@ -965,7 +965,7 @@ function bb_redirect_canonical( $redirect_url ) {
 function bb_remove_all_filters( $tag, $priority = false ) {
 	global $wp_filter, $merged_filters;
 
-	$bbp = bbpress();
+	$bbp = barebones();
 
 	// Filters exist
 	if ( isset( $wp_filter[$tag] ) ) {
@@ -1017,7 +1017,7 @@ function bb_remove_all_filters( $tag, $priority = false ) {
 function bb_restore_all_filters( $tag, $priority = false ) {
 	global $wp_filter, $merged_filters;
 
-	$bbp = bbpress();
+	$bbp = barebones();
 
 	// Filters exist
 	if ( isset( $bbp->filters->wp_filter[$tag] ) ) {

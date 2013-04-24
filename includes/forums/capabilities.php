@@ -1,11 +1,11 @@
 <?php
 
 /**
- * bbPress Forum Capabilites
+ * barebones Forum Capabilites
  *
  * Used to map forum capabilities to WordPress's existing capabilities.
  *
- * @package bbPress
+ * @package barebones
  * @subpackage Capabilities
  */
 

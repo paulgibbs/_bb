@@ -1,9 +1,9 @@
 <?php
 
 /**
- * bbPress Admin Functions
+ * barebones Admin Functions
  *
- * @package bbPress
+ * @package barebones
  * @subpackage Administration
  */
 
@@ -29,13 +29,13 @@ function bb_admin_separator() {
 	// Loop through caps, and look for a reason to show the separator
 	foreach ( $caps as $cap ) {
 		if ( current_user_can( $cap ) ) {
-			bbpress()->admin->show_separator = true;
+			barebones()->admin->show_separator = true;
 			break;
 		}
 	}
 
 	// Bail if no separator
-	if ( false === bbpress()->admin->show_separator ) {
+	if ( false === barebones()->admin->show_separator ) {
 		return;
 	}
 
@@ -53,7 +53,7 @@ function bb_admin_separator() {
  * @return mixed True if separator, false if not
  */
 function bb_admin_custom_menu_order( $menu_order = false ) {
-	if ( false === bbpress()->admin->show_separator )
+	if ( false === barebones()->admin->show_separator )
 		return $menu_order;
 
 	return true;
@@ -71,7 +71,7 @@ function bb_admin_custom_menu_order( $menu_order = false ) {
 function bb_admin_menu_order( $menu_order ) {
 
 	// Bail if user cannot see any top level bbPress menus
-	if ( empty( $menu_order ) || ( false === bbpress()->admin->show_separator ) )
+	if ( empty( $menu_order ) || ( false === barebones()->admin->show_separator ) )
 		return $menu_order;
 
 	// Initialize our custom order array
@@ -233,15 +233,15 @@ function bb_tools_admin_tabs( $active_tab = '' ) {
 		$tabs = apply_filters( 'bb_tools_admin_tabs', array(
 			'0' => array(
 				'href' => get_admin_url( '', add_query_arg( array( 'page' => 'bbp-repair'    ), 'tools.php' ) ),
-				'name' => __( 'Repair Forums', 'bbpress' )
+				'name' => __( 'Repair Forums'' 'barebones' )
 			),
 			'1' => array(
 				'href' => get_admin_url( '', add_query_arg( array( 'page' => 'bbp-converter' ), 'tools.php' ) ),
-				'name' => __( 'Import Forums', 'bbpress' )
+				'name' => __( 'Import Forums'' 'barebones' )
 			),
 			'2' => array(
 				'href' => get_admin_url( '', add_query_arg( array( 'page' => 'bbp-reset'     ), 'tools.php' ) ),
-				'name' => __( 'Reset Forums', 'bbpress' )
+				'name' => __( 'Reset Forums'' 'barebones' )
 			)
 		) );
 

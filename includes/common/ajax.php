@@ -1,12 +1,12 @@
 <?php
 
 /**
- * bbPress Common AJAX Functions
+ * barebones Common AJAX Functions
  *
  * Common AJAX functions are ones that are used to setup and/or use during
- * bbPress specific, theme-side  AJAX requests.
+ * barebones specific, theme-side  AJAX requests.
  *
- * @package bbPress
+ * @package barebones
  * @subpackage Ajax
  */
 

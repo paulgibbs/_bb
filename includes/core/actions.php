@@ -1,9 +1,9 @@
 <?php
 
 /**
- * bbPress Actions
+ * barebones Actions
  *
- * @package bbPress
+ * @package barebones
  * @subpackage Core
  *
  * This file contains the actions that are used through-out bbPress. They are
@@ -24,7 +24,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
 /**
  * Attach bbPress to WordPress
  *
- * bbPress uses its own internal actions to help aid in third-party plugin
+ * barebones uses its own internal actions to help aid in third-party plugin
  * development, and to limit the amount of potential future code changes when
  * updates to WordPress core occur.
  *
@@ -262,7 +262,7 @@ add_action( 'bb_new_reply_pre_extras',  'bb_clean_post_cache' );
 add_action( 'bb_new_reply_post_extras', 'bb_clean_post_cache' );
 
 /**
- * bbPress needs to redirect the user around in a few different circumstances:
+ * barebones needs to redirect the user around in a few different circumstances:
  *
  * 1. POST and GET requests
  * 2. Accessing private or hidden content (forums/topics/replies)

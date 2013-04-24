@@ -3,11 +3,11 @@
 /**
  * The bbPress Plugin
  *
- * bbPress is forum software with a twist from the creators of WordPress.
+ * barebones is forum software with a twist from the creators of WordPress.
  *
  * $Id: bbpress.php 4852 2013-04-15 02:56:14Z johnjamesjacoby $
  *
- * @package bbPress
+ * @package barebones
  * @subpackage Main
  */
 
@@ -38,7 +38,7 @@ final class bbPress {
 	/** Magic *****************************************************************/
 
 	/**
-	 * bbPress uses many variables, several of which can be filtered to
+	 * barebones uses many variables, several of which can be filtered to
 	 * customize the way it operates. Most of these variables are stored in a
 	 * private array that gets updated with the help of PHP magic methods.
 	 *
@@ -87,7 +87,7 @@ final class bbPress {
 	/**
 	 * Main bbPress Instance
 	 *
-	 * bbPress is fun
+	 * barebones is fun
 	 * Please load it only one time
 	 * For this, we thank you
 	 *
@@ -99,7 +99,7 @@ final class bbPress {
 	 * @uses bbPress::setup_globals() Setup the globals needed
 	 * @uses bbPress::includes() Include the required files
 	 * @uses bbPress::setup_actions() Setup the hooks and actions
-	 * @see bbpress()
+	 * @see barebones()
 	 * @return The one true bbPress
 	 */
 	public static function instance() {
@@ -119,7 +119,7 @@ final class bbPress {
 	 *
 	 * @since barebones (1.0)
 	 * @see bbPress::instance()
-	 * @see bbpress();
+	 * @see barebones();
 	 */
 	private function __construct() { /* Do nothing here */ }
 
@@ -128,14 +128,14 @@ final class bbPress {
 	 *
 	 * @since barebones (1.0)
 	 */
-	public function __clone() { _doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'bbpress' ), '2.1' ); }
+	public function __clone() { _doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?'' 'barebones' ), '2.1' ); }
 
 	/**
 	 * A dummy magic method to prevent bbPress from being unserialized
 	 *
 	 * @since barebones (1.0)
 	 */
-	public function __wakeup() { _doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'bbpress' ), '2.1' ); }
+	public function __wakeup() { _doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?'' 'barebones' ), '2.1' ); }
 
 	/**
 	 * Magic method for checking the existence of a certain custom field
@@ -396,7 +396,7 @@ final class bbPress {
 		// Register the default theme compatibility package
 		bb_register_theme_package( array(
 			'id'      => 'default',
-			'name'    => __( 'bbPress Default', 'bbpress' ),
+			'name'    => __( 'bbPress Default'' 'barebones' ),
 			'version' => bb_get_version(),
 			'dir'     => trailingslashit( $this->themes_dir . 'default' ),
 			'url'     => trailingslashit( $this->themes_url . 'default' )
@@ -492,7 +492,7 @@ final class bbPress {
 			'view_item'          => __( 'View Forum',               'bbpress' ),
 			'search_items'       => __( 'Search Forums',            'bbpress' ),
 			'not_found'          => __( 'No forums found',          'bbpress' ),
-			'not_found_in_trash' => __( 'No forums found in Trash', 'bbpress' ),
+			'not_found_in_trash' => __( 'No forums found in Trash'' 'barebones' ),
 			'parent_item_colon'  => __( 'Parent Forum:',            'bbpress' )
 		);
 
@@ -516,7 +516,7 @@ final class bbPress {
 				'labels'              => $post_type['labels'],
 				'rewrite'             => $post_type['rewrite'],
 				'supports'            => $post_type['supports'],
-				'description'         => __( 'bbPress Forums', 'bbpress' ),
+				'description'         => __( 'bbPress Forums'' 'barebones' ),
 				'capabilities'        => bb_get_forum_caps(),
 				'capability_type'     => array( 'forum', 'forums' ),
 				'menu_position'       => 555555,
@@ -549,7 +549,7 @@ final class bbPress {
 			'view_item'          => __( 'View Topic',               'bbpress' ),
 			'search_items'       => __( 'Search Topics',            'bbpress' ),
 			'not_found'          => __( 'No topics found',          'bbpress' ),
-			'not_found_in_trash' => __( 'No topics found in Trash', 'bbpress' ),
+			'not_found_in_trash' => __( 'No topics found in Trash'' 'barebones' ),
 			'parent_item_colon'  => __( 'Forum:',                   'bbpress' )
 		);
 
@@ -573,7 +573,7 @@ final class bbPress {
 				'labels'              => $post_type['labels'],
 				'rewrite'             => $post_type['rewrite'],
 				'supports'            => $post_type['supports'],
-				'description'         => __( 'bbPress Topics', 'bbpress' ),
+				'description'         => __( 'bbPress Topics'' 'barebones' ),
 				'capabilities'        => bb_get_topic_caps(),
 				'capability_type'     => array( 'topic', 'topics' ),
 				'menu_position'       => 555555,
@@ -606,7 +606,7 @@ final class bbPress {
 			'view_item'          => __( 'View Reply',                'bbpress' ),
 			'search_items'       => __( 'Search Replies',            'bbpress' ),
 			'not_found'          => __( 'No replies found',          'bbpress' ),
-			'not_found_in_trash' => __( 'No replies found in Trash', 'bbpress' ),
+			'not_found_in_trash' => __( 'No replies found in Trash'' 'barebones' ),
 			'parent_item_colon'  => __( 'Topic:',                    'bbpress' )
 		);
 
@@ -630,7 +630,7 @@ final class bbPress {
 				'labels'              => $post_type['labels'],
 				'rewrite'             => $post_type['rewrite'],
 				'supports'            => $post_type['supports'],
-				'description'         => __( 'bbPress Replies', 'bbpress' ),
+				'description'         => __( 'bbPress Replies'' 'barebones' ),
 				'capabilities'        => bb_get_reply_caps(),
 				'capability_type'     => array( 'reply', 'replies' ),
 				'menu_position'       => 555555,
@@ -665,8 +665,8 @@ final class bbPress {
 		register_post_status(
 			bb_get_closed_status_id(),
 			apply_filters( 'bb_register_closed_post_status', array(
-				'label'             => _x( 'Closed', 'post', 'bbpress' ),
-				'label_count'       => _nx_noop( 'Closed <span class="count">(%s)</span>', 'Closed <span class="count">(%s)</span>', 'post', 'bbpress' ),
+				'label'             => _x( 'Closed', 'post'' 'barebones' ),
+				'label_count'       => _nx_noop( 'Closed <span class="count">(%s)</span>', 'Closed <span class="count">(%s)</span>', 'post'' 'barebones' ),
 				'public'            => true,
 				'show_in_admin_all' => true
 			) )
@@ -676,8 +676,8 @@ final class bbPress {
 		register_post_status(
 			bb_get_spam_status_id(),
 			apply_filters( 'bb_register_spam_post_status', array(
-				'label'                     => _x( 'Spam', 'post', 'bbpress' ),
-				'label_count'               => _nx_noop( 'Spam <span class="count">(%s)</span>', 'Spam <span class="count">(%s)</span>', 'post', 'bbpress' ),
+				'label'                     => _x( 'Spam', 'post'' 'barebones' ),
+				'label_count'               => _nx_noop( 'Spam <span class="count">(%s)</span>', 'Spam <span class="count">(%s)</span>', 'post'' 'barebones' ),
 				'protected'                 => true,
 				'exclude_from_search'       => true,
 				'show_in_admin_status_list' => true,
@@ -689,8 +689,8 @@ final class bbPress {
 		register_post_status(
 			bb_get_orphan_status_id(),
 			apply_filters( 'bb_register_orphan_post_status', array(
-				'label'                     => _x( 'Orphan', 'post', 'bbpress' ),
-				'label_count'               => _nx_noop( 'Orphan <span class="count">(%s)</span>', 'Orphans <span class="count">(%s)</span>', 'post', 'bbpress' ),
+				'label'                     => _x( 'Orphan', 'post'' 'barebones' ),
+				'label_count'               => _nx_noop( 'Orphan <span class="count">(%s)</span>', 'Orphans <span class="count">(%s)</span>', 'post'' 'barebones' ),
 				'protected'                 => true,
 				'exclude_from_search'       => true,
 				'show_in_admin_status_list' => true,
@@ -702,8 +702,8 @@ final class bbPress {
 		register_post_status(
 			bb_get_hidden_status_id(),
 			apply_filters( 'bb_register_hidden_post_status', array(
-				'label'                     => _x( 'Hidden', 'post', 'bbpress' ),
-				'label_count'               => _nx_noop( 'Hidden <span class="count">(%s)</span>', 'Hidden <span class="count">(%s)</span>', 'post', 'bbpress' ),
+				'label'                     => _x( 'Hidden', 'post'' 'barebones' ),
+				'label_count'               => _nx_noop( 'Hidden <span class="count">(%s)</span>', 'Hidden <span class="count">(%s)</span>', 'post'' 'barebones' ),
 				'private'                   => true,
 				'exclude_from_search'       => true,
 				'show_in_admin_status_list' => true,
@@ -757,7 +757,7 @@ final class bbPress {
 			'update_item'   => __( 'Update Tag',     'bbpress' ),
 			'add_new_item'  => __( 'Add New Tag',    'bbpress' ),
 			'new_item_name' => __( 'New Tag Name',   'bbpress' ),
-			'view_item'     => __( 'View Topic Tag', 'bbpress' )
+			'view_item'     => __( 'View Topic Tag'' 'barebones' )
 		);
 
 		// Topic tag rewrite
@@ -796,7 +796,7 @@ final class bbPress {
 		// Popular topics
 		bb_register_view(
 			'popular',
-			__( 'Most popular topics', 'bbpress' ),
+			__( 'Most popular topics'' 'barebones' ),
 			apply_filters( 'bb_register_view_popular', array(
 				'meta_key'      => '_bb_reply_count',
 				'max_num_pages' => 1,
@@ -808,7 +808,7 @@ final class bbPress {
 		// Topics with no replies
 		bb_register_view(
 			'no-replies',
-			__( 'Topics with no replies', 'bbpress' ),
+			__( 'Topics with no replies'' 'barebones' ),
 			apply_filters( 'bb_register_view_no_replies', array(
 				'meta_key'      => '_bb_reply_count',
 				'meta_value'    => 1,
@@ -959,11 +959,11 @@ final class bbPress {
  * Use this function like you would a global variable, except without needing
  * to declare the global.
  *
- * Example: <?php $bbp = bbpress(); ?>
+ * Example: <?php $bbp = barebones(); ?>
  *
  * @return The one true bbPress Instance
  */
-function bbpress() {
+function barebones() {
 	return bbpress::instance();
 }
 
@@ -974,11 +974,11 @@ function bbpress() {
  * actions, filters, and overrides setup without bbPress being in the way.
  */
 if ( defined( 'BBPRESS_LATE_LOAD' ) ) {
-	add_action( 'plugins_loaded', 'bbpress', (int) BBPRESS_LATE_LOAD );
+	add_action( 'plugins_loaded'' 'barebones', (int) BBPRESS_LATE_LOAD );
 
 // "And now here's something we hope you'll really like!"
 } else {
-	bbpress();
+	barebones();
 }
 
 endif; // class_exists check

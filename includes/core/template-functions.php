@@ -1,13 +1,13 @@
 <?php
 
 /**
- * bbPress Template Functions
+ * barebones Template Functions
  *
  * This file contains functions necessary to mirror the WordPress core template
  * loading process. Many of those functions are not filterable, and even then
  * would not be robust enough to predict where bbPress templates might exist.
  *
- * @package bbPress
+ * @package barebones
  * @subpackage TemplateFunctions
  */
 
@@ -433,7 +433,7 @@ function bb_parse_query( $posts_query ) {
 		$posts_query->set( 'author_name', $user->user_nicename );
 
 		// Set the displayed user global to this user
-		bbpress()->displayed_user = $user;
+		barebones()->displayed_user = $user;
 
 	// View Page
 	} elseif ( !empty( $bb_view ) ) {

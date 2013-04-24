@@ -1,14 +1,14 @@
 <?php
 
 /**
- * bbPress Cache Helpers
+ * barebones Cache Helpers
  *
  * Helper functions used to communicate with WordPress's various caches. Many
  * of these functions are used to work around specific WordPress nuances. They
  * are subject to changes, tweaking, and will need iteration as performance
  * improvements are made to WordPress core.
  *
- * @package bbPress
+ * @package barebones
  * @subpackage Cache
  */
 
@@ -27,7 +27,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
  *
  * @since barebones (1.0)
  *
- * @package bbPress
+ * @package barebones
  * @subpackage Cache
  */
 class BB_Skip_Children {

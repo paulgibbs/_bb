@@ -1,13 +1,13 @@
 <?php
 
 /**
- * bbPress Capabilites
+ * barebones Capabilites
  *
  * The functions in this file are used primarily as convenient wrappers for
  * capability output in user profiles. This includes mapping capabilities and
  * groups to human readable strings,
  *
- * @package bbPress
+ * @package barebones
  * @subpackage Capabilities
  */
 
@@ -367,7 +367,7 @@ function bb_filter_user_roles_option() {
  * it here for now, knowing that improvements will come to WordPress core later.
  *
  * Also note that if using the $wp_user_roles global non-database approach,
- * bbPress does not have an intercept point to add its dynamic roles.
+ * barebones does not have an intercept point to add its dynamic roles.
  *
  * @see switch_to_blog()
  * @see restore_current_blog()
@@ -409,31 +409,31 @@ function bb_get_dynamic_roles() {
 
 		// Keymaster
 		bb_get_keymaster_role() => array(
-			'name'         => __( 'Keymaster', 'bbpress' ),
+			'name'         => __( 'Keymaster'' 'barebones' ),
 			'capabilities' => bb_get_caps_for_role( bb_get_keymaster_role() )
 		),
 
 		// Moderator
 		bb_get_moderator_role() => array(
-			'name'         => __( 'Moderator', 'bbpress' ),
+			'name'         => __( 'Moderator'' 'barebones' ),
 			'capabilities' => bb_get_caps_for_role( bb_get_moderator_role() )
 		),
 
 		// Participant
 		bb_get_participant_role() => array(
-			'name'         => __( 'Participant', 'bbpress' ),
+			'name'         => __( 'Participant'' 'barebones' ),
 			'capabilities' => bb_get_caps_for_role( bb_get_participant_role() )
 		),
 
 		// Spectator
 		bb_get_spectator_role() => array(
-			'name'         => __( 'Spectator', 'bbpress' ),
+			'name'         => __( 'Spectator'' 'barebones' ),
 			'capabilities' => bb_get_caps_for_role( bb_get_spectator_role() )
 		),
 
 		// Blocked
 		bb_get_blocked_role() => array(
-			'name'         => __( 'Blocked', 'bbpress' ),
+			'name'         => __( 'Blocked'' 'barebones' ),
 			'capabilities' => bb_get_caps_for_role( bb_get_blocked_role() )
 		)
 	) );
@@ -552,7 +552,7 @@ function bb_get_blocked_role() {
  * @deprecated since version 2.2
  */
 function bb_add_roles() {
-	_doing_it_wrong( 'bb_add_roles', __( 'Editable forum roles no longer exist.', 'bbpress' ), '2.2' );
+	_doing_it_wrong( 'bb_add_roles', __( 'Editable forum roles no longer exist.'' 'barebones' ), '2.2' );
 }
 
 /**
@@ -562,5 +562,5 @@ function bb_add_roles() {
  * @deprecated since version 2.2
  */
 function bb_remove_roles() {
-	_doing_it_wrong( 'bb_remove_roles', __( 'Editable forum roles no longer exist.', 'bbpress' ), '2.2' );
+	_doing_it_wrong( 'bb_remove_roles', __( 'Editable forum roles no longer exist.'' 'barebones' ), '2.2' );
 }

@@ -1,9 +1,9 @@
 <?php
 
 /**
- * bbPress Classes
+ * barebones Classes
  *
- * @package bbPress
+ * @package barebones
  * @subpackage Classes
  */
 
@@ -12,14 +12,14 @@ if ( !defined( 'ABSPATH' ) ) exit;
 
 if ( !class_exists( 'BB_Component' ) ) :
 /**
- * bbPress Component Class
+ * barebones Component Class
  *
  * The bbPress component class is responsible for simplifying the creation
  * of components that share similar behaviors and routines. It is used
  * internally by bbPress to create forums, topics and replies, but can be
  * extended to create other really neat things.
  *
- * @package bbPress
+ * @package barebones
  * @subpackage Classes
  *
  * @since barebones (1.0)
@@ -56,7 +56,7 @@ class BB_Component {
 	/** Methods ***************************************************************/
 
 	/**
-	 * bbPress Component loader
+	 * barebones Component loader
 	 *
 	 * @since barebones (1.0)
 	 *
@@ -176,7 +176,7 @@ if ( class_exists( 'Walker' ) ) :
 /**
  * Create HTML dropdown list of bbPress forums/topics.
  *
- * @package bbPress
+ * @package barebones
  * @subpackage Classes
  *
  * @since barebones (1.0)
