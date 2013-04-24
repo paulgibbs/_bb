@@ -16,7 +16,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
  * @since barebones (1.0)
  *
  * @uses get_option()
- * @uses bb_get_db_version() To get bbPress's database version
+ * @uses bb_get_db_version() To get barebones's database version
  * @return bool True if update, False if not
  */
 function bb_is_install() {
@@ -24,12 +24,12 @@ function bb_is_install() {
 }
 
 /**
- * Compare the bbPress version to the DB version to determine if updating
+ * Compare the barebones version to the DB version to determine if updating
  *
  * @since barebones (1.0)
  *
  * @uses get_option()
- * @uses bb_get_db_version() To get bbPress's database version
+ * @uses bb_get_db_version() To get barebones's database version
  * @return bool True if update, False if not
  */
 function bb_is_update() {
@@ -40,14 +40,14 @@ function bb_is_update() {
 }
 
 /**
- * Determine if bbPress is being activated
+ * Determine if barebones is being activated
  *
- * Note that this function currently is not used in bbPress core and is here
- * for third party plugins to use to check for bbPress activation.
+ * Note that this function currently is not used in barebones core and is here
+ * for third party plugins to use to check for barebones activation.
  *
  * @since barebones (1.0)
  *
- * @return bool True if activating bbPress, false if not
+ * @return bool True if activating barebones, false if not
  */
 function bb_is_activation( $basename = '' ) {
 	$bbp    = barebones();
@@ -81,15 +81,15 @@ function bb_is_activation( $basename = '' ) {
 		return false;
 	}
 
-	// Is bbPress being activated?
+	// Is barebones being activated?
 	return in_array( $basename, $plugins );
 }
 
 /**
- * Determine if bbPress is being deactivated
+ * Determine if barebones is being deactivated
  *
  * @since barebones (1.0)
- * @return bool True if deactivating bbPress, false if not
+ * @return bool True if deactivating barebones, false if not
  */
 function bb_is_deactivation( $basename = '' ) {
 	$bbp    = barebones();
@@ -123,7 +123,7 @@ function bb_is_deactivation( $basename = '' ) {
 		return false;
 	}
 
-	// Is bbPress being deactivated?
+	// Is barebones being deactivated?
 	return in_array( $basename, $plugins );
 }
 
@@ -132,14 +132,14 @@ function bb_is_deactivation( $basename = '' ) {
  *
  * @since barebones (1.0)
  * @uses update_option()
- * @uses bb_get_db_version() To get bbPress's database version
+ * @uses bb_get_db_version() To get barebones's database version
  */
 function bb_version_bump() {
 	update_option( '_bb_db_version', bb_get_db_version() );
 }
 
 /**
- * Setup the bbPress updater
+ * Setup the barebones updater
  *
  * @since barebones (1.0)
  *
@@ -220,7 +220,7 @@ function bb_create_initial_content( $args = array() ) {
  * runs whatever other code is needed.
  *
  * This is most-often used when the data schema changes, but should also be used
- * to correct issues with bbPress meta-data silently on software update.
+ * to correct issues with barebones meta-data silently on software update.
  *
  * @since barebones (1.0)
  */
@@ -281,11 +281,11 @@ function bb_version_updater() {
 }
 
 /**
- * Redirect user to bbPress's What's New page on activation
+ * Redirect user to barebones's What's New page on activation
  *
  * @since barebones (1.0)
  *
- * @internal Used internally to redirect bbPress to the about page on activation
+ * @internal Used internally to redirect barebones to the about page on activation
  *
  * @uses is_network_admin() To bail if being network activated
  * @uses set_transient() To drop the activation transient for 30 seconds

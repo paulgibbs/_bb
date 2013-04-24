@@ -6,13 +6,13 @@
  * @package barebones
  * @subpackage Core
  *
- * This file contains the actions that are used through-out bbPress. They are
+ * This file contains the actions that are used through-out barebones. They are
  * consolidated here to make searching for them easier, and to help developers
  * understand at a glance the order in which things occur.
  *
  * There are a few common places that additional actions can currently be found
  *
- *  - bbPress: In {@link bbPress::setup_actions()} in bbpress.php
+ *  - barebones: In {@link barebones::setup_actions()} in bbpress.php
  *  - Admin: More in {@link BB_Admin::setup_actions()} in admin.php
  *
  * @see /core/filters.php
@@ -22,20 +22,20 @@
 if ( !defined( 'ABSPATH' ) ) exit;
 
 /**
- * Attach bbPress to WordPress
+ * Attach barebones to WordPress
  *
  * barebones uses its own internal actions to help aid in third-party plugin
  * development, and to limit the amount of potential future code changes when
  * updates to WordPress core occur.
  *
  * These actions exist to create the concept of 'plugin dependencies'. They
- * provide a safe way for plugins to execute code *only* when bbPress is
+ * provide a safe way for plugins to execute code *only* when barebones is
  * installed and activated, without needing to do complicated guesswork.
  *
  * For more information on how this works, see the 'Plugin Dependency' section
  * near the bottom of this file.
  *
- *           v--WordPress Actions        v--bbPress Sub-actions
+ *           v--WordPress Actions        v--barebones Sub-actions
  */
 add_action( 'plugins_loaded',           'bb_loaded',                   10    );
 add_action( 'init',                     'bb_init',                     0     ); // Early for bb_register
@@ -122,7 +122,7 @@ add_action( 'bb_init', 'bb_topic_content_autoembed', 8   );
 /**
  * bb_ready - attached to end 'bb_init' above
  *
- * Attach actions to the ready action after bbPress has fully initialized.
+ * Attach actions to the ready action after barebones has fully initialized.
  * The load order helps to execute code at the correct time.
  *                                                v---Load order
  */
@@ -250,7 +250,7 @@ add_action( 'make_spam_user', 'bb_make_spam_user' );
 // User role
 add_action( 'bb_profile_update', 'bb_profile_update_role' );
 
-// Hook WordPress admin actions to bbPress profiles on save
+// Hook WordPress admin actions to barebones profiles on save
 add_action( 'bb_user_edit_after', 'bb_user_edit_after' );
 
 // Caches
@@ -267,7 +267,7 @@ add_action( 'bb_new_reply_post_extras', 'bb_clean_post_cache' );
  * 1. POST and GET requests
  * 2. Accessing private or hidden content (forums/topics/replies)
  * 3. Editing forums, topics, replies, users, and tags
- * 4. bbPress specific AJAX requests
+ * 4. barebones specific AJAX requests
  */
 add_action( 'bb_template_redirect', 'bb_forum_enforce_blocked', 1  );
 add_action( 'bb_template_redirect', 'bb_forum_enforce_hidden',  1  );

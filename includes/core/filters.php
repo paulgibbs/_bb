@@ -6,13 +6,13 @@
  * @package barebones
  * @subpackage Core
  *
- * This file contains the filters that are used through-out bbPress. They are
+ * This file contains the filters that are used through-out barebones. They are
  * consolidated here to make searching for them easier, and to help developers
  * understand at a glance the order in which things occur.
  *
  * There are a few common places that additional filters can currently be found
  *
- *  - bbPress: In {@link bbPress::setup_actions()} in bbpress.php
+ *  - barebones: In {@link barebones::setup_actions()} in bbpress.php
  *  - Admin: More in {@link BB_Admin::setup_actions()} in admin.php
  *
  * @see /core/actions.php
@@ -22,20 +22,20 @@
 if ( !defined( 'ABSPATH' ) ) exit;
 
 /**
- * Attach bbPress to WordPress
+ * Attach barebones to WordPress
  *
  * barebones uses its own internal actions to help aid in third-party plugin
  * development, and to limit the amount of potential future code changes when
  * updates to WordPress core occur.
  *
  * These actions exist to create the concept of 'plugin dependencies'. They
- * provide a safe way for plugins to execute code *only* when bbPress is
+ * provide a safe way for plugins to execute code *only* when barebones is
  * installed and activated, without needing to do complicated guesswork.
  *
  * For more information on how this works, see the 'Plugin Dependency' section
  * near the bottom of this file.
  *
- *           v--WordPress Actions       v--bbPress Sub-actions
+ *           v--WordPress Actions       v--barebones Sub-actions
  */
 add_filter( 'request',                 'bb_request',            10    );
 add_filter( 'template_include',        'bb_template_include',   10    );
@@ -51,7 +51,7 @@ add_filter( 'plugin_locale',           'bb_plugin_locale',      10, 2 );
 // Fix post author id for anonymous posts (set it back to 0) when the post status is changed
 add_filter( 'wp_insert_post_data', 'bb_fix_post_author', 30, 2 );
 
-// Force comments_status on bbPress post types
+// Force comments_status on barebones post types
 add_filter( 'comments_open', 'bb_force_comment_status' );
 
 // Add post_parent__in to posts_where
@@ -72,14 +72,14 @@ add_filter( 'bb_request', 'bb_request_feed_trap' );
 /**
  * Template Compatibility
  *
- * If you want to completely bypass this and manage your own custom bbPress
+ * If you want to completely bypass this and manage your own custom barebones
  * template hierarchy, start here by removing this filter, then look at how
  * bb_template_include() works and do something similar. :)
  */
 add_filter( 'bb_template_include',   'bb_template_include_theme_supports', 2, 1 );
 add_filter( 'bb_template_include',   'bb_template_include_theme_compat',   4, 2 );
 
-// Filter bbPress template locations
+// Filter barebones template locations
 add_filter( 'bb_get_template_stack', 'bb_add_template_stack_locations'          );
 
 // Links

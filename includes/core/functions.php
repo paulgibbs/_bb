@@ -13,57 +13,57 @@ if ( !defined( 'ABSPATH' ) ) exit;
 /** Versions ******************************************************************/
 
 /**
- * Output the bbPress version
+ * Output the barebones version
  *
  * @since barebones (1.0)
- * @uses bb_get_version() To get the bbPress version
+ * @uses bb_get_version() To get the barebones version
  */
 function bb_version() {
 	echo bb_get_version();
 }
 	/**
-	 * Return the bbPress version
+	 * Return the barebones version
 	 *
 	 * @since barebones (1.0)
-	 * @retrun string The bbPress version
+	 * @retrun string The barebones version
 	 */
 	function bb_get_version() {
 		return barebones()->version;
 	}
 
 /**
- * Output the bbPress database version
+ * Output the barebones database version
  *
  * @since barebones (1.0)
- * @uses bb_get_version() To get the bbPress version
+ * @uses bb_get_version() To get the barebones version
  */
 function bb_db_version() {
 	echo bb_get_db_version();
 }
 	/**
-	 * Return the bbPress database version
+	 * Return the barebones database version
 	 *
 	 * @since barebones (1.0)
-	 * @retrun string The bbPress version
+	 * @retrun string The barebones version
 	 */
 	function bb_get_db_version() {
 		return barebones()->db_version;
 	}
 
 /**
- * Output the bbPress database version directly from the database
+ * Output the barebones database version directly from the database
  *
  * @since barebones (1.0)
- * @uses bb_get_version() To get the current bbPress version
+ * @uses bb_get_version() To get the current barebones version
  */
 function bb_db_version_raw() {
 	echo bb_get_db_version_raw();
 }
 	/**
-	 * Return the bbPress database version directly from the database
+	 * Return the barebones database version directly from the database
 	 *
 	 * @since barebones (1.0)
-	 * @retrun string The current bbPress version
+	 * @retrun string The current barebones version
 	 */
 	function bb_get_db_version_raw() {
 		return get_option( '_bb_db_version', '' );
@@ -138,7 +138,7 @@ function bb_get_views() {
 }
 
 /**
- * Register a bbPress view
+ * Register a barebones view
  *
  * @todo Implement feeds - See {@link http://trac.bbpress.org/ticket/1422}
  *
@@ -182,7 +182,7 @@ function bb_register_view( $view, $title, $query_args = '', $feed = true, $capab
 }
 
 /**
- * Deregister a bbPress view
+ * Deregister a barebones view
  *
  * @since barebones (1.0)
  *

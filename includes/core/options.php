@@ -106,7 +106,7 @@ function bb_get_default_options() {
 /**
  * Add default options
  *
- * Hooked to bb_activate, it is only called once when bbPress is activated.
+ * Hooked to bb_activate, it is only called once when barebones is activated.
  * This is non-destructive, so existing settings will not be overridden.
  *
  * @since barebones (1.0)
@@ -127,7 +127,7 @@ function bb_add_options() {
 /**
  * Delete default options
  *
- * Hooked to bb_uninstall, it is only called once when bbPress is uninstalled.
+ * Hooked to bb_uninstall, it is only called once when barebones is uninstalled.
  * This is destructive, so existing settings will be destroyed.
  *
  * @since barebones (1.0)
@@ -146,7 +146,7 @@ function bb_delete_options() {
 }
 
 /**
- * Add filters to each bbPress option and allow them to be overloaded from
+ * Add filters to each barebones option and allow them to be overloaded from
  * inside the $bbp->options array.
  *
  * @since barebones (1.0)
@@ -156,7 +156,7 @@ function bb_delete_options() {
  */
 function bb_setup_option_filters() {
 
-	// Add filters to each bbPress option
+	// Add filters to each barebones option
 	foreach ( array_keys( bb_get_default_options() ) as $key )
 		add_filter( 'pre_option_' . $key, 'bb_pre_get_option' );
 

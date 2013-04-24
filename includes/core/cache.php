@@ -54,9 +54,9 @@ class BB_Skip_Children {
 	}
 
 	/**
-	 * Only clean post caches for main bbPress posts.
+	 * Only clean post caches for main barebones posts.
 	 *
-	 * Check that the post being updated is a bbPress post type, saves the
+	 * Check that the post being updated is a barebones post type, saves the
 	 * post ID to be used later, and adds an action to 'clean_post_cache' that
 	 * prevents child post caches from being cleared.
 	 *
@@ -67,7 +67,7 @@ class BB_Skip_Children {
 	 */
 	public function pre_post_update( $post_id = 0 ) {
 
-		// Bail if post ID is not a bbPress post type
+		// Bail if post ID is not a barebones post type
 		if ( empty( $post_id ) || ! bb_is_custom_post_type( $post_id ) )
 			return;
 
@@ -90,7 +90,7 @@ class BB_Skip_Children {
 	 */
 	public function skip_related_posts( $post_id = 0 ) {
 
-		// Bail if this post is not the current bbPress post
+		// Bail if this post is not the current barebones post
 		if ( empty( $post_id ) || ( $this->updating_post !== $post_id ) )
 			return;
 

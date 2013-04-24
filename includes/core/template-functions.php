@@ -5,7 +5,7 @@
  *
  * This file contains functions necessary to mirror the WordPress core template
  * loading process. Many of those functions are not filterable, and even then
- * would not be robust enough to predict where bbPress templates might exist.
+ * would not be robust enough to predict where barebones templates might exist.
  *
  * @package barebones
  * @subpackage TemplateFunctions
@@ -15,7 +15,7 @@
 if ( !defined( 'ABSPATH' ) ) exit;
 
 /**
- * Adds bbPress theme support to any active WordPress theme
+ * Adds barebones theme support to any active WordPress theme
  *
  * @since barebones (1.0)
  *
@@ -92,7 +92,7 @@ function bb_locate_template( $template_names, $load = false, $require_once = tru
 	}
 
 	/**
-	 * This action exists only to follow the standard bbPress coding convention,
+	 * This action exists only to follow the standard barebones coding convention,
 	 * and should not be used to short-circuit any part of the template locator.
 	 *
 	 * If you want to override a specific template part, please either filter
@@ -225,7 +225,7 @@ function bb_get_query_template( $type, $templates = array() ) {
 	if ( empty( $templates ) )
 		$templates = array( "{$type}.php" );
 
-	// Filter possible templates, try to match one, and set any bbPress theme
+	// Filter possible templates, try to match one, and set any barebones theme
 	// compat properties so they can be cross-checked later.
 	$templates = apply_filters( "bb_get_{$type}_template", $templates );
 	$templates = bb_set_theme_compat_templates( $templates );
@@ -274,7 +274,7 @@ function bb_add_template_stack_locations( $stacks = array() ) {
 }
 
 /**
- * Add checks for bbPress conditions to parse_query action
+ * Add checks for barebones conditions to parse_query action
  *
  * If it's a user page, WP_Query::bb_is_single_user is set to true.
  * If it's a user edit page, WP_Query::bb_is_single_user_edit is set to true

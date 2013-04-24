@@ -13,7 +13,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
 /**
  * Possibly intercept the template being loaded
  *
- * Listens to the 'template_include' filter and waits for any bbPress specific
+ * Listens to the 'template_include' filter and waits for any barebones specific
  * template condition to be met. If one is met and the template file exists,
  * it will be used; otherwise 
  *
@@ -108,10 +108,10 @@ function bb_template_include_theme_supports( $template = '' ) {
 	elseif ( bb_is_topic_tag()        && ( $new_template = bb_get_topic_tag_template()        ) ) :
 	endif;
 
-	// bbPress template file exists
+	// barebones template file exists
 	if ( !empty( $new_template ) ) {
 
-		// Override the WordPress template with a bbPress one
+		// Override the WordPress template with a barebones one
 		$template = $new_template;
 
 		// @see: bb_template_include_theme_compat()
@@ -124,7 +124,7 @@ function bb_template_include_theme_supports( $template = '' ) {
 /** Custom Functions **********************************************************/
 
 /**
- * Attempt to load a custom bbPress functions file, similar to each themes
+ * Attempt to load a custom barebones functions file, similar to each themes
  * functions.php file.
  *
  * @since barebones (1.0)
@@ -135,7 +135,7 @@ function bb_template_include_theme_supports( $template = '' ) {
 function bb_load_theme_functions() {
 	global $pagenow;
 
-	// If bbPress is being deactivated, do not load any more files
+	// If barebones is being deactivated, do not load any more files
 	if ( bb_is_deactivation() )
 		return;
 
@@ -486,7 +486,7 @@ function bb_get_topic_tag_edit_template() {
 }
 
 /**
- * Get the templates to use as the endpoint for bbPress template parts
+ * Get the templates to use as the endpoint for barebones template parts
  *
  * @since barebones (1.0)
  *

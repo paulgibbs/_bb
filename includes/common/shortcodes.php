@@ -97,7 +97,7 @@ class BB_Shortcodes {
 	}
 
 	/**
-	 * Register the bbPress shortcodes
+	 * Register the barebones shortcodes
 	 *
 	 * @since barebones (1.0)
 	 *

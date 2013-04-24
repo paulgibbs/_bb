@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Main bbPress Admin Class
+ * Main barebones Admin Class
  *
  * @package barebones
  * @subpackage Administration
@@ -12,7 +12,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
 
 if ( !class_exists( 'BB_Admin' ) ) :
 /**
- * Loads bbPress plugin admin area
+ * Loads barebones plugin admin area
  *
  * @package barebones
  * @subpackage Administration
@@ -23,24 +23,24 @@ class BB_Admin {
 	/** Directory *************************************************************/
 
 	/**
-	 * @var string Path to the bbPress admin directory
+	 * @var string Path to the barebones admin directory
 	 */
 	public $admin_dir = '';
 
 	/** URLs ******************************************************************/
 
 	/**
-	 * @var string URL to the bbPress admin directory
+	 * @var string URL to the barebones admin directory
 	 */
 	public $admin_url = '';
 
 	/**
-	 * @var string URL to the bbPress images directory
+	 * @var string URL to the barebones images directory
 	 */
 	public $images_url = '';
 
 	/**
-	 * @var string URL to the bbPress admin styles directory
+	 * @var string URL to the barebones admin styles directory
 	 */
 	public $styles_url = '';
 
@@ -61,7 +61,7 @@ class BB_Admin {
 	/** Functions *************************************************************/
 
 	/**
-	 * The main bbPress admin loader
+	 * The main barebones admin loader
 	 *
 	 * @since barebones (1.0)
 	 *
@@ -126,7 +126,7 @@ class BB_Admin {
 
 		add_action( 'bb_admin_menu',              array( $this, 'admin_menus'                ) ); // Add menu item to settings menu
 		add_action( 'bb_admin_head',              array( $this, 'admin_head'                 ) ); // Add some general styling to the admin area
-		add_action( 'bb_admin_notices',           array( $this, 'activation_notice'          ) ); // Add notice if not using a bbPress theme
+		add_action( 'bb_admin_notices',           array( $this, 'activation_notice'          ) ); // Add notice if not using a barebones theme
 		add_action( 'bb_register_admin_style',    array( $this, 'register_admin_style'       ) ); // Add green admin style
 		add_action( 'bb_register_admin_settings', array( $this, 'register_admin_settings'    ) ); // Add settings
 		add_action( 'bb_activation',              array( $this, 'new_install'                ) ); // Add menu item to settings menu
@@ -140,7 +140,7 @@ class BB_Admin {
 
 		/** Filters ***********************************************************/
 
-		// Modify bbPress's admin links
+		// Modify barebones's admin links
 		add_filter( 'plugin_action_links', array( $this, 'modify_plugin_action_links' ), 10, 2 );
 
 		// Map settings capabilities
@@ -208,7 +208,7 @@ class BB_Admin {
 				);
 			}
 
-			// Fudge the highlighted subnav item when on a bbPress admin page
+			// Fudge the highlighted subnav item when on a barebones admin page
 			foreach( $hooks as $hook ) {
 				add_action( "admin_head-$hook", 'bb_tools_modify_menu_highlight' );
 			}
@@ -239,8 +239,8 @@ class BB_Admin {
 
 			// About
 			add_dashboard_page(
-				__( 'Welcome to bbPress',  'bbpress' ),
-				__( 'Welcome to bbPress',  'bbpress' ),
+				__( 'Welcome to barebones',  'bbpress' ),
+				__( 'Welcome to barebones',  'bbpress' ),
 				$this->minimum_capability,
 				'bbp-about',
 				array( $this, 'about_screen' )
@@ -248,8 +248,8 @@ class BB_Admin {
 
 			// Credits
 			add_dashboard_page(
-				__( 'Welcome to bbPress',  'bbpress' ),
-				__( 'Welcome to bbPress',  'bbpress' ),
+				__( 'Welcome to barebones',  'bbpress' ),
+				__( 'Welcome to barebones',  'bbpress' ),
 				$this->minimum_capability,
 				'bbp-credits',
 				array( $this, 'credits_screen' )
@@ -389,7 +389,7 @@ class BB_Admin {
 
 				break;
 
-			// bbPress
+			// barebones
 			case 'bb_about_page'            : // About and Credits
 			case 'bb_tools_page'            : // Tools Page
 			case 'bb_tools_repair_page'     : // Tools - Repair Page
@@ -448,7 +448,7 @@ class BB_Admin {
 	/**
 	 * Admin area activation notice
 	 *
-	 * Shows a nag message in admin area about the theme not supporting bbPress
+	 * Shows a nag message in admin area about the theme not supporting barebones
 	 *
 	 * @since barebones (1.0)
 	 *
@@ -469,7 +469,7 @@ class BB_Admin {
 	 */
 	public static function modify_plugin_action_links( $links, $file ) {
 
-		// Return normal links if not bbPress
+		// Return normal links if not barebones
 		if ( plugin_basename( barebones()->file ) != $file )
 			return $links;
 
@@ -1231,7 +1231,7 @@ class BB_Admin {
 	}
 
 	/**
-	 * Registers the bbPress admin color scheme
+	 * Registers the barebones admin color scheme
 	 *
 	 * Because wp-content can exist outside of the WordPress root there is no
 	 * way to be certain what the relative path of the admin images is.
@@ -1324,8 +1324,8 @@ class BB_Admin {
 		list( $display_version ) = explode( '-', bb_get_version() ); ?>
 
 		<div class="wrap about-wrap">
-			<h1><?php printf( __( 'Welcome to bbPress %s'' 'barebones' ), $display_version ); ?></h1>
-			<div class="about-text"><?php printf( __( 'Thank you for updating to the latest version! bbPress %s goes great with pizza and popcorn, and will nicely complement your community too!'' 'barebones' ), $display_version ); ?></div>
+			<h1><?php printf( __( 'Welcome to barebones %s'' 'barebones' ), $display_version ); ?></h1>
+			<div class="about-text"><?php printf( __( 'Thank you for updating to the latest version! barebones %s goes great with pizza and popcorn, and will nicely complement your community too!'' 'barebones' ), $display_version ); ?></div>
 			<div class="bbp-badge"><?php printf( __( 'Version %s'' 'barebones' ), $display_version ); ?></div>
 
 			<h2 class="nav-tab-wrapper">
@@ -1356,13 +1356,13 @@ class BB_Admin {
 					<p><?php _e( 'Happy faces all-around now that the importers properly convert BBCodes & smilies. :)'' 'barebones' ); ?></p>
 
 					<h4><?php _e( 'Vanilla'' 'barebones' ); ?></h4>
-					<p><?php _e( 'Tired of plain old Vanilla? Now you can easily switch to <del>Mint Chocolate Chip</del> bbPress!'' 'barebones' ); ?></p>
+					<p><?php _e( 'Tired of plain old Vanilla? Now you can easily switch to <del>Mint Chocolate Chip</del> barebones!'' 'barebones' ); ?></p>
 
 					<h4><?php _e( 'SimplePress'' 'barebones' ); ?></h4>
-					<p><?php _e( 'Converting an existing SimplePress powered forum to bbPress has never been "simpler!"'' 'barebones' ); ?></p>
+					<p><?php _e( 'Converting an existing SimplePress powered forum to barebones has never been "simpler!"'' 'barebones' ); ?></p>
 
 					<h4><?php _e( 'Mingle'' 'barebones' ); ?></h4>
-					<p><?php _e( 'No time to... chit-chat; convert your Mingle forums to bbPress today!'' 'barebones' ); ?></p>
+					<p><?php _e( 'No time to... chit-chat; convert your Mingle forums to barebones today!'' 'barebones' ); ?></p>
 				</div>
 			</div>
 
@@ -1370,8 +1370,8 @@ class BB_Admin {
 				<h3><?php _e( 'Even Better BuddyPress Integration'' 'barebones' ); ?></h3>
 
 				<div class="feature-section">
-					<h4><?php _e( 'bbPress powered BuddyPress Group Forums'' 'barebones' ); ?></h4>
-					<p><?php _e( 'Use bbPress to manage your BuddyPress Group Forums, allowing for seamless integration and improved plugin performance.'' 'barebones' ); ?></p>
+					<h4><?php _e( 'barebones powered BuddyPress Group Forums'' 'barebones' ); ?></h4>
+					<p><?php _e( 'Use barebones to manage your BuddyPress Group Forums, allowing for seamless integration and improved plugin performance.'' 'barebones' ); ?></p>
 				</div>
 			</div>
 
@@ -1392,7 +1392,7 @@ class BB_Admin {
 						<p><?php _e( 'Now you can replace specific template parts on the fly without modifying the existing theme.'' 'barebones' ); ?></p>
 
 						<h4><?php _e( 'TwentyThirteen Tested'' 'barebones' ); ?></h4>
-						<p><?php _e( 'bbPress 2.3 already works with the in-development TwentyThirteen theme, coming in a future version of WordPress.'' 'barebones' ); ?></p>
+						<p><?php _e( 'barebones 2.3 already works with the in-development TwentyThirteen theme, coming in a future version of WordPress.'' 'barebones' ); ?></p>
 					</div>
 
 					<div class="last-feature">
@@ -1427,8 +1427,8 @@ class BB_Admin {
 		list( $display_version ) = explode( '-', bb_get_version() ); ?>
 
 		<div class="wrap about-wrap">
-			<h1><?php printf( __( 'Welcome to bbPress %s'' 'barebones' ), $display_version ); ?></h1>
-			<div class="about-text"><?php printf( __( 'Thank you for updating to the latest version! bbPress %s goes great with pizza and popcorn, and will nicely complement your community too!'' 'barebones' ), $display_version ); ?></div>
+			<h1><?php printf( __( 'Welcome to barebones %s'' 'barebones' ), $display_version ); ?></h1>
+			<div class="about-text"><?php printf( __( 'Thank you for updating to the latest version! barebones %s goes great with pizza and popcorn, and will nicely complement your community too!'' 'barebones' ), $display_version ); ?></div>
 			<div class="bbp-badge"><?php printf( __( 'Version %s' ), $display_version ); ?></div>
 
 			<h2 class="nav-tab-wrapper">
@@ -1439,7 +1439,7 @@ class BB_Admin {
 				</a>
 			</h2>
 
-			<p class="about-description"><?php _e( 'bbPress is created by a worldwide swarm of busy, busy bees.'' 'barebones' ); ?></p>
+			<p class="about-description"><?php _e( 'barebones is created by a worldwide swarm of busy, busy bees.'' 'barebones' ); ?></p>
 
 			<h4 class="wp-people-group"><?php _e( 'Project Leaders'' 'barebones' ); ?></h4>
 			<ul class="wp-people-group " id="wp-people-group-project-leaders">
@@ -1479,7 +1479,7 @@ class BB_Admin {
 				</li>
 			</ul>
 
-			<h4 class="wp-people-group"><?php _e( 'Core Contributors to bbPress 2.3'' 'barebones' ); ?></h4>
+			<h4 class="wp-people-group"><?php _e( 'Core Contributors to barebones 2.3'' 'barebones' ); ?></h4>
 			<p class="wp-credits-list">
 				<a href="http://profiles.wordpress.org/alexvorn2">alexvorn2</a>,
 				<a href="http://profiles.wordpress.org/alex-ye">alex-ye</a>,
@@ -1531,7 +1531,7 @@ class BB_Admin {
 	/** Updaters **************************************************************/
 
 	/**
-	 * Update all bbPress forums across all sites
+	 * Update all barebones forums across all sites
 	 *
 	 * @since barebones (1.0)
 	 *
@@ -1578,7 +1578,7 @@ class BB_Admin {
 	}
 
 	/**
-	 * Update all bbPress forums across all sites
+	 * Update all barebones forums across all sites
 	 *
 	 * @since barebones (1.0)
 	 *
@@ -1631,7 +1631,7 @@ class BB_Admin {
 
 							<?php
 
-							// Get the response of the bbPress update on this site
+							// Get the response of the barebones update on this site
 							$response = wp_remote_get(
 								trailingslashit( $siteurl ) . 'wp-admin/index.php?page=bbp-update&action=bbp-update',
 								array( 'timeout' => 30, 'httpversion' => '1.1' )
@@ -1695,7 +1695,7 @@ class BB_Admin {
 endif; // class_exists check
 
 /**
- * Setup bbPress Admin
+ * Setup barebones Admin
  *
  * @since barebones (1.0)
  *

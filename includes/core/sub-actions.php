@@ -7,9 +7,9 @@
  * called 'plugin dependency' which enables a plugin to have plugins of their
  * own in a safe and reliable way.
  *
- * We do this in bbPress by mirroring existing WordPress hookss in many places
- * allowing dependant plugins to hook into the bbPress specific ones, thus
- * guaranteeing proper code execution only when bbPress is active.
+ * We do this in barebones by mirroring existing WordPress hookss in many places
+ * allowing dependant plugins to hook into the barebones specific ones, thus
+ * guaranteeing proper code execution only when barebones is active.
  *
  * The following functions are wrappers for hookss, allowing them to be
  * manually called and/or piggy-backed on top of other hooks if needed.
@@ -20,7 +20,7 @@
 /** Activation Actions ********************************************************/
 
 /**
- * Runs on bbPress activation
+ * Runs on barebones activation
  *
  * @since barebones (1.0)
  * @uses register_uninstall_hook() To register our own uninstall hook
@@ -31,7 +31,7 @@ function bb_activation() {
 }
 
 /**
- * Runs on bbPress deactivation
+ * Runs on barebones deactivation
  *
  * @since barebones (1.0)
  * @uses do_action() Calls 'bb_deactivation' hook
@@ -41,7 +41,7 @@ function bb_deactivation() {
 }
 
 /**
- * Runs when uninstalling bbPress
+ * Runs when uninstalling barebones
  *
  * @since barebones (1.0)
  * @uses do_action() Calls 'bb_uninstall' hook
@@ -183,7 +183,7 @@ function bb_register_post_statuses() {
 }
 
 /**
- * Register the built in bbPress taxonomies
+ * Register the built in barebones taxonomies
  *
  * @since barebones (1.0)
  * @uses do_action() Calls 'bb_register_taxonomies'
@@ -193,7 +193,7 @@ function bb_register_taxonomies() {
 }
 
 /**
- * Register the default bbPress views
+ * Register the default barebones views
  *
  * @since barebones (1.0)
  * @uses do_action() Calls 'bb_register_views'
@@ -203,7 +203,7 @@ function bb_register_views() {
 }
 
 /**
- * Register the default bbPress shortcodes
+ * Register the default barebones shortcodes
  *
  * @since barebones (1.0)
  * @uses do_action() Calls 'bb_register_shortcodes'
@@ -213,7 +213,7 @@ function bb_register_shortcodes() {
 }
 
 /**
- * Enqueue bbPress specific CSS and JS
+ * Enqueue barebones specific CSS and JS
  *
  * @since barebones (1.0)
  * @uses do_action() Calls 'bb_enqueue_scripts'
@@ -223,7 +223,7 @@ function bb_enqueue_scripts() {
 }
 
 /**
- * Add the bbPress-specific rewrite tags
+ * Add the barebones-specific rewrite tags
  *
  * @since barebones (1.0)
  * @uses do_action() Calls 'bb_add_rewrite_tags'
@@ -233,7 +233,7 @@ function bb_add_rewrite_tags() {
 }
 
 /**
- * Add the bbPress-specific login forum action
+ * Add the barebones-specific login forum action
  *
  * @since barebones (1.0)
  * @uses do_action() Calls 'bb_login_form_login'
@@ -283,7 +283,7 @@ function bb_ready() {
 /** Theme Permissions *********************************************************/
 
 /**
- * The main action used for redirecting bbPress theme actions that are not
+ * The main action used for redirecting barebones theme actions that are not
  * permitted by the current_user
  *
  * @since barebones (1.0)
@@ -389,7 +389,7 @@ function bb_request( $query_vars = array() ) {
 }
 
 /**
- * The main filter used for theme compatibility and displaying custom bbPress
+ * The main filter used for theme compatibility and displaying custom barebones
  * theme files.
  *
  * @since barebones (1.0)
@@ -402,7 +402,7 @@ function bb_template_include( $template = '' ) {
 }
 
 /**
- * Generate bbPress-specific rewrite rules
+ * Generate barebones-specific rewrite rules
  *
  * @since barebones (1.0)
  * @param WP_Rewrite $wp_rewrite
@@ -413,7 +413,7 @@ function bb_generate_rewrite_rules( $wp_rewrite ) {
 }
 
 /**
- * Filter the allowed themes list for bbPress specific themes
+ * Filter the allowed themes list for barebones specific themes
  *
  * @since barebones (1.0)
  * @uses apply_filters() Calls 'bb_allowed_themes' with the allowed themes list

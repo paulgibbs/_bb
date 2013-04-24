@@ -3,7 +3,7 @@
 /**
  * barebones Extentions
  *
- * There's a world of really cool plugins out there, and bbPress comes with
+ * There's a world of really cool plugins out there, and barebones comes with
  * support for some of the most popular ones.
  *
  * @package barebones
@@ -14,11 +14,11 @@
 if ( !defined( 'ABSPATH' ) ) exit;
 
 /**
- * Loads Akismet inside the bbPress global class
+ * Loads Akismet inside the barebones global class
  *
  * @since barebones (1.0)
  *
- * @return If bbPress is not active
+ * @return If barebones is not active
  */
 function bb_setup_akismet() {
 
@@ -31,7 +31,7 @@ function bb_setup_akismet() {
 	// Include the Akismet Component
 	require( barebones()->includes_dir . 'extend/akismet.php' );
 
-	// Instantiate Akismet for bbPress
+	// Instantiate Akismet for barebones
 	barebones()->extend->akismet = new BB_Akismet();
 }
 
@@ -64,6 +64,6 @@ function bb_setup_buddypress() {
 	// Include the BuddyPress Component
 	require( barebones()->includes_dir . 'extend/buddypress/loader.php' );
 
-	// Instantiate BuddyPress for bbPress
+	// Instantiate BuddyPress for barebones
 	barebones()->extend->buddypress = new BB_Forums_Component();
 }

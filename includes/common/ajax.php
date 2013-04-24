@@ -14,7 +14,7 @@
 if ( !defined( 'ABSPATH' ) ) exit;
 
 /**
- * Output the URL to use for theme-side bbPress AJAX requests
+ * Output the URL to use for theme-side barebones AJAX requests
  *
  * @since barebones (1.0)
  *
@@ -24,7 +24,7 @@ function bb_ajax_url() {
 	echo bb_get_ajax_url();
 }
 	/**
-	 * Return the URL to use for theme-side bbPress AJAX requests
+	 * Return the URL to use for theme-side barebones AJAX requests
 	 *
 	 * @since barebones (1.0)
 	 *
@@ -41,7 +41,7 @@ function bb_ajax_url() {
 	}
 
 /**
- * Is this a bbPress AJAX request?
+ * Is this a barebones AJAX request?
  *
  * @since barebones (1.0)
  *
@@ -52,12 +52,12 @@ function bb_is_ajax() {
 }
 
 /**
- * Hooked to the 'bb_template_redirect' action, this is bbPress's custom
+ * Hooked to the 'bb_template_redirect' action, this is barebones's custom
  * theme-side ajax handler.
  *
  * @since barebones (1.0)
  *
- * @return If not a bbPress ajax request
+ * @return If not a barebones ajax request
  */
 function bb_do_ajax() {
 
@@ -74,7 +74,7 @@ function bb_do_ajax() {
 	// Disable content sniffing in browsers that support it
 	send_nosniff_header();
 
-	// Perform custom bbPress ajax
+	// Perform custom barebones ajax
 	do_action( 'bb_ajax_' . $_REQUEST['action'] );
 
 	// All done

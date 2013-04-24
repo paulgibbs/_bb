@@ -321,7 +321,7 @@ function bb_get_wp_roles() {
 /** Forum Roles ***************************************************************/
 
 /**
- * Add the bbPress roles to the $wp_roles global.
+ * Add the barebones roles to the $wp_roles global.
  *
  * We do this to avoid adding these values to the database.
  *
@@ -375,10 +375,10 @@ function bb_filter_user_roles_option() {
  *
  * @since barebones (1.0)
  *
- * @internal Used by bbPress to reinitialize dynamic roles on blog switch
+ * @internal Used by barebones to reinitialize dynamic roles on blog switch
  *
  * @param array $roles
- * @return array Combined array of database roles and dynamic bbPress roles
+ * @return array Combined array of database roles and dynamic barebones roles
  */
 function _bb_reinit_dynamic_roles( $roles = array() ) {
 	foreach( bb_get_dynamic_roles() as $role_id => $details ) {
@@ -455,7 +455,7 @@ function bb_get_dynamic_role_name( $role_id = '' ) {
 }
 
 /**
- * Removes the bbPress roles from the editable roles array
+ * Removes the barebones roles from the editable roles array
  *
  * This used to use array_diff_assoc() but it randomly broke before 2.2 release.
  * Need to research what happened, and if there's a way to speed this up.
@@ -467,7 +467,7 @@ function bb_get_dynamic_role_name( $role_id = '' ) {
  */
 function bb_filter_blog_editable_roles( $all_roles = array() ) {
 
-	// Loop through bbPress roles
+	// Loop through barebones roles
 	foreach ( array_keys( bb_get_dynamic_roles() ) as $bb_role ) {
 
 		// Loop through WordPress roles
@@ -484,7 +484,7 @@ function bb_filter_blog_editable_roles( $all_roles = array() ) {
 }
 
 /**
- * The keymaster role for bbPress users
+ * The keymaster role for barebones users
  *
  * @since barebones (1.0)
  *
@@ -496,7 +496,7 @@ function bb_get_keymaster_role() {
 }
 
 /**
- * The moderator role for bbPress users
+ * The moderator role for barebones users
  *
  * @since barebones (1.0)
  *
@@ -546,7 +546,7 @@ function bb_get_blocked_role() {
 /** Deprecated ****************************************************************/
 
 /**
- * Adds bbPress-specific user roles.
+ * Adds barebones-specific user roles.
  *
  * @since barebones (1.0)
  * @deprecated since version 2.2
@@ -556,7 +556,7 @@ function bb_add_roles() {
 }
 
 /**
- * Removes bbPress-specific user roles.
+ * Removes barebones-specific user roles.
  *
  * @since barebones (1.0)
  * @deprecated since version 2.2

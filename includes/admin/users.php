@@ -12,7 +12,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
 
 if ( !class_exists( 'BB_Users_Admin' ) ) :
 /**
- * Loads bbPress users admin area
+ * Loads barebones users admin area
  *
  * @package barebones
  * @subpackage Administration
@@ -21,7 +21,7 @@ if ( !class_exists( 'BB_Users_Admin' ) ) :
 class BB_Users_Admin {
 
 	/**
-	 * The bbPress users admin loader
+	 * The barebones users admin loader
 	 *
 	 * @since barebones (1.0)
 	 *
@@ -164,7 +164,7 @@ class BB_Users_Admin {
 		if ( empty( $_REQUEST['users'] ) )
 			return;
 
-		// Bail if this isn't a bbPress action
+		// Bail if this isn't a barebones action
 		if ( empty( $_REQUEST['bbp-new-role'] ) || empty( $_REQUEST['bbp-change-role'] ) )
 			return;
 
@@ -224,11 +224,11 @@ class BB_Users_Admin {
 	 * @param string $column_name
 	 * @param int $user_id
 	 *
-	 * @return string Displayable bbPress user role
+	 * @return string Displayable barebones user role
 	 */
 	public static function user_role_row( $retval = '', $column_name = '', $user_id = 0 ) {
 
-		// Only looking for bbPress's user role column
+		// Only looking for barebones's user role column
 		if ( 'bb_user_role' == $column_name ) {
 
 			// Get the users role

@@ -70,7 +70,7 @@ function bb_admin_custom_menu_order( $menu_order = false ) {
  */
 function bb_admin_menu_order( $menu_order ) {
 
-	// Bail if user cannot see any top level bbPress menus
+	// Bail if user cannot see any top level barebones menus
 	if ( empty( $menu_order ) || ( false === barebones()->admin->show_separator ) )
 		return $menu_order;
 
@@ -89,7 +89,7 @@ function bb_admin_menu_order( $menu_order ) {
 	// Loop through menu order and do some rearranging
 	foreach ( $menu_order as $item ) {
 
-		// Position bbPress menus above appearance
+		// Position barebones menus above appearance
 		if ( $second_sep == $item ) {
 
 			// Add our custom menus
@@ -138,7 +138,7 @@ function bb_filter_sample_permalink( $post_link, $_post, $leavename = false, $sa
 }
 
 /**
- * Uninstall all bbPress options and capabilities from a specific site.
+ * Uninstall all barebones options and capabilities from a specific site.
  *
  * @since barebones (1.0)
  * @param type $site_id
@@ -155,11 +155,11 @@ function bb_do_uninstall( $site_id = 0 ) {
 }
 
 /**
- * Redirect user to bbPress's What's New page on activation
+ * Redirect user to barebones's What's New page on activation
  *
  * @since barebones (1.0)
  *
- * @internal Used internally to redirect bbPress to the about page on activation
+ * @internal Used internally to redirect barebones to the about page on activation
  *
  * @uses get_transient() To see if transient to redirect exists
  * @uses delete_transient() To delete the transient if it exists
@@ -183,13 +183,13 @@ function bb_do_activation_redirect() {
 	if ( is_network_admin() || isset( $_GET['activate-multi'] ) )
 		return;
 
-	// Redirect to bbPress about page
+	// Redirect to barebones about page
 	wp_safe_redirect( add_query_arg( array( 'page' => 'bbp-about' ), admin_url( 'index.php' ) ) );
 }
 
 /**
  * This tells WP to highlight the Tools > Forums menu item,
- * regardless of which actual bbPress Tools screen we are on.
+ * regardless of which actual barebones Tools screen we are on.
  *
  * The conditional prevents the override when the user is viewing settings or
  * any third-party plugins.
@@ -201,7 +201,7 @@ function bb_do_activation_redirect() {
 function bb_tools_modify_menu_highlight() {
 	global $plugin_page, $submenu_file;
 
-	// This tweaks the Tools subnav menu to only show one bbPress menu item
+	// This tweaks the Tools subnav menu to only show one barebones menu item
 	if ( ! in_array( $plugin_page, array( 'bbp-settings' ) ) )
 		$submenu_file = 'bbp-repair';
 }

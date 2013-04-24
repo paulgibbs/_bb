@@ -14,9 +14,9 @@ if ( !defined( 'ABSPATH' ) ) exit;
 
 /**
  * What follows is an attempt at intercepting the natural page load process
- * to replace the_content() with the appropriate bbPress content.
+ * to replace the_content() with the appropriate barebones content.
  *
- * To do this, bbPress does several direct manipulations of global variables
+ * To do this, barebones does several direct manipulations of global variables
  * and forces them to do what they are not supposed to be doing.
  *
  * Don't try anything you're about to witness here, at home. Ever.
@@ -105,10 +105,10 @@ function bb_setup_theme_compat( $theme = '' ) {
 }
 
 /**
- * Gets the name of the bbPress compatable theme used, in the event the
- * currently active WordPress theme does not explicitly support bbPress.
+ * Gets the name of the barebones compatable theme used, in the event the
+ * currently active WordPress theme does not explicitly support barebones.
  * This can be filtered or set manually. Tricky theme authors can override the
- * default and include their own bbPress compatibility layers for their themes.
+ * default and include their own barebones compatibility layers for their themes.
  *
  * @since barebones (1.0)
  * @uses apply_filters()
@@ -119,10 +119,10 @@ function bb_get_theme_compat_id() {
 }
 
 /**
- * Gets the name of the bbPress compatable theme used, in the event the
- * currently active WordPress theme does not explicitly support bbPress.
+ * Gets the name of the barebones compatable theme used, in the event the
+ * currently active WordPress theme does not explicitly support barebones.
  * This can be filtered or set manually. Tricky theme authors can override the
- * default and include their own bbPress compatibility layers for their themes.
+ * default and include their own barebones compatibility layers for their themes.
  *
  * @since barebones (1.0)
  * @uses apply_filters()
@@ -133,10 +133,10 @@ function bb_get_theme_compat_name() {
 }
 
 /**
- * Gets the version of the bbPress compatable theme used, in the event the
- * currently active WordPress theme does not explicitly support bbPress.
+ * Gets the version of the barebones compatable theme used, in the event the
+ * currently active WordPress theme does not explicitly support barebones.
  * This can be filtered or set manually. Tricky theme authors can override the
- * default and include their own bbPress compatibility layers for their themes.
+ * default and include their own barebones compatibility layers for their themes.
  *
  * @since barebones (1.0)
  * @uses apply_filters()
@@ -147,10 +147,10 @@ function bb_get_theme_compat_version() {
 }
 
 /**
- * Gets the bbPress compatable theme used in the event the currently active
- * WordPress theme does not explicitly support bbPress. This can be filtered,
+ * Gets the barebones compatable theme used in the event the currently active
+ * WordPress theme does not explicitly support barebones. This can be filtered,
  * or set manually. Tricky theme authors can override the default and include
- * their own bbPress compatibility layers for their themes.
+ * their own barebones compatibility layers for their themes.
  *
  * @since barebones (1.0)
  * @uses apply_filters()
@@ -161,10 +161,10 @@ function bb_get_theme_compat_dir() {
 }
 
 /**
- * Gets the bbPress compatable theme used in the event the currently active
- * WordPress theme does not explicitly support bbPress. This can be filtered,
+ * Gets the barebones compatable theme used in the event the currently active
+ * WordPress theme does not explicitly support barebones. This can be filtered,
  * or set manually. Tricky theme authors can override the default and include
- * their own bbPress compatibility layers for their themes.
+ * their own barebones compatibility layers for their themes.
  *
  * @since barebones (1.0)
  * @uses apply_filters()
@@ -234,7 +234,7 @@ function bb_set_theme_compat_template( $template = '' ) {
  * Set the theme compat original_template global
  *
  * Stash the original template file for the current query. Useful for checking
- * if bbPress was able to find a more appropriate template.
+ * if barebones was able to find a more appropriate template.
  *
  * @since barebones (1.0)
  */
@@ -248,7 +248,7 @@ function bb_set_theme_compat_original_template( $template = '' ) {
  * Set the theme compat original_template global
  *
  * Stash the original template file for the current query. Useful for checking
- * if bbPress was able to find a more appropriate template.
+ * if barebones was able to find a more appropriate template.
  *
  * @since barebones (1.0)
  */
@@ -262,7 +262,7 @@ function bb_is_theme_compat_original_template( $template = '' ) {
 }
 
 /**
- * Register a new bbPress theme package to the active theme packages array
+ * Register a new barebones theme package to the active theme packages array
  *
  * @since barebones (1.0)
  * @param array $theme
@@ -277,7 +277,7 @@ function bb_register_theme_package( $theme = array(), $override = true ) {
 	if ( ! is_a( $theme, 'BB_Theme_Compat' ) )
 		return;
 
-	// Load up bbPress
+	// Load up barebones
 	$bbp = barebones();
 
 	// Only override if the flag is set and not previously registered
@@ -424,7 +424,7 @@ function bb_theme_compat_reset_post( $args = array() ) {
 }
 
 /**
- * Reset main query vars and filter 'the_content' to output a bbPress
+ * Reset main query vars and filter 'the_content' to output a barebones
  * template part as needed.
  *
  * @since barebones (1.0)
@@ -635,9 +635,9 @@ function bb_template_include_theme_compat( $template = '' ) {
 	}
 
 	/**
-	 * Bail if the template already matches a bbPress template. This includes
+	 * Bail if the template already matches a barebones template. This includes
 	 * archive-* and single-* WordPress post_type matches (allowing
-	 * themes to use the expected format) as well as all bbPress-specific
+	 * themes to use the expected format) as well as all barebones-specific
 	 * template files for users, topics, forums, etc...
 	 *
 	 * We do this after the above checks to prevent incorrect 404 body classes
@@ -649,7 +649,7 @@ function bb_template_include_theme_compat( $template = '' ) {
 		return $template;
 
 	/**
-	 * If we are relying on bbPress's built in theme compatibility to load
+	 * If we are relying on barebones's built in theme compatibility to load
 	 * the proper content, we need to intercept the_content, replace the
 	 * output, and display ours instead.
 	 *
@@ -682,7 +682,7 @@ function bb_template_include_theme_compat( $template = '' ) {
 
 /**
  * Replaces the_content() if the post_type being displayed is one that would
- * normally be handled by bbPress, but proper single page templates do not
+ * normally be handled by barebones, but proper single page templates do not
  * exist in the currently active theme.
  *
  * Note that we do *not* currently use is_main_query() here. This is because so
@@ -1056,7 +1056,7 @@ function bb_restore_all_filters( $tag, $priority = false ) {
 }
 
 /**
- * Force comments_status to 'closed' for bbPress post types
+ * Force comments_status to 'closed' for barebones post types
  *
  * @since barebones (1.0)
  * @param bool $open True if open, false if closed
@@ -1071,7 +1071,7 @@ function bb_force_comment_status( $open, $post_id = 0 ) {
 	// Default return value is what is passed in $open
 	$retval = $open;
 
-	// Only force for bbPress post types
+	// Only force for barebones post types
 	switch ( $post_type ) {
 		case bb_get_forum_post_type() :
 		case bb_get_topic_post_type() :

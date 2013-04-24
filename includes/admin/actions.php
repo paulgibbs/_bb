@@ -6,13 +6,13 @@
  * @package barebones
  * @subpackage Admin
  *
- * This file contains the actions that are used through-out bbPress Admin. They
+ * This file contains the actions that are used through-out barebones Admin. They
  * are consolidated here to make searching for them easier, and to help developers
  * understand at a glance the order in which things occur.
  *
  * There are a few common places that additional actions can currently be found
  *
- *  - bbPress: In {@link bbPress::setup_actions()} in bbpress.php
+ *  - barebones: In {@link barebones::setup_actions()} in bbpress.php
  *  - Admin: More in {@link BB_Admin::setup_actions()} in admin.php
  *
  * @see bbp-core-actions.php
@@ -23,20 +23,20 @@
 if ( !defined( 'ABSPATH' ) ) exit;
 
 /**
- * Attach bbPress to WordPress
+ * Attach barebones to WordPress
  *
  * barebones uses its own internal actions to help aid in third-party plugin
  * development, and to limit the amount of potential future code changes when
  * updates to WordPress core occur.
  *
  * These actions exist to create the concept of 'plugin dependencies'. They
- * provide a safe way for plugins to execute code *only* when bbPress is
+ * provide a safe way for plugins to execute code *only* when barebones is
  * installed and activated, without needing to do complicated guesswork.
  *
  * For more information on how this works, see the 'Plugin Dependency' section
  * near the bottom of this file.
  *
- *           v--WordPress Actions       v--bbPress Sub-actions
+ *           v--WordPress Actions       v--barebones Sub-actions
  */
 add_action( 'admin_menu',              'bb_admin_menu'                    );
 add_action( 'admin_init',              'bb_admin_init'                    );
@@ -104,7 +104,7 @@ function bb_new_site( $blog_id, $user_id, $domain, $path, $site_id, $meta ) {
 	// Switch to the new blog
 	switch_to_blog( $blog_id );
 
-	// Do the bbPress activation routine
+	// Do the barebones activation routine
 	do_action( 'bb_new_site', $blog_id, $user_id, $domain, $path, $site_id, $meta );
 
 	// restore original blog
@@ -154,7 +154,7 @@ function bb_admin_notices() {
 }
 
 /**
- * Dedicated action to register bbPress importers
+ * Dedicated action to register barebones importers
  *
  * @since barebones (1.0)
  * @uses do_action() Calls 'bb_admin_notices'

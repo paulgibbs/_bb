@@ -9,7 +9,7 @@ Name: Paul Gibbs
 Twitter: pgibbs
 
 /* THANKS */
-bbPress, BuddyPress
+barebones, BuddyPress
 
 /* META */
 Updated: 2013/04/23

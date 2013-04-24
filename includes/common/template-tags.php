@@ -114,7 +114,7 @@ function bb_is_site_public( $site_id = 0 ) {
 }
 
 /**
- * Check if current page is a bbPress forum
+ * Check if current page is a barebones forum
  *
  * @since barebones (1.0)
  *
@@ -210,7 +210,7 @@ function bb_is_forum_edit() {
 }
 
 /**
- * Check if current page is a bbPress topic
+ * Check if current page is a barebones topic
  *
  * @since barebones (1.0)
  *
@@ -403,7 +403,7 @@ function bb_is_topic_tag_edit() {
 }
 
 /**
- * Check if the current post type is one of bbPress's
+ * Check if the current post type is one of barebones's
  *
  * @since barebones (1.0)
  *
@@ -420,7 +420,7 @@ function bb_is_custom_post_type( $the_post = false ) {
 	// Assume false
 	$retval = false;
 
-	// Viewing one of the bbPress post types
+	// Viewing one of the barebones post types
 	if ( in_array( get_post_type( $the_post ), array(
 		bb_get_forum_post_type(),
 		bb_get_topic_post_type(),
@@ -432,7 +432,7 @@ function bb_is_custom_post_type( $the_post = false ) {
 }
 
 /**
- * Check if current page is a bbPress reply
+ * Check if current page is a barebones reply
  *
  * @since barebones (1.0)
  *
@@ -525,7 +525,7 @@ function bb_is_single_reply() {
 }
 
 /**
- * Check if current page is a bbPress user's favorites page (profile page)
+ * Check if current page is a barebones user's favorites page (profile page)
  *
  * @since barebones (1.0)
  *
@@ -545,7 +545,7 @@ function bb_is_favorites() {
 }
 
 /**
- * Check if current page is a bbPress user's subscriptions page (profile page)
+ * Check if current page is a barebones user's subscriptions page (profile page)
  *
  * @since barebones (1.0)
  *
@@ -565,7 +565,7 @@ function bb_is_subscriptions() {
 }
 
 /**
- * Check if current page shows the topics created by a bbPress user (profile
+ * Check if current page shows the topics created by a barebones user (profile
  * page)
  *
  * @since barebones (1.0)
@@ -586,7 +586,7 @@ function bb_is_topics_created() {
 }
 
 /**
- * Check if current page shows the topics created by a bbPress user (profile
+ * Check if current page shows the topics created by a barebones user (profile
  * page)
  *
  * @since barebones (1.0)
@@ -961,19 +961,19 @@ function bb_body_class( $wp_classes, $custom_classes = false ) {
 
 	/** Clean up **************************************************************/
 
-	// Add bbPress class if we are within a bbPress page
+	// Add barebones class if we are within a barebones page
 	if ( !empty( $bb_classes ) ) {
 		$bb_classes[] = 'bbpress';
 	}
 
-	// Merge WP classes with bbPress classes and remove any duplicates
+	// Merge WP classes with barebones classes and remove any duplicates
 	$classes = array_unique( array_merge( (array) $bb_classes, (array) $wp_classes ) );
 
 	return apply_filters( 'bb_get_the_body_class', $classes, $bb_classes, $wp_classes, $custom_classes );
 }
 
 /**
- * Use the above is_() functions to return if in any bbPress page
+ * Use the above is_() functions to return if in any barebones page
  *
  * @since barebones (1.0)
  *
@@ -992,7 +992,7 @@ function bb_body_class( $wp_classes, $custom_classes = false ) {
  * @uses bb_is_subscriptions()
  * @uses bb_is_favorites()
  * @uses bb_is_topics_created()
- * @return bool In a bbPress page
+ * @return bool In a barebones page
  */
 function is_barebones() {
 
@@ -2350,9 +2350,9 @@ function bb_allowed_tags() {
  *
  * @since barebones (1.0)
  *
- * @uses WP_Error bbPress::errors::get_error_codes() To get the error codes
- * @uses WP_Error bbPress::errors::get_error_data() To get the error data
- * @uses WP_Error bbPress::errors::get_error_messages() To get the error
+ * @uses WP_Error barebones::errors::get_error_codes() To get the error codes
+ * @uses WP_Error barebones::errors::get_error_data() To get the error data
+ * @uses WP_Error barebones::errors::get_error_messages() To get the error
  *                                                       messages
  * @uses is_wp_error() To check if it's a {@link WP_Error}
  */
@@ -2365,7 +2365,7 @@ function bb_template_notices() {
 	// Define local variable(s)
 	$errors = $messages = array();
 
-	// Get bbPress
+	// Get barebones
 	$bbp = barebones();
 
 	// Loop through notices
@@ -2438,7 +2438,7 @@ function bb_logout_link( $redirect_to = '' ) {
 /** Title *********************************************************************/
 
 /**
- * Custom page title for bbPress pages
+ * Custom page title for barebones pages
  *
  * @since barebones (1.0)
  *

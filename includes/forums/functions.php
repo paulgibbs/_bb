@@ -96,7 +96,7 @@ function bb_insert_forum( $forum_data = array(), $forum_meta = array() ) {
  * @uses remove_filter() To remove 'wp_filter_kses' filters if needed
  * @uses apply_filters() Calls 'bb_new_forum_pre_title' with the content
  * @uses apply_filters() Calls 'bb_new_forum_pre_content' with the content
- * @uses bbPress::errors::get_error_codes() To get the {@link WP_Error} errors
+ * @uses barebones::errors::get_error_codes() To get the {@link WP_Error} errors
  * @uses wp_insert_post() To insert the forum
  * @uses do_action() Calls 'bb_new_forum' with the forum id, forum id,
  *                    anonymous data and reply author
@@ -104,7 +104,7 @@ function bb_insert_forum( $forum_data = array(), $forum_meta = array() ) {
  * @uses bb_unstick_forum() To unstick the forum
  * @uses bb_get_forum_permalink() To get the forum permalink
  * @uses wp_safe_redirect() To redirect to the forum link
- * @uses bbPress::errors::get_error_messages() To get the {@link WP_Error} error
+ * @uses barebones::errors::get_error_messages() To get the {@link WP_Error} error
  *                                              messages
  */
 function bb_new_forum_handler( $action = '' ) {
@@ -336,7 +336,7 @@ function bb_new_forum_handler( $action = '' ) {
  * Handles the front end edit forum submission
  *
  * @param string $action The requested action to compare this function to
- * @uses bbPress:errors::add() To log various error messages
+ * @uses barebones:errors::add() To log various error messages
  * @uses bb_get_forum() To get the forum
  * @uses bb_verify_nonce_request() To verify the nonce and check the request
  * @uses bb_is_forum_anonymous() To check if forum is by an anonymous user
@@ -352,7 +352,7 @@ function bb_new_forum_handler( $action = '' ) {
  *                        forum id
  * @uses apply_filters() Calls 'bb_edit_forum_pre_content' with the content
  *                        and forum id
- * @uses bbPress::errors::get_error_codes() To get the {@link WP_Error} errors
+ * @uses barebones::errors::get_error_codes() To get the {@link WP_Error} errors
  * @uses wp_save_post_revision() To save a forum revision
  * @uses bb_update_forum_revision_log() To update the forum revision log
  * @uses wp_update_post() To update the forum
@@ -362,7 +362,7 @@ function bb_new_forum_handler( $action = '' ) {
  *                                 to another
  * @uses bb_get_forum_permalink() To get the forum permalink
  * @uses wp_safe_redirect() To redirect to the forum link
- * @uses bbPress::errors::get_error_messages() To get the {@link WP_Error} error
+ * @uses barebones::errors::get_error_messages() To get the {@link WP_Error} error
  *                                              messages
  */
 function bb_edit_forum_handler( $action = '' ) {

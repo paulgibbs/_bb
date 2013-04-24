@@ -447,7 +447,7 @@ function bb_admin_setting_callback_subscriptions() {
 /**
  * Allow topic tags setting field
  *
- * @since bbPress (r####)
+ * @since barebones (r####)
  *
  * @uses checked() To display the checked attribute
  */
@@ -576,7 +576,7 @@ function bb_admin_setting_callback_subtheme_id() {
 	// canonical backup if no other packages exist. If there's an error here,
 	// something else is wrong.
 	//
-	// @see bbPress::register_theme_packages()
+	// @see barebones::register_theme_packages()
 	foreach ( (array) barebones()->theme_compat->packages as $id => $theme ) {
 		$theme_options .= '<option value="' . esc_attr( $id ) . '"' . selected( $theme->id, $current_package, false ) . '>' . sprintf( __( '%1$s - %2$s'' 'barebones' ), esc_html( $theme->name ), esc_html( str_replace( WP_CONTENT_DIR, '', $theme->dir ) ) )  . '</option>';
 	}
@@ -584,7 +584,7 @@ function bb_admin_setting_callback_subtheme_id() {
 	if ( !empty( $theme_options ) ) : ?>
 
 		<select name="_bb_theme_package_id" id="_bb_theme_package_id" <?php bb_maybe_admin_setting_disabled( '_bb_theme_package_id' ); ?>><?php echo $theme_options ?></select>
-		<label for="_bb_theme_package_id"><?php _e( 'will serve all bbPress templates'' 'barebones' ); ?></label>
+		<label for="_bb_theme_package_id"><?php _e( 'will serve all barebones templates'' 'barebones' ); ?></label>
 
 	<?php else : ?>
 
@@ -1245,7 +1245,7 @@ function bb_converter_setting_callback_convert_users() {
 
 	<input id="_bb_converter_convert_users" name="_bb_converter_convert_users" type="checkbox" id="_bb_converter_convert_users" value="1" <?php checked( get_option( '_bb_converter_convert_users', false ) ); ?> />
 	<label for="_bb_converter_convert_users"><?php _e( 'Attempt to import user accounts from previous forums'' 'barebones' ); ?></label>
-	<p class="description"><?php _e( 'Non-bbPress passwords cannot be automatically converted. They will be converted as each user logs in.'' 'barebones' ); ?></p>
+	<p class="description"><?php _e( 'Non-barebones passwords cannot be automatically converted. They will be converted as each user logs in.'' 'barebones' ); ?></p>
 
 <?php
 }
@@ -1345,7 +1345,7 @@ function bb_admin_settings_help() {
 		'id'      => 'slus',
 		'title'   => __( 'Slugs'' 'barebones' ),
 		'content' => '<p>' . __( 'The Slugs section allows you to control the permalink structure for your forums.',                                                                                                            'bbpress' ) . '</p>' .
-					 '<p>' . __( '"Archive Slugs" are used as the "root" for your forums and topics. If you combine these values with existing page slugs, bbPress will attempt to output the most correct title and content.'' 'barebones' ) . '</p>' .
+					 '<p>' . __( '"Archive Slugs" are used as the "root" for your forums and topics. If you combine these values with existing page slugs, barebones will attempt to output the most correct title and content.'' 'barebones' ) . '</p>' .
 					 '<p>' . __( '"Single Slugs" are used as a prefix when viewing an individual forum, topic, reply, user, or view.',                                                                                          'bbpress' ) . '</p>' .
 					 '<p>' . __( 'In the event of a slug collision with WordPress or BuddyPress, a warning will appear next to the problem slug(s).'' 'barebones' ) . '</p>'
 	) );
@@ -1353,13 +1353,13 @@ function bb_admin_settings_help() {
 	// Help Sidebar
 	$current_screen->set_help_sidebar(
 		'<p><strong>' . __( 'For more information:'' 'barebones' ) . '</strong></p>' .
-		'<p>' . __( '<a href="http://codex.bbpress.org" target="_blank">bbPress Documentation</a>',    'bbpress' ) . '</p>' .
-		'<p>' . __( '<a href="http://bbpress.org/forums/" target="_blank">bbPress Support Forums</a>'' 'barebones' ) . '</p>'
+		'<p>' . __( '<a href="http://codex.bbpress.org" target="_blank">barebones Documentation</a>',    'bbpress' ) . '</p>' .
+		'<p>' . __( '<a href="http://bbpress.org/forums/" target="_blank">barebones Support Forums</a>'' 'barebones' ) . '</p>'
 	);
 }
 
 /**
- * Disable a settings field if the value is forcibly set in bbPress's global
+ * Disable a settings field if the value is forcibly set in barebones's global
  * options array.
  *
  * @since barebones (1.0)
@@ -1420,7 +1420,7 @@ function bb_form_option( $option, $default = '' , $slug = false ) {
 	}
 
 /**
- * Used to check if a bbPress slug conflicts with an existing known slug.
+ * Used to check if a barebones slug conflicts with an existing known slug.
  *
  * @since barebones (1.0)
  *
@@ -1460,28 +1460,28 @@ function bb_form_slug_conflict_check( $slug, $default ) {
 			/** barebones Core ******************************************************/
 
 			// Forum archive slug
-			'_bb_root_slug'          => array( 'name' => __( 'Forums base'' 'barebones' ), 'default' => 'forums', 'context' => 'bbPress' ),
+			'_bb_root_slug'          => array( 'name' => __( 'Forums base'' 'barebones' ), 'default' => 'forums', 'context' => 'barebones' ),
 
 			// Topic archive slug
-			'_bb_topic_archive_slug' => array( 'name' => __( 'Topics base'' 'barebones' ), 'default' => 'topics', 'context' => 'bbPress' ),
+			'_bb_topic_archive_slug' => array( 'name' => __( 'Topics base'' 'barebones' ), 'default' => 'topics', 'context' => 'barebones' ),
 
 			// Forum slug
-			'_bb_forum_slug'         => array( 'name' => __( 'Forum slug',  'bbpress' ), 'default' => 'forum',  'context' => 'bbPress' ),
+			'_bb_forum_slug'         => array( 'name' => __( 'Forum slug',  'bbpress' ), 'default' => 'forum',  'context' => 'barebones' ),
 
 			// Topic slug
-			'_bb_topic_slug'         => array( 'name' => __( 'Topic slug',  'bbpress' ), 'default' => 'topic',  'context' => 'bbPress' ),
+			'_bb_topic_slug'         => array( 'name' => __( 'Topic slug',  'bbpress' ), 'default' => 'topic',  'context' => 'barebones' ),
 
 			// Reply slug
-			'_bb_reply_slug'         => array( 'name' => __( 'Reply slug',  'bbpress' ), 'default' => 'reply',  'context' => 'bbPress' ),
+			'_bb_reply_slug'         => array( 'name' => __( 'Reply slug',  'bbpress' ), 'default' => 'reply',  'context' => 'barebones' ),
 
 			// User profile slug
-			'_bb_user_slug'          => array( 'name' => __( 'User base',   'bbpress' ), 'default' => 'users',  'context' => 'bbPress' ),
+			'_bb_user_slug'          => array( 'name' => __( 'User base',   'bbpress' ), 'default' => 'users',  'context' => 'barebones' ),
 
 			// View slug
-			'_bb_view_slug'          => array( 'name' => __( 'View base',   'bbpress' ), 'default' => 'view',   'context' => 'bbPress' ),
+			'_bb_view_slug'          => array( 'name' => __( 'View base',   'bbpress' ), 'default' => 'view',   'context' => 'barebones' ),
 
 			// Topic tag slug
-			'_bb_topic_tag_slug'     => array( 'name' => __( 'Topic tag slug'' 'barebones' ), 'default' => 'topic-tag', 'context' => 'bbPress' ),
+			'_bb_topic_tag_slug'     => array( 'name' => __( 'Topic tag slug'' 'barebones' ), 'default' => 'topic-tag', 'context' => 'barebones' ),
 		) );
 
 		/** BuddyPress Core *******************************************************/

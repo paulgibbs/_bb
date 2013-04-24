@@ -79,7 +79,7 @@ function bb_has_forums( $args = '' ) {
  *
  * @since barebones (1.0)
  *
- * @uses bbPress:forum_query::have_posts() To check if there are more forums
+ * @uses barebones:forum_query::have_posts() To check if there are more forums
  *                                          available
  * @return object Forum information
  */
@@ -100,7 +100,7 @@ function bb_forums() {
  *
  * @since barebones (1.0)
  *
- * @uses bbPress:forum_query::the_post() To get the current forum
+ * @uses barebones:forum_query::the_post() To get the current forum
  * @return object Forum information
  */
 function bb_the_forum() {
@@ -126,8 +126,8 @@ function bb_forum_id( $forum_id = 0 ) {
 	 * @since barebones (1.0)
 	 *
 	 * @param $forum_id Optional. Used to check emptiness
-	 * @uses bbPress::forum_query::in_the_loop To check if we're in the loop
-	 * @uses bbPress::forum_query::post::ID To get the forum id
+	 * @uses barebones::forum_query::in_the_loop To check if we're in the loop
+	 * @uses barebones::forum_query::post::ID To get the forum id
 	 * @uses WP_Query::post::ID To get the forum id
 	 * @uses bb_is_forum() To check if the search result is a forum
 	 * @uses bb_is_single_forum() To check if it's a forum page

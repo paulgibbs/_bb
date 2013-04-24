@@ -12,7 +12,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
 
 if ( !class_exists( 'BB_Forums_Admin' ) ) :
 /**
- * Loads bbPress forums admin area
+ * Loads barebones forums admin area
  *
  * @package barebones
  * @subpackage Administration
@@ -30,7 +30,7 @@ class BB_Forums_Admin {
 	/** Functions *************************************************************/
 
 	/**
-	 * The main bbPress forums admin loader
+	 * The main barebones forums admin loader
 	 *
 	 * @since barebones (1.0)
 	 *
@@ -105,7 +105,7 @@ class BB_Forums_Admin {
 	/** Contextual Help *******************************************************/
 
 	/**
-	 * Contextual help for bbPress forum edit page
+	 * Contextual help for barebones forum edit page
 	 *
 	 * @since barebones (1.0)
 	 * @uses get_current_screen()
@@ -160,13 +160,13 @@ class BB_Forums_Admin {
 		// Help Sidebar
 		get_current_screen()->set_help_sidebar(
 			'<p><strong>' . __( 'For more information:'' 'barebones' ) . '</strong></p>' .
-			'<p>' . __( '<a href="http://codex.bbpress.org" target="_blank">bbPress Documentation</a>',    'bbpress' ) . '</p>' .
-			'<p>' . __( '<a href="http://bbpress.org/forums/" target="_blank">bbPress Support Forums</a>'' 'barebones' ) . '</p>'
+			'<p>' . __( '<a href="http://codex.bbpress.org" target="_blank">barebones Documentation</a>',    'bbpress' ) . '</p>' .
+			'<p>' . __( '<a href="http://bbpress.org/forums/" target="_blank">barebones Support Forums</a>'' 'barebones' ) . '</p>'
 		);
 	}
 
 	/**
-	 * Contextual help for bbPress forum edit page
+	 * Contextual help for barebones forum edit page
 	 *
 	 * @since barebones (1.0)
 	 * @uses get_current_screen()
@@ -231,8 +231,8 @@ class BB_Forums_Admin {
 
 		get_current_screen()->set_help_sidebar(
 			'<p><strong>' . __( 'For more information:'' 'barebones' ) . '</strong></p>' .
-			'<p>' . __( '<a href="http://codex.bbpress.org" target="_blank">bbPress Documentation</a>',    'bbpress' ) . '</p>' .
-			'<p>' . __( '<a href="http://bbpress.org/forums/" target="_blank">bbPress Support Forums</a>'' 'barebones' ) . '</p>'
+			'<p>' . __( '<a href="http://codex.bbpress.org" target="_blank">barebones Documentation</a>',    'bbpress' ) . '</p>' .
+			'<p>' . __( '<a href="http://bbpress.org/forums/" target="_blank">barebones Support Forums</a>'' 'barebones' ) . '</p>'
 		);
 	}
 
@@ -409,7 +409,7 @@ class BB_Forums_Admin {
 	 * @param array $columns The columns
 	 * @uses apply_filters() Calls 'bb_admin_forums_column_headers' with
 	 *                        the columns
-	 * @return array $columns bbPress forum columns
+	 * @return array $columns barebones forum columns
 	 */
 	public function column_headers( $columns ) {
 
@@ -580,7 +580,7 @@ class BB_Forums_Admin {
 endif; // class_exists check
 
 /**
- * Setup bbPress Forums Admin
+ * Setup barebones Forums Admin
  *
  * This is currently here to make hooking and unhooking of the admin UI easy.
  * It could use dependency injection in the future, but for now this is easier.

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Functions of bbPress's Default theme
+ * Functions of barebones's Default theme
  *
  * @package barebones
  * @subpackage BB_Theme_Compat
@@ -16,14 +16,14 @@ if ( !defined( 'ABSPATH' ) ) exit;
 if ( !class_exists( 'BB_Default' ) ) :
 
 /**
- * Loads bbPress Default Theme functionality
+ * Loads barebones Default Theme functionality
  *
  * This is not a real theme by WordPress standards, and is instead used as the
- * fallback for any WordPress theme that does not have bbPress templates in it.
+ * fallback for any WordPress theme that does not have barebones templates in it.
  *
- * To make your custom theme bbPress compatible and customize the templates, you
+ * To make your custom theme barebones compatible and customize the templates, you
  * can copy these files into your theme without needing to merge anything
- * together; bbPress should safely handle the rest.
+ * together; barebones should safely handle the rest.
  *
  * See @link BB_Theme_Compat() for more.
  *
@@ -37,7 +37,7 @@ class BB_Default extends BB_Theme_Compat {
 	/** Functions *************************************************************/
 
 	/**
-	 * The main bbPress (Default) Loader
+	 * The main barebones (Default) Loader
 	 *
 	 * @since barebones (1.0)
 	 *
@@ -65,7 +65,7 @@ class BB_Default extends BB_Theme_Compat {
 	private function setup_globals() {
 		$bbp           = barebones();
 		$this->id      = 'default';
-		$this->name    = __( 'bbPress Default'' 'barebones' );
+		$this->name    = __( 'barebones Default'' 'barebones' );
 		$this->version = bb_get_version();
 		$this->dir     = trailingslashit( $bbp->themes_dir . 'default' );
 		$this->url     = trailingslashit( $bbp->themes_url . 'default' );
@@ -153,13 +153,13 @@ class BB_Default extends BB_Theme_Compat {
 			$location = trailingslashit( get_template_directory_uri() );
 			$handle   = 'bbp-parent-bbpress';
 
-		// bbPress Theme Compatibility
+		// barebones Theme Compatibility
 		} else {
 			$location = trailingslashit( $this->url );
 			$handle   = 'bbp-default-bbpress';
 		}
 
-		// Enqueue the bbPress styling
+		// Enqueue the barebones styling
 		wp_enqueue_style( $handle, $location . $file, array(), $this->version, 'screen' );
 	}
 

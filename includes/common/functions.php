@@ -16,7 +16,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
 /** Formatting ****************************************************************/
 
 /**
- * A bbPress specific method of formatting numeric values
+ * A barebones specific method of formatting numeric values
  *
  * @since barebones (1.0)
  *
@@ -36,7 +36,7 @@ function bb_number_format( $number = 0, $decimals = false, $dec_point = '.', $th
 }
 
 /**
- * A bbPress specific method of formatting numeric values
+ * A barebones specific method of formatting numeric values
  *
  * @since barebones (1.0)
  *
@@ -231,7 +231,7 @@ function bb_format_revision_reason( $reason = '' ) {
 /**
  * Return the unescaped redirect_to request value
  *
- * @bbPress (r4655)
+ * @barebones (r4655)
  *
  * @return string The URL to redirect to, if set
  */
@@ -593,7 +593,7 @@ function bb_get_statistics( $args = '' ) {
  * Note that bb_pre_anonymous_filters() is responsible for sanitizing each
  * of the filtered core anonymous values here.
  *
- * If there are any errors, those are directly added to {@link bbPress:errors}
+ * If there are any errors, those are directly added to {@link barebones:errors}
  *
  * @since barebones (1.0)
  *
@@ -1143,7 +1143,7 @@ function bb_logout_url( $url = '', $redirect_to = '' ) {
 /**
  * Merge user defined arguments into defaults array.
  *
- * This function is used throughout bbPress to allow for either a string or array
+ * This function is used throughout barebones to allow for either a string or array
  * to be merged into another array. It is identical to wp_parse_args() except
  * it allows for arguments to be passively or aggressively filtered using the
  * optional $filter_key parameter.
@@ -1480,7 +1480,7 @@ function bb_verify_nonce_request( $action = '', $query_arg = '_wpnonce' ) {
 /**
  * This function is hooked into the WordPress 'request' action and is
  * responsible for sniffing out the query vars and serving up RSS2 feeds if
- * the stars align and the user has requested a feed of any bbPress type.
+ * the stars align and the user has requested a feed of any barebones type.
  *
  * @since barebones (1.0)
  *
@@ -1512,7 +1512,7 @@ function bb_request_feed_trap( $query_vars = array() ) {
 			// Remove any empties
 			$select_query_vars = array_filter( $select_query_vars );
 
-			// What bbPress post type are we looking for feeds on?
+			// What barebones post type are we looking for feeds on?
 			switch ( $query_vars['post_type'] ) {
 
 				// Forum

@@ -39,7 +39,7 @@ class BB_Login_Widget extends WP_Widget {
 			'description' => __( 'A simple login form with optional links to sign-up and lost password pages.'' 'barebones' )
 		) );
 
-		parent::__construct( false, __( '(bbPress) Login Widget'' 'barebones' ), $widget_ops );
+		parent::__construct( false, __( '(barebones) Login Widget'' 'barebones' ), $widget_ops );
 	}
 
 	/**
@@ -71,7 +71,7 @@ class BB_Login_Widget extends WP_Widget {
 		// Typical WordPress filter
 		$settings['title'] = apply_filters( 'widget_title', $settings['title'], $instance, $this->id_base );
 
-		// bbPress filters
+		// barebones filters
 		$settings['title']    = apply_filters( 'bb_login_widget_title',    $settings['title'],    $instance, $this->id_base );
 		$settings['register'] = apply_filters( 'bb_login_widget_register', $settings['register'], $instance, $this->id_base );
 		$settings['lostpass'] = apply_filters( 'bb_login_widget_lostpass', $settings['lostpass'], $instance, $this->id_base );
@@ -243,7 +243,7 @@ class BB_Views_Widget extends WP_Widget {
 			'description' => __( 'A list of registered optional topic views.'' 'barebones' )
 		) );
 
-		parent::__construct( false, __( '(bbPress) Topic Views List'' 'barebones' ), $widget_ops );
+		parent::__construct( false, __( '(barebones) Topic Views List'' 'barebones' ), $widget_ops );
 	}
 
 	/**
@@ -282,7 +282,7 @@ class BB_Views_Widget extends WP_Widget {
 		// Typical WordPress filter
 		$settings['title'] = apply_filters( 'widget_title',          $settings['title'], $instance, $this->id_base );
 
-		// bbPress filter
+		// barebones filter
 		$settings['title'] = apply_filters( 'bb_view_widget_title', $settings['title'], $instance, $this->id_base );
 
 		echo $args['before_widget'];
@@ -381,10 +381,10 @@ class BB_Search_Widget extends WP_Widget {
 	public function __construct() {
 		$widget_ops = apply_filters( 'bb_search_widget_options', array(
 			'classname'   => 'widget_display_search',
-			'description' => __( 'The bbPress forum search form.'' 'barebones' )
+			'description' => __( 'The barebones forum search form.'' 'barebones' )
 		) );
 
-		parent::__construct( false, __( '(bbPress) Forum Search Form'' 'barebones' ), $widget_ops );
+		parent::__construct( false, __( '(barebones) Forum Search Form'' 'barebones' ), $widget_ops );
 	}
 
 	/**
@@ -414,7 +414,7 @@ class BB_Search_Widget extends WP_Widget {
 		// Typical WordPress filter
 		$settings['title'] = apply_filters( 'widget_title',            $settings['title'], $instance, $this->id_base );
 
-		// bbPress filter
+		// barebones filter
 		$settings['title'] = apply_filters( 'bb_search_widget_title', $settings['title'], $instance, $this->id_base );
 
 		echo $args['before_widget'];
@@ -508,7 +508,7 @@ class BB_Forums_Widget extends WP_Widget {
 			'description' => __( 'A list of forums with an option to set the parent.'' 'barebones' )
 		) );
 
-		parent::__construct( false, __( '(bbPress) Forums List'' 'barebones' ), $widget_ops );
+		parent::__construct( false, __( '(barebones) Forums List'' 'barebones' ), $widget_ops );
 	}
 
 	/**
@@ -548,7 +548,7 @@ class BB_Forums_Widget extends WP_Widget {
 		// Typical WordPress filter
 		$settings['title'] = apply_filters( 'widget_title',           $settings['title'], $instance, $this->id_base );
 
-		// bbPress filter
+		// barebones filter
 		$settings['title'] = apply_filters( 'bb_forum_widget_title', $settings['title'], $instance, $this->id_base );
 
 		// Note: private and hidden forums will be excluded via the
@@ -686,7 +686,7 @@ class BB_Topics_Widget extends WP_Widget {
 			'description' => __( 'A list of recent topics, sorted by popularity or freshness.'' 'barebones' )
 		) );
 
-		parent::__construct( false, __( '(bbPress) Recent Topics'' 'barebones' ), $widget_ops );
+		parent::__construct( false, __( '(barebones) Recent Topics'' 'barebones' ), $widget_ops );
 	}
 
 	/**
@@ -722,7 +722,7 @@ class BB_Topics_Widget extends WP_Widget {
 		// Typical WordPress filter
 		$settings['title'] = apply_filters( 'widget_title',           $settings['title'], $instance, $this->id_base );
 
-		// bbPress filter
+		// barebones filter
 		$settings['title'] = apply_filters( 'bb_topic_widget_title', $settings['title'], $instance, $this->id_base );
 
 		// How do we want to order our results?
@@ -940,7 +940,7 @@ class BB_Stats_Widget extends WP_Widget {
 			'description' => __( 'Some statistics from your forum.'' 'barebones' )
 		) );
 
-		parent::__construct( false, __( '(bbPress) Statistics'' 'barebones' ), $widget_ops );
+		parent::__construct( false, __( '(barebones) Statistics'' 'barebones' ), $widget_ops );
 	}
 
 	/**
@@ -973,7 +973,7 @@ class BB_Stats_Widget extends WP_Widget {
 		// Typical WordPress filter
 		$settings['title'] = apply_filters( 'widget_title',           $settings['title'], $instance, $this->id_base );
 
-		// bbPress widget title filter
+		// barebones widget title filter
 		$settings['title'] = apply_filters( 'bb_stats_widget_title', $settings['title'], $instance, $this->id_base );
 
 		echo $args['before_widget'];
@@ -1070,7 +1070,7 @@ class BB_Replies_Widget extends WP_Widget {
 			'description' => __( 'A list of the most recent replies.'' 'barebones' )
 		) );
 
-		parent::__construct( false, __( '(bbPress) Recent Replies'' 'barebones' ), $widget_ops );
+		parent::__construct( false, __( '(barebones) Recent Replies'' 'barebones' ), $widget_ops );
 	}
 
 	/**
@@ -1109,7 +1109,7 @@ class BB_Replies_Widget extends WP_Widget {
 		// Typical WordPress filter
 		$settings['title'] = apply_filters( 'widget_title',             $settings['title'], $instance, $this->id_base );
 
-		// bbPress filter
+		// barebones filter
 		$settings['title'] = apply_filters( 'bb_replies_widget_title', $settings['title'], $instance, $this->id_base );
 
 		// Note: private and hidden forums will be excluded via the

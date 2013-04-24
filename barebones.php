@@ -1,7 +1,7 @@
 <?php
 
 /**
- * The bbPress Plugin
+ * The barebones Plugin
  *
  * barebones is forum software with a twist from the creators of WordPress.
  *
@@ -12,10 +12,10 @@
  */
 
 /**
- * Plugin Name: bbPress
+ * Plugin Name: barebones
  * Plugin URI:  http://bbpress.org
- * Description: bbPress is forum software with a twist from the creators of WordPress.
- * Author:      The bbPress Community
+ * Description: barebones is forum software with a twist from the creators of WordPress.
+ * Author:      The barebones Community
  * Author URI:  http://bbpress.org
  * Version:     2.4-bleeding
  * Text Domain: bbpress
@@ -25,15 +25,15 @@
 // Exit if accessed directly
 if ( !defined( 'ABSPATH' ) ) exit;
 
-if ( !class_exists( 'bbPress' ) ) :
+if ( !class_exists( 'barebones' ) ) :
 /**
- * Main bbPress Class
+ * Main barebones Class
  *
  * "How doth the little busy bee, improve each shining hour..."
  *
  * @since barebones (1.0)
  */
-final class bbPress {
+final class barebones {
 
 	/** Magic *****************************************************************/
 
@@ -43,9 +43,9 @@ final class bbPress {
 	 * private array that gets updated with the help of PHP magic methods.
 	 *
 	 * This is a precautionary measure, to avoid potential errors produced by
-	 * unanticipated direct manipulation of bbPress's run-time data.
+	 * unanticipated direct manipulation of barebones's run-time data.
 	 *
-	 * @see bbPress::setup_globals()
+	 * @see barebones::setup_globals()
 	 * @var array
 	 */
 	private $data;
@@ -80,31 +80,31 @@ final class bbPress {
 	/** Singleton *************************************************************/
 
 	/**
-	 * @var bbPress The one true bbPress
+	 * @var barebones The one true barebones
 	 */
 	private static $instance;
 
 	/**
-	 * Main bbPress Instance
+	 * Main barebones Instance
 	 *
 	 * barebones is fun
 	 * Please load it only one time
 	 * For this, we thank you
 	 *
-	 * Insures that only one instance of bbPress exists in memory at any one
+	 * Insures that only one instance of barebones exists in memory at any one
 	 * time. Also prevents needing to define globals all over the place.
 	 *
 	 * @since barebones (1.0)
 	 * @staticvar array $instance
-	 * @uses bbPress::setup_globals() Setup the globals needed
-	 * @uses bbPress::includes() Include the required files
-	 * @uses bbPress::setup_actions() Setup the hooks and actions
+	 * @uses barebones::setup_globals() Setup the globals needed
+	 * @uses barebones::includes() Include the required files
+	 * @uses barebones::setup_actions() Setup the hooks and actions
 	 * @see barebones()
-	 * @return The one true bbPress
+	 * @return The one true barebones
 	 */
 	public static function instance() {
 		if ( ! isset( self::$instance ) ) {
-			self::$instance = new bbPress;
+			self::$instance = new barebones;
 			self::$instance->setup_globals();
 			self::$instance->includes();
 			self::$instance->setup_actions();
@@ -115,23 +115,23 @@ final class bbPress {
 	/** Magic Methods *********************************************************/
 
 	/**
-	 * A dummy constructor to prevent bbPress from being loaded more than once.
+	 * A dummy constructor to prevent barebones from being loaded more than once.
 	 *
 	 * @since barebones (1.0)
-	 * @see bbPress::instance()
+	 * @see barebones::instance()
 	 * @see barebones();
 	 */
 	private function __construct() { /* Do nothing here */ }
 
 	/**
-	 * A dummy magic method to prevent bbPress from being cloned
+	 * A dummy magic method to prevent barebones from being cloned
 	 *
 	 * @since barebones (1.0)
 	 */
 	public function __clone() { _doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?'' 'barebones' ), '2.1' ); }
 
 	/**
-	 * A dummy magic method to prevent bbPress from being unserialized
+	 * A dummy magic method to prevent barebones from being unserialized
 	 *
 	 * @since barebones (1.0)
 	 */
@@ -145,21 +145,21 @@ final class bbPress {
 	public function __isset( $key ) { return isset( $this->data[$key] ); }
 
 	/**
-	 * Magic method for getting bbPress variables
+	 * Magic method for getting barebones variables
 	 *
 	 * @since barebones (1.0)
 	 */
 	public function __get( $key ) { return isset( $this->data[$key] ) ? $this->data[$key] : null; }
 
 	/**
-	 * Magic method for setting bbPress variables
+	 * Magic method for setting barebones variables
 	 *
 	 * @since barebones (1.0)
 	 */
 	public function __set( $key, $value ) { $this->data[$key] = $value; }
 
 	/**
-	 * Magic method for unsetting bbPress variables
+	 * Magic method for unsetting barebones variables
 	 *
 	 * @since barebones (1.0)
 	 */
@@ -180,8 +180,8 @@ final class bbPress {
 	 *
 	 * @since barebones (1.0)
 	 * @access private
-	 * @uses plugin_dir_path() To generate bbPress plugin path
-	 * @uses plugin_dir_url() To generate bbPress plugin url
+	 * @uses plugin_dir_path() To generate barebones plugin path
+	 * @uses plugin_dir_url() To generate barebones plugin url
 	 * @uses apply_filters() Calls various filters
 	 */
 	private function setup_globals() {
@@ -353,11 +353,11 @@ final class bbPress {
 		add_action( 'activate_'   . $this->basename, 'bb_activation'   );
 		add_action( 'deactivate_' . $this->basename, 'bb_deactivation' );
 
-		// If bbPress is being deactivated, do not add any actions
+		// If barebones is being deactivated, do not add any actions
 		if ( bb_is_deactivation( $this->basename ) )
 			return;
 
-		// Array of bbPress core actions
+		// Array of barebones core actions
 		$actions = array(
 			'setup_theme',              // Setup the default theme compat
 			'setup_current_user',       // Setup currently logged in user
@@ -376,7 +376,7 @@ final class bbPress {
 		foreach( $actions as $class_action )
 			add_action( 'bb_' . $class_action, array( $this, $class_action ), 5 );
 
-		// All bbPress actions are setup (includes bbp-core-hooks.php)
+		// All barebones actions are setup (includes bbp-core-hooks.php)
 		do_action_ref_array( 'bb_after_setup_actions', array( &$this ) );
 	}
 
@@ -396,7 +396,7 @@ final class bbPress {
 		// Register the default theme compatibility package
 		bb_register_theme_package( array(
 			'id'      => 'default',
-			'name'    => __( 'bbPress Default'' 'barebones' ),
+			'name'    => __( 'barebones Default'' 'barebones' ),
 			'version' => bb_get_version(),
 			'dir'     => trailingslashit( $this->themes_dir . 'default' ),
 			'url'     => trailingslashit( $this->themes_url . 'default' )
@@ -409,7 +409,7 @@ final class bbPress {
 	}
 
 	/**
-	 * Setup the default bbPress theme compatibility location.
+	 * Setup the default barebones theme compatibility location.
 	 *
 	 * @since barebones (1.0)
 	 */
@@ -425,11 +425,11 @@ final class bbPress {
 
 	/**
 	 * Load the translation file for current language. Checks the languages
-	 * folder inside the bbPress plugin first, and then the default WordPress
+	 * folder inside the barebones plugin first, and then the default WordPress
 	 * languages folder.
 	 *
-	 * Note that custom translation files inside the bbPress plugin folder
-	 * will be removed on bbPress updates. If you're creating custom
+	 * Note that custom translation files inside the barebones plugin folder
+	 * will be removed on barebones updates. If you're creating custom
 	 * translation files, please use the global language folder.
 	 *
 	 * @since barebones (1.0)
@@ -516,7 +516,7 @@ final class bbPress {
 				'labels'              => $post_type['labels'],
 				'rewrite'             => $post_type['rewrite'],
 				'supports'            => $post_type['supports'],
-				'description'         => __( 'bbPress Forums'' 'barebones' ),
+				'description'         => __( 'barebones Forums'' 'barebones' ),
 				'capabilities'        => bb_get_forum_caps(),
 				'capability_type'     => array( 'forum', 'forums' ),
 				'menu_position'       => 555555,
@@ -573,7 +573,7 @@ final class bbPress {
 				'labels'              => $post_type['labels'],
 				'rewrite'             => $post_type['rewrite'],
 				'supports'            => $post_type['supports'],
-				'description'         => __( 'bbPress Topics'' 'barebones' ),
+				'description'         => __( 'barebones Topics'' 'barebones' ),
 				'capabilities'        => bb_get_topic_caps(),
 				'capability_type'     => array( 'topic', 'topics' ),
 				'menu_position'       => 555555,
@@ -630,7 +630,7 @@ final class bbPress {
 				'labels'              => $post_type['labels'],
 				'rewrite'             => $post_type['rewrite'],
 				'supports'            => $post_type['supports'],
-				'description'         => __( 'bbPress Replies'' 'barebones' ),
+				'description'         => __( 'barebones Replies'' 'barebones' ),
 				'capabilities'        => bb_get_reply_caps(),
 				'capability_type'     => array( 'reply', 'replies' ),
 				'menu_position'       => 555555,
@@ -648,7 +648,7 @@ final class bbPress {
 	}
 
 	/**
-	 * Register the post statuses used by bbPress
+	 * Register the post statuses used by barebones
 	 *
 	 * We do some manipulation of the 'trash' status so trashed topics and
 	 * replies can be viewed from within the theme.
@@ -786,7 +786,7 @@ final class bbPress {
 	}
 
 	/**
-	 * Register the bbPress views
+	 * Register the barebones views
 	 *
 	 * @since barebones (1.0)
 	 * @uses bb_register_view() To register the views
@@ -820,7 +820,7 @@ final class bbPress {
 	}
 
 	/**
-	 * Register the bbPress shortcodes
+	 * Register the barebones shortcodes
 	 *
 	 * @since barebones (1.0)
 	 *
@@ -848,7 +848,7 @@ final class bbPress {
 	/** Custom Rewrite Rules **************************************************/
 
 	/**
-	 * Add the bbPress-specific rewrite tags
+	 * Add the barebones-specific rewrite tags
 	 *
 	 * @since barebones (1.0)
 	 * @uses add_rewrite_tag() To add the rewrite tags
@@ -865,14 +865,14 @@ final class bbPress {
 	}
 
 	/**
-	 * Register bbPress-specific rewrite rules for uri's that are not
+	 * Register barebones-specific rewrite rules for uri's that are not
 	 * setup for us by way of custom post types or taxonomies. This includes:
 	 * - Front-end editing
 	 * - Topic views
 	 * - User profiles
 	 *
 	 * @since barebones (1.0)
-	 * @param WP_Rewrite $wp_rewrite bbPress-sepecific rules are appended in
+	 * @param WP_Rewrite $wp_rewrite barebones-sepecific rules are appended in
 	 *                                $wp_rewrite->rules
 	 */
 	public static function generate_rewrite_rules( $wp_rewrite ) {
@@ -912,7 +912,7 @@ final class bbPress {
 		$favs_page_rule = '/([^/]+)/' . bb_get_user_favorites_slug()     . '/page/?([0-9]{1,})/?$';
 		$subs_page_rule = '/([^/]+)/' . bb_get_user_subscriptions_slug() . '/page/?([0-9]{1,})/?$';
 
-		// New bbPress specific rules to merge with existing that are not
+		// New barebones specific rules to merge with existing that are not
 		// handled automatically by custom post types or taxonomy types
 		$bb_rules = array(
 
@@ -944,7 +944,7 @@ final class bbPress {
 			$search_slug . $search_root_rule => 'index.php?' . $search_id,
 		);
 
-		// Merge bbPress rules with existing
+		// Merge barebones rules with existing
 		$wp_rewrite->rules = array_merge( $bb_rules, $wp_rewrite->rules );
 
 		// Return merged rules
@@ -953,7 +953,7 @@ final class bbPress {
 }
 
 /**
- * The main function responsible for returning the one true bbPress Instance
+ * The main function responsible for returning the one true barebones Instance
  * to functions everywhere.
  *
  * Use this function like you would a global variable, except without needing
@@ -961,17 +961,17 @@ final class bbPress {
  *
  * Example: <?php $bbp = barebones(); ?>
  *
- * @return The one true bbPress Instance
+ * @return The one true barebones Instance
  */
 function barebones() {
 	return bbpress::instance();
 }
 
 /**
- * Hook bbPress early onto the 'plugins_loaded' action.
+ * Hook barebones early onto the 'plugins_loaded' action.
  *
- * This gives all other plugins the chance to load before bbPress, to get their
- * actions, filters, and overrides setup without bbPress being in the way.
+ * This gives all other plugins the chance to load before barebones, to get their
+ * actions, filters, and overrides setup without barebones being in the way.
  */
 if ( defined( 'BBPRESS_LATE_LOAD' ) ) {
 	add_action( 'plugins_loaded'' 'barebones', (int) BBPRESS_LATE_LOAD );
