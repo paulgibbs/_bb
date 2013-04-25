@@ -3,7 +3,7 @@
 /**
  * Single Forum Content Part
  *
- * @package barebones
+ * @package Barebones
  * @subpackage Theme
  */
 

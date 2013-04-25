@@ -1,12 +1,12 @@
 <?php
 
 /**
- * barebones Common Functions
+ * Barebones Common Functions
  *
  * Common functions are ones that are used by more than one component, like
  * forums, topics, replies, users, topic tags, etc...
  *
- * @package barebones
+ * @package Barebones
  * @subpackage Functions
  */
 
@@ -18,7 +18,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
 /**
  * A barebones specific method of formatting numeric values
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @param string $number Number to format
  * @param string $decimals Optional. Display decimals
@@ -38,7 +38,7 @@ function bb_number_format( $number = 0, $decimals = false, $dec_point = '.', $th
 /**
  * A barebones specific method of formatting numeric values
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @param string $number Number to format
  * @param string $decimals Optional. Display decimals
@@ -58,7 +58,7 @@ function bb_number_format_i18n( $number = 0, $decimals = false ) {
 /**
  * Convert time supplied from database query into specified date format.
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @param int|object $post Optional. Default is global post object. A post_id or
  *                          post object
@@ -80,7 +80,7 @@ function bb_convert_date( $time, $d = 'U', $translate = false ) {
 /**
  * Output formatted time to display human readable time difference.
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @param string $older_date Unix timestamp from which the difference begins.
  * @param string $newer_date Optional. Unix timestamp from which the
@@ -93,7 +93,7 @@ function bb_time_since( $older_date, $newer_date = false ) {
 	/**
 	 * Return formatted time to display human readable time difference.
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @param string $older_date Unix timestamp from which the difference begins.
 	 * @param string $newer_date Optional. Unix timestamp from which the
@@ -201,7 +201,7 @@ function bb_time_since( $older_date, $newer_date = false ) {
  *  - Removing periods from the end of the string
  *  - Trimming again
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @param int $topic_id Optional. Topic id
  * @return string Status of topic
@@ -244,7 +244,7 @@ function bb_get_redirect_to() {
 /**
  * Append 'view=all' to query string if it's already there from referer
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @param string $original_link Original Link to be modified
  * @param bool $force Override bb_get_view_all() check
@@ -268,7 +268,7 @@ function bb_add_view_all( $original_link = '', $force = false ) {
 /**
  * Remove 'view=all' from query string
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @param string $original_link Original Link to be modified
  * @uses current_user_can() To check if the current user can moderate
@@ -283,7 +283,7 @@ function bb_remove_view_all( $original_link = '' ) {
 /**
  * If current user can and is vewing all topics/replies
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @uses current_user_can() To check if the current user can moderate
  * @uses apply_filters() Calls 'bb_get_view_all' with the link and original link
@@ -297,7 +297,7 @@ function bb_get_view_all( $cap = 'moderate' ) {
 /**
  * Assist pagination by returning correct page number
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @uses get_query_var() To get the 'paged' value
  * @return int Current page number
@@ -329,7 +329,7 @@ function bb_get_paged() {
  * edits it, the post_author field is set to the logged in user's id. This
  * function fixes that.
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @param array $data Post data
  * @param array $postarr Original post array (includes post id)
@@ -364,7 +364,7 @@ function bb_fix_post_author( $data = array(), $postarr = array() ) {
 /**
  * Check the date against the _bb_edit_lock setting.
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @param string $post_date_gmt
  *
@@ -406,7 +406,7 @@ function bb_past_edit_lock( $post_date_gmt ) {
 /**
  * Get the forum statistics
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @param mixed $args Optional. The function supports these arguments (all
  *                     default to true):
@@ -595,7 +595,7 @@ function bb_get_statistics( $args = '' ) {
  *
  * If there are any errors, those are directly added to {@link barebones:errors}
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @param mixed $args Optional. If no args are there, then $_POST values are
  *                     used.
@@ -640,7 +640,7 @@ function bb_filter_anonymous_post_data( $args = '' ) {
  *
  * Check to make sure that a user is not making a duplicate post
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @param array $post_data Contains information about the comment
  * @uses current_user_can() To check if the current user can throttle
@@ -710,7 +710,7 @@ function bb_check_for_duplicate( $post_data = array() ) {
  * Check to make sure that a user is not making too many posts in a short amount
  * of time.
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @param false|array $anonymous_data Optional - if it's an anonymous post. Do
  *                                     not supply if supplying $author_id.
@@ -759,7 +759,7 @@ function bb_check_for_flood( $anonymous_data = false, $author_id = 0 ) {
 /**
  * Checks topics and replies against the discussion moderation of blocked keys
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @param array $anonymous_data Anonymous user data
  * @param int $author_id Topic or reply author ID
@@ -878,7 +878,7 @@ function bb_check_for_moderation( $anonymous_data = false, $author_id = 0, $titl
 /**
  * Checks topics and replies against the discussion blacklist of blocked keys
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @param array $anonymous_data Anonymous user data
  * @param int $author_id Topic or reply author ID
@@ -984,7 +984,7 @@ function bb_check_for_blacklist( $anonymous_data = false, $author_id = 0, $title
  * Gets new post's ID and check if there are subscribed users to that topic, and
  * if there are, send notifications
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @param int $reply_id ID of the newly made reply
  * @uses bb_is_subscriptions_active() To check if the subscriptions are active
@@ -1147,7 +1147,7 @@ function bb_logout_url( $url = '', $redirect_to = '' ) {
  * it allows for arguments to be passively or aggressively filtered using the
  * optional $filter_key parameter.
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @param string|array $args Value to merge with $defaults
  * @param array $defaults Array that serves as the defaults.
@@ -1183,7 +1183,7 @@ function bb_parse_args( $args, $defaults = '', $filter_key = '' ) {
 /**
  * Adds ability to include or exclude specific post_parent ID's
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @global DB $wpdb
  * @global WP $wp
@@ -1418,7 +1418,7 @@ function bb_get_all_child_ids( $parent_id = 0, $post_type = 'post' ) {
  *
  * Used most frequently when editing a forum/topic/reply
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @global WP_Query $post
  * @param string $field Name of the key
@@ -1441,7 +1441,7 @@ function bb_get_global_post_field( $field = 'ID', $context = 'edit' ) {
  *
  * To avoid security exploits within the theme.
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @uses do_action() Calls 'bb_check_referer' on $action.
  * @param string $action Action nonce
@@ -1481,7 +1481,7 @@ function bb_verify_nonce_request( $action = '', $query_arg = '_wpnonce' ) {
  * responsible for sniffing out the query vars and serving up RSS2 feeds if
  * the stars align and the user has requested a feed of any barebones type.
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @param array $query_vars
  * @return array
@@ -1678,7 +1678,7 @@ function bb_request_feed_trap( $query_vars = array() ) {
 /**
  * Used to guess if page exists at requested path
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @uses get_option() To see if pretty permalinks are enabled
  * @uses get_page_by_path() To see if page exists at path
@@ -1708,7 +1708,7 @@ function bb_get_page_by_path( $path = '' ) {
  *
  * Used primarily with topics/replies inside hidden forums.
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @global WP_Query $wp_query
  * @uses WP_Query::set_404()

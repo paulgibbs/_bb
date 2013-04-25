@@ -1,9 +1,9 @@
 <?php
 
 /**
- * barebones Filters
+ * Barebones Filters
  *
- * @package barebones
+ * @package Barebones
  * @subpackage Core
  *
  * This file contains the filters that are used through-out barebones. They are
@@ -12,7 +12,7 @@
  *
  * There are a few common places that additional filters can currently be found
  *
- *  - barebones: In {@link barebones::setup_actions()} in barebones.php
+ *  - barebones: In {@link Barebones::setup_actions()} in barebones.php
  *  - Admin: More in {@link BB_Admin::setup_actions()} in admin.php
  *
  * @see /core/actions.php
@@ -24,7 +24,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
 /**
  * Attach barebones to WordPress
  *
- * barebones uses its own internal actions to help aid in third-party plugin
+ * Barebones uses its own internal actions to help aid in third-party plugin
  * development, and to limit the amount of potential future code changes when
  * updates to WordPress core occur.
  *
@@ -63,7 +63,7 @@ add_filter( 'editable_roles', 'bb_filter_blog_editable_roles' );
 /**
  * Feeds
  *
- * barebones comes with a number of custom RSS2 feeds that get handled outside
+ * Barebones comes with a number of custom RSS2 feeds that get handled outside
  * the normal scope of feeds that WordPress would normally serve. To do this,
  * we filter every page request, listen for a feed request, and trap it.
  */
@@ -236,7 +236,7 @@ add_filter( 'bb_map_meta_caps', 'bb_map_topic_tag_meta_caps', 10, 4 ); // Topic 
 /**
  * Deprecated locale filter
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @param type $locale
  * @return type
@@ -249,7 +249,7 @@ add_filter( 'bb_plugin_locale', '_bb_filter_locale', 10, 1 );
 /**
  * Deprecated forums query filter
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  * @param type $args
  * @return type
  */
@@ -261,7 +261,7 @@ add_filter( 'bb_after_has_forums_parse_args', '_bb_has_forums_query' );
 /**
  * Deprecated topics query filter
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  * @param type $args
  * @return type
  */
@@ -273,7 +273,7 @@ add_filter( 'bb_after_has_topics_parse_args', '_bb_has_topics_query' );
 /**
  * Deprecated replies query filter
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  * @param type $args
  * @return type
  */

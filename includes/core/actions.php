@@ -1,9 +1,9 @@
 <?php
 
 /**
- * barebones Actions
+ * Barebones Actions
  *
- * @package barebones
+ * @package Barebones
  * @subpackage Core
  *
  * This file contains the actions that are used through-out barebones. They are
@@ -12,7 +12,7 @@
  *
  * There are a few common places that additional actions can currently be found
  *
- *  - barebones: In {@link barebones::setup_actions()} in barebones.php
+ *  - barebones: In {@link Barebones::setup_actions()} in barebones.php
  *  - Admin: More in {@link BB_Admin::setup_actions()} in admin.php
  *
  * @see /core/filters.php
@@ -24,7 +24,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
 /**
  * Attach barebones to WordPress
  *
- * barebones uses its own internal actions to help aid in third-party plugin
+ * Barebones uses its own internal actions to help aid in third-party plugin
  * development, and to limit the amount of potential future code changes when
  * updates to WordPress core occur.
  *
@@ -262,7 +262,7 @@ add_action( 'bb_new_reply_pre_extras',  'bb_clean_post_cache' );
 add_action( 'bb_new_reply_post_extras', 'bb_clean_post_cache' );
 
 /**
- * barebones needs to redirect the user around in a few different circumstances:
+ * Barebones needs to redirect the user around in a few different circumstances:
  *
  * 1. POST and GET requests
  * 2. Accessing private or hidden content (forums/topics/replies)

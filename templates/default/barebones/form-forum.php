@@ -3,7 +3,7 @@
 /**
  * New/Edit Forum
  *
- * @package barebones
+ * @package Barebones
  * @subpackage Theme
  */
 

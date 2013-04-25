@@ -1,9 +1,9 @@
 <?php
 
 /**
- * barebones Admin Settings
+ * Barebones Admin Settings
  *
- * @package barebones
+ * @package Barebones
  * @subpackage Administration
  */
 
@@ -15,7 +15,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
 /**
  * Get the Forums settings sections.
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  * @return array
  */
 function bb_admin_get_settings_sections() {
@@ -66,7 +66,7 @@ function bb_admin_get_settings_sections() {
 /**
  * Get all of the settings fields.
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  * @return type
  */
 function bb_admin_get_settings_fields() {
@@ -349,7 +349,7 @@ function bb_admin_get_settings_fields() {
 /**
  * Get settings fields by section.
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  * @param string $section_id
  * @return mixed False if section is invalid, array of fields otherwise.
  */
@@ -370,7 +370,7 @@ function bb_admin_get_settings_fields_for_section( $section_id = '' ) {
 /**
  * Main settings section description for the settings page
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  */
 function bb_admin_setting_callback_main_section() {
 ?>
@@ -383,7 +383,7 @@ function bb_admin_setting_callback_main_section() {
 /**
  * Edit lock setting field
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @uses bb_form_option() To output the option value
  */
@@ -399,7 +399,7 @@ function bb_admin_setting_callback_editlock() {
 /**
  * Throttle setting field
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @uses bb_form_option() To output the option value
  */
@@ -415,7 +415,7 @@ function bb_admin_setting_callback_throttle() {
 /**
  * Allow favorites setting field
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @uses checked() To display the checked attribute
  */
@@ -431,7 +431,7 @@ function bb_admin_setting_callback_favorites() {
 /**
  * Allow subscriptions setting field
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @uses checked() To display the checked attribute
  */
@@ -447,7 +447,7 @@ function bb_admin_setting_callback_subscriptions() {
 /**
  * Allow topic tags setting field
  *
- * @since barebones (r####)
+ * @since Barebones (r####)
  *
  * @uses checked() To display the checked attribute
  */
@@ -463,7 +463,7 @@ function bb_admin_setting_callback_topic_tags() {
 /**
  * Allow topic and reply revisions
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @uses checked() To display the checked attribute
  */
@@ -479,7 +479,7 @@ function bb_admin_setting_callback_revisions() {
 /**
  * Allow anonymous posting setting field
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @uses checked() To display the checked attribute
  */
@@ -495,7 +495,7 @@ function bb_admin_setting_callback_anonymous() {
 /**
  * Allow global access setting field
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @uses checked() To display the checked attribute
  */
@@ -511,7 +511,7 @@ function bb_admin_setting_callback_global_access() {
 /**
  * Output forum role selector (for user edit)
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  */
 function bb_admin_setting_callback_default_role() {
 
@@ -533,7 +533,7 @@ function bb_admin_setting_callback_default_role() {
 /**
  * Use the WordPress editor setting field
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @uses checked() To display the checked attribute
  */
@@ -549,7 +549,7 @@ function bb_admin_setting_callback_use_wp_editor() {
 /**
  * Main subtheme section
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  */
 function bb_admin_setting_callback_subtheme_section() {
 ?>
@@ -562,7 +562,7 @@ function bb_admin_setting_callback_subtheme_section() {
 /**
  * Use the WordPress editor setting field
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @uses checked() To display the checked attribute
  */
@@ -576,7 +576,7 @@ function bb_admin_setting_callback_subtheme_id() {
 	// canonical backup if no other packages exist. If there's an error here,
 	// something else is wrong.
 	//
-	// @see barebones::register_theme_packages()
+	// @see Barebones::register_theme_packages()
 	foreach ( (array) barebones()->theme_compat->packages as $id => $theme ) {
 		$theme_options .= '<option value="' . esc_attr( $id ) . '"' . selected( $theme->id, $current_package, false ) . '>' . sprintf( __( '%1$s - %2$s', 'barebones' ), esc_html( $theme->name ), esc_html( str_replace( WP_CONTENT_DIR, '', $theme->dir ) ) )  . '</option>';
 	}
@@ -596,7 +596,7 @@ function bb_admin_setting_callback_subtheme_id() {
 /**
  * Allow oEmbed in replies
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @uses checked() To display the checked attribute
  */
@@ -614,7 +614,7 @@ function bb_admin_setting_callback_use_autoembed() {
 /**
  * Per page settings section description for the settings page
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  */
 function bb_admin_setting_callback_per_page_section() {
 ?>
@@ -627,7 +627,7 @@ function bb_admin_setting_callback_per_page_section() {
 /**
  * Topics per page setting field
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @uses bb_form_option() To output the option value
  */
@@ -643,7 +643,7 @@ function bb_admin_setting_callback_topics_per_page() {
 /**
  * Replies per page setting field
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @uses bb_form_option() To output the option value
  */
@@ -661,7 +661,7 @@ function bb_admin_setting_callback_replies_per_page() {
 /**
  * Per page settings section description for the settings page
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  */
 function bb_admin_setting_callback_per_rss_page_section() {
 ?>
@@ -674,7 +674,7 @@ function bb_admin_setting_callback_per_rss_page_section() {
 /**
  * Topics per RSS page setting field
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @uses bb_form_option() To output the option value
  */
@@ -690,7 +690,7 @@ function bb_admin_setting_callback_topics_per_rss_page() {
 /**
  * Replies per RSS page setting field
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @uses bb_form_option() To output the option value
  */
@@ -708,7 +708,7 @@ function bb_admin_setting_callback_replies_per_rss_page() {
 /**
  * Slugs settings section description for the settings page
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  */
 function bb_admin_setting_callback_root_slug_section() {
 
@@ -724,7 +724,7 @@ function bb_admin_setting_callback_root_slug_section() {
 /**
  * Root slug setting field
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @uses bb_form_option() To output the option value
  */
@@ -741,7 +741,7 @@ function bb_admin_setting_callback_root_slug() {
 /**
  * Topic archive slug setting field
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @uses bb_form_option() To output the option value
  */
@@ -760,7 +760,7 @@ function bb_admin_setting_callback_topic_archive_slug() {
 /**
  * Slugs settings section description for the settings page
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  */
 function bb_admin_setting_callback_single_slug_section() {
 ?>
@@ -773,7 +773,7 @@ function bb_admin_setting_callback_single_slug_section() {
 /**
  * Include root slug setting field
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @uses checked() To display the checked attribute
  */
@@ -789,7 +789,7 @@ function bb_admin_setting_callback_include_root() {
 /**
  * Forum slug setting field
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @uses bb_form_option() To output the option value
  */
@@ -806,7 +806,7 @@ function bb_admin_setting_callback_forum_slug() {
 /**
  * Topic slug setting field
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @uses bb_form_option() To output the option value
  */
@@ -823,7 +823,7 @@ function bb_admin_setting_callback_topic_slug() {
 /**
  * Reply slug setting field
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @uses bb_form_option() To output the option value
  */
@@ -840,7 +840,7 @@ function bb_admin_setting_callback_reply_slug() {
 /**
  * Topic tag slug setting field
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @uses bb_form_option() To output the option value
  */
@@ -860,7 +860,7 @@ function bb_admin_setting_callback_topic_tag_slug() {
 /**
  * User slug setting field
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @uses bb_form_option() To output the option value
  */
@@ -877,7 +877,7 @@ function bb_admin_setting_callback_user_slug() {
 /**
  * View slug setting field
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @uses bb_form_option() To output the option value
  */
@@ -894,7 +894,7 @@ function bb_admin_setting_callback_view_slug() {
 /**
  * Search slug setting field
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @uses bb_form_option() To output the option value
  */
@@ -913,7 +913,7 @@ function bb_admin_setting_callback_search_slug() {
 /**
  * Extension settings section description for the settings page
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  */
 function bb_admin_setting_callback_buddypress_section() {
 ?>
@@ -926,7 +926,7 @@ function bb_admin_setting_callback_buddypress_section() {
 /**
  * Allow BuddyPress group forums setting field
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @uses checked() To display the checked attribute
  */
@@ -942,7 +942,7 @@ function bb_admin_setting_callback_group_forums() {
 /**
  * Replies per page setting field
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @uses bb_form_option() To output the option value
  */
@@ -970,7 +970,7 @@ function bb_admin_setting_callback_group_forums_root_id() {
 /**
  * Extension settings section description for the settings page
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  */
 function bb_admin_setting_callback_akismet_section() {
 ?>
@@ -984,7 +984,7 @@ function bb_admin_setting_callback_akismet_section() {
 /**
  * Allow Akismet setting field
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @uses checked() To display the checked attribute
  */
@@ -1002,7 +1002,7 @@ function bb_admin_setting_callback_akismet() {
 /**
  * The main settings page
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @uses screen_icon() To display the screen icon
  * @uses settings_fields() To output the hidden fields for the form
@@ -1038,7 +1038,7 @@ function bb_admin_settings() {
 /**
  * Main settings section description for the settings page
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  */
 function bb_converter_setting_callback_main_section() {
 ?>
@@ -1051,7 +1051,7 @@ function bb_converter_setting_callback_main_section() {
 /**
  * Edit Platform setting field
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  */
 function bb_converter_setting_callback_platform() {
 
@@ -1081,7 +1081,7 @@ function bb_converter_setting_callback_platform() {
 /**
  * Edit Database Server setting field
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  */
 function bb_converter_setting_callback_dbserver() {
 ?>
@@ -1095,7 +1095,7 @@ function bb_converter_setting_callback_dbserver() {
 /**
  * Edit Database Server Port setting field
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  */
 function bb_converter_setting_callback_dbport() {
 ?>
@@ -1109,7 +1109,7 @@ function bb_converter_setting_callback_dbport() {
 /**
  * Edit Database User setting field
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  */
 function bb_converter_setting_callback_dbuser() {
 ?>
@@ -1123,7 +1123,7 @@ function bb_converter_setting_callback_dbuser() {
 /**
  * Edit Database Pass setting field
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  */
 function bb_converter_setting_callback_dbpass() {
 ?>
@@ -1137,7 +1137,7 @@ function bb_converter_setting_callback_dbpass() {
 /**
  * Edit Database Name setting field
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  */
 function bb_converter_setting_callback_dbname() {
 ?>
@@ -1151,7 +1151,7 @@ function bb_converter_setting_callback_dbname() {
 /**
  * Main settings section description for the settings page
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  */
 function bb_converter_setting_callback_options_section() {
 ?>
@@ -1164,7 +1164,7 @@ function bb_converter_setting_callback_options_section() {
 /**
  * Edit Table Prefix setting field
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  */
 function bb_converter_setting_callback_dbprefix() {
 ?>
@@ -1178,7 +1178,7 @@ function bb_converter_setting_callback_dbprefix() {
 /**
  * Edit Rows Limit setting field
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  */
 function bb_converter_setting_callback_rows() {
 ?>
@@ -1193,7 +1193,7 @@ function bb_converter_setting_callback_rows() {
 /**
  * Edit Delay Time setting field
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  */
 function bb_converter_setting_callback_delay_time() {
 ?>
@@ -1208,7 +1208,7 @@ function bb_converter_setting_callback_delay_time() {
 /**
  * Edit Restart setting field
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  */
 function bb_converter_setting_callback_restart() {
 ?>
@@ -1223,7 +1223,7 @@ function bb_converter_setting_callback_restart() {
 /**
  * Edit Clean setting field
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  */
 function bb_converter_setting_callback_clean() {
 ?>
@@ -1238,7 +1238,7 @@ function bb_converter_setting_callback_clean() {
 /**
  * Edit Convert Users setting field
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  */
 function bb_converter_setting_callback_convert_users() {
 ?>
@@ -1292,7 +1292,7 @@ function bb_converter_settings() {
 /**
  * Contextual help for Forums settings page
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  * @uses get_current_screen()
  */
 function bb_admin_settings_help() {
@@ -1362,7 +1362,7 @@ function bb_admin_settings_help() {
  * Disable a settings field if the value is forcibly set in barebones's global
  * options array.
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @param string $option_key
  */
@@ -1373,7 +1373,7 @@ function bb_maybe_admin_setting_disabled( $option_key = '' ) {
 /**
  * Output settings API option
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @uses bb_get_bb_form_option()
  *
@@ -1387,7 +1387,7 @@ function bb_form_option( $option, $default = '' , $slug = false ) {
 	/**
 	 * Return settings API option
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @uses get_option()
 	 * @uses esc_attr()
@@ -1422,7 +1422,7 @@ function bb_form_option( $option, $default = '' , $slug = false ) {
 /**
  * Used to check if a barebones slug conflicts with an existing known slug.
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @param string $slug
  * @param string $default
@@ -1457,7 +1457,7 @@ function bb_form_slug_conflict_check( $slug, $default ) {
 			// Post Categories
 			'category_base'   => array( 'name' => __( 'Category base', 'barebones' ), 'default' => 'category',      'context' => 'WordPress' ),
 
-			/** barebones Core ******************************************************/
+			/** Barebones Core ******************************************************/
 
 			// Forum archive slug
 			'_bb_root_slug'          => array( 'name' => __( 'Forums base', 'barebones' ), 'default' => 'forums', 'context' => 'barebones' ),

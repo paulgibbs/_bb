@@ -1,9 +1,9 @@
 <?php
 
 /**
- * barebones Updater
+ * Barebones Updater
  *
- * @package barebones
+ * @package Barebones
  * @subpackage Updater
  */
 
@@ -13,7 +13,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
 /**
  * If there is no raw DB version, this is the first installation
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @uses get_option()
  * @uses bb_get_db_version() To get barebones's database version
@@ -26,7 +26,7 @@ function bb_is_install() {
 /**
  * Compare the barebones version to the DB version to determine if updating
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @uses get_option()
  * @uses bb_get_db_version() To get barebones's database version
@@ -45,7 +45,7 @@ function bb_is_update() {
  * Note that this function currently is not used in barebones core and is here
  * for third party plugins to use to check for barebones activation.
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @return bool True if activating barebones, false if not
  */
@@ -88,7 +88,7 @@ function bb_is_activation( $basename = '' ) {
 /**
  * Determine if barebones is being deactivated
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  * @return bool True if deactivating barebones, false if not
  */
 function bb_is_deactivation( $basename = '' ) {
@@ -130,7 +130,7 @@ function bb_is_deactivation( $basename = '' ) {
 /**
  * Update the DB to the latest version
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  * @uses update_option()
  * @uses bb_get_db_version() To get barebones's database version
  */
@@ -141,7 +141,7 @@ function bb_version_bump() {
 /**
  * Setup the barebones updater
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @uses bb_version_updater()
  * @uses bb_version_bump()
@@ -160,7 +160,7 @@ function bb_setup_updater() {
 /**
  * Create a default forum, topic, and reply
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  * @param array $args Array of arguments to override default values
  */
 function bb_create_initial_content( $args = array() ) {
@@ -216,13 +216,13 @@ function bb_create_initial_content( $args = array() ) {
 }
 
 /**
- * barebones's version updater looks at what the current database version is, and
+ * Barebones's version updater looks at what the current database version is, and
  * runs whatever other code is needed.
  *
  * This is most-often used when the data schema changes, but should also be used
  * to correct issues with barebones meta-data silently on software update.
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  */
 function bb_version_updater() {
 
@@ -283,7 +283,7 @@ function bb_version_updater() {
 /**
  * Redirect user to barebones's What's New page on activation
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @internal Used internally to redirect barebones to the about page on activation
  *

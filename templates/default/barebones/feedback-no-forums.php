@@ -3,7 +3,7 @@
 /**
  * No Forums Feedback Part
  *
- * @package barebones
+ * @package Barebones
  * @subpackage Theme
  */
 

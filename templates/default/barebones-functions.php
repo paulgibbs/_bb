@@ -1,11 +1,11 @@
 <?php
 
 /**
- * Functions of barebones's Default theme
+ * Functions of Barebones' default theme
  *
- * @package barebones
+ * @package Barebones
  * @subpackage BB_Theme_Compat
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  */
 
 // Exit if accessed directly
@@ -16,20 +16,20 @@ if ( !defined( 'ABSPATH' ) ) exit;
 if ( !class_exists( 'BB_Default' ) ) :
 
 /**
- * Loads barebones Default Theme functionality
+ * Loads Barebones default theme functionality
  *
  * This is not a real theme by WordPress standards, and is instead used as the
  * fallback for any WordPress theme that does not have barebones templates in it.
  *
- * To make your custom theme barebones compatible and customize the templates, you
+ * To make your custom theme Barebones compatible and customize the templates, you
  * can copy these files into your theme without needing to merge anything
- * together; barebones should safely handle the rest.
+ * together; Barebones should safely handle the rest.
  *
  * See @link BB_Theme_Compat() for more.
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
- * @package barebones
+ * @package Barebones
  * @subpackage BB_Theme_Compat
  */
 class BB_Default extends BB_Theme_Compat {
@@ -39,7 +39,7 @@ class BB_Default extends BB_Theme_Compat {
 	/**
 	 * The main barebones (Default) Loader
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @uses BB_Default::setup_globals()
 	 * @uses BB_Default::setup_actions()
@@ -59,13 +59,13 @@ class BB_Default extends BB_Theme_Compat {
 	 * You'll want to customize the values in here, so they match whatever your
 	 * needs are.
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 * @access private
 	 */
 	private function setup_globals() {
 		$bbp           = barebones();
 		$this->id      = 'default';
-		$this->name    = __( 'barebones Default', 'barebones' );
+		$this->name    = __( 'Barebones Default', 'barebones' );
 		$this->version = bb_get_version();
 		$this->dir     = trailingslashit( $bbp->themes_dir . 'default' );
 		$this->url     = trailingslashit( $bbp->themes_url . 'default' );
@@ -74,7 +74,7 @@ class BB_Default extends BB_Theme_Compat {
 	/**
 	 * Setup the theme hooks
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 * @access private
 	 *
 	 * @uses add_filter() To add various filters
@@ -105,7 +105,7 @@ class BB_Default extends BB_Theme_Compat {
 	 * Inserts HTML at the top of the main content area to be compatible with
 	 * the Twenty Twelve theme.
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 */
 	public function before_main_content() {
 	?>
@@ -120,7 +120,7 @@ class BB_Default extends BB_Theme_Compat {
 	 * Inserts HTML at the bottom of the main content area to be compatible with
 	 * the Twenty Twelve theme.
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 */
 	public function after_main_content() {
 	?>
@@ -134,7 +134,7 @@ class BB_Default extends BB_Theme_Compat {
 	/**
 	 * Load the theme CSS
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @uses wp_enqueue_style() To enqueue the styles
 	 */
@@ -166,7 +166,7 @@ class BB_Default extends BB_Theme_Compat {
 	/**
 	 * Enqueue the required Javascript files
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @uses bb_is_single_topic() To check if it's the topic page
 	 * @uses bb_is_single_user_edit() To check if it's the profile edit page
@@ -193,7 +193,7 @@ class BB_Default extends BB_Theme_Compat {
 	/**
 	 * Put some scripts in the header, like AJAX url for wp-lists
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @uses bb_is_single_topic() To check if it's the topic page
 	 * @uses admin_url() To get the admin url
@@ -270,7 +270,7 @@ class BB_Default extends BB_Theme_Compat {
 	 *
 	 * These localizations require information that may not be loaded even by init.
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @uses bb_is_single_topic() To check if it's the topic page
 	 * @uses is_user_logged_in() To check if user is logged in
@@ -301,7 +301,7 @@ class BB_Default extends BB_Theme_Compat {
 	/**
 	 * AJAX handler to add or remove a topic from a user's favorites
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @uses bb_get_current_user_id() To get the current user id
 	 * @uses current_user_can() To check if the current user can edit the user
@@ -367,7 +367,7 @@ class BB_Default extends BB_Theme_Compat {
 	/**
 	 * AJAX handler to Subscribe/Unsubscribe a user from a topic
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @uses bb_is_subscriptions_active() To check if the subscriptions are active
 	 * @uses bb_get_current_user_id() To get the current user id

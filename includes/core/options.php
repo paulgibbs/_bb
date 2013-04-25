@@ -1,9 +1,9 @@
 <?php
 
 /**
- * barebones Options
+ * Barebones Options
  *
- * @package barebones
+ * @package Barebones
  * @subpackage Options
  */
 
@@ -15,7 +15,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
  * 
  * These option
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  * @return array Filtered option names and values
  */
 function bb_get_default_options() {
@@ -109,7 +109,7 @@ function bb_get_default_options() {
  * Hooked to bb_activate, it is only called once when barebones is activated.
  * This is non-destructive, so existing settings will not be overridden.
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  * @uses bb_get_default_options() To get default options
  * @uses add_option() Adds default options
  * @uses do_action() Calls 'bb_add_options'
@@ -130,7 +130,7 @@ function bb_add_options() {
  * Hooked to bb_uninstall, it is only called once when barebones is uninstalled.
  * This is destructive, so existing settings will be destroyed.
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  * @uses bb_get_default_options() To get default options
  * @uses delete_option() Removes default options
  * @uses do_action() Calls 'bb_delete_options'
@@ -149,7 +149,7 @@ function bb_delete_options() {
  * Add filters to each barebones option and allow them to be overloaded from
  * inside the $bbp->options array.
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  * @uses bb_get_default_options() To get default options
  * @uses add_filter() To add filters to 'pre_option_{$key}'
  * @uses do_action() Calls 'bb_add_option_filters'
@@ -168,7 +168,7 @@ function bb_setup_option_filters() {
  * Filter default options and allow them to be overloaded from inside the
  * $bbp->options array.
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  * @param bool $value Optional. Default value false
  * @return mixed false if not overloaded, mixed if set
  */
@@ -190,7 +190,7 @@ function bb_pre_get_option( $value = '' ) {
 /**
  * Checks if favorites feature is enabled.
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  * @param $default bool Optional.Default value true
  * @uses get_option() To get the favorites option
  * @return bool Is favorites enabled or not
@@ -202,7 +202,7 @@ function bb_is_favorites_active( $default = 1 ) {
 /**
  * Checks if subscription feature is enabled.
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  * @param $default bool Optional.Default value true
  * @uses get_option() To get the subscriptions option
  * @return bool Is subscription enabled or not
@@ -214,7 +214,7 @@ function bb_is_subscriptions_active( $default = 1 ) {
 /**
  * Are topic tags allowed
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  * @param $default bool Optional. Default value true
  * @uses get_option() To get the allow tags
  * @return bool Are tags allowed?
@@ -226,7 +226,7 @@ function bb_allow_topic_tags( $default = 1 ) {
 /**
  * Are topic and reply revisions allowed
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  * @param $default bool Optional. Default value true
  * @uses get_option() To get the allow revisions
  * @return bool Are revisions allowed?
@@ -238,7 +238,7 @@ function bb_allow_revisions( $default = 1 ) {
 /**
  * Is the anonymous posting allowed?
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  * @param $default bool Optional. Default value
  * @uses get_option() To get the allow anonymous option
  * @return bool Is anonymous posting allowed?
@@ -250,7 +250,7 @@ function bb_allow_anonymous( $default = 0 ) {
 /**
  * Is this forum available to all users on all sites in this installation?
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  * @param $default bool Optional. Default value false
  * @uses get_option() To get the global access option
  * @return bool Is global access allowed?
@@ -262,7 +262,7 @@ function bb_allow_global_access( $default = 1 ) {
 /**
  * Is this forum available to all users on all sites in this installation?
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  * @param $default string Optional. Default value empty
  * @uses get_option() To get the default forums role option
  * @return string The default forums user role
@@ -274,7 +274,7 @@ function bb_get_default_role( $default = 'bb_participant' ) {
 /**
  * Use the WordPress editor if available
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  * @param $default bool Optional. Default value true
  * @uses get_option() To get the WP editor option
  * @return bool Use WP editor?
@@ -286,7 +286,7 @@ function bb_use_wp_editor( $default = 1 ) {
 /**
  * Use WordPress's oEmbed API
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  * @param $default bool Optional. Default value true
  * @uses get_option() To get the oEmbed option
  * @return bool Use oEmbed?
@@ -298,7 +298,7 @@ function bb_use_autoembed( $default = 1 ) {
 /**
  * Get the current theme package ID
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  * @param $default string Optional. Default value 'default'
  * @uses get_option() To get the subtheme option
  * @return string ID of the subtheme
@@ -310,7 +310,7 @@ function bb_get_theme_package_id( $default = 'default' ) {
 /**
  * Output the maximum length of a title
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  * @param $default bool Optional. Default value 80
  */
 function bb_title_max_length( $default = 80 ) {
@@ -319,7 +319,7 @@ function bb_title_max_length( $default = 80 ) {
 	/**
 	 * Return the maximum length of a title
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 * @param $default bool Optional. Default value 80
 	 * @uses get_option() To get the maximum title length
 	 * @return int Is anonymous posting allowed?
@@ -331,7 +331,7 @@ function bb_title_max_length( $default = 80 ) {
 /**
  * Output the grop forums root parent forum id
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  * @param $default int Optional. Default value
  */
 function bb_group_forums_root_id( $default = 0 ) {
@@ -340,7 +340,7 @@ function bb_group_forums_root_id( $default = 0 ) {
 	/**
 	 * Return the grop forums root parent forum id
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 * @param $default bool Optional. Default value 0
 	 * @uses get_option() To get the root group forum ID
 	 * @return int The post ID for the root forum
@@ -352,7 +352,7 @@ function bb_group_forums_root_id( $default = 0 ) {
 /**
  * Checks if BuddyPress Group Forums are enabled
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  * @param $default bool Optional. Default value true
  * @uses get_option() To get the group forums option
  * @return bool Is group forums enabled or not
@@ -364,7 +364,7 @@ function bb_is_group_forums_active( $default = 1 ) {
 /**
  * Checks if Akismet is enabled
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  * @param $default bool Optional. Default value true
  * @uses get_option() To get the Akismet option
  * @return bool Is Akismet enabled or not
@@ -378,7 +378,7 @@ function bb_is_akismet_active( $default = 1 ) {
 /**
  * Return the root slug
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  * @return string
  */
 function bb_get_root_slug( $default = 'forums' ) {
@@ -388,7 +388,7 @@ function bb_get_root_slug( $default = 'forums' ) {
 /**
  * Are we including the root slug in front of forum pages?
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  * @return bool
  */
 function bb_include_root_slug( $default = 1 ) {
@@ -398,7 +398,7 @@ function bb_include_root_slug( $default = 1 ) {
 /**
  * Maybe return the root slug, based on whether or not it's included in the url
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  * @return string
  */
 function bb_maybe_get_root_slug() {
@@ -413,7 +413,7 @@ function bb_maybe_get_root_slug() {
 /**
  * Return the single forum slug
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  * @return string
  */
 function bb_get_forum_slug( $default = 'forum' ) {;
@@ -423,7 +423,7 @@ function bb_get_forum_slug( $default = 'forum' ) {;
 /**
  * Return the topic archive slug
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  * @return string
  */
 function bb_get_topic_archive_slug( $default = 'topics' ) {
@@ -433,7 +433,7 @@ function bb_get_topic_archive_slug( $default = 'topics' ) {
 /**
  * Return the single topic slug
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  * @return string
  */
 function bb_get_topic_slug( $default = 'topic' ) {
@@ -443,7 +443,7 @@ function bb_get_topic_slug( $default = 'topic' ) {
 /**
  * Return the topic-tag taxonomy slug
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  * @return string
  */
 function bb_get_topic_tag_tax_slug( $default = 'topic-tag' ) {
@@ -453,7 +453,7 @@ function bb_get_topic_tag_tax_slug( $default = 'topic-tag' ) {
 /**
  * Return the single reply slug (used mostly for editing)
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  * @return string
  */
 function bb_get_reply_slug( $default = 'reply' ) {
@@ -463,7 +463,7 @@ function bb_get_reply_slug( $default = 'reply' ) {
 /**
  * Return the single user slug
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  * @return string
  */
 function bb_get_user_slug( $default = 'user' ) {
@@ -473,7 +473,7 @@ function bb_get_user_slug( $default = 'user' ) {
 /**
  * Return the single user favorites slug
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  * @return string
  */
 function bb_get_user_favorites_slug( $default = 'favorites' ) {
@@ -483,7 +483,7 @@ function bb_get_user_favorites_slug( $default = 'favorites' ) {
 /**
  * Return the single user subscriptions slug
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  * @return string
  */
 function bb_get_user_subscriptions_slug( $default = 'subscriptions' ) {
@@ -493,7 +493,7 @@ function bb_get_user_subscriptions_slug( $default = 'subscriptions' ) {
 /**
  * Return the topic view slug
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  * @return string
  */
 function bb_get_view_slug( $default = 'view' ) {
@@ -503,7 +503,7 @@ function bb_get_view_slug( $default = 'view' ) {
 /**
  * Return the search slug
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @return string
  */
@@ -516,7 +516,7 @@ function bb_get_search_slug( $default = 'search' ) {
 /**
  * Checks if there is a previous BuddyPress Forum configuration
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  * @param $default string Optional. Default empty string
  * @uses get_option() To get the old bb-config.php location
  * @return string The location of the bb-config.php file, if any

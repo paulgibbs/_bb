@@ -1,9 +1,9 @@
 <?php
 
 /**
- * barebones Classes
+ * Barebones Classes
  *
- * @package barebones
+ * @package Barebones
  * @subpackage Classes
  */
 
@@ -12,17 +12,17 @@ if ( !defined( 'ABSPATH' ) ) exit;
 
 if ( !class_exists( 'BB_Component' ) ) :
 /**
- * barebones Component Class
+ * Barebones Component Class
  *
  * The barebones component class is responsible for simplifying the creation
  * of components that share similar behaviors and routines. It is used
  * internally by barebones to create forums, topics and replies, but can be
  * extended to create other really neat things.
  *
- * @package barebones
+ * @package Barebones
  * @subpackage Classes
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  */
 class BB_Component {
 
@@ -56,9 +56,9 @@ class BB_Component {
 	/** Methods ***************************************************************/
 
 	/**
-	 * barebones Component loader
+	 * Barebones Component loader
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @param mixed $args Required. Supports these args:
 	 *  - name: Unique name (for internal identification)
@@ -82,7 +82,7 @@ class BB_Component {
 	/**
 	 * Component global variables
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 * @access private
 	 *
 	 * @uses apply_filters() Calls 'bb_{@link BB_Component::name}_id'
@@ -97,7 +97,7 @@ class BB_Component {
 	/**
 	 * Include required files
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 * @access private
 	 *
 	 * @uses do_action() Calls 'bb_{@link BB_Component::name}includes'
@@ -109,7 +109,7 @@ class BB_Component {
 	/**
 	 * Setup the actions
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 * @access private
 	 *
 	 * @uses add_action() To add various actions
@@ -129,7 +129,7 @@ class BB_Component {
 	/**
 	 * Setup the component post types
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @uses do_action() Calls 'bb_{@link BB_Component::name}_register_post_types'
 	 */
@@ -140,7 +140,7 @@ class BB_Component {
 	/**
 	 * Register component specific taxonomies
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @uses do_action() Calls 'bb_{@link BB_Component::name}_register_taxonomies'
 	 */
@@ -151,7 +151,7 @@ class BB_Component {
 	/**
 	 * Add any additional rewrite tags
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @uses do_action() Calls 'bb_{@link BB_Component::name}_add_rewrite_tags'
 	 */
@@ -162,7 +162,7 @@ class BB_Component {
 	/**
 	 * Generate any additional rewrite rules
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @uses do_action() Calls 'bb_{@link BB_Component::name}_generate_rewrite_rules'
 	 */
@@ -176,10 +176,10 @@ if ( class_exists( 'Walker' ) ) :
 /**
  * Create HTML dropdown list of barebones forums/topics.
  *
- * @package barebones
+ * @package Barebones
  * @subpackage Classes
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  * @uses Walker
  */
 class BB_Walker_Dropdown extends Walker {
@@ -187,7 +187,7 @@ class BB_Walker_Dropdown extends Walker {
 	/**
 	 * @see Walker::$tree_type
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @var string
 	 */
@@ -196,7 +196,7 @@ class BB_Walker_Dropdown extends Walker {
 	/**
 	 * @see Walker::$db_fields
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @var array
 	 */
@@ -207,7 +207,7 @@ class BB_Walker_Dropdown extends Walker {
 	/**
 	 * Set the tree_type
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 */
 	public function __construct() {
 		$this->tree_type = bb_get_forum_post_type();
@@ -216,7 +216,7 @@ class BB_Walker_Dropdown extends Walker {
 	/**
 	 * @see Walker::start_el()
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @param string $output Passed by reference. Used to append additional
 	 *                        content.

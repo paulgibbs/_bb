@@ -1,9 +1,9 @@
 <?php
 
 /**
- * barebones Admin Functions
+ * Barebones Admin Functions
  *
- * @package barebones
+ * @package Barebones
  * @subpackage Administration
  */
 
@@ -15,7 +15,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
 /**
  * Add a separator to the WordPress admin menus
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  */
 function bb_admin_separator() {
 
@@ -47,7 +47,7 @@ function bb_admin_separator() {
 /**
  * Tell WordPress we have a custom menu order
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @param bool $menu_order Menu order
  * @return mixed True if separator, false if not
@@ -62,7 +62,7 @@ function bb_admin_custom_menu_order( $menu_order = false ) {
 /**
  * Move our custom separator above our custom post types
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @param array $menu_order Menu Order
  * @uses bb_get_forum_post_type() To get the forum post type
@@ -115,7 +115,7 @@ function bb_admin_menu_order( $menu_order ) {
 /**
  * Filter sample permalinks so that certain languages display properly.
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @param string $post_link Custom post type permalink
  * @param object $_post Post data object
@@ -140,7 +140,7 @@ function bb_filter_sample_permalink( $post_link, $_post, $leavename = false, $sa
 /**
  * Uninstall all barebones options and capabilities from a specific site.
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  * @param type $site_id
  */
 function bb_do_uninstall( $site_id = 0 ) {
@@ -157,7 +157,7 @@ function bb_do_uninstall( $site_id = 0 ) {
 /**
  * Redirect user to barebones's What's New page on activation
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @internal Used internally to redirect barebones to the about page on activation
  *
@@ -194,7 +194,7 @@ function bb_do_activation_redirect() {
  * The conditional prevents the override when the user is viewing settings or
  * any third-party plugins.
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  * @global string $plugin_page
  * @global array $submenu_file
  */
@@ -209,7 +209,7 @@ function bb_tools_modify_menu_highlight() {
 /**
  * Output the tabs in the admin area
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  * @param string $active_tab Name of the tab that is active
  */
 function bb_tools_admin_tabs( $active_tab = '' ) {
@@ -219,7 +219,7 @@ function bb_tools_admin_tabs( $active_tab = '' ) {
 	/**
 	 * Output the tabs in the admin area
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 * @param string $active_tab Name of the tab that is active
 	 */
 	function bb_get_tools_admin_tabs( $active_tab = '' ) {

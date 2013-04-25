@@ -1,9 +1,9 @@
 <?php
 
 /**
- * barebones Users Admin Class
+ * Barebones Users Admin Class
  *
- * @package barebones
+ * @package Barebones
  * @subpackage Administration
  */
 
@@ -14,16 +14,16 @@ if ( !class_exists( 'BB_Users_Admin' ) ) :
 /**
  * Loads barebones users admin area
  *
- * @package barebones
+ * @package Barebones
  * @subpackage Administration
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  */
 class BB_Users_Admin {
 
 	/**
 	 * The barebones users admin loader
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @uses BB_Users_Admin::setup_globals() Setup the globals needed
 	 * @uses BB_Users_Admin::setup_actions() Setup the hooks and actions
@@ -35,7 +35,7 @@ class BB_Users_Admin {
 	/**
 	 * Setup the admin hooks, actions and filters
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 * @access private
 	 *
 	 * @uses add_action() To add various actions
@@ -61,7 +61,7 @@ class BB_Users_Admin {
 	/**
 	 * Default interface for setting a forum role
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @param WP_User $profileuser User data
 	 * @return bool Always false
@@ -120,7 +120,7 @@ class BB_Users_Admin {
 	/**
 	 * Add bulk forums role dropdown to the WordPress users table
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 */
 	public static function user_role_bulk_dropdown() {
 
@@ -203,7 +203,7 @@ class BB_Users_Admin {
 	 * Add Forum Role column to the WordPress Users table, and change the
 	 * core role title to "Site Role"
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @param array $columns Users table columns
 	 * @return array $columns
@@ -218,7 +218,7 @@ class BB_Users_Admin {
 	/**
 	 * Return user's forums role for display in the WordPress Users list table
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @param string $retval
 	 * @param string $column_name

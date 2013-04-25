@@ -1,13 +1,13 @@
 <?php
 
 /**
- * barebones Capabilites
+ * Barebones Capabilites
  *
  * The functions in this file are used primarily as convenient wrappers for
  * capability output in user profiles. This includes mapping capabilities and
  * groups to human readable strings,
  *
- * @package barebones
+ * @package Barebones
  * @subpackage Capabilities
  */
 
@@ -19,7 +19,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
 /**
  * Returns an array of capabilities based on the role that is being requested.
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @todo Map all of these and deprecate
  *
@@ -269,7 +269,7 @@ function bb_get_caps_for_role( $role = '' ) {
 /**
  * Adds capabilities to WordPress user roles.
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  */
 function bb_add_caps() {
 
@@ -286,7 +286,7 @@ function bb_add_caps() {
 /**
  * Removes capabilities from WordPress user roles.
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  */
 function bb_remove_caps() {
 
@@ -303,7 +303,7 @@ function bb_remove_caps() {
 /**
  * Get the $wp_roles global without needing to declare it everywhere
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @global WP_Roles $wp_roles
  * @return WP_Roles
@@ -325,7 +325,7 @@ function bb_get_wp_roles() {
  *
  * We do this to avoid adding these values to the database.
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  * @return WP_Roles The main $wp_roles global
  */
 function bb_add_forums_roles() {
@@ -343,7 +343,7 @@ function bb_add_forums_roles() {
 /**
  * Helper function to add filter to option_wp_user_roles
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @see _bb_reinit_dynamic_roles()
  *
@@ -367,13 +367,13 @@ function bb_filter_user_roles_option() {
  * it here for now, knowing that improvements will come to WordPress core later.
  *
  * Also note that if using the $wp_user_roles global non-database approach,
- * barebones does not have an intercept point to add its dynamic roles.
+ * Barebones does not have an intercept point to add its dynamic roles.
  *
  * @see switch_to_blog()
  * @see restore_current_blog()
  * @see WP_Roles::_init()
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @internal Used by barebones to reinitialize dynamic roles on blog switch
  *
@@ -400,7 +400,7 @@ function _bb_reinit_dynamic_roles( $roles = array() ) {
  * only editors or authors. This filter allows admins to delegate
  * user management.
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @return array
  */
@@ -442,7 +442,7 @@ function bb_get_dynamic_roles() {
 /**
  * Gets a translated role name from a role ID
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @param string $role_id
  * @return string Translated role name
@@ -460,7 +460,7 @@ function bb_get_dynamic_role_name( $role_id = '' ) {
  * This used to use array_diff_assoc() but it randomly broke before 2.2 release.
  * Need to research what happened, and if there's a way to speed this up.
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @param array $all_roles All registered roles
  * @return array 
@@ -486,7 +486,7 @@ function bb_filter_blog_editable_roles( $all_roles = array() ) {
 /**
  * The keymaster role for barebones users
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @uses apply_filters() Allow override of hardcoded keymaster role
  * @return string
@@ -498,7 +498,7 @@ function bb_get_keymaster_role() {
 /**
  * The moderator role for barebones users
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @uses apply_filters() Allow override of hardcoded moderator role
  * @return string
@@ -510,7 +510,7 @@ function bb_get_moderator_role() {
 /**
  * The participant role for registered user that can participate in forums
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @uses apply_filters() Allow override of hardcoded participant role
  * @return string
@@ -522,7 +522,7 @@ function bb_get_participant_role() {
 /**
  * The spectator role is for registered users without any capabilities
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @uses apply_filters() Allow override of hardcoded spectator role
  * @return string
@@ -534,7 +534,7 @@ function bb_get_spectator_role() {
 /**
  * The blocked role is for registered users that cannot spectate or participate
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @uses apply_filters() Allow override of hardcoded blocked role
  * @return string
@@ -548,7 +548,7 @@ function bb_get_blocked_role() {
 /**
  * Adds barebones-specific user roles.
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  * @deprecated since version 2.2
  */
 function bb_add_roles() {
@@ -558,7 +558,7 @@ function bb_add_roles() {
 /**
  * Removes barebones-specific user roles.
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  * @deprecated since version 2.2
  */
 function bb_remove_roles() {

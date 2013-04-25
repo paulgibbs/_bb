@@ -1,11 +1,11 @@
 <?php
 
 /**
- * barebones Widgets
+ * Barebones Widgets
  *
  * Contains the forum list, topic list, reply list and login form widgets.
  *
- * @package barebones
+ * @package Barebones
  * @subpackage Widgets
  */
 
@@ -13,22 +13,22 @@
 if ( !defined( 'ABSPATH' ) ) exit;
 
 /**
- * barebones Login Widget
+ * Barebones Login Widget
  *
  * Adds a widget which displays the login form
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @uses WP_Widget
  */
 class BB_Login_Widget extends WP_Widget {
 
 	/**
-	 * barebones Login Widget
+	 * Barebones Login Widget
 	 *
 	 * Registers the login widget
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @uses apply_filters() Calls 'bb_login_widget_options' with the
 	 *                        widget options
@@ -45,7 +45,7 @@ class BB_Login_Widget extends WP_Widget {
 	/**
 	 * Register the widget
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @uses register_widget()
 	 */
@@ -56,7 +56,7 @@ class BB_Login_Widget extends WP_Widget {
 	/**
 	 * Displays the output, the login form
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @param mixed $args Arguments
 	 * @param array $instance Instance
@@ -153,7 +153,7 @@ class BB_Login_Widget extends WP_Widget {
 	/**
 	 * Update the login widget options
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @param array $new_instance The new instance options
 	 * @param array $old_instance The old instance options
@@ -170,7 +170,7 @@ class BB_Login_Widget extends WP_Widget {
 	/**
 	 * Output the login widget options form
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @param $instance Instance
 	 * @uses BB_Login_Widget::get_field_id() To output the field id
@@ -202,7 +202,7 @@ class BB_Login_Widget extends WP_Widget {
 	/**
 	 * Merge the widget settings into defaults array.
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @param $instance Instance
 	 * @uses bb_parse_args() To merge widget settings into defaults
@@ -217,22 +217,22 @@ class BB_Login_Widget extends WP_Widget {
 }
 
 /**
- * barebones Views Widget
+ * Barebones Views Widget
  *
  * Adds a widget which displays the view list
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @uses WP_Widget
  */
 class BB_Views_Widget extends WP_Widget {
 
 	/**
-	 * barebones View Widget
+	 * Barebones View Widget
 	 *
 	 * Registers the view widget
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @uses apply_filters() Calls 'bb_views_widget_options' with the
 	 *                        widget options
@@ -249,7 +249,7 @@ class BB_Views_Widget extends WP_Widget {
 	/**
 	 * Register the widget
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @uses register_widget()
 	 */
@@ -260,7 +260,7 @@ class BB_Views_Widget extends WP_Widget {
 	/**
 	 * Displays the output, the view list
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @param mixed $args Arguments
 	 * @param array $instance Instance
@@ -307,7 +307,7 @@ class BB_Views_Widget extends WP_Widget {
 	/**
 	 * Update the view widget options
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @param array $new_instance The new instance options
 	 * @param array $old_instance The old instance options
@@ -322,7 +322,7 @@ class BB_Views_Widget extends WP_Widget {
 	/**
 	 * Output the view widget options form
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @param $instance Instance
 	 * @uses BB_Views_Widget::get_field_id() To output the field id
@@ -345,7 +345,7 @@ class BB_Views_Widget extends WP_Widget {
 	/**
 	 * Merge the widget settings into defaults array.
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @param $instance Instance
 	 * @uses bb_parse_args() To merge widget settings into defaults
@@ -358,22 +358,22 @@ class BB_Views_Widget extends WP_Widget {
 }
 
 /**
- * barebones Search Widget
+ * Barebones Search Widget
  *
  * Adds a widget which displays the forum search form
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @uses WP_Widget
  */
 class BB_Search_Widget extends WP_Widget {
 
 	/**
-	 * barebones Search Widget
+	 * Barebones Search Widget
 	 *
 	 * Registers the search widget
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @uses apply_filters() Calls 'bb_search_widget_options' with the
 	 *                        widget options
@@ -390,7 +390,7 @@ class BB_Search_Widget extends WP_Widget {
 	/**
 	 * Register the widget
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @uses register_widget()
 	 */
@@ -401,7 +401,7 @@ class BB_Search_Widget extends WP_Widget {
 	/**
 	 * Displays the output, the search form
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @uses apply_filters() Calls 'bb_search_widget_title' with the title
 	 * @uses get_template_part() To get the search form
@@ -431,7 +431,7 @@ class BB_Search_Widget extends WP_Widget {
 	/**
 	 * Update the widget options
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @param array $new_instance The new instance options
 	 * @param array $old_instance The old instance options
@@ -446,7 +446,7 @@ class BB_Search_Widget extends WP_Widget {
 	/**
 	 * Output the search widget options form
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @param $instance Instance
 	 * @uses BB_Search_Widget::get_field_id() To output the field id
@@ -469,7 +469,7 @@ class BB_Search_Widget extends WP_Widget {
 	/**
 	 * Merge the widget settings into defaults array.
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @param $instance Instance
 	 * @uses bb_parse_args() To merge widget settings into defaults
@@ -482,22 +482,22 @@ class BB_Search_Widget extends WP_Widget {
 }
 
 /**
- * barebones Forum Widget
+ * Barebones Forum Widget
  *
  * Adds a widget which displays the forum list
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @uses WP_Widget
  */
 class BB_Forums_Widget extends WP_Widget {
 
 	/**
-	 * barebones Forum Widget
+	 * Barebones Forum Widget
 	 *
 	 * Registers the forum widget
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @uses apply_filters() Calls 'bb_forums_widget_options' with the
 	 *                        widget options
@@ -514,7 +514,7 @@ class BB_Forums_Widget extends WP_Widget {
 	/**
 	 * Register the widget
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @uses register_widget()
 	 */
@@ -525,7 +525,7 @@ class BB_Forums_Widget extends WP_Widget {
 	/**
 	 * Displays the output, the forum list
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @param mixed $args Arguments
 	 * @param array $instance Instance
@@ -592,7 +592,7 @@ class BB_Forums_Widget extends WP_Widget {
 	/**
 	 * Update the forum widget options
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @param array $new_instance The new instance options
 	 * @param array $old_instance The old instance options
@@ -613,7 +613,7 @@ class BB_Forums_Widget extends WP_Widget {
 	/**
 	 * Output the forum widget options form
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @param $instance Instance
 	 * @uses BB_Forums_Widget::get_field_id() To output the field id
@@ -646,7 +646,7 @@ class BB_Forums_Widget extends WP_Widget {
 	/**
 	 * Merge the widget settings into defaults array.
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @param $instance Instance
 	 * @uses bb_parse_args() To merge widget settings into defaults
@@ -660,22 +660,22 @@ class BB_Forums_Widget extends WP_Widget {
 }
 
 /**
- * barebones Topic Widget
+ * Barebones Topic Widget
  *
  * Adds a widget which displays the topic list
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @uses WP_Widget
  */
 class BB_Topics_Widget extends WP_Widget {
 
 	/**
-	 * barebones Topic Widget
+	 * Barebones Topic Widget
 	 *
 	 * Registers the topic widget
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @uses apply_filters() Calls 'bb_topics_widget_options' with the
 	 *                        widget options
@@ -692,7 +692,7 @@ class BB_Topics_Widget extends WP_Widget {
 	/**
 	 * Register the widget
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @uses register_widget()
 	 */
@@ -703,7 +703,7 @@ class BB_Topics_Widget extends WP_Widget {
 	/**
 	 * Displays the output, the topic list
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @param mixed $args
 	 * @param array $instance
@@ -828,7 +828,7 @@ class BB_Topics_Widget extends WP_Widget {
 	/**
 	 * Update the topic widget options
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @param array $new_instance The new instance options
 	 * @param array $old_instance The old instance options
@@ -854,7 +854,7 @@ class BB_Topics_Widget extends WP_Widget {
 	/**
 	 * Output the topic widget options form
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @param $instance Instance
 	 * @uses BB_Topics_Widget::get_field_id() To output the field id
@@ -896,7 +896,7 @@ class BB_Topics_Widget extends WP_Widget {
 	/**
 	 * Merge the widget settings into defaults array.
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @param $instance Instance
 	 * @uses bb_parse_args() To merge widget options into defaults
@@ -914,22 +914,22 @@ class BB_Topics_Widget extends WP_Widget {
 }
 
 /**
- * barebones Stats Widget
+ * Barebones Stats Widget
  *
  * Adds a widget which displays the forum statistics
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @uses WP_Widget
  */
 class BB_Stats_Widget extends WP_Widget {
 
 	/**
-	 * barebones Stats Widget
+	 * Barebones Stats Widget
 	 *
 	 * Registers the stats widget
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @uses  apply_filters() Calls 'bb_stats_widget_options' with the
 	 *        widget options
@@ -946,7 +946,7 @@ class BB_Stats_Widget extends WP_Widget {
 	/**
 	 * Register the widget
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @uses register_widget()
 	 */
@@ -957,7 +957,7 @@ class BB_Stats_Widget extends WP_Widget {
 	/**
 	 * Displays the output, the statistics
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @param mixed $args     Arguments
 	 * @param array $instance Instance
@@ -990,7 +990,7 @@ class BB_Stats_Widget extends WP_Widget {
 	/**
 	 * Update the stats widget options
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @param array $new_instance The new instance options
 	 * @param array $old_instance The old instance options
@@ -1007,7 +1007,7 @@ class BB_Stats_Widget extends WP_Widget {
 	/**
 	 * Output the stats widget options form
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @param $instance
 	 *
@@ -1030,7 +1030,7 @@ class BB_Stats_Widget extends WP_Widget {
 	/**
 	 * Merge the widget settings into defaults array.
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @param $instance Instance
 	 * @uses bb_parse_args() To merge widget settings into defaults
@@ -1044,22 +1044,22 @@ class BB_Stats_Widget extends WP_Widget {
 }
 
 /**
- * barebones Replies Widget
+ * Barebones Replies Widget
  *
  * Adds a widget which displays the replies list
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @uses WP_Widget
  */
 class BB_Replies_Widget extends WP_Widget {
 
 	/**
-	 * barebones Replies Widget
+	 * Barebones Replies Widget
 	 *
 	 * Registers the replies widget
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @uses apply_filters() Calls 'bb_replies_widget_options' with the
 	 *                        widget options
@@ -1076,7 +1076,7 @@ class BB_Replies_Widget extends WP_Widget {
 	/**
 	 * Register the widget
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @uses register_widget()
 	 */
@@ -1087,7 +1087,7 @@ class BB_Replies_Widget extends WP_Widget {
 	/**
 	 * Displays the output, the replies list
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @param mixed $args
 	 * @param array $instance
@@ -1193,7 +1193,7 @@ class BB_Replies_Widget extends WP_Widget {
 	/**
 	 * Update the reply widget options
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @param array $new_instance The new instance options
 	 * @param array $old_instance The old instance options
@@ -1211,7 +1211,7 @@ class BB_Replies_Widget extends WP_Widget {
 	/**
 	 * Output the reply widget options form
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @param $instance Instance
 	 * @uses BB_Replies_Widget::get_field_id() To output the field id
@@ -1233,7 +1233,7 @@ class BB_Replies_Widget extends WP_Widget {
 	/**
 	 * Merge the widget settings into defaults array.
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @param $instance Instance
 	 * @uses bb_parse_args() To merge widget settings into defaults

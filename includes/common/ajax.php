@@ -1,12 +1,12 @@
 <?php
 
 /**
- * barebones Common AJAX Functions
+ * Barebones Common AJAX Functions
  *
  * Common AJAX functions are ones that are used to setup and/or use during
- * barebones specific, theme-side  AJAX requests.
+ * Barebones specific, theme-side  AJAX requests.
  *
- * @package barebones
+ * @package Barebones
  * @subpackage Ajax
  */
 
@@ -16,7 +16,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
 /**
  * Output the URL to use for theme-side barebones AJAX requests
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @uses bb_get_ajax_url() To get the URL to use for AJAX requests
  */
@@ -26,7 +26,7 @@ function bb_ajax_url() {
 	/**
 	 * Return the URL to use for theme-side barebones AJAX requests
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @global WP $wp
 	 * @return string
@@ -43,7 +43,7 @@ function bb_ajax_url() {
 /**
  * Is this a barebones AJAX request?
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @return bool Looking for bbp-ajax
  */
@@ -55,7 +55,7 @@ function bb_is_ajax() {
  * Hooked to the 'bb_template_redirect' action, this is barebones's custom
  * theme-side ajax handler.
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @return If not a barebones ajax request
  */
@@ -84,7 +84,7 @@ function bb_do_ajax() {
 /**
  * Helper method to return JSON response for the ajax calls
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @param bool $success
  * @param string $content

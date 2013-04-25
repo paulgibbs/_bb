@@ -1,9 +1,9 @@
 <?php
 
 /**
- * barebones Forum Template Tags
+ * Barebones Forum Template Tags
  *
- * @package barebones
+ * @package Barebones
  * @subpackage TemplateTags
  */
 
@@ -15,7 +15,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
 /**
  * Output the unique id of the custom post type for forums
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  * @uses bb_get_forum_post_type() To get the forum post type
  */
 function bb_forum_post_type() {
@@ -24,7 +24,7 @@ function bb_forum_post_type() {
 	/**
 	 * Return the unique id of the custom post type for forums
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @uses apply_filters() Calls 'bb_get_forum_post_type' with the forum
 	 *                        post type id
@@ -41,7 +41,7 @@ function bb_forum_post_type() {
  *
  * WordPress makes this easy for us.
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @param mixed $args All the arguments supported by {@link WP_Query}
  * @uses WP_Query To make query and get the forums
@@ -77,7 +77,7 @@ function bb_has_forums( $args = '' ) {
 /**
  * Whether there are more forums available in the loop
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @uses barebones:forum_query::have_posts() To check if there are more forums
  *                                          available
@@ -98,7 +98,7 @@ function bb_forums() {
 /**
  * Loads up the current forum in the loop
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @uses barebones:forum_query::the_post() To get the current forum
  * @return object Forum information
@@ -112,7 +112,7 @@ function bb_the_forum() {
 /**
  * Output forum id
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @param $forum_id Optional. Used to check emptiness
  * @uses bb_get_forum_id() To get the forum id
@@ -123,11 +123,11 @@ function bb_forum_id( $forum_id = 0 ) {
 	/**
 	 * Return the forum id
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @param $forum_id Optional. Used to check emptiness
-	 * @uses barebones::forum_query::in_the_loop To check if we're in the loop
-	 * @uses barebones::forum_query::post::ID To get the forum id
+	 * @uses Barebones::forum_query::in_the_loop To check if we're in the loop
+	 * @uses Barebones::forum_query::post::ID To get the forum id
 	 * @uses WP_Query::post::ID To get the forum id
 	 * @uses bb_is_forum() To check if the search result is a forum
 	 * @uses bb_is_single_forum() To check if it's a forum page
@@ -178,7 +178,7 @@ function bb_forum_id( $forum_id = 0 ) {
 /**
  * Gets a forum
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @param int|object $forum forum id or forum object
  * @param string $output Optional. OBJECT, ARRAY_A, or ARRAY_N. Default = OBJECT
@@ -223,7 +223,7 @@ function bb_get_forum( $forum, $output = OBJECT, $filter = 'raw' ) {
 /**
  * Output the link to the forum
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @param int $forum_id Optional. Forum id
  * @uses bb_get_forum_permalink() To get the permalink
@@ -234,7 +234,7 @@ function bb_forum_permalink( $forum_id = 0 ) {
 	/**
 	 * Return the link to the forum
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @param int $forum_id Optional. Forum id
 	 * @param $string $redirect_to Optional. Pass a redirect value for use with
@@ -263,7 +263,7 @@ function bb_forum_permalink( $forum_id = 0 ) {
 /**
  * Output the title of the forum
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @param int $forum_id Optional. Forum id
  * @uses bb_get_forum_title() To get the forum title
@@ -274,7 +274,7 @@ function bb_forum_title( $forum_id = 0 ) {
 	/**
 	 * Return the title of the forum
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @param int $forum_id Optional. Forum id
 	 * @uses bb_get_forum_id() To get the forum id
@@ -292,7 +292,7 @@ function bb_forum_title( $forum_id = 0 ) {
 /**
  * Output the forum archive title
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @param string $title Default text to use as title
  */
@@ -302,7 +302,7 @@ function bb_forum_archive_title( $title = '' ) {
 	/**
 	 * Return the forum archive title
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @param string $title Default text to use as title
 	 *
@@ -338,7 +338,7 @@ function bb_forum_archive_title( $title = '' ) {
 /**
  * Output the content of the forum
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @param int $forum_id Optional. Topic id
  * @uses bb_get_forum_content() To get the forum content
@@ -349,7 +349,7 @@ function bb_forum_content( $forum_id = 0 ) {
 	/**
 	 * Return the content of the forum
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @param int $forum_id Optional. Topic id
 	 * @uses bb_get_forum_id() To get the forum id
@@ -375,7 +375,7 @@ function bb_forum_content( $forum_id = 0 ) {
 /**
  * Allow forum rows to have adminstrative actions
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  * @uses do_action()
  * @todo Links and filter
  */
@@ -386,7 +386,7 @@ function bb_forum_row_actions() {
 /**
  * Output the forums last active ID
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @uses bb_get_forum_last_active_id() To get the forum's last active id
  * @param int $forum_id Optional. Forum id
@@ -397,7 +397,7 @@ function bb_forum_last_active_id( $forum_id = 0 ) {
 	/**
 	 * Return the forums last active ID
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @param int $forum_id Optional. Forum id
 	 * @uses bb_get_forum_id() To get the forum id
@@ -416,7 +416,7 @@ function bb_forum_last_active_id( $forum_id = 0 ) {
 /**
  * Output the forums last update date/time (aka freshness)
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @uses bb_get_forum_last_active_time() To get the forum freshness
  * @param int $forum_id Optional. Forum id
@@ -427,7 +427,7 @@ function bb_forum_last_active_time( $forum_id = 0 ) {
 	/**
 	 * Return the forums last update date/time (aka freshness)
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @param int $forum_id Optional. Forum id
 	 * @uses bb_get_forum_id() To get the forum id
@@ -471,7 +471,7 @@ function bb_forum_last_active_time( $forum_id = 0 ) {
  *
  * Outputs a complete link with attributes and content.
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @param int $forum_id Optional. Forum id
  * @uses bb_get_forum_freshness_link() To get the forum freshness link
@@ -484,7 +484,7 @@ function bb_forum_freshness_link( $forum_id = 0) {
 	 *
 	 * Returns a complete link with attributes and content.
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @param int $forum_id Optional. Forum id
 	 * @uses bb_get_forum_id() To get the forum id
@@ -535,7 +535,7 @@ function bb_forum_freshness_link( $forum_id = 0) {
 /**
  * Output parent ID of a forum, if exists
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @param int $forum_id Forum ID
  * @uses bb_get_forum_parent_id() To get the forum's parent ID
@@ -546,7 +546,7 @@ function bb_forum_parent_id( $forum_id = 0 ) {
 	/**
 	 * Return ID of forum parent, if exists
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @param int $forum_id Optional. Forum id
 	 * @uses bb_get_forum_id() To get the forum id
@@ -564,7 +564,7 @@ function bb_forum_parent_id( $forum_id = 0 ) {
 /**
  * Return array of parent forums
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @param int $forum_id Optional. Forum id
  * @uses bb_get_forum_id() To get the forum id
@@ -591,7 +591,7 @@ function bb_get_forum_ancestors( $forum_id = 0 ) {
 /**
  * Return subforums of given forum
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @param mixed $args All the arguments supported by {@link WP_Query}
  * @uses bb_get_forum_id() To get the forum id
@@ -736,7 +736,7 @@ function bb_list_forums( $args = '' ) {
 /**
  * Output the forum's last topic id
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @uses bb_get_forum_last_topic_id() To get the forum's last topic id
  * @param int $forum_id Optional. Forum id
@@ -747,7 +747,7 @@ function bb_forum_last_topic_id( $forum_id = 0 ) {
 	/**
 	 * Return the forum's last topic id
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @param int $forum_id Optional. Forum id
 	 * @uses bb_get_forum_id() To get the forum id
@@ -766,7 +766,7 @@ function bb_forum_last_topic_id( $forum_id = 0 ) {
 /**
  * Output the title of the last topic inside a forum
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @param int $forum_id Optional. Forum id
  * @uses bb_get_forum_last_topic_title() To get the forum's last topic's title
@@ -777,7 +777,7 @@ function bb_forum_last_topic_title( $forum_id = 0 ) {
 	/**
 	 * Return the title of the last topic inside a forum
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @param int $forum_id Optional. Forum id
 	 * @uses bb_get_forum_id() To get the forum id
@@ -798,7 +798,7 @@ function bb_forum_last_topic_title( $forum_id = 0 ) {
 /**
  * Output the link to the last topic in a forum
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @param int $forum_id Optional. Forum id
  * @uses bb_get_forum_last_topic_permalink() To get the forum's last topic's
@@ -810,7 +810,7 @@ function bb_forum_last_topic_permalink( $forum_id = 0 ) {
 	/**
 	 * Return the link to the last topic in a forum
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @param int $forum_id Optional. Forum id
 	 * @uses bb_get_forum_id() To get the forum id
@@ -828,7 +828,7 @@ function bb_forum_last_topic_permalink( $forum_id = 0 ) {
 /**
  * Return the author ID of the last topic of a forum
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @param int $forum_id Optional. Forum id
  * @uses bb_get_forum_id() To get the forum id
@@ -847,7 +847,7 @@ function bb_get_forum_last_topic_author_id( $forum_id = 0 ) {
 /**
  * Output link to author of last topic of forum
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @param int $forum_id Optional. Forum id
  * @uses bb_get_forum_last_topic_author_link() To get the forum's last topic's
@@ -859,7 +859,7 @@ function bb_forum_last_topic_author_link( $forum_id = 0 ) {
 	/**
 	 * Return link to author of last topic of forum
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @param int $forum_id Optional. Forum id
 	 * @uses bb_get_forum_id() To get the forum id
@@ -882,7 +882,7 @@ function bb_forum_last_topic_author_link( $forum_id = 0 ) {
 /**
  * Output the forums last reply id
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @uses bb_get_forum_last_reply_id() To get the forum's last reply id
  * @param int $forum_id Optional. Forum id
@@ -893,7 +893,7 @@ function bb_forum_last_reply_id( $forum_id = 0 ) {
 	/**
 	 * Return the forums last reply id
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @param int $forum_id Optional. Forum id
 	 * @uses bb_get_forum_id() To get the forum id
@@ -941,7 +941,7 @@ function bb_forum_last_reply_title( $forum_id = 0 ) {
 /**
  * Output the link to the last reply in a forum
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @param int $forum_id Optional. Forum id
  * @uses bb_get_forum_last_reply_permalink() To get the forum last reply link
@@ -952,7 +952,7 @@ function bb_forum_last_reply_permalink( $forum_id = 0 ) {
 	/**
 	 * Return the link to the last reply in a forum
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @param int $forum_id Optional. Forum id
 	 * @uses bb_get_forum_id() To get the forum id
@@ -970,7 +970,7 @@ function bb_forum_last_reply_permalink( $forum_id = 0 ) {
 /**
  * Output the url to the last reply in a forum
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @param int $forum_id Optional. Forum id
  * @uses bb_get_forum_last_reply_url() To get the forum last reply url
@@ -981,7 +981,7 @@ function bb_forum_last_reply_url( $forum_id = 0 ) {
 	/**
 	 * Return the url to the last reply in a forum
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @param int $forum_id Optional. Forum id
 	 * @uses bb_get_forum_id() To get the forum id
@@ -1018,7 +1018,7 @@ function bb_forum_last_reply_url( $forum_id = 0 ) {
 /**
  * Output author ID of last reply of forum
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @param int $forum_id Optional. Forum id
  * @uses bb_get_forum_last_reply_author_id() To get the forum's last reply
@@ -1030,7 +1030,7 @@ function bb_forum_last_reply_author_id( $forum_id = 0 ) {
 	/**
 	 * Return author ID of last reply of forum
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @param int $forum_id Optional. Forum id
 	 * @uses bb_get_forum_id() To get the forum id
@@ -1050,7 +1050,7 @@ function bb_forum_last_reply_author_id( $forum_id = 0 ) {
 /**
  * Output link to author of last reply of forum
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @param int $forum_id Optional. Forum id
  * @uses bb_get_forum_last_reply_author_link() To get the forum's last reply's
@@ -1062,7 +1062,7 @@ function bb_forum_last_reply_author_link( $forum_id = 0 ) {
 	/**
 	 * Return link to author of last reply of forum
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @param int $forum_id Optional. Forum id
 	 * @uses bb_get_forum_id() To get the forum id
@@ -1086,7 +1086,7 @@ function bb_forum_last_reply_author_link( $forum_id = 0 ) {
 /**
  * Output the topics link of the forum
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @param int $forum_id Optional. Topic id
  * @uses bb_get_forum_topics_link() To get the forum topics link
@@ -1098,7 +1098,7 @@ function bb_forum_topics_link( $forum_id = 0 ) {
 	/**
 	 * Return the topics link of the forum
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @param int $forum_id Optional. Topic id
 	 * @uses bb_get_forum_id() To get the forum id
@@ -1151,7 +1151,7 @@ function bb_forum_topics_link( $forum_id = 0 ) {
 /**
  * Output total sub-forum count of a forum
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @param int $forum_id Optional. Forum id to check
  * @param boolean $integer Optional. Whether or not to format the result
@@ -1163,7 +1163,7 @@ function bb_forum_subforum_count( $forum_id = 0, $integer = false ) {
 	/**
 	 * Return total subforum count of a forum
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @param int $forum_id Optional. Forum id
 	 * @param boolean $integer Optional. Whether or not to format the result
@@ -1184,7 +1184,7 @@ function bb_forum_subforum_count( $forum_id = 0, $integer = false ) {
 /**
  * Output total topic count of a forum
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @param int $forum_id Optional. Forum id
  * @param bool $total_count Optional. To get the total count or normal count?
@@ -1197,7 +1197,7 @@ function bb_forum_topic_count( $forum_id = 0, $total_count = true, $integer = fa
 	/**
 	 * Return total topic count of a forum
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @param int $forum_id Optional. Forum id
 	 * @param bool $total_count Optional. To get the total count or normal
@@ -1221,7 +1221,7 @@ function bb_forum_topic_count( $forum_id = 0, $total_count = true, $integer = fa
 /**
  * Output total reply count of a forum
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @param int $forum_id Optional. Forum id
  * @param bool $total_count Optional. To get the total count or normal count?
@@ -1234,7 +1234,7 @@ function bb_forum_reply_count( $forum_id = 0, $total_count = true, $integer = fa
 	/**
 	 * Return total post count of a forum
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @param int $forum_id Optional. Forum id
 	 * @param bool $total_count Optional. To get the total count or normal
@@ -1258,7 +1258,7 @@ function bb_forum_reply_count( $forum_id = 0, $total_count = true, $integer = fa
 /**
  * Output total post count of a forum
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @param int $forum_id Optional. Forum id
  * @param bool $total_count Optional. To get the total count or normal count?
@@ -1271,7 +1271,7 @@ function bb_forum_post_count( $forum_id = 0, $total_count = true, $integer = fal
 	/**
 	 * Return total post count of a forum
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @param int $forum_id Optional. Forum id
 	 * @param bool $total_count Optional. To get the total count or normal
@@ -1298,7 +1298,7 @@ function bb_forum_post_count( $forum_id = 0, $total_count = true, $integer = fal
  * Output total hidden topic count of a forum (hidden includes trashed and
  * spammed topics)
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @param int $forum_id Optional. Topic id
  * @param boolean $integer Optional. Whether or not to format the result
@@ -1311,7 +1311,7 @@ function bb_forum_topic_count_hidden( $forum_id = 0, $integer = false ) {
 	 * Return total hidden topic count of a forum (hidden includes trashed
 	 * and spammed topics)
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @param int $forum_id Optional. Topic id
 	 * @param boolean $integer Optional. Whether or not to format the result
@@ -1332,7 +1332,7 @@ function bb_forum_topic_count_hidden( $forum_id = 0, $integer = false ) {
 /**
  * Output the status of the forum
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @param int $forum_id Optional. Forum id
  * @uses bb_get_forum_status() To get the forum status
@@ -1343,7 +1343,7 @@ function bb_forum_status( $forum_id = 0 ) {
 	/**
 	 * Return the status of the forum
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @param int $forum_id Optional. Forum id
 	 * @uses bb_get_forum_id() To get the forum id
@@ -1364,7 +1364,7 @@ function bb_forum_status( $forum_id = 0 ) {
 /**
  * Output the visibility of the forum
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @param int $forum_id Optional. Forum id
  * @uses bb_get_forum_visibility() To get the forum visibility
@@ -1375,7 +1375,7 @@ function bb_forum_visibility( $forum_id = 0 ) {
 	/**
 	 * Return the visibility of the forum
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @param int $forum_id Optional. Forum id
 	 * @uses bb_get_forum_id() To get the forum id
@@ -1393,7 +1393,7 @@ function bb_forum_visibility( $forum_id = 0 ) {
 /**
  * Output the type of the forum
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @param int $forum_id Optional. Forum id
  * @uses bb_get_forum_type() To get the forum type
@@ -1404,7 +1404,7 @@ function bb_forum_type( $forum_id = 0 ) {
 	/**
 	 * Return the type of forum (category/forum/etc...)
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @param int $forum_id Optional. Forum id
 	 * @uses get_post_meta() To get the forum category meta
@@ -1422,7 +1422,7 @@ function bb_forum_type( $forum_id = 0 ) {
 /**
  * Is the forum a category?
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @param int $forum_id Optional. Forum id
  * @uses bb_get_forum_type() To get the forum type
@@ -1439,7 +1439,7 @@ function bb_is_forum_category( $forum_id = 0 ) {
 /**
  * Is the forum open?
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  * @param int $forum_id Optional. Forum id
  *
  * @param int $forum_id Optional. Forum id
@@ -1453,7 +1453,7 @@ function bb_is_forum_open( $forum_id = 0 ) {
 	/**
 	 * Is the forum closed?
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @param int $forum_id Optional. Forum id
 	 * @param bool $check_ancestors Check if the ancestors are closed (only
@@ -1485,7 +1485,7 @@ function bb_is_forum_open( $forum_id = 0 ) {
 /**
  * Is the forum public?
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @param int $forum_id Optional. Forum id
  * @param bool $check_ancestors Check if the ancestors are public (only if
@@ -1521,7 +1521,7 @@ function bb_is_forum_public( $forum_id = 0, $check_ancestors = true ) {
 /**
  * Is the forum private?
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @param int $forum_id Optional. Forum id
  * @param bool $check_ancestors Check if the ancestors are private (only if
@@ -1557,7 +1557,7 @@ function bb_is_forum_private( $forum_id = 0, $check_ancestors = true ) {
 /**
  * Is the forum hidden?
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @param int $forum_id Optional. Forum id
  * @param bool $check_ancestors Check if the ancestors are private (only if
@@ -1593,7 +1593,7 @@ function bb_is_forum_hidden( $forum_id = 0, $check_ancestors = true ) {
 /**
  * Output the author of the forum
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @param int $forum_id Optional. Forum id
  * @uses bb_get_forum_author() To get the forum author
@@ -1604,7 +1604,7 @@ function bb_forum_author_display_name( $forum_id = 0 ) {
 	/**
 	 * Return the author of the forum
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @param int $forum_id Optional. Forum id
 	 * @uses bb_get_forum_id() To get the forum id
@@ -1624,7 +1624,7 @@ function bb_forum_author_display_name( $forum_id = 0 ) {
 /**
  * Output the author ID of the forum
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @param int $forum_id Optional. Forum id
  * @uses bb_get_forum_author_id() To get the forum author id
@@ -1635,7 +1635,7 @@ function bb_forum_author_id( $forum_id = 0 ) {
 	/**
 	 * Return the author ID of the forum
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @param int $forum_id Optional. Forum id
 	 * @uses bb_get_forum_id() To get the forum id
@@ -1654,7 +1654,7 @@ function bb_forum_author_id( $forum_id = 0 ) {
 /**
  * Replace forum meta details for users that cannot view them.
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @param string $retval
  * @param int $forum_id
@@ -1674,7 +1674,7 @@ function bb_suppress_private_forum_meta( $retval, $forum_id ) {
 /**
  * Replace forum author details for users that cannot view them.
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @param string $retval
  * @param int $forum_id
@@ -1731,7 +1731,7 @@ function bb_suppress_private_author_link( $author_link, $args ) {
 /**
  * Output the row class of a forum
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @param int $forum_id Optional. Forum ID.
  * @param array Extra classes you can pass when calling this function
@@ -1743,7 +1743,7 @@ function bb_forum_class( $forum_id = 0, $classes = array() ) {
 	/**
 	 * Return the row class of a forum
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @param int $forum_id Optional. Forum ID
 	 * @param array Extra classes you can pass when calling this function
@@ -1788,7 +1788,7 @@ function bb_forum_class( $forum_id = 0, $classes = array() ) {
  * Output a fancy description of the current forum, including total topics,
  * total replies, and last activity.
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @param array $args Arguments passed to alter output
  * @uses bb_get_single_forum_description() Return the eventual output
@@ -1800,7 +1800,7 @@ function bb_single_forum_description( $args = '' ) {
 	 * Return a fancy description of the current forum, including total
 	 * topics, total replies, and last activity.
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @param mixed $args This function supports these arguments:
 	 *  - forum_id: Forum id
@@ -1923,7 +1923,7 @@ function bb_single_forum_description( $args = '' ) {
 /**
  * Output the value of forum title field
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @uses bb_get_form_forum_title() To get the value of forum title field
  */
@@ -1933,7 +1933,7 @@ function bb_form_forum_title() {
 	/**
 	 * Return the value of forum title field
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @uses bb_is_forum_edit() To check if it's forum edit page
 	 * @uses apply_filters() Calls 'bb_get_form_forum_title' with the title
@@ -1960,7 +1960,7 @@ function bb_form_forum_title() {
 /**
  * Output the value of forum content field
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @uses bb_get_form_forum_content() To get value of forum content field
  */
@@ -1970,7 +1970,7 @@ function bb_form_forum_content() {
 	/**
 	 * Return the value of forum content field
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @uses bb_is_forum_edit() To check if it's the forum edit page
 	 * @uses apply_filters() Calls 'bb_get_form_forum_content' with the content
@@ -1997,7 +1997,7 @@ function bb_form_forum_content() {
 /**
  * Output value of forum parent
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @uses bb_get_form_forum_parent() To get the topic's forum id
  */
@@ -2007,7 +2007,7 @@ function bb_form_forum_parent() {
 	/**
 	 * Return value of forum parent
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @uses bb_is_topic_edit() To check if it's the topic edit page
 	 * @uses bb_get_forum_parent_id() To get the topic forum id
@@ -2035,7 +2035,7 @@ function bb_form_forum_parent() {
 /**
  * Output value of forum type
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @uses bb_get_form_forum_type() To get the topic's forum id
  */
@@ -2045,7 +2045,7 @@ function bb_form_forum_type() {
 	/**
 	 * Return value of forum type
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @uses bb_is_topic_edit() To check if it's the topic edit page
 	 * @uses bb_get_forum_type_id() To get the topic forum id
@@ -2073,7 +2073,7 @@ function bb_form_forum_type() {
 /**
  * Output value of forum visibility
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @uses bb_get_form_forum_visibility() To get the topic's forum id
  */
@@ -2083,7 +2083,7 @@ function bb_form_forum_visibility() {
 	/**
 	 * Return value of forum visibility
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @uses bb_is_topic_edit() To check if it's the topic edit page
 	 * @uses bb_get_forum_visibility_id() To get the topic forum id
@@ -2113,7 +2113,7 @@ function bb_form_forum_visibility() {
 /**
  * Output value forum type dropdown
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @param int $forum_id The forum id to use
  * @uses bb_get_form_forum_type() To get the topic's forum id
@@ -2124,7 +2124,7 @@ function bb_form_forum_type_dropdown( $forum_id = 0 ) {
 	/**
 	 * Return the forum type dropdown
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @param int $forum_id The forum id to use
 	 * @uses bb_is_topic_edit() To check if it's the topic edit page
@@ -2151,7 +2151,7 @@ function bb_form_forum_type_dropdown( $forum_id = 0 ) {
 /**
  * Output value forum status dropdown
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @param int $forum_id The forum id to use
  * @uses bb_get_form_forum_status() To get the topic's forum id
@@ -2162,7 +2162,7 @@ function bb_form_forum_status_dropdown( $forum_id = 0 ) {
 	/**
 	 * Return the forum status dropdown
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @param int $forum_id The forum id to use
 	 * @uses bb_is_topic_edit() To check if it's the topic edit page
@@ -2189,7 +2189,7 @@ function bb_form_forum_status_dropdown( $forum_id = 0 ) {
 /**
  * Output value forum visibility dropdown
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @param int $forum_id The forum id to use
  * @uses bb_get_form_forum_visibility() To get the topic's forum id
@@ -2200,7 +2200,7 @@ function bb_form_forum_visibility_dropdown( $forum_id = 0 ) {
 	/**
 	 * Return the forum visibility dropdown
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @param int $forum_id The forum id to use
 	 * @uses bb_is_topic_edit() To check if it's the topic edit page
@@ -2230,7 +2230,7 @@ function bb_form_forum_visibility_dropdown( $forum_id = 0 ) {
 /**
  * Output the link for the forum feed
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @param type $forum_id Optional. Forum ID.
  *
@@ -2242,7 +2242,7 @@ function bb_forum_topics_feed_link( $forum_id = 0 ) {
 	/**
 	 * Retrieve the link for the forum feed
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @param int $forum_id Optional. Forum ID.
 	 *
@@ -2292,7 +2292,7 @@ function bb_forum_topics_feed_link( $forum_id = 0 ) {
 /**
  * Output the link for the forum replies feed
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @param type $forum_id Optional. Forum ID.
  *
@@ -2304,7 +2304,7 @@ function bb_forum_replies_feed_link( $forum_id = 0 ) {
 	/**
 	 * Retrieve the link for the forum replies feed
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @param int $forum_id Optional. Forum ID.
 	 *

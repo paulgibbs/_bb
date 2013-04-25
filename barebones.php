@@ -1,15 +1,15 @@
 <?php
 /**
- * The barebones plugin
+ * The Barebones plugin
  *
- * @package barebones
+ * @package Barebones
  */
 
 /**
- * Plugin Name: barebones
+ * Plugin Name: Barebones
  * Plugin URI:  http://example.org
- * Description: barebones helps you quickly start building a powerful, modern WordPress plugin.
- * Author:      You
+ * Description: Barebones is a kit that helps you build a powerful, modern WordPress plugin.
+ * Author:      You!
  * Author URI:  http://example.org
  * Version:     1.0
  * Text Domain: barebones
@@ -19,25 +19,25 @@
 // Exit if accessed directly
 if ( !defined( 'ABSPATH' ) ) exit;
 
-if ( !class_exists( 'barebones' ) ) :
+if ( !class_exists( 'Barebones' ) ) :
 /**
- * Main barebones class
+ * Main Barebones class
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  */
-final class barebones {
+final class Barebones {
 
 	/** Magic *****************************************************************/
 
 	/**
-	 * barebones uses many variables, several of which can be filtered to
+	 * Barebones uses many variables, several of which can be filtered to
 	 * customize the way it operates. Most of these variables are stored in a
 	 * private array that gets updated with the help of PHP magic methods.
 	 *
 	 * This is a precautionary measure, to avoid potential errors produced by
-	 * unanticipated direct manipulation of barebones's run-time data.
+	 * unanticipated direct manipulation of Barebones's run-time data.
 	 *
-	 * @see barebones::setup_globals()
+	 * @see Barebones::setup_globals()
 	 * @var array
 	 */
 	private $data;
@@ -64,31 +64,26 @@ final class barebones {
 	/** Singleton *************************************************************/
 
 	/**
-	 * @var barebones The one true barebones
+	 * @var Barebones The one true Barebones
 	 */
 	private static $instance;
 
 	/**
-	 * Main barebones Instance
+	 * Main Barebones instance
 	 *
-	 * barebones is fun
-	 * Please load it only one time
-	 * For this, we thank you
-	 *
-	 * Insures that only one instance of barebones exists in memory at any one
+	 * Insures that only one instance of Barebones exists in memory at any one
 	 * time. Also prevents needing to define globals all over the place.
 	 *
-	 * @since barebones (1.0)
-	 * @staticvar array $instance
-	 * @uses barebones::setup_globals() Setup the globals needed
-	 * @uses barebones::includes() Include the required files
-	 * @uses barebones::setup_actions() Setup the hooks and actions
+	 * @since Barebones (1.0)
+	 * @uses Barebones::setup_globals() Setup the globals needed
+	 * @uses Barebones::includes() Include the required files
+	 * @uses Barebones::setup_actions() Setup the hooks and actions
 	 * @see barebones()
-	 * @return The one true barebones
+	 * @return The one true Barebones
 	 */
 	public static function instance() {
 		if ( ! isset( self::$instance ) ) {
-			self::$instance = new barebones;
+			self::$instance = new Barebones;
 			self::$instance->setup_globals();
 			self::$instance->includes();
 			self::$instance->setup_actions();
@@ -100,60 +95,60 @@ final class barebones {
 	/** Magic Methods *********************************************************/
 
 	/**
-	 * A dummy constructor to prevent barebones from being loaded more than once.
+	 * A dummy constructor to prevent Barebones from being loaded more than once.
 	 *
-	 * @since barebones (1.0)
-	 * @see barebones::instance()
+	 * @since Barebones (1.0)
+	 * @see Barebones::instance()
 	 * @see barebones();
 	 */
 	private function __construct() { /* Do nothing here */ }
 
 	/**
-	 * A dummy magic method to prevent barebones from being cloned
+	 * A dummy magic method to prevent Barebones from being cloned
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 */
 	public function __clone() { _doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'barebones' ), '1.0' ); }
 
 	/**
-	 * A dummy magic method to prevent barebones from being unserialized
+	 * A dummy magic method to prevent Barebones from being unserialized
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 */
 	public function __wakeup() { _doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'barebones' ), '1.0' ); }
 
 	/**
 	 * Magic method for checking the existence of a certain custom field
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 */
 	public function __isset( $key ) { return isset( $this->data[$key] ); }
 
 	/**
-	 * Magic method for getting barebones variables
+	 * Magic method for getting Barebones variables
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 */
 	public function __get( $key ) { return isset( $this->data[$key] ) ? $this->data[$key] : null; }
 
 	/**
-	 * Magic method for setting barebones variables
+	 * Magic method for setting Barebones variables
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 */
 	public function __set( $key, $value ) { $this->data[$key] = $value; }
 
 	/**
-	 * Magic method for unsetting barebones variables
+	 * Magic method for unsetting Barebones variables
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 */
 	public function __unset( $key ) { if ( isset( $this->data[$key] ) ) unset( $this->data[$key] ); }
 
 	/**
 	 * Magic method to prevent notices and errors from invalid method calls
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 */
 	public function __call( $name = '', $args = array() ) { unset( $name, $args ); return null; }
 
@@ -164,10 +159,10 @@ final class barebones {
 	 * Set some smart defaults to class variables. Allow some of them to be
 	 * filtered to allow for early overriding.
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 * @access private
-	 * @uses plugin_dir_path() To generate barebones plugin path
-	 * @uses plugin_dir_url() To generate barebones plugin url
+	 * @uses plugin_dir_path() To generate Barebones plugin path
+	 * @uses plugin_dir_url() To generate Barebones plugin url
 	 * @uses apply_filters() Calls various filters
 	 */
 	private function setup_globals() {
@@ -222,7 +217,7 @@ final class barebones {
 
 		/** Misc **************************************************************/
 
-		$this->domain         = 'barebones';      // Unique identifier for retrieving translated strings
+		$this->domain         = 'barebones';    // Unique identifier for retrieving translated strings
 		$this->extend         = new stdClass(); // Plugins add data here
 		$this->errors         = new WP_Error(); // Feedback
 	}
@@ -230,7 +225,7 @@ final class barebones {
 	/**
 	 * Include required files
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 * @access private
 	 * @uses is_admin() If in WordPress admin, load additional file
 	 */
@@ -284,7 +279,7 @@ final class barebones {
 	/**
 	 * Setup the default hooks and actions
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 * @access private
 	 * @uses add_action() To add various actions
 	 */
@@ -294,49 +289,45 @@ final class barebones {
 		add_action( 'activate_'   . $this->basename, 'bb_activation'   );
 		add_action( 'deactivate_' . $this->basename, 'bb_deactivation' );
 
-		// If barebones is being deactivated, do not add any actions
+		// If Barebones is being deactivated, do not add any actions
 		if ( bb_is_deactivation( $this->basename ) )
 			return;
 
-		// Array of barebones core actions
+		// Array of Barebones core actions
 		$actions = array(
 			'setup_theme',              // Setup the default theme compat
-			'register_post_types',      // Register post types (forum|topic|reply)
-			'register_post_statuses',   // Register post statuses (closed|spam|orphan|hidden)
+			'register_post_types',      // Register post types (forum)
+			'register_post_statuses',   // Register post statuses
 			'register_taxonomies',      // Register taxonomies (topic-tag)
-			'register_shortcodes',      // Register shortcodes (bbp-login)
-			'register_views',           // Register the views (no-replies)
-			'register_theme_packages',  // Register bundled theme packages (bbp-theme-compat/bbp-themes)
+			'register_shortcodes',      // Register shortcodes
+			'register_theme_packages',  // Register bundled theme packages (barebones)
 			'load_textdomain',          // Load textdomain (barebones)
-			'add_rewrite_tags',         // Add rewrite tags (view|user|edit|search)
-			'generate_rewrite_rules'    // Generate rewrite rules (view|edit|search)
+			'add_rewrite_tags',         // Add rewrite tags
+			'generate_rewrite_rules'    // Generate rewrite rules
 		);
 
 		// Add the actions
 		foreach( $actions as $class_action )
 			add_action( 'bb_' . $class_action, array( $this, $class_action ), 5 );
 
-		// All barebones actions are setup (includes bbp-core-hooks.php)
+		// All Barebones actions are setup (includes bb-core-hooks.php)
 		do_action_ref_array( 'bb_after_setup_actions', array( &$this ) );
 	}
+
 
 	/** Public Methods ********************************************************/
 
 	/**
 	 * Register bundled theme packages
 	 *
-	 * Note that since we currently have complete control over bbp-themes and
-	 * the bbp-theme-compat folders, it's fine to hardcode these here. If at a
-	 * later date we need to automate this, and API will need to be built.
-	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 */
 	public function register_theme_packages() {
 
 		// Register the default theme compatibility package
 		bb_register_theme_package( array(
 			'id'      => 'default',
-			'name'    => __( 'barebones Default', 'barebones' ),
+			'name'    => __( 'barebones default', 'barebones' ),
 			'version' => bb_get_version(),
 			'dir'     => trailingslashit( $this->themes_dir . 'default' ),
 			'url'     => trailingslashit( $this->themes_url . 'default' )
@@ -349,9 +340,9 @@ final class barebones {
 	}
 
 	/**
-	 * Setup the default barebones theme compatibility location.
+	 * Setup the default Barebones theme compatibility location.
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 */
 	public function setup_theme() {
 
@@ -366,10 +357,9 @@ final class barebones {
 	/**
 	 * Load the translation file for current language. Checks the default languages folder.
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
-	 * @uses apply_filters() Calls 'barebones_locale' with the
-	 *                        {@link get_locale()} value
+	 * @uses apply_filters() Calls 'barebones_locale' with the {@link get_locale()} value
 	 * @uses load_textdomain() To load the textdomain
 	 * @return bool True on success, false on failure
 	 */
@@ -388,7 +378,7 @@ final class barebones {
 	/**
 	 * Setup the post types for forums, topics and replies
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 * @uses register_post_type() To register the post types
 	 * @uses apply_filters() Calls various filters to modify the arguments
 	 *                        sent to register_post_type()
@@ -439,7 +429,7 @@ final class barebones {
 				'labels'              => $post_type['labels'],
 				'rewrite'             => $post_type['rewrite'],
 				'supports'            => $post_type['supports'],
-				'description'         => __( 'barebones Forums', 'barebones' ),
+				'description'         => __( 'Barebones Forums', 'barebones' ),
 				'capabilities'        => bb_get_forum_caps(),
 				'capability_type'     => array( 'forum', 'forums' ),
 				'menu_position'       => 555555,
@@ -457,16 +447,15 @@ final class barebones {
 	}
 
 	/**
-	 * Register the post statuses used by barebones
+	 * Register the post statuses used by Barebones
 	 *
 	 * We do some manipulation of the 'trash' status so trashed topics and
 	 * replies can be viewed from within the theme.
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 * @uses register_post_status() To register post statuses
 	 * @uses $wp_post_statuses To modify trash and private statuses
-	 * @uses current_user_can() To check if the current user is capable &
-	 *                           modify $wp_post_statuses accordingly
+	 * @uses current_user_can() To check if the current user is capable & modify $wp_post_statuses accordingly
 	 */
 	public static function register_post_statuses() {
 	}
@@ -474,7 +463,7 @@ final class barebones {
 	/**
 	 * Register the topic tag taxonomy
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 * @uses register_taxonomy() To register the taxonomy
 	 */
 	public static function register_taxonomies() {
@@ -522,9 +511,9 @@ final class barebones {
 	}
 
 	/**
-	 * Register the barebones shortcodes
+	 * Register the Barebones shortcodes
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 *
 	 * @uses BB_Shortcodes
 	 */
@@ -536,24 +525,23 @@ final class barebones {
 	/** Custom Rewrite Rules **************************************************/
 
 	/**
-	 * Add the barebones-specific rewrite tags
+	 * Add the Barebones-specific rewrite tags
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 * @uses add_rewrite_tag() To add the rewrite tags
 	 */
 	public static function add_rewrite_tags() {
-		add_rewrite_tag( '%%' . bb_get_view_rewrite_id() . '%%', '([^/]+)'   ); // View Page tag
 	}
 
 	/**
-	 * Register barebones-specific rewrite rules for uri's that are not
+	 * Register Barebones-specific rewrite rules for uri's that are not
 	 * setup for us by way of custom post types or taxonomies. This includes:
 	 * - Front-end editing
 	 * - Topic views
 	 * - User profiles
 	 *
-	 * @since barebones (1.0)
-	 * @param WP_Rewrite $wp_rewrite barebones-sepecific rules are appended in
+	 * @since Barebones (1.0)
+	 * @param WP_Rewrite $wp_rewrite Varebones-sepecific rules are appended in
 	 *                                $wp_rewrite->rules
 	 */
 	public static function generate_rewrite_rules( $wp_rewrite ) {
@@ -562,25 +550,22 @@ final class barebones {
 }
 
 /**
- * The main function responsible for returning the one true barebones Instance
- * to functions everywhere.
+ * The main function responsible for returning the one true Barebones Instance to functions everywhere.
  *
- * Use this function like you would a global variable, except without needing
- * to declare the global.
+ * Use this function like you would a global variable, except without needing to declare the global.
+ * Example: <?php $bb = barebones(); ?>
  *
- * Example: <?php $bbp = barebones(); ?>
- *
- * @return The one true barebones Instance
+ * @return The one true Barebones Instance
  */
 function barebones() {
-	return barebones::instance();
+	return Barebones::instance();
 }
 
 /**
- * Hook barebones early onto the 'plugins_loaded' action.
+ * Hook Barebones early onto the 'plugins_loaded' action.
  *
- * This gives all other plugins the chance to load before barebones, to get their
- * actions, filters, and overrides setup without barebones being in the way.
+ * This gives all other plugins the chance to load before Barebones, to get their
+ * actions, filters, and overrides setup without Barebones being in the way.
  */
 if ( defined( 'BAREBONES_LATE_LOAD' ) ) {
 	add_action( 'plugins_loaded', 'barebones', (int) BAREBONES_LATE_LOAD );

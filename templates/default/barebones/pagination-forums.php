@@ -3,7 +3,7 @@
 /**
  * Pagination for pages of topics (when viewing a forum)
  *
- * @package barebones
+ * @package Barebones
  * @subpackage Theme
  */
 

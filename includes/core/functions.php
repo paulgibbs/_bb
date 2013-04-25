@@ -1,9 +1,9 @@
 <?php
 
 /**
- * barebones Core Functions
+ * Barebones Core Functions
  *
- * @package barebones
+ * @package Barebones
  * @subpackage Functions
  */
 
@@ -15,7 +15,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
 /**
  * Output the barebones version
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  * @uses bb_get_version() To get the barebones version
  */
 function bb_version() {
@@ -24,7 +24,7 @@ function bb_version() {
 	/**
 	 * Return the barebones version
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 * @retrun string The barebones version
 	 */
 	function bb_get_version() {
@@ -34,7 +34,7 @@ function bb_version() {
 /**
  * Output the barebones database version
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  * @uses bb_get_version() To get the barebones version
  */
 function bb_db_version() {
@@ -43,7 +43,7 @@ function bb_db_version() {
 	/**
 	 * Return the barebones database version
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 * @retrun string The barebones version
 	 */
 	function bb_get_db_version() {
@@ -53,7 +53,7 @@ function bb_db_version() {
 /**
  * Output the barebones database version directly from the database
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  * @uses bb_get_version() To get the current barebones version
  */
 function bb_db_version_raw() {
@@ -62,7 +62,7 @@ function bb_db_version_raw() {
 	/**
 	 * Return the barebones database version directly from the database
 	 *
-	 * @since barebones (1.0)
+	 * @since Barebones (1.0)
 	 * @retrun string The current barebones version
 	 */
 	function bb_get_db_version_raw() {
@@ -74,7 +74,7 @@ function bb_db_version_raw() {
 /**
  * Update a posts forum meta ID
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @param int $post_id The post to update
  * @param int $forum_id The forum
@@ -91,7 +91,7 @@ function bb_update_forum_id( $post_id, $forum_id ) {
 /**
  * Update a posts topic meta ID
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @param int $post_id The post to update
  * @param int $forum_id The forum
@@ -108,7 +108,7 @@ function bb_update_topic_id( $post_id, $topic_id ) {
 /**
  * Update a posts reply meta ID
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @param int $post_id The post to update
  * @param int $forum_id The forum
@@ -129,7 +129,7 @@ function bb_update_reply_id( $post_id, $reply_id ) {
  *
  * Does nothing much other than return the {@link $bbp->views} variable
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @return array Views
  */
@@ -142,7 +142,7 @@ function bb_get_views() {
  *
  * @todo Implement feeds - See {@link http://trac.example.org/ticket/1422}
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @param string $view View name
  * @param string $title View title
@@ -184,7 +184,7 @@ function bb_register_view( $view, $title, $query_args = '', $feed = true, $capab
 /**
  * Deregister a barebones view
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @param string $view View name
  * @uses sanitize_title() To sanitize the view name
@@ -205,7 +205,7 @@ function bb_deregister_view( $view ) {
 /**
  * Run the view's query
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @param string $view Optional. View id
  * @param mixed $new_args New arguments. See {@link bb_has_topics()}
@@ -234,7 +234,7 @@ function bb_view_query( $view = '', $new_args = '' ) {
 /**
  * Return the view's query arguments
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @param string $view View name
  * @uses bb_get_view_id() To get the view id
@@ -252,7 +252,7 @@ function bb_get_view_query_args( $view ) {
 /**
  * Adds an error message to later be output in the theme
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @see WP_Error()
  * @uses WP_Error::add();
@@ -268,7 +268,7 @@ function bb_add_error( $code = '', $message = '', $data = '' ) {
 /**
  * Check if error messages exist in queue
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @see WP_Error()
  *
@@ -286,7 +286,7 @@ function bb_has_errors() {
 /**
  * Searches through the content to locate usernames, designated by an @ sign.
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @param string $content The content
  * @return bool|array $usernames Existing usernames. False if no matches.
@@ -306,7 +306,7 @@ function bb_find_mentions( $content = '' ) {
 /**
  * Finds and links @-mentioned users in the content
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @uses bb_find_mentions() To get usernames in content areas
  * @return string $content Content filtered for mentions
@@ -339,7 +339,7 @@ function bb_mention_filter( $content = '' ) {
 /**
  * Return the public post status ID
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @return string
  */
@@ -350,7 +350,7 @@ function bb_get_public_status_id() {
 /**
  * Return the pending post status ID
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @return string
  */
@@ -361,7 +361,7 @@ function bb_get_pending_status_id() {
 /**
  * Return the private post status ID
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @return string
  */
@@ -372,7 +372,7 @@ function bb_get_private_status_id() {
 /**
  * Return the hidden post status ID
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @return string
  */
@@ -383,7 +383,7 @@ function bb_get_hidden_status_id() {
 /**
  * Return the closed post status ID
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @return string
  */
@@ -394,7 +394,7 @@ function bb_get_closed_status_id() {
 /**
  * Return the spam post status ID
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @return string
  */
@@ -405,7 +405,7 @@ function bb_get_spam_status_id() {
 /**
  * Return the trash post status ID
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @return string
  */
@@ -416,7 +416,7 @@ function bb_get_trash_status_id() {
 /**
  * Return the orphan post status ID
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @return string
  */
@@ -429,7 +429,7 @@ function bb_get_orphan_status_id() {
 /**
  * Return the unique ID for user profile rewrite rules
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  * @return string
  */
 function bb_get_user_rewrite_id() {
@@ -439,7 +439,7 @@ function bb_get_user_rewrite_id() {
 /**
  * Return the unique ID for all edit rewrite rules (forum|topic|reply|tag|user)
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  * @return string
  */
 function bb_get_edit_rewrite_id() {
@@ -449,7 +449,7 @@ function bb_get_edit_rewrite_id() {
 /**
  * Return the unique ID for all search rewrite rules
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @return string
  */
@@ -460,7 +460,7 @@ function bb_get_search_rewrite_id() {
 /**
  * Return the unique ID for user topics rewrite rules
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  * @return string
  */
 function bb_get_user_topics_rewrite_id() {
@@ -470,7 +470,7 @@ function bb_get_user_topics_rewrite_id() {
 /**
  * Return the unique ID for user replies rewrite rules
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  * @return string
  */
 function bb_get_user_replies_rewrite_id() {
@@ -480,7 +480,7 @@ function bb_get_user_replies_rewrite_id() {
 /**
  * Return the unique ID for user caps rewrite rules
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  * @return string
  */
 function bb_get_user_favorites_rewrite_id() {
@@ -490,7 +490,7 @@ function bb_get_user_favorites_rewrite_id() {
 /**
  * Return the unique ID for user caps rewrite rules
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  * @return string
  */
 function bb_get_user_subscriptions_rewrite_id() {
@@ -500,7 +500,7 @@ function bb_get_user_subscriptions_rewrite_id() {
 /**
  * Return the unique ID for topic view rewrite rules
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  * @return string
  */
 function bb_get_view_rewrite_id() {
@@ -511,7 +511,7 @@ function bb_get_view_rewrite_id() {
  * Delete a blogs rewrite rules, so that they are automatically rebuilt on
  * the subsequent page load.
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  */
 function bb_delete_rewrite_rules() {
 	delete_option( 'rewrite_rules' );
@@ -522,7 +522,7 @@ function bb_delete_rewrite_rules() {
 /**
  * Return true|false if this is a POST request
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  * @return bool
  */
 function bb_is_post_request() {
@@ -532,7 +532,7 @@ function bb_is_post_request() {
 /**
  * Return true|false if this is a GET request
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  * @return bool
  */
 function bb_is_get_request() {

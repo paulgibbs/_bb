@@ -1,9 +1,9 @@
 <?php
 
 /**
- * barebones Template Loader
+ * Barebones Template Loader
  *
- * @package barebones
+ * @package Barebones
  * @subpackage TemplateLoader
  */
 
@@ -20,7 +20,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
  * Note that the _edit() checks are ahead of their counterparts, to prevent them
  * from being stomped on accident.
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @param string $template
  *
@@ -127,7 +127,7 @@ function bb_template_include_theme_supports( $template = '' ) {
  * Attempt to load a custom barebones functions file, similar to each themes
  * functions.php file.
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @global string $pagenow
  * @uses bb_locate_template()
@@ -149,7 +149,7 @@ function bb_load_theme_functions() {
 /**
  * Get the user profile template
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @uses bb_get_displayed_user_id()
  * @uses bb_get_query_template()
@@ -170,7 +170,7 @@ function bb_get_single_user_template() {
 /**
  * Get the user profile edit template
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @uses bb_get_displayed_user_id()
  * @uses bb_get_query_template()
@@ -192,7 +192,7 @@ function bb_get_single_user_edit_template() {
 /**
  * Get the user favorites template
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @uses bb_get_displayed_user_id()
  * @uses bb_get_query_template()
@@ -215,7 +215,7 @@ function bb_get_favorites_template() {
 /**
  * Get the user subscriptions template
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @uses bb_get_displayed_user_id()
  * @uses bb_get_query_template()
@@ -238,7 +238,7 @@ function bb_get_subscriptions_template() {
 /**
  * Get the view template
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @uses bb_get_view_id()
  * @uses bb_get_query_template()
@@ -258,7 +258,7 @@ function bb_get_single_view_template() {
 /**
  * Get the search template
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @uses bb_get_query_template()
  * @return string Path to template file
@@ -274,7 +274,7 @@ function bb_get_search_template() {
 /**
  * Get the single forum template
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @uses bb_get_forum_post_type()
  * @uses bb_get_query_template()
@@ -290,7 +290,7 @@ function bb_get_single_forum_template() {
 /**
  * Get the forum archive template
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @uses bb_get_forum_post_type()
  * @uses bb_get_query_template()
@@ -306,7 +306,7 @@ function bb_get_forum_archive_template() {
 /**
  * Get the forum edit template
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @uses bb_get_topic_post_type()
  * @uses bb_get_query_template()
@@ -322,7 +322,7 @@ function bb_get_forum_edit_template() {
 /**
  * Get the single topic template
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @uses bb_get_topic_post_type()
  * @uses bb_get_query_template()
@@ -338,7 +338,7 @@ function bb_get_single_topic_template() {
 /**
  * Get the topic archive template
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @uses bb_get_topic_post_type()
  * @uses bb_get_query_template()
@@ -354,7 +354,7 @@ function bb_get_topic_archive_template() {
 /**
  * Get the topic edit template
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @uses bb_get_topic_post_type()
  * @uses bb_get_query_template()
@@ -370,7 +370,7 @@ function bb_get_topic_edit_template() {
 /**
  * Get the topic split template
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @uses bb_get_topic_post_type()
  * @uses bb_get_query_template()
@@ -386,7 +386,7 @@ function bb_get_topic_split_template() {
 /**
  * Get the topic merge template
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @uses bb_get_topic_post_type()
  * @uses bb_get_query_template()
@@ -402,7 +402,7 @@ function bb_get_topic_merge_template() {
 /**
  * Get the single reply template
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @uses bb_get_reply_post_type()
  * @uses bb_get_query_template()
@@ -418,7 +418,7 @@ function bb_get_single_reply_template() {
 /**
  * Get the reply edit template
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @uses bb_get_reply_post_type()
  * @uses bb_get_query_template()
@@ -434,7 +434,7 @@ function bb_get_reply_edit_template() {
 /**
  * Get the reply move template
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @uses bb_get_reply_post_type()
  * @uses bb_get_query_template()
@@ -450,7 +450,7 @@ function bb_get_reply_move_template() {
 /**
  * Get the topic template
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @uses bb_get_topic_tag_tax_id()
  * @uses bb_get_query_template()
@@ -469,7 +469,7 @@ function bb_get_topic_tag_template() {
 /**
  * Get the topic edit template
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @uses bb_get_topic_tag_tax_id()
  * @uses bb_get_query_template()
@@ -488,7 +488,7 @@ function bb_get_topic_tag_edit_template() {
 /**
  * Get the templates to use as the endpoint for barebones template parts
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @uses apply_filters()
  * @uses bb_set_theme_compat_templates()

@@ -3,7 +3,7 @@
 /**
  * Forums Loop - Single Forum
  *
- * @package barebones
+ * @package Barebones
  * @subpackage Theme
  */
 

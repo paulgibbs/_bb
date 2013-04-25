@@ -1,9 +1,9 @@
 <?php
 
 /**
- * barebones Admin Actions
+ * Barebones Admin Actions
  *
- * @package barebones
+ * @package Barebones
  * @subpackage Admin
  *
  * This file contains the actions that are used through-out barebones Admin. They
@@ -12,7 +12,7 @@
  *
  * There are a few common places that additional actions can currently be found
  *
- *  - barebones: In {@link barebones::setup_actions()} in barebones.php
+ *  - barebones: In {@link Barebones::setup_actions()} in barebones.php
  *  - Admin: More in {@link BB_Admin::setup_actions()} in admin.php
  *
  * @see bbp-core-actions.php
@@ -25,7 +25,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
 /**
  * Attach barebones to WordPress
  *
- * barebones uses its own internal actions to help aid in third-party plugin
+ * Barebones uses its own internal actions to help aid in third-party plugin
  * development, and to limit the amount of potential future code changes when
  * updates to WordPress core occur.
  *
@@ -86,7 +86,7 @@ add_filter( 'post_type_link', 'bb_filter_sample_permalink', 10, 4 );
  * When a new site is created in a multisite installation, run the activation
  * routine on that site
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @param int $blog_id
  * @param int $user_id
@@ -116,7 +116,7 @@ function bb_new_site( $blog_id, $user_id, $domain, $path, $site_id, $meta ) {
 /**
  * Piggy back admin_init action
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  * @uses do_action() Calls 'bb_admin_init'
  */
 function bb_admin_init() {
@@ -126,7 +126,7 @@ function bb_admin_init() {
 /**
  * Piggy back admin_menu action
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  * @uses do_action() Calls 'bb_admin_menu'
  */
 function bb_admin_menu() {
@@ -136,7 +136,7 @@ function bb_admin_menu() {
 /**
  * Piggy back admin_head action
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  * @uses do_action() Calls 'bb_admin_head'
  */
 function bb_admin_head() {
@@ -146,7 +146,7 @@ function bb_admin_head() {
 /**
  * Piggy back admin_notices action
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  * @uses do_action() Calls 'bb_admin_notices'
  */
 function bb_admin_notices() {
@@ -156,7 +156,7 @@ function bb_admin_notices() {
 /**
  * Dedicated action to register barebones importers
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  * @uses do_action() Calls 'bb_admin_notices'
  */
 function bb_register_importers() {
@@ -166,7 +166,7 @@ function bb_register_importers() {
 /**
  * Dedicated action to register admin styles
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  * @uses do_action() Calls 'bb_admin_notices'
  */
 function bb_register_admin_style() {
@@ -176,7 +176,7 @@ function bb_register_admin_style() {
 /**
  * Dedicated action to register admin settings
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  * @uses do_action() Calls 'bb_register_admin_settings'
  */
 function bb_register_admin_settings() {

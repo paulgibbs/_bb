@@ -1,12 +1,12 @@
 <?php
 
 /**
- * barebones Extentions
+ * Barebones Extentions
  *
  * There's a world of really cool plugins out there, and barebones comes with
  * support for some of the most popular ones.
  *
- * @package barebones
+ * @package Barebones
  * @subpackage Extend
  */
 
@@ -16,7 +16,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
 /**
  * Loads Akismet inside the barebones global class
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  *
  * @return If barebones is not active
  */
@@ -39,7 +39,7 @@ function bb_setup_akismet() {
  * Requires and creates the BuddyPress extension, and adds component creation
  * action to bp_init hook. @see bb_setup_buddypress_component()
  *
- * @since barebones (1.0)
+ * @since Barebones (1.0)
  * @return If BuddyPress is not active
  */
 function bb_setup_buddypress() {
@@ -49,7 +49,7 @@ function bb_setup_buddypress() {
 		/**
 		 * Helper for BuddyPress 1.6 and earlier
 		 *
-		 * @since barebones (1.0)
+		 * @since Barebones (1.0)
 		 * @return BuddyPress
 		 */
 		function buddypress() {
