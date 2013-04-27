@@ -440,16 +440,10 @@ final class Barebones {
 				'description'         => __( 'Barebones Forums', 'barebones' ),
 				'capabilities'        => bb_get_forum_caps(),
 				'capability_type'     => array( 'forum', 'forums' ),
-				'menu_position'       => 555555,
 				'has_archive'         => bb_get_root_slug(),
-				'exclude_from_search' => true,
-				'show_in_nav_menus'   => true,
 				'public'              => true,
 				'show_ui'             => current_user_can( 'bb_forums_admin' ),
-				'can_export'          => true,
-				'hierarchical'        => true,
 				'query_var'           => true,
-				'menu_icon'           => ''
 			) )
 		);
 	}
