@@ -451,13 +451,7 @@ final class Barebones {
 	/**
 	 * Register the post statuses used by Barebones
 	 *
-	 * We do some manipulation of the 'trash' status so trashed topics and
-	 * replies can be viewed from within the theme.
-	 *
 	 * @since Barebones (1.0)
-	 * @uses register_post_status() To register post statuses
-	 * @uses $wp_post_statuses To modify trash and private statuses
-	 * @uses current_user_can() To check if the current user is capable & modify $wp_post_statuses accordingly
 	 */
 	public static function register_post_statuses() {
 	}
