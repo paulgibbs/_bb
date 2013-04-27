@@ -524,21 +524,15 @@ final class Barebones {
 	 * Add the Barebones-specific rewrite tags
 	 *
 	 * @since Barebones (1.0)
-	 * @uses add_rewrite_tag() To add the rewrite tags
 	 */
 	public static function add_rewrite_tags() {
 	}
 
 	/**
-	 * Register Barebones-specific rewrite rules for uri's that are not
-	 * setup for us by way of custom post types or taxonomies. This includes:
-	 * - Front-end editing
-	 * - Topic views
-	 * - User profiles
+	 * Register Barebones-specific rewrite rules for URIs that are not setup for us by way of custom post types or taxonomies.
 	 *
 	 * @since Barebones (1.0)
-	 * @param WP_Rewrite $wp_rewrite Varebones-sepecific rules are appended in
-	 *                                $wp_rewrite->rules
+	 * @param WP_Rewrite $wp_rewrite Varebones-sepecific rules are appended in $wp_rewrite->rules
 	 */
 	public static function generate_rewrite_rules( $wp_rewrite ) {
 		return $wp_rewrite;
