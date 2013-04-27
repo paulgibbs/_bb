@@ -417,9 +417,17 @@ final class Barebones {
 
 		// Forum supports
 		$post_type['supports'] = array(
-			'title',
+			'author',
+			'comments',
+			'custom-fields',
 			'editor',
-			'revisions'
+			'excerpt',
+			'page-attributes',
+			'post-formats',
+			'revisions',
+			'thumbnail',
+			'title',
+			'trackbacks',
 		);
 
 		// Register Forum content type
