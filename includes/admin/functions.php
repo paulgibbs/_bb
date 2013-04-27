@@ -184,7 +184,7 @@ function bb_do_activation_redirect() {
 		return;
 
 	// Redirect to barebones about page
-	wp_safe_redirect( add_query_arg( array( 'page' => 'bbp-about' ), admin_url( 'index.php' ) ) );
+	wp_safe_redirect( add_query_arg( array( 'page' => 'bb-about' ), admin_url( 'index.php' ) ) );
 }
 
 /**
@@ -202,8 +202,8 @@ function bb_tools_modify_menu_highlight() {
 	global $plugin_page, $submenu_file;
 
 	// This tweaks the Tools subnav menu to only show one barebones menu item
-	if ( ! in_array( $plugin_page, array( 'bbp-settings' ) ) )
-		$submenu_file = 'bbp-repair';
+	if ( ! in_array( $plugin_page, array( 'bb-settings' ) ) )
+		$submenu_file = 'bb-repair';
 }
 
 /**
@@ -232,15 +232,15 @@ function bb_tools_admin_tabs( $active_tab = '' ) {
 		// Setup core admin tabs
 		$tabs = apply_filters( 'bb_tools_admin_tabs', array(
 			'0' => array(
-				'href' => get_admin_url( '', add_query_arg( array( 'page' => 'bbp-repair'    ), 'tools.php' ) ),
+				'href' => get_admin_url( '', add_query_arg( array( 'page' => 'bb-repair'    ), 'tools.php' ) ),
 				'name' => __( 'Repair Forums', 'barebones' )
 			),
 			'1' => array(
-				'href' => get_admin_url( '', add_query_arg( array( 'page' => 'bbp-converter' ), 'tools.php' ) ),
+				'href' => get_admin_url( '', add_query_arg( array( 'page' => 'bb-converter' ), 'tools.php' ) ),
 				'name' => __( 'Import Forums', 'barebones' )
 			),
 			'2' => array(
-				'href' => get_admin_url( '', add_query_arg( array( 'page' => 'bbp-reset'     ), 'tools.php' ) ),
+				'href' => get_admin_url( '', add_query_arg( array( 'page' => 'bb-reset'     ), 'tools.php' ) ),
 				'name' => __( 'Reset Forums', 'barebones' )
 			)
 		) );

@@ -84,26 +84,26 @@ class BB_Login_Widget extends WP_Widget {
 
 		if ( !is_user_logged_in() ) : ?>
 
-			<form method="post" action="<?php bb_wp_login_action( array( 'context' => 'login_post' ) ); ?>" class="bbp-login-form">
+			<form method="post" action="<?php bb_wp_login_action( array( 'context' => 'login_post' ) ); ?>" class="bb-login-form">
 				<fieldset>
 					<legend><?php _e( 'Log In', 'barebones' ); ?></legend>
 
-					<div class="bbp-username">
+					<div class="bb-username">
 						<label for="user_login"><?php _e( 'Username', 'barebones' ); ?>: </label>
 						<input type="text" name="log" value="<?php bb_sanitize_val( 'user_login', 'text' ); ?>" size="20" id="user_login" tabindex="<?php bb_tab_index(); ?>" />
 					</div>
 
-					<div class="bbp-password">
+					<div class="bb-password">
 						<label for="user_pass"><?php _e( 'Password', 'barebones' ); ?>: </label>
 						<input type="password" name="pwd" value="<?php bb_sanitize_val( 'user_pass', 'password' ); ?>" size="20" id="user_pass" tabindex="<?php bb_tab_index(); ?>" />
 					</div>
 
-					<div class="bbp-remember-me">
+					<div class="bb-remember-me">
 						<input type="checkbox" name="rememberme" value="forever" <?php checked( bb_get_sanitize_val( 'rememberme', 'checkbox' ), true, true ); ?> id="rememberme" tabindex="<?php bb_tab_index(); ?>" />
 						<label for="rememberme"><?php _e( 'Remember Me', 'barebones' ); ?></label>
 					</div>
 
-					<div class="bbp-submit-wrapper">
+					<div class="bb-submit-wrapper">
 
 						<?php do_action( 'login_form' ); ?>
 
@@ -115,17 +115,17 @@ class BB_Login_Widget extends WP_Widget {
 
 					<?php if ( !empty( $settings['register'] ) || !empty( $settings['lostpass'] ) ) : ?>
 
-						<div class="bbp-login-links">
+						<div class="bb-login-links">
 
 							<?php if ( !empty( $settings['register'] ) ) : ?>
 
-								<a href="<?php echo esc_url( $settings['register'] ); ?>" title="<?php esc_attr_e( 'Register', 'barebones' ); ?>" class="bbp-register-link"><?php _e( 'Register', 'barebones' ); ?></a>
+								<a href="<?php echo esc_url( $settings['register'] ); ?>" title="<?php esc_attr_e( 'Register', 'barebones' ); ?>" class="bb-register-link"><?php _e( 'Register', 'barebones' ); ?></a>
 
 							<?php endif; ?>
 
 							<?php if ( !empty( $settings['lostpass'] ) ) : ?>
 
-								<a href="<?php echo esc_url( $settings['lostpass'] ); ?>" title="<?php esc_attr_e( 'Lost Password', 'barebones' ); ?>" class="bbp-lostpass-link"><?php _e( 'Lost Password', 'barebones' ); ?></a>
+								<a href="<?php echo esc_url( $settings['lostpass'] ); ?>" title="<?php esc_attr_e( 'Lost Password', 'barebones' ); ?>" class="bb-lostpass-link"><?php _e( 'Lost Password', 'barebones' ); ?></a>
 
 							<?php endif; ?>
 
@@ -138,7 +138,7 @@ class BB_Login_Widget extends WP_Widget {
 
 		<?php else : ?>
 
-			<div class="bbp-logged-in">
+			<div class="bb-logged-in">
 				<a href="<?php bb_user_profile_url( bb_get_current_user_id() ); ?>" class="submit user-submit"><?php echo get_avatar( bb_get_current_user_id(), '40' ); ?></a>
 				<h4><?php bb_user_profile_link( bb_get_current_user_id() ); ?></h4>
 
@@ -295,7 +295,7 @@ class BB_Views_Widget extends WP_Widget {
 
 			<?php foreach ( array_keys( bb_get_views() ) as $view ) : ?>
 
-				<li><a class="bbp-view-title" href="<?php bb_view_url( $view ); ?>" title="<?php bb_view_title( $view ); ?>"><?php bb_view_title( $view ); ?></a></li>
+				<li><a class="bb-view-title" href="<?php bb_view_url( $view ); ?>" title="<?php bb_view_title( $view ); ?>"><?php bb_view_title( $view ); ?></a></li>
 
 			<?php endforeach; ?>
 
@@ -577,7 +577,7 @@ class BB_Forums_Widget extends WP_Widget {
 
 			<?php while ( $widget_query->have_posts() ) : $widget_query->the_post(); ?>
 
-				<li><a class="bbp-forum-title" href="<?php bb_forum_permalink( $widget_query->post->ID ); ?>" title="<?php bb_forum_title( $widget_query->post->ID ); ?>"><?php bb_forum_title( $widget_query->post->ID ); ?></a></li>
+				<li><a class="bb-forum-title" href="<?php bb_forum_permalink( $widget_query->post->ID ); ?>" title="<?php bb_forum_title( $widget_query->post->ID ); ?>"><?php bb_forum_title( $widget_query->post->ID ); ?></a></li>
 
 			<?php endwhile; ?>
 
@@ -799,7 +799,7 @@ class BB_Topics_Widget extends WP_Widget {
 				endif; ?>
 
 				<li>
-					<a class="bbp-forum-title" href="<?php echo esc_url( bb_get_topic_permalink( $topic_id ) ); ?>" title="<?php echo esc_attr( bb_get_topic_title( $topic_id ) ); ?>"><?php bb_topic_title( $topic_id ); ?></a>
+					<a class="bb-forum-title" href="<?php echo esc_url( bb_get_topic_permalink( $topic_id ) ); ?>" title="<?php echo esc_attr( bb_get_topic_title( $topic_id ) ); ?>"><?php bb_topic_title( $topic_id ); ?></a>
 
 					<?php if ( ! empty( $author_link ) ) : ?>
 
@@ -1141,7 +1141,7 @@ class BB_Replies_Widget extends WP_Widget {
 
 					// Verify the reply ID
 					$reply_id   = bb_get_reply_id( $widget_query->post->ID );
-					$reply_link = '<a class="bbp-reply-topic-title" href="' . esc_url( bb_get_reply_url( $reply_id ) ) . '" title="' . esc_attr( bb_get_reply_excerpt( $reply_id, 50 ) ) . '">' . bb_get_reply_topic_title( $reply_id ) . '</a>';
+					$reply_link = '<a class="bb-reply-topic-title" href="' . esc_url( bb_get_reply_url( $reply_id ) ) . '" title="' . esc_attr( bb_get_reply_excerpt( $reply_id, 50 ) ) . '">' . bb_get_reply_topic_title( $reply_id ) . '</a>';
 
 					// Only query user if showing them
 					if ( 'on' == $settings['show_user'] ) :

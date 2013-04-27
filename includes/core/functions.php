@@ -127,7 +127,7 @@ function bb_update_reply_id( $post_id, $reply_id ) {
 /**
  * Get the registered views
  *
- * Does nothing much other than return the {@link $bbp->views} variable
+ * Does nothing much other than return the {@link $bb->views} variable
  *
  * @since Barebones (1.0)
  *
@@ -172,13 +172,13 @@ function bb_register_view( $view, $title, $query_args = '', $feed = true, $capab
 	if ( !isset( $query_args['show_stickies'] ) )
 		$query_args['show_stickies'] = false;
 
-	$bbp->views[$view] = array(
+	$bb->views[$view] = array(
 		'title'  => $title,
 		'query'  => $query_args,
 		'feed'   => $feed
 	);
 
-	return $bbp->views[$view];
+	return $bb->views[$view];
 }
 
 /**
@@ -194,10 +194,10 @@ function bb_deregister_view( $view ) {
 	$bbp  = barebones();
 	$view = sanitize_title( $view );
 
-	if ( !isset( $bbp->views[$view] ) )
+	if ( !isset( $bb->views[$view] ) )
 		return false;
 
-	unset( $bbp->views[$view] );
+	unset( $bb->views[$view] );
 
 	return true;
 }

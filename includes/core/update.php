@@ -72,8 +72,8 @@ function bb_is_activation( $basename = '' ) {
 	}
 
 	// Set basename if empty
-	if ( empty( $basename ) && !empty( $bbp->basename ) ) {
-		$basename = $bbp->basename;
+	if ( empty( $basename ) && !empty( $bb->basename ) ) {
+		$basename = $bb->basename;
 	}
 
 	// Bail if no basename
@@ -114,8 +114,8 @@ function bb_is_deactivation( $basename = '' ) {
 	}
 
 	// Set basename if empty
-	if ( empty( $basename ) && !empty( $bbp->basename ) ) {
-		$basename = $bbp->basename;
+	if ( empty( $basename ) && !empty( $bb->basename ) ) {
+		$basename = $bb->basename;
 	}
 
 	// Bail if no basename

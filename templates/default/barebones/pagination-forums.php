@@ -11,14 +11,14 @@
 
 <?php do_action( 'bb_template_before_pagination_loop' ); ?>
 
-<div class="bbp-pagination">
-	<div class="bbp-pagination-count">
+<div class="bb-pagination">
+	<div class="bb-pagination-count">
 
 		<?php bb_forum_pagination_count(); ?>
 
 	</div>
 
-	<div class="bbp-pagination-links">
+	<div class="bb-pagination-links">
 
 		<?php bb_forum_pagination_links(); ?>
 

@@ -21,13 +21,13 @@
 
 <?php if ( bb_current_user_can_access_create_forum_form() ) : ?>
 
-	<div id="new-forum-<?php bb_forum_id(); ?>" class="bbp-forum-form">
+	<div id="new-forum-<?php bb_forum_id(); ?>" class="bb-forum-form">
 
 		<form id="new-post" name="new-post" method="post" action="<?php the_permalink(); ?>">
 
 			<?php do_action( 'bb_theme_before_forum_form' ); ?>
 
-			<fieldset class="bbp-form">
+			<fieldset class="bb-form">
 				<legend>
 
 					<?php
@@ -43,7 +43,7 @@
 
 				<?php if ( !bb_is_forum_edit() && bb_is_forum_closed() ) : ?>
 
-					<div class="bbp-template-notice">
+					<div class="bb-template-notice">
 						<p><?php _e( 'This forum is closed to new content, however your account still allows you to do so.', 'barebones' ); ?></p>
 					</div>
 
@@ -51,7 +51,7 @@
 
 				<?php if ( current_user_can( 'unfiltered_html' ) ) : ?>
 
-					<div class="bbp-template-notice">
+					<div class="bb-template-notice">
 						<p><?php _e( 'Your account has the ability to post unrestricted HTML content.', 'barebones' ); ?></p>
 					</div>
 
@@ -142,7 +142,7 @@
 
 					<?php do_action( 'bb_theme_before_forum_form_submit_wrapper' ); ?>
 
-					<div class="bbp-submit-wrapper">
+					<div class="bb-submit-wrapper">
 
 						<?php do_action( 'bb_theme_before_forum_form_submit_button' ); ?>
 
@@ -167,16 +167,16 @@
 
 <?php elseif ( bb_is_forum_closed() ) : ?>
 
-	<div id="no-forum-<?php bb_forum_id(); ?>" class="bbp-no-forum">
-		<div class="bbp-template-notice">
+	<div id="no-forum-<?php bb_forum_id(); ?>" class="bb-no-forum">
+		<div class="bb-template-notice">
 			<p><?php printf( __( 'The forum &#8216;%s&#8217; is closed to new content.', 'barebones' ), bb_get_forum_title() ); ?></p>
 		</div>
 	</div>
 
 <?php else : ?>
 
-	<div id="no-forum-<?php bb_forum_id(); ?>" class="bbp-no-forum">
-		<div class="bbp-template-notice">
+	<div id="no-forum-<?php bb_forum_id(); ?>" class="bb-no-forum">
+		<div class="bb-template-notice">
 			<p><?php is_user_logged_in() ? _e( 'You cannot create new forums.', 'barebones' ) : _e( 'You must be logged in to create new forums.', 'barebones' ); ?></p>
 		</div>
 	</div>

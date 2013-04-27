@@ -83,8 +83,8 @@ class BB_Admin {
 	 */
 	private function setup_globals() {
 		$bbp = barebones();
-		$this->admin_dir  = trailingslashit( $bbp->includes_dir . 'admin'  ); // Admin path
-		$this->admin_url  = trailingslashit( $bbp->includes_url . 'admin'  ); // Admin url
+		$this->admin_dir  = trailingslashit( $bb->includes_dir . 'admin'  ); // Admin path
+		$this->admin_url  = trailingslashit( $bb->includes_url . 'admin'  ); // Admin url
 		$this->images_url = trailingslashit( $this->admin_url   . 'images' ); // Admin images URL
 		$this->styles_url = trailingslashit( $this->admin_url   . 'styles' ); // Admin styles URL
 	}
@@ -183,7 +183,7 @@ class BB_Admin {
 					__( 'Repair Forums', 'barebones' ),
 					__( 'Forum Repair',  'barebones' ),
 					$this->minimum_capability,
-					'bbp-repair',
+					'bb-repair',
 					'bb_admin_repair'
 				);
 			}
@@ -193,7 +193,7 @@ class BB_Admin {
 					__( 'Import Forums', 'barebones' ),
 					__( 'Forum Import',  'barebones' ),
 					$this->minimum_capability,
-					'bbp-converter',
+					'bb-converter',
 					'bb_converter_settings'
 				);
 			}
@@ -203,7 +203,7 @@ class BB_Admin {
 					__( 'Reset Forums', 'barebones' ),
 					__( 'Forum Reset',  'barebones' ),
 					$this->minimum_capability,
-					'bbp-reset',
+					'bb-reset',
 					'bb_admin_reset'
 				);
 			}
@@ -218,7 +218,7 @@ class BB_Admin {
 				__( 'Forums', 'barebones' ),
 				__( 'Forums', 'barebones' ),
 				$this->minimum_capability,
-				'bbp-repair',
+				'bb-repair',
 				'bb_admin_repair'
 			);
 		}
@@ -242,7 +242,7 @@ class BB_Admin {
 				__( 'Welcome to barebones',  'barebones' ),
 				__( 'Welcome to barebones',  'barebones' ),
 				$this->minimum_capability,
-				'bbp-about',
+				'bb-about',
 				array( $this, 'about_screen' )
 			);
 
@@ -251,7 +251,7 @@ class BB_Admin {
 				__( 'Welcome to barebones',  'barebones' ),
 				__( 'Welcome to barebones',  'barebones' ),
 				$this->minimum_capability,
-				'bbp-credits',
+				'bb-credits',
 				array( $this, 'credits_screen' )
 			);
 		}
@@ -265,7 +265,7 @@ class BB_Admin {
 			__( 'Update Forums', 'barebones' ),
 			__( 'Update Forums', 'barebones' ),
 			'manage_network',
-			'bbp-update',
+			'bb-update',
 			array( $this, 'update_screen' )
 		);
 	}
@@ -476,7 +476,7 @@ class BB_Admin {
 		// Add a few links to the existing links array
 		return array_merge( $links, array(
 			'settings' => '<a href="' . add_query_arg( array( 'page' => 'barebones'   ), admin_url( 'options-general.php' ) ) . '">' . esc_html__( 'Settings', 'barebones' ) . '</a>',
-			'about'    => '<a href="' . add_query_arg( array( 'page' => 'bbp-about' ), admin_url( 'index.php'           ) ) . '">' . esc_html__( 'About',    'barebones' ) . '</a>'
+			'about'    => '<a href="' . add_query_arg( array( 'page' => 'bb-about' ), admin_url( 'index.php'           ) ) . '">' . esc_html__( 'About',    'barebones' ) . '</a>'
 		) );
 	}
 
@@ -488,7 +488,7 @@ class BB_Admin {
 	 * @uses wp_add_dashboard_widget() To add the dashboard widget
 	 */
 	public static function dashboard_widget_right_now() {
-		wp_add_dashboard_widget( 'bbp-dashboard-right-now', __( 'Right Now in Forums', 'barebones' ), 'bb_dashboard_widget_right_now' );
+		wp_add_dashboard_widget( 'bb-dashboard-right-now', __( 'Right Now in Forums', 'barebones' ), 'bb_dashboard_widget_right_now' );
 	}
 
 	/**
@@ -513,11 +513,11 @@ class BB_Admin {
 
 		// Remove the individual recount and converter menus.
 		// They are grouped together by h2 tabs
-		remove_submenu_page( 'tools.php', 'bbp-repair'    );
-		remove_submenu_page( 'tools.php', 'bbp-converter' );
-		remove_submenu_page( 'tools.php', 'bbp-reset'     );
-		remove_submenu_page( 'index.php', 'bbp-about'     );
-		remove_submenu_page( 'index.php', 'bbp-credits'   );
+		remove_submenu_page( 'tools.php', 'bb-repair'    );
+		remove_submenu_page( 'tools.php', 'bb-converter' );
+		remove_submenu_page( 'tools.php', 'bb-reset'     );
+		remove_submenu_page( 'index.php', 'bb-about'     );
+		remove_submenu_page( 'index.php', 'bb-credits'   );
 
 		// The /wp-admin/images/ folder
 		$wp_admin_url     = admin_url( 'images/' );
@@ -573,7 +573,7 @@ class BB_Admin {
 
 			/* Version Badge */
 
-			.bbp-badge {
+			.bb-badge {
 				padding-top: 142px;
 				height: 50px;
 				width: 173px;
@@ -585,29 +585,29 @@ class BB_Admin {
 				background: url('<?php echo $badge_url; ?>') no-repeat;
 			}
 
-			.about-wrap .bbp-badge {
+			.about-wrap .bb-badge {
 				position: absolute;
 				top: 0;
 				right: 0;
 			}
-				body.rtl .about-wrap .bbp-badge {
+				body.rtl .about-wrap .bb-badge {
 					right: auto;
 					left: 0;
 				}
 
-			#bbp-dashboard-right-now p.sub,
-			#bbp-dashboard-right-now .table,
-			#bbp-dashboard-right-now .versions {
+			#bb-dashboard-right-now p.sub,
+			#bb-dashboard-right-now .table,
+			#bb-dashboard-right-now .versions {
 				margin: -12px;
 			}
 
-			#bbp-dashboard-right-now .inside {
+			#bb-dashboard-right-now .inside {
 				font-size: 12px;
 				padding-top: 20px;
 				margin-bottom: 0;
 			}
 
-			#bbp-dashboard-right-now p.sub {
+			#bb-dashboard-right-now p.sub {
 				padding: 5px 0 15px;
 				color: #8f8f8f;
 				font-size: 14px;
@@ -615,107 +615,107 @@ class BB_Admin {
 				top: -17px;
 				left: 15px;
 			}
-				body.rtl #bbp-dashboard-right-now p.sub {
+				body.rtl #bb-dashboard-right-now p.sub {
 					right: 15px;
 					left: 0;
 				}
 
-			#bbp-dashboard-right-now .table {
+			#bb-dashboard-right-now .table {
 				margin: 0;
 				padding: 0;
 				position: relative;
 			}
 
-			#bbp-dashboard-right-now .table_content {
+			#bb-dashboard-right-now .table_content {
 				float: left;
 				border-top: #ececec 1px solid;
 				width: 45%;
 			}
-				body.rtl #bbp-dashboard-right-now .table_content {
+				body.rtl #bb-dashboard-right-now .table_content {
 					float: right;
 				}
 
-			#bbp-dashboard-right-now .table_discussion {
+			#bb-dashboard-right-now .table_discussion {
 				float: right;
 				border-top: #ececec 1px solid;
 				width: 45%;
 			}
-				body.rtl #bbp-dashboard-right-now .table_discussion {
+				body.rtl #bb-dashboard-right-now .table_discussion {
 					float: left;
 				}
 
-			#bbp-dashboard-right-now table td {
+			#bb-dashboard-right-now table td {
 				padding: 3px 0;
 				white-space: nowrap;
 			}
 
-			#bbp-dashboard-right-now table tr.first td {
+			#bb-dashboard-right-now table tr.first td {
 				border-top: none;
 			}
 
-			#bbp-dashboard-right-now td.b {
+			#bb-dashboard-right-now td.b {
 				padding-right: 6px;
 				text-align: right;
 				font-family: Georgia, "Times New Roman", "Bitstream Charter", Times, serif;
 				font-size: 14px;
 				width: 1%;
 			}
-				body.rtl #bbp-dashboard-right-now td.b {
+				body.rtl #bb-dashboard-right-now td.b {
 					padding-left: 6px;
 					padding-right: 0;
 				}
 
-			#bbp-dashboard-right-now td.b a {
+			#bb-dashboard-right-now td.b a {
 				font-size: 18px;
 			}
 
-			#bbp-dashboard-right-now td.b a:hover {
+			#bb-dashboard-right-now td.b a:hover {
 				color: #d54e21;
 			}
 
-			#bbp-dashboard-right-now .t {
+			#bb-dashboard-right-now .t {
 				font-size: 12px;
 				padding-right: 12px;
 				padding-top: 6px;
 				color: #777;
 			}
-				body.rtl #bbp-dashboard-right-now .t {
+				body.rtl #bb-dashboard-right-now .t {
 					padding-left: 12px;
 					padding-right: 0;
 				}
 
-			#bbp-dashboard-right-now .t a {
+			#bb-dashboard-right-now .t a {
 				white-space: nowrap;
 			}
 
-			#bbp-dashboard-right-now .spam {
+			#bb-dashboard-right-now .spam {
 				color: red;
 			}
 
-			#bbp-dashboard-right-now .waiting {
+			#bb-dashboard-right-now .waiting {
 				color: #e66f00;
 			}
 
-			#bbp-dashboard-right-now .approved {
+			#bb-dashboard-right-now .approved {
 				color: green;
 			}
 
-			#bbp-dashboard-right-now .versions {
+			#bb-dashboard-right-now .versions {
 				padding: 6px 10px 12px;
 				clear: both;
 			}
 
-			#bbp-dashboard-right-now .versions .b {
+			#bb-dashboard-right-now .versions .b {
 				font-weight: bold;
 			}
 
-			#bbp-dashboard-right-now a.button {
+			#bb-dashboard-right-now a.button {
 				float: right;
 				clear: right;
 				position: relative;
 				top: -5px;
 			}
-				body.rtl #bbp-dashboard-right-now a.button {
+				body.rtl #bb-dashboard-right-now a.button {
 					float: left;
 					clear: left;
 				}
@@ -807,7 +807,7 @@ class BB_Admin {
 					background-size: 100px 64px;
 				}
 
-				.bbp-badge {
+				.bb-badge {
 					background-image: url('<?php echo $badge_url_2x; ?>');
 					background-size: 173px 194px;
 				}
@@ -1326,12 +1326,12 @@ class BB_Admin {
 		<div class="wrap about-wrap">
 			<h1><?php printf( __( 'Welcome to barebones %s', 'barebones' ), $display_version ); ?></h1>
 			<div class="about-text"><?php printf( __( 'Thank you for updating to the latest version! barebones %s goes great with pizza and popcorn, and will nicely complement your community too!', 'barebones' ), $display_version ); ?></div>
-			<div class="bbp-badge"><?php printf( __( 'Version %s', 'barebones' ), $display_version ); ?></div>
+			<div class="bb-badge"><?php printf( __( 'Version %s', 'barebones' ), $display_version ); ?></div>
 
 			<h2 class="nav-tab-wrapper">
-				<a class="nav-tab nav-tab-active" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'bbp-about' ), 'index.php' ) ) ); ?>">
+				<a class="nav-tab nav-tab-active" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'bb-about' ), 'index.php' ) ) ); ?>">
 					<?php _e( 'What&#8217;s New', 'barebones' ); ?>
-				</a><a class="nav-tab" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'bbp-credits' ), 'index.php' ) ) ); ?>">
+				</a><a class="nav-tab" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'bb-credits' ), 'index.php' ) ) ); ?>">
 					<?php _e( 'Credits', 'barebones' ); ?>
 				</a>
 			</h2>
@@ -1429,12 +1429,12 @@ class BB_Admin {
 		<div class="wrap about-wrap">
 			<h1><?php printf( __( 'Welcome to barebones %s', 'barebones' ), $display_version ); ?></h1>
 			<div class="about-text"><?php printf( __( 'Thank you for updating to the latest version! barebones %s goes great with pizza and popcorn, and will nicely complement your community too!', 'barebones' ), $display_version ); ?></div>
-			<div class="bbp-badge"><?php printf( __( 'Version %s' ), $display_version ); ?></div>
+			<div class="bb-badge"><?php printf( __( 'Version %s' ), $display_version ); ?></div>
 
 			<h2 class="nav-tab-wrapper">
-				<a href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'bbp-about' ), 'index.php' ) ) ); ?>" class="nav-tab">
+				<a href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'bb-about' ), 'index.php' ) ) ); ?>" class="nav-tab">
 					<?php _e( 'What&#8217;s New', 'barebones' ); ?>
-				</a><a href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'bbp-credits' ), 'index.php' ) ) ); ?>" class="nav-tab nav-tab-active">
+				</a><a href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'bb-credits' ), 'index.php' ) ) ); ?>" class="nav-tab nav-tab-active">
 					<?php _e( 'Credits', 'barebones' ); ?>
 				</a>
 			</h2>
@@ -1552,13 +1552,13 @@ class BB_Admin {
 
 		// Taking action
 		switch ( $action ) {
-			case 'bbp-update' :
+			case 'bb-update' :
 
 				// Run the full updater
 				bb_version_updater(); ?>
 
 				<p><?php _e( 'All done!', 'barebones' ); ?></p>
-				<a class="button" href="index.php?page=bbp-update"><?php _e( 'Go Back', 'barebones' ); ?></a>
+				<a class="button" href="index.php?page=bb-update"><?php _e( 'Go Back', 'barebones' ); ?></a>
 
 				<?php
 
@@ -1568,7 +1568,7 @@ class BB_Admin {
 			default : ?>
 
 				<p><?php _e( 'You can update your forum through this page. Hit the link below to update.', 'barebones' ); ?></p>
-				<p><a class="button" href="index.php?page=bbp-update&amp;action=bbp-update"><?php _e( 'Update Forum', 'barebones' ); ?></a></p>
+				<p><a class="button" href="index.php?page=bb-update&amp;action=bb-update"><?php _e( 'Update Forum', 'barebones' ); ?></a></p>
 
 			<?php break;
 
@@ -1633,7 +1633,7 @@ class BB_Admin {
 
 							// Get the response of the barebones update on this site
 							$response = wp_remote_get(
-								trailingslashit( $siteurl ) . 'wp-admin/index.php?page=bbp-update&action=bbp-update',
+								trailingslashit( $siteurl ) . 'wp-admin/index.php?page=bb-update&action=bb-update',
 								array( 'timeout' => 30, 'httpversion' => '1.1' )
 							);
 

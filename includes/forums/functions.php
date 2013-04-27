@@ -109,12 +109,12 @@ function bb_insert_forum( $forum_data = array(), $forum_meta = array() ) {
  */
 function bb_new_forum_handler( $action = '' ) {
 
-	// Bail if action is not bbp-new-forum
-	if ( 'bbp-new-forum' !== $action )
+	// Bail if action is not bb-new-forum
+	if ( 'bb-new-forum' !== $action )
 		return;
 
 	// Nonce check
-	if ( ! bb_verify_nonce_request( 'bbp-new-forum' ) ) {
+	if ( ! bb_verify_nonce_request( 'bb-new-forum' ) ) {
 		bb_add_error( 'bb_new_forum_nonce', __( '<strong>ERROR</strong>: Are you sure you wanted to do that?', 'barebones' ) );
 		return;
 	}
@@ -136,7 +136,7 @@ function bb_new_forum_handler( $action = '' ) {
 	$forum_author = bb_get_current_user_id();
 
 	// Remove wp_filter_kses filters from title and content for capable users and if the nonce is verified
-	if ( current_user_can( 'unfiltered_html' ) && !empty( $_POST['_bb_unfiltered_html_forum'] ) && wp_create_nonce( 'bbp-unfiltered-html-forum_new' ) == $_POST['_bb_unfiltered_html_forum'] ) {
+	if ( current_user_can( 'unfiltered_html' ) && !empty( $_POST['_bb_unfiltered_html_forum'] ) && wp_create_nonce( 'bb-unfiltered-html-forum_new' ) == $_POST['_bb_unfiltered_html_forum'] ) {
 		remove_filter( 'bb_new_forum_pre_title',   'wp_filter_kses' );
 		remove_filter( 'bb_new_forum_pre_content', 'wp_filter_kses' );
 	}
@@ -367,8 +367,8 @@ function bb_new_forum_handler( $action = '' ) {
  */
 function bb_edit_forum_handler( $action = '' ) {
 
-	// Bail if action is not bbp-edit-forum
-	if ( 'bbp-edit-forum' !== $action )
+	// Bail if action is not bb-edit-forum
+	if ( 'bb-edit-forum' !== $action )
 		return;
 
 	// Define local variable(s)
@@ -390,7 +390,7 @@ function bb_edit_forum_handler( $action = '' ) {
 	}
 
 	// Nonce check
-	if ( ! bb_verify_nonce_request( 'bbp-edit-forum_' . $forum_id ) ) {
+	if ( ! bb_verify_nonce_request( 'bb-edit-forum_' . $forum_id ) ) {
 		bb_add_error( 'bb_edit_forum_nonce', __( '<strong>ERROR</strong>: Are you sure you wanted to do that?', 'barebones' ) );
 		return;
 
@@ -406,7 +406,7 @@ function bb_edit_forum_handler( $action = '' ) {
 	}
 
 	// Remove wp_filter_kses filters from title and content for capable users and if the nonce is verified
-	if ( current_user_can( 'unfiltered_html' ) && !empty( $_POST['_bb_unfiltered_html_forum'] ) && ( wp_create_nonce( 'bbp-unfiltered-html-forum_' . $forum_id ) == $_POST['_bb_unfiltered_html_forum'] ) ) {
+	if ( current_user_can( 'unfiltered_html' ) && !empty( $_POST['_bb_unfiltered_html_forum'] ) && ( wp_create_nonce( 'bb-unfiltered-html-forum_' . $forum_id ) == $_POST['_bb_unfiltered_html_forum'] ) ) {
 		remove_filter( 'bb_edit_forum_pre_title',   'wp_filter_kses' );
 		remove_filter( 'bb_edit_forum_pre_content', 'wp_filter_kses' );
 	}

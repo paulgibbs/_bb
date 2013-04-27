@@ -55,44 +55,44 @@ class BB_Shortcodes {
 
 			/** Forums ********************************************************/
 
-			'bbp-forum-index'      => array( $this, 'display_forum_index'   ), // Forum Index
-			'bbp-forum-form'       => array( $this, 'display_forum_form'    ), // Topic form
-			'bbp-single-forum'     => array( $this, 'display_forum'         ), // Specific forum - pass an 'id' attribute
+			'bb-forum-index'      => array( $this, 'display_forum_index'   ), // Forum Index
+			'bb-forum-form'       => array( $this, 'display_forum_form'    ), // Topic form
+			'bb-single-forum'     => array( $this, 'display_forum'         ), // Specific forum - pass an 'id' attribute
 
 			/** Topics ********************************************************/
 
-			'bbp-topic-index'      => array( $this, 'display_topic_index'   ), // Topic index
-			'bbp-topic-form'       => array( $this, 'display_topic_form'    ), // Topic form
-			'bbp-single-topic'     => array( $this, 'display_topic'         ), // Specific topic - pass an 'id' attribute
+			'bb-topic-index'      => array( $this, 'display_topic_index'   ), // Topic index
+			'bb-topic-form'       => array( $this, 'display_topic_form'    ), // Topic form
+			'bb-single-topic'     => array( $this, 'display_topic'         ), // Specific topic - pass an 'id' attribute
 
 			/** Topic Tags ****************************************************/
 
-			'bbp-topic-tags'       => array( $this, 'display_topic_tags'    ), // All topic tags in a cloud
-			'bbp-single-tag'       => array( $this, 'display_topics_of_tag' ), // Topics of Tag
+			'bb-topic-tags'       => array( $this, 'display_topic_tags'    ), // All topic tags in a cloud
+			'bb-single-tag'       => array( $this, 'display_topics_of_tag' ), // Topics of Tag
 
 			/** Replies *******************************************************/
 
-			'bbp-reply-form'       => array( $this, 'display_reply_form'    ), // Reply form
-			'bbp-single-reply'     => array( $this, 'display_reply'         ), // Specific reply - pass an 'id' attribute
+			'bb-reply-form'       => array( $this, 'display_reply_form'    ), // Reply form
+			'bb-single-reply'     => array( $this, 'display_reply'         ), // Specific reply - pass an 'id' attribute
 
 			/** Views *********************************************************/
 
-			'bbp-single-view'      => array( $this, 'display_view'          ), // Single view
+			'bb-single-view'      => array( $this, 'display_view'          ), // Single view
 
 			/** Search ********************************************************/
 
-			'bbp-search-form'      => array( $this, 'display_search_form'   ), // Search form
-			'bbp-search'           => array( $this, 'display_search'        ), // Search
+			'bb-search-form'      => array( $this, 'display_search_form'   ), // Search form
+			'bb-search'           => array( $this, 'display_search'        ), // Search
 
 			/** Account *******************************************************/
 
-			'bbp-login'            => array( $this, 'display_login'         ), // Login
-			'bbp-register'         => array( $this, 'display_register'      ), // Register
-			'bbp-lost-pass'        => array( $this, 'display_lost_pass'     ), // Lost Password
+			'bb-login'            => array( $this, 'display_login'         ), // Login
+			'bb-register'         => array( $this, 'display_register'      ), // Register
+			'bb-lost-pass'        => array( $this, 'display_lost_pass'     ), // Lost Password
 
 			/** Others *******************************************************/
 
-			'bbp-stats'            => array( $this, 'display_stats'         ), // Stats
+			'bb-stats'            => array( $this, 'display_stats'         ), // Stats
 		) );
 	}
 
@@ -119,16 +119,16 @@ class BB_Shortcodes {
 		$bbp = barebones();
 
 		// Unset global queries
-		$bbp->forum_query  = new stdClass;
-		$bbp->topic_query  = new stdClass;
-		$bbp->reply_query  = new stdClass;
-		$bbp->search_query = new stdClass;
+		$bb->forum_query  = new stdClass;
+		$bb->topic_query  = new stdClass;
+		$bb->reply_query  = new stdClass;
+		$bb->search_query = new stdClass;
 
 		// Unset global ID's
-		$bbp->current_forum_id     = 0;
-		$bbp->current_topic_id     = 0;
-		$bbp->current_reply_id     = 0;
-		$bbp->current_topic_tag_id = 0;
+		$bb->current_forum_id     = 0;
+		$bb->current_topic_id     = 0;
+		$bb->current_reply_id     = 0;
+		$bb->current_topic_tag_id = 0;
 
 		// Reset the post data
 		wp_reset_postdata();
@@ -347,14 +347,14 @@ class BB_Shortcodes {
 			$bbp = barebones();
 
 			// Reset necessary forum_query attributes for topics loop to function
-			$bbp->forum_query->query_vars['post_type'] = bb_get_forum_post_type();
-			$bbp->forum_query->in_the_loop             = true;
-			$bbp->forum_query->post                    = get_post( $forum_id );
+			$bb->forum_query->query_vars['post_type'] = bb_get_forum_post_type();
+			$bb->forum_query->in_the_loop             = true;
+			$bb->forum_query->post                    = get_post( $forum_id );
 
 			// Reset necessary topic_query attributes for topics loop to function
-			$bbp->topic_query->query_vars['post_type'] = bb_get_topic_post_type();
-			$bbp->topic_query->in_the_loop             = true;
-			$bbp->topic_query->post                    = get_post( $topic_id );
+			$bb->topic_query->query_vars['post_type'] = bb_get_topic_post_type();
+			$bb->topic_query->in_the_loop             = true;
+			$bb->topic_query->post                    = get_post( $topic_id );
 		}
 
 		// Start output buffer
@@ -429,14 +429,14 @@ class BB_Shortcodes {
 			$bbp = barebones();
 
 			// Reset necessary forum_query attributes for replys loop to function
-			$bbp->forum_query->query_vars['post_type'] = bb_get_forum_post_type();
-			$bbp->forum_query->in_the_loop             = true;
-			$bbp->forum_query->post                    = get_post( $forum_id );
+			$bb->forum_query->query_vars['post_type'] = bb_get_forum_post_type();
+			$bb->forum_query->in_the_loop             = true;
+			$bb->forum_query->post                    = get_post( $forum_id );
 
 			// Reset necessary reply_query attributes for replys loop to function
-			$bbp->reply_query->query_vars['post_type'] = bb_get_reply_post_type();
-			$bbp->reply_query->in_the_loop             = true;
-			$bbp->reply_query->post                    = get_post( $reply_id );
+			$bb->reply_query->query_vars['post_type'] = bb_get_reply_post_type();
+			$bb->reply_query->in_the_loop             = true;
+			$bb->reply_query->post                    = get_post( $reply_id );
 		}
 
 		// Start output buffer

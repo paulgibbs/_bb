@@ -11,7 +11,7 @@
 
 <div id="barebones-forums">
 
-	<div class="bbp-search-form">
+	<div class="bb-search-form">
 
 		<?php bb_get_template_part( 'form', 'search' ); ?>
 

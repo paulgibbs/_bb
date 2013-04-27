@@ -1268,19 +1268,19 @@ function bb_converter_settings() {
 
 		<h2 class="nav-tab-wrapper"><?php bb_tools_admin_tabs( __( 'Import Forums', 'barebones' ) ); ?></h2>
 
-		<form action="#" method="post" id="bbp-converter-settings">
+		<form action="#" method="post" id="bb-converter-settings">
 
 			<?php settings_fields( 'barebones_converter' ); ?>
 
 			<?php do_settings_sections( 'barebones_converter' ); ?>
 
 			<p class="submit">
-				<input type="button" name="submit" class="button-primary" id="bbp-converter-start" value="<?php esc_attr_e( 'Start', 'barebones' ); ?>" onclick="bbconverter_start()" />
-				<input type="button" name="submit" class="button-primary" id="bbp-converter-stop" value="<?php esc_attr_e( 'Stop', 'barebones' ); ?>" onclick="bbconverter_stop()" />
-				<img id="bbp-converter-progress" src="">
+				<input type="button" name="submit" class="button-primary" id="bb-converter-start" value="<?php esc_attr_e( 'Start', 'barebones' ); ?>" onclick="bbconverter_start()" />
+				<input type="button" name="submit" class="button-primary" id="bb-converter-stop" value="<?php esc_attr_e( 'Stop', 'barebones' ); ?>" onclick="bbconverter_stop()" />
+				<img id="bb-converter-progress" src="">
 			</p>
 
-			<div class="bbp-converter-updated" id="bbp-converter-message"></div>
+			<div class="bb-converter-updated" id="bb-converter-message"></div>
 		</form>
 	</div>
 

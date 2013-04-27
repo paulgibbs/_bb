@@ -147,7 +147,7 @@ function bb_delete_options() {
 
 /**
  * Add filters to each barebones option and allow them to be overloaded from
- * inside the $bbp->options array.
+ * inside the $bb->options array.
  *
  * @since Barebones (1.0)
  * @uses bb_get_default_options() To get default options
@@ -166,7 +166,7 @@ function bb_setup_option_filters() {
 
 /**
  * Filter default options and allow them to be overloaded from inside the
- * $bbp->options array.
+ * $bb->options array.
  *
  * @since Barebones (1.0)
  * @param bool $value Optional. Default value false

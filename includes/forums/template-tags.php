@@ -69,9 +69,9 @@ function bb_has_forums( $args = '' ) {
 
 	// Run the query
 	$bbp              = barebones();
-	$bbp->forum_query = new WP_Query( $bb_f );
+	$bb->forum_query = new WP_Query( $bb_f );
 
-	return apply_filters( 'bb_has_forums', $bbp->forum_query->have_posts(), $bbp->forum_query );
+	return apply_filters( 'bb_has_forums', $bb->forum_query->have_posts(), $bb->forum_query );
 }
 
 /**
@@ -148,16 +148,16 @@ function bb_forum_id( $forum_id = 0 ) {
 			$bb_forum_id = $forum_id;
 
 		// Currently inside a forum loop
-		} elseif ( !empty( $bbp->forum_query->in_the_loop ) && isset( $bbp->forum_query->post->ID ) ) {
-			$bb_forum_id = $bbp->forum_query->post->ID;
+		} elseif ( !empty( $bb->forum_query->in_the_loop ) && isset( $bb->forum_query->post->ID ) ) {
+			$bb_forum_id = $bb->forum_query->post->ID;
 
 		// Currently inside a search loop
-		} elseif ( !empty( $bbp->search_query->in_the_loop ) && isset( $bbp->search_query->post->ID ) && bb_is_forum( $bbp->search_query->post->ID ) ) {
-			$bb_forum_id = $bbp->search_query->post->ID;
+		} elseif ( !empty( $bb->search_query->in_the_loop ) && isset( $bb->search_query->post->ID ) && bb_is_forum( $bb->search_query->post->ID ) ) {
+			$bb_forum_id = $bb->search_query->post->ID;
 
 		// Currently viewing a forum
-		} elseif ( bb_is_single_forum() && !empty( $bbp->current_forum_id ) ) {
-			$bb_forum_id = $bbp->current_forum_id;
+		} elseif ( bb_is_single_forum() && !empty( $bb->current_forum_id ) ) {
+			$bb_forum_id = $bb->current_forum_id;
 
 		// Currently viewing a forum
 		} elseif ( bb_is_single_forum() && isset( $wp_query->post->ID ) ) {
@@ -655,9 +655,9 @@ function bb_forum_get_subforums( $args = '' ) {
  * Output a list of forums (can be used to list subforums)
  *
  * @param mixed $args The function supports these args:
- *  - before: To put before the output. Defaults to '<ul class="bbp-forums">'
+ *  - before: To put before the output. Defaults to '<ul class="bb-forums">'
  *  - after: To put after the output. Defaults to '</ul>'
- *  - link_before: To put before every link. Defaults to '<li class="bbp-forum">'
+ *  - link_before: To put before every link. Defaults to '<li class="bb-forum">'
  *  - link_after: To put after every link. Defaults to '</li>'
  *  - separator: Separator. Defaults to ', '
  *  - forum_id: Forum id. Defaults to ''
@@ -679,9 +679,9 @@ function bb_list_forums( $args = '' ) {
 
 	// Parse arguments against default values
 	$r = bb_parse_args( $args, array(
-		'before'            => '<ul class="bbp-forums-list">',
+		'before'            => '<ul class="bb-forums-list">',
 		'after'             => '</ul>',
-		'link_before'       => '<li class="bbp-forum">',
+		'link_before'       => '<li class="bb-forum">',
 		'link_after'        => '</li>',
 		'count_before'      => ' (',
 		'count_after'       => ')',
@@ -723,7 +723,7 @@ function bb_list_forums( $args = '' ) {
 			}
 
 			// Build this sub forums link
-			$output .= $r['link_before'] . '<a href="' . $permalink . '" class="bbp-forum-link">' . $title . $counts . '</a>' . $show_sep . $r['link_after'];
+			$output .= $r['link_before'] . '<a href="' . $permalink . '" class="bb-forum-link">' . $title . $counts . '</a>' . $show_sep . $r['link_after'];
 		}
 
 		// Output the list
@@ -1759,17 +1759,17 @@ function bb_forum_class( $forum_id = 0, $classes = array() ) {
 	function bb_get_forum_class( $forum_id = 0, $classes = array() ) {
 		$bbp       = barebones();
 		$forum_id  = bb_get_forum_id( $forum_id );
-		$count     = isset( $bbp->forum_query->current_post ) ? $bbp->forum_query->current_post : 1;
+		$count     = isset( $bb->forum_query->current_post ) ? $bb->forum_query->current_post : 1;
 		$classes   = (array) $classes;
 
 		// Get some classes
 		$classes[] = 'loop-item-' . $count;
 		$classes[] = ( (int) $count % 2 )                      ? 'even'              : 'odd';
 		$classes[] = bb_is_forum_category( $forum_id )        ? 'status-category'   : '';
-		$classes[] = bb_get_forum_subforum_count( $forum_id ) ? 'bbp-has-subforums' : '';
-		$classes[] = bb_get_forum_parent_id( $forum_id )      ? 'bbp-parent-forum-' . bb_get_forum_parent_id( $forum_id ) : '';
-		$classes[] = 'bbp-forum-status-'     . bb_get_forum_status( $forum_id );
-		$classes[] = 'bbp-forum-visibility-' . bb_get_forum_visibility( $forum_id );
+		$classes[] = bb_get_forum_subforum_count( $forum_id ) ? 'bb-has-subforums' : '';
+		$classes[] = bb_get_forum_parent_id( $forum_id )      ? 'bb-parent-forum-' . bb_get_forum_parent_id( $forum_id ) : '';
+		$classes[] = 'bb-forum-status-'     . bb_get_forum_status( $forum_id );
+		$classes[] = 'bb-forum-visibility-' . bb_get_forum_visibility( $forum_id );
 
 		// Ditch the empties
 		$classes   = array_filter( $classes );
@@ -1823,7 +1823,7 @@ function bb_single_forum_description( $args = '' ) {
 		// Parse arguments against default values
 		$r = bb_parse_args( $args, array(
 			'forum_id'  => 0,
-			'before'    => '<div class="bbp-template-notice info"><p class="bbp-forum-description">',
+			'before'    => '<div class="bb-template-notice info"><p class="bb-forum-description">',
 			'after'     => '</p></div>',
 			'size'      => 14,
 			'feed'      => true
@@ -2283,7 +2283,7 @@ function bb_forum_topics_feed_link( $forum_id = 0 ) {
 				) ) );
 			}
 
-			$link = '<a href="' . $url . '" class="bbp-forum-rss-link topics"><span>' . __( 'Topics', 'barebones' ) . '</span></a>';
+			$link = '<a href="' . $url . '" class="bb-forum-rss-link topics"><span>' . __( 'Topics', 'barebones' ) . '</span></a>';
 		}
 
 		return apply_filters( 'bb_get_forum_topics_feed_link', $link, $url, $forum_id );
@@ -2347,7 +2347,7 @@ function bb_forum_replies_feed_link( $forum_id = 0 ) {
 				) ) );
 			}
 
-			$link = '<a href="' . $url . '" class="bbp-forum-rss-link replies"><span>' . __( 'Replies', 'barebones' ) . '</span></a>';
+			$link = '<a href="' . $url . '" class="bb-forum-rss-link replies"><span>' . __( 'Replies', 'barebones' ) . '</span></a>';
 		}
 
 		return apply_filters( 'bb_get_forum_replies_feed_link', $link, $url, $forum_id );

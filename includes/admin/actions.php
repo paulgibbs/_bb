@@ -15,8 +15,8 @@
  *  - barebones: In {@link Barebones::setup_actions()} in barebones.php
  *  - Admin: More in {@link BB_Admin::setup_actions()} in admin.php
  *
- * @see bbp-core-actions.php
- * @see bbp-core-filters.php
+ * @see bb-core-actions.php
+ * @see bb-core-filters.php
  */
 
 // Exit if accessed directly
@@ -76,8 +76,8 @@ add_action( 'bb_new_site', 'bb_create_initial_content', 8 );
 add_action( 'load-settings_page_barebones', 'bb_admin_settings_help' );
 
 // Handle submission of Tools pages
-add_action( 'load-tools_page_bbp-repair', 'bb_admin_repair_handler' );
-add_action( 'load-tools_page_bbp-reset',  'bb_admin_reset_handler'  );
+add_action( 'load-tools_page_bb-repair', 'bb_admin_repair_handler' );
+add_action( 'load-tools_page_bb-reset',  'bb_admin_reset_handler'  );
 
 // Add sample permalink filter
 add_filter( 'post_type_link', 'bb_filter_sample_permalink', 10, 4 );

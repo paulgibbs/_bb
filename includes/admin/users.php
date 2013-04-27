@@ -84,12 +84,12 @@ class BB_Users_Admin {
 		<table class="form-table">
 			<tbody>
 				<tr>
-					<th><label for="bbp-forums-role"><?php _e( 'Forum Role', 'barebones' ); ?></label></th>
+					<th><label for="bb-forums-role"><?php _e( 'Forum Role', 'barebones' ); ?></label></th>
 					<td>
 
 						<?php $user_role = bb_get_user_role( $profileuser->ID ); ?>
 
-						<select name="bbp-forums-role" id="bbp-forums-role">
+						<select name="bb-forums-role" id="bb-forums-role">
 
 							<?php if ( ! empty( $user_role ) ) : ?>
 
@@ -135,13 +135,13 @@ class BB_Users_Admin {
 		if ( ! bb_is_user_keymaster() )
 			unset( $dynamic_roles[ bb_get_keymaster_role() ] ); ?>
 
-		<label class="screen-reader-text" for="bbp-new-role"><?php _e( 'Change forum role to&hellip;', 'barebones' ) ?></label>
-		<select name="bbp-new-role" id="bbp-new-role" style="display:inline-block; float:none;">
+		<label class="screen-reader-text" for="bb-new-role"><?php _e( 'Change forum role to&hellip;', 'barebones' ) ?></label>
+		<select name="bb-new-role" id="bb-new-role" style="display:inline-block; float:none;">
 			<option value=''><?php _e( 'Change forum role to&hellip;', 'barebones' ) ?></option>
 			<?php foreach ( $dynamic_roles as $role => $details ) : ?>
 				<option value="<?php echo esc_attr( $role ); ?>"><?php echo translate_user_role( $details['name'] ); ?></option>
 			<?php endforeach; ?>
-		</select><?php submit_button( __( 'Change', 'barebones' ), 'secondary', 'bbp-change-role', false );
+		</select><?php submit_button( __( 'Change', 'barebones' ), 'secondary', 'bb-change-role', false );
 	}
 
 	/**
@@ -165,12 +165,12 @@ class BB_Users_Admin {
 			return;
 
 		// Bail if this isn't a barebones action
-		if ( empty( $_REQUEST['bbp-new-role'] ) || empty( $_REQUEST['bbp-change-role'] ) )
+		if ( empty( $_REQUEST['bb-new-role'] ) || empty( $_REQUEST['bb-change-role'] ) )
 			return;
 
 		// Check that the new role exists
 		$dynamic_roles = bb_get_dynamic_roles();
-		if ( empty( $dynamic_roles[ $_REQUEST['bbp-new-role'] ] ) )
+		if ( empty( $dynamic_roles[ $_REQUEST['bb-new-role'] ] ) )
 			return;
 
 		// Get the current user ID
@@ -186,7 +186,7 @@ class BB_Users_Admin {
 
 			// Set up user and role data
 			$user_role = bb_get_user_role( $user_id );			
-			$new_role  = sanitize_text_field( $_REQUEST['bbp-new-role'] );
+			$new_role  = sanitize_text_field( $_REQUEST['bb-new-role'] );
 
 			// Only keymasters can set other keymasters
 			if ( in_array( bb_get_keymaster_role(), array( $user_role, $new_role ) ) && ! bb_is_user_keymaster() )

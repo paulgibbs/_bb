@@ -67,8 +67,8 @@ class BB_Default extends BB_Theme_Compat {
 		$this->id      = 'default';
 		$this->name    = __( 'Barebones Default', 'barebones' );
 		$this->version = bb_get_version();
-		$this->dir     = trailingslashit( $bbp->themes_dir . 'default' );
-		$this->url     = trailingslashit( $bbp->themes_url . 'default' );
+		$this->dir     = trailingslashit( $bb->themes_dir . 'default' );
+		$this->url     = trailingslashit( $bb->themes_url . 'default' );
 	}
 
 	/**

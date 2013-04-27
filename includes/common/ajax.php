@@ -35,7 +35,7 @@ function bb_ajax_url() {
 		global $wp;
 
 		$base_url = home_url( trailingslashit( $wp->request ), ( is_ssl() ? 'https' : 'http' ) );
-		$ajaxurl  = add_query_arg( array( 'bbp-ajax' => 'true' ), $base_url );
+		$ajaxurl  = add_query_arg( array( 'bb-ajax' => 'true' ), $base_url );
 
 		return apply_filters( 'bb_get_ajax_url', $ajaxurl );
 	}
@@ -45,10 +45,10 @@ function bb_ajax_url() {
  *
  * @since Barebones (1.0)
  *
- * @return bool Looking for bbp-ajax
+ * @return bool Looking for bb-ajax
  */
 function bb_is_ajax() {
-	return (bool) ( isset( $_GET['bbp-ajax'] ) && ! empty( $_REQUEST['action'] ) );
+	return (bool) ( isset( $_GET['bb-ajax'] ) && ! empty( $_REQUEST['action'] ) );
 }
 
 /**

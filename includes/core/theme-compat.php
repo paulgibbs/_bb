@@ -96,12 +96,12 @@ function bb_setup_theme_compat( $theme = '' ) {
 	$bbp = barebones();
 
 	// Make sure theme package is available, set to default if not
-	if ( ! isset( $bbp->theme_compat->packages[$theme] ) || ! is_a( $bbp->theme_compat->packages[$theme], 'BB_Theme_Compat' ) ) {
+	if ( ! isset( $bb->theme_compat->packages[$theme] ) || ! is_a( $bb->theme_compat->packages[$theme], 'BB_Theme_Compat' ) ) {
 		$theme = 'default';
 	}
 
 	// Set the active theme compat theme
-	$bbp->theme_compat->theme = $bbp->theme_compat->packages[$theme];
+	$bb->theme_compat->theme = $bb->theme_compat->packages[$theme];
 }
 
 /**
@@ -183,10 +183,10 @@ function bb_get_theme_compat_url() {
 function bb_is_theme_compat_active() {
 	$bbp = barebones();
 
-	if ( empty( $bbp->theme_compat->active ) )
+	if ( empty( $bb->theme_compat->active ) )
 		return false;
 
-	return $bbp->theme_compat->active;
+	return $bb->theme_compat->active;
 }
 
 /**
@@ -255,10 +255,10 @@ function bb_set_theme_compat_original_template( $template = '' ) {
 function bb_is_theme_compat_original_template( $template = '' ) {
 	$bbp = barebones();
 
-	if ( empty( $bbp->theme_compat->original_template ) )
+	if ( empty( $bb->theme_compat->original_template ) )
 		return false;
 
-	return (bool) ( $bbp->theme_compat->original_template == $template );
+	return (bool) ( $bb->theme_compat->original_template == $template );
 }
 
 /**
@@ -281,8 +281,8 @@ function bb_register_theme_package( $theme = array(), $override = true ) {
 	$bbp = barebones();
 
 	// Only override if the flag is set and not previously registered
-	if ( empty( $bbp->theme_compat->packages[$theme->id] ) || ( true === $override ) ) {
-		$bbp->theme_compat->packages[$theme->id] = $theme;
+	if ( empty( $bb->theme_compat->packages[$theme->id] ) || ( true === $override ) ) {
+		$bb->theme_compat->packages[$theme->id] = $theme;
 	}
 }
 /**
@@ -705,7 +705,7 @@ function bb_replace_the_content( $content = '' ) {
 	$new_content = '';
 
 	// Bail if shortcodes are unset somehow
-	if ( !is_a( $bbp->shortcodes, 'BB_Shortcodes' ) )
+	if ( !is_a( $bb->shortcodes, 'BB_Shortcodes' ) )
 		return $content;
 
 	// Use shortcode API to display forums/topics/replies because they are
@@ -752,16 +752,16 @@ function bb_replace_the_content( $content = '' ) {
 
 		// No page so show the archive
 		} else {
-			$new_content = $bbp->shortcodes->display_forum_index();
+			$new_content = $bb->shortcodes->display_forum_index();
 		}
 
 	// Forum Edit
 	} elseif ( bb_is_forum_edit() ) {
-		$new_content = $bbp->shortcodes->display_forum_form();
+		$new_content = $bb->shortcodes->display_forum_form();
 
 	// Single Forum
 	} elseif ( bb_is_single_forum() ) {
-		$new_content = $bbp->shortcodes->display_forum( array( 'id' => get_the_ID() ) );
+		$new_content = $bb->shortcodes->display_forum( array( 'id' => get_the_ID() ) );
 
 	/** Topics ************************************************************/
 
@@ -792,7 +792,7 @@ function bb_replace_the_content( $content = '' ) {
 
 		// No page so show the archive
 		} else {
-			$new_content = $bbp->shortcodes->display_topic_index();
+			$new_content = $bb->shortcodes->display_topic_index();
 		}
 
 	// Topic Edit
@@ -820,18 +820,18 @@ function bb_replace_the_content( $content = '' ) {
 
 		// Edit
 		} else {
-			$new_content = $bbp->shortcodes->display_topic_form();
+			$new_content = $bb->shortcodes->display_topic_form();
 		}
 
 	// Single Topic
 	} elseif ( bb_is_single_topic() ) {
-		$new_content = $bbp->shortcodes->display_topic( array( 'id' => get_the_ID() ) );
+		$new_content = $bb->shortcodes->display_topic( array( 'id' => get_the_ID() ) );
 
 	/** Replies ***********************************************************/
 
 	// Reply archive
 	} elseif ( is_post_type_archive( bb_get_reply_post_type() ) ) {
-		//$new_content = $bbp->shortcodes->display_reply_index();
+		//$new_content = $bb->shortcodes->display_reply_index();
 
 	// Reply Edit
 	} elseif ( bb_is_reply_edit() ) {
@@ -848,32 +848,32 @@ function bb_replace_the_content( $content = '' ) {
 	
 		// Edit
 		} else {
-			$new_content = $bbp->shortcodes->display_reply_form();
+			$new_content = $bb->shortcodes->display_reply_form();
 		}
 
 	// Single Reply
 	} elseif ( bb_is_single_reply() ) {
-		$new_content = $bbp->shortcodes->display_reply( array( 'id' => get_the_ID() ) );
+		$new_content = $bb->shortcodes->display_reply( array( 'id' => get_the_ID() ) );
 
 	/** Views *************************************************************/
 
 	} elseif ( bb_is_single_view() ) {
-		$new_content = $bbp->shortcodes->display_view( array( 'id' => get_query_var( 'bb_view' ) ) );
+		$new_content = $bb->shortcodes->display_view( array( 'id' => get_query_var( 'bb_view' ) ) );
 
 	/** Search ************************************************************/
 
 	} elseif ( bb_is_search() ) {
-		$new_content = $bbp->shortcodes->display_search( array( 'search' => get_query_var( 'bb_search' ) ) );
+		$new_content = $bb->shortcodes->display_search( array( 'search' => get_query_var( 'bb_search' ) ) );
 
 	/** Topic Tags ********************************************************/
 
 	// Show topics of tag
 	} elseif ( bb_is_topic_tag() ) {
-		$new_content = $bbp->shortcodes->display_topics_of_tag( array( 'id' => bb_get_topic_tag_id() ) );
+		$new_content = $bb->shortcodes->display_topics_of_tag( array( 'id' => bb_get_topic_tag_id() ) );
 
 	// Edit topic tag
 	} elseif ( bb_is_topic_tag_edit() ) {
-		$new_content = $bbp->shortcodes->display_topic_tag_form();
+		$new_content = $bb->shortcodes->display_topic_tag_form();
 	}
 
 	// Juggle the content around and try to prevent unsightly comments
@@ -974,7 +974,7 @@ function bb_remove_all_filters( $tag, $priority = false ) {
 		if ( !empty( $priority ) && isset( $wp_filter[$tag][$priority] ) ) {
 
 			// Store filters in a backup
-			$bbp->filters->wp_filter[$tag][$priority] = $wp_filter[$tag][$priority];
+			$bb->filters->wp_filter[$tag][$priority] = $wp_filter[$tag][$priority];
 
 			// Unset the filters
 			unset( $wp_filter[$tag][$priority] );
@@ -983,7 +983,7 @@ function bb_remove_all_filters( $tag, $priority = false ) {
 		} else {
 
 			// Store filters in a backup
-			$bbp->filters->wp_filter[$tag] = $wp_filter[$tag];
+			$bb->filters->wp_filter[$tag] = $wp_filter[$tag];
 
 			// Unset the filters
 			unset( $wp_filter[$tag] );
@@ -994,7 +994,7 @@ function bb_remove_all_filters( $tag, $priority = false ) {
 	if ( isset( $merged_filters[$tag] ) ) {
 
 		// Store filters in a backup
-		$bbp->filters->merged_filters[$tag] = $merged_filters[$tag];
+		$bb->filters->merged_filters[$tag] = $merged_filters[$tag];
 
 		// Unset the filters
 		unset( $merged_filters[$tag] );
@@ -1020,36 +1020,36 @@ function bb_restore_all_filters( $tag, $priority = false ) {
 	$bbp = barebones();
 
 	// Filters exist
-	if ( isset( $bbp->filters->wp_filter[$tag] ) ) {
+	if ( isset( $bb->filters->wp_filter[$tag] ) ) {
 
 		// Filters exist in this priority
-		if ( !empty( $priority ) && isset( $bbp->filters->wp_filter[$tag][$priority] ) ) {
+		if ( !empty( $priority ) && isset( $bb->filters->wp_filter[$tag][$priority] ) ) {
 
 			// Store filters in a backup
-			$wp_filter[$tag][$priority] = $bbp->filters->wp_filter[$tag][$priority];
+			$wp_filter[$tag][$priority] = $bb->filters->wp_filter[$tag][$priority];
 
 			// Unset the filters
-			unset( $bbp->filters->wp_filter[$tag][$priority] );
+			unset( $bb->filters->wp_filter[$tag][$priority] );
 
 		// Priority is empty
 		} else {
 
 			// Store filters in a backup
-			$wp_filter[$tag] = $bbp->filters->wp_filter[$tag];
+			$wp_filter[$tag] = $bb->filters->wp_filter[$tag];
 
 			// Unset the filters
-			unset( $bbp->filters->wp_filter[$tag] );
+			unset( $bb->filters->wp_filter[$tag] );
 		}
 	}
 
 	// Check merged filters
-	if ( isset( $bbp->filters->merged_filters[$tag] ) ) {
+	if ( isset( $bb->filters->merged_filters[$tag] ) ) {
 
 		// Store filters in a backup
-		$merged_filters[$tag] = $bbp->filters->merged_filters[$tag];
+		$merged_filters[$tag] = $bb->filters->merged_filters[$tag];
 
 		// Unset the filters
-		unset( $bbp->filters->merged_filters[$tag] );
+		unset( $bb->filters->merged_filters[$tag] );
 	}
 
 	return true;
